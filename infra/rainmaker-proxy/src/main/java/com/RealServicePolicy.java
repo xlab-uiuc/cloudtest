@@ -11,9 +11,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import static com.Rainmaker.*;
-import static com.Rainmaker.SDKAPIList;
 
-public class RealService {
+public class RealServicePolicy {
     public static class RequestForwardAndResponseCallback implements ExpectationForwardAndResponseCallback {
         @Override
         public HttpRequest handle(HttpRequest httpRequest) {

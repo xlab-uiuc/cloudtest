@@ -43,7 +43,6 @@ public class Rainmaker {
 
     public static int testSuccess=0, testFail=0, testSkipped=0;
 
-    public static boolean exemptFromRetrieving=false;
 
     JSONArray recordedRequests;
 
@@ -70,31 +69,17 @@ public class Rainmaker {
     public static String projName;
     public static String testDLL;
     public static String rainmakerPath;
-    public static String torchPath;
     public static String rainmakerPolicy;
     public static String resultDir;
-    public static String statDir;
     public static String projectName;
-    public static int cosmosErrorCode;
-    public static boolean appFlag;
 
-    private static String vanillaDir;
-
-    public static boolean vanillaRun = false;
-    private final boolean testFlag;
+    public static boolean vanillaRun = true;
     private final boolean includePUTTestFlag;
     private final boolean fullTestFlag;
-    private final boolean validationFlag;
-    private final boolean cosmosAppFlag;
     private String configCallSiteStr;
-    
-    private final int validationRound;
-    private final boolean fullValidationFlag;
+
     private final List<String> partialTestOrValidationNameList;
 
-    public static List<String> callSiteList;
-    public static List<String> SDKAPIList;
-    public static List<String> RestList;
 
     public static final SimpleDateFormat runTimestampFormat = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
 
@@ -114,109 +99,35 @@ public class Rainmaker {
         projectName = config.getString("project").toLowerCase();
 
         rainmakerPath = System.getProperty("user.home")+"\\"+config.getString("rainmaker_path");
-        torchPath = System.getProperty("user.home")+"\\"+config.getString("torch_path");
+
         resultDir = Paths.get(System.getProperty("user.dir"), "..\\..\\results", config.getString("project").toLowerCase()).toString();
-        if (!vanillaRun)
-           vanillaDir = Paths.get(System.getProperty("user.dir"), "..\\..\\results", config.getString("stat_dir").split("\\\\")[1]).toString();
-        statDir = Paths.get(System.getProperty("user.dir"), config.getString("stat_dir")).toString();
-
-        if (config.has("test"))
-            testFlag = config.getBoolean("test");
-        else
-            testFlag = true;
-
         
         if (config.has("include_PUT_test"))
             includePUTTestFlag = config.getBoolean("include_PUT_test");
         else
             includePUTTestFlag = false;
 
-        if (config.has("full_test_or_vanilla"))
-            fullTestFlag = config.getBoolean("full_test_or_vanilla");
+        if (config.has("full_test"))
+            fullTestFlag = config.getBoolean("full_test");
         else
             fullTestFlag = true;
 
-        if (config.has("validation"))
-            validationFlag = config.getBoolean("validation");
-        else
-            validationFlag = false;
-
-        if (config.has("full_validation"))
-            fullValidationFlag = config.getBoolean("full_validation");
-        else
-            fullValidationFlag = false;
-
-        if (config.has("app_flag")) {
-            appFlag = config.getBoolean("app_flag");
-            if (config.has("config_callsite"))
-                configCallSiteStr = config.getString("config_callsite");
-            else 
-                configCallSiteStr = "NO_CONFIG_CALLSITE";
-        }
-        else
-            appFlag = false;
-
-        if (config.has("cosmos_app")) {
-            cosmosAppFlag = config.getBoolean("cosmos_app");
-            appFlag = cosmosAppFlag;
-            if (config.has("config_callsite"))
-                configCallSiteStr = config.getString("config_callsite");
-            else 
-                configCallSiteStr = "NO_CONFIG_CALLSITE";
-        }
-        else
-            cosmosAppFlag = false;
-
-        if (config.has("validation") && config.has("validation_round"))
-            validationRound = config.getInt("validation_round");
-        else
-            validationRound = 1;
-
-        if (config.has("cosmos_error_code") && cosmosAppFlag)
-            cosmosErrorCode = config.getInt("cosmos_error_code");
-        else
-            cosmosErrorCode = 503;
-
-        if (vanillaRun)
+        if (vanillaRun){
             projName = config.getString("project") + "_" + runTimestampFormat.format(timestamp);
-        else if (validationFlag && !testFlag)
-            projName = config.getString("project") + "-validation-round_" + runTimestampFormat.format(timestamp);
-        else if (testFlag && !validationFlag)
-            projName = config.getString("project") + "-injection-round_" + runTimestampFormat.format(timestamp);
-        else if (testFlag && validationFlag) {
-            System.out.println("full_test_or_vanilla and full_validation cannot be true at the same time");
-            System.exit(0);
         }
         else {
-            System.out.println("Should specify whether it is a test or validation run when it is not vanilla!");
+            System.out.println("Only support vanilla or vanilla_real");
             System.exit(0);
         }
         System.out.println(projName);
 
-        if (testFlag && config.has("partial_test")) {
-            JSONArray jsonArray = config.getJSONArray("partial_test");
-            partialTestOrValidationNameList = new ArrayList<String>();
-            for (int i=0; i<jsonArray.length(); i++){
-                //Adding each element of JSON array into ArrayList
-                partialTestOrValidationNameList.add(jsonArray.getString(i));
-            }
+        JSONArray jsonArray = config.getJSONArray("partial_test");
+        partialTestOrValidationNameList = new ArrayList<String>();
+        for (int i=0; i<jsonArray.length(); i++){
+            //Adding each element of JSON array into ArrayList
+            partialTestOrValidationNameList.add(jsonArray.getString(i));
         }
-        else if (validationFlag && config.has("partial_validation")) {
-            JSONArray jsonArray = config.getJSONArray("partial_validation");
-            partialTestOrValidationNameList = new ArrayList<String>();
-            for (int i=0; i<jsonArray.length(); i++){
-                //Adding each element of JSON array into ArrayList
-                partialTestOrValidationNameList.add(jsonArray.getString(i));
-            }
-        }
-        else {
-            JSONArray jsonArray = config.getJSONArray("partial_test");
-            partialTestOrValidationNameList = new ArrayList<String>();
-            for (int i=0; i<jsonArray.length(); i++){
-                //Adding each element of JSON array into ArrayList
-                partialTestOrValidationNameList.add(jsonArray.getString(i));
-            }
-        }
+        
 
         File statFile = new File("stat/"+projName);
         if(statFile.mkdir()){
@@ -231,7 +142,6 @@ public class Rainmaker {
         }else{
             System.out.println("Error Found!");
         }
-//        System.exit(0);
     }
 
     public static List<String> findTestCases() throws Exception {
@@ -239,21 +149,11 @@ public class Rainmaker {
         skippedTestCaseExceptionHappens = new ArrayList<String>();
         File dirTest = new File(projPath);
         try {
-//          Process process = Runtime.getRuntime().exec(
-//          "dotnet test --list-tests", null, dirTest);
 
             System.out.println(projPath + "\\" + "test.runsettings");
             ProcessBuilder procBuilder;
-            if (projectName.equals("masstransit")) 
-                procBuilder = new ProcessBuilder("cmd.exe", "/c", "dotnet test " + testDLL +
-                        " --list-tests --settings " + projPath + "\\" + "test.runsettings");
-            if (projectName.equals("acmesharp")) 
-                procBuilder = new ProcessBuilder("cmd.exe", "/c",
-                "\"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\TestWindow\\vstest.console.exe\" "
-                        + "/lt "+ testDLL);
-            else
-                procBuilder = new ProcessBuilder("cmd.exe", "/c", "dotnet test " + testDLL + " --list-tests");
 
+            procBuilder = new ProcessBuilder("cmd.exe", "/c", "dotnet test " + testDLL + " --list-tests");
             procBuilder.directory(dirTest);
             procBuilder.redirectErrorStream(true);
             Process process = procBuilder.start();
@@ -289,84 +189,6 @@ public class Rainmaker {
             e.printStackTrace();
         }
         return listTestCaseNames;
-    }
-
-//    Construct the test case that needs to be injected (Passed in the data collection round)
-//    The key is the test case name => list of unique call sites
-    public static Map<String, List<String>> constructRequestNumMapping(boolean testRun) {
-        Map<String, List<String>> testCallSitesMap = new HashMap<String, List<String>>();
-//        For test run
-        if (testRun) {
-            // TODO: maybe should not rely on this PASSED_test.csv
-            Path passedFilePath = Paths.get(vanillaDir, "PASSED_test.csv");
-            try (BufferedReader csvBufferReader = new BufferedReader(new FileReader(passedFilePath.toString()))) {
-                String testName;
-                while ((testName = csvBufferReader.readLine()) != null) {
-                        Path callSiteFilePath = Paths.get(statDir, testName, "0", "CALLSITE.csv");
-                        try (BufferedReader callSiteReader = new BufferedReader(new FileReader(callSiteFilePath.toString()))) {
-                            String line;
-                            List<String> callSitesInSingleTestList = new ArrayList<>();
-                            while ((line = callSiteReader.readLine()) != null) {
-                                String[] values = line.split("\t");
-                                if (values[0].isEmpty())
-                                    continue;
-                                if (values[0].equals("[', , ,']"))
-                                    continue;
-                                String callSiteString = Objects.requireNonNull(Optional.of(values[0].trim())
-                                        .filter(str -> str.length() != 0)
-                                        .map(str -> str.substring(2, str.length() - 2))
-                                        .orElse(values[0].trim())).replace("\\\\", "\\").trim();
-                                callSitesInSingleTestList.add(callSiteString);
-                            }
-                            testCallSitesMap.put(testName, callSitesInSingleTestList);
-//                        System.out.println(testName);
-                        } catch (FileNotFoundException fe) {
-                            continue;
-                        }
-
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        else {
-//            Validation run
-            Path bugInspectionPath = Paths.get(resultDir, "bug_inspection.csv");
-            System.out.println(resultDir);
-            try (BufferedReader csvBufferReader = new BufferedReader(new FileReader(bugInspectionPath.toString()))) {
-                String testName;
-                String callsiteToInject;
-                String row;
-//                Skip the header
-                csvBufferReader.readLine();
-                while ((row = csvBufferReader.readLine()) != null) {
-                    System.out.println(row);
-                    String[] values = row.split("\t");
-                    
-                    testName = values[0];
-                    System.out.println(testName);
-                    callsiteToInject = values[3];
-//                    TODO: this may have a problem when we want to reproduce the injection for some tests - shld mod
-                    if (Objects.equals(callsiteToInject, "Cannot find SDK API")) {
-                        continue;
-                    }
-                    if (testCallSitesMap.containsKey(testName)) {
-                        List<String> updateList = testCallSitesMap.get(testName);
-                        updateList.add(callsiteToInject);
-                        testCallSitesMap.put(testName, updateList);
-                    }
-                    else {
-                        List<String> callSitesInSingleTestList = new ArrayList<>();
-                        callSitesInSingleTestList.add(callsiteToInject.trim());
-                        testCallSitesMap.put(testName, callSitesInSingleTestList);
-                    }
-                }
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        return testCallSitesMap;
     }
 
     public void startMockServer() throws IOException {
@@ -414,14 +236,14 @@ public class Rainmaker {
                             request()
                     )
                     .forward(
-                            callback().withCallbackClass(InjectionPolicy.RequestForwardAndResponseCallback.class)
+                            callback().withCallbackClass(VanillaPolicy.RequestForwardAndResponseCallback.class)
                     );
         else if (Objects.equals(rainmakerPolicy, "vanilla_real"))
             mockServer.when(
                             request()
                     )
                     .forward(
-                            callback().withCallbackClass(RealService.RequestForwardAndResponseCallback.class)
+                            callback().withCallbackClass(RealServicePolicy.RequestForwardAndResponseCallback.class)
                     );
 
     }
@@ -431,150 +253,31 @@ public class Rainmaker {
         
     }
 
-    private int checkWhichServiceUsed() {
-//        TODO: This function should be removed: do all the parsing offline
-        System.out.println("Going to check which service was used..");
-        try {
-            recordedRequests = new JSONArray(mockServer.retrieveRecordedRequestsAndResponses(request(), Format.JSON));
-        } catch (Exception e) {
-            e.printStackTrace();
-            return exceptionHappenedWhenRetrieving;
-        }
-
-        if (recordedRequests.length() == 0) {
-            System.out.println("No services have been used.");
-            return noServiceUse;
-        }
-        else {
-//            TODO: This is not useful any more => modify in the future
-            return 1;
-        }
-    }
-
-//    public void testIteration() throws Exception {
-//        setForwardExpectation()
-//        long start = System.currentTimeMillis();
-//        while (true) {
-//            long finish = System.currentTimeMillis();
-//            long timeElapsed = finish - start;
-//            if (timeElapsed > 30000) {
-//                checkWhichServiceUsed();
-//                curTestStatDirWithSeq = "stat/"+projName+"/"+"XXXX"+"/"+seqToInject;
-//                new File(curTestStatDirWithSeq).mkdirs();
-//                retrieveRequestsInAllServers("XXX", 0);
-//                break;
-//            }
-//        }
-//    }
-
     public void testIteration() throws Exception {
         List<String> listTestNames = new ArrayList<String>();
 //        out of memory exception???
 //        listTestNames.add("UnitTests.StreamingTests.StreamLimitTests.SMS_Limits_Max_Producers_Burst");
-        if (!appFlag) {
-            if (vanillaRun) {
-                if (fullTestFlag) {
-                    listTestNames = findTestCases();
-                    System.out.println("Collected test cases' names:" + listTestNames);
-                    System.out.println("Collected test cases list size:" + listTestNames.size());
-                    // Debug
-                    // System.exit(0);
-                }
-                else {
-                    if (partialTestOrValidationNameList.size() == 0) {
-                        System.out.println("When doing test data collection partially, should specify some test case name(s) in the config.json file!");
-                        System.exit(0);
-                    }
-                    else {
-                        listTestNames = partialTestOrValidationNameList;
-                        System.out.println("Going to run partial test cases:" + listTestNames);
-                    }
-                }
+
+        if (vanillaRun) {
+            if (fullTestFlag) {
+                listTestNames = findTestCases();
+                System.out.println("Collected test cases' names:" + listTestNames);
+                System.out.println("Collected test cases list size:" + listTestNames.size());
+                // Debug
+                // System.exit(0);
             }
             else {
-    //            Fault injection round
-                if (testFlag) {
-                    injectTestCallSitesMap = constructRequestNumMapping(true);
-    //                System.out.println(injectTestCallSitesMap.toString());
-                    if (fullTestFlag) {
-                        List<String> testNamesWithNumList = new ArrayList<String>(injectTestCallSitesMap.keySet());
-                        System.out.println("Going to inject test cases' names:" + testNamesWithNumList);
-                        System.out.println("Going to inject test cases list size:" + testNamesWithNumList.size());
-                        //            sort the test names based on the number of unique call site
-                        //            put the test with the fewer number of call sites at the front
-                        testNamesWithNumList.sort(new Comparator<String>() {
-                            public int compare(String left, String right) {
-                                return Integer.compare(injectTestCallSitesMap.get(left).size(), injectTestCallSitesMap.get(right).size());
-                            }
-                        });
-                        listTestNames = testNamesWithNumList;
-                    }
-                    else {
-                        if (partialTestOrValidationNameList.size() == 0) {
-                            System.out.println("When doing fault injection partially, should specify some test case name(s) in the config.json file!");
-                            System.exit(0);
-                        }
-                        else {
-                            listTestNames = partialTestOrValidationNameList;
-                            System.out.println("Going to inject faults to partial test cases:" + listTestNames);
-                        }
-                    }
+                if (partialTestOrValidationNameList.size() == 0) {
+                    System.out.println("When doing test data collection partially, should specify some test case name(s) in the config.json file!");
+                    System.exit(0);
                 }
-    //            Failure reproduction round
-                if (validationFlag) {
-                    injectTestCallSitesMap = constructRequestNumMapping(false);
-                    // System.out.println(injectTestCallSitesMap.toString());
-                    if (fullValidationFlag) {
-                        List<String> testNamesWithNumList = new ArrayList<String>(injectTestCallSitesMap.keySet());
-                        System.out.println("Going to validate test cases' names:" + testNamesWithNumList);
-                        System.out.println("Going to validate test cases list size:" + testNamesWithNumList.size());
-                        System.out.println("injectTestCallSitesMap:" + injectTestCallSitesMap.toString());
-                        //            sort the test names based on the number of unique call site
-                        //            put the test with the fewer number of call sites at the front
-    //                    STFPlanner planner = new STFPlanner("1h", resultDir, statDir);
-                        testNamesWithNumList.sort(new Comparator<String>() {
-                            public int compare(String left, String right) {
-                                return Integer.compare(injectTestCallSitesMap.get(left).size(), injectTestCallSitesMap.get(right).size());
-                            }
-                        });
-                        listTestNames = testNamesWithNumList;
-                    }
-                    else {
-                        if (partialTestOrValidationNameList.size() == 0) {
-                            System.out.println("When doing validation partially, should specify some test case name(s) in the config.json file!");
-                            System.exit(0);
-                        }
-                        else {
-                            listTestNames = partialTestOrValidationNameList;
-                            System.out.println("Going to validate partial test failures:" + listTestNames);
-    //                        System.exit(0);
-                        }
-                    }
+                else {
+                    listTestNames = partialTestOrValidationNameList;
+                    System.out.println("Going to run partial test cases:" + listTestNames);
                 }
             }
         }
-        else {
-            // If the software under test is an application
-            listTestNames = new ArrayList<String>();
-            listTestNames.add("AppTesting");
-        }
-        // test system
-        if (cosmosAppFlag) {
-            setForwardExpectation();
-            long start = System.currentTimeMillis();
-            while (true) {
-                long finish = System.currentTimeMillis();
-                long timeElapsed = finish - start;
-                if (timeElapsed > 180000) {
-                    checkWhichServiceUsed();
-                    curTestStatDirWithSeq = "stat/" + projName + "/" + "cosmosAppWork" + "/" + seqToInject;
-                    new File(curTestStatDirWithSeq).mkdirs();
-                    retrieveRequestsInAllServers("cosmosAppWork", 0);
-                    break;
-                }
-            }
-            return;
-        }
+        
 
         try {
             File dirTest = new File(rainmakerPath);
@@ -599,23 +302,11 @@ public class Rainmaker {
 
 //                Skip stream limit tests due to out of memory exception
 //                    TODO: add this constraint to the config file
-                // if (curTestCaseName.contains("StreamLimitTests") || curTestCaseName.contains("CosmosDb")
-                //         || curTestCaseName.contains("CosmosDB")
-                //         || (!curTestCaseName.contains("AzureEmulatedBlobStorageTest") && projectName.equals("storage")))
-                //     continue;
 
                 if (curTestCaseName.contains("StreamLimitTests")
                         || (!curTestCaseName.contains("AzureEmulatedBlobStorageTest") && projectName.equals("storage")))
                     continue;
                 System.out.println(curTestCaseName);
-
-                /* ********************************************** */
-                // TODO: This should only open when evaluating AWS - for Storage.NET repo
-                // if (curTestCaseName.contains("AzureEmulatedBlobStorageTest") && projectName.equals("storage"))
-                //     continue;
-
-                if (!curTestCaseName.contains("Aws") && projectName.equals("storage"))
-                    continue;
 
 
                 if (curTestCaseName.contains("(")) {
@@ -653,56 +344,25 @@ public class Rainmaker {
                 new File(curTestStatDir).mkdirs();
                 new File(curTestOutcomeDir).mkdirs();
 
-                int totalInjectNum;
-                if (vanillaRun)
-                    totalInjectNum = 1;
-//                else if (!fullTestFlag)
-//                    totalInjectNum = 1;
-                else if (projName.contains("AWSTest"))
-                    totalInjectNum = 10;
-                else {
-//                    System.out.println(injectTestCallSitesMap.get(curTestCaseName).toString());
-                    totalInjectNum = injectTestCallSitesMap.get(curTestCaseName).size() * validationRound;
-                }
+                int totalInjectNum = 1;
 
-
-//                System.out.println(injectTestCallSitesMap.get(curTestCaseName));
                 System.out.println("Total injection rounds would be: "+totalInjectNum);
-//                System.out.println(injectTestCallSitesMap.get(curTestCaseName));
-//                System.exit(0);
-                boolean RESTres = false;
+
                 for (int seq=0; seq < totalInjectNum; seq++) {
-                    seqToInject = seq / validationRound;
+                    seqToInject = seq;
 
-                    if (vanillaRun)
-                        injectCallSiteStr = "VANILLA_RUN_NO_INJECTION_STRING";
-                    else if (appFlag)
-                        injectCallSiteStr = configCallSiteStr;
-                    else
-                        injectCallSiteStr = injectTestCallSitesMap.get(curTestCaseName).get(seqToInject);
+                    injectCallSiteStr = "VANILLA_RUN_NO_INJECTION_STRING";
 
-                    if (appFlag) 
-                        curTestStatDirWithSeq = "stat/"+projName+"/"+"AppTesting"+"/"+seqToInject;
-                    else
-                        curTestStatDirWithSeq = "stat/"+projName+"/"+curTestCaseName+"/"+seqToInject;
+                    curTestStatDirWithSeq = "stat/"+projName+"/"+curTestCaseName+"/"+seqToInject;
                     
                     new File(curTestStatDirWithSeq).mkdirs();
 
-                    callSiteList = new ArrayList<String>();
-                    SDKAPIList = new ArrayList<String>();
-                    RestList = new ArrayList<String>();
                     System.out.println("Setting forwarding expectations for an incoming test...");
                     Instant eachRoundStartTime = Instant.now();
                     setForwardExpectation();
                     System.out.println("=========================================");
                     System.out.println("Current test case: " + curTestCaseName);
 
-                    // -p:ParallelizeTestCollections=false
-                    // parallel parameter cannot be used?
-//                    ProcessBuilder procBuilder = new ProcessBuilder("cmd.exe", "/c",
-//                            "dotnet test "+ testDLL + " --logger trx --filter FullyQualifiedName=" + curTestCaseName);
-//                    ProcessBuilder procBuilder = new ProcessBuilder("cmd.exe", "/c",
-//                            "dotnet test" + " --blame-hang-timeout 10m --logger trx --filter FullyQualifiedName=" + curTestCaseName);
                     ProcessBuilder procBuilder;                
                     if (!includePUTTestFlag) {
                         if (projectName == "masstransit")
@@ -821,37 +481,13 @@ public class Rainmaker {
                         }
                     }
 
-                    int serviceInUse;
-                    // Waiting for all the pending injection callback to finish before retrieving all the requests
-                    boolean isLockAcquired = lock.tryLock(2*sleepTime, TimeUnit.SECONDS);
-                    if (isLockAcquired) {
-                        try {
-                            serviceInUse = checkWhichServiceUsed();
-                        }
-                        finally {
-                            lock.unlock();
-                        }
-                    }
-                    else {
-                        serviceInUse = exceptionHappenedWhenRetrieving;
-                        System.out.println("Unable to acquire the lock when preparing to retrieve requests");
-                        System.exit(0);
-                    }
-
                     System.out.println("=========================================");
-                    if (!exemptFromRetrieving && serviceInUse != exceptionHappenedWhenRetrieving) {
-                        //                    testSuccess += 1;
-                        retrieveRequestsInAllServers(curTestCaseName, serviceInUse);
-                    } else if (!exemptFromRetrieving) {
-                        testSuccess -= 1;
-                        skippedTestCaseExceptionHappens.add(curTestCaseName);
-                        System.out.println("Skip test " + curTestCaseName + " due to exception when retrieving!");
-                    }
+                    
                     Instant eachRoundEndTime = Instant.now();
                     eachRoundTimeElapsed = Duration.between(eachRoundStartTime, eachRoundEndTime);
                     //                System.out.println("eachRoundTimeElapsed: " + eachRoundTimeElapsed.toString());
                     testRoundTimeMap.put(curTestCaseName, humanReadableFormat(eachRoundTimeElapsed));
-                    exemptFromRetrieving = false;
+
                     System.out.println("Resetting all expectations for the finished test (clear all the expectations and logs)... test name:" + curTestCaseName);
                     resetMockserver();
                     //                if (needInvestigation) {
@@ -879,10 +515,6 @@ public class Rainmaker {
         }
     }
 
-    public void retrieveRequestsInAllServers(String testName, int serviceInUse) {
-        System.out.println("Going to retrieve all the requests..");
-        RESTHandlers requestHandler = new RESTHandlers(testName, recordedRequests);
-    }
     
     public static String humanReadableFormat(Duration duration) {
 //        System.out.println("Entering humanReadableFormat");
