@@ -512,88 +512,19 @@ public class Rainmaker {
                     .forward(
                             callback().withCallbackClass(InjectionPolicy.RequestForwardAndResponseCallback.class)
                     );
-        else if (Objects.equals(rainmakerPolicy, "timeout_succ"))
+        else if (Objects.equals(rainmakerPolicy, "vanilla_real"))
             mockServer.when(
                             request()
                     )
                     .forward(
-                            callback().withCallbackClass(TimeoutSucc.RequestForwardAndResponseCallback.class)
+                            callback().withCallbackClass(RealService.RequestForwardAndResponseCallback.class)
                     );
-        else if (Objects.equals(rainmakerPolicy, "timeout_4s"))
-            mockServer.when(
-                            request()
-                    )
-                    .forward(
-                            callback().withCallbackClass(Timeout4s.RequestForwardAndResponseCallback.class)
-                    );
-        else if (Objects.equals(rainmakerPolicy, "timeout_blind")) {
-            if (cosmosAppFlag)
-                mockServer.when(
-                                request()
-                        )
-                        .forward(
-                                callback().withCallbackClass(TimeoutBlindCosmos.RequestForwardAndResponseCallback.class)
-                        );
-            else
-                mockServer.when(
-                                request()
-                        )
-                        .forward(
-                                callback().withCallbackClass(TimeoutBlind.RequestForwardAndResponseCallback.class)
-                        );
-        }
-        else if (Objects.equals(rainmakerPolicy, "timeout_blind_all"))
-            mockServer.when(
-                            request()
-                    )
-                    .forward(
-                            callback().withCallbackClass(TimeoutBlindAll.RequestForwardAndResponseCallback.class)
-                    );
-        else if (Objects.equals(rainmakerPolicy, "timeout_injection"))
-            mockServer.when(
-                            request()
-                    )
-                    .forward(
-                            callback().withCallbackClass(TimeoutPolicy.RequestForwardAndResponseCallback.class)
-                    );
-        else if (Objects.equals(rainmakerPolicy, "request_block")) {
-            mockServer.when(
-                            request()
-                    )
-                    .forward(
-                            callback().withCallbackClass(RequestBlockPolicy.RequestForwardAndResponseCallback.class)
-                    );
-            blockRequestServer.when(
-                            request()
-                    )
-                    .respond(
-                            callback().withCallbackClass(RequestBlockMockserver.RequestBlockExpectationResponseCallback.class)
-                    );
-        }
-        else if (Objects.equals(rainmakerPolicy, "timeout_first_request_block")) {
-            mockServer.when(
-                            request()
-                    )
-                    .forward(
-                            callback().withCallbackClass(TimeoutFirstRequestBlock.RequestForwardAndResponseCallback.class)
-                    );
-            blockRequestServer.when(
-                            request()
-                    )
-                    .respond(
-                            callback().withCallbackClass(RequestBlockMockserver.RequestBlockExpectationResponseCallback.class)
-                    );
-        }
+
     }
 
     private void resetMockserver() {
         mockServer.reset();
-        if (Objects.equals(rainmakerPolicy, "request_block")) {
-            blockRequestServer.reset();
-        }
-        else if (Objects.equals(rainmakerPolicy, "timeout_first_request_block")) {
-            blockRequestServer.reset();
-        }
+        
     }
 
     private int checkWhichServiceUsed() {

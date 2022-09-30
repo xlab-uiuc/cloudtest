@@ -115,14 +115,6 @@ def check_test_result(result_dir_str, proj_name, new_run_dir):
     failed_result_set = set()
     skipped_result_set = set()
 
-    # df = pd.read_csv("stat/failed-test-name-emulator.csv", sep='\t', header=None,
-    #     names=["FAILED_TEST_NAME"])
-    # prev_failed_result_set = set(df["FAILED_TEST_NAME"].tolist())
-
-    # df = pd.read_csv("stat/legacy-data/dotnet-test-names-output.csv", sep='\t', header=None,
-    #     names=["ALL_TEST_NAME"])
-    # ground_truth_result_set = set(df["ALL_TEST_NAME"].str.strip().tolist())
-
     all_tests_names_set = set()
     all_tests_names_list = []
     tests_result_dict = {}
@@ -223,11 +215,6 @@ def check_test_result(result_dir_str, proj_name, new_run_dir):
         skip_file.write("{}\n".format(ele))
     skip_file.close()
 
-    # all_test_observed_at_REST_layer output
-    rest_df = pd.read_csv("test_CALLSITE.csv", sep="\t", header=None)
-    rest_df.columns = ["TEST_NAME", "CALL_NUM"]
-    rest_df = rest_df[rest_df["CALL_NUM"] != 0]
-    rest_df["TEST_NAME"].to_csv(new_run_dir + "/all_test_observed_at_REST_layer.csv", header=False, index=False)
 
     # Copy the files to the destination result dir (name in lower case)
     for f in os.listdir(new_run_dir):
@@ -248,8 +235,7 @@ def check_test_result(result_dir_str, proj_name, new_run_dir):
 
 
 if __name__ == "__main__":
-    # def_proj = "botbuilder-dotnet"
-    def_proj = "servicestack"
+    def_proj = "orleans"
     def_directory = find_latest_dir("outcome")
     # def_directory = "outcome/Akka.Persistence.Azure-injection-round-status-code_2022.06.03.14.46.12"
     # print(def_directory)
