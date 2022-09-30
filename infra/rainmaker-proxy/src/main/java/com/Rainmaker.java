@@ -38,35 +38,8 @@ public class Rainmaker {
 
     public static List<String> skippedTestCaseExceptionHappens;
 
-//    This flag decides whether it is an injection test round to inject faults
-    public static boolean injectionFlag = false;
     private static int resultNameSpecializedEnum = 2;
 
-    public static int totalCreateQueueNum=0, totalSetQueueMetadataNum=0, totalSetQueueACLNum=0,
-            totalSetQueueServicePropertiesNum=0, totalDeleteQueueNum=0, totalGetQueueMetadataNum=0, totalGetQueueACLNum=0,
-            totalListQueuesNum=0, totalGetQueueServicePropertiesNum=0, totalGetQueueServiceStatsNum=0;
-    public static int totalUpdateMsgNum=0, totalClearMsgsNum=0, totalDeleteMsgNum=0, totalGetMsgsNum=0, totalPeekMsgsNum=0, totalPutMsgNum=0;
-
-    public static int totalSetTableACLNum=0, totalDeleteTableNum=0, totalCreateTableNum=0, totalQueryTablesNum=0, totalGetTableACLNum=0,
-            totalSetTableServicePropertiesNum=0, totalGetTableServiceStatsNum=0, totalGetTableServicePropertiesNum=0;
-    public static int totalInsertEntitiesNum=0, totalQueryEntitiesNum=0, totalDeleteEntityNum=0, totalInsertOrMergeEntityNum=0,
-            totalInsertOrReplaceNum=0, totalEntityBatchNum=0;
-
-    public static int totalCreateContainerNum=0, totalSetContainerMetadataNum=0, totalSetContainerACLNum=0, totalLeaseContainerNum=0,
-            totalRestoreContainerNum=0, totalDeleteContainerNum=0, totalGetContainerPropertiesNum=0, totalGetContainerMetadataNum=0,
-            totalGetContainerACLNum=0, totalListBlobsNum=0, totalBlobBatchNum=0;
-    public static int totalPutOrCopyBlobNum=0, totalSetBlobMetadataNum=0, totalSetBlobPropertiesNum=0, totalSetBlobTagsNum=0,
-            totalLeaseBlobNum=0, totalSnapShotNum=0, totalAbortCopyBlobNum=0, totalUndeleteBlobNum=0, totalSetBlobTierNum=0,
-            totalSetBlobImmutabilityPolicyNum=0, totalSetBlobLegalHoldNum=0, totalDeleteBlobNum=0, totalDeleteBlobImmutabilityPolicyNum=0,
-            totalGetBlobNum=0, totalGetBlobMetadataNum=0, totalGetBlobTagsNum=0, totalFindBlobsByTagsNum=0, totalGetBlobPropertiesNum=0,
-            totalQueryBlobContentsNum=0, totalPutBlockNum=0, totalPutBlockListNum=0, totalGetBlockListNum=0, totalPutPageNum=0,
-            totalGetPageRangesNum=0, totalIncrementalCopyBlobNum=0, totalAppendBlobNum=0, totalAppendBlobSealNum=0,
-            totalSetBlobExpiryNum=0;
-
-    public static int totalPUTReqNum=0, totalDELETEReqNum=0, totalPOSTReqNum=0, totalGETReqNum=0, totalHEADReqNum=0, totalMERGEReqNum=0,
-            totalPATCHReqNum=0;
-
-    public static int totalRequestNum=0;
 
     public static int testSuccess=0, testFail=0, testSkipped=0;
 
@@ -74,12 +47,6 @@ public class Rainmaker {
 
     JSONArray recordedRequests;
 
-    public static Map<String, Integer> testRESTAPIsNumMap;
-    public static Map<String, Integer> testUniqueRESTAPIsNumMap;
-    public static Map<String, Integer> testCallSiteNumMap;
-    public static Map<String, Integer> testUniqueCallSiteNumMap;
-    public static Map<String, Integer> testSDKAPINumMap;
-    public static Map<String, Integer> testUniqueSDKAPINumMap;
     public static Map<String, List<String>> injectTestCallSitesMap;
 
     public static HashMap<String, Integer> reqInSingleTestCNT;
@@ -124,7 +91,6 @@ public class Rainmaker {
     private final int validationRound;
     private final boolean fullValidationFlag;
     private final List<String> partialTestOrValidationNameList;
-    public static boolean restFlag;
 
     public static List<String> callSiteList;
     public static List<String> SDKAPIList;
@@ -159,10 +125,6 @@ public class Rainmaker {
         else
             testFlag = true;
 
-        if (config.has("rest_injection"))
-            restFlag = config.getBoolean("rest_injection");
-        else
-            restFlag = false;
         
         if (config.has("include_PUT_test"))
             includePUTTestFlag = config.getBoolean("include_PUT_test");
@@ -277,67 +239,53 @@ public class Rainmaker {
         skippedTestCaseExceptionHappens = new ArrayList<String>();
         File dirTest = new File(projPath);
         try {
-//            Process process = Runtime.getRuntime().exec(
-//                    "dotnet test --list-tests", null, dirTest);
-            if(restFlag) {
-                //make up input now TODO: scan java test file to find all method.
-                listTestCaseNames.add("BlobsStorageTests.blobStorageParamTest");
-                listTestCaseNames.add("BlobsStorageTests.testBlobStorageWriteRead");
-                listTestCaseNames.add("BlobsStorageTests.testBlobStorageWriteDeleteRead");
-                listTestCaseNames.add("BlobsStorageTests.testBlobStorageChanges");
-                listTestCaseNames.add("BlobsStorageTests.testConversationStateBlobStorage");
-                listTestCaseNames.add("BlobsStorageTests.testConversationStateBlobStorage_TypeNameHandlingDefault");
-                listTestCaseNames.add("BlobsStorageTests.statePersistsThroughMultiTurn_TypeNameHandlingNone");
-                listTestCaseNames.add("AzureQueueTests.continueConversationLaterTests");
-            }
-            else {
-                 System.out.println(projPath + "\\" + "test.runsettings");
-                ProcessBuilder procBuilder;
-                if (projectName.equals("masstransit")) 
-                    procBuilder = new ProcessBuilder("cmd.exe", "/c", "dotnet test " + testDLL +
-                            " --list-tests --settings " + projPath + "\\" + "test.runsettings");
-                if (projectName.equals("acmesharp")) 
-                    procBuilder = new ProcessBuilder("cmd.exe", "/c",
-                    "\"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\TestWindow\\vstest.console.exe\" "
-                            + "/lt "+ testDLL);
-                else
-                    procBuilder = new ProcessBuilder("cmd.exe", "/c", "dotnet test " + testDLL + " --list-tests");
+//          Process process = Runtime.getRuntime().exec(
+//          "dotnet test --list-tests", null, dirTest);
 
-                procBuilder.directory(dirTest);
-                procBuilder.redirectErrorStream(true);
-                Process process = procBuilder.start();
+            System.out.println(projPath + "\\" + "test.runsettings");
+            ProcessBuilder procBuilder;
+            if (projectName.equals("masstransit")) 
+                procBuilder = new ProcessBuilder("cmd.exe", "/c", "dotnet test " + testDLL +
+                        " --list-tests --settings " + projPath + "\\" + "test.runsettings");
+            if (projectName.equals("acmesharp")) 
+                procBuilder = new ProcessBuilder("cmd.exe", "/c",
+                "\"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\TestWindow\\vstest.console.exe\" "
+                        + "/lt "+ testDLL);
+            else
+                procBuilder = new ProcessBuilder("cmd.exe", "/c", "dotnet test " + testDLL + " --list-tests");
 
-                InputStreamReader isr = new InputStreamReader(process.getInputStream());
-                BufferedReader rdr = new BufferedReader(isr);
-                String line;
-                boolean testNamesStartFlag = false;
-                boolean testNamesEndFlag = false;
-                int testRunForCNT = 0;
-                while ((line = rdr.readLine()) != null) {
-                 System.out.println(line);
+            procBuilder.directory(dirTest);
+            procBuilder.redirectErrorStream(true);
+            Process process = procBuilder.start();
+
+            InputStreamReader isr = new InputStreamReader(process.getInputStream());
+            BufferedReader rdr = new BufferedReader(isr);
+            String line;
+            boolean testNamesStartFlag = false;
+            boolean testNamesEndFlag = false;
+            int testRunForCNT = 0;
+            while ((line = rdr.readLine()) != null) {
+                System.out.println(line);
 //                should flag the second "Test run for" (there are three "test run for")
 //              TODO: if it is using NUnit test framework, then it does not have this key sentence 
-                    if (line.contains("Test run for")) {
-                        testRunForCNT += 1;
-                        if (testRunForCNT == 2) {
-                            testNamesEndFlag = true;
-                        }
-                    }
-                    if (testNamesStartFlag && !testNamesEndFlag) {
-                        listTestCaseNames.add(line.trim().replace(":", "."));
-                    }
-                    if (line.contains("The following Tests are available:")) {
-                        testNamesStartFlag = true;
+                if (line.contains("Test run for")) {
+                    testRunForCNT += 1;
+                    if (testRunForCNT == 2) {
+                        testNamesEndFlag = true;
                     }
                 }
-//            isr = new InputStreamReader(process.getErrorStream());
-//            rdr = new BufferedReader(isr);
-//            while ((line = rdr.readLine()) != null) {
-////                System.out.println(line);
-//            }
-                process.waitFor();
+                if (testNamesStartFlag && !testNamesEndFlag) {
+                    listTestCaseNames.add(line.trim().replace(":", "."));
+                }
+                if (line.contains("The following Tests are available:")) {
+                    testNamesStartFlag = true;
+                }
             }
-        } catch (Exception e){
+
+            process.waitFor();
+
+        } 
+        catch (Exception e){
             e.printStackTrace();
         }
         return listTestCaseNames;
@@ -354,29 +302,6 @@ public class Rainmaker {
             try (BufferedReader csvBufferReader = new BufferedReader(new FileReader(passedFilePath.toString()))) {
                 String testName;
                 while ((testName = csvBufferReader.readLine()) != null) {
-                    if(restFlag){
-                        Path restFilePath = Paths.get(statDir, testName, "0", "RESTAPI.csv");
-                        try (BufferedReader restReader = new BufferedReader(new FileReader(restFilePath.toString()))) {
-                            String line;
-                            List<String> restInSingleTestList = new ArrayList<>();
-                            while ((line = restReader.readLine()) != null) {
-                                String[] values = line.split("RESTOccurNum=");
-                                String value = values[0];
-                                if (value.isEmpty())
-                                    continue;
-
-//                                String restString = value.substring(0, value.length() - 1);
-                                String restString = value.trim();
-//                                System.out.println("Rainmaker reststring = " + restString);
-                                restInSingleTestList.add(restString);
-                            }
-                            testCallSitesMap.put(testName, restInSingleTestList);
-//                        System.out.println(testName);
-                        } catch (FileNotFoundException fe) {
-                            continue;
-                        }
-                    }
-                    else {
                         Path callSiteFilePath = Paths.get(statDir, testName, "0", "CALLSITE.csv");
                         try (BufferedReader callSiteReader = new BufferedReader(new FileReader(callSiteFilePath.toString()))) {
                             String line;
@@ -398,7 +323,7 @@ public class Rainmaker {
                         } catch (FileNotFoundException fe) {
                             continue;
                         }
-                    }
+
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -447,31 +372,10 @@ public class Rainmaker {
     public void startMockServer() throws IOException {
         // Configure the socket timeout, otherwise when retrieving records, it may reach timeout
         ConfigurationProperties.maxSocketTimeout(120000);
-//        ConfigurationProperties.dynamicallyCreateCertificateAuthorityCertificate(false);
-//        ConfigurationProperties.preventCertificateDynamicUpdate(true);
-//        ConfigurationProperties.dynamicallyCreateCertificateAuthorityCertificate(true);
-//        ConfigurationProperties.directoryToSaveDynamicSSLCertificate("C:\\Users\\Ze\\mock-dym-ca");
-//        ConfigurationProperties.certificateAuthorityCertificate("C:\\Windows\\System32\\mocktocosmos.pem");
 
-        // Import nothing => 401 two requests
-        // Import mocktocosmos.cer => 401 two requests
-        // Import cosmossecret.cer => 404 one request
-        // ConfigurationProperties.forwardProxyTLSX509CertificatesTrustManagerType("ANY");
-//        ConfigurationProperties.forwardProxyTLSX509CertificatesTrustManagerType("CUSTOM");
-//        ConfigurationProperties.forwardProxyTLSCustomTrustX509Certificates("C:\\Windows\\System32\\mocktocosmos.cer");
-//        ConfigurationProperties.forwardProxyTLSCustomTrustX509Certificates("C:\\Windows\\System32\\cosmossecret.cer");
+        mockServer = ClientAndServer.startClientAndServer(10000, 10001, 10002, 18081);
 
-        // ensure all connection using HTTPS will use the SSL context defined by
-        // MockServer to allow dynamically generated certificates to be accepted
-//        HttpsURLConnection.setDefaultSSLSocketFactory(new KeyStoreFactory(new MockServerLogger()).sslContext().getSocketFactory());
-        //        mockServer = ClientAndServer.startClientAndServer(PortFactory.findFreePort());
 
-        // 8081 is for CosmosDB
-         mockServer = ClientAndServer.startClientAndServer(10000, 10001, 10002, 18081);
-    //    mockServer = ClientAndServer.startClientAndServer(10000, 10001, 10002);
-//        mockServer = ClientAndServer.startClientAndServer(10251, 10252, 10253, 10254);
-        // mockServer = ClientAndServer.startClientAndServer(18081);
-//        mockServer = ClientAndServer.startClientAndServer(18081);
         System.out.println("Mockserver is running: " + mockServer.isRunning());
 
         if (Objects.equals(rainmakerPolicy, "request_block")) {
@@ -676,12 +580,6 @@ public class Rainmaker {
             File dirTest = new File(rainmakerPath);
             System.out.println("*****************************************");
 
-//            testRESTAPIsNumMap = new HashMap<String, Integer>();
-//            testUniqueRESTAPIsNumMap = new HashMap<String, Integer>();
-//            testCallSiteNumMap = new HashMap<String, Integer>();
-//            testUniqueCallSiteNumMap = new HashMap<String, Integer>();
-//            testSDKAPINumMap = new HashMap<String, Integer>();
-//            testUniqueSDKAPINumMap = new HashMap<String, Integer>();
 
             skippedTestCaseExceptionHappens = new ArrayList<String>();
 
@@ -719,12 +617,6 @@ public class Rainmaker {
                 if (!curTestCaseName.contains("Aws") && projectName.equals("storage"))
                     continue;
 
-                // if (curTestCaseName.contains("Aws") && projectName.equals("storage"))
-                //     continue;
-                /* ***************************************** */
-
-//                dotnet test has some issues when there are parenthesis in the test name
-//                TODO: we should consider PUT since some apps have a lot of PUTs and they are using Azure service
 
                 if (curTestCaseName.contains("(")) {
                     if (!includePUTTestFlag)
@@ -812,20 +704,7 @@ public class Rainmaker {
 //                    ProcessBuilder procBuilder = new ProcessBuilder("cmd.exe", "/c",
 //                            "dotnet test" + " --blame-hang-timeout 10m --logger trx --filter FullyQualifiedName=" + curTestCaseName);
                     ProcessBuilder procBuilder;                
-                    if (appFlag) {
-                        // Toy application testing
-                        System.out.println("AWSTest");
-                        procBuilder = new ProcessBuilder("cmd.exe", "/c", 
-                           "dotnet run --project " + testDLL);
-                    }
-                    else if (projName.contains("acmesharp")) {
-                        System.out.println("acmesharp test...");
-                        // For .NET framework
-                        procBuilder = new ProcessBuilder("cmd.exe", "/c",
-                                "\"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\TestWindow\\vstest.console.exe\" "
-                                        + "/logger:trx /TestCaseFilter:" + "ACMESharp.Providers.AWS.AwsS3ProviderTests."+ curTestCaseName + " " + testDLL);
-                    }
-                    else if (!includePUTTestFlag) {
+                    if (!includePUTTestFlag) {
                         if (projectName == "masstransit")
                             procBuilder = new ProcessBuilder("cmd.exe", "/c", "dotnet test " + testDLL +
                                     " --blame-hang-timeout 10m --logger trx --filter " + curTestCaseName +
@@ -835,36 +714,20 @@ public class Rainmaker {
                                     "dotnet test "+ testDLL + " --blame-hang-timeout 10m --logger trx --filter FullyQualifiedName=" + curTestCaseName);
                     }
                     else if (includePUTTestFlag) {
-                        // System.out.print("XXXXXXXXXXXXXXXXXXXX");
                         procBuilder = new ProcessBuilder("cmd.exe", "/c",
                                 "dotnet test "+ testDLL + " --blame-hang-timeout 20m --logger trx --filter " + curTestCaseName);
                     }
-                    else if(restFlag) {
-                        String curTestMethod = curTestCaseName.replace('.','#');
-                        procBuilder = new ProcessBuilder("cmd.exe", "/c",
-                                "mvn test -Dtest="+ curTestMethod);
-                    }
                     else {
-//                        //TODO: branch for different .net
+                       //TODO: branch for different .net
                        procBuilder = new ProcessBuilder("cmd.exe", "/c",
                            "dotnet test "+ testDLL + " --blame-hang-timeout 5m --logger trx --filter FullyQualifiedName=" + curTestCaseName);
                         // procBuilder = new ProcessBuilder("cmd.exe", "/c",
                         //         "\"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\TestWindow\\vstest.console.exe\" "
                         //                 + "/logger:trx /TestCaseFilter:" + curTestCaseName + " " + testDLL);
-
                     }
 
-//                    ProcessBuilder procBuilder = new ProcessBuilder("powershell.exe", torchPath+"\\"+"torch.ps1"
-//                            + " \\\"dotnet test " + testDLL + " --no-build --logger trx --filter FullyQualifiedName=" + curTestCaseName + "\\\"");
-                    if(restFlag){
-//                        File dirREST = new File(System.getProperty("user.home") + "\\" + projPath);
-                        File dirREST = new File(projPath);
-                        procBuilder.directory(dirREST);
-                        RESTres = false;
-                    }
-                    else{
-                        procBuilder.directory(dirTest);
-                    }
+                    procBuilder.directory(dirTest);
+
                     procBuilder.redirectErrorStream(true);
 
                     Process process = procBuilder.start();
@@ -882,25 +745,8 @@ public class Rainmaker {
                         //                    If comment out the following line, the press enter issue will appear?
                         // Press button issue may be highly related to quick edit
                         System.out.println(line);
-                        if(restFlag){
-                            //TODO: Now the scan is for botbuilder-java
-                            if(line.contains("Results:")){
-                                RESTres = true;
-                            }
 
-                            if (RESTres && line.contains("Failures:     1") ) {
-                                resultNameSpecializedEnum = 0;
-                                testFail += 1;
-                            } else if (RESTres && line.contains("Skipped:     1")) {
-                                resultNameSpecializedEnum = 1;
-                                testSkipped += 1;
-                            } else if (RESTres && line.contains("Errors:     0")) {
-                                resultNameSpecializedEnum = 2;
-                                testSuccess += 1;
-                            }
-                        }
-                        else{
-                            if (line.contains("Failed:     1")) {
+                        if (line.contains("Failed:     1")) {
                                 resultNameSpecializedEnum = 0;
                                 testFail += 1;
                             } else if (line.contains("Skipped:     1")) {
@@ -910,7 +756,8 @@ public class Rainmaker {
                                 resultNameSpecializedEnum = 2;
                                 testSuccess += 1;
                             }
-                        }
+
+//                        This is for another test output format
 //                        if (line.contains("Failed!  - Failed:")) {
 //                            resultNameSpecializedEnum = 0;
 //                            testFail += 1;
