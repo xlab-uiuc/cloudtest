@@ -46,15 +46,9 @@ public class Rainmaker {
 
     JSONArray recordedRequests;
 
-    public static Map<String, List<String>> injectTestCallSitesMap;
-
-    public static HashMap<String, Integer> reqInSingleTestCNT;
-
-    public static Map<String, Integer> requestNumMapping;
     public static int injectionCNT = 0;
     public static int seqToInject = 0;
     public static String injectCallSiteStr;
-    public static String msClientReqID = "XXX";
     public static ReentrantLock lock = new ReentrantLock();
     public static final int sleepTime = 102;
 
@@ -292,8 +286,6 @@ public class Rainmaker {
 //            file writer to write requests with missing x-Location header to a file
             fwReqWithMissingHeader = new FileWriter("request-missing-header.txt");
 
-//            System.out.println("injectTestCallSitesMap = " + injectTestCallSitesMap.toString());
-//            System.out.println("injectTestCallSitesMap size = " + injectTestCallSitesMap.size());
             for (String curTestCaseName: listTestNames) {
                 // curTestCaseName = "Microsoft.Health.Fhir.Tests.E2E.Rest.AnonymizedExportUsingAcrTests(CosmosDb, Json).GivenAValidConfigurationWithAcrReference_WhenExportingAnonymizedData_ResourceShouldBeAnonymized(path: \"\")";
 
