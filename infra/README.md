@@ -108,24 +108,13 @@ Detailed steps: Modify the *config.json* file to configure the target projects, 
 
 ## How to collect the test results and generate the outcome
 
-**Shortcut for step 1-3 :** `.\test_all.ps1`
-
-1. ``python test_raw_data_generator.py`` to generate API/Callsite files and beautified request JSON file
-
-- Files will be generated for each test round under ``rainmaker/infra/rainmaker-proxy/stat/TESTRUN_TIMESTAMP/TESTROUND/``: b_request.json (beautified request JSON file), CALLSITE.csv (stat of callsite), RESTAPI.csv (stat of patterns of RESTful APIs), SDKAPI (stat of SDK APIs), overview.txt (overview file describing the running time etc.)
-- The function `find_latest_dir` automatically finds the latest folder under `rainmaker-proxy/outcome` for analyzing , but you can also specify the tested folder manually by adding `-d` or `--dir` and the name of the target folder, e.g., `python .\test_raw_data_generator.py -d Orleans_2022.05.17.21.22.29`.
-
-2. ``python test_stat_generator.py`` to generate statistic files constructing mappings from test to APIs/Callsites
-
-- Files will be generated for each test round under ``rainmaker/results/PROJECTNAME/``: CALLSITE.csv (mapping from callsite to tests, i.e., for each callsite which test will exercise it), REST_API.csv (mapping from RESTful API pattern to tests), SDK_API.csv (mapping from SDK API to tests), test_API_stats.csv (overview stat of all types of APIs/Callsite and test running time), test_CALLSITE.csv (number of callsites for each test), test_REST_API.csv (number of RESTful API patterns for each test), test_SDK_API.csv (number of SDK APIs for each test), test_time.csv, test_uniq_CALLSITE.csv (number of unique callsites for each test), test_uniq_REST_API.csv (number of unique RESTful API patterns for each test), test_uniq_SDK_API.csv (number of unique SDK APIs for each test)
-
-3. ``python test_outcome_generator.py`` to generate outcome files that collect passed, failed and skipped files into different places
+1. ``python test_outcome_generator.py`` to generate outcome files that collect passed, failed and skipped files into different places
 
 - Files will be generated for each test round under ``rainmaker/results/PROJECTNAME/``: FAILED_test.csv (list of failed test names), PASSED_test.csv (list of succeeded test names), SKIPPED_test.csv (list of skipped test names), test-stats.txt
 
-4. ``python check_injection_result.py`` to generate raw inspection file and apply two heuristics to test failures. Store the result in ``alarms`` folder. Please specify the project-related arguments: ``-p`` for project name, ``-v`` for vanilla round to refer to, ``-P`` for the injection policy used, ``-r`` for injection round dir (default is the latest injection)   **This step is not needed if you run the vanilla test.** You can check unique test failures with different pair of sdk and stacktrace in unique_bug_inspection.csv in result folder. We need run other policy first and later run keep_boring policy.
+<!-- 4. ``python check_injection_result.py`` to generate raw inspection file and apply two heuristics to test failures. Store the result in ``alarms`` folder. Please specify the project-related arguments: ``-p`` for project name, ``-v`` for vanilla round to refer to, ``-P`` for the injection policy used, ``-r`` for injection round dir (default is the latest injection)   **This step is not needed if you run the vanilla test.** You can check unique test failures with different pair of sdk and stacktrace in unique_bug_inspection.csv in result folder. We need run other policy first and later run keep_boring policy. -->
 
-#### We need to specify the def_XXX in all python script above. 
+#### We need to specify the def_XXX in the python script above. 
 
 <!-- ## Attach Visual Studio debugger to the test
 
