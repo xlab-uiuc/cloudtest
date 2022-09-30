@@ -1,7 +1,5 @@
 package com;
 
-import com.loghandler.RESTHandlers;
-
 import org.apache.commons.lang3.StringUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -88,7 +86,7 @@ public class Rainmaker {
 
         testDLL = config.getString("test_dll");
         rainmakerPolicy = config.getString("policy");
-        vanillaRun = Objects.equals(rainmakerPolicy, "vanilla");
+        vanillaRun = Objects.equals(rainmakerPolicy, "vanilla") || Objects.equals(rainmakerPolicy, "vanilla_real");
         projectName = config.getString("project").toLowerCase();
 
         rainmakerPath = System.getProperty("user.home")+"\\"+config.getString("rainmaker_path");
