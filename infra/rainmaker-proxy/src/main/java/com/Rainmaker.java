@@ -76,9 +76,8 @@ public class Rainmaker {
     public static boolean vanillaRun = true;
     private final boolean includePUTTestFlag;
     private final boolean fullTestFlag;
-    private String configCallSiteStr;
 
-    private final List<String> partialTestOrValidationNameList;
+    private final List<String> partialTestNameList;
 
 
     public static final SimpleDateFormat runTimestampFormat = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
@@ -122,10 +121,10 @@ public class Rainmaker {
         System.out.println(projName);
 
         JSONArray jsonArray = config.getJSONArray("partial_test");
-        partialTestOrValidationNameList = new ArrayList<String>();
+        partialTestNameList = new ArrayList<String>();
         for (int i=0; i<jsonArray.length(); i++){
             //Adding each element of JSON array into ArrayList
-            partialTestOrValidationNameList.add(jsonArray.getString(i));
+            partialTestNameList.add(jsonArray.getString(i));
         }
         
 
@@ -255,8 +254,6 @@ public class Rainmaker {
 
     public void testIteration() throws Exception {
         List<String> listTestNames = new ArrayList<String>();
-//        out of memory exception???
-//        listTestNames.add("UnitTests.StreamingTests.StreamLimitTests.SMS_Limits_Max_Producers_Burst");
 
         if (vanillaRun) {
             if (fullTestFlag) {
@@ -267,12 +264,12 @@ public class Rainmaker {
                 // System.exit(0);
             }
             else {
-                if (partialTestOrValidationNameList.size() == 0) {
+                if (partialTestNameList.size() == 0) {
                     System.out.println("When doing test data collection partially, should specify some test case name(s) in the config.json file!");
                     System.exit(0);
                 }
                 else {
-                    listTestNames = partialTestOrValidationNameList;
+                    listTestNames = partialTestNameList;
                     System.out.println("Going to run partial test cases:" + listTestNames);
                 }
             }
