@@ -1,4 +1,4 @@
-# Rainmaker Infrastructure
+# Rainmaker Infrastructure for cloudtest
 
 Rainmaker aims to build a large-scale cloud application bug finding infrastructure.
 
