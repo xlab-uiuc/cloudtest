@@ -108,7 +108,7 @@ Detailed steps: Modify the *config.json* file to configure the target projects, 
 
 ## How to collect the test results and generate the outcome
 
-**Shortcut:** `.\test_all.ps1`
+**Shortcut for step 1-3 :** `.\test_all.ps1`
 
 1. ``python test_raw_data_generator.py`` to generate API/Callsite files and beautified request JSON file
 
