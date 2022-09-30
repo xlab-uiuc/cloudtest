@@ -271,11 +271,5 @@ if __name__ == "__main__":
     latest_result_dir = create_test_run_result_dir(os.path.join("..", "..", "results"), dir_name)
     one_round_result_dict = check_test_result(latest_outcome_dir, args.proj, latest_result_dir)
 
-    # check_redundant_test(latest_outcome_dir)
 
-    # Move failed test dir to failed_tests
-    # mv_failed_tests(latest_outcome_dir, args.proj)
-
-    # # Append test results to result file
-    # append_result_to_collection(one_round_result_dict, args.proj)
 
