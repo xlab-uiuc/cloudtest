@@ -114,7 +114,7 @@ Detailed steps: Modify the *config.json* file to configure the target projects, 
 
 <!-- 4. ``python check_injection_result.py`` to generate raw inspection file and apply two heuristics to test failures. Store the result in ``alarms`` folder. Please specify the project-related arguments: ``-p`` for project name, ``-v`` for vanilla round to refer to, ``-P`` for the injection policy used, ``-r`` for injection round dir (default is the latest injection)   **This step is not needed if you run the vanilla test.** You can check unique test failures with different pair of sdk and stacktrace in unique_bug_inspection.csv in result folder. We need run other policy first and later run keep_boring policy. -->
 
-#### We need to specify the def_XXX in the python script above. 
+#### We need to specify the def_XXX for the python script above. You can use -help to find out how to use it.  
 
 <!-- ## Attach Visual Studio debugger to the test
 
