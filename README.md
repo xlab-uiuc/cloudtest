@@ -6,7 +6,7 @@ Estimated time: ~2 days
 
 2. Need to write a scirpt to prune out flaky tests and find out potential candidate tests.
 
-Estimated time: Done, but need to confirm details to make things solid.
+Estimated time: Done, but need to confirm details with folks to make things solid.
 
 3. How to install Azure certifications freely?
 
