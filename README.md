@@ -10,4 +10,4 @@ Estimated time: Done, but need to confirm details to make things solid.
 
 3. How to install Azure certifications freely?
 
-Now when I want to use 18081 and system proxy to catch real service requests,  SSL errors will pop out. IIRC, this is due to certifications.
+Now when I want to use 18081 and system proxy to catch real service requests,  SSL errors will pop out. IIRC, this is due to certifications. I am still searching how to install Azure certification freely. I cannot fllow the current doc provided by microsoft to finish that.
