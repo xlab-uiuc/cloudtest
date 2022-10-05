@@ -6,8 +6,11 @@ Estimated time: ~2 days
 
 2. Need to write a scirpt to prune out flaky tests and find out potential candidate tests.
 
-Estimated time: Done, but need to confirm details to make things solid.
+Estimated time: Done, but need to confirm details with folks to make things solid.
 
-3. How to install Azure certifications freely?
+3. How to install Mockserver certifications safely?
 
-Now when I want to use 18081 and system proxy to catch real service requests. SSL errors will pop out. IIRC, this is due to certifications.
+Now when I want to use 18081 and system proxy to catch real service requests,  SSL errors will pop out. IIRC, this is due to Mock server certifications.
+https://www.mock-server.com/mock_server/HTTPS_TLS.html#button_configuration_tls_certificate_authority_certificate
+
+Previously, I think we just installed it and it is not safe.
