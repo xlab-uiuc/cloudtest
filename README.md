@@ -12,4 +12,4 @@ https://www.mock-server.com/mock_server/HTTPS_TLS.html#button_configuration_tls_
 Previously, I think we just installed it and it is not safe.
 
 3. Previously, I mentioned that we cannot reach real cloud service server code to investigate. However, I remember there are some unofficial emulator for AWS.  
-Like S3 MOCK[https://github.com/adobe/S3Mock#implemented-s3-apis], S3 ninja[https://github.com/scireum/s3ninja]. Maybe I can investigate it later. And I need to have a meeting with yinfang to discuss it.
+Like S3 MOCK[https://github.com/adobe/S3Mock#implemented-s3-apis], S3 ninja[https://github.com/scireum/s3ninja]. And one open source official emulator, Azurite[https://github.com/Azure/Azurite#https-setup]. Maybe I can investigate them later. And I need to have a meeting with yinfang to discuss it and get helps.
