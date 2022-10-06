@@ -13,3 +13,5 @@ Previously, I think we just installed it and it is not safe.
 
 3. Previously, I mentioned that we cannot reach real cloud service server code to investigate. However, I remember there are some unofficial emulator for AWS.  
 Like S3 MOCK[https://github.com/adobe/S3Mock#implemented-s3-apis], S3 ninja[https://github.com/scireum/s3ninja]. And one open source official emulator, Azurite[https://github.com/Azure/Azurite#https-setup]. Maybe I can investigate them later. And I need to have a meeting with yinfang to discuss it and get helps.
+
+4. The idea from Suman: We can analyse call-chain to build oracle.
