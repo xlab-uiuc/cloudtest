@@ -12,3 +12,6 @@ Like S3 MOCK[https://github.com/adobe/S3Mock#implemented-s3-apis], S3 ninja[http
 4. Need to discuss proxy with Yinfang.
 
 5. 3 round is not enough for flaky test finding. Need to find a way to solve it.
+
+The Azurite Version I use now is 3.18.0
+The Orleans Version is old one for Rainmaker.
