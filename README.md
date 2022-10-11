@@ -9,11 +9,4 @@ Like S3 MOCK[https://github.com/adobe/S3Mock#implemented-s3-apis], S3 ninja[http
 
 3. The idea from Suman: We can analyse call-chain to build oracle.
 
-4. How to install Mockserver certifications safely? Done. List here for later reference.
-
-Now when I want to use 18081 and system proxy to catch real service requests,  SSL errors will pop out. IIRC, this is due to Mock server certifications.
-https://www.mock-server.com/mock_server/HTTPS_TLS.html#button_configuration_tls_certificate_authority_certificate
-
-Previously, I think we just installed it and it is not safe.
-
-The problem can be solved easily by intalling the certificate when need to test and uninstalling the certificate when not need. And we should only install the certificate for current user.
+4. Need to discuss proxy with Yinfang.
