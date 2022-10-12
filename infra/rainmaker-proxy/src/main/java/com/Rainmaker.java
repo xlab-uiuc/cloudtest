@@ -28,29 +28,21 @@ import java.util.concurrent.locks.ReentrantLock;
 import java.util.logging.LogManager;
 
 public class Rainmaker {
-    public static ClientAndServer mockServer;
-    public static ClientAndServer blockRequestServer;
+    private static ClientAndServer mockServer;
+    private static ClientAndServer blockRequestServer;
 
-    public static final int noServiceUse = -1;
+    private static final int noServiceUse                   = -1;
     public static final int exceptionHappenedWhenRetrieving = -3;
 
     public static List<String> skippedTestCaseExceptionHappens;
-
     private static int resultNameSpecializedEnum = 2;
 
 
     public static int testSuccess=0, testFail=0, testSkipped=0;
 
-
     JSONArray recordedRequests;
 
-    public static Map<String, Integer> testRESTAPIsNumMap;
-    public static Map<String, Integer> testUniqueRESTAPIsNumMap;
-    public static Map<String, Integer> testCallSiteNumMap;
-    public static Map<String, Integer> testUniqueCallSiteNumMap;
-    public static Map<String, Integer> testUniqueSDKAPINumMap;
     public static Map<String, List<String>> injectTestCallSitesMap;
-
     public static Map<String, Integer> requestNumMapping;
     public static int injectionCNT = 0;
     public static int seqToInject = 0;
@@ -75,8 +67,8 @@ public class Rainmaker {
 
     private static String vanillaDir;
 
-    public static boolean emulatorRun = false;
-    public static boolean realRun = false;
+    private static boolean emulatorRun = false;
+    private static boolean realRun = false;
     private final boolean includePUTTestFlag;
     private final boolean fullTestFlag;
     
@@ -165,7 +157,7 @@ public class Rainmaker {
      * @return
      * @throws Exception
      */
-    public static List<String> findTestCases() throws Exception {
+    private static List<String> findTestCases() throws Exception {
         List<String> listTestCaseNames = new ArrayList<String>();
         skippedTestCaseExceptionHappens = new ArrayList<String>();
         File dirTest = new File(projPath);
