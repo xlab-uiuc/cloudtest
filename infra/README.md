@@ -2,7 +2,7 @@
 
 Rainmaker aims to build a large-scale cloud application bug finding infrastructure.
 
-**Warning: You have to put rainmaker & cloud application repos under the path "C:\Users\XX\" to run rainmaker successfully. This problem will be fixed in the future.**
+**Warning: You have to put rainmaker & cloud application repos under the path "C:\Users\XX\ " to run rainmaker successfully. This problem will be fixed in the future.**
 
 ## Environment Setup before Using Rainmaker Proxy
 
