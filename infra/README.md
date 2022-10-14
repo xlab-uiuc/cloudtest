@@ -52,7 +52,7 @@ Reference: https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azu
 
 #### Run Azurite:
 
-**Shortcut:** If you are using Visual Studio 2022, you can directly run `.\emulator.ps1` in PowerShell
+**Shortcut:** If you have installed Visual Studio 2022 & Azure Development Workloads, you can directly run `.\emulator.ps1` in PowerShell
 
 Manually setup in PowerShell:
 
