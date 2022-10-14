@@ -8,7 +8,7 @@ Rainmaker aims to build a large-scale cloud application bug finding infrastructu
 
 ### .NET
 
-The .NET version should be decided by the cloud application under test. In most cases we recommend is .NET 6.0 since it is backward compatible. And now newest Orleans is using .NET 7.0.
+The .NET version should be decided by the cloud application under test. In most cases we recommend is .NET 6.0 since it is backward compatible. And now, newest Orleans is using .NET 7.0.
 
 To check .NET SDK: Go to C:\Program Files\dotnet\sdk to view all .NET SDK editions.
 
@@ -40,7 +40,7 @@ pandas
 
 Rainmaker proxy will listen on ``127.0.0.1:10000,10001,10002`` which are default Azure Blob, Queue, Table storage services' ports respectively, and serve as a proxy to forward requests to ``127.0.0.1:20000,20001,20002`` correspondingly.
 
-### If using Azurite (Recommended)
+### If using Azurite (Recommended, because it is open-spurce and still under maintenance)
 
 Azurite is the latest storage emulator platform. Azurite supersedes the [Azure Storage Emulator](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-emulator). Azurite will continue to be updated to support the latest versions of Azure Storage APIs. The reason why we use both Azurite and Azure Storage settings is that some frameworks we tested do not support Azurite.
 
@@ -69,7 +69,7 @@ reference: https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azu
 
 If you want to run tests without Rainmaker, do not listen to ports 20000, 20001 and 20002, i.e.,  `.\azurite.exe`
 
-### If using legacy Azure Storage Emulator (Not Recommended)
+### If using legacy Azure Storage Emulator (Not Recommended because it is not open-source, which means it is hard to investigate)
 
 Since Azure Storage Emulator will automatically listen to 10000, 10001, 10002 of localhost, it is necessary to modify the ports configuration in ``AzureStorageEmulator.exe.config`` file under ``C:\Program Files (x86)\Microsoft SDKs\Azure\Storage Emulator`` directory:
 
@@ -96,7 +96,7 @@ The instrumentation tool in our infra aims to capture the stack trace of the Azu
 
 **Shortcut:** `.\rainmaker.ps1`
 
-The shortcut now will only run the step 1, 2 and 3 below.
+The shortcut now will only run the step 2 and 3 below.
 
 Detailed steps: Modify the *config.json* file to configure the target projects, if a project should be skipped, then its corresponding "skip" field should be set to ``true``; then:
 
@@ -155,11 +155,11 @@ Use this command to know the current Nth running test: ``(Get-ChildItem -Directo
 
 **Shortcut:**(Must be done before running `rainmaker.ps1`)
 
-1. copy [the file](https://github.com/xlab-uiuc/rainmaker/blob/main/patches/Orleans_patch_file.patch) into the base folder of orleans
+1. copy [the file](https://github.com/xlab-uiuc/rainmaker/blob/main/patches/Orleans.patch) into the base folder of orleans
 2. `cd orleans`
 3. `git apply .\Orleans_patch_file.patch`
 
-Detailed steps of the shortcut above:
+Detailed steps of the shortcut above(If you cannot apply the patch successfully, you have to do the modification below manually):
 
 - Add the connection string ``"UseDevelopmentStorage=true"`` to the repo: you can add a line after [this line](https://github.com/dotnet/orleans/blob/14bc87740e830342a9eafb2e8e057794d7b7156c/test/TestInfrastructure/TestExtensions/TestDefaultConfiguration.cs#L67), i.e.,
 
@@ -172,10 +172,9 @@ Detailed steps of the shortcut above:
 
 ### Other caveats
 
-1. When running the reference round, it is recommended to run reference test with internet disconnected to avoid some unrelated traffic.
-2. When running the injection round in PowerShell, it is recommended to disable the "Quick Edit" feature of PowerShell to avoid the risk of accidental pause led by the bug of PowerShell.
-3. (Optional) Changing Orleans timeout: #127
-4. If you are using non-English language win10 platform for rainmaker, you should change Language for non-Unicode programs into English.
+1. When running the injection round in PowerShell, it is recommended to disable the "Quick Edit" feature of PowerShell to avoid the risk of accidental pause led by the bug of PowerShell.
+2. (Optional) Changing Orleans timeout: #127
+3. If you are using non-English language win10 platform for rainmaker, you should change Language for non-Unicode programs into English.
 
 
 ## Config
@@ -187,7 +186,7 @@ Detailed steps of the shortcut above:
  | `project`                                        | Name of application                                | "Orleans"                                                                                                                                                                                                                                                                                                                                                                                             |
  | `project_test_path`                              | Application Test Unit path                         | "orleans\test\Extensions\TesterAzureUtils"                                                                                                                                                                                                                                                                                                                                                            |
  | `project_path_root`                              | Application root path to find application          | "\\Users\\"                                                                                                                                                                                                                                                                                                                                                                                           |
- | `rainmaker_path`                                 | Rainmaker project path to find rainmaker for test  | "rainmaker\\infra\\rainmaker-proxy"                                                                                                                                                                                                                                                                                                                                                                   |
+ | `rainmaker_path`                                 | Rainmaker project path to find rainmaker for test  | "cloudtest\\infra\\rainmaker-proxy"                                                                                                                                                                                                                                                                                                                                                                   |
  | `skip`                                           | Whether we choose to test this application         | true means do not test this application; false means test this application.                                                                                                                                                                                                                                                                                                                           |
  | `policy`                                         | Fault injection policy. Now should be vanilla, which means no fault injection| "vanilla"                                                                                                                                                                                                                                                                                                                                                                                   |
  | `policies(for doc purpose)`                      | Fault injection policies for selection             | ["vanilla","vanilla_real"]                                                                                                                                                                                                                                                                                                                          |
