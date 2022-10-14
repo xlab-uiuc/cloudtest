@@ -2,13 +2,13 @@
 
 Rainmaker aims to build a large-scale cloud application bug finding infrastructure.
 
-**Warning: You have to put rainmaker & cloud application repos under the path "C:\Users\XX\ " to run rainmaker successfully. This problem will be fixed in the future.**
+**Warning: You have to put rainmaker & cloud application repos under the path "C:\Users\XX\ " to run rainmaker successfully using template-config.json. Otherwise, you have to modify "project_path_root" in config.json.**
 
 ## Environment Setup before Using Rainmaker Proxy
 
 ### .NET
 
-The .NET version should be decided by the cloud application under test. In most cases we recommend is .NET 6.0 since it is backward compatible.
+The .NET version should be decided by the cloud application under test. In most cases we recommend is .NET 6.0 since it is backward compatible. And now newest Orleans is using .NET 7.0.
 
 To check .NET SDK: Go to C:\Program Files\dotnet\sdk to view all .NET SDK editions.
 
@@ -112,7 +112,7 @@ Detailed steps: Modify the *config.json* file to configure the target projects, 
 
 - Files will be generated for each test round under ``rainmaker/results/PROJECTNAME/``: FAILED_test.csv (list of failed test names), PASSED_test.csv (list of succeeded test names), SKIPPED_test.csv (list of skipped test names), test-stats.txt
 
-<!-- 4. ``python check_injection_result.py`` to generate raw inspection file and apply two heuristics to test failures. Store the result in ``alarms`` folder. Please specify the project-related arguments: ``-p`` for project name, ``-v`` for vanilla round to refer to, ``-P`` for the injection policy used, ``-r`` for injection round dir (default is the latest injection)   **This step is not needed if you run the vanilla test.** You can check unique test failures with different pair of sdk and stacktrace in unique_bug_inspection.csv in result folder. We need run other policy first and later run keep_boring policy. -->
+2. ``python test_raw_data_generator.py`` to generate beautified json file. Files will be generated for each test under ``infra/rainmaker-proxy/stat/each test name/``: b_request.json (beautified json file)
 
 #### We need to specify the def_XXX for the python script above. You can use -help to find out how to use it.  
 
