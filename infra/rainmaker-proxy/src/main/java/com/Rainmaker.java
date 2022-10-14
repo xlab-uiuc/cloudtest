@@ -28,34 +28,34 @@ import java.util.concurrent.locks.ReentrantLock;
 import java.util.logging.LogManager;
 
 public class Rainmaker {
-    private static ClientAndServer mockServer;
-    private static ClientAndServer blockRequestServer;
-
-    private static final int noServiceUse                   = -1;
-    public static final int exceptionHappenedWhenRetrieving = -3;
-
-    public static List<String> skippedTestCaseExceptionHappens;
-    private static int resultNameSpecializedEnum = 2;
-
-
-    public static int testSuccess=0, testFail=0, testSkipped=0;
-
-    JSONArray recordedRequests;
-
-    public static Map<String, List<String>> injectTestCallSitesMap;
-    public static Map<String, Integer> requestNumMapping;
-    public static int injectionCNT = 0;
+    /* Injection info (May need to modify later) */
     public static int seqToInject = 0;
     public static String injectCallSiteStr;
     public static ReentrantLock lock = new ReentrantLock();
-    public static final int sleepTime = 4;
+    public static final int sleepTime = 30; // Timeout value of Orleans
+    public static Map<String, List<String>> injectTestCallSitesMap;
 
+    /* MockServer client */
+    private static ClientAndServer mockServer;
+    private static ClientAndServer blockRequestServer;
+
+    /* Retrieve HTTP traffic vars */
+    JSONArray recordedRequests;
+    private static final int noTraffic                      = -1;
+    public static final int exceptionHappenedWhenRetrieving = -3;
+    public static List<String> skippedTestCaseExceptionHappens;
+    private static int resultNameSpecializedEnum            = 2;
+
+    /* Test result */
+    public static int testSuccess=0, testFail=0, testSkipped=0;
+
+    /* Testing time */    
     Duration timeElapsed;
     Duration eachRoundTimeElapsed;
-    public static Map<String, String> testRoundTimeMap;
+    private static Map<String, String> testRoundTimeMap;
+    public static final SimpleDateFormat runTimestampFormat = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
 
-    public static FileWriter fwReqWithMissingHeader;
-
+    /* Configuration vars */
     public static String projPath;
     public static String projPathRoot;
     public static String projName;
@@ -65,17 +65,13 @@ public class Rainmaker {
     public static String resultDir;
     public static String projectName;
 
-    private static String vanillaDir;
-
     private static boolean emulatorRun = false;
     private static boolean realRun = false;
     private final boolean includePUTTestFlag;
     private final boolean fullTestFlag;
-    
     private final List<String> partialTestList;
 
-    public static final SimpleDateFormat runTimestampFormat = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
-
+    /* Output directory */
     public static String curTestStatDirWithSeq;
     public static String curTestOutcomeDir;
 
@@ -84,8 +80,8 @@ public class Rainmaker {
       * @param config
      */
     public Rainmaker(JSONObject config) {
-        projPath = System.getProperty("user.home")+"\\"+config.getString("project_test_path");
-        projPathRoot = config.getString("project_path_root");
+        projPath        = System.getProperty("user.home")+"\\"+config.getString("project_test_path");
+        projPathRoot    = config.getString("project_path_root");
 
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         System.out.println(runTimestampFormat.format(timestamp));
@@ -103,7 +99,6 @@ public class Rainmaker {
 
         resultDir     = Paths.get(System.getProperty("user.dir"), "..\\..\\results", config.getString("project").toLowerCase()).toString();
 
-        
         if (config.has("include_PUT_test"))
             includePUTTestFlag = config.getBoolean("include_PUT_test");
         else
@@ -113,7 +108,6 @@ public class Rainmaker {
             fullTestFlag = config.getBoolean("full_test");
         else
             fullTestFlag = true;
-
 
         if (emulatorRun)
             projName = config.getString("project") + "-emulator_" + runTimestampFormat.format(timestamp);
@@ -154,7 +148,7 @@ public class Rainmaker {
 
     /**
      * Find the test cases at the beginning of the reference round.
-     * @return
+     * @return A list of tests found by dotnet test
      * @throws Exception
      */
     private static List<String> findTestCases() throws Exception {
@@ -165,9 +159,7 @@ public class Rainmaker {
 
             System.out.println(projPath + "\\" + "test.runsettings");
             ProcessBuilder procBuilder;
-
             procBuilder = new ProcessBuilder("cmd.exe", "/c", "dotnet test " + testDLL + " --list-tests");
-
             procBuilder.directory(dirTest);
             procBuilder.redirectErrorStream(true);
             Process process = procBuilder.start();
@@ -180,7 +172,6 @@ public class Rainmaker {
             int testRunForCNT = 0;
             while ((line = rdr.readLine()) != null) {
                 System.out.println(line);
-                // ould flag the second "Test run for" (there are three "test run for")
                 // TODO: if it is using NUnit test framework, then it does not have this key sentence
                 if (line.contains("Test run for")) {
                     testRunForCNT += 1;
@@ -210,20 +201,8 @@ public class Rainmaker {
     public void startRainmakerProxy() throws IOException {
         // Configure the socket timeout, otherwise when retrieving records, it may reach timeout
         ConfigurationProperties.maxSocketTimeout(120000);
-
         mockServer = ClientAndServer.startClientAndServer(10000, 10001, 10002, 18081);
-
         System.out.println("Mockserver is running: " + mockServer.isRunning());
-
-        if (Objects.equals(rainmakerPolicy, "request_block")) {
-            blockRequestServer = ClientAndServer.startClientAndServer(30000);
-            System.out.println("BlockRequestServer is running: " + blockRequestServer.isRunning());
-        }
-
-        if (Objects.equals(rainmakerPolicy, "timeout_first_request_block")) {
-            blockRequestServer = ClientAndServer.startClientAndServer(30000);
-            System.out.println("BlockRequestServer is running: " + blockRequestServer.isRunning());
-        }
 
         ConfigurationProperties.logLevel("INFO");
         String loggingConfiguration = "" +
@@ -272,10 +251,10 @@ public class Rainmaker {
 
     /**
      * Check which cloud service the current test had used.
-     * @return
+     * @return 1 if there are requests and responses
+     * return -1 if there is no traffic.
      */
-    private int checkWhichServiceUsed() {
-//        TODO: This function should be removed: do all the parsing offline
+    private int retrieveRequestsAndResponses() {
         System.out.println("Going to check which service was used..");
         try {
             recordedRequests = new JSONArray(mockServer.retrieveRecordedRequestsAndResponses(request(), Format.JSON));
@@ -286,12 +265,10 @@ public class Rainmaker {
 
         if (recordedRequests.length() == 0) {
             System.out.println("No services have been used.");
-            return noServiceUse;
+            return noTraffic;
         }
-        else {
-//            TODO: This is not useful any more => modify in the future
+        else 
             return 1;
-        }
     }
 
 
@@ -301,8 +278,6 @@ public class Rainmaker {
      */
     public void rainmakerTest() throws Exception {
         List<String> listTestNames = new ArrayList<String>();
-//        out of memory exception???
-//        listTestNames.add("UnitTests.StreamingTests.StreamLimitTests.SMS_Limits_Max_Producers_Burst");
         if (emulatorRun || realRun) {
             if (fullTestFlag) {
                 listTestNames = findTestCases();
@@ -322,32 +297,26 @@ public class Rainmaker {
                 }
             }
         }
-        
-    
 
         try {
             File dirTest = new File(rainmakerPath);
             System.out.println("*****************************************");
-
             skippedTestCaseExceptionHappens = new ArrayList<String>();
-
             testRoundTimeMap = new HashMap<String, String>();
 
             Instant startTime = Instant.now();
-//            ****************************************
-//            Put the vanilla for-loop here
-//            ****************************************
-//            file writer to write requests with missing x-Location header to a file
-            fwReqWithMissingHeader = new FileWriter("request-missing-header.txt");
+            // file writer to write requests with missing x-Location header to a file
+            FileWriter fwReqWithMissingHeader = new FileWriter("request-missing-header.txt");
 
             for (String curTestCaseName: listTestNames) {
-
-
-                if (curTestCaseName.contains("StreamLimitTests")
-                        || (!curTestCaseName.contains("AzureEmulatedBlobStorageTest") && projectName.equals("storage")))
+                /* ********************************************** */
+                // Skip stream limit tests in Orleans.
+                if (curTestCaseName.contains("StreamLimitTests"))
                     continue;
                 System.out.println(curTestCaseName);
-
+                /* ********************************************** */
+                if (!curTestCaseName.contains("Aws") && projectName.equals("storage"))
+                    continue;
 
                 if (curTestCaseName.contains("(")) {
                     if (!includePUTTestFlag)
@@ -379,13 +348,12 @@ public class Rainmaker {
                     }
                 }
 
-                String curTestStatDir = "stat/"+projName+"/"+curTestCaseName;
-                curTestOutcomeDir = "outcome/"+projName+"/"+curTestCaseName;
+                String curTestStatDir   = "stat/"+projName+"/"+curTestCaseName;
+                curTestOutcomeDir       = "outcome/"+projName+"/"+curTestCaseName;
                 new File(curTestStatDir).mkdirs();
                 new File(curTestOutcomeDir).mkdirs();
 
-                int totalInjectNum = 1;
-                    
+                int totalInjectNum = 1;   
                 System.out.println("Total injection rounds would be: "+totalInjectNum);
 
                 for (int seq=0; seq < totalInjectNum; seq++) {
@@ -405,19 +373,13 @@ public class Rainmaker {
 
                     ProcessBuilder procBuilder;                
                     if (!includePUTTestFlag) {
-
+                        // If we do not consider PUT test, the fully qualified name of the test can be used.
                         procBuilder = new ProcessBuilder("cmd.exe", "/c",
                                 "dotnet test "+ testDLL + " --blame-hang-timeout 10m --logger trx --filter FullyQualifiedName=" + curTestCaseName);
                     }
-                    else if (includePUTTestFlag) {
+                    else{
                         procBuilder = new ProcessBuilder("cmd.exe", "/c",
-                                "dotnet test "+ testDLL + " --blame-hang-timeout 20m --logger trx --filter " + curTestCaseName);
-                    }
-                    else {
-                       // TODO: branch for different .net
-                       procBuilder = new ProcessBuilder("cmd.exe", "/c",
-                           "dotnet test "+ testDLL + " --blame-hang-timeout 5m --logger trx --filter FullyQualifiedName=" + curTestCaseName);
-
+                                "dotnet test "+ testDLL + " --blame-hang-timeout 10m --logger trx --filter " + curTestCaseName);
                     }
 
                     procBuilder.directory(dirTest);
@@ -427,8 +389,6 @@ public class Rainmaker {
                     BufferedReader in = new BufferedReader(new InputStreamReader(process.getInputStream()));
                     String line;
                     while ((line = in.readLine()) != null) {
-                        //                    If comment out the following line, the press enter issue will appear?
-                        // Press button issue may be highly related to quick edit
                         System.out.println(line);
                         if (line.contains("Failed:     1")) {
                             resultNameSpecializedEnum = 0;
@@ -444,7 +404,6 @@ public class Rainmaker {
                     }
 
                     process.waitFor();
-                    injectionCNT = 0;
 
                     File folder = new File(rainmakerPath + "/TestResults");
                     File[] listOfFiles = folder.listFiles();
@@ -476,38 +435,32 @@ public class Rainmaker {
                                 listOfFile.renameTo(new File(resultString));
                             }
                             else if (listOfFile.isDirectory()) {
-                            // System.out.println("Directory: " + listOfFile.getName());
                                 continue;
                             }
                             fCNT++;
-                            // TODO: why PUT will generate more than one result file?
-                            // if (fCNT > 1) {
-                            //      System.out.println("Number of test results should not be larger than 1");
-                            //      System.exit(0);
-                            // }
                         }
                     }
 
-                    int serviceInUse;
-                    // Waiting for all the pending injection callback to finish before retrieving all the requests
+                    int retrieveTrafficResult;
+                    // Waiting for all the pending callback to finish before retrieving all the requests. Maybe helpful to system proxy one.
                     boolean isLockAcquired = lock.tryLock(2*sleepTime, TimeUnit.SECONDS);
                     if (isLockAcquired) {
                         try {
-                            serviceInUse = checkWhichServiceUsed();
+                            retrieveTrafficResult = retrieveRequestsAndResponses();
                         }
                         finally {
                             lock.unlock();
                         }
                     }
                     else {
-                        serviceInUse = exceptionHappenedWhenRetrieving;
+                        retrieveTrafficResult = exceptionHappenedWhenRetrieving;
                         System.out.println("Unable to acquire the lock when preparing to retrieve requests");
                         System.exit(0);
                     }
 
                     System.out.println("=========================================");
-                    if (serviceInUse != exceptionHappenedWhenRetrieving) {
-                        //                    testSuccess += 1;
+                    if (retrieveTrafficResult != exceptionHappenedWhenRetrieving) {
+                        //testSuccess += 1;
                         retrieveHTTPTrafficInAllServers();
                     } else{
                         testSuccess -= 1;
@@ -516,7 +469,6 @@ public class Rainmaker {
                     }
                     Instant eachRoundEndTime = Instant.now();
                     eachRoundTimeElapsed = Duration.between(eachRoundStartTime, eachRoundEndTime);
-                    //                System.out.println("eachRoundTimeElapsed: " + eachRoundTimeElapsed.toString());
                     testRoundTimeMap.put(curTestCaseName, humanReadableFormat(eachRoundTimeElapsed));
                     System.out.println("Resetting all expectations for the finished test (clear all the expectations and logs)... test name:" + curTestCaseName);
                     resetMockserver();
@@ -548,12 +500,11 @@ public class Rainmaker {
     }
 
     /**
-     * Convert the time cost to human-readable format.
+     * Convert the time span to human-readable format.
      * @param duration
      * @return
      */
     public static String humanReadableFormat(Duration duration) {
-        // System.out.println("Entering humanReadableFormat");
         return duration.toString()
                 .substring(2)
                 .replaceAll("(\\d[HMS])(?!$)", "$1 ")
@@ -562,7 +513,7 @@ public class Rainmaker {
 
     /**
      * Statistics for a single test - output to the overview file.
-     * @param curTestCaseName
+     * @param curTestCaseName current test case name.
      * @throws IOException
      */
     public void singleTestStat(String curTestCaseName) throws IOException {
@@ -575,6 +526,7 @@ public class Rainmaker {
 
     /**
      * On-the-fly statistics for the REST API usage.
+     * This statistics may not be accurate
      * @throws IOException
      */
     public void statsOfRESTAPIs() throws IOException {
