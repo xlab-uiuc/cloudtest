@@ -1,27 +1,24 @@
 import os
-from utils import return_latest_dir_name, find_latest_dir
-
-#if not default, add stat/before the name
-
-# TODO: make all these configurable 
-# Based on the config.json file => automatically set these up
-
-
-# For DistributedLock
-proj = "orleans"
-raw_stat_directory = find_latest_dir(os.path.join(os.getcwd(), "stat"))
-outcome_directory = find_latest_dir("outcome")
-# raw_stat_directory = "DistributedLock_2022.05.13.05.29.54"
-# outcome_directory = "DistributedLock_2022.05.13.05.29.54"
+import argparse
+from utils import find_latest_dir
 
 if __name__ == "__main__":
+    proj               = "Orleans"
+    raw_stat_directory = find_latest_dir(os.path.join(os.getcwd(), "stat"))
+    outcome_directory  = find_latest_dir("outcome")
+    # raw_stat_directory = "Orleans-emulator_2022.10.14.01.50.11"
+    # outcome_directory = "Orleans-emulator_2022.10.14.01.50.11"
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-p", "--proj", default = proj, help="Project")
+    parser.add_argument("-r", "--raw_stat_directory", default = raw_stat_directory, help="")
+    parser.add_argument("-o", "--outcome_directory", default = outcome_directory, help="")
+    args = parser.parse_args()
+
     open('log.txt', 'w').close()
     # -u is for PUT
-    os.system("python ./test_raw_data_generator.py -d " + raw_stat_directory + "  -u False 1>>log.txt")
-    # os.system("python ./test_raw_data_generator.py  1>>log.txt")
+    os.system("python ./test_raw_data_generator.py -d " + args.raw_stat_directory + "  -u False 1>>log.txt")
 
-    os.system("python ./test_outcome_generator.py -d " + outcome_directory + " -p " + proj + " 1>>log.txt")
-    # os.system("python ./test_outcome_generator.py 1>>log.txt")
-    
-    
+
+    os.system("python ./test_outcome_generator.py -d " + args.outcome_directory + " -p " + args.proj + " 1>>log.txt")
+
     
