@@ -8,9 +8,8 @@ Like S3 MOCK[https://github.com/adobe/S3Mock#implemented-s3-apis], S3 ninja[http
 
 3. 3 round is not enough for flaky test finding. Need to find a way to solve it.
 
-4. Modify the README of cloudtest infra and rerun the tests using the newest Orleans.
+4. Rerun the tests using the newest Orleans.
 
-5. Refactor the outcome generate code tmr.
 
 The Azurite Version I use now is 3.18.0. Maybe we should upgrade it manually. The one installed with Visual Studio Azure Development Pacakage is 3.18.0, but the newest one is 3.19.0  
 The Orleans Version is old one for Rainmaker.
