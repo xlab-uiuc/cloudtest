@@ -7,9 +7,9 @@ descp = "This is file for prune out flaky tests. Now we compare three results. T
 def_proj = "orleans"
 
 
-def_round_1 = "Orleans_2022.10.01.00.17.07"
-def_round_2 = "Orleans_2022.10.01.01.41.23"
-def_round_3 = "Orleans_2022.10.01.13.32.32"
+def_round_1 = "Orleans-realService-no-proxy_2022.10.10.19.12.17"
+def_round_2 = "Orleans-realService-no-proxy_2022.10.11.14.44.21"
+def_round_3 = "Orleans-realService-no-proxy_2022.10.11.16.50.45"
 
 
 
