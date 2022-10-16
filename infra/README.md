@@ -54,6 +54,10 @@ Azurite is the latest storage emulator platform. Azurite supersedes the [Azure S
     3. ``npm install -g``
     4. ``azurite --blobPort 20000 --queuePort 20001 --tablePort 20002``  
 
+Reference:  
+1. https://github.com/Azure/Azurite  
+2. https://github.com/Azure/Azurite/issues/1550
+
 ~~Azurite is automatically available with [Visual Studio 2022](https://visualstudio.microsoft.com/vs/). If you are running an earlier version of Visual Studio, you'll need to install Azurite by using either Node Package Manager, DockerHub, or by cloning the Azurite github repository.~~
 
 ~~Reference: https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azurite?tabs=visual-studio~~
