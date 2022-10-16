@@ -44,30 +44,27 @@ Rainmaker proxy will listen on ``127.0.0.1:10000,10001,10002`` which are default
 
 Azurite is the latest storage emulator platform. Azurite supersedes the [Azure Storage Emulator](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-emulator). Azurite will continue to be updated to support the latest versions of Azure Storage APIs. The reason why we use both Azurite and Azure Storage settings is that some frameworks we tested do not support Azurite.
 
-#### Install Azurite:
+#### Install latest verison Azurite:  
+1. Go to [Download | Node.js (nodejs.org)](https://nodejs.org/en/download/) , Click the **Windows Installer** button to download the latest LTS version. At the time this readme was written, version v16.14.2-x64 was the latest LTS version. The Node.js installer includes the NPM package manager.  
+1. Git clone [Azurite](https://github.com/Azure/Azurite).  
+2. ``git reset --hard v3.19.0``  
+3.  execute following commands to install and start Azurite V3.  
+    1. ``npm ci --legacy-peer-deps``
+    2. ``npm run build``  
+    3. ``npm install -g``
+    4. ``azurite --blobPort 20000 --queuePort 20001 --tablePort 20002``  
 
-Azurite is automatically available with [Visual Studio 2022](https://visualstudio.microsoft.com/vs/). If you are running an earlier version of Visual Studio, you'll need to install Azurite by using either Node Package Manager, DockerHub, or by cloning the Azurite github repository.
+~~Azurite is automatically available with [Visual Studio 2022](https://visualstudio.microsoft.com/vs/). If you are running an earlier version of Visual Studio, you'll need to install Azurite by using either Node Package Manager, DockerHub, or by cloning the Azurite github repository.~~
 
-Reference: https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azurite?tabs=visual-studio
+~~Reference: https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azurite?tabs=visual-studio~~
 
 #### Run Azurite:
 
-**Shortcut:** If you have installed Visual Studio 2022 & Azure Development Workloads, you can directly run `.\emulator.ps1` in PowerShell
-
-Manually setup in PowerShell:
-
-1. Go to Azurite executable's directory, e.g., ``cd 'C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Azure Storage Emulator'``
-2. Since Azurite will automatically listen to 10000, 10001, 10002 of localhost, it is necessary to let it switch to other ports, i.e., ``.\azurite.exe --blobPort 20000 --queuePort 20001 --tablePort 20002``
-
-
-**Warning:**
-The emulator.ps1 should be run as admin 
-
-reference: https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azurite?tabs=visual-studio
+Open the Powershell and run ``azurite --blobPort 20000 --queuePort 20001 --tablePort 20002``
 
 ##### Caveat for Azurite:
 
-If you want to run tests without Rainmaker, do not listen to ports 20000, 20001 and 20002, i.e.,  `.\azurite.exe`
+If you want to run tests without Rainmaker, do not listen to ports 20000, 20001 and 20002, i.e.,  `azurite`
 
 ### If using legacy Azure Storage Emulator (Not Recommended because it is not open-source, which means it is hard to investigate)
 
