@@ -16,4 +16,4 @@ Breif Intro: https://www.nuget.org/packages/Azure.Data.Tables/
 Microsoft Doc: https://learn.microsoft.com/en-us/azure/cosmos-db/table/support?toc=https%3A%2F%2Flearn.microsoft.com%2Fen-us%2Fazure%2Fstorage%2Ftables%2Ftoc.json&bc=https%3A%2F%2Flearn.microsoft.com%2Fen-us%2Fazure%2Fbread%2Ftoc.json  
 
 The Azurite Version we should use is 3.19.0. The one installed with Visual Studio Azure Development Pacakage is 3.18.0, but the newest one is 3.19.0  
-The Orleans Version also should be updated. The one for rainmaker is too old.
+The Orleans Version should be v7.0.0-rc2.
