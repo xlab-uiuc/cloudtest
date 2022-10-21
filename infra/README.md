@@ -82,17 +82,6 @@ Since Azure Storage Emulator will automatically listen to 10000, 10001, 10002 of
 </services>
 ```
 
-<!-- ## Turn on the dynamic instrumentation tool
-
-The instrumentation tool in our infra aims to capture the stack trace of the Azure Storage operations, and attach it to the corresponding request.
-
-1. Open a PowerShell with Administrator permission (right click the PowerShell icon in Start menu, and select "Run as Administrator")
-2. Go into Rainmaker infra dir
-3. ``cd torch-tool``
-4. Use ``.\ProfOn.ps1`` to turn on the dynamic instrumentation profiler
-5. Since the environment settings of a PowerShell is established at the beginning of its life cycle, you should open another PowerShell with Administrator permission, and then the instrumentation will work
-6. When finishing the instrumentation, use ``.\ProfOff.ps1`` to turn the profiler off. Notice that the instrumentation will still happen for the current shell, so remember to close it if you stop the instrumentation immediately -->
-
 ## How to use Rainmaker Proxy
 
 **Shortcut:** `.\rainmaker.ps1`
@@ -106,6 +95,12 @@ Detailed steps: Modify the *config.json* file to configure the target projects, 
 3. ``java -jar .\target\rainmaker-proxy-1.0-SNAPSHOT.jar -Xmx8g``
 
 ``-Xmx8g`` is used to improve the JAVA heap memory
+### Open System proxy when you want to fetch real service requests and responses.  
+Notice that extra delay will add and make tests fail. See detail in xlab-uiuc/cloudtest#3  
+1. Open Proxy setting of windows and Turn ``Use a proxy server`` on.  
+2. Set Address to 127.0.0.1 and Proxy to 18081(The port that rainmaker-proxy listen to)
+3. Save the configuration.  
+4. If you meet the SSL problem, pls [download](https://raw.githubusercontent.com/jamesdbloom/mockserver/master/mockserver-core/src/main/resources/org/mockserver/socket/CertificateAuthorityCertificate.pem) and install the certificate of Rainmaker-Proxy.  
 
 ## How to collect the test results and generate the outcome
 
@@ -158,7 +153,7 @@ Use this command to know the current Nth running test: ``(Get-ChildItem -Directo
 
 1. copy [the file](https://github.com/xlab-uiuc/rainmaker/blob/main/patches/Orleans.patch) into the base folder of Orleans
 2. `cd orleans`
-3. `git apply .\Orleans_patch_file.patch`
+3. `git apply .\Orleans.patch`
 
 Detailed steps of the shortcut above(If you cannot apply the patch successfully, you have to do the modification below manually):
 
