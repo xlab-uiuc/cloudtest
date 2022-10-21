@@ -52,7 +52,8 @@ Azurite is the latest storage emulator platform. Azurite supersedes the [Azure S
     1. ``npm ci --legacy-peer-deps``
     2. ``npm run build``  
     3. ``npm install -g``
-    4. ``azurite --blobPort 20000 --queuePort 20001 --tablePort 20002``  
+    4. ``azurite --blobPort 20000 --queuePort 20001 --tablePort 20002``
+    And you can use ``--location c:\azurite`` to store all data in a particular directory, c:\azurite. If the --location option is omitted, it will use the current working directory.
 
 Reference:  
 1. https://github.com/Azure/Azurite  
