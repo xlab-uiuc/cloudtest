@@ -150,10 +150,10 @@ Use this command to know the current Nth running test: ``(Get-ChildItem -Directo
 ### Caveat for Orleans project
 
 **Shortcut:**(Must be done before running `rainmaker.ps1`)
-
 1. copy [the file](https://github.com/xlab-uiuc/cloudtest/blob/main/patch/Orleans.patch) into the base folder of Orleans
 2. `cd orleans`
-3. `git apply .\Orleans.patch`
+3. `git reset --hard v7.0.0-rc2` 
+4. `git apply .\Orleans.patch`
 
 Detailed steps of the shortcut above(If you cannot apply the patch successfully, you have to do the modification below manually):
 
