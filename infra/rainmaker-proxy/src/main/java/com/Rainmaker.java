@@ -32,7 +32,7 @@ public class Rainmaker {
     public static int seqToInject = 0;
     public static String injectCallSiteStr;
     public static ReentrantLock lock = new ReentrantLock();
-    public static final int sleepTime = 30; // Timeout value of Orleans
+    public static final int sleepTime = 120; // Timeout value of Orleans
     public static Map<String, List<String>> injectTestCallSitesMap;
 
     /* MockServer client */
