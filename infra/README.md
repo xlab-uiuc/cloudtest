@@ -153,7 +153,7 @@ Use this command to know the current Nth running test: ``(Get-ChildItem -Directo
 
 1. copy [the file](https://github.com/xlab-uiuc/rainmaker/blob/main/patches/Orleans.patch) into the base folder of Orleans
 2. `cd orleans`
-3. `git apply .\Orleans_patch_file.patch`
+3. `git apply .\Orleans.patch`
 
 Detailed steps of the shortcut above(If you cannot apply the patch successfully, you have to do the modification below manually):
 
