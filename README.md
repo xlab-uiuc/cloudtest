@@ -11,6 +11,8 @@ Like S3 MOCK[https://github.com/adobe/S3Mock#implemented-s3-apis], S3 ninja[http
 4. Set up cloudtest in linux and update readme.
 
 5. https://learn.microsoft.com/en-us/dotnet/orleans/overview Orleans Doc  
+6. https://github.com/Azure/azure-sdk-for-net/tree/main/sdk/tables .Net storage SDK source code    
+Breif Intro: https://www.nuget.org/packages/Azure.Data.Tables/
 
 The Azurite Version we should use is 3.19.0. The one installed with Visual Studio Azure Development Pacakage is 3.18.0, but the newest one is 3.19.0  
 The Orleans Version also should be updated. The one for rainmaker is too old.
