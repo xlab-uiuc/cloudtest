@@ -96,7 +96,7 @@ Detailed steps: Modify the *config.json* file to configure the target projects, 
 
 ``-Xmx8g`` is used to improve the JAVA heap memory
 ### Open System proxy when you want to fetch real service requests and responses.  
-notice that extra delay will add and cause tests fail. See detail in xlab-uiuc/cloudtest#3
+Notice that extra delay will add and make tests fail. See detail in xlab-uiuc/cloudtest#3  
 1. Open Proxy setting of windows and Turn ``Use a proxy server`` on.  
 2. Set Address to 127.0.0.1 and Proxy to 18081(The port that rainmaker-proxy listen to)
 3. Save the configuration.  
