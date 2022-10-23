@@ -1,7 +1,7 @@
 # cloudtest
 Things need to do:
 
-1. We cannot reach the source code of server side of cloud service. However, there are some unofficial emulator for AWS and official emulator for Azure. And actually, developers of Azurite use Microsoft Doc of Azure Storage Services to develop Azurite.  
+1. We cannot reach the source code of server side of cloud service. And actually, developers of Azurite use Microsoft Doc of Azure Storage Services to develop Azurite. However, there are some unofficial emulator for AWS and official emulator for Azure.  
 Like [S3 MOCK](https://github.com/adobe/S3Mock#implemented-s3-apis), [S3 ninja](https://github.com/scireum/s3ninja). And one open source official emulator, [Azurite](https://github.com/Azure/Azurite#https-setup). We need to investigate them later. And I need to have a meeting with yinfang to discuss it and get helps.  
 In addition: Anna provides a popular integrated AWS emulator [link](https://github.com/localstack/localstack) called localstack.  
 Now, I believe it is better to start from [localstack](https://github.com/localstack/localstack) and [Azurite](https://github.com/Azure/Azurite#https-setup) because these two have detailed doc.  Priority: High  
