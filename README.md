@@ -9,7 +9,9 @@ Now, I believe it is better to start from [localstack](https://github.com/locals
 3. [Orleans Doc](https://learn.microsoft.com/en-us/dotnet/orleans/overview)   
 4. [.Net Azure Table storage SDK Source Code](https://github.com/Azure/azure-sdk-for-net/tree/main/sdk/tables)  
 [Breif Intro of Azure Table SDK](https://www.nuget.org/packages/Azure.Data.Tables/)  
-[Microsoft Doc of Azure Table SDK](https://learn.microsoft.com/en-us/azure/cosmos-db/table/support?toc=https%3A%2F%2Flearn.microsoft.com%2Fen-us%2Fazure%2Fstorage%2Ftables%2Ftoc.json&bc=https%3A%2F%2Flearn.microsoft.com%2Fen-us%2Fazure%2Fbread%2Ftoc.json) 
+[Microsoft Doc of Azure Table SDK](https://learn.microsoft.com/en-us/azure/cosmos-db/table/support?toc=https%3A%2F%2Flearn.microsoft.com%2Fen-us%2Fazure%2Fstorage%2Ftables%2Ftoc.json&bc=https%3A%2F%2Flearn.microsoft.com%2Fen-us%2Fazure%2Fbread%2Ftoc.json)
+[Issue related to new arch of Azurite](https://github.com/Azure/Azurite/labels/NewArch)  
+[featureparity of Azurite](https://github.com/Azure/Azurite/labels/featureparity)  
 5. [Azurite Table support info](https://github.com/Azure/Azurite/wiki/Azurite-V3-Table)   
 The Azurite Version we should use is 3.19.0. The one installed with Visual Studio Azure Development Pacakage is 3.18.0, but the newest one is 3.19.0(To the time I update cloudtest). And Azurite updated to 3.20.1 last night.  
 The Orleans Version should be v7.0.0-rc2.  
