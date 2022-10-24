@@ -310,13 +310,15 @@ public class Rainmaker {
 
             for (String curTestCaseName: listTestNames) {
                 /* ********************************************** */
-                // Skip stream limit tests in Orleans.
-                if (curTestCaseName.contains("StreamLimitTests"))
-                    continue;
+                // Skip stream limit tests in Orleans. Useless for the latest Orleans. Just comment it out.
+                // TODO: add skip keywords in config.json and read from it instead of modify here.
+
+                // if (curTestCaseName.contains("StreamLimitTests"))
+                //     continue;
                 System.out.println(curTestCaseName);
                 /* ********************************************** */
-                if (!curTestCaseName.contains("Aws") && projectName.equals("storage"))
-                    continue;
+                // if (!curTestCaseName.contains("Aws") && projectName.equals("storage"))
+                //     continue;
 
                 if (curTestCaseName.contains("(")) {
                     if (!includePUTTestFlag)
