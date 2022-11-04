@@ -17,4 +17,5 @@ Now, I believe it is better to start from [localstack](https://github.com/locals
 The Azurite Version we should use is 3.19.0. The one installed with Visual Studio Azure Development Pacakage is 3.18.0, but the newest one is 3.19.0(To the time I update cloudtest). And Azurite updated to 3.20.1 last night.  
 The Orleans Version should be v3.6.5.  
 6. Azurite releases a new version call 3.20.1 last night. Need to upgrade later. Priority: Low.  
-7. Set up cloudtest in linux and update readme. Priority: Low.
+7. Set up cloudtest in linux and update readme. Priority: Low.  
+8. [TODO of Azurite Team](https://github.com/Azure/Azurite/projects/2#card-42252385)
