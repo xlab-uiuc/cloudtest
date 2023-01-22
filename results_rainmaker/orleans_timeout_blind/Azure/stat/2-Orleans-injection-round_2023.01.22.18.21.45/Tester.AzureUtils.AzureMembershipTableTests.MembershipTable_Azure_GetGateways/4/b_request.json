@@ -1,0 +1,878 @@
+[
+    {
+        "httpRequest": {
+            "headers": {
+                "Accept": [
+                    "application/json;odata=minimalmetadata"
+                ],
+                "Authorization": [
+                    "SharedKeyLite orleanstest12:grNiaZuer4JCnHtpybvxEm1a4eLJc9caUEwKB93OR7o="
+                ],
+                "Content-Length": [
+                    "36"
+                ],
+                "Content-Type": [
+                    "application/json;odata=nometadata"
+                ],
+                "DataServiceVersion": [
+                    "3.0"
+                ],
+                "Host": [
+                    "orleanstest12.table.core.windows.net"
+                ],
+                "User-Agent": [
+                    "azsdk-net-Data.Tables/12.6.1 (.NET 7.0.2; Microsoft Windows 10.0.19044)"
+                ],
+                "x-location": [
+                    "C:\\Users\\anna\\orleans\\src\\Azure\\Shared\\Storage\\AzureTableDataManager.cs:84:Azure.Data.Tables;Azure.Data.Tables.TableClient.CreateIfNotExistsAsync(System.Threading.CancellationToken):Orleans.Clustering.AzureStorage.AzureTableDataManager`1.InitTableAsync[](?)"
+                ],
+                "x-ms-client-request-id": [
+                    "4d5db1f6-1a9d-4973-91d9-12c40104b514"
+                ],
+                "x-ms-date": [
+                    "Sun, 22 Jan 2023 18:22:45 GMT"
+                ],
+                "x-ms-return-client-request-id": [
+                    "true"
+                ],
+                "x-ms-version": [
+                    "2020-12-06"
+                ]
+            },
+            "keepAlive": true,
+            "method": "POST",
+            "path": "/Tables",
+            "queryStringParameters": {
+                "$format": [
+                    "application/json;odata=minimalmetadata"
+                ]
+            },
+            "secure": true
+        },
+        "httpResponse": {
+            "body": {
+                "contentType": "application/json; charset=utf-8; odata=minimalmetadata; streaming=true",
+                "json": {
+                    "odata.error": {
+                        "code": "TableAlreadyExists",
+                        "message": {
+                            "lang": "en-US",
+                            "value": "The table specified already exists.\nRequestId:1f9961ce-6002-0033-158e-2e14ac000000\nTime:2023-01-22T18:22:46.2502576Z"
+                        }
+                    }
+                },
+                "rawBytes": "eyJvZGF0YS5lcnJvciI6eyJjb2RlIjoiVGFibGVBbHJlYWR5RXhpc3RzIiwibWVzc2FnZSI6eyJsYW5nIjoiZW4tVVMiLCJ2YWx1ZSI6IlRoZSB0YWJsZSBzcGVjaWZpZWQgYWxyZWFkeSBleGlzdHMuXG5SZXF1ZXN0SWQ6MWY5OTYxY2UtNjAwMi0wMDMzLTE1OGUtMmUxNGFjMDAwMDAwXG5UaW1lOjIwMjMtMDEtMjJUMTg6MjI6NDYuMjUwMjU3NloifX19",
+                "type": "JSON"
+            },
+            "headers": {
+                "Cache-Control": [
+                    "no-cache"
+                ],
+                "Content-Type": [
+                    "application/json;odata=minimalmetadata;streaming=true;charset=utf-8"
+                ],
+                "Date": [
+                    "Sun, 22 Jan 2023 18:22:45 GMT"
+                ],
+                "Server": [
+                    "Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0"
+                ],
+                "X-Content-Type-Options": [
+                    "nosniff"
+                ],
+                "content-length": [
+                    "201"
+                ],
+                "x-ms-client-request-id": [
+                    "4d5db1f6-1a9d-4973-91d9-12c40104b514"
+                ],
+                "x-ms-request-id": [
+                    "1f9961ce-6002-0033-158e-2e14ac000000"
+                ],
+                "x-ms-version": [
+                    "2020-12-06"
+                ]
+            },
+            "reasonPhrase": "Conflict",
+            "statusCode": 409
+        },
+        "timestamp": "2023-01-22 18:22:46.211"
+    },
+    {
+        "httpRequest": {
+            "headers": {
+                "Accept": [
+                    "application/json;odata=minimalmetadata"
+                ],
+                "Authorization": [
+                    "SharedKeyLite orleanstest12:XJe1t3WRlYO3Tqi1pAphLETdMTTx2HlrXGPOSD4SgUw="
+                ],
+                "DataServiceVersion": [
+                    "3.0"
+                ],
+                "Host": [
+                    "orleanstest12.table.core.windows.net"
+                ],
+                "User-Agent": [
+                    "azsdk-net-Data.Tables/12.6.1 (.NET 7.0.2; Microsoft Windows 10.0.19044)"
+                ],
+                "content-length": [
+                    "0"
+                ],
+                "x-location": [
+                    "C:\\Users\\anna\\orleans\\src\\Azure\\Orleans.Clustering.AzureStorage\\OrleansSiloInstanceManager.cs:255:Azure.Data.Tables;Azure.Data.Tables.TableClient.GetEntityAsync(string,string,System.Collections.Generic.IEnumerable`1[string],System.Threading.CancellationToken):Orleans.AzureUtils.OrleansSiloInstanceManager.TryCreateTableVersionEntryAsync(?)"
+                ],
+                "x-ms-client-request-id": [
+                    "1387cb4f-12b1-4377-92ac-d0cb46ae1520"
+                ],
+                "x-ms-date": [
+                    "Sun, 22 Jan 2023 18:22:46 GMT"
+                ],
+                "x-ms-return-client-request-id": [
+                    "true"
+                ],
+                "x-ms-version": [
+                    "2020-12-06"
+                ]
+            },
+            "keepAlive": true,
+            "method": "GET",
+            "path": "/OrleansSiloInstances(PartitionKey='test-e9b07f1c-b842-4f93-b4f3-92d94cd996c5',RowKey='VersionRow')",
+            "queryStringParameters": {
+                "$format": [
+                    "application/json;odata=minimalmetadata"
+                ]
+            },
+            "secure": true
+        },
+        "httpResponse": {
+            "body": {
+                "contentType": "application/json; charset=utf-8; odata=minimalmetadata; streaming=true",
+                "json": {
+                    "odata.error": {
+                        "code": "ResourceNotFound",
+                        "message": {
+                            "lang": "en-US",
+                            "value": "The specified resource does not exist.\nRequestId:d1a38854-3002-0011-0a8e-2ed1b3000000\nTime:2023-01-22T18:22:46.3700049Z"
+                        }
+                    }
+                },
+                "rawBytes": "eyJvZGF0YS5lcnJvciI6eyJjb2RlIjoiUmVzb3VyY2VOb3RGb3VuZCIsIm1lc3NhZ2UiOnsibGFuZyI6ImVuLVVTIiwidmFsdWUiOiJUaGUgc3BlY2lmaWVkIHJlc291cmNlIGRvZXMgbm90IGV4aXN0LlxuUmVxdWVzdElkOmQxYTM4ODU0LTMwMDItMDAxMS0wYThlLTJlZDFiMzAwMDAwMFxuVGltZToyMDIzLTAxLTIyVDE4OjIyOjQ2LjM3MDAwNDlaIn19fQ==",
+                "type": "JSON"
+            },
+            "headers": {
+                "Cache-Control": [
+                    "no-cache"
+                ],
+                "Content-Type": [
+                    "application/json;odata=minimalmetadata;streaming=true;charset=utf-8"
+                ],
+                "Date": [
+                    "Sun, 22 Jan 2023 18:22:46 GMT"
+                ],
+                "Server": [
+                    "Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0"
+                ],
+                "X-Content-Type-Options": [
+                    "nosniff"
+                ],
+                "content-length": [
+                    "202"
+                ],
+                "x-ms-client-request-id": [
+                    "1387cb4f-12b1-4377-92ac-d0cb46ae1520"
+                ],
+                "x-ms-request-id": [
+                    "d1a38854-3002-0011-0a8e-2ed1b3000000"
+                ],
+                "x-ms-version": [
+                    "2020-12-06"
+                ]
+            },
+            "reasonPhrase": "Not Found",
+            "statusCode": 404
+        },
+        "timestamp": "2023-01-22 18:22:46.336"
+    },
+    {
+        "httpRequest": {
+            "headers": {
+                "Accept": [
+                    "application/json;odata=minimalmetadata"
+                ],
+                "Authorization": [
+                    "SharedKeyLite orleanstest12:sLH9Epgedh+D6a/USAtClgUTAcVeKdAOe60M1+NCC10="
+                ],
+                "Content-Length": [
+                    "427"
+                ],
+                "Content-Type": [
+                    "application/json;odata=nometadata"
+                ],
+                "DataServiceVersion": [
+                    "3.0"
+                ],
+                "Host": [
+                    "orleanstest12.table.core.windows.net"
+                ],
+                "Prefer": [
+                    "return-no-content"
+                ],
+                "User-Agent": [
+                    "azsdk-net-Data.Tables/12.6.1 (.NET 7.0.2; Microsoft Windows 10.0.19044)"
+                ],
+                "x-location": [
+                    "C:\\Users\\anna\\orleans\\src\\Azure\\Shared\\Storage\\AzureTableDataManager.cs:171:Azure.Data.Tables;Azure.Data.Tables.TableClient.AddEntityAsync(!!0,System.Threading.CancellationToken):Orleans.Clustering.AzureStorage.AzureTableDataManager`1.CreateTableEntryAsync[](?)"
+                ],
+                "x-ms-client-request-id": [
+                    "34d29ea8-9fab-42af-96d7-5aa90eb515f3"
+                ],
+                "x-ms-date": [
+                    "Sun, 22 Jan 2023 18:22:46 GMT"
+                ],
+                "x-ms-return-client-request-id": [
+                    "true"
+                ],
+                "x-ms-version": [
+                    "2020-12-06"
+                ]
+            },
+            "keepAlive": true,
+            "method": "POST",
+            "path": "/OrleansSiloInstances",
+            "queryStringParameters": {
+                "$format": [
+                    "application/json;odata=minimalmetadata"
+                ]
+            },
+            "secure": true
+        },
+        "httpResponse": {
+            "headers": {
+                "Cache-Control": [
+                    "no-cache"
+                ],
+                "Content-Length": [
+                    "0"
+                ],
+                "DataServiceId": [
+                    "https://orleanstest12.table.core.windows.net/OrleansSiloInstances(PartitionKey='test-e9b07f1c-b842-4f93-b4f3-92d94cd996c5',RowKey='VersionRow')"
+                ],
+                "Date": [
+                    "Sun, 22 Jan 2023 18:22:46 GMT"
+                ],
+                "ETag": [
+                    "W/\"datetime'2023-01-22T18%3A22%3A46.4672149Z'\""
+                ],
+                "Location": [
+                    "https://orleanstest12.table.core.windows.net/OrleansSiloInstances(PartitionKey='test-e9b07f1c-b842-4f93-b4f3-92d94cd996c5',RowKey='VersionRow')"
+                ],
+                "Preference-Applied": [
+                    "return-no-content"
+                ],
+                "Server": [
+                    "Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0"
+                ],
+                "X-Content-Type-Options": [
+                    "nosniff"
+                ],
+                "x-ms-client-request-id": [
+                    "34d29ea8-9fab-42af-96d7-5aa90eb515f3"
+                ],
+                "x-ms-request-id": [
+                    "bdcb91db-1002-0090-418e-2e7169000000"
+                ],
+                "x-ms-version": [
+                    "2020-12-06"
+                ]
+            },
+            "reasonPhrase": "No Content",
+            "statusCode": 204
+        },
+        "timestamp": "2023-01-22 18:22:46.430"
+    },
+    {
+        "httpRequest": {
+            "headers": {
+                "Accept": [
+                    "application/json;odata=minimalmetadata"
+                ],
+                "Authorization": [
+                    "SharedKeyLite orleanstest12:D7zv1EVdN3Y3OnRhhIJuVHO+AfeTs8qOuGTwzHoMgQQ="
+                ],
+                "Content-Length": [
+                    "36"
+                ],
+                "Content-Type": [
+                    "application/json;odata=nometadata"
+                ],
+                "DataServiceVersion": [
+                    "3.0"
+                ],
+                "Host": [
+                    "orleanstest12.table.core.windows.net"
+                ],
+                "User-Agent": [
+                    "azsdk-net-Data.Tables/12.6.1 (.NET 7.0.2; Microsoft Windows 10.0.19044)"
+                ],
+                "x-location": [
+                    "C:\\Users\\anna\\orleans\\src\\Azure\\Shared\\Storage\\AzureTableDataManager.cs:84:Azure.Data.Tables;Azure.Data.Tables.TableClient.CreateIfNotExistsAsync(System.Threading.CancellationToken):Orleans.Clustering.AzureStorage.AzureTableDataManager`1.InitTableAsync[](?)"
+                ],
+                "x-ms-client-request-id": [
+                    "d6729bdd-ac0f-40f7-9f7a-d988cb9db267"
+                ],
+                "x-ms-date": [
+                    "Sun, 22 Jan 2023 18:22:46 GMT"
+                ],
+                "x-ms-return-client-request-id": [
+                    "true"
+                ],
+                "x-ms-version": [
+                    "2020-12-06"
+                ]
+            },
+            "keepAlive": true,
+            "method": "POST",
+            "path": "/Tables",
+            "queryStringParameters": {
+                "$format": [
+                    "application/json;odata=minimalmetadata"
+                ]
+            },
+            "secure": true
+        },
+        "httpResponse": {
+            "body": {
+                "contentType": "application/json; charset=utf-8; odata=minimalmetadata; streaming=true",
+                "json": {
+                    "odata.error": {
+                        "code": "TableAlreadyExists",
+                        "message": {
+                            "lang": "en-US",
+                            "value": "The table specified already exists.\nRequestId:8e4ff171-0002-000a-068e-2eefb0000000\nTime:2023-01-22T18:22:46.5428103Z"
+                        }
+                    }
+                },
+                "rawBytes": "eyJvZGF0YS5lcnJvciI6eyJjb2RlIjoiVGFibGVBbHJlYWR5RXhpc3RzIiwibWVzc2FnZSI6eyJsYW5nIjoiZW4tVVMiLCJ2YWx1ZSI6IlRoZSB0YWJsZSBzcGVjaWZpZWQgYWxyZWFkeSBleGlzdHMuXG5SZXF1ZXN0SWQ6OGU0ZmYxNzEtMDAwMi0wMDBhLTA2OGUtMmVlZmIwMDAwMDAwXG5UaW1lOjIwMjMtMDEtMjJUMTg6MjI6NDYuNTQyODEwM1oifX19",
+                "type": "JSON"
+            },
+            "headers": {
+                "Cache-Control": [
+                    "no-cache"
+                ],
+                "Content-Type": [
+                    "application/json;odata=minimalmetadata;streaming=true;charset=utf-8"
+                ],
+                "Date": [
+                    "Sun, 22 Jan 2023 18:22:45 GMT"
+                ],
+                "Server": [
+                    "Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0"
+                ],
+                "X-Content-Type-Options": [
+                    "nosniff"
+                ],
+                "content-length": [
+                    "201"
+                ],
+                "x-ms-client-request-id": [
+                    "d6729bdd-ac0f-40f7-9f7a-d988cb9db267"
+                ],
+                "x-ms-request-id": [
+                    "8e4ff171-0002-000a-068e-2eefb0000000"
+                ],
+                "x-ms-version": [
+                    "2020-12-06"
+                ]
+            },
+            "reasonPhrase": "Conflict",
+            "statusCode": 409
+        },
+        "timestamp": "2023-01-22 18:22:46.508"
+    },
+    {
+        "httpRequest": {
+            "headers": {
+                "Accept": [
+                    "application/json;odata=minimalmetadata"
+                ],
+                "Authorization": [
+                    "SharedKeyLite orleanstest12:+NUzKA+k3a/YvWf1UWunwiwSQ3zl1PRvMZo+y9mSbAY="
+                ],
+                "DataServiceVersion": [
+                    "3.0"
+                ],
+                "Host": [
+                    "orleanstest12.table.core.windows.net"
+                ],
+                "User-Agent": [
+                    "azsdk-net-Data.Tables/12.6.1 (.NET 7.0.2; Microsoft Windows 10.0.19044)"
+                ],
+                "content-length": [
+                    "0"
+                ],
+                "x-location": [
+                    "C:\\Users\\anna\\orleans\\src\\Azure\\Shared\\Storage\\AzureTableDataManager.cs:529:Azure.Data.Tables;Azure.Data.Tables.TableRestClient.QueryEntitiesAsync(string,System.Nullable`1[int],string,string,Azure.Data.Tables.Models.QueryOptions,System.Threading.CancellationToken):Orleans.Clustering.AzureStorage.AzureTableDataManager`1.<>c__DisplayClass31_1.<ReadTableEntriesAndEtagsAsync>b__1(Int32 counter)"
+                ],
+                "x-ms-client-request-id": [
+                    "c0cb1540-999b-4699-b67d-93bdc5bf5877"
+                ],
+                "x-ms-date": [
+                    "Sun, 22 Jan 2023 18:22:46 GMT"
+                ],
+                "x-ms-return-client-request-id": [
+                    "true"
+                ],
+                "x-ms-version": [
+                    "2020-12-06"
+                ]
+            },
+            "keepAlive": true,
+            "method": "GET",
+            "path": "/OrleansSiloInstances()",
+            "queryStringParameters": {
+                "$filter": [
+                    "PartitionKey eq 'test-e9b07f1c-b842-4f93-b4f3-92d94cd996c5'"
+                ],
+                "$format": [
+                    "application/json;odata=minimalmetadata"
+                ]
+            },
+            "secure": true
+        },
+        "httpResponse": {
+            "body": {
+                "contentType": "application/json; charset=utf-8; odata=minimalmetadata; streaming=true",
+                "json": {
+                    "odata.metadata": "https://orleanstest12.table.core.windows.net/$metadata#OrleansSiloInstances",
+                    "value": [
+                        {
+                            "DeploymentId": "test-e9b07f1c-b842-4f93-b4f3-92d94cd996c5",
+                            "MembershipVersion": "0",
+                            "PartitionKey": "test-e9b07f1c-b842-4f93-b4f3-92d94cd996c5",
+                            "RowKey": "VersionRow",
+                            "Timestamp": "2023-01-22T18:22:46.4672149Z",
+                            "odata.etag": "W/\"datetime'2023-01-22T18%3A22%3A46.4672149Z'\""
+                        }
+                    ]
+                },
+                "rawBytes": "eyJvZGF0YS5tZXRhZGF0YSI6Imh0dHBzOi8vb3JsZWFuc3Rlc3QxMi50YWJsZS5jb3JlLndpbmRvd3MubmV0LyRtZXRhZGF0YSNPcmxlYW5zU2lsb0luc3RhbmNlcyIsInZhbHVlIjpbeyJvZGF0YS5ldGFnIjoiVy9cImRhdGV0aW1lJzIwMjMtMDEtMjJUMTglM0EyMiUzQTQ2LjQ2NzIxNDlaJ1wiIiwiUGFydGl0aW9uS2V5IjoidGVzdC1lOWIwN2YxYy1iODQyLTRmOTMtYjRmMy05MmQ5NGNkOTk2YzUiLCJSb3dLZXkiOiJWZXJzaW9uUm93IiwiVGltZXN0YW1wIjoiMjAyMy0wMS0yMlQxODoyMjo0Ni40NjcyMTQ5WiIsIkRlcGxveW1lbnRJZCI6InRlc3QtZTliMDdmMWMtYjg0Mi00ZjkzLWI0ZjMtOTJkOTRjZDk5NmM1IiwiTWVtYmVyc2hpcFZlcnNpb24iOiIwIn1dfQ==",
+                "type": "JSON"
+            },
+            "headers": {
+                "Cache-Control": [
+                    "no-cache"
+                ],
+                "Content-Type": [
+                    "application/json;odata=minimalmetadata;streaming=true;charset=utf-8"
+                ],
+                "Date": [
+                    "Sun, 22 Jan 2023 18:22:45 GMT"
+                ],
+                "Server": [
+                    "Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0"
+                ],
+                "X-Content-Type-Options": [
+                    "nosniff"
+                ],
+                "content-length": [
+                    "379"
+                ],
+                "x-ms-client-request-id": [
+                    "c0cb1540-999b-4699-b67d-93bdc5bf5877"
+                ],
+                "x-ms-request-id": [
+                    "faa2d613-7002-0010-4c8e-2e8e6f000000"
+                ],
+                "x-ms-version": [
+                    "2020-12-06"
+                ]
+            },
+            "reasonPhrase": "OK",
+            "statusCode": 200
+        },
+        "timestamp": "2023-01-22 18:22:46.602"
+    },
+    {
+        "httpRequest": {
+            "headers": {
+                "Accept": [
+                    "application/json"
+                ],
+                "Authorization": [
+                    "SharedKeyLite orleanstest12:kivej44HqBcQDEP5HxRGOIR8sAcvxvtbYs2DYGl84bg="
+                ],
+                "Content-Length": [
+                    "2215"
+                ],
+                "Content-Type": [
+                    "multipart/mixed; boundary=batch_abbe71bf-46a0-4bb9-a5ee-05bfe48ac789"
+                ],
+                "DataServiceVersion": [
+                    "3.0"
+                ],
+                "Host": [
+                    "orleanstest12.table.core.windows.net"
+                ],
+                "User-Agent": [
+                    "azsdk-net-Data.Tables/12.6.1 (.NET 7.0.2; Microsoft Windows 10.0.19044)"
+                ],
+                "x-location": [
+                    "C:\\Users\\anna\\orleans\\src\\Azure\\Shared\\Storage\\AzureTableDataManager.cs:620:Azure.Data.Tables;Azure.Data.Tables.TableClient.SubmitTransactionAsync(System.Collections.Generic.IEnumerable`1[Azure.Data.Tables.TableTransactionAction],System.Threading.CancellationToken):Orleans.Clustering.AzureStorage.AzureTableDataManager`1.InsertTwoTableEntriesConditionallyAsync[](?)"
+                ],
+                "x-ms-client-request-id": [
+                    "1d9326f6-5b46-43b3-99a5-a764ffa0714a"
+                ],
+                "x-ms-date": [
+                    "Sun, 22 Jan 2023 18:22:46 GMT"
+                ],
+                "x-ms-return-client-request-id": [
+                    "true"
+                ],
+                "x-ms-version": [
+                    "2020-12-06"
+                ]
+            },
+            "keepAlive": true,
+            "method": "POST",
+            "path": "/$batch",
+            "secure": true
+        },
+        "httpResponse": {
+            "body": {
+                "base64Bytes": "LS1iYXRjaHJlc3BvbnNlXzI0ZjZlNjc2LTNjNDItNGVhNC1hOGZiLTBhYjQ0MzAzOWQyZg0KQ29udGVudC1UeXBlOiBtdWx0aXBhcnQvbWl4ZWQ7IGJvdW5kYXJ5PWNoYW5nZXNldHJlc3BvbnNlXzliNTgwNTkzLTg0ZTktNDI0NC05OTNlLTMzNDg5Mzg0ODcyOA0KDQotLWNoYW5nZXNldHJlc3BvbnNlXzliNTgwNTkzLTg0ZTktNDI0NC05OTNlLTMzNDg5Mzg0ODcyOA0KQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9odHRwDQpDb250ZW50LVRyYW5zZmVyLUVuY29kaW5nOiBiaW5hcnkNCg0KSFRUUC8xLjEgMjA0IE5vIENvbnRlbnQNClgtQ29udGVudC1UeXBlLU9wdGlvbnM6IG5vc25pZmYNCkNhY2hlLUNvbnRyb2w6IG5vLWNhY2hlDQpQcmVmZXJlbmNlLUFwcGxpZWQ6IHJldHVybi1uby1jb250ZW50DQpEYXRhU2VydmljZVZlcnNpb246IDMuMDsNCkxvY2F0aW9uOiBodHRwczovL29ybGVhbnN0ZXN0MTIudGFibGUuY29yZS53aW5kb3dzLm5ldC9PcmxlYW5zU2lsb0luc3RhbmNlcyhQYXJ0aXRpb25LZXk9J3Rlc3QtZTliMDdmMWMtYjg0Mi00ZjkzLWI0ZjMtOTJkOTRjZDk5NmM1JyxSb3dLZXk9JzEyNy4wLjAuMS0xMjM0NS0xJykNCkRhdGFTZXJ2aWNlSWQ6IGh0dHBzOi8vb3JsZWFuc3Rlc3QxMi50YWJsZS5jb3JlLndpbmRvd3MubmV0L09ybGVhbnNTaWxvSW5zdGFuY2VzKFBhcnRpdGlvbktleT0ndGVzdC1lOWIwN2YxYy1iODQyLTRmOTMtYjRmMy05MmQ5NGNkOTk2YzUnLFJvd0tleT0nMTI3LjAuMC4xLTEyMzQ1LTEnKQ0KRVRhZzogVy8iZGF0ZXRpbWUnMjAyMy0wMS0yMlQxOCUzQTIyJTNBNDYuODY2NDQzOFonIg0KDQoNCi0tY2hhbmdlc2V0cmVzcG9uc2VfOWI1ODA1OTMtODRlOS00MjQ0LTk5M2UtMzM0ODkzODQ4NzI4DQpDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL2h0dHANCkNvbnRlbnQtVHJhbnNmZXItRW5jb2Rpbmc6IGJpbmFyeQ0KDQpIVFRQLzEuMSAyMDQgTm8gQ29udGVudA0KWC1Db250ZW50LVR5cGUtT3B0aW9uczogbm9zbmlmZg0KQ2FjaGUtQ29udHJvbDogbm8tY2FjaGUNCkRhdGFTZXJ2aWNlVmVyc2lvbjogMS4wOw0KRVRhZzogVy8iZGF0ZXRpbWUnMjAyMy0wMS0yMlQxOCUzQTIyJTNBNDYuODY0NTgyMlonIg0KDQoNCi0tY2hhbmdlc2V0cmVzcG9uc2VfOWI1ODA1OTMtODRlOS00MjQ0LTk5M2UtMzM0ODkzODQ4NzI4LS0NCi0tYmF0Y2hyZXNwb25zZV8yNGY2ZTY3Ni0zYzQyLTRlYTQtYThmYi0wYWI0NDMwMzlkMmYtLQ0K",
+                "contentType": "multipart/mixed; boundary=batchresponse_24f6e676-3c42-4ea4-a8fb-0ab443039d2f",
+                "type": "BINARY"
+            },
+            "headers": {
+                "Cache-Control": [
+                    "no-cache"
+                ],
+                "Content-Type": [
+                    "multipart/mixed; boundary=batchresponse_24f6e676-3c42-4ea4-a8fb-0ab443039d2f"
+                ],
+                "Date": [
+                    "Sun, 22 Jan 2023 18:22:46 GMT"
+                ],
+                "Server": [
+                    "Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0"
+                ],
+                "X-Content-Type-Options": [
+                    "nosniff"
+                ],
+                "content-length": [
+                    "1224"
+                ],
+                "injected": [
+                    "true"
+                ],
+                "x-ms-client-request-id": [
+                    "1d9326f6-5b46-43b3-99a5-a764ffa0714a"
+                ],
+                "x-ms-request-id": [
+                    "e9e52b44-2002-0032-558e-2e4b70000000"
+                ],
+                "x-ms-version": [
+                    "2020-12-06"
+                ]
+            },
+            "reasonPhrase": "Accepted",
+            "statusCode": 408
+        },
+        "timestamp": "2023-01-22 18:22:46.836"
+    },
+    {
+        "httpRequest": {
+            "headers": {
+                "Accept": [
+                    "application/json"
+                ],
+                "Authorization": [
+                    "SharedKeyLite orleanstest12:jtTh+0uDuG/vddWb+fD+3uufzmEeqSeyi4sZnxaSgB8="
+                ],
+                "Content-Length": [
+                    "2215"
+                ],
+                "Content-Type": [
+                    "multipart/mixed; boundary=batch_abbe71bf-46a0-4bb9-a5ee-05bfe48ac789"
+                ],
+                "DataServiceVersion": [
+                    "3.0"
+                ],
+                "Host": [
+                    "orleanstest12.table.core.windows.net"
+                ],
+                "User-Agent": [
+                    "azsdk-net-Data.Tables/12.6.1 (.NET 7.0.2; Microsoft Windows 10.0.19044)"
+                ],
+                "x-location": [
+                    "C:\\Users\\anna\\orleans\\src\\Azure\\Shared\\Storage\\AzureTableDataManager.cs:620:Azure.Data.Tables;Azure.Data.Tables.TableClient.SubmitTransactionAsync(System.Collections.Generic.IEnumerable`1[Azure.Data.Tables.TableTransactionAction],System.Threading.CancellationToken):Orleans.Clustering.AzureStorage.AzureTableDataManager`1.InsertTwoTableEntriesConditionallyAsync[](?)"
+                ],
+                "x-ms-client-request-id": [
+                    "1d9326f6-5b46-43b3-99a5-a764ffa0714a"
+                ],
+                "x-ms-date": [
+                    "Sun, 22 Jan 2023 18:22:47 GMT"
+                ],
+                "x-ms-return-client-request-id": [
+                    "true"
+                ],
+                "x-ms-version": [
+                    "2020-12-06"
+                ]
+            },
+            "keepAlive": true,
+            "method": "POST",
+            "path": "/$batch",
+            "secure": true
+        },
+        "httpResponse": {
+            "body": {
+                "base64Bytes": "LS1iYXRjaHJlc3BvbnNlXzllNDI2ZDI5LTYyMmMtNGI2OS05Nzc2LWUxZWMzNWZmMDEwMA0KQ29udGVudC1UeXBlOiBtdWx0aXBhcnQvbWl4ZWQ7IGJvdW5kYXJ5PWNoYW5nZXNldHJlc3BvbnNlXzFmNTUyZDU3LWYyMjctNDY3Yi1iMDZhLWI4MTkyNjUxOTlkZQ0KDQotLWNoYW5nZXNldHJlc3BvbnNlXzFmNTUyZDU3LWYyMjctNDY3Yi1iMDZhLWI4MTkyNjUxOTlkZQ0KQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9odHRwDQpDb250ZW50LVRyYW5zZmVyLUVuY29kaW5nOiBiaW5hcnkNCg0KSFRUUC8xLjEgNDA5IENvbmZsaWN0DQpYLUNvbnRlbnQtVHlwZS1PcHRpb25zOiBub3NuaWZmDQpDYWNoZS1Db250cm9sOiBuby1jYWNoZQ0KRGF0YVNlcnZpY2VWZXJzaW9uOiAzLjA7DQpDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL2pzb247b2RhdGE9bWluaW1hbG1ldGFkYXRhO3N0cmVhbWluZz10cnVlO2NoYXJzZXQ9dXRmLTgNCg0KeyJvZGF0YS5lcnJvciI6eyJjb2RlIjoiRW50aXR5QWxyZWFkeUV4aXN0cyIsIm1lc3NhZ2UiOnsibGFuZyI6ImVuLVVTIiwidmFsdWUiOiIwOlRoZSBzcGVjaWZpZWQgZW50aXR5IGFscmVhZHkgZXhpc3RzLlxuUmVxdWVzdElkOjY0ODdmYjY4LTUwMDItMDAzOC0zZjhlLTJlZWZjNzAwMDAwMFxuVGltZToyMDIzLTAxLTIyVDE4OjIyOjQ3LjY5Njk0NDFaIn19fQ0KLS1jaGFuZ2VzZXRyZXNwb25zZV8xZjU1MmQ1Ny1mMjI3LTQ2N2ItYjA2YS1iODE5MjY1MTk5ZGUtLQ0KLS1iYXRjaHJlc3BvbnNlXzllNDI2ZDI5LTYyMmMtNGI2OS05Nzc2LWUxZWMzNWZmMDEwMC0tDQo=",
+                "contentType": "multipart/mixed; boundary=batchresponse_9e426d29-622c-4b69-9776-e1ec35ff0100",
+                "type": "BINARY"
+            },
+            "headers": {
+                "Cache-Control": [
+                    "no-cache"
+                ],
+                "Content-Type": [
+                    "multipart/mixed; boundary=batchresponse_9e426d29-622c-4b69-9776-e1ec35ff0100"
+                ],
+                "Date": [
+                    "Sun, 22 Jan 2023 18:22:47 GMT"
+                ],
+                "Server": [
+                    "Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0"
+                ],
+                "X-Content-Type-Options": [
+                    "nosniff"
+                ],
+                "content-length": [
+                    "794"
+                ],
+                "x-ms-client-request-id": [
+                    "1d9326f6-5b46-43b3-99a5-a764ffa0714a"
+                ],
+                "x-ms-request-id": [
+                    "6487fb68-5002-0038-3f8e-2eefc7000000"
+                ],
+                "x-ms-version": [
+                    "2020-12-06"
+                ]
+            },
+            "reasonPhrase": "Accepted",
+            "statusCode": 202
+        },
+        "timestamp": "2023-01-22 18:22:47.665"
+    },
+    {
+        "httpRequest": {
+            "headers": {
+                "Accept": [
+                    "application/json;odata=minimalmetadata"
+                ],
+                "Authorization": [
+                    "SharedKeyLite orleanstest12:pN0Ot0a4bPISxE8weq/F3Tqp6ZZe57mLM7myD4bCoPQ="
+                ],
+                "DataServiceVersion": [
+                    "3.0"
+                ],
+                "Host": [
+                    "orleanstest12.table.core.windows.net"
+                ],
+                "User-Agent": [
+                    "azsdk-net-Data.Tables/12.6.1 (.NET 7.0.2; Microsoft Windows 10.0.19044)"
+                ],
+                "content-length": [
+                    "0"
+                ],
+                "x-location": [
+                    "C:\\Users\\anna\\orleans\\src\\Azure\\Shared\\Storage\\AzureTableDataManager.cs:529:Azure.Data.Tables;Azure.Data.Tables.TableRestClient.QueryEntitiesAsync(string,System.Nullable`1[int],string,string,Azure.Data.Tables.Models.QueryOptions,System.Threading.CancellationToken):Orleans.Clustering.AzureStorage.AzureTableDataManager`1.<>c__DisplayClass31_1.<ReadTableEntriesAndEtagsAsync>b__1(Int32 counter)"
+                ],
+                "x-ms-client-request-id": [
+                    "43ab56f4-0d2a-466a-bdbc-ed5254888852"
+                ],
+                "x-ms-date": [
+                    "Sun, 22 Jan 2023 18:22:47 GMT"
+                ],
+                "x-ms-return-client-request-id": [
+                    "true"
+                ],
+                "x-ms-version": [
+                    "2020-12-06"
+                ]
+            },
+            "keepAlive": true,
+            "method": "GET",
+            "path": "/OrleansSiloInstances()",
+            "queryStringParameters": {
+                "$filter": [
+                    "PartitionKey eq 'test-e9b07f1c-b842-4f93-b4f3-92d94cd996c5'"
+                ],
+                "$format": [
+                    "application/json;odata=minimalmetadata"
+                ]
+            },
+            "secure": true
+        },
+        "httpResponse": {
+            "body": {
+                "contentType": "application/json; charset=utf-8; odata=minimalmetadata; streaming=true",
+                "json": {
+                    "odata.metadata": "https://orleanstest12.table.core.windows.net/$metadata#OrleansSiloInstances",
+                    "value": [
+                        {
+                            "Address": "127.0.0.1",
+                            "DeploymentId": "test-e9b07f1c-b842-4f93-b4f3-92d94cd996c5",
+                            "FaultZone": "0",
+                            "Generation": "1",
+                            "HostName": "cloudtest-win10",
+                            "IAmAliveTime": "2023-01-22 18:22:46.000 GMT",
+                            "InstanceName": "TestSiloName",
+                            "PartitionKey": "test-e9b07f1c-b842-4f93-b4f3-92d94cd996c5",
+                            "Port": "12345",
+                            "ProxyPort": "12345",
+                            "RowKey": "127.0.0.1-12345-1",
+                            "SiloName": "TestSiloName",
+                            "StartTime": "2023-01-22 18:22:46.000 GMT",
+                            "Status": "Joining",
+                            "SuspectingSilos": "",
+                            "SuspectingTimes": "",
+                            "Timestamp": "2023-01-22T18:22:46.8664438Z",
+                            "UpdateZone": "0",
+                            "odata.etag": "W/\"datetime'2023-01-22T18%3A22%3A46.8664438Z'\""
+                        },
+                        {
+                            "DeploymentId": "test-e9b07f1c-b842-4f93-b4f3-92d94cd996c5",
+                            "MembershipVersion": "1",
+                            "PartitionKey": "test-e9b07f1c-b842-4f93-b4f3-92d94cd996c5",
+                            "RowKey": "VersionRow",
+                            "Timestamp": "2023-01-22T18:22:46.8645822Z",
+                            "odata.etag": "W/\"datetime'2023-01-22T18%3A22%3A46.8645822Z'\""
+                        }
+                    ]
+                },
+                "rawBytes": "eyJvZGF0YS5tZXRhZGF0YSI6Imh0dHBzOi8vb3JsZWFuc3Rlc3QxMi50YWJsZS5jb3JlLndpbmRvd3MubmV0LyRtZXRhZGF0YSNPcmxlYW5zU2lsb0luc3RhbmNlcyIsInZhbHVlIjpbeyJvZGF0YS5ldGFnIjoiVy9cImRhdGV0aW1lJzIwMjMtMDEtMjJUMTglM0EyMiUzQTQ2Ljg2NjQ0MzhaJ1wiIiwiUGFydGl0aW9uS2V5IjoidGVzdC1lOWIwN2YxYy1iODQyLTRmOTMtYjRmMy05MmQ5NGNkOTk2YzUiLCJSb3dLZXkiOiIxMjcuMC4wLjEtMTIzNDUtMSIsIlRpbWVzdGFtcCI6IjIwMjMtMDEtMjJUMTg6MjI6NDYuODY2NDQzOFoiLCJEZXBsb3ltZW50SWQiOiJ0ZXN0LWU5YjA3ZjFjLWI4NDItNGY5My1iNGYzLTkyZDk0Y2Q5OTZjNSIsIkFkZHJlc3MiOiIxMjcuMC4wLjEiLCJQb3J0IjoiMTIzNDUiLCJHZW5lcmF0aW9uIjoiMSIsIkhvc3ROYW1lIjoiY2xvdWR0ZXN0LXdpbjEwIiwiU3RhdHVzIjoiSm9pbmluZyIsIlByb3h5UG9ydCI6IjEyMzQ1IiwiU2lsb05hbWUiOiJUZXN0U2lsb05hbWUiLCJJbnN0YW5jZU5hbWUiOiJUZXN0U2lsb05hbWUiLCJVcGRhdGVab25lIjoiMCIsIkZhdWx0Wm9uZSI6IjAiLCJTdXNwZWN0aW5nU2lsb3MiOiIiLCJTdXNwZWN0aW5nVGltZXMiOiIiLCJTdGFydFRpbWUiOiIyMDIzLTAxLTIyIDE4OjIyOjQ2LjAwMCBHTVQiLCJJQW1BbGl2ZVRpbWUiOiIyMDIzLTAxLTIyIDE4OjIyOjQ2LjAwMCBHTVQifSx7Im9kYXRhLmV0YWciOiJXL1wiZGF0ZXRpbWUnMjAyMy0wMS0yMlQxOCUzQTIyJTNBNDYuODY0NTgyMlonXCIiLCJQYXJ0aXRpb25LZXkiOiJ0ZXN0LWU5YjA3ZjFjLWI4NDItNGY5My1iNGYzLTkyZDk0Y2Q5OTZjNSIsIlJvd0tleSI6IlZlcnNpb25Sb3ciLCJUaW1lc3RhbXAiOiIyMDIzLTAxLTIyVDE4OjIyOjQ2Ljg2NDU4MjJaIiwiRGVwbG95bWVudElkIjoidGVzdC1lOWIwN2YxYy1iODQyLTRmOTMtYjRmMy05MmQ5NGNkOTk2YzUiLCJNZW1iZXJzaGlwVmVyc2lvbiI6IjEifV19",
+                "type": "JSON"
+            },
+            "headers": {
+                "Cache-Control": [
+                    "no-cache"
+                ],
+                "Content-Type": [
+                    "application/json;odata=minimalmetadata;streaming=true;charset=utf-8"
+                ],
+                "Date": [
+                    "Sun, 22 Jan 2023 18:22:47 GMT"
+                ],
+                "Server": [
+                    "Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0"
+                ],
+                "X-Content-Type-Options": [
+                    "nosniff"
+                ],
+                "content-length": [
+                    "975"
+                ],
+                "x-ms-client-request-id": [
+                    "43ab56f4-0d2a-466a-bdbc-ed5254888852"
+                ],
+                "x-ms-request-id": [
+                    "97634a0a-8002-002b-378e-2ecbcb000000"
+                ],
+                "x-ms-version": [
+                    "2020-12-06"
+                ]
+            },
+            "reasonPhrase": "OK",
+            "statusCode": 200
+        },
+        "timestamp": "2023-01-22 18:22:47.743"
+    },
+    {
+        "httpRequest": {
+            "headers": {
+                "Accept": [
+                    "application/json"
+                ],
+                "Authorization": [
+                    "SharedKeyLite orleanstest12:jtTh+0uDuG/vddWb+fD+3uufzmEeqSeyi4sZnxaSgB8="
+                ],
+                "Content-Length": [
+                    "1321"
+                ],
+                "Content-Type": [
+                    "multipart/mixed; boundary=batch_9275def6-4ed8-45a8-a530-8a80de024778"
+                ],
+                "DataServiceVersion": [
+                    "3.0"
+                ],
+                "Host": [
+                    "orleanstest12.table.core.windows.net"
+                ],
+                "User-Agent": [
+                    "azsdk-net-Data.Tables/12.6.1 (.NET 7.0.2; Microsoft Windows 10.0.19044)"
+                ],
+                "x-location": [
+                    "C:\\Users\\anna\\orleans\\src\\Azure\\Shared\\Storage\\AzureTableDataManager.cs:483:Azure.Data.Tables;Azure.Data.Tables.TableClient.SubmitTransactionAsync(System.Collections.Generic.IEnumerable`1[Azure.Data.Tables.TableTransactionAction],System.Threading.CancellationToken):Orleans.Clustering.AzureStorage.AzureTableDataManager`1.DeleteTableEntriesAsync[](?)"
+                ],
+                "x-ms-client-request-id": [
+                    "6ee2a846-ef42-47f6-ac58-78f05e863a3d"
+                ],
+                "x-ms-date": [
+                    "Sun, 22 Jan 2023 18:22:47 GMT"
+                ],
+                "x-ms-return-client-request-id": [
+                    "true"
+                ],
+                "x-ms-version": [
+                    "2020-12-06"
+                ]
+            },
+            "keepAlive": true,
+            "method": "POST",
+            "path": "/$batch",
+            "secure": true
+        },
+        "httpResponse": {
+            "body": {
+                "base64Bytes": "LS1iYXRjaHJlc3BvbnNlX2VlM2QwZDY1LTAzYjctNDAyMi05MTE1LTJmMmFkNjI3OWM0YQ0KQ29udGVudC1UeXBlOiBtdWx0aXBhcnQvbWl4ZWQ7IGJvdW5kYXJ5PWNoYW5nZXNldHJlc3BvbnNlXzY4Y2U1MDE4LWQ1YWUtNDBhMC05NjQ4LTBhOWM4MGU3YjgzZQ0KDQotLWNoYW5nZXNldHJlc3BvbnNlXzY4Y2U1MDE4LWQ1YWUtNDBhMC05NjQ4LTBhOWM4MGU3YjgzZQ0KQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9odHRwDQpDb250ZW50LVRyYW5zZmVyLUVuY29kaW5nOiBiaW5hcnkNCg0KSFRUUC8xLjEgMjA0IE5vIENvbnRlbnQNClgtQ29udGVudC1UeXBlLU9wdGlvbnM6IG5vc25pZmYNCkNhY2hlLUNvbnRyb2w6IG5vLWNhY2hlDQpEYXRhU2VydmljZVZlcnNpb246IDEuMDsNCg0KDQotLWNoYW5nZXNldHJlc3BvbnNlXzY4Y2U1MDE4LWQ1YWUtNDBhMC05NjQ4LTBhOWM4MGU3YjgzZQ0KQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9odHRwDQpDb250ZW50LVRyYW5zZmVyLUVuY29kaW5nOiBiaW5hcnkNCg0KSFRUUC8xLjEgMjA0IE5vIENvbnRlbnQNClgtQ29udGVudC1UeXBlLU9wdGlvbnM6IG5vc25pZmYNCkNhY2hlLUNvbnRyb2w6IG5vLWNhY2hlDQpEYXRhU2VydmljZVZlcnNpb246IDEuMDsNCg0KDQotLWNoYW5nZXNldHJlc3BvbnNlXzY4Y2U1MDE4LWQ1YWUtNDBhMC05NjQ4LTBhOWM4MGU3YjgzZS0tDQotLWJhdGNocmVzcG9uc2VfZWUzZDBkNjUtMDNiNy00MDIyLTkxMTUtMmYyYWQ2Mjc5YzRhLS0NCg==",
+                "contentType": "multipart/mixed; boundary=batchresponse_ee3d0d65-03b7-4022-9115-2f2ad6279c4a",
+                "type": "BINARY"
+            },
+            "headers": {
+                "Cache-Control": [
+                    "no-cache"
+                ],
+                "Content-Type": [
+                    "multipart/mixed; boundary=batchresponse_ee3d0d65-03b7-4022-9115-2f2ad6279c4a"
+                ],
+                "Date": [
+                    "Sun, 22 Jan 2023 18:22:47 GMT"
+                ],
+                "Server": [
+                    "Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0"
+                ],
+                "X-Content-Type-Options": [
+                    "nosniff"
+                ],
+                "content-length": [
+                    "748"
+                ],
+                "x-ms-client-request-id": [
+                    "6ee2a846-ef42-47f6-ac58-78f05e863a3d"
+                ],
+                "x-ms-request-id": [
+                    "7897f7c1-a002-0095-0a8e-2ea3b2000000"
+                ],
+                "x-ms-version": [
+                    "2020-12-06"
+                ]
+            },
+            "reasonPhrase": "Accepted",
+            "statusCode": 202
+        },
+        "timestamp": "2023-01-22 18:22:47.852"
+    }
+]

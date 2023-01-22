@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="741a60e6-9c88-43f0-af33-74ef73c6fe5b" name="anna@cloudtest-win10 2023-01-22 19:07:30" runUser="cloudtest-win10\anna" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2023-01-22T19:07:30.6758813+00:00" queuing="2023-01-22T19:07:30.6758819+00:00" start="2023-01-22T19:07:21.7858911+00:00" finish="2023-01-22T19:07:30.7159842+00:00" />
+  <TestSettings name="default" id="ae3c2ad8-e21b-4815-ada0-90c6464a6286">
+    <Deployment runDeploymentRoot="anna_cloudtest-win10_2023-01-22_19_07_30" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="e6a41636-10ae-4641-a422-544156ab0cb9" testId="25cf1ab5-8c91-2cb3-44d4-300ca8f4cbf6" testName="Tester.AzureUtils.AzureMembershipTableTests.MembershipTable_Azure_UpdateRowInParallel" computerName="cloudtest-win10" duration="00:00:03.0036778" startTime="2023-01-22T19:07:30.3561176+00:00" endTime="2023-01-22T19:07:30.3561663+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e6a41636-10ae-4641-a422-544156ab0cb9">
+      <Output>
+        <ErrorInfo>
+          <Message>System.InvalidOperationException : Sequence contains no matching element</Message>
+          <StackTrace>   at System.Linq.ThrowHelper.ThrowNoMatchException()&#xD;
+   at System.Linq.Enumerable.Single[TSource](IEnumerable`1 source, Func`2 predicate)&#xD;
+   at UnitTests.MembershipTests.MembershipTableTestsBase.MembershipTable_UpdateRowInParallel(Boolean extendedProtocol) in C:\Users\anna\orleans\test\TesterInternal\MembershipTests\MembershipTableTestsBase.cs:line 368&#xD;
+   at Tester.AzureUtils.AzureMembershipTableTests.MembershipTable_Azure_UpdateRowInParallel() in C:\Users\anna\orleans\test\Extensions\TesterAzureUtils\AzureMembershipTableTests.cs:line 100&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="Tester.AzureUtils.AzureMembershipTableTests.MembershipTable_Azure_UpdateRowInParallel" storage="c:\users\anna\orleans\test\extensions\testerazureutils\bin\debug\net7.0\tester.azureutils.dll" id="25cf1ab5-8c91-2cb3-44d4-300ca8f4cbf6">
+      <Execution id="e6a41636-10ae-4641-a422-544156ab0cb9" />
+      <TestMethod codeBase="C:\Users\anna\orleans\test\Extensions\TesterAzureUtils\bin\Debug\net7.0\Tester.AzureUtils.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Tester.AzureUtils.AzureMembershipTableTests" name="MembershipTable_Azure_UpdateRowInParallel" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="25cf1ab5-8c91-2cb3-44d4-300ca8f4cbf6" executionId="e6a41636-10ae-4641-a422-544156ab0cb9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="1" executed="1" passed="0" failed="1" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.4.5+1caef2f33e (64-bit .NET 7.0.2)&#xD;
+[xUnit.net 00:00:01.26]   Discovering: Tester.AzureUtils (method display = ClassAndMethod, method display options = None)&#xD;
+[xUnit.net 00:00:01.48]   Discovered:  Tester.AzureUtils (found 246 test cases)&#xD;
+[xUnit.net 00:00:01.49]   Starting:    Tester.AzureUtils (parallel test collections = off, max threads = 4)&#xD;
+[xUnit.net 00:00:05.56]       System.InvalidOperationException : Sequence contains no matching element&#xD;
+[xUnit.net 00:00:05.57]       Stack Trace:&#xD;
+[xUnit.net 00:00:05.57]            at System.Linq.ThrowHelper.ThrowNoMatchException()&#xD;
+[xUnit.net 00:00:05.57]            at System.Linq.Enumerable.Single[TSource](IEnumerable`1 source, Func`2 predicate)&#xD;
+[xUnit.net 00:00:05.57]         C:\Users\anna\orleans\test\TesterInternal\MembershipTests\MembershipTableTestsBase.cs(368,0): at UnitTests.MembershipTests.MembershipTableTestsBase.MembershipTable_UpdateRowInParallel(Boolean extendedProtocol)&#xD;
+[xUnit.net 00:00:05.57]         C:\Users\anna\orleans\test\Extensions\TesterAzureUtils\AzureMembershipTableTests.cs(100,0): at Tester.AzureUtils.AzureMembershipTableTests.MembershipTable_Azure_UpdateRowInParallel()&#xD;
+[xUnit.net 00:00:05.57]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:05.60]   Finished:    Tester.AzureUtils&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="cloudtest-win10" outcome="Min" timestamp="2023-01-22T19:07:30.3510290+00:00">
+        <Text>[xUnit.net 00:00:05.56]     Tester.AzureUtils.AzureMembershipTableTests.MembershipTable_Azure_UpdateRowInParallel [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="cloudtest-win10" outcome="Warning" timestamp="2023-01-22T19:07:30.5223243+00:00">
+        <Text>Data collector 'Blame' message: All tests finished running, Sequence file will not be generated.</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="4aff9948-39a5-4db4-a1c2-a4523f2ef702" name="anna@cloudtest-win10 2023-01-22 18:29:58" runUser="cloudtest-win10\anna" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2023-01-22T18:29:58.6556458+00:00" queuing="2023-01-22T18:29:58.6556465+00:00" start="2023-01-22T18:29:41.4396739+00:00" finish="2023-01-22T18:29:58.6972797+00:00" />
+  <TestSettings name="default" id="8aa7200e-a714-4e75-8c93-ddf1b62ed520">
+    <Deployment runDeploymentRoot="anna_cloudtest-win10_2023-01-22_18_29_58" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="cc343079-8382-4373-9875-180bac08658d" testId="308bcf34-689e-c2f1-8dfd-270dc1dba339" testName="Tester.AzureUtils.AzureMembershipTableTests.MembershipTable_Azure_UpdateRow" computerName="cloudtest-win10" duration="00:00:11.3979559" startTime="2023-01-22T18:29:58.3362738+00:00" endTime="2023-01-22T18:29:58.3363180+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="cc343079-8382-4373-9875-180bac08658d">
+      <Output>
+        <ErrorInfo>
+          <Message>System.AggregateException : One or more errors occurred. (0:The specified resource does not exist.
+RequestId:5370a707-e002-004f-808f-2e3a53000000
+Time:2023-01-22T18:29:58.3403217Z
+ The index of the entity that caused the error can be found in FailedTransactionActionIndex.&#xD;
+Status: 404 (Not Found)&#xD;
+ErrorCode: ResourceNotFound&#xD;
+&#xD;
+Additional Information:&#xD;
+FailedEntity: 0&#xD;
+&#xD;
+Content:&#xD;
+{"odata.error":{"code":"ResourceNotFound","message":{"lang":"en-US","value":"0:The specified resource does not exist.\nRequestId:5370a707-e002-004f-808f-2e3a53000000\nTime:2023-01-22T18:29:58.3403217Z"}}}&#xD;
+&#xD;
+Headers:&#xD;
+X-Content-Type-Options: REDACTED&#xD;
+Cache-Control: no-cache&#xD;
+DataServiceVersion: 3.0;&#xD;
+Content-Type: application/json;odata=minimalmetadata;streaming=true;charset=utf-8&#xD;
+)&#xD;
+---- Azure.Data.Tables.TableTransactionFailedException : 0:The specified resource does not exist.
+RequestId:5370a707-e002-004f-808f-2e3a53000000
+Time:2023-01-22T18:29:58.3403217Z
+ The index of the entity that caused the error can be found in FailedTransactionActionIndex.&#xD;
+Status: 404 (Not Found)&#xD;
+ErrorCode: ResourceNotFound&#xD;
+&#xD;
+Additional Information:&#xD;
+FailedEntity: 0&#xD;
+&#xD;
+Content:&#xD;
+{"odata.error":{"code":"ResourceNotFound","message":{"lang":"en-US","value":"0:The specified resource does not exist.\nRequestId:5370a707-e002-004f-808f-2e3a53000000\nTime:2023-01-22T18:29:58.3403217Z"}}}&#xD;
+&#xD;
+Headers:&#xD;
+X-Content-Type-Options: REDACTED&#xD;
+Cache-Control: no-cache&#xD;
+DataServiceVersion: 3.0;&#xD;
+Content-Type: application/json;odata=minimalmetadata;streaming=true;charset=utf-8&#xD;
+</Message>
+          <StackTrace>   at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)&#xD;
+   at System.Threading.Tasks.Task.Wait(Int32 millisecondsTimeout, CancellationToken cancellationToken)&#xD;
+   at System.Threading.Tasks.Task.Wait()&#xD;
+   at UnitTests.MembershipTests.MembershipTableTestsBase.Dispose() in C:\Users\anna\orleans\test\TesterInternal\MembershipTests\MembershipTableTestsBase.cs:line 85&#xD;
+   at ReflectionAbstractionExtensions.DisposeTestClass(ITest test, Object testClass, IMessageBus messageBus, ExecutionTimer timer, CancellationTokenSource cancellationTokenSource) in /_/src/xunit.execution/Extensions/ReflectionAbstractionExtensions.cs:line 79&#xD;
+----- Inner Stack Trace -----&#xD;
+   at Azure.Data.Tables.TableRestClient.SendBatchRequestAsync(HttpMessage message, CancellationToken cancellationToken)&#xD;
+   at Azure.Data.Tables.TableClient.SubmitTransactionInternalAsync(IEnumerable`1 transactionalBatch, Guid batchId, Guid changesetId, Boolean async, CancellationToken cancellationToken)&#xD;
+   at Azure.Data.Tables.TableClient.SubmitTransactionAsync(IEnumerable`1 transactionActions, CancellationToken cancellationToken)&#xD;
+   at Orleans.Clustering.AzureStorage.AzureTableDataManager`1.DeleteTableEntriesAsync(List`1 collection) in C:\Users\anna\orleans\src\Azure\Shared\Storage\AzureTableDataManager.cs:line 483&#xD;
+   at Orleans.AzureUtils.OrleansSiloInstanceManager.DeleteEntriesBatch(List`1 entriesList) in C:\Users\anna\orleans\src\Azure\Orleans.Clustering.AzureStorage\OrleansSiloInstanceManager.cs:line 197&#xD;
+   at Orleans.AzureUtils.OrleansSiloInstanceManager.DeleteTableEntries(String clusterId) in C:\Users\anna\orleans\src\Azure\Orleans.Clustering.AzureStorage\OrleansSiloInstanceManager.cs:line 177</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="Tester.AzureUtils.AzureMembershipTableTests.MembershipTable_Azure_UpdateRow" storage="c:\users\anna\orleans\test\extensions\testerazureutils\bin\debug\net7.0\tester.azureutils.dll" id="308bcf34-689e-c2f1-8dfd-270dc1dba339">
+      <Execution id="cc343079-8382-4373-9875-180bac08658d" />
+      <TestMethod codeBase="C:\Users\anna\orleans\test\Extensions\TesterAzureUtils\bin\Debug\net7.0\Tester.AzureUtils.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Tester.AzureUtils.AzureMembershipTableTests" name="MembershipTable_Azure_UpdateRow" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="308bcf34-689e-c2f1-8dfd-270dc1dba339" executionId="cc343079-8382-4373-9875-180bac08658d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="1" executed="1" passed="0" failed="1" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.4.5+1caef2f33e (64-bit .NET 7.0.2)&#xD;
+[xUnit.net 00:00:01.26]   Discovering: Tester.AzureUtils (method display = ClassAndMethod, method display options = None)&#xD;
+[xUnit.net 00:00:01.48]   Discovered:  Tester.AzureUtils (found 246 test cases)&#xD;
+[xUnit.net 00:00:01.49]   Starting:    Tester.AzureUtils (parallel test collections = off, max threads = 4)&#xD;
+[xUnit.net 00:00:13.93]       System.AggregateException : One or more errors occurred. (0:The specified resource does not exist.
+RequestId:5370a707-e002-004f-808f-2e3a53000000
+Time:2023-01-22T18:29:58.3403217Z
+ The index of the entity that caused the error can be found in FailedTransactionActionIndex.&#xD;
+[xUnit.net 00:00:13.93]       Status: 404 (Not Found)&#xD;
+[xUnit.net 00:00:13.93]       ErrorCode: ResourceNotFound&#xD;
+[xUnit.net 00:00:13.93]       &#xD;
+[xUnit.net 00:00:13.93]       Additional Information:&#xD;
+[xUnit.net 00:00:13.93]       FailedEntity: 0&#xD;
+[xUnit.net 00:00:13.93]       &#xD;
+[xUnit.net 00:00:13.93]       Content:&#xD;
+[xUnit.net 00:00:13.93]       {"odata.error":{"code":"ResourceNotFound","message":{"lang":"en-US","value":"0:The specified resource does not exist.\nRequestId:5370a707-e002-004f-808f-2e3a53000000\nTime:2023-01-22T18:29:58.3403217Z"}}}&#xD;
+[xUnit.net 00:00:13.93]       &#xD;
+[xUnit.net 00:00:13.93]       Headers:&#xD;
+[xUnit.net 00:00:13.93]       X-Content-Type-Options: REDACTED&#xD;
+[xUnit.net 00:00:13.93]       Cache-Control: no-cache&#xD;
+[xUnit.net 00:00:13.93]       DataServiceVersion: 3.0;&#xD;
+[xUnit.net 00:00:13.93]       Content-Type: application/json;odata=minimalmetadata;streaming=true;charset=utf-8&#xD;
+[xUnit.net 00:00:13.93]       )&#xD;
+[xUnit.net 00:00:13.93]       ---- Azure.Data.Tables.TableTransactionFailedException : 0:The specified resource does not exist.
+RequestId:5370a707-e002-004f-808f-2e3a53000000
+Time:2023-01-22T18:29:58.3403217Z
+ The index of the entity that caused the error can be found in FailedTransactionActionIndex.&#xD;
+[xUnit.net 00:00:13.93]       Status: 404 (Not Found)&#xD;
+[xUnit.net 00:00:13.93]       ErrorCode: ResourceNotFound&#xD;
+[xUnit.net 00:00:13.93]       &#xD;
+[xUnit.net 00:00:13.93]       Additional Information:&#xD;
+[xUnit.net 00:00:13.93]       FailedEntity: 0&#xD;
+[xUnit.net 00:00:13.93]       &#xD;
+[xUnit.net 00:00:13.93]       Content:&#xD;
+[xUnit.net 00:00:13.93]       {"odata.error":{"code":"ResourceNotFound","message":{"lang":"en-US","value":"0:The specified resource does not exist.\nRequestId:5370a707-e002-004f-808f-2e3a53000000\nTime:2023-01-22T18:29:58.3403217Z"}}}&#xD;
+[xUnit.net 00:00:13.93]       &#xD;
+[xUnit.net 00:00:13.93]       Headers:&#xD;
+[xUnit.net 00:00:13.93]       X-Content-Type-Options: REDACTED&#xD;
+[xUnit.net 00:00:13.93]       Cache-Control: no-cache&#xD;
+[xUnit.net 00:00:13.93]       DataServiceVersion: 3.0;&#xD;
+[xUnit.net 00:00:13.93]       Content-Type: application/json;odata=minimalmetadata;streaming=true;charset=utf-8&#xD;
+[xUnit.net 00:00:13.93]       &#xD;
+[xUnit.net 00:00:13.93]       Stack Trace:&#xD;
+[xUnit.net 00:00:13.93]            at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)&#xD;
+[xUnit.net 00:00:13.93]            at System.Threading.Tasks.Task.Wait(Int32 millisecondsTimeout, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:13.93]            at System.Threading.Tasks.Task.Wait()&#xD;
+[xUnit.net 00:00:13.93]         C:\Users\anna\orleans\test\TesterInternal\MembershipTests\MembershipTableTestsBase.cs(85,0): at UnitTests.MembershipTests.MembershipTableTestsBase.Dispose()&#xD;
+[xUnit.net 00:00:13.93]         /_/src/xunit.execution/Extensions/ReflectionAbstractionExtensions.cs(79,0): at ReflectionAbstractionExtensions.DisposeTestClass(ITest test, Object testClass, IMessageBus messageBus, ExecutionTimer timer, CancellationTokenSource cancellationTokenSource)&#xD;
+[xUnit.net 00:00:13.93]         ----- Inner Stack Trace -----&#xD;
+[xUnit.net 00:00:13.93]            at Azure.Data.Tables.TableRestClient.SendBatchRequestAsync(HttpMessage message, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:13.93]            at Azure.Data.Tables.TableClient.SubmitTransactionInternalAsync(IEnumerable`1 transactionalBatch, Guid batchId, Guid changesetId, Boolean async, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:13.93]            at Azure.Data.Tables.TableClient.SubmitTransactionAsync(IEnumerable`1 transactionActions, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:13.93]         C:\Users\anna\orleans\src\Azure\Shared\Storage\AzureTableDataManager.cs(483,0): at Orleans.Clustering.AzureStorage.AzureTableDataManager`1.DeleteTableEntriesAsync(List`1 collection)&#xD;
+[xUnit.net 00:00:13.93]         C:\Users\anna\orleans\src\Azure\Orleans.Clustering.AzureStorage\OrleansSiloInstanceManager.cs(197,0): at Orleans.AzureUtils.OrleansSiloInstanceManager.DeleteEntriesBatch(List`1 entriesList)&#xD;
+[xUnit.net 00:00:13.93]         C:\Users\anna\orleans\src\Azure\Orleans.Clustering.AzureStorage\OrleansSiloInstanceManager.cs(177,0): at Orleans.AzureUtils.OrleansSiloInstanceManager.DeleteTableEntries(String clusterId)&#xD;
+[xUnit.net 00:00:13.97]   Finished:    Tester.AzureUtils&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="cloudtest-win10" outcome="Min" timestamp="2023-01-22T18:29:58.3305605+00:00">
+        <Text>[xUnit.net 00:00:13.93]     Tester.AzureUtils.AzureMembershipTableTests.MembershipTable_Azure_UpdateRow [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="cloudtest-win10" outcome="Warning" timestamp="2023-01-22T18:29:58.5067189+00:00">
+        <Text>Data collector 'Blame' message: All tests finished running, Sequence file will not be generated.</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>
