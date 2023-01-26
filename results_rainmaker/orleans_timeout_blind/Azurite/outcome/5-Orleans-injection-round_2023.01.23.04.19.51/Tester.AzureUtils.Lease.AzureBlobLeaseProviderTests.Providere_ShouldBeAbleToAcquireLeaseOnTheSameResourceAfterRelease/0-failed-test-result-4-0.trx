@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="cb92b213-3a10-4363-9a67-cc3afd0e3ecc" name="anna@cloudtest-win10 2023-01-23 04:22:10" runUser="cloudtest-win10\anna" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2023-01-23T04:22:10.7434441+00:00" queuing="2023-01-23T04:22:10.7434447+00:00" start="2023-01-23T04:22:04.2817793+00:00" finish="2023-01-23T04:22:10.7829950+00:00" />
+  <TestSettings name="default" id="7c8ae034-53d8-4e94-b053-3cc05a834a4e">
+    <Deployment runDeploymentRoot="anna_cloudtest-win10_2023-01-23_04_22_10" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="8545b6bb-b4a4-4887-8761-3692e7adbf2f" testId="52d72771-d83b-d056-c40d-b993264b41a3" testName="Tester.AzureUtils.Lease.AzureBlobLeaseProviderTests.Provider_LifeCycle_Acqurie_Renew_Release_ShouldBeAbleToAcquireLeaseOnTheSameResourceAfterRelease" computerName="cloudtest-win10" duration="00:00:01.6340761" startTime="2023-01-23T04:22:10.4431842+00:00" endTime="2023-01-23T04:22:10.4432304+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8545b6bb-b4a4-4887-8761-3692e7adbf2f">
+      <Output>
+        <ErrorInfo>
+          <Message>Azure.RequestFailedException : The lease ID specified did not match the lease ID for the container or blob.
+RequestId:ca8bcfb9-d164-4e4e-a060-7898d7b05424
+Time:2023-01-23T04:22:10.406Z&#xD;
+Status: 409 (The lease ID specified did not match the lease ID for the container or blob.)&#xD;
+ErrorCode: LeaseIdMismatchWithLeaseOperation&#xD;
+&#xD;
+Content:&#xD;
+&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;
+&lt;Error&gt;
+  &lt;Code&gt;LeaseIdMismatchWithLeaseOperation&lt;/Code&gt;
+  &lt;Message&gt;The lease ID specified did not match the lease ID for the container or blob.
+RequestId:ca8bcfb9-d164-4e4e-a060-7898d7b05424
+Time:2023-01-23T04:22:10.406Z&lt;/Message&gt;
+&lt;/Error&gt;&#xD;
+&#xD;
+Headers:&#xD;
+Server: Azurite-Blob/3.20.1&#xD;
+x-ms-error-code: LeaseIdMismatchWithLeaseOperation&#xD;
+x-ms-request-id: ca8bcfb9-d164-4e4e-a060-7898d7b05424&#xD;
+Date: Mon, 23 Jan 2023 04:22:10 GMT&#xD;
+Keep-Alive: REDACTED&#xD;
+Connection: keep-alive&#xD;
+Content-Type: application/xml&#xD;
+Content-Length: 296&#xD;
+</Message>
+          <StackTrace>   at Azure.Storage.Blobs.BlobRestClient.ReleaseLeaseAsync(String leaseId, Nullable`1 timeout, Nullable`1 ifModifiedSince, Nullable`1 ifUnmodifiedSince, String ifMatch, String ifNoneMatch, String ifTags, CancellationToken cancellationToken)&#xD;
+   at Azure.Storage.Blobs.Specialized.BlobLeaseClient.ReleaseInternal(RequestConditions conditions, Boolean async, CancellationToken cancellationToken)&#xD;
+   at Azure.Storage.Blobs.Specialized.BlobLeaseClient.ReleaseAsync(RequestConditions conditions, CancellationToken cancellationToken)&#xD;
+   at Orleans.LeaseProviders.AzureBlobLeaseProvider.Release(String category, AcquiredLease[] acquiredLeases) in C:\Users\anna\orleans\src\Azure\Orleans.Streaming.AzureStorage\Providers\Lease\AzureBlobLeaseProvider.cs:line 91&#xD;
+   at TestExtensions.Runners.GoldenPathLeaseProviderTestRunner.Provider_LifeCycle_Acqurie_Renew_Release_ShouldBeAbleToAcquireLeaseOnTheSameResourceAfterRelease() in C:\Users\anna\orleans\test\TestInfrastructure\TestExtensions\Runners\GoldenPathLeaseProviderTestRunner.cs:line 126&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="Tester.AzureUtils.Lease.AzureBlobLeaseProviderTests.Provider_LifeCycle_Acqurie_Renew_Release_ShouldBeAbleToAcquireLeaseOnTheSameResourceAfterRelease" storage="c:\users\anna\orleans\test\extensions\testerazureutils\bin\debug\net7.0\tester.azureutils.dll" id="52d72771-d83b-d056-c40d-b993264b41a3">
+      <Execution id="8545b6bb-b4a4-4887-8761-3692e7adbf2f" />
+      <TestMethod codeBase="C:\Users\anna\orleans\test\Extensions\TesterAzureUtils\bin\Debug\net7.0\Tester.AzureUtils.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Tester.AzureUtils.Lease.AzureBlobLeaseProviderTests" name="Provider_LifeCycle_Acqurie_Renew_Release_ShouldBeAbleToAcquireLeaseOnTheSameResourceAfterRelease" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="52d72771-d83b-d056-c40d-b993264b41a3" executionId="8545b6bb-b4a4-4887-8761-3692e7adbf2f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="1" executed="1" passed="0" failed="1" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.4.5+1caef2f33e (64-bit .NET 7.0.2)&#xD;
+[xUnit.net 00:00:01.24]   Discovering: Tester.AzureUtils (method display = ClassAndMethod, method display options = None)&#xD;
+[xUnit.net 00:00:01.45]   Discovered:  Tester.AzureUtils (found 246 test cases)&#xD;
+[xUnit.net 00:00:01.46]   Starting:    Tester.AzureUtils (parallel test collections = off, max threads = 4)&#xD;
+[xUnit.net 00:00:03.18]       Azure.RequestFailedException : The lease ID specified did not match the lease ID for the container or blob.
+RequestId:ca8bcfb9-d164-4e4e-a060-7898d7b05424
+Time:2023-01-23T04:22:10.406Z&#xD;
+[xUnit.net 00:00:03.18]       Status: 409 (The lease ID specified did not match the lease ID for the container or blob.)&#xD;
+[xUnit.net 00:00:03.18]       ErrorCode: LeaseIdMismatchWithLeaseOperation&#xD;
+[xUnit.net 00:00:03.18]       &#xD;
+[xUnit.net 00:00:03.18]       Content:&#xD;
+[xUnit.net 00:00:03.18]       &lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;
+&lt;Error&gt;
+  &lt;Code&gt;LeaseIdMismatchWithLeaseOperation&lt;/Code&gt;
+  &lt;Message&gt;The lease ID specified did not match the lease ID for the container or blob.
+RequestId:ca8bcfb9-d164-4e4e-a060-7898d7b05424
+Time:2023-01-23T04:22:10.406Z&lt;/Message&gt;
+&lt;/Error&gt;&#xD;
+[xUnit.net 00:00:03.18]       &#xD;
+[xUnit.net 00:00:03.18]       Headers:&#xD;
+[xUnit.net 00:00:03.18]       Server: Azurite-Blob/3.20.1&#xD;
+[xUnit.net 00:00:03.18]       x-ms-error-code: LeaseIdMismatchWithLeaseOperation&#xD;
+[xUnit.net 00:00:03.18]       x-ms-request-id: ca8bcfb9-d164-4e4e-a060-7898d7b05424&#xD;
+[xUnit.net 00:00:03.18]       Date: Mon, 23 Jan 2023 04:22:10 GMT&#xD;
+[xUnit.net 00:00:03.18]       Keep-Alive: REDACTED&#xD;
+[xUnit.net 00:00:03.18]       Connection: keep-alive&#xD;
+[xUnit.net 00:00:03.18]       Content-Type: application/xml&#xD;
+[xUnit.net 00:00:03.18]       Content-Length: 296&#xD;
+[xUnit.net 00:00:03.18]       &#xD;
+[xUnit.net 00:00:03.18]       Stack Trace:&#xD;
+[xUnit.net 00:00:03.18]            at Azure.Storage.Blobs.BlobRestClient.ReleaseLeaseAsync(String leaseId, Nullable`1 timeout, Nullable`1 ifModifiedSince, Nullable`1 ifUnmodifiedSince, String ifMatch, String ifNoneMatch, String ifTags, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:03.18]            at Azure.Storage.Blobs.Specialized.BlobLeaseClient.ReleaseInternal(RequestConditions conditions, Boolean async, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:03.18]            at Azure.Storage.Blobs.Specialized.BlobLeaseClient.ReleaseAsync(RequestConditions conditions, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:03.18]         C:\Users\anna\orleans\src\Azure\Orleans.Streaming.AzureStorage\Providers\Lease\AzureBlobLeaseProvider.cs(91,0): at Orleans.LeaseProviders.AzureBlobLeaseProvider.Release(String category, AcquiredLease[] acquiredLeases)&#xD;
+[xUnit.net 00:00:03.18]         C:\Users\anna\orleans\test\TestInfrastructure\TestExtensions\Runners\GoldenPathLeaseProviderTestRunner.cs(126,0): at TestExtensions.Runners.GoldenPathLeaseProviderTestRunner.Provider_LifeCycle_Acqurie_Renew_Release_ShouldBeAbleToAcquireLeaseOnTheSameResourceAfterRelease()&#xD;
+[xUnit.net 00:00:03.18]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:03.22]   Finished:    Tester.AzureUtils&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="cloudtest-win10" outcome="Min" timestamp="2023-01-23T04:22:10.4367953+00:00">
+        <Text>[xUnit.net 00:00:03.18]     Tester.AzureUtils.Lease.AzureBlobLeaseProviderTests.Provider_LifeCycle_Acqurie_Renew_Release_ShouldBeAbleToAcquireLeaseOnTheSameResourceAfterRelease [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="cloudtest-win10" outcome="Warning" timestamp="2023-01-23T04:22:10.5962790+00:00">
+        <Text>Data collector 'Blame' message: All tests finished running, Sequence file will not be generated.</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

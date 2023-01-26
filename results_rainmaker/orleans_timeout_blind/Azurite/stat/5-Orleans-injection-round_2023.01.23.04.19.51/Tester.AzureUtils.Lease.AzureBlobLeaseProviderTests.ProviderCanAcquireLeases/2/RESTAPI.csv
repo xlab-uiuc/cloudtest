@@ -1,0 +1,7 @@
+REST	NUM
+127.0.0.1:10000 PUT Path = /devstoreaccount1/test-blob-container-name status_code = 409 reason_phrase = The specified container already exists. restype=['container']	1
+127.0.0.1:10000 PUT Path = /devstoreaccount1/test-blob-container-name/testleasecategory-ce951a68-3777-4349-b14a-27ee602000b0.json status_code = 201 reason_phrase = Created	1
+127.0.0.1:10000 PUT Path = /devstoreaccount1/test-blob-container-name/testleasecategory-ce951a68-3777-4349-b14a-27ee602000b0.json status_code = 408 reason_phrase = Created injected comp=['lease']	1
+127.0.0.1:10000 PUT Path = /devstoreaccount1/test-blob-container-name/testleasecategory-ce951a68-3777-4349-b14a-27ee602000b0.json status_code = 201 reason_phrase = Created comp=['lease']	1
+127.0.0.1:10000 PUT Path = /devstoreaccount1/test-blob-container-name/testleasecategory-044c3c82-e608-4863-af83-c786572b4048.json status_code = 201 reason_phrase = Created	1
+127.0.0.1:10000 PUT Path = /devstoreaccount1/test-blob-container-name/testleasecategory-044c3c82-e608-4863-af83-c786572b4048.json status_code = 201 reason_phrase = Created comp=['lease']	1

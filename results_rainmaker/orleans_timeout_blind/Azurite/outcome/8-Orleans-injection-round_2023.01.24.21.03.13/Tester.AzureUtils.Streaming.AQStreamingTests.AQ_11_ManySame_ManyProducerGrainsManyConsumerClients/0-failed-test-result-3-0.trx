@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="1d7b452a-84d2-494d-bd3a-3e5d24231199" name="anna@cloudtest-win10 2023-01-24 21:51:04" runUser="cloudtest-win10\anna" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2023-01-24T21:51:04.8608060+00:00" queuing="2023-01-24T21:51:04.8608066+00:00" start="2023-01-24T21:50:10.2024594+00:00" finish="2023-01-24T21:51:04.9008693+00:00" />
+  <TestSettings name="default" id="76cb9059-4061-469a-9697-a41be17fd983">
+    <Deployment runDeploymentRoot="anna_cloudtest-win10_2023-01-24_21_51_04" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="40a37fb8-f402-420e-a60d-134069f3be75" testId="b382e816-0896-59c0-1661-542d1f870d12" testName="Tester.AzureUtils.Streaming.AQStreamingTests.AQ_11_ManySame_ManyProducerGrainsManyConsumerClients" computerName="cloudtest-win10" duration="00:00:31.6974533" startTime="2023-01-24T21:51:04.5454370+00:00" endTime="2023-01-24T21:51:04.5454848+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="40a37fb8-f402-420e-a60d-134069f3be75">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure&#xD;
+Expected: 120&#xD;
+Actual:   123</Message>
+          <StackTrace>   at UnitTests.StreamingTests.SingleStreamTestRunner.CheckCounters(ProducerProxy producer, ConsumerProxy consumer, Boolean assertAreEqual) in C:\Users\anna\orleans\test\TesterInternal\StreamingTests\SingleStreamTestRunner.cs:line 479&#xD;
+   at UnitTests.StreamingTests.SingleStreamTestRunner.BasicTestAsync(Boolean fullTest) in C:\Users\anna\orleans\test\TesterInternal\StreamingTests\SingleStreamTestRunner.cs:line 442&#xD;
+   at UnitTests.StreamingTests.SingleStreamTestRunner.StreamTest_11_ManySame_ManyProducerGrainsManyConsumerClients() in C:\Users\anna\orleans\test\TesterInternal\StreamingTests\SingleStreamTestRunner.cs:line 196&#xD;
+   at Tester.AzureUtils.Streaming.AQStreamingTests.AQ_11_ManySame_ManyProducerGrainsManyConsumerClients() in C:\Users\anna\orleans\test\Extensions\TesterAzureUtils\Streaming\AQStreamingTests.cs:line 158&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="Tester.AzureUtils.Streaming.AQStreamingTests.AQ_11_ManySame_ManyProducerGrainsManyConsumerClients" storage="c:\users\anna\orleans\test\extensions\testerazureutils\bin\debug\net7.0\tester.azureutils.dll" id="b382e816-0896-59c0-1661-542d1f870d12">
+      <Execution id="40a37fb8-f402-420e-a60d-134069f3be75" />
+      <TestMethod codeBase="C:\Users\anna\orleans\test\Extensions\TesterAzureUtils\bin\Debug\net7.0\Tester.AzureUtils.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Tester.AzureUtils.Streaming.AQStreamingTests" name="AQ_11_ManySame_ManyProducerGrainsManyConsumerClients" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="b382e816-0896-59c0-1661-542d1f870d12" executionId="40a37fb8-f402-420e-a60d-134069f3be75" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="1" executed="1" passed="0" failed="1" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.4.5+1caef2f33e (64-bit .NET 7.0.2)&#xD;
+[xUnit.net 00:00:01.26]   Discovering: Tester.AzureUtils (method display = ClassAndMethod, method display options = None)&#xD;
+[xUnit.net 00:00:01.46]   Discovered:  Tester.AzureUtils (found 246 test cases)&#xD;
+[xUnit.net 00:00:01.48]   Starting:    Tester.AzureUtils (parallel test collections = off, max threads = 4)&#xD;
+[xUnit.net 00:00:51.26]       Assert.Equal() Failure&#xD;
+[xUnit.net 00:00:51.26]       Expected: 120&#xD;
+[xUnit.net 00:00:51.26]       Actual:   123&#xD;
+[xUnit.net 00:00:51.26]       Stack Trace:&#xD;
+[xUnit.net 00:00:51.26]         C:\Users\anna\orleans\test\TesterInternal\StreamingTests\SingleStreamTestRunner.cs(479,0): at UnitTests.StreamingTests.SingleStreamTestRunner.CheckCounters(ProducerProxy producer, ConsumerProxy consumer, Boolean assertAreEqual)&#xD;
+[xUnit.net 00:00:51.26]         C:\Users\anna\orleans\test\TesterInternal\StreamingTests\SingleStreamTestRunner.cs(442,0): at UnitTests.StreamingTests.SingleStreamTestRunner.BasicTestAsync(Boolean fullTest)&#xD;
+[xUnit.net 00:00:51.26]         C:\Users\anna\orleans\test\TesterInternal\StreamingTests\SingleStreamTestRunner.cs(196,0): at UnitTests.StreamingTests.SingleStreamTestRunner.StreamTest_11_ManySame_ManyProducerGrainsManyConsumerClients()&#xD;
+[xUnit.net 00:00:51.26]         C:\Users\anna\orleans\test\Extensions\TesterAzureUtils\Streaming\AQStreamingTests.cs(158,0): at Tester.AzureUtils.Streaming.AQStreamingTests.AQ_11_ManySame_ManyProducerGrainsManyConsumerClients()&#xD;
+[xUnit.net 00:00:51.26]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:51.30]   Finished:    Tester.AzureUtils&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="cloudtest-win10" outcome="Min" timestamp="2023-01-24T21:51:04.5397148+00:00">
+        <Text>[xUnit.net 00:00:51.26]     Tester.AzureUtils.Streaming.AQStreamingTests.AQ_11_ManySame_ManyProducerGrainsManyConsumerClients [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="cloudtest-win10" outcome="Warning" timestamp="2023-01-24T21:51:04.7138687+00:00">
+        <Text>Data collector 'Blame' message: All tests finished running, Sequence file will not be generated.</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

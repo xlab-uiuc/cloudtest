@@ -1,0 +1,7 @@
+REST	NUM
+orleanstest12.table.core.windows.net POST Path = /Tables status_code = 409 reason_phrase = Conflict $format=['application/json;odata=minimalmetadata']	1
+orleanstest12.table.core.windows.net POST Path = /GrainDirectory status_code = 204 reason_phrase = No Content $format=['application/json;odata=minimalmetadata']	1
+orleanstest12.table.core.windows.net GET Path = /GrainDirectory(PartitionKey='524cd67bfec9414b952f44dbce76f795',RowKey='user%252fsomeraondomuser_b031398985bb4c0a9c1c335d57aa8b48') status_code = 200 reason_phrase = OK $format=['application/json;odata=minimalmetadata']	1
+orleanstest12.table.core.windows.net GET Path = /GrainDirectory(PartitionKey='524cd67bfec9414b952f44dbce76f795',RowKey='user%252fsomeraondomuser_b031398985bb4c0a9c1c335d57aa8b48') status_code = 408 reason_phrase = OK injected $format=['application/json;odata=minimalmetadata']	1
+orleanstest12.table.core.windows.net GET Path = /GrainDirectory(PartitionKey='524cd67bfec9414b952f44dbce76f795',RowKey='user%252fsomeraondomuser_b031398985bb4c0a9c1c335d57aa8b48') status_code = 200 reason_phrase = OK $format=['application/json;odata=minimalmetadata']	1
+vortex.data.microsoft.com POST Path = /collect/v1 status_code = 200 reason_phrase = OK	1

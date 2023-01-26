@@ -1,0 +1,10 @@
+REST	NUM
+vortex.data.microsoft.com POST Path = /collect/v1 status_code = 200 reason_phrase = OK	1
+orleanstest12.blob.core.windows.net PUT Path = /test-blob-container-name status_code = 409 reason_phrase = The specified container already exists. restype=['container']	1
+orleanstest12.blob.core.windows.net PUT Path = /test-blob-container-name/testleasecategory-05c48bbc-7abf-463e-8328-fd0d0c1c4a45.json status_code = 201 reason_phrase = Created	1
+orleanstest12.blob.core.windows.net PUT Path = /test-blob-container-name/testleasecategory-05c48bbc-7abf-463e-8328-fd0d0c1c4a45.json status_code = 408 reason_phrase = Created injected comp=['lease']	1
+orleanstest12.blob.core.windows.net PUT Path = /test-blob-container-name/testleasecategory-05c48bbc-7abf-463e-8328-fd0d0c1c4a45.json status_code = 201 reason_phrase = Created comp=['lease']	1
+orleanstest12.blob.core.windows.net PUT Path = /test-blob-container-name/testleasecategory-adeded2d-961c-4af6-acd7-04839176658b.json status_code = 201 reason_phrase = Created	1
+orleanstest12.blob.core.windows.net PUT Path = /test-blob-container-name/testleasecategory-adeded2d-961c-4af6-acd7-04839176658b.json status_code = 201 reason_phrase = Created comp=['lease']	1
+orleanstest12.blob.core.windows.net PUT Path = /test-blob-container-name/testleasecategory-05c48bbc-7abf-463e-8328-fd0d0c1c4a45.json status_code = 200 reason_phrase = OK comp=['lease']	1
+orleanstest12.blob.core.windows.net PUT Path = /test-blob-container-name/testleasecategory-adeded2d-961c-4af6-acd7-04839176658b.json status_code = 200 reason_phrase = OK comp=['lease']	1

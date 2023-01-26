@@ -1,0 +1,8 @@
+REST	NUM
+127.0.0.1:10002 POST Path = /devstoreaccount1/Tables status_code = 409 reason_phrase = Conflict $format=['application/json;odata=minimalmetadata']	1
+127.0.0.1:10002 PATCH Path = /devstoreaccount1/OrleansSiloInstances(PartitionKey='test-bf38c018-c868-4c45-9b3e-8d317500bc92',RowKey='127.0.0.1-0-33528749') status_code = 204 reason_phrase = No Content $format=['application/json;odata=minimalmetadata']	1
+127.0.0.1:10002 PATCH Path = /devstoreaccount1/OrleansSiloInstances(PartitionKey='test-bf38c018-c868-4c45-9b3e-8d317500bc92',RowKey='127.0.0.1-0-33528749') status_code = 204 reason_phrase = No Content $format=['application/json;odata=minimalmetadata']	1
+127.0.0.1:10002 GET Path = /devstoreaccount1/OrleansSiloInstances(PartitionKey='test-bf38c018-c868-4c45-9b3e-8d317500bc92',RowKey='127.0.0.1-0-33528749') status_code = 200 reason_phrase = OK $format=['application/json;odata=minimalmetadata']	1
+127.0.0.1:10002 GET Path = /devstoreaccount1/OrleansSiloInstances() status_code = 200 reason_phrase = OK $filter=["PartitionKey eq 'test-bf38c018-c868-4c45-9b3e-8d317500bc92'"] $format=['application/json;odata=minimalmetadata']	1
+127.0.0.1:10002 POST Path = /devstoreaccount1/$batch status_code = 408 reason_phrase = Accepted injected	1
+127.0.0.1:10002 POST Path = /devstoreaccount1/$batch status_code = 202 reason_phrase = Accepted	1

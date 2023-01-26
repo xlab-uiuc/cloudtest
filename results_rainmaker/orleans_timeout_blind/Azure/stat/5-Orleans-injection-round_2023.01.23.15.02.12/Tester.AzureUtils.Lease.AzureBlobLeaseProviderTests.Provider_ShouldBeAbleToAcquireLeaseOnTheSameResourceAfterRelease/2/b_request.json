@@ -1,0 +1,697 @@
+[
+    {
+        "httpRequest": {
+            "headers": {
+                "Accept": [
+                    "application/xml"
+                ],
+                "Authorization": [
+                    "SharedKey orleanstest12:xkP6vSx+bNHjKV+kqPH+W3PfFFMtQED41zvwiJxZV+4="
+                ],
+                "Content-Length": [
+                    "0"
+                ],
+                "Host": [
+                    "orleanstest12.blob.core.windows.net"
+                ],
+                "User-Agent": [
+                    "azsdk-net-Storage.Blobs/12.14.0 (.NET 7.0.2; Microsoft Windows 10.0.19044)"
+                ],
+                "x-location": [
+                    "C:\\Users\\anna\\orleans\\src\\Azure\\Orleans.Streaming.AzureStorage\\Providers\\Lease\\AzureBlobLeaseProvider.cs:37:Azure.Storage.Blobs;Azure.Storage.Blobs.BlobContainerClient.CreateIfNotExistsAsync(Azure.Storage.Blobs.Models.PublicAccessType,System.Collections.Generic.IDictionary`2[string,string],Azure.Storage.Blobs.Models.BlobContainerEncryptionScopeOptions,System.Threading.CancellationToken):Orleans.LeaseProviders.AzureBlobLeaseProvider.InitContainerIfNotExistsAsync(?)"
+                ],
+                "x-ms-client-request-id": [
+                    "a32740cc-a466-4c30-85f8-57ed4f90ee45"
+                ],
+                "x-ms-date": [
+                    "Mon, 23 Jan 2023 15:04:18 GMT"
+                ],
+                "x-ms-return-client-request-id": [
+                    "true"
+                ],
+                "x-ms-version": [
+                    "2021-10-04"
+                ]
+            },
+            "keepAlive": true,
+            "method": "PUT",
+            "path": "/test-blob-container-name",
+            "queryStringParameters": {
+                "restype": [
+                    "container"
+                ]
+            },
+            "secure": true
+        },
+        "httpResponse": {
+            "body": {
+                "contentType": "application/xml",
+                "rawBytes": "77u/PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48RXJyb3I+PENvZGU+Q29udGFpbmVyQWxyZWFkeUV4aXN0czwvQ29kZT48TWVzc2FnZT5UaGUgc3BlY2lmaWVkIGNvbnRhaW5lciBhbHJlYWR5IGV4aXN0cy4KUmVxdWVzdElkOmMyNDE4MjI1LWYwMWUtMDA2Yy0wYzNiLTJmYTA5MDAwMDAwMApUaW1lOjIwMjMtMDEtMjNUMTU6MDQ6MTguNDEyNTM2NFo8L01lc3NhZ2U+PC9FcnJvcj4=",
+                "type": "XML",
+                "xml": "\u00ef\u00bb\u00bf<?xml version=\"1.0\" encoding=\"utf-8\"?><Error><Code>ContainerAlreadyExists</Code><Message>The specified container already exists.\nRequestId:c2418225-f01e-006c-0c3b-2fa090000000\nTime:2023-01-23T15:04:18.4125364Z</Message></Error>"
+            },
+            "headers": {
+                "Content-Length": [
+                    "230"
+                ],
+                "Content-Type": [
+                    "application/xml"
+                ],
+                "Date": [
+                    "Mon, 23 Jan 2023 15:04:17 GMT"
+                ],
+                "Server": [
+                    "Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0"
+                ],
+                "x-ms-client-request-id": [
+                    "a32740cc-a466-4c30-85f8-57ed4f90ee45"
+                ],
+                "x-ms-error-code": [
+                    "ContainerAlreadyExists"
+                ],
+                "x-ms-request-id": [
+                    "c2418225-f01e-006c-0c3b-2fa090000000"
+                ],
+                "x-ms-version": [
+                    "2021-10-04"
+                ]
+            },
+            "reasonPhrase": "The specified container already exists.",
+            "statusCode": 409
+        },
+        "timestamp": "2023-01-23 15:04:18.378"
+    },
+    {
+        "httpRequest": {
+            "headers": {
+                "Accept": [
+                    "application/xml"
+                ],
+                "Authorization": [
+                    "SharedKey orleanstest12:gK4dzUtMcZa9CtRr+MCcItuDCQX/PTLyoXEheLDtj/c="
+                ],
+                "Content-Length": [
+                    "4"
+                ],
+                "Content-Type": [
+                    "application/octet-stream"
+                ],
+                "Host": [
+                    "orleanstest12.blob.core.windows.net"
+                ],
+                "User-Agent": [
+                    "azsdk-net-Storage.Blobs/12.14.0 (.NET 7.0.2; Microsoft Windows 10.0.19044)"
+                ],
+                "x-location": [
+                    "C:\\Users\\anna\\orleans\\src\\Azure\\Orleans.Streaming.AzureStorage\\Providers\\Lease\\AzureBlobLeaseProvider.cs:62:Azure.Storage.Blobs;Azure.Storage.Blobs.BlobClient.UploadAsync(System.IO.Stream,Azure.Storage.Blobs.Models.BlobHttpHeaders,System.Collections.Generic.IDictionary`2[string,string],Azure.Storage.Blobs.Models.BlobRequestConditions,System.IProgress`1[long],System.Nullable`1[Azure.Storage.Blobs.Models.AccessTier],Azure.Storage.StorageTransferOptions,System.Threading.CancellationToken):Orleans.LeaseProviders.AzureBlobLeaseProvider.Acquire(?)"
+                ],
+                "x-ms-blob-content-type": [
+                    "application/json"
+                ],
+                "x-ms-blob-type": [
+                    "BlockBlob"
+                ],
+                "x-ms-client-request-id": [
+                    "191c7264-ddee-4061-b61a-dcf9db93253c"
+                ],
+                "x-ms-date": [
+                    "Mon, 23 Jan 2023 15:04:18 GMT"
+                ],
+                "x-ms-return-client-request-id": [
+                    "true"
+                ],
+                "x-ms-version": [
+                    "2021-10-04"
+                ]
+            },
+            "keepAlive": true,
+            "method": "PUT",
+            "path": "/test-blob-container-name/testleasecategory-dcadcf5c-249d-481d-9ab8-41c28dfba6da.json",
+            "secure": true
+        },
+        "httpResponse": {
+            "headers": {
+                "Content-Length": [
+                    "0"
+                ],
+                "Content-MD5": [
+                    "7iaQi/linutLN9rDUPR1Sg=="
+                ],
+                "Date": [
+                    "Mon, 23 Jan 2023 15:04:18 GMT"
+                ],
+                "ETag": [
+                    "\"0x8DAFD5319F99502\""
+                ],
+                "Last-Modified": [
+                    "Mon, 23 Jan 2023 15:04:18 GMT"
+                ],
+                "Server": [
+                    "Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0"
+                ],
+                "injected": [
+                    "true"
+                ],
+                "x-ms-client-request-id": [
+                    "191c7264-ddee-4061-b61a-dcf9db93253c"
+                ],
+                "x-ms-content-crc64": [
+                    "L6sFWlxwOKc="
+                ],
+                "x-ms-request-id": [
+                    "b0570d17-601e-007e-1e3b-2fdb40000000"
+                ],
+                "x-ms-request-server-encrypted": [
+                    "true"
+                ],
+                "x-ms-version": [
+                    "2021-10-04"
+                ]
+            },
+            "reasonPhrase": "Created",
+            "statusCode": 408
+        },
+        "timestamp": "2023-01-23 15:04:18.597"
+    },
+    {
+        "httpRequest": {
+            "headers": {
+                "Accept": [
+                    "application/xml"
+                ],
+                "Authorization": [
+                    "SharedKey orleanstest12:kz9VFjGgs5FpNs+TbADRp273awvA70jI0ZhVzPEJxg4="
+                ],
+                "Content-Length": [
+                    "4"
+                ],
+                "Content-Type": [
+                    "application/octet-stream"
+                ],
+                "Host": [
+                    "orleanstest12.blob.core.windows.net"
+                ],
+                "User-Agent": [
+                    "azsdk-net-Storage.Blobs/12.14.0 (.NET 7.0.2; Microsoft Windows 10.0.19044)"
+                ],
+                "x-location": [
+                    "C:\\Users\\anna\\orleans\\src\\Azure\\Orleans.Streaming.AzureStorage\\Providers\\Lease\\AzureBlobLeaseProvider.cs:62:Azure.Storage.Blobs;Azure.Storage.Blobs.BlobClient.UploadAsync(System.IO.Stream,Azure.Storage.Blobs.Models.BlobHttpHeaders,System.Collections.Generic.IDictionary`2[string,string],Azure.Storage.Blobs.Models.BlobRequestConditions,System.IProgress`1[long],System.Nullable`1[Azure.Storage.Blobs.Models.AccessTier],Azure.Storage.StorageTransferOptions,System.Threading.CancellationToken):Orleans.LeaseProviders.AzureBlobLeaseProvider.Acquire(?)"
+                ],
+                "x-ms-blob-content-type": [
+                    "application/json"
+                ],
+                "x-ms-blob-type": [
+                    "BlockBlob"
+                ],
+                "x-ms-client-request-id": [
+                    "191c7264-ddee-4061-b61a-dcf9db93253c"
+                ],
+                "x-ms-date": [
+                    "Mon, 23 Jan 2023 15:04:19 GMT"
+                ],
+                "x-ms-return-client-request-id": [
+                    "true"
+                ],
+                "x-ms-version": [
+                    "2021-10-04"
+                ]
+            },
+            "keepAlive": true,
+            "method": "PUT",
+            "path": "/test-blob-container-name/testleasecategory-dcadcf5c-249d-481d-9ab8-41c28dfba6da.json",
+            "secure": true
+        },
+        "httpResponse": {
+            "headers": {
+                "Content-Length": [
+                    "0"
+                ],
+                "Content-MD5": [
+                    "7iaQi/linutLN9rDUPR1Sg=="
+                ],
+                "Date": [
+                    "Mon, 23 Jan 2023 15:04:19 GMT"
+                ],
+                "ETag": [
+                    "\"0x8DAFD531A8E6BC6\""
+                ],
+                "Last-Modified": [
+                    "Mon, 23 Jan 2023 15:04:19 GMT"
+                ],
+                "Server": [
+                    "Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0"
+                ],
+                "x-ms-client-request-id": [
+                    "191c7264-ddee-4061-b61a-dcf9db93253c"
+                ],
+                "x-ms-content-crc64": [
+                    "L6sFWlxwOKc="
+                ],
+                "x-ms-request-id": [
+                    "3cb6d00d-d01e-0019-023b-2fcbbc000000"
+                ],
+                "x-ms-request-server-encrypted": [
+                    "true"
+                ],
+                "x-ms-version": [
+                    "2021-10-04"
+                ]
+            },
+            "reasonPhrase": "Created",
+            "statusCode": 201
+        },
+        "timestamp": "2023-01-23 15:04:19.566"
+    },
+    {
+        "httpRequest": {
+            "headers": {
+                "Accept": [
+                    "application/xml"
+                ],
+                "Authorization": [
+                    "SharedKey orleanstest12:P8LzXo7JivjwFge3cLWDWvjEsbEuDXNRuptsjTLxQmQ="
+                ],
+                "Content-Length": [
+                    "0"
+                ],
+                "Host": [
+                    "orleanstest12.blob.core.windows.net"
+                ],
+                "User-Agent": [
+                    "azsdk-net-Storage.Blobs/12.14.0 (.NET 7.0.2; Microsoft Windows 10.0.19044)"
+                ],
+                "x-location": [
+                    "C:\\Users\\anna\\orleans\\src\\Azure\\Orleans.Streaming.AzureStorage\\Providers\\Lease\\AzureBlobLeaseProvider.cs:64:Azure.Storage.Blobs;Azure.Storage.Blobs.Specialized.BlobLeaseClient.AcquireAsync(System.TimeSpan,Azure.RequestConditions,System.Threading.CancellationToken):Orleans.LeaseProviders.AzureBlobLeaseProvider.Acquire(?)"
+                ],
+                "x-ms-client-request-id": [
+                    "8b90cb44-50c4-4cc5-8596-971befe6a3b2"
+                ],
+                "x-ms-date": [
+                    "Mon, 23 Jan 2023 15:04:19 GMT"
+                ],
+                "x-ms-lease-action": [
+                    "acquire"
+                ],
+                "x-ms-lease-duration": [
+                    "15"
+                ],
+                "x-ms-proposed-lease-id": [
+                    "a7dab6f0-c895-4f54-9d44-389d16c23dd9"
+                ],
+                "x-ms-return-client-request-id": [
+                    "true"
+                ],
+                "x-ms-version": [
+                    "2021-10-04"
+                ]
+            },
+            "keepAlive": true,
+            "method": "PUT",
+            "path": "/test-blob-container-name/testleasecategory-dcadcf5c-249d-481d-9ab8-41c28dfba6da.json",
+            "queryStringParameters": {
+                "comp": [
+                    "lease"
+                ]
+            },
+            "secure": true
+        },
+        "httpResponse": {
+            "headers": {
+                "Content-Length": [
+                    "0"
+                ],
+                "Date": [
+                    "Mon, 23 Jan 2023 15:04:18 GMT"
+                ],
+                "ETag": [
+                    "\"0x8DAFD531A8E6BC6\""
+                ],
+                "Last-Modified": [
+                    "Mon, 23 Jan 2023 15:04:19 GMT"
+                ],
+                "Server": [
+                    "Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0"
+                ],
+                "x-ms-client-request-id": [
+                    "8b90cb44-50c4-4cc5-8596-971befe6a3b2"
+                ],
+                "x-ms-lease-id": [
+                    "a7dab6f0-c895-4f54-9d44-389d16c23dd9"
+                ],
+                "x-ms-request-id": [
+                    "5cb6834c-701e-003f-743b-2f83a4000000"
+                ],
+                "x-ms-version": [
+                    "2021-10-04"
+                ]
+            },
+            "reasonPhrase": "Created",
+            "statusCode": 201
+        },
+        "timestamp": "2023-01-23 15:04:19.644"
+    },
+    {
+        "httpRequest": {
+            "headers": {
+                "Accept": [
+                    "application/xml"
+                ],
+                "Authorization": [
+                    "SharedKey orleanstest12:y9Xf5ojGJi43h+o4yWH/QgDV17hbVTivqmmBGBu45ZA="
+                ],
+                "Content-Length": [
+                    "0"
+                ],
+                "Host": [
+                    "orleanstest12.blob.core.windows.net"
+                ],
+                "User-Agent": [
+                    "azsdk-net-Storage.Blobs/12.14.0 (.NET 7.0.2; Microsoft Windows 10.0.19044)"
+                ],
+                "x-location": [
+                    "C:\\Users\\anna\\orleans\\src\\Azure\\Orleans.Streaming.AzureStorage\\Providers\\Lease\\AzureBlobLeaseProvider.cs:118:Azure.Storage.Blobs;Azure.Storage.Blobs.Specialized.BlobLeaseClient.RenewAsync(Azure.RequestConditions,System.Threading.CancellationToken):Orleans.LeaseProviders.AzureBlobLeaseProvider.Renew(?)"
+                ],
+                "x-ms-client-request-id": [
+                    "7bb16ab2-c167-4e42-8138-67a1e3161df2"
+                ],
+                "x-ms-date": [
+                    "Mon, 23 Jan 2023 15:04:19 GMT"
+                ],
+                "x-ms-lease-action": [
+                    "renew"
+                ],
+                "x-ms-lease-id": [
+                    "a7dab6f0-c895-4f54-9d44-389d16c23dd9"
+                ],
+                "x-ms-return-client-request-id": [
+                    "true"
+                ],
+                "x-ms-version": [
+                    "2021-10-04"
+                ]
+            },
+            "keepAlive": true,
+            "method": "PUT",
+            "path": "/test-blob-container-name/testleasecategory-dcadcf5c-249d-481d-9ab8-41c28dfba6da.json",
+            "queryStringParameters": {
+                "comp": [
+                    "lease"
+                ]
+            },
+            "secure": true
+        },
+        "httpResponse": {
+            "headers": {
+                "Content-Length": [
+                    "0"
+                ],
+                "Date": [
+                    "Mon, 23 Jan 2023 15:04:19 GMT"
+                ],
+                "ETag": [
+                    "\"0x8DAFD531A8E6BC6\""
+                ],
+                "Last-Modified": [
+                    "Mon, 23 Jan 2023 15:04:19 GMT"
+                ],
+                "Server": [
+                    "Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0"
+                ],
+                "x-ms-client-request-id": [
+                    "7bb16ab2-c167-4e42-8138-67a1e3161df2"
+                ],
+                "x-ms-lease-id": [
+                    "a7dab6f0-c895-4f54-9d44-389d16c23dd9"
+                ],
+                "x-ms-request-id": [
+                    "b1767599-401e-008d-6e3b-2f7cd5000000"
+                ],
+                "x-ms-version": [
+                    "2021-10-04"
+                ]
+            },
+            "reasonPhrase": "OK",
+            "statusCode": 200
+        },
+        "timestamp": "2023-01-23 15:04:19.738"
+    },
+    {
+        "httpRequest": {
+            "headers": {
+                "Accept": [
+                    "application/xml"
+                ],
+                "Authorization": [
+                    "SharedKey orleanstest12:JU7Y273e73yMd6bBIrvEM2YaqMlQa4MVquo7Qqwp40A="
+                ],
+                "Content-Length": [
+                    "0"
+                ],
+                "Host": [
+                    "orleanstest12.blob.core.windows.net"
+                ],
+                "User-Agent": [
+                    "azsdk-net-Storage.Blobs/12.14.0 (.NET 7.0.2; Microsoft Windows 10.0.19044)"
+                ],
+                "x-location": [
+                    "C:\\Users\\anna\\orleans\\src\\Azure\\Orleans.Streaming.AzureStorage\\Providers\\Lease\\AzureBlobLeaseProvider.cs:97:Azure.Storage.Blobs;Azure.Storage.Blobs.Specialized.BlobLeaseClient.ReleaseAsync(Azure.RequestConditions,System.Threading.CancellationToken):Orleans.LeaseProviders.AzureBlobLeaseProvider.Release(String category, AcquiredLease acquiredLease)"
+                ],
+                "x-ms-client-request-id": [
+                    "67957db3-ba89-481b-8d0b-de335cc65dc1"
+                ],
+                "x-ms-date": [
+                    "Mon, 23 Jan 2023 15:04:19 GMT"
+                ],
+                "x-ms-lease-action": [
+                    "release"
+                ],
+                "x-ms-lease-id": [
+                    "a7dab6f0-c895-4f54-9d44-389d16c23dd9"
+                ],
+                "x-ms-return-client-request-id": [
+                    "true"
+                ],
+                "x-ms-version": [
+                    "2021-10-04"
+                ]
+            },
+            "keepAlive": true,
+            "method": "PUT",
+            "path": "/test-blob-container-name/testleasecategory-dcadcf5c-249d-481d-9ab8-41c28dfba6da.json",
+            "queryStringParameters": {
+                "comp": [
+                    "lease"
+                ]
+            },
+            "secure": true
+        },
+        "httpResponse": {
+            "headers": {
+                "Content-Length": [
+                    "0"
+                ],
+                "Date": [
+                    "Mon, 23 Jan 2023 15:04:19 GMT"
+                ],
+                "ETag": [
+                    "\"0x8DAFD531A8E6BC6\""
+                ],
+                "Last-Modified": [
+                    "Mon, 23 Jan 2023 15:04:19 GMT"
+                ],
+                "Server": [
+                    "Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0"
+                ],
+                "x-ms-client-request-id": [
+                    "67957db3-ba89-481b-8d0b-de335cc65dc1"
+                ],
+                "x-ms-request-id": [
+                    "b3b83e94-101e-0064-7b3b-2fba9f000000"
+                ],
+                "x-ms-version": [
+                    "2021-10-04"
+                ]
+            },
+            "reasonPhrase": "OK",
+            "statusCode": 200
+        },
+        "timestamp": "2023-01-23 15:04:19.816"
+    },
+    {
+        "httpRequest": {
+            "headers": {
+                "Accept": [
+                    "application/xml"
+                ],
+                "Authorization": [
+                    "SharedKey orleanstest12:/MeSNnwrwjiItLPkpiWvwJUJWMPRGx7JM440phCVbuE="
+                ],
+                "Content-Length": [
+                    "4"
+                ],
+                "Content-Type": [
+                    "application/octet-stream"
+                ],
+                "Host": [
+                    "orleanstest12.blob.core.windows.net"
+                ],
+                "User-Agent": [
+                    "azsdk-net-Storage.Blobs/12.14.0 (.NET 7.0.2; Microsoft Windows 10.0.19044)"
+                ],
+                "x-location": [
+                    "C:\\Users\\anna\\orleans\\src\\Azure\\Orleans.Streaming.AzureStorage\\Providers\\Lease\\AzureBlobLeaseProvider.cs:62:Azure.Storage.Blobs;Azure.Storage.Blobs.BlobClient.UploadAsync(System.IO.Stream,Azure.Storage.Blobs.Models.BlobHttpHeaders,System.Collections.Generic.IDictionary`2[string,string],Azure.Storage.Blobs.Models.BlobRequestConditions,System.IProgress`1[long],System.Nullable`1[Azure.Storage.Blobs.Models.AccessTier],Azure.Storage.StorageTransferOptions,System.Threading.CancellationToken):Orleans.LeaseProviders.AzureBlobLeaseProvider.Acquire(?)"
+                ],
+                "x-ms-blob-content-type": [
+                    "application/json"
+                ],
+                "x-ms-blob-type": [
+                    "BlockBlob"
+                ],
+                "x-ms-client-request-id": [
+                    "d63de74e-caa7-4823-9ad8-69a42b29a971"
+                ],
+                "x-ms-date": [
+                    "Mon, 23 Jan 2023 15:04:19 GMT"
+                ],
+                "x-ms-return-client-request-id": [
+                    "true"
+                ],
+                "x-ms-version": [
+                    "2021-10-04"
+                ]
+            },
+            "keepAlive": true,
+            "method": "PUT",
+            "path": "/test-blob-container-name/testleasecategory-dcadcf5c-249d-481d-9ab8-41c28dfba6da.json",
+            "secure": true
+        },
+        "httpResponse": {
+            "headers": {
+                "Content-Length": [
+                    "0"
+                ],
+                "Content-MD5": [
+                    "7iaQi/linutLN9rDUPR1Sg=="
+                ],
+                "Date": [
+                    "Mon, 23 Jan 2023 15:04:19 GMT"
+                ],
+                "ETag": [
+                    "\"0x8DAFD531AC57918\""
+                ],
+                "Last-Modified": [
+                    "Mon, 23 Jan 2023 15:04:19 GMT"
+                ],
+                "Server": [
+                    "Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0"
+                ],
+                "x-ms-client-request-id": [
+                    "d63de74e-caa7-4823-9ad8-69a42b29a971"
+                ],
+                "x-ms-content-crc64": [
+                    "L6sFWlxwOKc="
+                ],
+                "x-ms-request-id": [
+                    "ead74ab4-201e-008b-353b-2f4f6a000000"
+                ],
+                "x-ms-request-server-encrypted": [
+                    "true"
+                ],
+                "x-ms-version": [
+                    "2021-10-04"
+                ]
+            },
+            "reasonPhrase": "Created",
+            "statusCode": 201
+        },
+        "timestamp": "2023-01-23 15:04:19.956"
+    },
+    {
+        "httpRequest": {
+            "headers": {
+                "Accept": [
+                    "application/xml"
+                ],
+                "Authorization": [
+                    "SharedKey orleanstest12:kcoQ2I1H2xCJgLoY0pwtZPQ1mVwVEvgfPz6GS/xe7Lk="
+                ],
+                "Content-Length": [
+                    "0"
+                ],
+                "Host": [
+                    "orleanstest12.blob.core.windows.net"
+                ],
+                "User-Agent": [
+                    "azsdk-net-Storage.Blobs/12.14.0 (.NET 7.0.2; Microsoft Windows 10.0.19044)"
+                ],
+                "x-location": [
+                    "C:\\Users\\anna\\orleans\\src\\Azure\\Orleans.Streaming.AzureStorage\\Providers\\Lease\\AzureBlobLeaseProvider.cs:64:Azure.Storage.Blobs;Azure.Storage.Blobs.Specialized.BlobLeaseClient.AcquireAsync(System.TimeSpan,Azure.RequestConditions,System.Threading.CancellationToken):Orleans.LeaseProviders.AzureBlobLeaseProvider.Acquire(?)"
+                ],
+                "x-ms-client-request-id": [
+                    "6938bf0d-b573-476b-a92d-a8abf0f1add9"
+                ],
+                "x-ms-date": [
+                    "Mon, 23 Jan 2023 15:04:19 GMT"
+                ],
+                "x-ms-lease-action": [
+                    "acquire"
+                ],
+                "x-ms-lease-duration": [
+                    "15"
+                ],
+                "x-ms-proposed-lease-id": [
+                    "38d1fe3a-69aa-4bb6-be55-4862263e0225"
+                ],
+                "x-ms-return-client-request-id": [
+                    "true"
+                ],
+                "x-ms-version": [
+                    "2021-10-04"
+                ]
+            },
+            "keepAlive": true,
+            "method": "PUT",
+            "path": "/test-blob-container-name/testleasecategory-dcadcf5c-249d-481d-9ab8-41c28dfba6da.json",
+            "queryStringParameters": {
+                "comp": [
+                    "lease"
+                ]
+            },
+            "secure": true
+        },
+        "httpResponse": {
+            "headers": {
+                "Content-Length": [
+                    "0"
+                ],
+                "Date": [
+                    "Mon, 23 Jan 2023 15:04:19 GMT"
+                ],
+                "ETag": [
+                    "\"0x8DAFD531AC57918\""
+                ],
+                "Last-Modified": [
+                    "Mon, 23 Jan 2023 15:04:19 GMT"
+                ],
+                "Server": [
+                    "Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0"
+                ],
+                "x-ms-client-request-id": [
+                    "6938bf0d-b573-476b-a92d-a8abf0f1add9"
+                ],
+                "x-ms-lease-id": [
+                    "38d1fe3a-69aa-4bb6-be55-4862263e0225"
+                ],
+                "x-ms-request-id": [
+                    "6b4e23ae-a01e-004e-3c3b-2f658f000000"
+                ],
+                "x-ms-version": [
+                    "2021-10-04"
+                ]
+            },
+            "reasonPhrase": "Created",
+            "statusCode": 201
+        },
+        "timestamp": "2023-01-23 15:04:20.019"
+    }
+]

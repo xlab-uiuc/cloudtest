@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="9977f8a0-37c7-412d-9bfc-7f5c00352132" name="anna@cloudtest-win10 2023-01-22 19:40:34" runUser="cloudtest-win10\anna" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2023-01-22T19:40:34.8653102+00:00" queuing="2023-01-22T19:40:34.8653106+00:00" start="2023-01-22T19:40:28.8096811+00:00" finish="2023-01-22T19:40:34.9044083+00:00" />
+  <TestSettings name="default" id="35251b30-1771-495b-8cb4-7a62be5ab8df">
+    <Deployment runDeploymentRoot="anna_cloudtest-win10_2023-01-22_19_40_34" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="06416cc4-b3ab-4e67-9e42-257a300b40fc" testId="70490d52-ffd4-9caf-c9bb-f024ea7851e1" testName="Tester.AzureUtils.AzureQueueDataManagerTests.AQ_Standalone_2" computerName="cloudtest-win10" duration="00:00:01.1002634" startTime="2023-01-22T19:40:34.5582702+00:00" endTime="2023-01-22T19:40:34.5583269+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="06416cc4-b3ab-4e67-9e42-257a300b40fc">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure&#xD;
+Expected: 10&#xD;
+Actual:   11</Message>
+          <StackTrace>   at Tester.AzureUtils.AzureQueueDataManagerTests.AQ_Standalone_2() in C:\Users\anna\orleans\test\Extensions\TesterAzureUtils\AzureQueueDataManagerTests.cs:line 95&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="Tester.AzureUtils.AzureQueueDataManagerTests.AQ_Standalone_2" storage="c:\users\anna\orleans\test\extensions\testerazureutils\bin\debug\net7.0\tester.azureutils.dll" id="70490d52-ffd4-9caf-c9bb-f024ea7851e1">
+      <Execution id="06416cc4-b3ab-4e67-9e42-257a300b40fc" />
+      <TestMethod codeBase="C:\Users\anna\orleans\test\Extensions\TesterAzureUtils\bin\Debug\net7.0\Tester.AzureUtils.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Tester.AzureUtils.AzureQueueDataManagerTests" name="AQ_Standalone_2" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="70490d52-ffd4-9caf-c9bb-f024ea7851e1" executionId="06416cc4-b3ab-4e67-9e42-257a300b40fc" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="1" executed="1" passed="0" failed="1" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.4.5+1caef2f33e (64-bit .NET 7.0.2)&#xD;
+[xUnit.net 00:00:01.27]   Discovering: Tester.AzureUtils (method display = ClassAndMethod, method display options = None)&#xD;
+[xUnit.net 00:00:01.48]   Discovered:  Tester.AzureUtils (found 246 test cases)&#xD;
+[xUnit.net 00:00:01.50]   Starting:    Tester.AzureUtils (parallel test collections = off, max threads = 4)&#xD;
+[xUnit.net 00:00:02.77]       Assert.Equal() Failure&#xD;
+[xUnit.net 00:00:02.77]       Expected: 10&#xD;
+[xUnit.net 00:00:02.77]       Actual:   11&#xD;
+[xUnit.net 00:00:02.77]       Stack Trace:&#xD;
+[xUnit.net 00:00:02.77]         C:\Users\anna\orleans\test\Extensions\TesterAzureUtils\AzureQueueDataManagerTests.cs(95,0): at Tester.AzureUtils.AzureQueueDataManagerTests.AQ_Standalone_2()&#xD;
+[xUnit.net 00:00:02.77]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:02.81]   Finished:    Tester.AzureUtils&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="cloudtest-win10" outcome="Min" timestamp="2023-01-22T19:40:34.5535640+00:00">
+        <Text>[xUnit.net 00:00:02.77]     Tester.AzureUtils.AzureQueueDataManagerTests.AQ_Standalone_2 [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="cloudtest-win10" outcome="Warning" timestamp="2023-01-22T19:40:34.7199356+00:00">
+        <Text>Data collector 'Blame' message: All tests finished running, Sequence file will not be generated.</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

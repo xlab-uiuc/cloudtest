@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="337d21f8-2d40-40b4-be79-7dc941c03b9f" name="anna@cloudtest-win10 2023-01-24 01:36:10" runUser="cloudtest-win10\anna" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2023-01-24T01:36:10.5450346+00:00" queuing="2023-01-24T01:36:10.5450352+00:00" start="2023-01-24T01:36:04.1095406+00:00" finish="2023-01-24T01:36:10.5873618+00:00" />
+  <TestSettings name="default" id="2fb658bc-d839-4aca-a05d-c28697b9db19">
+    <Deployment runDeploymentRoot="anna_cloudtest-win10_2023-01-24_01_36_10" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="2c76a803-6f45-4e07-a7fd-1bb132dda822" testId="561a773e-5278-074f-ca38-a489b340c293" testName="Tester.AzureUtils.SiloInstanceTableManagerTests.SiloInstanceTable_Op_RegisterSiloInstance" computerName="cloudtest-win10" duration="00:00:01.5997732" startTime="2023-01-24T01:36:10.2314430+00:00" endTime="2023-01-24T01:36:10.2314880+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2c76a803-6f45-4e07-a7fd-1bb132dda822">
+      <Output>
+        <StdOut>ClusterId=test-1cee0089-21bd-4b92-9c78-a900d3a6fb45 Generation=33528968&#xD;
+Initializing SiloInstanceManager&#xD;
+MyEntry=OrleansSilo [ Deployment=test-1cee0089-21bd-4b92-9c78-a900d3a6fb45 LocalEndpoint=127.0.0.1 LocalPort=0 Generation=33528968 Host=127.0.0.1 Status= ProxyPort=30000 RoleName=MyRole SiloName=MyInstance UpgradeZone=0 FaultZone=0 StartTime=2023-01-24 01:36:09.132 GMT IAmAliveTime=]&#xD;
+TestCleanup Timeout=00:01:00</StdOut>
+        <ErrorInfo>
+          <Message>System.AggregateException : One or more errors occurred. (0:The specified resource does not exist.
+RequestId:c424d2a3-1d56-4915-aa55-56e1ea70d2a0
+Time:2023-01-24T01:36:10.164Z
+ The index of the entity that caused the error can be found in FailedTransactionActionIndex.&#xD;
+Status: 404 (Not Found)&#xD;
+ErrorCode: ResourceNotFound&#xD;
+&#xD;
+Additional Information:&#xD;
+FailedEntity: 0&#xD;
+&#xD;
+Content:&#xD;
+{"odata.error":{"code":"ResourceNotFound","message":{"lang":"en-US","value":"0:The specified resource does not exist.\nRequestId:c424d2a3-1d56-4915-aa55-56e1ea70d2a0\nTime:2023-01-24T01:36:10.164Z"}}}&#xD;
+&#xD;
+Headers:&#xD;
+Content-ID: REDACTED&#xD;
+DataServiceVersion: 3.0;&#xD;
+Content-Type: application/json;odata=minimalmetadata;charset=utf-8&#xD;
+)&#xD;
+---- Azure.Data.Tables.TableTransactionFailedException : 0:The specified resource does not exist.
+RequestId:c424d2a3-1d56-4915-aa55-56e1ea70d2a0
+Time:2023-01-24T01:36:10.164Z
+ The index of the entity that caused the error can be found in FailedTransactionActionIndex.&#xD;
+Status: 404 (Not Found)&#xD;
+ErrorCode: ResourceNotFound&#xD;
+&#xD;
+Additional Information:&#xD;
+FailedEntity: 0&#xD;
+&#xD;
+Content:&#xD;
+{"odata.error":{"code":"ResourceNotFound","message":{"lang":"en-US","value":"0:The specified resource does not exist.\nRequestId:c424d2a3-1d56-4915-aa55-56e1ea70d2a0\nTime:2023-01-24T01:36:10.164Z"}}}&#xD;
+&#xD;
+Headers:&#xD;
+Content-ID: REDACTED&#xD;
+DataServiceVersion: 3.0;&#xD;
+Content-Type: application/json;odata=minimalmetadata;charset=utf-8&#xD;
+</Message>
+          <StackTrace>   at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)&#xD;
+   at System.Threading.Tasks.Task.Wait(Int32 millisecondsTimeout, CancellationToken cancellationToken)&#xD;
+   at System.Threading.Tasks.Task.Wait(TimeSpan timeout, CancellationToken cancellationToken)&#xD;
+   at System.Threading.Tasks.Task.Wait(TimeSpan timeout)&#xD;
+   at Orleans.Internal.OrleansTaskExtentions.WaitWithThrow(Task task, TimeSpan timeout) in C:\Users\anna\orleans\src\Orleans.Core\Async\TaskExtensions.cs:line 49&#xD;
+   at Tester.AzureUtils.SiloInstanceTableManagerTests.Dispose() in C:\Users\anna\orleans\test\Extensions\TesterAzureUtils\SiloInstanceTableManagerTests.cs:line 70&#xD;
+   at ReflectionAbstractionExtensions.DisposeTestClass(ITest test, Object testClass, IMessageBus messageBus, ExecutionTimer timer, CancellationTokenSource cancellationTokenSource) in /_/src/xunit.execution/Extensions/ReflectionAbstractionExtensions.cs:line 79&#xD;
+----- Inner Stack Trace -----&#xD;
+   at Azure.Data.Tables.TableRestClient.SendBatchRequestAsync(HttpMessage message, CancellationToken cancellationToken)&#xD;
+   at Azure.Data.Tables.TableClient.SubmitTransactionInternalAsync(IEnumerable`1 transactionalBatch, Guid batchId, Guid changesetId, Boolean async, CancellationToken cancellationToken)&#xD;
+   at Azure.Data.Tables.TableClient.SubmitTransactionAsync(IEnumerable`1 transactionActions, CancellationToken cancellationToken)&#xD;
+   at Orleans.Clustering.AzureStorage.AzureTableDataManager`1.DeleteTableEntriesAsync(List`1 collection) in C:\Users\anna\orleans\src\Azure\Shared\Storage\AzureTableDataManager.cs:line 483&#xD;
+   at Orleans.AzureUtils.OrleansSiloInstanceManager.DeleteEntriesBatch(List`1 entriesList) in C:\Users\anna\orleans\src\Azure\Orleans.Clustering.AzureStorage\OrleansSiloInstanceManager.cs:line 197&#xD;
+   at Orleans.AzureUtils.OrleansSiloInstanceManager.DeleteTableEntries(String clusterId) in C:\Users\anna\orleans\src\Azure\Orleans.Clustering.AzureStorage\OrleansSiloInstanceManager.cs:line 177</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="Tester.AzureUtils.SiloInstanceTableManagerTests.SiloInstanceTable_Op_RegisterSiloInstance" storage="c:\users\anna\orleans\test\extensions\testerazureutils\bin\debug\net7.0\tester.azureutils.dll" id="561a773e-5278-074f-ca38-a489b340c293">
+      <Execution id="2c76a803-6f45-4e07-a7fd-1bb132dda822" />
+      <TestMethod codeBase="C:\Users\anna\orleans\test\Extensions\TesterAzureUtils\bin\Debug\net7.0\Tester.AzureUtils.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Tester.AzureUtils.SiloInstanceTableManagerTests" name="SiloInstanceTable_Op_RegisterSiloInstance" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="561a773e-5278-074f-ca38-a489b340c293" executionId="2c76a803-6f45-4e07-a7fd-1bb132dda822" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="1" executed="1" passed="0" failed="1" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.4.5+1caef2f33e (64-bit .NET 7.0.2)&#xD;
+[xUnit.net 00:00:01.25]   Discovering: Tester.AzureUtils (method display = ClassAndMethod, method display options = None)&#xD;
+[xUnit.net 00:00:01.45]   Discovered:  Tester.AzureUtils (found 246 test cases)&#xD;
+[xUnit.net 00:00:01.47]   Starting:    Tester.AzureUtils (parallel test collections = off, max threads = 4)&#xD;
+[xUnit.net 00:00:03.16]       System.AggregateException : One or more errors occurred. (0:The specified resource does not exist.
+RequestId:c424d2a3-1d56-4915-aa55-56e1ea70d2a0
+Time:2023-01-24T01:36:10.164Z
+ The index of the entity that caused the error can be found in FailedTransactionActionIndex.&#xD;
+[xUnit.net 00:00:03.16]       Status: 404 (Not Found)&#xD;
+[xUnit.net 00:00:03.16]       ErrorCode: ResourceNotFound&#xD;
+[xUnit.net 00:00:03.17]       &#xD;
+[xUnit.net 00:00:03.17]       Additional Information:&#xD;
+[xUnit.net 00:00:03.17]       FailedEntity: 0&#xD;
+[xUnit.net 00:00:03.17]       &#xD;
+[xUnit.net 00:00:03.17]       Content:&#xD;
+[xUnit.net 00:00:03.17]       {"odata.error":{"code":"ResourceNotFound","message":{"lang":"en-US","value":"0:The specified resource does not exist.\nRequestId:c424d2a3-1d56-4915-aa55-56e1ea70d2a0\nTime:2023-01-24T01:36:10.164Z"}}}&#xD;
+[xUnit.net 00:00:03.17]       &#xD;
+[xUnit.net 00:00:03.17]       Headers:&#xD;
+[xUnit.net 00:00:03.17]       Content-ID: REDACTED&#xD;
+[xUnit.net 00:00:03.17]       DataServiceVersion: 3.0;&#xD;
+[xUnit.net 00:00:03.17]       Content-Type: application/json;odata=minimalmetadata;charset=utf-8&#xD;
+[xUnit.net 00:00:03.17]       )&#xD;
+[xUnit.net 00:00:03.17]       ---- Azure.Data.Tables.TableTransactionFailedException : 0:The specified resource does not exist.
+RequestId:c424d2a3-1d56-4915-aa55-56e1ea70d2a0
+Time:2023-01-24T01:36:10.164Z
+ The index of the entity that caused the error can be found in FailedTransactionActionIndex.&#xD;
+[xUnit.net 00:00:03.17]       Status: 404 (Not Found)&#xD;
+[xUnit.net 00:00:03.17]       ErrorCode: ResourceNotFound&#xD;
+[xUnit.net 00:00:03.17]       &#xD;
+[xUnit.net 00:00:03.17]       Additional Information:&#xD;
+[xUnit.net 00:00:03.17]       FailedEntity: 0&#xD;
+[xUnit.net 00:00:03.17]       &#xD;
+[xUnit.net 00:00:03.17]       Content:&#xD;
+[xUnit.net 00:00:03.17]       {"odata.error":{"code":"ResourceNotFound","message":{"lang":"en-US","value":"0:The specified resource does not exist.\nRequestId:c424d2a3-1d56-4915-aa55-56e1ea70d2a0\nTime:2023-01-24T01:36:10.164Z"}}}&#xD;
+[xUnit.net 00:00:03.17]       &#xD;
+[xUnit.net 00:00:03.17]       Headers:&#xD;
+[xUnit.net 00:00:03.17]       Content-ID: REDACTED&#xD;
+[xUnit.net 00:00:03.17]       DataServiceVersion: 3.0;&#xD;
+[xUnit.net 00:00:03.17]       Content-Type: application/json;odata=minimalmetadata;charset=utf-8&#xD;
+[xUnit.net 00:00:03.17]       &#xD;
+[xUnit.net 00:00:03.17]       Stack Trace:&#xD;
+[xUnit.net 00:00:03.17]            at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)&#xD;
+[xUnit.net 00:00:03.17]            at System.Threading.Tasks.Task.Wait(Int32 millisecondsTimeout, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:03.17]            at System.Threading.Tasks.Task.Wait(TimeSpan timeout, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:03.17]            at System.Threading.Tasks.Task.Wait(TimeSpan timeout)&#xD;
+[xUnit.net 00:00:03.17]         C:\Users\anna\orleans\src\Orleans.Core\Async\TaskExtensions.cs(49,0): at Orleans.Internal.OrleansTaskExtentions.WaitWithThrow(Task task, TimeSpan timeout)&#xD;
+[xUnit.net 00:00:03.17]         C:\Users\anna\orleans\test\Extensions\TesterAzureUtils\SiloInstanceTableManagerTests.cs(70,0): at Tester.AzureUtils.SiloInstanceTableManagerTests.Dispose()&#xD;
+[xUnit.net 00:00:03.17]         /_/src/xunit.execution/Extensions/ReflectionAbstractionExtensions.cs(79,0): at ReflectionAbstractionExtensions.DisposeTestClass(ITest test, Object testClass, IMessageBus messageBus, ExecutionTimer timer, CancellationTokenSource cancellationTokenSource)&#xD;
+[xUnit.net 00:00:03.17]         ----- Inner Stack Trace -----&#xD;
+[xUnit.net 00:00:03.17]            at Azure.Data.Tables.TableRestClient.SendBatchRequestAsync(HttpMessage message, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:03.17]            at Azure.Data.Tables.TableClient.SubmitTransactionInternalAsync(IEnumerable`1 transactionalBatch, Guid batchId, Guid changesetId, Boolean async, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:03.17]            at Azure.Data.Tables.TableClient.SubmitTransactionAsync(IEnumerable`1 transactionActions, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:03.17]         C:\Users\anna\orleans\src\Azure\Shared\Storage\AzureTableDataManager.cs(483,0): at Orleans.Clustering.AzureStorage.AzureTableDataManager`1.DeleteTableEntriesAsync(List`1 collection)&#xD;
+[xUnit.net 00:00:03.17]         C:\Users\anna\orleans\src\Azure\Orleans.Clustering.AzureStorage\OrleansSiloInstanceManager.cs(197,0): at Orleans.AzureUtils.OrleansSiloInstanceManager.DeleteEntriesBatch(List`1 entriesList)&#xD;
+[xUnit.net 00:00:03.17]         C:\Users\anna\orleans\src\Azure\Orleans.Clustering.AzureStorage\OrleansSiloInstanceManager.cs(177,0): at Orleans.AzureUtils.OrleansSiloInstanceManager.DeleteTableEntries(String clusterId)&#xD;
+[xUnit.net 00:00:03.17]       Output:&#xD;
+[xUnit.net 00:00:03.17]         ClusterId=test-1cee0089-21bd-4b92-9c78-a900d3a6fb45 Generation=33528968&#xD;
+[xUnit.net 00:00:03.17]         Initializing SiloInstanceManager&#xD;
+[xUnit.net 00:00:03.17]         MyEntry=OrleansSilo [ Deployment=test-1cee0089-21bd-4b92-9c78-a900d3a6fb45 LocalEndpoint=127.0.0.1 LocalPort=0 Generation=33528968 Host=127.0.0.1 Status= ProxyPort=30000 RoleName=MyRole SiloName=MyInstance UpgradeZone=0 FaultZone=0 StartTime=2023-01-24 01:36:09.132 GMT IAmAliveTime=]&#xD;
+[xUnit.net 00:00:03.17]         TestCleanup Timeout=00:01:00&#xD;
+[xUnit.net 00:00:03.21]   Finished:    Tester.AzureUtils&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="cloudtest-win10" outcome="Min" timestamp="2023-01-24T01:36:10.2239507+00:00">
+        <Text>[xUnit.net 00:00:03.16]     Tester.AzureUtils.SiloInstanceTableManagerTests.SiloInstanceTable_Op_RegisterSiloInstance [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="cloudtest-win10" outcome="Warning" timestamp="2023-01-24T01:36:10.3934580+00:00">
+        <Text>Data collector 'Blame' message: All tests finished running, Sequence file will not be generated.</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

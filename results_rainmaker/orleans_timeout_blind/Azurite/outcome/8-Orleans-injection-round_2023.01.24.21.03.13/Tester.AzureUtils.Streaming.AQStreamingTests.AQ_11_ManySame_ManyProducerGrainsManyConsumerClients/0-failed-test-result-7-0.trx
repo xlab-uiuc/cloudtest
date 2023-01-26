@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="0604daf6-0af2-4cb8-89a5-974db08e2446" name="anna@cloudtest-win10 2023-01-24 21:53:00" runUser="cloudtest-win10\anna" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2023-01-24T21:53:00.4590591+00:00" queuing="2023-01-24T21:53:00.4590595+00:00" start="2023-01-24T21:52:36.1922452+00:00" finish="2023-01-24T21:53:00.5007785+00:00" />
+  <TestSettings name="default" id="d5f800c9-988c-4eec-8e82-6d24ec71f180">
+    <Deployment runDeploymentRoot="anna_cloudtest-win10_2023-01-24_21_53_00" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="d5495874-e760-4334-b1de-74516b6cf27d" testId="b382e816-0896-59c0-1661-542d1f870d12" testName="Tester.AzureUtils.Streaming.AQStreamingTests.AQ_11_ManySame_ManyProducerGrainsManyConsumerClients" computerName="cloudtest-win10" duration="00:00:01.4710574" startTime="2023-01-24T21:53:00.1541741+00:00" endTime="2023-01-24T21:53:00.1542260+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d5495874-e760-4334-b1de-74516b6cf27d">
+      <Output>
+        <ErrorInfo>
+          <Message>Orleans.Storage.TableStorageUpdateConditionNotSatisfiedException : Table storage condition not Satisfied.  GrainType: PubSubRendezvousGrain, GrainId: pubsubrendezvous/AzureQueueProvider/null/a71431b4996447a19a2f29f521b9b419, TableName: OrleansGrainState, StoredETag: Unknown, CurrentETag: W/"datetime'2023-01-24T21%3A52%3A44.7469263Z'"&#xD;
+---- Azure.RequestFailedException : The update condition specified in the request was not satisfied.
+RequestId:a1aefecf-a8f4-4db0-8415-41ce7d3dc514
+Time:2023-01-24T21:52:45.625Z&#xD;
+Status: 412 (Precondition Failed)&#xD;
+ErrorCode: UpdateConditionNotSatisfied&#xD;
+&#xD;
+Content:&#xD;
+{"odata.error":{"code":"UpdateConditionNotSatisfied","message":{"lang":"en-US","value":"The update condition specified in the request was not satisfied.\nRequestId:a1aefecf-a8f4-4db0-8415-41ce7d3dc514\nTime:2023-01-24T21:52:45.625Z"}}}&#xD;
+&#xD;
+Headers:&#xD;
+Server: Azurite-Table/3.20.1&#xD;
+x-ms-error-code: REDACTED&#xD;
+x-ms-request-id: a1aefecf-a8f4-4db0-8415-41ce7d3dc514&#xD;
+x-ms-version: REDACTED&#xD;
+Date: Tue, 24 Jan 2023 21:52:45 GMT&#xD;
+Keep-Alive: REDACTED&#xD;
+Connection: keep-alive&#xD;
+Content-Type: application/json; odata=minimalmetadata; streaming=true; charset=utf-8&#xD;
+Content-Length: 235&#xD;
+</Message>
+          <StackTrace>   at Orleans.Storage.AzureTableGrainStorage.DoOptimisticUpdate(Func`1 updateOperation, String grainType, GrainId grainId, String tableName, String currentETag) in C:\Users\anna\orleans\src\Azure\Orleans.Persistence.AzureStorage\Providers\Storage\AzureTableStorage.cs:line 192&#xD;
+   at Orleans.Storage.AzureTableGrainStorage.WriteStateAsync[T](String grainType, GrainId grainId, IGrainState`1 grainState) in C:\Users\anna\orleans\src\Azure\Orleans.Persistence.AzureStorage\Providers\Storage\AzureTableStorage.cs:line 113&#xD;
+   at Orleans.Core.StateStorageBridge`1.WriteStateAsync() in C:\Users\anna\orleans\src\Orleans.Runtime\Storage\StateStorageBridge.cs:line 93&#xD;
+   at Orleans.Streams.PubSubRendezvousGrain.RegisterConsumer(GuidId subscriptionId, QualifiedStreamId streamId, GrainId streamConsumer, String filterData) in C:\Users\anna\orleans\src\Orleans.Streaming\PubSub\PubSubRendezvousGrain.cs:line 181&#xD;
+   at Orleans.Runtime.TaskRequest.Invoke() in C:\Users\anna\orleans\src\Orleans.Core.Abstractions\Runtime\GrainReference.cs:line 690&#xD;
+--- End of stack trace from previous location ---&#xD;
+   at Orleans.Serialization.Invocation.ResponseCompletionSource.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token) in C:\Users\anna\orleans\src\Orleans.Serialization\Invocation\ResponseCompletionSource.cs:line 98&#xD;
+   at System.Threading.Tasks.ValueTask.ValueTaskSourceAsTask.&lt;&gt;c.&lt;.cctor&gt;b__4_0(Object state)&#xD;
+--- End of stack trace from previous location ---&#xD;
+   at Orleans.Streams.StreamConsumer`1.SubscribeAsyncImpl(IAsyncObserver`1 observer, IAsyncBatchObserver`1 batchObserver, StreamSequenceToken token, String filterData) in C:\Users\anna\orleans\src\Orleans.Streaming\Internal\StreamConsumer.cs:line 113&#xD;
+   at UnitTests.Grains.ConsumerObserver.BecomeConsumer(Guid streamId, IStreamProvider streamProvider, String streamNamespace) in C:\Users\anna\orleans\test\Grains\TestInternalGrains\StreamingGrain.cs:line 124&#xD;
+   at UnitTests.StreamingTests.ConsumerProxy.BecomeConsumer(Guid streamId, String providerToUse) in C:\Users\anna\orleans\test\TesterInternal\StreamingTests\StreamTestHelperClasses.cs:line 296&#xD;
+   at UnitTests.StreamingTests.ConsumerProxy.NewConsumerProxy(Guid streamId, String streamProvider, IStreaming_ConsumerGrain[] targets, ILogger logger, IInternalGrainFactory grainFactory) in C:\Users\anna\orleans\test\TesterInternal\StreamingTests\StreamTestHelperClasses.cs:line 193&#xD;
+   at UnitTests.StreamingTests.SingleStreamTestRunner.StreamTest_11_ManySame_ManyProducerGrainsManyConsumerClients() in C:\Users\anna\orleans\test\TesterInternal\StreamingTests\SingleStreamTestRunner.cs:line 195&#xD;
+   at Tester.AzureUtils.Streaming.AQStreamingTests.AQ_11_ManySame_ManyProducerGrainsManyConsumerClients() in C:\Users\anna\orleans\test\Extensions\TesterAzureUtils\Streaming\AQStreamingTests.cs:line 158&#xD;
+--- End of stack trace from previous location ---&#xD;
+----- Inner Stack Trace -----&#xD;
+   at Azure.Data.Tables.TableRestClient.UpdateEntityAsync(String table, String partitionKey, String rowKey, Nullable`1 timeout, String ifMatch, IDictionary`2 tableEntityProperties, QueryOptions queryOptions, CancellationToken cancellationToken)&#xD;
+   at Azure.Data.Tables.TableClient.UpdateEntityAsync[T](T entity, ETag ifMatch, TableUpdateMode mode, CancellationToken cancellationToken)&#xD;
+   at Orleans.Persistence.AzureStorage.AzureTableDataManager`1.UpdateTableEntryAsync(T data, ETag dataEtag) in C:\Users\anna\orleans\src\Azure\Shared\Storage\AzureTableDataManager.cs:line 322&#xD;
+   at Orleans.Storage.AzureTableGrainStorage.GrainStateTableDataManager.Write(TableEntity entity) in C:\Users\anna\orleans\src\Azure\Orleans.Persistence.AzureStorage\Providers\Storage\AzureTableStorage.cs:line 457&#xD;
+   at Orleans.Storage.AzureTableGrainStorage.DoOptimisticUpdate(Func`1 updateOperation, String grainType, GrainId grainId, String tableName, String currentETag) in C:\Users\anna\orleans\src\Azure\Orleans.Persistence.AzureStorage\Providers\Storage\AzureTableStorage.cs:line 188&#xD;
+--- End of stack trace from previous location ---&#xD;
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="Tester.AzureUtils.Streaming.AQStreamingTests.AQ_11_ManySame_ManyProducerGrainsManyConsumerClients" storage="c:\users\anna\orleans\test\extensions\testerazureutils\bin\debug\net7.0\tester.azureutils.dll" id="b382e816-0896-59c0-1661-542d1f870d12">
+      <Execution id="d5495874-e760-4334-b1de-74516b6cf27d" />
+      <TestMethod codeBase="C:\Users\anna\orleans\test\Extensions\TesterAzureUtils\bin\Debug\net7.0\Tester.AzureUtils.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Tester.AzureUtils.Streaming.AQStreamingTests" name="AQ_11_ManySame_ManyProducerGrainsManyConsumerClients" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="b382e816-0896-59c0-1661-542d1f870d12" executionId="d5495874-e760-4334-b1de-74516b6cf27d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="1" executed="1" passed="0" failed="1" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.4.5+1caef2f33e (64-bit .NET 7.0.2)&#xD;
+[xUnit.net 00:00:01.32]   Discovering: Tester.AzureUtils (method display = ClassAndMethod, method display options = None)&#xD;
+[xUnit.net 00:00:01.52]   Discovered:  Tester.AzureUtils (found 246 test cases)&#xD;
+[xUnit.net 00:00:01.53]   Starting:    Tester.AzureUtils (parallel test collections = off, max threads = 4)&#xD;
+[xUnit.net 00:00:21.01]       Orleans.Storage.TableStorageUpdateConditionNotSatisfiedException : Table storage condition not Satisfied.  GrainType: PubSubRendezvousGrain, GrainId: pubsubrendezvous/AzureQueueProvider/null/a71431b4996447a19a2f29f521b9b419, TableName: OrleansGrainState, StoredETag: Unknown, CurrentETag: W/"datetime'2023-01-24T21%3A52%3A44.7469263Z'"&#xD;
+[xUnit.net 00:00:21.01]       ---- Azure.RequestFailedException : The update condition specified in the request was not satisfied.
+RequestId:a1aefecf-a8f4-4db0-8415-41ce7d3dc514
+Time:2023-01-24T21:52:45.625Z&#xD;
+[xUnit.net 00:00:21.01]       Status: 412 (Precondition Failed)&#xD;
+[xUnit.net 00:00:21.01]       ErrorCode: UpdateConditionNotSatisfied&#xD;
+[xUnit.net 00:00:21.01]       &#xD;
+[xUnit.net 00:00:21.01]       Content:&#xD;
+[xUnit.net 00:00:21.01]       {"odata.error":{"code":"UpdateConditionNotSatisfied","message":{"lang":"en-US","value":"The update condition specified in the request was not satisfied.\nRequestId:a1aefecf-a8f4-4db0-8415-41ce7d3dc514\nTime:2023-01-24T21:52:45.625Z"}}}&#xD;
+[xUnit.net 00:00:21.01]       &#xD;
+[xUnit.net 00:00:21.01]       Headers:&#xD;
+[xUnit.net 00:00:21.01]       Server: Azurite-Table/3.20.1&#xD;
+[xUnit.net 00:00:21.01]       x-ms-error-code: REDACTED&#xD;
+[xUnit.net 00:00:21.01]       x-ms-request-id: a1aefecf-a8f4-4db0-8415-41ce7d3dc514&#xD;
+[xUnit.net 00:00:21.01]       x-ms-version: REDACTED&#xD;
+[xUnit.net 00:00:21.01]       Date: Tue, 24 Jan 2023 21:52:45 GMT&#xD;
+[xUnit.net 00:00:21.01]       Keep-Alive: REDACTED&#xD;
+[xUnit.net 00:00:21.01]       Connection: keep-alive&#xD;
+[xUnit.net 00:00:21.01]       Content-Type: application/json; odata=minimalmetadata; streaming=true; charset=utf-8&#xD;
+[xUnit.net 00:00:21.01]       Content-Length: 235&#xD;
+[xUnit.net 00:00:21.01]       &#xD;
+[xUnit.net 00:00:21.01]       Stack Trace:&#xD;
+[xUnit.net 00:00:21.01]         C:\Users\anna\orleans\src\Azure\Orleans.Persistence.AzureStorage\Providers\Storage\AzureTableStorage.cs(192,0): at Orleans.Storage.AzureTableGrainStorage.DoOptimisticUpdate(Func`1 updateOperation, String grainType, GrainId grainId, String tableName, String currentETag)&#xD;
+[xUnit.net 00:00:21.01]         C:\Users\anna\orleans\src\Azure\Orleans.Persistence.AzureStorage\Providers\Storage\AzureTableStorage.cs(113,0): at Orleans.Storage.AzureTableGrainStorage.WriteStateAsync[T](String grainType, GrainId grainId, IGrainState`1 grainState)&#xD;
+[xUnit.net 00:00:21.01]         C:\Users\anna\orleans\src\Orleans.Runtime\Storage\StateStorageBridge.cs(93,0): at Orleans.Core.StateStorageBridge`1.WriteStateAsync()&#xD;
+[xUnit.net 00:00:21.01]         C:\Users\anna\orleans\src\Orleans.Streaming\PubSub\PubSubRendezvousGrain.cs(181,0): at Orleans.Streams.PubSubRendezvousGrain.RegisterConsumer(GuidId subscriptionId, QualifiedStreamId streamId, GrainId streamConsumer, String filterData)&#xD;
+[xUnit.net 00:00:21.01]         C:\Users\anna\orleans\src\Orleans.Core.Abstractions\Runtime\GrainReference.cs(690,0): at Orleans.Runtime.TaskRequest.Invoke()&#xD;
+[xUnit.net 00:00:21.01]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:21.01]         C:\Users\anna\orleans\src\Orleans.Serialization\Invocation\ResponseCompletionSource.cs(98,0): at Orleans.Serialization.Invocation.ResponseCompletionSource.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)&#xD;
+[xUnit.net 00:00:21.01]            at System.Threading.Tasks.ValueTask.ValueTaskSourceAsTask.&lt;&gt;c.&lt;.cctor&gt;b__4_0(Object state)&#xD;
+[xUnit.net 00:00:21.01]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:21.01]         C:\Users\anna\orleans\src\Orleans.Streaming\Internal\StreamConsumer.cs(113,0): at Orleans.Streams.StreamConsumer`1.SubscribeAsyncImpl(IAsyncObserver`1 observer, IAsyncBatchObserver`1 batchObserver, StreamSequenceToken token, String filterData)&#xD;
+[xUnit.net 00:00:21.01]         C:\Users\anna\orleans\test\Grains\TestInternalGrains\StreamingGrain.cs(124,0): at UnitTests.Grains.ConsumerObserver.BecomeConsumer(Guid streamId, IStreamProvider streamProvider, String streamNamespace)&#xD;
+[xUnit.net 00:00:21.01]         C:\Users\anna\orleans\test\TesterInternal\StreamingTests\StreamTestHelperClasses.cs(296,0): at UnitTests.StreamingTests.ConsumerProxy.BecomeConsumer(Guid streamId, String providerToUse)&#xD;
+[xUnit.net 00:00:21.01]         C:\Users\anna\orleans\test\TesterInternal\StreamingTests\StreamTestHelperClasses.cs(193,0): at UnitTests.StreamingTests.ConsumerProxy.NewConsumerProxy(Guid streamId, String streamProvider, IStreaming_ConsumerGrain[] targets, ILogger logger, IInternalGrainFactory grainFactory)&#xD;
+[xUnit.net 00:00:21.01]         C:\Users\anna\orleans\test\TesterInternal\StreamingTests\SingleStreamTestRunner.cs(195,0): at UnitTests.StreamingTests.SingleStreamTestRunner.StreamTest_11_ManySame_ManyProducerGrainsManyConsumerClients()&#xD;
+[xUnit.net 00:00:21.01]         C:\Users\anna\orleans\test\Extensions\TesterAzureUtils\Streaming\AQStreamingTests.cs(158,0): at Tester.AzureUtils.Streaming.AQStreamingTests.AQ_11_ManySame_ManyProducerGrainsManyConsumerClients()&#xD;
+[xUnit.net 00:00:21.01]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:21.01]         ----- Inner Stack Trace -----&#xD;
+[xUnit.net 00:00:21.01]            at Azure.Data.Tables.TableRestClient.UpdateEntityAsync(String table, String partitionKey, String rowKey, Nullable`1 timeout, String ifMatch, IDictionary`2 tableEntityProperties, QueryOptions queryOptions, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:21.01]            at Azure.Data.Tables.TableClient.UpdateEntityAsync[T](T entity, ETag ifMatch, TableUpdateMode mode, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:21.01]         C:\Users\anna\orleans\src\Azure\Shared\Storage\AzureTableDataManager.cs(322,0): at Orleans.Persistence.AzureStorage.AzureTableDataManager`1.UpdateTableEntryAsync(T data, ETag dataEtag)&#xD;
+[xUnit.net 00:00:21.01]         C:\Users\anna\orleans\src\Azure\Orleans.Persistence.AzureStorage\Providers\Storage\AzureTableStorage.cs(457,0): at Orleans.Storage.AzureTableGrainStorage.GrainStateTableDataManager.Write(TableEntity entity)&#xD;
+[xUnit.net 00:00:21.01]         C:\Users\anna\orleans\src\Azure\Orleans.Persistence.AzureStorage\Providers\Storage\AzureTableStorage.cs(188,0): at Orleans.Storage.AzureTableGrainStorage.DoOptimisticUpdate(Func`1 updateOperation, String grainType, GrainId grainId, String tableName, String currentETag)&#xD;
+[xUnit.net 00:00:21.01]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:21.01]         &#xD;
+[xUnit.net 00:00:21.04]   Finished:    Tester.AzureUtils&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="cloudtest-win10" outcome="Min" timestamp="2023-01-24T21:53:00.1466404+00:00">
+        <Text>[xUnit.net 00:00:21.01]     Tester.AzureUtils.Streaming.AQStreamingTests.AQ_11_ManySame_ManyProducerGrainsManyConsumerClients [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="cloudtest-win10" outcome="Warning" timestamp="2023-01-24T21:53:00.3110159+00:00">
+        <Text>Data collector 'Blame' message: All tests finished running, Sequence file will not be generated.</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="07cc3c8b-777e-49fc-a378-0e6e5d3132b1" name="anna@cloudtest-win10 2023-01-23 00:04:47" runUser="cloudtest-win10\anna" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2023-01-23T00:04:47.0707892+00:00" queuing="2023-01-23T00:04:47.0707899+00:00" start="2023-01-23T00:04:37.2701735+00:00" finish="2023-01-23T00:05:01.0346554+00:00" />
+  <TestSettings name="default" id="3f72eba8-d2a1-4be2-8f63-726d08fde17d">
+    <Deployment runDeploymentRoot="anna_cloudtest-win10_2023-01-23_00_04_47" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="e0baf511-7043-4bdf-a362-94ab52949b33" testId="57807b22-d002-3c90-b147-d46169a81919" testName="Tester.AzureUtils.General.GenericGrainsInAzureBlobStorageTests.Generic_OnAzureBlobStorage_ShortNamedGrain_EchoValue" computerName="cloudtest-win10" duration="00:00:01.1983393" startTime="2023-01-23T00:04:46.6614715+00:00" endTime="2023-01-23T00:04:46.6615190+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e0baf511-7043-4bdf-a362-94ab52949b33">
+      <Output>
+        <ErrorInfo>
+          <Message>Orleans.Storage.InconsistentStateException : Blob storage condition not Satisfied.  BlobName: state-tinyname`1[[int]]/7d61f4c12ef94643aa127cdad2f82347.json, Container: grainstate, CurrentETag: &#xD;
+---- Azure.RequestFailedException : The specified blob already exists.
+RequestId:a5f450f7-201e-0022-7bbe-2e8e18000000
+Time:2023-01-23T00:04:46.5927120Z&#xD;
+Status: 409 (The specified blob already exists.)&#xD;
+ErrorCode: BlobAlreadyExists&#xD;
+&#xD;
+Content:&#xD;
+&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Error&gt;&lt;Code&gt;BlobAlreadyExists&lt;/Code&gt;&lt;Message&gt;The specified blob already exists.
+RequestId:a5f450f7-201e-0022-7bbe-2e8e18000000
+Time:2023-01-23T00:04:46.5927120Z&lt;/Message&gt;&lt;/Error&gt;&#xD;
+&#xD;
+Headers:&#xD;
+Server: Windows-Azure-Blob/1.0,Microsoft-HTTPAPI/2.0&#xD;
+x-ms-request-id: a5f450f7-201e-0022-7bbe-2e8e18000000&#xD;
+x-ms-client-request-id: 0fd5dbc9-0de9-48df-9564-c3c613831648&#xD;
+x-ms-version: 2021-10-04&#xD;
+x-ms-error-code: BlobAlreadyExists&#xD;
+Date: Mon, 23 Jan 2023 00:04:45 GMT&#xD;
+Connection: keep-alive&#xD;
+Content-Length: 220&#xD;
+Content-Type: application/xml&#xD;
+</Message>
+          <StackTrace>   at Orleans.Storage.AzureBlobGrainStorage.DoOptimisticUpdate[TResult](Func`1 updateOperation, BlobClient blob, String currentETag) in C:\Users\anna\orleans\src\Azure\Orleans.Persistence.AzureStorage\Providers\Storage\AzureBlobStorage.cs:line 285&#xD;
+   at Orleans.Storage.AzureBlobGrainStorage.WriteStateAndCreateContainerIfNotExists[T](String grainType, GrainId grainId, IGrainState`1 grainState, BinaryData contents, String mimeType, BlobClient blob) in C:\Users\anna\orleans\src\Azure\Orleans.Persistence.AzureStorage\Providers\Storage\AzureBlobStorage.cs:line 252&#xD;
+   at Orleans.Storage.AzureBlobGrainStorage.WriteStateAsync[T](String grainType, GrainId grainId, IGrainState`1 grainState) in C:\Users\anna\orleans\src\Azure\Orleans.Persistence.AzureStorage\Providers\Storage\AzureBlobStorage.cs:line 159&#xD;
+   at Orleans.Core.StateStorageBridge`1.WriteStateAsync() in C:\Users\anna\orleans\src\Orleans.Runtime\Storage\StateStorageBridge.cs:line 93&#xD;
+   at UnitTests.Grains.TinyNameGrain`1.EchoAsync(T entity) in C:\Users\anna\orleans\test\Grains\TestGrains\GenericGrains.cs:line 82&#xD;
+   at Orleans.Runtime.TaskRequest`1.Invoke() in C:\Users\anna\orleans\src\Orleans.Core.Abstractions\Runtime\GrainReference.cs:line 641&#xD;
+--- End of stack trace from previous location ---&#xD;
+   at Orleans.Serialization.Invocation.ResponseCompletionSource`1.GetResult(Int16 token) in C:\Users\anna\orleans\src\Orleans.Serialization\Invocation\ResponseCompletionSource.cs:line 230&#xD;
+   at System.Threading.Tasks.ValueTask`1.ValueTaskSourceAsTask.&lt;&gt;c.&lt;.cctor&gt;b__4_0(Object state)&#xD;
+--- End of stack trace from previous location ---&#xD;
+   at Tester.AzureUtils.General.GenericGrainsInAzureBlobStorageTests.Generic_OnAzureBlobStorage_ShortNamedGrain_EchoValue() in C:\Users\anna\orleans\test\Extensions\TesterAzureUtils\GenericGrainsInAzureStorageTests.cs:line 118&#xD;
+--- End of stack trace from previous location ---&#xD;
+----- Inner Stack Trace -----&#xD;
+   at Azure.Storage.Blobs.BlockBlobRestClient.UploadAsync(Int64 contentLength, Stream body, Nullable`1 timeout, Byte[] transactionalContentMD5, String blobContentType, String blobContentEncoding, String blobContentLanguage, Byte[] blobContentMD5, String blobCacheControl, IDictionary`2 metadata, String leaseId, String blobContentDisposition, String encryptionKey, String encryptionKeySha256, Nullable`1 encryptionAlgorithm, String encryptionScope, Nullable`1 tier, Nullable`1 ifModifiedSince, Nullable`1 ifUnmodifiedSince, String ifMatch, String ifNoneMatch, String ifTags, String blobTagsString, Nullable`1 immutabilityPolicyExpiry, Nullable`1 immutabilityPolicyMode, Nullable`1 legalHold, Byte[] transactionalContentCrc64, CancellationToken cancellationToken)&#xD;
+   at Azure.Storage.Blobs.Specialized.BlockBlobClient.UploadInternal(Stream content, BlobHttpHeaders blobHttpHeaders, IDictionary`2 metadata, IDictionary`2 tags, BlobRequestConditions conditions, Nullable`1 accessTier, BlobImmutabilityPolicy immutabilityPolicy, Nullable`1 legalHold, IProgress`1 progressHandler, UploadTransferValidationOptions transferValidationOverride, String operationName, Boolean async, CancellationToken cancellationToken)&#xD;
+   at Azure.Storage.Blobs.Specialized.BlockBlobClient.&lt;&gt;c__DisplayClass64_0.&lt;&lt;GetPartitionedUploaderBehaviors&gt;b__0&gt;d.MoveNext()&#xD;
+--- End of stack trace from previous location ---&#xD;
+   at Azure.Storage.PartitionedUploader`2.UploadInternal(Stream content, Nullable`1 expectedContentLength, TServiceSpecificData args, IProgress`1 progressHandler, Boolean async, CancellationToken cancellationToken)&#xD;
+   at Azure.Storage.Blobs.BlobClient.StagedUploadInternal(Stream content, BlobUploadOptions options, Boolean async, CancellationToken cancellationToken)&#xD;
+   at Azure.Storage.Blobs.BlobClient.UploadAsync(BinaryData content, BlobUploadOptions options, CancellationToken cancellationToken)&#xD;
+   at Orleans.Storage.AzureBlobGrainStorage.DoOptimisticUpdate[TResult](Func`1 updateOperation, BlobClient blob, String currentETag) in C:\Users\anna\orleans\src\Azure\Orleans.Persistence.AzureStorage\Providers\Storage\AzureBlobStorage.cs:line 281&#xD;
+--- End of stack trace from previous location ---&#xD;
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="Tester.AzureUtils.General.GenericGrainsInAzureBlobStorageTests.Generic_OnAzureBlobStorage_ShortNamedGrain_EchoValue" storage="c:\users\anna\orleans\test\extensions\testerazureutils\bin\debug\net7.0\tester.azureutils.dll" id="57807b22-d002-3c90-b147-d46169a81919">
+      <Execution id="e0baf511-7043-4bdf-a362-94ab52949b33" />
+      <TestMethod codeBase="C:\Users\anna\orleans\test\Extensions\TesterAzureUtils\bin\Debug\net7.0\Tester.AzureUtils.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Tester.AzureUtils.General.GenericGrainsInAzureBlobStorageTests" name="Generic_OnAzureBlobStorage_ShortNamedGrain_EchoValue" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="57807b22-d002-3c90-b147-d46169a81919" executionId="e0baf511-7043-4bdf-a362-94ab52949b33" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="1" executed="1" passed="0" failed="1" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.4.5+1caef2f33e (64-bit .NET 7.0.2)&#xD;
+[xUnit.net 00:00:01.30]   Discovering: Tester.AzureUtils (method display = ClassAndMethod, method display options = None)&#xD;
+[xUnit.net 00:00:01.52]   Discovered:  Tester.AzureUtils (found 246 test cases)&#xD;
+[xUnit.net 00:00:01.53]   Starting:    Tester.AzureUtils (parallel test collections = off, max threads = 4)&#xD;
+[xUnit.net 00:00:06.32]       Orleans.Storage.InconsistentStateException : Blob storage condition not Satisfied.  BlobName: state-tinyname`1[[int]]/7d61f4c12ef94643aa127cdad2f82347.json, Container: grainstate, CurrentETag: &#xD;
+[xUnit.net 00:00:06.32]       ---- Azure.RequestFailedException : The specified blob already exists.
+RequestId:a5f450f7-201e-0022-7bbe-2e8e18000000
+Time:2023-01-23T00:04:46.5927120Z&#xD;
+[xUnit.net 00:00:06.32]       Status: 409 (The specified blob already exists.)&#xD;
+[xUnit.net 00:00:06.32]       ErrorCode: BlobAlreadyExists&#xD;
+[xUnit.net 00:00:06.32]       &#xD;
+[xUnit.net 00:00:06.32]       Content:&#xD;
+[xUnit.net 00:00:06.32]       &lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Error&gt;&lt;Code&gt;BlobAlreadyExists&lt;/Code&gt;&lt;Message&gt;The specified blob already exists.
+RequestId:a5f450f7-201e-0022-7bbe-2e8e18000000
+Time:2023-01-23T00:04:46.5927120Z&lt;/Message&gt;&lt;/Error&gt;&#xD;
+[xUnit.net 00:00:06.32]       &#xD;
+[xUnit.net 00:00:06.32]       Headers:&#xD;
+[xUnit.net 00:00:06.32]       Server: Windows-Azure-Blob/1.0,Microsoft-HTTPAPI/2.0&#xD;
+[xUnit.net 00:00:06.32]       x-ms-request-id: a5f450f7-201e-0022-7bbe-2e8e18000000&#xD;
+[xUnit.net 00:00:06.32]       x-ms-client-request-id: 0fd5dbc9-0de9-48df-9564-c3c613831648&#xD;
+[xUnit.net 00:00:06.32]       x-ms-version: 2021-10-04&#xD;
+[xUnit.net 00:00:06.32]       x-ms-error-code: BlobAlreadyExists&#xD;
+[xUnit.net 00:00:06.32]       Date: Mon, 23 Jan 2023 00:04:45 GMT&#xD;
+[xUnit.net 00:00:06.32]       Connection: keep-alive&#xD;
+[xUnit.net 00:00:06.32]       Content-Length: 220&#xD;
+[xUnit.net 00:00:06.32]       Content-Type: application/xml&#xD;
+[xUnit.net 00:00:06.32]       &#xD;
+[xUnit.net 00:00:06.32]       Stack Trace:&#xD;
+[xUnit.net 00:00:06.32]         C:\Users\anna\orleans\src\Azure\Orleans.Persistence.AzureStorage\Providers\Storage\AzureBlobStorage.cs(285,0): at Orleans.Storage.AzureBlobGrainStorage.DoOptimisticUpdate[TResult](Func`1 updateOperation, BlobClient blob, String currentETag)&#xD;
+[xUnit.net 00:00:06.32]         C:\Users\anna\orleans\src\Azure\Orleans.Persistence.AzureStorage\Providers\Storage\AzureBlobStorage.cs(252,0): at Orleans.Storage.AzureBlobGrainStorage.WriteStateAndCreateContainerIfNotExists[T](String grainType, GrainId grainId, IGrainState`1 grainState, BinaryData contents, String mimeType, BlobClient blob)&#xD;
+[xUnit.net 00:00:06.33]         C:\Users\anna\orleans\src\Azure\Orleans.Persistence.AzureStorage\Providers\Storage\AzureBlobStorage.cs(159,0): at Orleans.Storage.AzureBlobGrainStorage.WriteStateAsync[T](String grainType, GrainId grainId, IGrainState`1 grainState)&#xD;
+[xUnit.net 00:00:06.33]         C:\Users\anna\orleans\src\Orleans.Runtime\Storage\StateStorageBridge.cs(93,0): at Orleans.Core.StateStorageBridge`1.WriteStateAsync()&#xD;
+[xUnit.net 00:00:06.33]         C:\Users\anna\orleans\test\Grains\TestGrains\GenericGrains.cs(82,0): at UnitTests.Grains.TinyNameGrain`1.EchoAsync(T entity)&#xD;
+[xUnit.net 00:00:06.33]         C:\Users\anna\orleans\src\Orleans.Core.Abstractions\Runtime\GrainReference.cs(641,0): at Orleans.Runtime.TaskRequest`1.Invoke()&#xD;
+[xUnit.net 00:00:06.33]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:06.33]         C:\Users\anna\orleans\src\Orleans.Serialization\Invocation\ResponseCompletionSource.cs(230,0): at Orleans.Serialization.Invocation.ResponseCompletionSource`1.GetResult(Int16 token)&#xD;
+[xUnit.net 00:00:06.33]            at System.Threading.Tasks.ValueTask`1.ValueTaskSourceAsTask.&lt;&gt;c.&lt;.cctor&gt;b__4_0(Object state)&#xD;
+[xUnit.net 00:00:06.33]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:06.33]         C:\Users\anna\orleans\test\Extensions\TesterAzureUtils\GenericGrainsInAzureStorageTests.cs(118,0): at Tester.AzureUtils.General.GenericGrainsInAzureBlobStorageTests.Generic_OnAzureBlobStorage_ShortNamedGrain_EchoValue()&#xD;
+[xUnit.net 00:00:06.33]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:06.33]         ----- Inner Stack Trace -----&#xD;
+[xUnit.net 00:00:06.33]            at Azure.Storage.Blobs.BlockBlobRestClient.UploadAsync(Int64 contentLength, Stream body, Nullable`1 timeout, Byte[] transactionalContentMD5, String blobContentType, String blobContentEncoding, String blobContentLanguage, Byte[] blobContentMD5, String blobCacheControl, IDictionary`2 metadata, String leaseId, String blobContentDisposition, String encryptionKey, String encryptionKeySha256, Nullable`1 encryptionAlgorithm, String encryptionScope, Nullable`1 tier, Nullable`1 ifModifiedSince, Nullable`1 ifUnmodifiedSince, String ifMatch, String ifNoneMatch, String ifTags, String blobTagsString, Nullable`1 immutabilityPolicyExpiry, Nullable`1 immutabilityPolicyMode, Nullable`1 legalHold, Byte[] transactionalContentCrc64, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:06.33]            at Azure.Storage.Blobs.Specialized.BlockBlobClient.UploadInternal(Stream content, BlobHttpHeaders blobHttpHeaders, IDictionary`2 metadata, IDictionary`2 tags, BlobRequestConditions conditions, Nullable`1 accessTier, BlobImmutabilityPolicy immutabilityPolicy, Nullable`1 legalHold, IProgress`1 progressHandler, UploadTransferValidationOptions transferValidationOverride, String operationName, Boolean async, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:06.33]            at Azure.Storage.Blobs.Specialized.BlockBlobClient.&lt;&gt;c__DisplayClass64_0.&lt;&lt;GetPartitionedUploaderBehaviors&gt;b__0&gt;d.MoveNext()&#xD;
+[xUnit.net 00:00:06.33]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:06.33]            at Azure.Storage.PartitionedUploader`2.UploadInternal(Stream content, Nullable`1 expectedContentLength, TServiceSpecificData args, IProgress`1 progressHandler, Boolean async, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:06.33]            at Azure.Storage.Blobs.BlobClient.StagedUploadInternal(Stream content, BlobUploadOptions options, Boolean async, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:06.33]            at Azure.Storage.Blobs.BlobClient.UploadAsync(BinaryData content, BlobUploadOptions options, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:06.33]         C:\Users\anna\orleans\src\Azure\Orleans.Persistence.AzureStorage\Providers\Storage\AzureBlobStorage.cs(281,0): at Orleans.Storage.AzureBlobGrainStorage.DoOptimisticUpdate[TResult](Func`1 updateOperation, BlobClient blob, String currentETag)&#xD;
+[xUnit.net 00:00:06.33]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:06.33]         &#xD;
+[xUnit.net 00:00:20.48]   Finished:    Tester.AzureUtils&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="cloudtest-win10" outcome="Min" timestamp="2023-01-23T00:04:46.6534216+00:00">
+        <Text>[xUnit.net 00:00:06.32]     Tester.AzureUtils.General.GenericGrainsInAzureBlobStorageTests.Generic_OnAzureBlobStorage_ShortNamedGrain_EchoValue [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="cloudtest-win10" outcome="Warning" timestamp="2023-01-23T00:05:00.9421151+00:00">
+        <Text>Data collector 'Blame' message: All tests finished running, Sequence file will not be generated.</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

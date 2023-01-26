@@ -1,0 +1,9 @@
+REST	NUM
+127.0.0.1:10000 PUT Path = /devstoreaccount1/test-blob-container-name status_code = 408 reason_phrase = The specified container already exists. injected restype=['container']	1
+127.0.0.1:10000 PUT Path = /devstoreaccount1/test-blob-container-name status_code = 409 reason_phrase = The specified container already exists. restype=['container']	1
+127.0.0.1:10000 PUT Path = /devstoreaccount1/test-blob-container-name/testleasecategory-d35954ba-5859-4756-8a24-29ef658d8917.json status_code = 201 reason_phrase = Created	1
+127.0.0.1:10000 PUT Path = /devstoreaccount1/test-blob-container-name/testleasecategory-d35954ba-5859-4756-8a24-29ef658d8917.json status_code = 201 reason_phrase = Created comp=['lease']	1
+127.0.0.1:10000 PUT Path = /devstoreaccount1/test-blob-container-name/testleasecategory-3f271785-cedb-49c5-8213-3391608d5fd1.json status_code = 201 reason_phrase = Created	1
+127.0.0.1:10000 PUT Path = /devstoreaccount1/test-blob-container-name/testleasecategory-3f271785-cedb-49c5-8213-3391608d5fd1.json status_code = 201 reason_phrase = Created comp=['lease']	1
+127.0.0.1:10000 PUT Path = /devstoreaccount1/test-blob-container-name/testleasecategory-d35954ba-5859-4756-8a24-29ef658d8917.json status_code = 409 reason_phrase = The lease ID specified did not match the lease ID for the container or blob. comp=['lease']	1
+127.0.0.1:10000 PUT Path = /devstoreaccount1/test-blob-container-name/testleasecategory-3f271785-cedb-49c5-8213-3391608d5fd1.json status_code = 409 reason_phrase = The lease ID specified did not match the lease ID for the container or blob. comp=['lease']	1

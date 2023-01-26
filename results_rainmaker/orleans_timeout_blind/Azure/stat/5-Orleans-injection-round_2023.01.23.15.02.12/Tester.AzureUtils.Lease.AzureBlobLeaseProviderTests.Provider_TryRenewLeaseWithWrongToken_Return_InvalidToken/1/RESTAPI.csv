@@ -1,0 +1,9 @@
+REST	NUM
+orleanstest12.blob.core.windows.net PUT Path = /test-blob-container-name status_code = 408 reason_phrase = The specified container already exists. injected restype=['container']	1
+orleanstest12.blob.core.windows.net PUT Path = /test-blob-container-name status_code = 409 reason_phrase = The specified container already exists. restype=['container']	1
+orleanstest12.blob.core.windows.net PUT Path = /test-blob-container-name/testleasecategory-6048806c-9387-4cc0-bcd7-7fc5cf8d3222.json status_code = 201 reason_phrase = Created	1
+orleanstest12.blob.core.windows.net PUT Path = /test-blob-container-name/testleasecategory-6048806c-9387-4cc0-bcd7-7fc5cf8d3222.json status_code = 201 reason_phrase = Created comp=['lease']	1
+orleanstest12.blob.core.windows.net PUT Path = /test-blob-container-name/testleasecategory-2cb0ce3a-7d2e-4a26-bcea-1c859ea8e946.json status_code = 201 reason_phrase = Created	1
+orleanstest12.blob.core.windows.net PUT Path = /test-blob-container-name/testleasecategory-2cb0ce3a-7d2e-4a26-bcea-1c859ea8e946.json status_code = 201 reason_phrase = Created comp=['lease']	1
+orleanstest12.blob.core.windows.net PUT Path = /test-blob-container-name/testleasecategory-6048806c-9387-4cc0-bcd7-7fc5cf8d3222.json status_code = 409 reason_phrase = The lease ID specified did not match the lease ID for the blob. comp=['lease']	1
+orleanstest12.blob.core.windows.net PUT Path = /test-blob-container-name/testleasecategory-2cb0ce3a-7d2e-4a26-bcea-1c859ea8e946.json status_code = 409 reason_phrase = The lease ID specified did not match the lease ID for the blob. comp=['lease']	1

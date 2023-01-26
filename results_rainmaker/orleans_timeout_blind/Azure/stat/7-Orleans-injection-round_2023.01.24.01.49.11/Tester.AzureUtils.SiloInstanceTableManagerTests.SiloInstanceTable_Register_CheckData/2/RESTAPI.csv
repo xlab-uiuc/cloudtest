@@ -1,0 +1,7 @@
+REST	NUM
+orleanstest12.table.core.windows.net POST Path = /Tables status_code = 409 reason_phrase = Conflict $format=['application/json;odata=minimalmetadata']	1
+orleanstest12.table.core.windows.net PATCH Path = /OrleansSiloInstances(PartitionKey='test-a974a669-1e2a-47b3-9fab-be66b3a4ae62',RowKey='127.0.0.1-0-33530112') status_code = 204 reason_phrase = No Content $format=['application/json;odata=minimalmetadata']	1
+orleanstest12.table.core.windows.net GET Path = /OrleansSiloInstances(PartitionKey='test-a974a669-1e2a-47b3-9fab-be66b3a4ae62',RowKey='127.0.0.1-0-33530112') status_code = 200 reason_phrase = OK $format=['application/json;odata=minimalmetadata']	1
+orleanstest12.table.core.windows.net GET Path = /OrleansSiloInstances() status_code = 200 reason_phrase = OK $filter=["PartitionKey eq 'test-a974a669-1e2a-47b3-9fab-be66b3a4ae62'"] $format=['application/json;odata=minimalmetadata']	1
+orleanstest12.table.core.windows.net POST Path = /$batch status_code = 408 reason_phrase = Accepted injected	1
+orleanstest12.table.core.windows.net POST Path = /$batch status_code = 202 reason_phrase = Accepted	1

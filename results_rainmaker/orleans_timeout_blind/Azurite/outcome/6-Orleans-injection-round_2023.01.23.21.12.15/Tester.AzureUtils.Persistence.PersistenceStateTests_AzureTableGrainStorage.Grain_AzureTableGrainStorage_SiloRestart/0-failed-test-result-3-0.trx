@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="e08e3289-6024-487b-b9f7-59a952e0b217" name="anna@cloudtest-win10 2023-01-23 21:16:12" runUser="cloudtest-win10\anna" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2023-01-23T21:16:12.8121279+00:00" queuing="2023-01-23T21:16:12.8121288+00:00" start="2023-01-23T21:16:00.6836834+00:00" finish="2023-01-23T21:16:41.6189237+00:00" />
+  <TestSettings name="default" id="8c846a70-835e-4a7b-ae05-a50ff1f89041">
+    <Deployment runDeploymentRoot="anna_cloudtest-win10_2023-01-23_21_16_12" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="78c66482-96d6-4b0f-bfbb-e1c712f2292e" testId="5b7e1b06-615e-d006-acf4-96177d2222b3" testName="Tester.AzureUtils.Persistence.PersistenceStateTests_AzureTableGrainStorage.Grain_AzureTableGrainStorage_SiloRestart" computerName="cloudtest-win10" duration="00:00:01.1558219" startTime="2023-01-23T21:16:12.4131508+00:00" endTime="2023-01-23T21:16:12.4131997+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="78c66482-96d6-4b0f-bfbb-e1c712f2292e">
+      <Output>
+        <StdOut>ClusterId=testcluster-2023-01-23t21-16-05-51 ServiceId=4912cea79053486e9a41cd50b7957924</StdOut>
+        <ErrorInfo>
+          <Message>Orleans.Storage.TableStorageUpdateConditionNotSatisfiedException : Table storage condition not Satisfied.  GrainType: state, GrainId: new-test-storage-grain/4b2c658ff8624abb84cdd54defe133cf, TableName: OrleansGrainState, StoredETag: Unknown, CurrentETag: &#xD;
+---- Azure.RequestFailedException : The specified entity already exists.
+RequestId:3bdc666a-916a-4a3d-8e6d-d7f9497f2fb9
+Time:2023-01-23T21:16:12.324Z&#xD;
+Status: 409 (Conflict)&#xD;
+ErrorCode: EntityAlreadyExists&#xD;
+&#xD;
+Content:&#xD;
+{"odata.error":{"code":"EntityAlreadyExists","message":{"lang":"en-US","value":"The specified entity already exists.\nRequestId:3bdc666a-916a-4a3d-8e6d-d7f9497f2fb9\nTime:2023-01-23T21:16:12.324Z"}}}&#xD;
+&#xD;
+Headers:&#xD;
+Server: Azurite-Table/3.20.1&#xD;
+x-ms-error-code: REDACTED&#xD;
+x-ms-request-id: 3bdc666a-916a-4a3d-8e6d-d7f9497f2fb9&#xD;
+x-ms-version: REDACTED&#xD;
+Date: Mon, 23 Jan 2023 21:16:12 GMT&#xD;
+Keep-Alive: REDACTED&#xD;
+Connection: keep-alive&#xD;
+Content-Type: application/json; odata=minimalmetadata; streaming=true; charset=utf-8&#xD;
+Content-Length: 199&#xD;
+</Message>
+          <StackTrace>   at Orleans.Storage.AzureTableGrainStorage.DoOptimisticUpdate(Func`1 updateOperation, String grainType, GrainId grainId, String tableName, String currentETag) in C:\Users\anna\orleans\src\Azure\Orleans.Persistence.AzureStorage\Providers\Storage\AzureTableStorage.cs:line 192&#xD;
+   at Orleans.Storage.AzureTableGrainStorage.WriteStateAsync[T](String grainType, GrainId grainId, IGrainState`1 grainState) in C:\Users\anna\orleans\src\Azure\Orleans.Persistence.AzureStorage\Providers\Storage\AzureTableStorage.cs:line 113&#xD;
+   at Orleans.Core.StateStorageBridge`1.WriteStateAsync() in C:\Users\anna\orleans\src\Orleans.Runtime\Storage\StateStorageBridge.cs:line 93&#xD;
+   at Orleans.Runtime.TaskRequest.Invoke() in C:\Users\anna\orleans\src\Orleans.Core.Abstractions\Runtime\GrainReference.cs:line 690&#xD;
+--- End of stack trace from previous location ---&#xD;
+   at Orleans.Serialization.Invocation.ResponseCompletionSource.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token) in C:\Users\anna\orleans\src\Orleans.Serialization\Invocation\ResponseCompletionSource.cs:line 98&#xD;
+   at System.Threading.Tasks.ValueTask.ValueTaskSourceAsTask.&lt;&gt;c.&lt;.cctor&gt;b__4_0(Object state)&#xD;
+--- End of stack trace from previous location ---&#xD;
+   at TestExtensions.Runners.GrainPersistenceTestsRunner.Grain_GrainStorage_SiloRestart() in C:\Users\anna\orleans\test\TesterInternal\TestRunners\GrainPersistenceTestRunner.cs:line 300&#xD;
+   at Tester.AzureUtils.Persistence.PersistenceStateTests_AzureTableGrainStorage.Grain_AzureTableGrainStorage_SiloRestart() in C:\Users\anna\orleans\test\Extensions\TesterAzureUtils\Persistence\PersistenceStateTests_AzureTableGrainStorage.cs:line 87&#xD;
+--- End of stack trace from previous location ---&#xD;
+----- Inner Stack Trace -----&#xD;
+   at Azure.Data.Tables.TableRestClient.InsertEntityAsync(String table, Nullable`1 timeout, Nullable`1 responsePreference, IDictionary`2 tableEntityProperties, QueryOptions queryOptions, CancellationToken cancellationToken)&#xD;
+   at Azure.Data.Tables.TableClient.AddEntityAsync[T](T entity, CancellationToken cancellationToken)&#xD;
+   at Orleans.Persistence.AzureStorage.AzureTableDataManager`1.CreateTableEntryAsync(T data) in C:\Users\anna\orleans\src\Azure\Shared\Storage\AzureTableDataManager.cs:line 171&#xD;
+   at Orleans.Storage.AzureTableGrainStorage.GrainStateTableDataManager.Write(TableEntity entity) in C:\Users\anna\orleans\src\Azure\Orleans.Persistence.AzureStorage\Providers\Storage\AzureTableStorage.cs:line 457&#xD;
+   at Orleans.Storage.AzureTableGrainStorage.DoOptimisticUpdate(Func`1 updateOperation, String grainType, GrainId grainId, String tableName, String currentETag) in C:\Users\anna\orleans\src\Azure\Orleans.Persistence.AzureStorage\Providers\Storage\AzureTableStorage.cs:line 188&#xD;
+--- End of stack trace from previous location ---&#xD;
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="Tester.AzureUtils.Persistence.PersistenceStateTests_AzureTableGrainStorage.Grain_AzureTableGrainStorage_SiloRestart" storage="c:\users\anna\orleans\test\extensions\testerazureutils\bin\debug\net7.0\tester.azureutils.dll" id="5b7e1b06-615e-d006-acf4-96177d2222b3">
+      <Execution id="78c66482-96d6-4b0f-bfbb-e1c712f2292e" />
+      <TestMethod codeBase="C:\Users\anna\orleans\test\Extensions\TesterAzureUtils\bin\Debug\net7.0\Tester.AzureUtils.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Tester.AzureUtils.Persistence.PersistenceStateTests_AzureTableGrainStorage" name="Grain_AzureTableGrainStorage_SiloRestart" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="5b7e1b06-615e-d006-acf4-96177d2222b3" executionId="78c66482-96d6-4b0f-bfbb-e1c712f2292e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="1" executed="1" passed="0" failed="1" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.4.5+1caef2f33e (64-bit .NET 7.0.2)&#xD;
+[xUnit.net 00:00:01.25]   Discovering: Tester.AzureUtils (method display = ClassAndMethod, method display options = None)&#xD;
+[xUnit.net 00:00:01.45]   Discovered:  Tester.AzureUtils (found 246 test cases)&#xD;
+[xUnit.net 00:00:01.47]   Starting:    Tester.AzureUtils (parallel test collections = off, max threads = 4)&#xD;
+[xUnit.net 00:00:08.78]       Orleans.Storage.TableStorageUpdateConditionNotSatisfiedException : Table storage condition not Satisfied.  GrainType: state, GrainId: new-test-storage-grain/4b2c658ff8624abb84cdd54defe133cf, TableName: OrleansGrainState, StoredETag: Unknown, CurrentETag: &#xD;
+[xUnit.net 00:00:08.78]       ---- Azure.RequestFailedException : The specified entity already exists.
+RequestId:3bdc666a-916a-4a3d-8e6d-d7f9497f2fb9
+Time:2023-01-23T21:16:12.324Z&#xD;
+[xUnit.net 00:00:08.78]       Status: 409 (Conflict)&#xD;
+[xUnit.net 00:00:08.78]       ErrorCode: EntityAlreadyExists&#xD;
+[xUnit.net 00:00:08.78]       &#xD;
+[xUnit.net 00:00:08.78]       Content:&#xD;
+[xUnit.net 00:00:08.78]       {"odata.error":{"code":"EntityAlreadyExists","message":{"lang":"en-US","value":"The specified entity already exists.\nRequestId:3bdc666a-916a-4a3d-8e6d-d7f9497f2fb9\nTime:2023-01-23T21:16:12.324Z"}}}&#xD;
+[xUnit.net 00:00:08.78]       &#xD;
+[xUnit.net 00:00:08.78]       Headers:&#xD;
+[xUnit.net 00:00:08.78]       Server: Azurite-Table/3.20.1&#xD;
+[xUnit.net 00:00:08.78]       x-ms-error-code: REDACTED&#xD;
+[xUnit.net 00:00:08.78]       x-ms-request-id: 3bdc666a-916a-4a3d-8e6d-d7f9497f2fb9&#xD;
+[xUnit.net 00:00:08.78]       x-ms-version: REDACTED&#xD;
+[xUnit.net 00:00:08.78]       Date: Mon, 23 Jan 2023 21:16:12 GMT&#xD;
+[xUnit.net 00:00:08.78]       Keep-Alive: REDACTED&#xD;
+[xUnit.net 00:00:08.78]       Connection: keep-alive&#xD;
+[xUnit.net 00:00:08.78]       Content-Type: application/json; odata=minimalmetadata; streaming=true; charset=utf-8&#xD;
+[xUnit.net 00:00:08.78]       Content-Length: 199&#xD;
+[xUnit.net 00:00:08.78]       &#xD;
+[xUnit.net 00:00:08.78]       Stack Trace:&#xD;
+[xUnit.net 00:00:08.79]         C:\Users\anna\orleans\src\Azure\Orleans.Persistence.AzureStorage\Providers\Storage\AzureTableStorage.cs(192,0): at Orleans.Storage.AzureTableGrainStorage.DoOptimisticUpdate(Func`1 updateOperation, String grainType, GrainId grainId, String tableName, String currentETag)&#xD;
+[xUnit.net 00:00:08.79]         C:\Users\anna\orleans\src\Azure\Orleans.Persistence.AzureStorage\Providers\Storage\AzureTableStorage.cs(113,0): at Orleans.Storage.AzureTableGrainStorage.WriteStateAsync[T](String grainType, GrainId grainId, IGrainState`1 grainState)&#xD;
+[xUnit.net 00:00:08.79]         C:\Users\anna\orleans\src\Orleans.Runtime\Storage\StateStorageBridge.cs(93,0): at Orleans.Core.StateStorageBridge`1.WriteStateAsync()&#xD;
+[xUnit.net 00:00:08.79]         C:\Users\anna\orleans\src\Orleans.Core.Abstractions\Runtime\GrainReference.cs(690,0): at Orleans.Runtime.TaskRequest.Invoke()&#xD;
+[xUnit.net 00:00:08.79]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:08.79]         C:\Users\anna\orleans\src\Orleans.Serialization\Invocation\ResponseCompletionSource.cs(98,0): at Orleans.Serialization.Invocation.ResponseCompletionSource.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)&#xD;
+[xUnit.net 00:00:08.79]            at System.Threading.Tasks.ValueTask.ValueTaskSourceAsTask.&lt;&gt;c.&lt;.cctor&gt;b__4_0(Object state)&#xD;
+[xUnit.net 00:00:08.79]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:08.79]         C:\Users\anna\orleans\test\TesterInternal\TestRunners\GrainPersistenceTestRunner.cs(300,0): at TestExtensions.Runners.GrainPersistenceTestsRunner.Grain_GrainStorage_SiloRestart()&#xD;
+[xUnit.net 00:00:08.79]         C:\Users\anna\orleans\test\Extensions\TesterAzureUtils\Persistence\PersistenceStateTests_AzureTableGrainStorage.cs(87,0): at Tester.AzureUtils.Persistence.PersistenceStateTests_AzureTableGrainStorage.Grain_AzureTableGrainStorage_SiloRestart()&#xD;
+[xUnit.net 00:00:08.79]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:08.80]         ----- Inner Stack Trace -----&#xD;
+[xUnit.net 00:00:08.80]            at Azure.Data.Tables.TableRestClient.InsertEntityAsync(String table, Nullable`1 timeout, Nullable`1 responsePreference, IDictionary`2 tableEntityProperties, QueryOptions queryOptions, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:08.80]            at Azure.Data.Tables.TableClient.AddEntityAsync[T](T entity, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:08.80]         C:\Users\anna\orleans\src\Azure\Shared\Storage\AzureTableDataManager.cs(171,0): at Orleans.Persistence.AzureStorage.AzureTableDataManager`1.CreateTableEntryAsync(T data)&#xD;
+[xUnit.net 00:00:08.80]         C:\Users\anna\orleans\src\Azure\Orleans.Persistence.AzureStorage\Providers\Storage\AzureTableStorage.cs(457,0): at Orleans.Storage.AzureTableGrainStorage.GrainStateTableDataManager.Write(TableEntity entity)&#xD;
+[xUnit.net 00:00:08.80]         C:\Users\anna\orleans\src\Azure\Orleans.Persistence.AzureStorage\Providers\Storage\AzureTableStorage.cs(188,0): at Orleans.Storage.AzureTableGrainStorage.DoOptimisticUpdate(Func`1 updateOperation, String grainType, GrainId grainId, String tableName, String currentETag)&#xD;
+[xUnit.net 00:00:08.80]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:08.80]         &#xD;
+[xUnit.net 00:00:08.80]       Output:&#xD;
+[xUnit.net 00:00:08.80]         ClusterId=testcluster-2023-01-23t21-16-05-51 ServiceId=4912cea79053486e9a41cd50b7957924&#xD;
+[xUnit.net 00:00:37.79]   Finished:    Tester.AzureUtils&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="cloudtest-win10" outcome="Min" timestamp="2023-01-23T21:16:12.3916728+00:00">
+        <Text>[xUnit.net 00:00:08.78]     Tester.AzureUtils.Persistence.PersistenceStateTests_AzureTableGrainStorage.Grain_AzureTableGrainStorage_SiloRestart [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="cloudtest-win10" outcome="Warning" timestamp="2023-01-23T21:16:41.5234014+00:00">
+        <Text>Data collector 'Blame' message: All tests finished running, Sequence file will not be generated.</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

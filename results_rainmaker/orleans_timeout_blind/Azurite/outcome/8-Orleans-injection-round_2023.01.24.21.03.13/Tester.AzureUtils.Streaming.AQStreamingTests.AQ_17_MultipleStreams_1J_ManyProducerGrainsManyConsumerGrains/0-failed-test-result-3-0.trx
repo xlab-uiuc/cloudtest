@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="7ad5e7ed-08e3-463a-b04c-2103e7982dca" name="anna@cloudtest-win10 2023-01-24 22:20:33" runUser="cloudtest-win10\anna" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2023-01-24T22:20:33.0580430+00:00" queuing="2023-01-24T22:20:33.0580440+00:00" start="2023-01-24T22:19:30.6225563+00:00" finish="2023-01-24T22:20:33.0979860+00:00" />
+  <TestSettings name="default" id="54683d9d-455e-4f03-9158-ffe8105aae01">
+    <Deployment runDeploymentRoot="anna_cloudtest-win10_2023-01-24_22_20_33" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="854762b7-7d3f-4f8b-b5ea-38594e803ceb" testId="0994ae13-c9c5-5baa-8264-e21bcdf343ec" testName="Tester.AzureUtils.Streaming.AQStreamingTests.AQ_17_MultipleStreams_1J_ManyProducerGrainsManyConsumerGrains" computerName="cloudtest-win10" duration="00:00:32.5430803" startTime="2023-01-24T22:20:32.7367868+00:00" endTime="2023-01-24T22:20:32.7368399+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="854762b7-7d3f-4f8b-b5ea-38594e803ceb">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure&#xD;
+Expected: 10&#xD;
+Actual:   11</Message>
+          <StackTrace>   at UnitTests.StreamingTests.SingleStreamTestRunner.CheckCounters(ProducerProxy producer, ConsumerProxy consumer, Boolean assertAreEqual) in C:\Users\anna\orleans\test\TesterInternal\StreamingTests\SingleStreamTestRunner.cs:line 479&#xD;
+   at UnitTests.StreamingTests.SingleStreamTestRunner.BasicTestAsync(Boolean fullTest) in C:\Users\anna\orleans\test\TesterInternal\StreamingTests\SingleStreamTestRunner.cs:line 442&#xD;
+   at UnitTests.Streaming.MultipleStreamsTestRunner.StreamTest_MultipleStreams_ManyDifferent_ManyProducerGrainsManyConsumerGrains(Func`2 startSiloFunc, Action`1 stopSiloFunc) in C:\Users\anna\orleans\test\TesterInternal\StreamingTests\MultipleStreamsTestRunner.cs:line 65&#xD;
+   at Tester.AzureUtils.Streaming.AQStreamingTests.AQ_17_MultipleStreams_1J_ManyProducerGrainsManyConsumerGrains() in C:\Users\anna\orleans\test\Extensions\TesterAzureUtils\Streaming\AQStreamingTests.cs:line 200&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="Tester.AzureUtils.Streaming.AQStreamingTests.AQ_17_MultipleStreams_1J_ManyProducerGrainsManyConsumerGrains" storage="c:\users\anna\orleans\test\extensions\testerazureutils\bin\debug\net7.0\tester.azureutils.dll" id="0994ae13-c9c5-5baa-8264-e21bcdf343ec">
+      <Execution id="854762b7-7d3f-4f8b-b5ea-38594e803ceb" />
+      <TestMethod codeBase="C:\Users\anna\orleans\test\Extensions\TesterAzureUtils\bin\Debug\net7.0\Tester.AzureUtils.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Tester.AzureUtils.Streaming.AQStreamingTests" name="AQ_17_MultipleStreams_1J_ManyProducerGrainsManyConsumerGrains" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="0994ae13-c9c5-5baa-8264-e21bcdf343ec" executionId="854762b7-7d3f-4f8b-b5ea-38594e803ceb" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="1" executed="1" passed="0" failed="1" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.4.5+1caef2f33e (64-bit .NET 7.0.2)&#xD;
+[xUnit.net 00:00:01.24]   Discovering: Tester.AzureUtils (method display = ClassAndMethod, method display options = None)&#xD;
+[xUnit.net 00:00:01.45]   Discovered:  Tester.AzureUtils (found 246 test cases)&#xD;
+[xUnit.net 00:00:01.46]   Starting:    Tester.AzureUtils (parallel test collections = off, max threads = 4)&#xD;
+[xUnit.net 00:00:59.18]       Assert.Equal() Failure&#xD;
+[xUnit.net 00:00:59.18]       Expected: 10&#xD;
+[xUnit.net 00:00:59.18]       Actual:   11&#xD;
+[xUnit.net 00:00:59.18]       Stack Trace:&#xD;
+[xUnit.net 00:00:59.18]         C:\Users\anna\orleans\test\TesterInternal\StreamingTests\SingleStreamTestRunner.cs(479,0): at UnitTests.StreamingTests.SingleStreamTestRunner.CheckCounters(ProducerProxy producer, ConsumerProxy consumer, Boolean assertAreEqual)&#xD;
+[xUnit.net 00:00:59.18]         C:\Users\anna\orleans\test\TesterInternal\StreamingTests\SingleStreamTestRunner.cs(442,0): at UnitTests.StreamingTests.SingleStreamTestRunner.BasicTestAsync(Boolean fullTest)&#xD;
+[xUnit.net 00:00:59.18]         C:\Users\anna\orleans\test\TesterInternal\StreamingTests\MultipleStreamsTestRunner.cs(65,0): at UnitTests.Streaming.MultipleStreamsTestRunner.StreamTest_MultipleStreams_ManyDifferent_ManyProducerGrainsManyConsumerGrains(Func`2 startSiloFunc, Action`1 stopSiloFunc)&#xD;
+[xUnit.net 00:00:59.18]         C:\Users\anna\orleans\test\Extensions\TesterAzureUtils\Streaming\AQStreamingTests.cs(200,0): at Tester.AzureUtils.Streaming.AQStreamingTests.AQ_17_MultipleStreams_1J_ManyProducerGrainsManyConsumerGrains()&#xD;
+[xUnit.net 00:00:59.18]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:59.22]   Finished:    Tester.AzureUtils&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="cloudtest-win10" outcome="Min" timestamp="2023-01-24T22:20:32.7309241+00:00">
+        <Text>[xUnit.net 00:00:59.18]     Tester.AzureUtils.Streaming.AQStreamingTests.AQ_17_MultipleStreams_1J_ManyProducerGrainsManyConsumerGrains [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="cloudtest-win10" outcome="Warning" timestamp="2023-01-24T22:20:32.9075326+00:00">
+        <Text>Data collector 'Blame' message: All tests finished running, Sequence file will not be generated.</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>
