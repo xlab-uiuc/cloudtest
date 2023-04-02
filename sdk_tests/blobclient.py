@@ -38,7 +38,7 @@ class BlobClient:
     def abort_copy(self, copy_id=None):
         # copy id
         if copy_id is None:
-            copy_id = '342f-f4fs-f4s4-f4s4-23eds'
+            copy_id = 'C56A4180-65AA-42EC-A945-5FD21DEC0538'
         try:
             self.blob_client.abort_copy(copy_id)
             print(self.service + ": Copy is aborted -- successful.")
@@ -46,22 +46,22 @@ class BlobClient:
             print(self.service + ": Copy is not aborted -- unsuccessful. Error: ", e)
 
 
-    # acquire lease with try except block
-    def acquire_lease(self, lease_duration=None, lease_id=None):
-        # lease duration
-        if lease_duration is None:
-            lease_duration = 20
-        # lease id
-        if lease_id is None:
-            lease_id = 'f81d4fae-7dec-11d0-a765-00a0c91e6bf6'
+    # # acquire lease with try except block
+    # def acquire_lease(self, lease_duration=None, lease_id=None):
+    #     # lease duration
+    #     if lease_duration is None:
+    #         lease_duration = 20
+    #     # lease id
+    #     if lease_id is None:
+    #         lease_id = 'f81d4fae-7dec-11d0-a765-00a0c91e6bf6'
 
-        try:
-            self.blob_client.acquire_lease(lease_duration, lease_id)
-            print(self.service + ": Lease is acquired.")
-            return True
-        except Exception as e:
-            print(self.service + ": Lease is not acquired. Error: ", e)
-            return False
+    #     try:
+    #         self.blob_client.acquire_lease(lease_duration, lease_id)
+    #         print(self.service + ": Lease is acquired.")
+    #         return True
+    #     except Exception as e:
+    #         print(self.service + ": Lease is not acquired. Error: ", e)
+    #         return False
 
     # append blob with try except block
     def append_block(self, data=None, length=None, validate_content=None):
@@ -73,12 +73,15 @@ class BlobClient:
             length = 11
         else:
             length = len(data)
-        # validate content
-        if validate_content is None:
-            validate_content = True
 
         try:
-            self.blob_client.append_block(data, length, validate_content)
+            random_blob_name = f'blob{random.randint(1, 1000000000)}'
+
+            with open('page', 'rb') as data1:
+                self.container_client.upload_blob(data=data1, name=random_blob_name, blob_type='AppendBlob')
+
+            blobclient = self.container_client.get_blob_client(random_blob_name)
+            blobclient.append_block(data, length)
             print(self.service + ": Blob is appended.")
             return True
         except Exception as e:
@@ -113,9 +116,6 @@ class BlobClient:
 
     # clear page with try except block
     def clear_page(self, start_range=None, end_range=None):
-        # create page blob
-        self.container_client.upload_blob(data=b'Page', name='pageblob', blob_type='PageBlob', length=len('First one'), metadata={'hello': 'world', 'number': '42'})
-        blobclient = self.container_client.get_blob_client('pageblob')
 
         # offset
         if start_range is None:
@@ -125,9 +125,17 @@ class BlobClient:
             end_range = 512
 
         try:
+            random_blob_name = f'blob{random.randint(1, 1000000000)}'
+
+            # create page blob, data as file page.txt and upload
+            with open('page', 'rb') as data:
+                self.container_client.upload_blob(data=data, name=random_blob_name, blob_type='PageBlob')
+            blobclient = self.container_client.get_blob_client(random_blob_name)
             blobclient.clear_page(start_range, end_range)
             print(self.service + ": Page is cleared.")
             return True
+                
+            
         except Exception as e:
             print(self.service + ": Page is not cleared. Error: ", e)
             return False
@@ -140,14 +148,19 @@ class BlobClient:
             block_list = ['block_id']
         # content settings
         if content_settings is None:
-            content_settings = {'content_type': 'text/plain', 'content_encoding': 'utf-8', 'cache_control':'None', 'content_language': 'en-US', 'content_disposition': 'attachment'}
+            content_settings = ContentSettings(content_type='text/plain', content_encoding='utf-8', cache_control='None', content_language='en-US', content_disposition='inline')
         # metadata
         if metadata is None:
             metadata = {'category': 'test', 'created': '2020-01-01', 'author': 'test', 'description': 'test', 'tags': 'test', 'title': 'test', 'version': '1.0', 'filename': 'test'}
 
 
         try:
-            self.blob_client.commit_block_list(block_list, content_settings, metadata)
+            random_blob_name = f'blob{random.randint(1, 1000000000)}'
+
+            self.container_client.upload_blob(data=b'First one', name=random_blob_name, blob_type='BlockBlob', length=len('First one'), metadata={'hello': 'world', 'number': '42'})
+            blobclient = self.container_client.get_blob_client(random_blob_name)
+
+            blobclient.commit_block_list(block_list, content_settings, metadata)
             print(self.service + ": Block list is committed.")
             return True
         except Exception as e:
@@ -159,13 +172,20 @@ class BlobClient:
     def create_append_blob(self, content_settings=None, metadata=None):
         # content settings
         if content_settings is None:
-            content_settings = {'content_type': 'text/plain', 'content_encoding': 'utf-8', 'cache_control':'None', 'content_language': 'en-US', 'content_disposition': 'attachment'}
+            content_settings = ContentSettings(content_type='text/plain', content_encoding='utf-8', cache_control='None', content_language='en-US', content_disposition='inline')
         # metadata
         if metadata is None:
             metadata = {'category': 'test', 'created': '2020-01-01', 'author': 'test', 'description': 'test', 'tags': 'test', 'title': 'test', 'version': '1.0', 'filename': 'test'}
 
         try:
-            self.blob_client.create_append_blob(content_settings, metadata)
+            random_blob_name = f'blob{random.randint(1, 1000000000)}'
+
+            # create page blob, data as file page.txt and upload
+            with open('page', 'rb') as data:
+                self.container_client.upload_blob(data=data, name=random_blob_name, blob_type='AppendBlob')
+            blobclient = self.container_client.get_blob_client(random_blob_name)
+
+            blobclient.create_append_blob(content_settings, metadata)
             print(self.service + ": Append blob is created.")
             return True
         except Exception as e:
@@ -180,7 +200,7 @@ class BlobClient:
             size = 512
         # content settings
         if content_settings is None:
-            content_settings = {'content_type': 'text/plain', 'content_encoding': 'utf-8', 'cache_control':'None', 'content_language': 'en-US', 'content_disposition': 'attachment'}
+            content_settings = ContentSettings(content_type='text/plain', content_encoding='utf-8', cache_control='None', content_language='en-US', content_disposition='inline')
         # metadata
         if metadata is None:
             metadata = {'category': 'test', 'created': '2020-01-01', 'author': 'test', 'description': 'test', 'tags': 'test', 'title': 'test', 'version': '1.0', 'filename': 'test'}
@@ -189,7 +209,14 @@ class BlobClient:
             premium_page_blob_tier = 'P4'
 
         try:
-            self.blob_client.create_page_blob(size, content_settings, metadata, premium_page_blob_tier)
+            random_blob_name = f'blob{random.randint(1, 1000000000)}'
+
+            # create page blob, data as file page.txt and upload
+            with open('page', 'rb') as data:
+                self.container_client.upload_blob(data=data, name=random_blob_name, blob_type='PageBlob')
+            blobclient = self.container_client.get_blob_client(random_blob_name)
+
+            blobclient.create_page_blob(size, content_settings, metadata)
             print(self.service + ": Page blob is created.")
             return True
         except Exception as e:
@@ -321,7 +348,31 @@ class BlobClient:
             return False
         
         
+    # get page ranges with try except block
+    def get_page_ranges(self, start_range=None, end_range=None):
 
+
+        # start range
+        if start_range is None:
+            start_range = 0
+        # end range
+        if end_range is None:
+            end_range = 1024
+
+        try:
+            random_blob_name = f'blob{random.randint(1, 1000000000)}'
+
+            with open('page', 'rb') as data:
+                self.container_client.upload_blob(data=data, name=random_blob_name, blob_type='PageBlob')
+            blobclient = self.container_client.get_blob_client(random_blob_name)
+            blobclient.get_page_ranges(offset=start_range, length=end_range)
+            print(self.service + ": Page ranges are retrieved.")
+            return True
+            
+        except Exception as e:
+            print(self.service + ": Page ranges are not retrieved. Error: ", e)
+            return False
+            
 
     # list page ranges diff with try except block
     def list_page_ranges_diff(self, previous_snapshot=None, start_range=None, end_range=None):
@@ -438,6 +489,8 @@ class BlobClient:
             print(self.service + ": Legal hold is not set. Error: ", e)
             return False
         
+    
+    # skip premium page blob tier (with premium acc)
 
 
     # set tier with try except block
@@ -533,7 +586,7 @@ class BlobClient:
             metadata = {'metadata1': 'value1', 'metadata2': 'value2'}
 
         try:
-            self.blob_client.upload_blob(data=data, blob_type=blob_type, lenght=length, metadata=metadata)
+            self.blob_client.upload_blob(data=data, blob_type=blob_type, length=length, metadata=metadata)
             print(self.service + ": Blob is uploaded from bytes.")
             return True
         except Exception as e:
@@ -559,13 +612,15 @@ class BlobClient:
     def upload_page(self, data=None, offset=None, length=None, validate_content=None):
         # data
         if data is None:
-            data = b'Hello World'
+            # open page.txt file
+            with open('page', 'rb') as f:
+                data = f.read()
         # offset
         if offset is None:
             offset = 0
 
         try:
-            self.blob_client.upload_page(data, offset, length)
+            self.blob_client.upload_page(data, offset, length=len(data))
             print(self.service + ": Page is uploaded.")
             return True
         except Exception as e:
@@ -596,9 +651,17 @@ class BlobClient:
 
 
 
-# if __name__ == '__main__':
+if __name__ == '__main__':
+
+    
     # create blob client
-    # blob_client = BlobClient(False)
+    blob_client = BlobClient(False)
+    # get all methods
+    methods = [getattr(BlobClient, attr) for attr in dir(BlobClient) if callable(getattr(BlobClient, attr)) and not attr.startswith("__")]
+
+    for i in methods:
+        print(i.__name__)
+        i(blob_client)
 
     # run all methods
     # blob_client.abort_copy()
@@ -619,6 +682,7 @@ class BlobClient:
     # blob_client.get_blob_properties()
     # blob_client.get_blob_tags()
     # blob_client.get_block_list()
+    # blob_client.get_page_ranges()
     # blob_client.list_page_ranges_diff()
     # blob_client.query_blob()
     # blob_client.set_blob_metadata()
