@@ -325,15 +325,15 @@ class ContainerClient:
 
     
 
-'''Check if a sublist exists in a list'''
-def check_sublist_in_list(given_list, sublist):
-    res = False
-    for idx in range(len(given_list) - len(sublist) + 1):
-        if given_list[idx: idx + len(sublist)] == sublist:
-            res = True
-            break
+# '''Check if a sublist exists in a list'''
+# def check_sublist_in_list(given_list, sublist):
+#     res = False
+#     for idx in range(len(given_list) - len(sublist) + 1):
+#         if given_list[idx: idx + len(sublist)] == sublist:
+#             res = True
+#             break
 
-    return res
+#     return res
         
 
 

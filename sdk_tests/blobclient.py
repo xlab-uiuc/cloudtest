@@ -243,19 +243,19 @@ class BlobClient:
             return False
         
 
-    # delete blob with try except block
-    def delete_blob(self, delete_snapshots=None):
-        # delete snapshots
-        if delete_snapshots is None:
-            delete_snapshots = 'include'
+    # # delete blob with try except block
+    # def delete_blob(self, delete_snapshots=None):
+    #     # delete snapshots
+    #     if delete_snapshots is None:
+    #         delete_snapshots = 'include'
 
-        try:
-            self.blob_client.delete_blob(delete_snapshots)
-            print(self.service + ": Blob is deleted.")
-            return True
-        except Exception as e:
-            print(self.service + ": Blob is not deleted. Error: ", e)
-            return False
+    #     try:
+    #         self.blob_client.delete_blob(delete_snapshots)
+    #         print(self.service + ": Blob is deleted.")
+    #         return True
+    #     except Exception as e:
+    #         print(self.service + ": Blob is not deleted. Error: ", e)
+    #         return False
         
     
     # delete immutability policy with try except block
@@ -657,14 +657,14 @@ class BlobClient:
 
 
 
-if __name__ == '__main__':
+# if __name__ == '__main__':
 
     
-    # create blob client
-    blob_client = BlobClient(True)
-    # get all methods
-    methods = [getattr(BlobClient, attr) for attr in dir(BlobClient) if callable(getattr(BlobClient, attr)) and not attr.startswith("__")]
+#     # create blob client
+#     blob_client = BlobClient(True)
+#     # get all methods
+#     methods = [getattr(BlobClient, attr) for attr in dir(BlobClient) if callable(getattr(BlobClient, attr)) and not attr.startswith("__")]
 
-    for i in methods:
-        print(i.__name__)
-        i(blob_client)
+#     for i in methods:
+#         print(i.__name__)
+#         i(blob_client)
