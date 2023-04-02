@@ -651,51 +651,14 @@ class BlobClient:
 
 
 
-if __name__ == '__main__':
+# if __name__ == '__main__':
 
     
-    # create blob client
-    blob_client = BlobClient(False)
-    # get all methods
-    methods = [getattr(BlobClient, attr) for attr in dir(BlobClient) if callable(getattr(BlobClient, attr)) and not attr.startswith("__")]
+#     # create blob client
+#     blob_client = BlobClient(False)
+#     # get all methods
+#     methods = [getattr(BlobClient, attr) for attr in dir(BlobClient) if callable(getattr(BlobClient, attr)) and not attr.startswith("__")]
 
-    for i in methods:
-        print(i.__name__)
-        i(blob_client)
-
-    # run all methods
-    # blob_client.abort_copy()
-    # blob_client.acquire_lease()
-    # blob_client.append_block()
-    # blob_client.append_block_from_url()
-    # blob_client.clear_page()
-    # blob_client.commit_block_list()
-    # blob_client.create_append_blob()
-    # blob_client.create_page_blob()
-    # blob_client.create_snapshot
-    # blob_client.delete_blob()
-    # blob_client.delete_immutability_policy()
-    # blob_client.delete_blob()
-    # blob_client.download_blob()
-    # blob_client.exists()
-    # blob_client.get_account_information()
-    # blob_client.get_blob_properties()
-    # blob_client.get_blob_tags()
-    # blob_client.get_block_list()
-    # blob_client.get_page_ranges()
-    # blob_client.list_page_ranges_diff()
-    # blob_client.query_blob()
-    # blob_client.set_blob_metadata()
-    # blob_client.set_blob_tags()
-    # blob_client.set_http_headers()
-    # blob_client.set_immutability_policy()
-    # blob_client.set_legal_hold()
-    # blob_client.set_standard_blob_tier()
-    # blob_client.stage_block()
-    # blob_client.stage_block_from_url()
-    # blob_client.undelete_blob()
-    # blob_client.upload_blob_from_bytes()
-    # blob_client.upload_blob_from_url()
-    # blob_client.get_account_information()
-    # blob_client.upload_page()
-    # blob_client.upload_pages_from_url()
+#     for i in methods:
+#         print(i.__name__)
+#         i(blob_client)
