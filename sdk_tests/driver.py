@@ -1,6 +1,7 @@
 from contextlib import redirect_stdout
 from containerclient import ContainerClient
 from blobclient import BlobClient
+from blobserviceclient import MyBlobServiceClient
 import io
 import itertools
 
@@ -52,12 +53,18 @@ if __name__ == '__main__':
 
 
     # get all methods of ContainerClient
-    methods = [getattr(BlobClient, attr) for attr in dir(BlobClient) if callable(getattr(BlobClient, attr)) and not attr.startswith("__")]
-
+    methods_blobClient = [getattr(BlobClient, attr) for attr in dir(BlobClient) if callable(getattr(BlobClient, attr)) and not attr.startswith("__")]
+    methods_containerClient = [getattr(ContainerClient, attr) for attr in dir(ContainerClient) if callable(getattr(ContainerClient, attr)) and not attr.startswith("__")]
+    methods_blobServiceClient = [getattr(MyBlobServiceClient, attr) for attr in dir(MyBlobServiceClient) if callable(getattr(MyBlobServiceClient, attr)) and not attr.startswith("__")]
+    methods = methods_blobClient + methods_containerClient + methods_blobServiceClient
     # logging.basicConfig(level=logging.DEBUG)
 
-    test_cloud = BlobClient(False)
-    test_em = BlobClient()
+    test_cloud_bc = BlobClient(False)
+    test_em_bc = BlobClient()
+    test_cloud_cc = ContainerClient(False)
+    test_em_cc = ContainerClient()
+    test_cloud_bsc = MyBlobServiceClient(False)
+    test_em_bsc = MyBlobServiceClient()
     count = 0
     t_count = 0
     list_seqs = list(itertools.combinations(methods, 5))
@@ -74,7 +81,7 @@ if __name__ == '__main__':
 
             for method in list_seqs[counter]:
                 sublist.append(method)
-                if not method(test_cloud) == method(test_em):
+                if method in methods_blobClient and not method(test_cloud_bc) == method(test_cloud_bc) or method in methods_containerClient and not method(test_cloud_cc) == method(test_em_cc) or method in methods_blobServiceClient and not method(test_cloud_bsc) == method(test_em_bsc):
                     
                     count += 1
                     output = buf.getvalue().strip()
