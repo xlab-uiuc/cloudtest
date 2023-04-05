@@ -3,7 +3,7 @@ from azure.storage.blob import BlobServiceClient, ContentSettings, ImmutabilityP
 import random
 
 
-class BlobServiceClient:
+class MyBlobServiceClient:
     def __init__(self, emulator=True, container_name=None, blob_name=None):
         
         # container name
@@ -37,7 +37,7 @@ class BlobServiceClient:
     # create container with default container name as none with try except
     def create_container(self, container_name=None):
         if container_name is None:
-            container_name = self.container_name
+            container_name = f'container{random.randint(1, 1000000000)}'
 
         try:
             self.container_client = self.blob_service_client.create_container(container_name)
@@ -70,6 +70,7 @@ class BlobServiceClient:
         
         try:
             blobs = self.blob_service_client.find_blobs_by_tags(filter_expression)
+            print(self.service, ': Blobs found with filter expression: ', filter_expression)
             return True
         except Exception as e:
             print(self.service, ': Blob search failed, error: ', e)
@@ -80,6 +81,7 @@ class BlobServiceClient:
     def get_account_info(self):
         try:
             self.blob_service_client.get_account_information()
+            print(self.service, ': Account info retrieved')
             return True
         except Exception as e:
             print(self.service, ': Account info retrieval failed, error: ', e)
@@ -93,6 +95,7 @@ class BlobServiceClient:
 
         try:
             self.blob_client = self.container_client.get_blob_client(blob_name)
+            print(self.service, ': Blob client retrieved with name: ', blob_name)
             return True
         except Exception as e:
             print(self.service, ': Blob client retrieval failed with name: ', blob_name, ' and error: ', e)
@@ -106,6 +109,7 @@ class BlobServiceClient:
 
         try:
             self.container_client = self.blob_service_client.get_container_client(container_name)
+            print(self.service, ': Container client retrieved with name: ', container_name)
             return True
         except Exception as e:
             print(self.service, ': Container client retrieval failed with name: ', container_name, ' and error: ', e)
@@ -116,6 +120,7 @@ class BlobServiceClient:
     def get_service_properties(self):
         try:
             self.blob_service_client.get_service_properties()
+            print(self.service, ': Service properties retrieved')
             return True
         except Exception as e:
             print(self.service, ': Service properties retrieval failed, error: ', e)
@@ -123,19 +128,21 @@ class BlobServiceClient:
         
 
     # get service stats with try except
-    def get_service_stats(self):
-        try:
-            self.blob_service_client.get_service_stats()
-            return True
-        except Exception as e:
-            print(self.service, ': Service stats retrieval failed, error: ', e)
-            return False
+    # def get_service_stats(self):
+    #     try:
+    #         self.blob_service_client.get_service_stats()
+    #         print(self.service, ': Service stats retrieved')
+    #         return True
+    #     except Exception as e:
+    #         print(self.service, ': Service stats retrieval failed, error: ', e)
+    #         return False
         
 
     # list containers with try except
     def list_containers(self):
         try:
             self.blob_service_client.list_containers()
+            print(self.service, ': Container list retrieved')
             return True
         except Exception as e:
             print(self.service, ': Container list retrieval failed, error: ', e)
@@ -147,15 +154,33 @@ class BlobServiceClient:
 
 
     # undelete container with default container name as none with try except
-    def undelete_container(self, container_name=None):
+    def undelete_container(self, container_name=None, version_id=None):
         if container_name is None:
             container_name = self.container_name
 
+        if version_id is None:
+            version_id = ""
+
         try:
-            self.blob_service_client.undelete_container(container_name)
+            self.blob_service_client.undelete_container(container_name, version_id)
             print(self.service, ': Container undeleted with name: ', container_name)
             return True
         except Exception as e:
             print(self.service, ': Container undeletion failed with name: ', container_name, ' and error: ', e)
             return False
     
+
+
+# if __name__ == '__main__':
+
+
+#     # create blob client
+#     blob_service_client = MyBlobServiceClient(False)
+#     # get all methods
+#     methods = [getattr(MyBlobServiceClient, attr) for attr in dir(MyBlobServiceClient) if callable(getattr(MyBlobServiceClient, attr)) and not attr.startswith("__")]
+
+#     for i in methods:
+#         print(i.__name__)
+#         i(blob_service_client)
+
+
