@@ -81,7 +81,7 @@ if __name__ == '__main__':
 
             for method in list_seqs[counter]:
                 sublist.append(method)
-                if method in methods_blobClient and not method(test_cloud_bc) == method(test_cloud_bc) or method in methods_containerClient and not method(test_cloud_cc) == method(test_em_cc) or method in methods_blobServiceClient and not method(test_cloud_bsc) == method(test_em_bsc):
+                if method in methods_blobClient and not method(test_cloud_bc) == method(test_em_bc) or method in methods_containerClient and not method(test_cloud_cc) == method(test_em_cc) or method in methods_blobServiceClient and not method(test_cloud_bsc) == method(test_em_bsc):
                     
                     count += 1
                     output = buf.getvalue().strip()
