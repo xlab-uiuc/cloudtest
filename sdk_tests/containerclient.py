@@ -1,3 +1,5 @@
+import logging
+import time
 from azure.storage.blob import BlobServiceClient, PublicAccess, AccessPolicy, PremiumPageBlobTier, StandardBlobTier
 import random
 
@@ -9,9 +11,13 @@ class ContainerClient:
         # container name
         if container_name is None:
             self.container_name = f'container{random.randint(1, 1000000000)}'
+        else :
+            self.container_name = container_name
         # blob name
         if blob_name is None:
             self.blob_name = f'blob{random.randint(1, 1000000000)}'
+        else:
+            self.blob_name = blob_name
 
         # connection string
         if emulator:
@@ -48,9 +54,12 @@ class ContainerClient:
         
 
       # create a container with random name with try except block
-    def create_container(self):
-        try:
+    def create_container(self, container_name=None):
+        # container name
+        if container_name is None:
             container_name = f'container{random.randint(1, 1000000000)}'
+
+        try:
             self.blob_service_client.get_container_client(container_name).create_container()
             print(self.service + ": Container is created")
             return True
@@ -118,11 +127,11 @@ class ContainerClient:
         print(self.service + ": " + 'Checking if container exists: ')
         
         try:
-            self.container_client.exists()
-            print(self.service + ": Container exists")
+            resp = self.container_client.exists()
+            print(self.service + ": Container exists:", resp)
             return True
         except Exception as e:
-            print(self.service + ": Container does not exist. Error: ", e)
+            print(self.service + ": Container existence check failed. Error: ", e)
             return False
 
 
@@ -204,7 +213,7 @@ class ContainerClient:
     def list_blobs(self):
         try:
             print(self.service + ": Listing blobs...")
-            self.container_client.list_blobs()
+            res = self.container_client.list_blobs()
             print(self.service + ": Blob listed successfully")
             return True
         except Exception as e:
@@ -281,10 +290,10 @@ class ContainerClient:
         
 
     # upload blob
-    def upload_blob(self, blob_name=None, data=None, blob_type=None, metadata=None):
+    def upload_blob(self, container_client=None,blob_name=None, data=None, blob_type=None, metadata=None):
         # blob name
         if blob_name is None:
-            blob_name = self.blob_name
+            blob_name = f'blob{random.randint(1, 1000000000)}'
         # blob data
         if data is None:
             data = b'hello world'
@@ -294,9 +303,13 @@ class ContainerClient:
         # blob metadata
         if metadata is None:
             metadata = {'hello': 'world', 'number': '42'}
+
+        if container_client is None:
+            container_client = self.container_client
+
         try:
             print(self.service + ": Uploading blob: ", blob_name)
-            self.container_client.upload_blob(data=data, name=blob_name, blob_type=blob_type, length=len(data), metadata=metadata)
+            container_client.upload_blob(data=data, name=blob_name, blob_type=blob_type, length=len(data), metadata=metadata)
             print(self.service + ": Blob is uploaded.")
             return True
         except Exception as e:
@@ -335,5 +348,3 @@ class ContainerClient:
 
 #     return res
         
-
-
