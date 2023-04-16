@@ -9,9 +9,13 @@ class MyBlobServiceClient:
         # container name
         if container_name is None:
             self.container_name = f'container{random.randint(1, 1000000000)}'
+        else:
+            self.container_name = container_name
         # blob name
         if blob_name is None:
             self.blob_name = f'blob{random.randint(1, 1000000000)}'
+        else:
+            self.blob_name = blob_name
             
         self.account_name = 'restlertest1'
 
