@@ -2,11 +2,17 @@ from contextlib import redirect_stdout
 from containerclient import ContainerClient
 from blobclient import BlobClient
 from blobserviceclient import MyBlobServiceClient
+from tableclient import MyTableClient
+from tableserviceclient import MyTableServiceClient
 import io
 import itertools
 
 
-
+'''
+Total operations
+Azure Blob (we take 3 clients and ignore lease client): 63
+Azure Table: 19
+'''
 
 '''Check if a sublist exists in a list'''
 def check_sublist_in_list(given_list, sublist):
@@ -135,8 +141,12 @@ def run1v1():
 if __name__ == '__main__':
 
     
+    methods_tableClient = [getattr(MyTableClient, attr) for attr in dir(MyTableClient) if callable(getattr(MyTableClient, attr)) and not attr.startswith("__")]
+    methods_tableServiceClient = [getattr(MyTableServiceClient, attr) for attr in dir(MyTableServiceClient) if callable(getattr(MyTableServiceClient, attr)) and not attr.startswith("__")]
+    methods = methods_tableClient + methods_tableServiceClient
+    print(len(methods))
 
-    run1v1()
+    # run1v1()
     # run_sequences()
 
 
