@@ -44,14 +44,8 @@ def extract_discrepancy(file):
     with open('unique_discrepancy.txt', 'w') as f:
         f.write('\n\n'.join(li))
 
-
-
-
-'''Get all the test functions'''
-if __name__ == '__main__':
-
-
-
+def run_sequences():
+    
     # get all methods of ContainerClient
     methods_blobClient = [getattr(BlobClient, attr) for attr in dir(BlobClient) if callable(getattr(BlobClient, attr)) and not attr.startswith("__")]
     methods_containerClient = [getattr(ContainerClient, attr) for attr in dir(ContainerClient) if callable(getattr(ContainerClient, attr)) and not attr.startswith("__")]
@@ -65,6 +59,7 @@ if __name__ == '__main__':
     test_em_cc = ContainerClient()
     test_cloud_bsc = MyBlobServiceClient(False)
     test_em_bsc = MyBlobServiceClient()
+
     count = 0
     t_count = 0
     list_seqs = list(itertools.combinations(methods, 5))
@@ -95,3 +90,55 @@ if __name__ == '__main__':
         counter += 1
 
     extract_discrepancy('discrepancy.txt')
+
+
+def run1v1():
+
+    # get all methods of ContainerClient
+    methods_blobClient = [getattr(BlobClient, attr) for attr in dir(BlobClient) if callable(getattr(BlobClient, attr)) and not attr.startswith("__")]
+    methods_containerClient = [getattr(ContainerClient, attr) for attr in dir(ContainerClient) if callable(getattr(ContainerClient, attr)) and not attr.startswith("__")]
+    methods_blobServiceClient = [getattr(MyBlobServiceClient, attr) for attr in dir(MyBlobServiceClient) if callable(getattr(MyBlobServiceClient, attr)) and not attr.startswith("__")]
+    methods = methods_blobClient + methods_containerClient + methods_blobServiceClient
+    # logging.basicConfig(level=logging.DEBUG)
+
+    test_cloud_bc = BlobClient(False)
+    test_em_bc = BlobClient()
+    test_cloud_cc = ContainerClient(False)
+    test_em_cc = ContainerClient()
+    test_cloud_bsc = MyBlobServiceClient(False)
+    test_em_bsc = MyBlobServiceClient()
+
+    count = 0
+    t_count = 0
+    
+    with open('discrepancy.txt', 'w') as f:
+        f.write('')
+
+    with io.StringIO() as buf, redirect_stdout(buf):
+        for method in methods:
+            t_count += 1
+            if method in methods_blobClient and not method(test_cloud_bc) == method(test_em_bc) or method in methods_containerClient and not method(test_cloud_cc) == method(test_em_cc) or method in methods_blobServiceClient and not method(test_cloud_bsc) == method(test_em_bsc):
+                
+                count += 1
+                output = buf.getvalue().strip()
+
+                with open('discrepancy.txt', 'a') as f:
+                    f.write(f'{method.__name__}' + '\n\n' + output)
+                    f.write(f'\n\n\n{count}/{t_count}   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n\n\n')
+                
+
+    extract_discrepancy('discrepancy.txt')
+
+
+
+'''Get all the test functions'''
+if __name__ == '__main__':
+
+    
+
+    run1v1()
+    # run_sequences()
+
+
+
+    
