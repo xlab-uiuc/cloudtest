@@ -342,7 +342,7 @@ class S3Client:
     # delete object with try accept and args as none
     def s3_delete_object(self, bucket_name=None, key=None):
         # comment this if you want to delete objects for deleting all the objects
-        # self.s3_put_object()
+        self.s3_put_object()
         if bucket_name is None:
             bucket_name = self.bucket_name
         if key is None:
@@ -367,7 +367,7 @@ class S3Client:
         self.s3_put_object_tagging(key=key)
 
         try:
-            self.client.delete_object_tagging(Bucket=bucket_name, Key=key)
+            self.client.delete_object_tagging(Bucket=bucket_name, Key=key, BypassGovernanceRetention=True)
             print(self.service, ': ' + f'Success -- Object tagging deleted from object {key} in bucket {bucket_name}')
             return True
         except Exception as e:
@@ -1137,18 +1137,10 @@ class S3Client:
             res = self.client.list_buckets()
             print(self.service, ': ' + 'Success -- Buckets listed')
             # to delete all buckets uncomment the below code
-            print(res)
-            for i in res['Buckets']:
-                buc = i['Name']
-                try:
-                    objs = self.client.list_objects(Bucket=buc)
-                    print(objs)
-                except Exception as e:
-                    print(self.service, ': ' + f'Fail -- Error listing objects from bucket {buc}: {e}')
-                    continue
-                for i in objs['Contents']:
-                    self.s3_delete_object(i['Key'], i['Bucket'])
-                self.s3_delete_bucket(i['Name'])
+            # print(res)
+            # for i in res['Buckets']:
+            #     print('*****',i['Name'])
+            #     self.s3_delete_bucket(i['Name'])
             return True
         except Exception as e:
             print(self.service, ': ' + f'Fail -- Error listing buckets: {e}')
@@ -1607,12 +1599,13 @@ class S3Client:
 
         if legal_hold is None:
             legal_hold = {
-                    'Status': 'ON'
+                    'Status': 'OFF'
                 }
             
         if bucket_name is None:
             bucket_name = f'bucket{random.randint(1, 1000000)}'
 
+        # comment for bult deletion
         self.s3_put_object_lock_configuration(bucket_name=bucket_name)
         self.s3_put_object(key=key, bucket_name=bucket_name)
 
@@ -1848,9 +1841,9 @@ if __name__ == '__main__':
     table_client.s3_list_buckets()
 
     # get all methods and run them
-    # methods = [getattr(S3Client, attr) for attr in dir(S3Client) if callable(getattr(S3Client, attr)) and not attr.startswith("__")]
+    methods = [getattr(S3Client, attr) for attr in dir(S3Client) if callable(getattr(S3Client, attr)) and not attr.startswith("__")]
 
     # print(len(methods))
-    # for i in methods:
-    #     print(i.__name__)
+    for i in methods:
+        print(i.__name__)
     #     i(table_client)
