@@ -60,6 +60,8 @@ class MyBlobServiceClient:
         try:
             self.blob_service_client.delete_container(container_name)
             print(self.service, ': Container deleted with name: ', container_name)
+            # create container again
+            self.container_client.create_container()
             return True
         except Exception as e:
             print(self.service, ': Container deletion failed with name: ', container_name, ' and error: ', e)
@@ -132,14 +134,14 @@ class MyBlobServiceClient:
         
 
     # get service stats with try except
-    # def get_service_stats(self):
-    #     try:
-    #         self.blob_service_client.get_service_stats()
-    #         print(self.service, ': Service stats retrieved')
-    #         return True
-    #     except Exception as e:
-    #         print(self.service, ': Service stats retrieval failed, error: ', e)
-    #         return False
+    def get_service_stats(self):
+        try:
+            self.blob_service_client.get_service_stats()
+            print(self.service, ': Service stats retrieved')
+            return True
+        except Exception as e:
+            print(self.service, ': Service stats retrieval failed, error: ', e)
+            return False
         
 
     # list containers with try except

@@ -76,6 +76,8 @@ class ContainerClient:
         try:
             self.container_client.delete_blob(blob_name)
             print(self.service + ": Blob is deleted")
+            # create blob again
+            self.container_client.upload_blob(data=b'Second one', name=self.blob_name, blob_type='BlockBlob', length=len('First one'), metadata={'hello': 'world', 'number': '42'})
             return True
         except Exception as e:
             print(self.service + ": Blob is not deleted. Error: ", e)
@@ -91,6 +93,8 @@ class ContainerClient:
         try:
             self.container_client.delete_blobs(blob_list)
             print(self.service + ": Blobs are deleted successfully.")
+            # create blob again
+            self.container_client.upload_blob(data=b'Third one', name=self.blob_name, blob_type='BlockBlob', length=len('First one'), metadata={'hello': 'world', 'number': '42'})
             return True
         except Exception as e:
             print(self.service + ": Blobs are not deleted. Error: ", e)
@@ -102,6 +106,8 @@ class ContainerClient:
         try:
             self.container_client.delete_container()
             print(self.service + ": Container deleted successfully.")
+            # create container again
+            self.container_client.create_container()
             return True
         except Exception as e:
             print(self.service + ": Container is not deleted. Error: ", e)
@@ -256,20 +262,20 @@ class ContainerClient:
 
     '''Applied to premium acounts only'''
     # set premium page blob tier with try except block
-    # def set_premium_page_blob_tier(self, blob_name=None, premium_blob_tier=None):
-    #     # blob name
-    #     if blob_name is None:
-    #         blob_name = self.blob_name
-    #     # premium page blob tier
-    #     if premium_blob_tier is None:
-    #         premium_blob_tier = PremiumPageBlobTier('P4')
-    #     try:
-    #         self.container_client.set_premium_page_blob_tier_blobs(premium_blob_tier, blob_name)
-    #         print(self.service + ": premium page blob tier is set.")
-    #         return True
-    #     except Exception as e:
-    #         print(self.service + ": premium page blob tier is not set. Error: ", e)
-    #         return False
+    def set_premium_page_blob_tier(self, blob_name=None, premium_blob_tier=None):
+        # blob name
+        if blob_name is None:
+            blob_name = self.blob_name
+        # premium page blob tier
+        if premium_blob_tier is None:
+            premium_blob_tier = PremiumPageBlobTier('P4')
+        try:
+            self.container_client.set_premium_page_blob_tier_blobs(premium_blob_tier, blob_name)
+            print(self.service + ": premium page blob tier is set.")
+            return True
+        except Exception as e:
+            print(self.service + ": premium page blob tier is not set. Error: ", e)
+            return False
 
 
     # set standard page blob tier with try except block

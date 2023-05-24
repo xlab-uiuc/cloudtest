@@ -81,6 +81,7 @@ class MyQueueClient:
         try:
             self.queue_client.delete_queue()
             print(self.service, ': Success -- Queue deleted')
+            # create queue again
             self.queue_create()
             return True
         except Exception as e:
@@ -215,14 +216,14 @@ class MyQueueClient:
             return False
         
 
-if __name__ == '__main__':
+# if __name__ == '__main__':
 
 
-    # create blob client
-    table_client = MyQueueClient(True)
-    # get all methods
-    methods = [getattr(MyQueueClient, attr) for attr in dir(MyQueueClient) if callable(getattr(MyQueueClient, attr)) and not attr.startswith("__")]
-    print(len(methods))
-    for i in methods:
-        print(i.__name__)
-        i(table_client)
+#     # create blob client
+#     table_client = MyQueueClient(True)
+#     # get all methods
+#     methods = [getattr(MyQueueClient, attr) for attr in dir(MyQueueClient) if callable(getattr(MyQueueClient, attr)) and not attr.startswith("__")]
+#     print(len(methods))
+#     for i in methods:
+#         print(i.__name__)
+#         i(table_client)

@@ -4,6 +4,8 @@ from blobclient import BlobClient
 from blobserviceclient import MyBlobServiceClient
 from tableclient import MyTableClient
 from tableserviceclient import MyTableServiceClient
+from queueclient import MyQueueClient
+from queueserviceclient import MyQueueServiceClient
 import io
 import itertools
 
@@ -103,8 +105,13 @@ def run1v1():
     # get all methods of ContainerClient
     methods_blobClient = [getattr(BlobClient, attr) for attr in dir(BlobClient) if callable(getattr(BlobClient, attr)) and not attr.startswith("__")]
     methods_containerClient = [getattr(ContainerClient, attr) for attr in dir(ContainerClient) if callable(getattr(ContainerClient, attr)) and not attr.startswith("__")]
-    methods_blobServiceClient = [getattr(MyBlobServiceClient, attr) for attr in dir(MyBlobServiceClient) if callable(getattr(MyBlobServiceClient, attr)) and not attr.startswith("__")]
-    methods = methods_blobClient + methods_containerClient + methods_blobServiceClient
+    methods_blobServiceClient = [getattr(MyBlobServiceClient, attr) for attr in dir(MyBlobServiceClient) if callable(getattr(MyBlobServiceClient, attr))
+     and not attr.startswith("__")]
+    methods_tableClient = [getattr(MyTableClient, attr) for attr in dir(MyTableClient) if callable(getattr(MyTableClient, attr)) and not attr.startswith("__")]
+    methods_tableServiceClient = [getattr(MyTableServiceClient, attr) for attr in dir(MyTableServiceClient) if callable(getattr(MyTableServiceClient, attr)) and not attr.startswith("__")]
+    methods_queueClient = [getattr(MyQueueClient, attr) for attr in dir(MyQueueClient) if callable(getattr(MyQueueClient, attr)) and not attr.startswith("__")]
+    methods_queueServiceClient = [getattr(MyQueueServiceClient, attr) for attr in dir(MyQueueServiceClient) if callable(getattr(MyQueueServiceClient, attr)) and not attr.startswith("__")]
+    methods = methods_blobClient + methods_containerClient + methods_blobServiceClient + methods_tableClient + methods_tableServiceClient + methods_queueClient + methods_queueServiceClient
     # logging.basicConfig(level=logging.DEBUG)
 
     test_cloud_bc = BlobClient(False)
@@ -113,6 +120,14 @@ def run1v1():
     test_em_cc = ContainerClient()
     test_cloud_bsc = MyBlobServiceClient(False)
     test_em_bsc = MyBlobServiceClient()
+    test_cloud_tc = MyTableClient(False)
+    test_em_tc = MyTableClient()
+    test_cloud_tsc = MyTableServiceClient(False)
+    test_em_tsc = MyTableServiceClient()
+    test_cloud_qc = MyQueueClient(False)
+    test_em_qc = MyQueueClient()
+    test_cloud_qsc = MyQueueServiceClient(False)
+    test_em_qsc = MyQueueServiceClient()
 
     count = 0
     t_count = 0
@@ -123,7 +138,7 @@ def run1v1():
     with io.StringIO() as buf, redirect_stdout(buf):
         for method in methods:
             t_count += 1
-            if method in methods_blobClient and not method(test_cloud_bc) == method(test_em_bc) or method in methods_containerClient and not method(test_cloud_cc) == method(test_em_cc) or method in methods_blobServiceClient and not method(test_cloud_bsc) == method(test_em_bsc):
+            if method in methods_blobClient and not method(test_cloud_bc) == method(test_em_bc) or method in methods_containerClient and not method(test_cloud_cc) == method(test_em_cc) or method in methods_blobServiceClient and not method(test_cloud_bsc) == method(test_em_bsc) or method in methods_tableClient and not method(test_cloud_tc) == method(test_em_tc) or method in methods_tableServiceClient and not method(test_cloud_tsc) == method(test_em_tsc) or method in methods_queueClient and not method(test_cloud_qc) == method(test_em_qc) or method in methods_queueServiceClient and not method(test_cloud_qsc) == method(test_em_qsc):
                 
                 count += 1
                 output = buf.getvalue().strip()
@@ -141,12 +156,12 @@ def run1v1():
 if __name__ == '__main__':
 
     
-    methods_tableClient = [getattr(MyTableClient, attr) for attr in dir(MyTableClient) if callable(getattr(MyTableClient, attr)) and not attr.startswith("__")]
-    methods_tableServiceClient = [getattr(MyTableServiceClient, attr) for attr in dir(MyTableServiceClient) if callable(getattr(MyTableServiceClient, attr)) and not attr.startswith("__")]
-    methods = methods_tableClient + methods_tableServiceClient
-    print(len(methods))
+    # methods_tableClient = [getattr(MyTableClient, attr) for attr in dir(MyTableClient) if callable(getattr(MyTableClient, attr)) and not attr.startswith("__")]
+    # methods_tableServiceClient = [getattr(MyTableServiceClient, attr) for attr in dir(MyTableServiceClient) if callable(getattr(MyTableServiceClient, attr)) and not attr.startswith("__")]
+    # methods = methods_tableClient + methods_tableServiceClient
+    # print(len(methods))
 
-    # run1v1()
+    run1v1()
     # run_sequences()
 
 

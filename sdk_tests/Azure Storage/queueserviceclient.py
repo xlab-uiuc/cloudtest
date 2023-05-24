@@ -124,14 +124,14 @@ class MyQueueServiceClient:
             return False
 
 
-if __name__ == '__main__':
+# if __name__ == '__main__':
 
 
-    # create blob client
-    table_client = MyQueueServiceClient(False)
-    # get all methods
-    methods = [getattr(MyQueueServiceClient, attr) for attr in dir(MyQueueServiceClient) if callable(getattr(MyQueueServiceClient, attr)) and not attr.startswith("__")]
-    print(len(methods))
-    for i in methods:
-        print(i.__name__)
-        i(table_client)
+#     # create blob client
+#     table_client = MyQueueServiceClient(False)
+#     # get all methods
+#     methods = [getattr(MyQueueServiceClient, attr) for attr in dir(MyQueueServiceClient) if callable(getattr(MyQueueServiceClient, attr)) and not attr.startswith("__")]
+#     print(len(methods))
+#     for i in methods:
+#         print(i.__name__)
+#         i(table_client)

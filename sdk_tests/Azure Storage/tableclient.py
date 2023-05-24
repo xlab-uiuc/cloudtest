@@ -73,6 +73,8 @@ class MyTableClient():
         try:
             self.table_client.delete_entity(row_key="brandtwo", partition_key="colortwo")
             print(self.service, ': Entity deleted')
+            # create entity again
+            self.table_create_entity()
             return True
         except Exception as e:
             print(self.service, ': Entity deletion failed; error: ', e)
@@ -80,17 +82,19 @@ class MyTableClient():
         
 
     # delete table with default table name as none with try except
-    # def table_delete_table(self, table_name=None):
-    #     if table_name is None:
-    #         table_name = self.table_name
+    def table_delete_table(self, table_name=None):
+        if table_name is None:
+            table_name = self.table_name
 
-    #     try:
-    #         self.table_client.delete_table()
-    #         print(self.service, ': Table deleted with name: ', self.table_name)
-    #         return True
-    #     except Exception as e:
-    #         print(self.service, ': Table deletion failed with name: ', self.table_name, ' and error: ', e)
-    #         return False
+        try:
+            self.table_client.delete_table()
+            print(self.service, ': Table deleted with name: ', self.table_name)
+            # create table again
+            self.table_client.create_table()
+            return True
+        except Exception as e:
+            print(self.service, ': Table deletion failed with name: ', self.table_name, ' and error: ', e)
+            return False
         
 
     # get entity with default entity none with try except
@@ -247,17 +251,17 @@ class MyTableClient():
             return False
         
 
-if __name__ == '__main__':
+# if __name__ == '__main__':
 
 
-    # create blob client
-    table_client = MyTableClient(False)
-    # get all methods
-    methods = [getattr(MyTableClient, attr) for attr in dir(MyTableClient) if callable(getattr(MyTableClient, attr)) and not attr.startswith("__")]
+#     # create blob client
+#     table_client = MyTableClient(False)
+#     # get all methods
+#     methods = [getattr(MyTableClient, attr) for attr in dir(MyTableClient) if callable(getattr(MyTableClient, attr)) and not attr.startswith("__")]
 
-    for i in methods:
-        print(i.__name__)
-        i(table_client)
+#     for i in methods:
+#         print(i.__name__)
+#         i(table_client)
         
 
     

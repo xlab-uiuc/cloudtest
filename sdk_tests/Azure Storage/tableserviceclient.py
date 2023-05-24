@@ -45,6 +45,8 @@ class MyTableServiceClient():
         try:
             self.table_service_client.delete_table(self.table_name)
             print(self.service, ': Table deleted')
+            # create table again
+            self.table_service_client.create_table_if_not_exists(self.table_name)
             return True
         except Exception as e:
             print(self.service, ': Table deletion failed; error: ', e)
@@ -161,14 +163,14 @@ class MyTableServiceClient():
         
 
 
-if __name__ == '__main__':
+# if __name__ == '__main__':
 
 
-    # create blob client
-    table_client = MyTableServiceClient(False)
-    # get all methods
-    methods = [getattr(MyTableServiceClient, attr) for attr in dir(MyTableServiceClient) if callable(getattr(MyTableServiceClient, attr)) and not attr.startswith("__")]
+#     # create blob client
+#     table_client = MyTableServiceClient(False)
+#     # get all methods
+#     methods = [getattr(MyTableServiceClient, attr) for attr in dir(MyTableServiceClient) if callable(getattr(MyTableServiceClient, attr)) and not attr.startswith("__")]
 
-    for i in methods:
-        print(i.__name__)
-        i(table_client)
+#     for i in methods:
+#         print(i.__name__)
+#         i(table_client)
