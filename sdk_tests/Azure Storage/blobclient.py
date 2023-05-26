@@ -46,8 +46,10 @@ class BlobClient:
         try:
             self.blob_client.abort_copy(copy_id)
             print(self.service + ": Copy is aborted -- successful.")
+            return True
         except Exception as e:
             print(self.service + ": Copy is not aborted -- unsuccessful. Error: ", e)
+            return False
 
 
     # decreases coverage during testing
