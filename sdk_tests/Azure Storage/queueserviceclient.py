@@ -28,7 +28,7 @@ class MyQueueServiceClient:
 
 
     # create queue with try except
-    def queue_create(self, queue_name=None):
+    def queue_create(self, *args):
         if queue_name is None:
             queue_name = f'queue{random.randint(1, 1000000000)}'
         
@@ -42,12 +42,13 @@ class MyQueueServiceClient:
         
 
     # delete queue with try except
-    def queue_delete(self, queue_name=None):
-        if queue_name is None:
-            queue_name = self.queue_name
+    def queue_delete(self, *args):
+        
+        if not len(args) > 0:
+            args.append(self.queue_name)
         
         try:
-            self.queue_service_client.delete_queue(queue_name)
+            self.queue_service_client.delete_queue(args[0])
             print(self.service, ': Success -- Queue deleted')
             # create another queue in its place
             self.queue_service_client.create_queue(f'queue{random.randint(1, 1000000000)}')
@@ -59,12 +60,13 @@ class MyQueueServiceClient:
         
 
     # get queue client with try except
-    def queue_get_client(self, queue_name=None):
-        if queue_name is None:
-            queue_name = self.queue_name
+    def queue_get_client(self, *args):
+        
+        if not len(args) > 0:
+            args.append(self.queue_name)
         
         try:
-            queue_client = self.queue_service_client.get_queue_client(queue_name)
+            queue_client = self.queue_service_client.get_queue_client(args[0])
             print(self.service, ': Success -- Queue client retrieved')
             return True
         except Exception as e:
