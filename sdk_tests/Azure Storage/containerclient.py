@@ -1,5 +1,3 @@
-import logging
-import time
 from azure.storage.blob import BlobServiceClient, PublicAccess, AccessPolicy, PremiumPageBlobTier, StandardBlobTier
 import random
 

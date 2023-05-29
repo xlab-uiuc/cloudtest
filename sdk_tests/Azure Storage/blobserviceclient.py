@@ -1,5 +1,4 @@
-import datetime
-from azure.storage.blob import BlobServiceClient, ContentSettings, ImmutabilityPolicy
+from azure.storage.blob import BlobServiceClient
 import random
 
 
