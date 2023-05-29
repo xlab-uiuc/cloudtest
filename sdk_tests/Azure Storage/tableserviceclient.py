@@ -30,7 +30,7 @@ class MyTableServiceClient():
 
 
     # create table if not exists with try except
-    def table_create(self):
+    def table_create(self, *args):
         try:
             self.table_service_client.create_table_if_not_exists(self.table_name)
             print(self.service, ': Table created')
@@ -41,7 +41,7 @@ class MyTableServiceClient():
         
 
     # delete table with try except
-    def table_delete(self):
+    def table_delete(self, *args):
         try:
             self.table_service_client.delete_table(self.table_name)
             print(self.service, ': Table deleted')
@@ -54,7 +54,7 @@ class MyTableServiceClient():
         
 
     # get service properties with try except
-    def table_get_service_properties(self):
+    def table_get_service_properties(self, *args):
         try:
             self.table_service_client.get_service_properties()
             print(self.service, ': Service properties retrieved')
@@ -65,7 +65,7 @@ class MyTableServiceClient():
         
 
     # get service stats with try except
-    def table_get_service_stats(self):
+    def table_get_service_stats(self, *args):
         try:
             self.table_service_client.get_service_stats()
             print(self.service, ': Service stats retrieved')
@@ -76,7 +76,7 @@ class MyTableServiceClient():
         
 
     # get table client with try except
-    def table_get_table_client(self):
+    def table_get_table_client(self, *args):
         try:
             self.table_service_client.get_table_client(self.table_name)
             print(self.service, ': Table client retrieved')
@@ -86,7 +86,7 @@ class MyTableServiceClient():
             return False
         
     # list tables with try except
-    def table_list_tables(self):
+    def table_list_tables(self, *args):
         try:
             self.table_service_client.list_tables()
             print(self.service, ': Tables listed')
@@ -97,11 +97,11 @@ class MyTableServiceClient():
         
 
     # query tables with try except
-    def table_query_tables(self, query=None):
-        if query is None:
-            query = "TableName eq 'table1'"
+    def table_query_tables(self, *args):
+        if not len(args) > 0:
+            args.append("TableName eq 'table1'")
         try:
-            self.table_service_client.query_tables(query)
+            self.table_service_client.query_tables(args[0])
             print(self.service, ': Tables queried')
             return True
         except Exception as e:
@@ -110,9 +110,9 @@ class MyTableServiceClient():
         
     # 500 Internal Server Error
     # set service properties with try except
-    def table_set_service_properties(self, properties=None):
-        if properties is None:
-            properties = {
+    def table_set_service_properties(self, *args):
+        if not len(args) > 0:
+            args.append({
                 'analytics_logging': {
                     'version': '1.0',
                     'delete': True,
@@ -122,7 +122,11 @@ class MyTableServiceClient():
                         'enabled': True,
                         'days': 7
                     }
-                },
+                }
+            })
+        
+        if not len(args) > 1:
+            args.append({
                 'hour_metrics': {
                     'version': '1.0',
                     'enabled': True,
@@ -131,7 +135,10 @@ class MyTableServiceClient():
                         'enabled': True,
                         'days': 7
                     }
-                },
+                }
+            })
+        if not len(args) > 2:
+            args.append({
                 'minute_metrics': {
                     'version': '1.0',
                     'enabled': True,
@@ -140,7 +147,10 @@ class MyTableServiceClient():
                         'enabled': True,
                         'days': 7
                     }
-                },
+                }
+            })
+        if not len(args) > 3:
+            args.append({
                 'cors': {
                     'cors_rules': [
                         {
@@ -152,9 +162,10 @@ class MyTableServiceClient():
                         }
                     ]
                 }
-            }
+            })
+            
         try:
-            self.table_service_client.set_service_properties(analytics_logging=properties['analytics_logging'],)
+            self.table_service_client.set_service_properties(analytics_logging=args[0], hour_metrics=args[1], minute_metrics=args[2], cors=args[3])
             print(self.service, ': Service properties set')
             return True
         except Exception as e:
