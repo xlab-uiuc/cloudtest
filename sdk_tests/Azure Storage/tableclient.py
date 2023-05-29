@@ -31,9 +31,9 @@ class MyTableClient():
 
         
     # creat entity with default table name as none with try except
-    def table_create_entity(self, table_entity=None):
-        if table_entity is None:
-            table_entity = self.entity = {
+    def table_create_entity(self, *args):
+        if not len(args) > 0:
+            self.entity = {
             "PartitionKey": "color",
             "RowKey": "brand",
             "text": "Marker",
@@ -43,10 +43,11 @@ class MyTableClient():
             "product_id": uuid4(),
             "inventory_count": 42,
             "barcode": b"135aefg8oj0ld58" # cspell:disable-line
-        }
+            }
+            args.append(self.entity)
 
         try:
-            self.table_client.create_entity(table_entity)
+            self.table_client.create_entity(args[0])
             print(self.service, ': Entity created')
             return True
         except Exception as e:
@@ -54,7 +55,7 @@ class MyTableClient():
             return False
         
     # delete entity with default entity none with try except
-    def table_delete_entity(self):
+    def table_delete_entity(self, *args):
         try:
             self.table_client.create_entity({
             "PartitionKey": "colortwo",
@@ -82,23 +83,23 @@ class MyTableClient():
         
 
     # delete table with default table name as none with try except
-    def table_delete_table(self, table_name=None):
-        if table_name is None:
-            table_name = self.table_name
+    def table_delete_table(self, *args):
+        if not len(args) > 0:
+            args.append(self.table_name)
 
         try:
             self.table_client.delete_table()
-            print(self.service, ': Table deleted with name: ', self.table_name)
+            print(self.service, ': Table deleted with name: ', args[0])
             # create table again
             self.table_client.create_table()
             return True
         except Exception as e:
-            print(self.service, ': Table deletion failed with name: ', self.table_name, ' and error: ', e)
+            print(self.service, ': Table deletion failed with name: ', args[0], ' and error: ', e)
             return False
         
 
     # get entity with default entity none with try except
-    def table_get_entity(self):
+    def table_get_entity(self, *args):
         try:
             self.table_client.create_entity(entity={
             "PartitionKey": "colorthree",
@@ -114,8 +115,13 @@ class MyTableClient():
         except Exception as e:
             print("Entity already exists!", e)
 
+        if not len(args) > 0:
+            args.append("brandthree")
+        if not len(args) > 1:
+            args.append("colorthree")
+
         try:
-            self.table_client.get_entity(row_key="brandthree", partition_key="colorthree")
+            self.table_client.get_entity(row_key=args[0], partition_key=args[1])
             print(self.service, ': Entity retrieved')
             return True
         except Exception as e:
@@ -124,7 +130,7 @@ class MyTableClient():
         
 
     # get table access policy with try except
-    def table_get_table_access_policy(self):
+    def table_get_table_access_policy(self, *args):
         tab = f'table{random.randint(1, 1000000000)}'
         table_client = TableClient.from_connection_string(self.connection_string, tab)
         table_client.create_table()
@@ -138,7 +144,7 @@ class MyTableClient():
         
 
     # list entities in the table with try except
-    def table_list_entities(self):
+    def table_list_entities(self, *args):
         try:
             self.table_client.list_entities()
             print(self.service, ': Entities listed')
@@ -149,12 +155,12 @@ class MyTableClient():
         
 
     # query entities with default query filter none with try except
-    def table_query_entities(self, query_filter=None):
-        if query_filter is None:
-            query_filter = "PartitionKey eq 'color'"
+    def table_query_entities(self, *args):
+        if not len(args) > 0:
+            args.append("PartitionKey eq 'color'")
 
         try:
-            self.table_client.query_entities(query_filter)
+            self.table_client.query_entities(args[0])
             print(self.service, ': Entities queried')
             return True
         except Exception as e:
@@ -163,11 +169,11 @@ class MyTableClient():
         
 
     # set table access policy default policy none with try except
-    def table_set_table_access_policy(self, policy=None):
-        if policy is None:
-            policy = {}
+    def table_set_table_access_policy(self, *args):
+        if not len(args) > 0:
+            args.append({})
         try:
-            self.table_client.set_table_access_policy(signed_identifiers=policy)
+            self.table_client.set_table_access_policy(signed_identifiers=args[0])
             print(self.service, ': Table access policy set')
             return True
         except Exception as e:
@@ -176,9 +182,9 @@ class MyTableClient():
         
 
     # submit transaction with default transaction none with try except
-    def table_submit_transaction(self, transaction=None):
-        if transaction is None:
-            transaction = [
+    def table_submit_transaction(self, *args):
+        if not len(args) > 0:
+            args.append([
                 {
                     "UpdateEntity": {
                         "PartitionKey": "color",
@@ -192,10 +198,10 @@ class MyTableClient():
                         "barcode": b"135aefg8oj0ld58" # cspell:disable-line
                     }
                 }
-            ]
+            ])
 
         try:
-            self.table_client.submit_transaction(transaction)
+            self.table_client.submit_transaction(args[0])
             print(self.service, ': Transaction submitted')
             return True
         except Exception as e:
@@ -204,9 +210,9 @@ class MyTableClient():
         
 
     # update entity with default entity none with try except
-    def table_update_entity(self, entity=None, mode=UpdateMode.MERGE):
-        if entity is None:
-            entity = {
+    def table_update_entity(self, *args):
+        if not len(args) > 0:
+            args.append({
                 "PartitionKey": "color",
                 "RowKey": "brand",
                 "text": "Marker",
@@ -216,10 +222,12 @@ class MyTableClient():
                 "product_id": uuid4(),
                 "inventory_count": 42,
                 "barcode": b"135aefg8oj0ld58" # cspell:disable-line
-            }
+            })
+        if not len(args) > 1:
+            args.append(UpdateMode.MERGE)
 
         try:
-            self.table_client.update_entity(entity=entity, mode=mode)
+            self.table_client.update_entity(entity=args[0], mode=args[1])
             print(self.service, ': Entity updated')
             return True
         except Exception as e:
@@ -228,9 +236,9 @@ class MyTableClient():
         
 
     # upsert entity with default entity none with try except
-    def table_upsert_entity(self, entity=None, mode=UpdateMode.REPLACE):
-        if entity is None:
-            entity = {
+    def table_upsert_entity(self, *args):
+        if not len(args) > 0:
+            args.append({
                 "PartitionKey": "color",
                 "RowKey": "brand",
                 "text": "Marker",
@@ -240,10 +248,11 @@ class MyTableClient():
                 "product_id": uuid4(),
                 "inventory_count": 42,
                 "barcode": b"135aefg8oj0ld58" # cspell:disable-line
-            }
-
+            })
+        if not len(args) > 1:
+            args.append(UpdateMode.MERGE)
         try:
-            self.table_client.upsert_entity(entity=entity, mode=mode)
+            self.table_client.upsert_entity(entity=args[0], mode=args[1])
             print(self.service, ': Entity upserted')
             return True
         except Exception as e:
