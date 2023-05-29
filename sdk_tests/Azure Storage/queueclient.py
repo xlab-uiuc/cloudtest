@@ -28,7 +28,7 @@ class MyQueueClient:
 
 
     # clear messages with params none try except
-    def queue_clear_messages(self):
+    def queue_clear_messages(self, *args):
         try:
             self.queue_client.clear_messages()
             print(self.service, ': Success -- Queue cleared')
@@ -75,7 +75,7 @@ class MyQueueClient:
 
 
     # delete queue with arguments as none try except
-    def queue_delete(self):
+    def queue_delete(self, *args):
         
         try:
             self.queue_client.delete_queue()
@@ -90,7 +90,7 @@ class MyQueueClient:
 
 
     # get queue access policy with arguments as none try except
-    def queue_get_access_policy(self):
+    def queue_get_access_policy(self, *args):
         
         try:
             self.queue_client.get_queue_access_policy()
@@ -102,7 +102,7 @@ class MyQueueClient:
         
 
     # get queue properties with arguments as none try except
-    def queue_get_properties(self):
+    def queue_get_properties(self, *args):
             
         try:
             self.queue_client.get_queue_properties()

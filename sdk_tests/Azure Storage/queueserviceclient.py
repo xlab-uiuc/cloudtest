@@ -75,7 +75,7 @@ class MyQueueServiceClient:
         
 
     # get service properties with try except
-    def queue_get_service_properties(self):
+    def queue_get_service_properties(self, *args):
         try:
             self.queue_service_client.get_service_properties()
             print(self.service, ': Success -- Service properties retrieved')
@@ -86,7 +86,7 @@ class MyQueueServiceClient:
         
 
     # get service stats with try except
-    def queue_get_service_stats(self):
+    def queue_get_service_stats(self, *args):
         try:
             self.queue_service_client.get_service_stats()
             print(self.service, ': Success -- Service stats retrieved')
@@ -97,7 +97,7 @@ class MyQueueServiceClient:
         
 
     # list queues with try except
-    def queue_list(self):
+    def queue_list(self, *args):
         try:
             self.queue_service_client.list_queues()
             print(self.service, ': Success -- Queues listed')
