@@ -39,12 +39,13 @@ class BlobClient:
 
 
     # abort copy with parameters default none and try except block
-    def abort_copy(self, **args):
+    def abort_copy(self, *args):
+        args = list(args)
         # copy id
-        if args['copy_id'] is None:
-            args['copy_id'] = 'C56A4180-65AA-42EC-A945-5FD21DEC0538'
+        if not len(args) > 0:
+            args.append('C56A4180-65AA-42EC-A945-5FD21DEC0538')
         try:
-            self.blob_client.abort_copy(args['copy_id'])
+            self.blob_client.abort_copy(args[0])
             print(self.service + ": Copy is aborted -- successful.")
             return True
         except Exception as e:
@@ -54,16 +55,17 @@ class BlobClient:
 
     # decreases coverage during testing
     # acquire lease with try except block
-    def acquire_lease(self, **args):
+    def acquire_lease(self, *args):
+        args = list(args)
         # lease duration
-        if args['lease_duration'] is None:
-            args['lease_duration'] = 20
+        if not len(args) > 0:
+            args.append(20)
         # lease id
-        if args['lease_id'] is None:
-            args['lease_id'] = 'f81d4fae-7dec-11d0-a765-00a0c91e6bf6'
+        if not len(args) > 1:
+            args.append('f81d4fae-7dec-11d0-a765-00a0c91e6bf6')
 
         try:
-            self.blob_client.acquire_lease(args['lease_duration'], args['lease_id'])
+            self.blob_client.acquire_lease(args[0], args[1])
             print(self.service + ": Lease is acquired.")
             return True
         except Exception as e:
@@ -72,15 +74,16 @@ class BlobClient:
 
     # Not implemented in the emulator
     # append blob with try except block
-    def append_block(self, **args):
+    def append_block(self, *args):
+        args = list(args)
         # data
-        if args['data'] is None:
-            args['data'] = b'First one'
+        if not len(args) > 0:
+            args.append(b'First one')
         # length
-        if args['length'] is None:
-            args['length'] = len(args['data'])
+        if not len(args) > 1:
+            args.append(len(args[0]))
         else:
-            args['length'] = args['length']
+            args.append(args[1])
 
         try:
             random_blob_name = f'blob{random.randint(1, 1000000000)}'
@@ -89,7 +92,7 @@ class BlobClient:
                 self.container_client.upload_blob(data=data1, name=random_blob_name, blob_type='AppendBlob')
 
             blobclient = self.container_client.get_blob_client(random_blob_name)
-            blobclient.append_block(args['data'], length=args['length'])
+            blobclient.append_block(args[0], length=args[1])
             print(self.service + ": Blob is appended.")
             return True
         except Exception as e:
@@ -99,23 +102,24 @@ class BlobClient:
 
     # Not implemented in the emulator
     # append block from url with try except block
-    def append_block_from_url(self, **args):
+    def append_block_from_url(self, *args):
+        args = list(args)
         # copy blob name
-        if args['copy_blob_name'] is None:
-            args['copy_blob_name'] = f'blob{random.randint(1, 1000000000)}'
+        if not len(args) > 0:
+            args.append(f'blob{random.randint(1, 1000000000)}')
         # source url
-        if args['source_url'] is None:
-            args['source_url'] = f'https://{self.account_name}.blob.core.windows.net/{self.container_name}/'+args['copy_blob_name']
+        if not len(args) > 1:
+            args.append(f'https://{self.account_name}.blob.core.windows.net/{self.container_name}/'+args[0])
         # source offset
-        if args['source_offset'] is None:
-            args['source_offset'] = 0
+        if not len(args) > 2:
+            args.append(0)
         # source length
-        if args['source_length'] is None:
-            args['source_length'] = 512
+        if not len(args) > 3:
+            args.append(512)
         
 
         try:
-            self.blob_client.append_block_from_url(copy_source_url=args['source_url'], source_offset=args['source_offset'], source_length=args['source_length'])
+            self.blob_client.append_block_from_url(copy_source_url=args[1], source_offset=args[2], source_length=args[3])
             print(self.service + ": Block is appended.")
             return True
         except Exception as e:
@@ -124,14 +128,15 @@ class BlobClient:
         
 
     # clear page with try except block
-    def clear_page(self, **args):
+    def clear_page(self, *args):
+        args = list(args)
 
         # offset
-        if args['offset'] is None:
-            args['offset'] = 0
+        if not len(args) > 0:
+            args.append(0)
         # length
-        if args['length'] is None:
-            args['length'] = 512
+        if not len(args) > 1:
+            args.append(512)
 
         try:
             random_blob_name = f'blob{random.randint(1, 1000000000)}'
@@ -140,7 +145,7 @@ class BlobClient:
             with open('page', 'rb') as data:
                 self.container_client.upload_blob(data=data, name=random_blob_name, blob_type='PageBlob')
             blobclient = self.container_client.get_blob_client(random_blob_name)
-            blobclient.clear_page(args['offset'], args['length'])
+            blobclient.clear_page(args[0], args[1])
             print(self.service + ": Page is cleared.")
             return True
                 
@@ -151,16 +156,17 @@ class BlobClient:
         
     
     # commit block list with try except block
-    def commit_block_list(self, **args):
+    def commit_block_list(self, *args):
+        args = list(args)
         # block list
-        if args['block_list'] is None:
-            args['block_list'] = ['AAA=', 'BBB=', 'CCC=']
+        if not len(args) > 0:
+            args.append(['AAA=', 'BBB=', 'CCC='])
         # content settings
-        if args['content_settings'] is None:
-            args['content_settings'] = ContentSettings(content_type='text/plain', content_encoding='utf-8', cache_control='None', content_language='en-US', content_disposition='inline')
+        if not len(args) > 1:
+            args.append(ContentSettings(content_type='text/plain', content_encoding='utf-8', cache_control='None', content_language='en-US', content_disposition='inline'))
         # metadata
-        if args['metadata'] is None:
-            args['metadata'] = {'category': 'test', 'created': '2020-01-01', 'author': 'test', 'description': 'test', 'tags': 'test', 'title': 'test', 'version': '1.0', 'filename': 'test'}
+        if not len(args) > 2:
+            args.append({'category': 'test', 'created': '2020-01-01', 'author': 'test', 'description': 'test', 'tags': 'test', 'title': 'test', 'version': '1.0', 'filename': 'test'})
 
 
         try:
@@ -169,7 +175,7 @@ class BlobClient:
             self.container_client.upload_blob(data=b'First one', name=random_blob_name, blob_type='BlockBlob', length=len('First one'), metadata={'hello': 'world', 'number': '42'})
             blobclient = self.container_client.get_blob_client(random_blob_name)
 
-            blobclient.commit_block_list(args['block_list'], content_settings=args['content_settings'], metadata=args['metadata'])
+            blobclient.commit_block_list(args[0], content_settings=args[1], metadata=args[2])
             print(self.service + ": Block list is committed.")
             return True
         except Exception as e:
@@ -178,13 +184,14 @@ class BlobClient:
         
 
     # create append blob with try except block
-    def create_append_blob(self, **args):
+    def create_append_blob(self, *args):
+        args = list(args)
         # content settings
-        if args['content_settings'] is None:
-            args['content_settings'] = ContentSettings(content_type='text/plain', content_encoding='utf-8', cache_control='None', content_language='en-US', content_disposition='inline')
+        if not len(args) > 0:
+            args.append(ContentSettings(content_type='text/plain', content_encoding='utf-8', cache_control='None', content_language='en-US', content_disposition='inline'))
         # metadata
-        if args['metadata'] is None:
-            args['metadata'] = {'category': 'test', 'created': '2020-01-01', 'author': 'test', 'description': 'test', 'tags': 'test', 'title': 'test', 'version': '1.0', 'filename': 'test'}
+        if not len(args) > 1:
+            args.append({'category': 'test', 'created': '2020-01-01', 'author': 'test', 'description': 'test', 'tags': 'test', 'title': 'test', 'version': '1.0', 'filename': 'test'})
 
         try:
             random_blob_name = f'blob{random.randint(1, 1000000000)}'
@@ -194,7 +201,7 @@ class BlobClient:
                 self.container_client.upload_blob(data=data, name=random_blob_name, blob_type='AppendBlob')
             blobclient = self.container_client.get_blob_client(random_blob_name)
 
-            blobclient.create_append_blob(args['content_settings'], args['metadata'])
+            blobclient.create_append_blob(args[0], args[1])
             print(self.service + ": Append blob is created.")
             return True
         except Exception as e:
@@ -203,19 +210,20 @@ class BlobClient:
     
 
     # create page blob with try except block
-    def create_page_blob(self, **args):
+    def create_page_blob(self, *args):
+        args = list(args)
         # size
-        if args['size'] is None:
-            args['size'] = 512
+        if not len(args) > 0:
+            args.append(512)
         # content settings
-        if args['content_settings'] is None:
-            args['content_settings'] = ContentSettings(content_type='text/plain', content_encoding='utf-8', cache_control='None', content_language='en-US', content_disposition='inline')
+        if not len(args) > 1:
+            args.append(ContentSettings(content_type='text/plain', content_encoding='utf-8', cache_control='None', content_language='en-US', content_disposition='inline'))
         # metadata
-        if args['metadata'] is None:
-            args['metadata'] = {'category': 'test', 'created': '2020-01-01', 'author': 'test', 'description': 'test', 'tags': 'test', 'title': 'test', 'version': '1.0', 'filename': 'test'}
+        if not len(args) > 2:
+            args.append({'category': 'test', 'created': '2020-01-01', 'author': 'test', 'description': 'test', 'tags': 'test', 'title': 'test', 'version': '1.0', 'filename': 'test'})
         # premium page blob tier
-        if args['premium_page_blob_tier'] is None:
-            args['premium_page_blob_tier'] = 'P4'
+        if not len(args) > 3:
+            args.append('P4')
 
         try:
             random_blob_name = f'blob{random.randint(1, 1000000000)}'
@@ -225,7 +233,7 @@ class BlobClient:
                 self.container_client.upload_blob(data=data, name=random_blob_name, blob_type='PageBlob')
             blobclient = self.container_client.get_blob_client(random_blob_name)
 
-            blobclient.create_page_blob(args['size'], args['content_settings'], args['metadata'])
+            blobclient.create_page_blob(args[0], args[1], args[2])
             print(self.service + ": Page blob is created.")
             return True
         except Exception as e:
@@ -235,13 +243,14 @@ class BlobClient:
 
 
     # create snapshot with try except block
-    def create_snapshot(self, **args):
+    def create_snapshot(self, *args):
+        args = list(args)
         # metadata
-        if args['metadata'] is None:
-            args['metadata'] = {'category': 'test', 'created': '2020-01-01', 'author': 'test', 'description': 'test', 'tags': 'test', 'title': 'test', 'version': '1.0', 'filename': 'test'}
+        if not len(args) > 0:
+            args.append({'category': 'test', 'created': '2020-01-01', 'author': 'test', 'description': 'test', 'tags': 'test', 'title': 'test', 'version': '1.0', 'filename': 'test'})
 
         try:
-            self.blob_client.create_snapshot(args['metadata'])
+            self.blob_client.create_snapshot(args[0])
             print(self.service + ": Snapshot is created.")
             return True
         except Exception as e:
@@ -250,13 +259,14 @@ class BlobClient:
         
 
     # # delete blob with try except block
-    def delete_blob(self, **args):
+    def delete_blob(self, *args):
+        args = list(args)
         # delete snapshots
-        if args['delete_snapshots'] is None:
-            args['delete_snapshots'] = 'include'
+        if not len(args) > 0:
+            args.append('include')
 
         try:
-            self.blob_client.delete_blob(args['delete_snapshots'])
+            self.blob_client.delete_blob(args[0])
             print(self.service + ": Blob is deleted.")
             # create same blob again
             self.container_client.upload_blob(data=b'Second one', name=self.blob_name, blob_type='BlockBlob', length=len('First one'), metadata={'hello': 'world', 'number': '42'})
@@ -268,7 +278,8 @@ class BlobClient:
         
     
     # delete immutability policy with try except block
-    def delete_immutability_policy(self, **args):
+    def delete_immutability_policy(self, *args):
+        args = list(args)
         try:
             self.blob_client.delete_immutability_policy()
             print(self.service + ": Immutability policy is deleted.")
@@ -280,16 +291,17 @@ class BlobClient:
 
 
     # download blob with try except block
-    def download_blob(self, **args):
+    def download_blob(self, *args):
+        args = list(args)
         # offset
-        if args['offset'] is None:
-            args['offset'] = 0
+        if not len(args) > 0:
+            args.append(0)
         # length
-        if args['length'] is None:
-            args['length'] = 512
+        if not len(args) > 1:
+            args.append(512)
 
         try:
-            self.blob_client.download_blob(args['offset'], args['length'])
+            self.blob_client.download_blob(args[0], args[1])
             print(self.service + ": Blob is downloaded.")
             return True
         except Exception as e:
@@ -298,7 +310,8 @@ class BlobClient:
         
 
     # check if blob exists with try except block
-    def exists(self, **args):
+    def exists(self, *args):
+        args = list(args)
 
         try:
             self.blob_client.exists()
@@ -310,7 +323,8 @@ class BlobClient:
         
 
     # get account information with try except block
-    def get_account_information(self, **args):
+    def get_account_information(self, *args):
+        args = list(args)
         try:
             self.blob_client.get_account_information()
             print(self.service + ": Account information is retrieved.")
@@ -321,7 +335,8 @@ class BlobClient:
         
 
     # get blob properties with try except block
-    def get_blob_properties(self, **args):
+    def get_blob_properties(self, *args):
+        args = list(args)
 
         try:
             self.blob_client.get_blob_properties()
@@ -334,7 +349,8 @@ class BlobClient:
 
 
     # get blob tags with try except block
-    def get_blob_tags(self, **args):
+    def get_blob_tags(self, *args):
+        args = list(args)
 
         try:
             self.blob_client.get_blob_tags()
@@ -346,13 +362,14 @@ class BlobClient:
         
 
     # get block list with try except block
-    def get_block_list(self, **args):
+    def get_block_list(self, *args):
+        args = list(args)
         # block list type
-        if args['block_list_type'] is None:
-            args['block_list_type'] = 'committed'
+        if not len(args) > 0:
+            args.append('committed')
 
         try:
-            self.blob_client.get_block_list(args['block_list_type'])
+            self.blob_client.get_block_list(args[0])
             print(self.service + ": Block list is retrieved.")
             return True
         except Exception as e:
@@ -361,14 +378,15 @@ class BlobClient:
         
         
     # get page ranges with try except block
-    def get_page_ranges(self, **args):
+    def get_page_ranges(self, *args):
+        args = list(args)
 
         # start range
-        if args['start_range'] is None:
-            args['start_range'] = 0
+        if not len(args) > 0:
+            args.append(0)
         # end range
-        if args['end_range'] is None:
-            args['end_range'] = 512
+        if not len(args) > 1:
+            args.append(512)
 
         try:
             random_blob_name = f'blob{random.randint(1, 1000000000)}'
@@ -376,7 +394,7 @@ class BlobClient:
             with open('page', 'rb') as data:
                 self.container_client.upload_blob(data=data, name=random_blob_name, blob_type='PageBlob')
             blobclient = self.container_client.get_blob_client(random_blob_name)
-            blobclient.get_page_ranges(offset=args['start_range'], length=args['end_range'])
+            blobclient.get_page_ranges(offset=args[0], length=args[1])
             print(self.service + ": Page ranges are retrieved.")
             return True
             
@@ -386,19 +404,20 @@ class BlobClient:
             
 
     # list page ranges diff with try except block
-    def list_page_ranges_diff(self, **args):
+    def list_page_ranges_diff(self, *args):
+        args = list(args)
         # previous snapshot
-        if args['previous_snapshot'] is None:
-            args['previous_snapshot'] = 'snapshot'
+        if not len(args) > 0:
+            args.append('snapshot')
         # start range
-        if args['start_range'] is None:
-            args['start_range'] = 0
+        if not len(args) > 1:
+            args.append(0)
         # end range
-        if args['end_range'] is None:
-            args['end_range'] = 512
+        if not len(args) > 2:
+            args.append(512)
 
         try:
-            self.blob_client.list_page_ranges(previous_snapshot=args['previous_snapshot'], offset=args['start_range'], length=args['end_range'])
+            self.blob_client.list_page_ranges(previous_snapshot=args[0], offset=args[1], length=args[2])
             print(self.service + ": Page ranges diff is retrieved.")
             return True
         except Exception as e:
@@ -407,13 +426,14 @@ class BlobClient:
         
 
     # query blob contents with try except block
-    def query_blob(self, **args):
+    def query_blob(self, *args):
+        args = list(args)
         # query expression
-        if args['query_expression'] is None:
-            args['query_expression'] = 'SELECT _2 from BlobStorage'
+        if not len(args) > 0:
+            args.append('SELECT _2 from BlobStorage')
 
         try:
-            self.blob_client.query_blob(args['query_expression'])
+            self.blob_client.query_blob(args[0])
             print(self.service + ": Blob contents are queried.")
             return True
         except Exception as e:
@@ -424,14 +444,15 @@ class BlobClient:
         
 
     # set blob metadata with try except block
-    def set_blob_metadata(self, **args):
+    def set_blob_metadata(self, *args):
+        args = list(args)
         # metadata
-        if args['metadata'] is None:
-            args['metadata'] = {'metadata1': 'value1', 'metadata2': 'value2'}
+        if not len(args) > 0:
+            args.append({'metadata1': 'value1', 'metadata2': 'value2'})
 
 
         try:
-            self.blob_client.set_blob_metadata(args['metadata'])
+            self.blob_client.set_blob_metadata(args[0])
             print(self.service + ": Blob metadata is set.")
             return True
         except Exception as e:
@@ -441,13 +462,14 @@ class BlobClient:
 
 
     # set blob tags with try except block
-    def set_blob_tags(self, **args):
+    def set_blob_tags(self, *args):
+        args = list(args)
         # tags
-        if args['tags'] is None:
-            args['tags'] = {'tag1': 'value1', 'tag2': 'value2'}
+        if not len(args) > 0:
+            args.append({'tag1': 'value1', 'tag2': 'value2'})
 
         try:
-            self.blob_client.set_blob_tags(args['tags'])
+            self.blob_client.set_blob_tags(args[0])
             print(self.service + ": Blob tags are set.")
             return True
         except Exception as e:
@@ -456,13 +478,14 @@ class BlobClient:
         
 
     # set http headers with try except block
-    def set_http_headers(self, **args):
+    def set_http_headers(self, *args):
+        args = list(args)
         # content settings
-        if args['content_settings'] is None:
-            args['content_settings'] = ContentSettings(content_type='text/plain')
+        if not len(args) > 0:
+            args.append(ContentSettings(content_type='text/plain'))
 
         try:
-            self.blob_client.set_http_headers(args['content_settings'])
+            self.blob_client.set_http_headers(args[0])
             print(self.service + ": HTTP headers are set.")
             return True
         except Exception as e:
@@ -472,13 +495,14 @@ class BlobClient:
 
 
     # set immutability policy with try except block
-    def set_immutability_policy(self, **args):
+    def set_immutability_policy(self, *args):
+        args = list(args)
         # immutability policy
-        if args['immutability_policy'] is None:
-            args['immutability_policy'] = ImmutabilityPolicy(expiry_time=datetime.datetime.utcnow() + datetime.timedelta(days=1), policy_mode='unlocked')
+        if not len(args) > 0:
+            args.append(ImmutabilityPolicy(expiry_time=datetime.datetime.utcnow() + datetime.timedelta(days=1), policy_mode='unlocked'))
 
         try:
-            self.blob_client.set_immutability_policy(args['immutability_policy'])
+            self.blob_client.set_immutability_policy(args[0])
             print(self.service + ": Immutability policy is set.")
             return True
         except Exception as e:
@@ -487,13 +511,14 @@ class BlobClient:
         
 
     # set legal hold with try except block
-    def set_legal_hold(self, **args):
+    def set_legal_hold(self, *args):
+        args = list(args)
         # legal hold
-        if args['legal_hold'] is None:
-            args['legal_hold'] = random.choice([True, False])
+        if not len(args) > 0:
+            args.append(random.choice([True, False]))
 
         try:
-            self.blob_client.set_legal_hold(args['legal_hold'])
+            self.blob_client.set_legal_hold(args[0])
             print(self.service + ": Legal hold is set.")
             return True
         except Exception as e:
@@ -505,14 +530,15 @@ class BlobClient:
 
 
     # set tier with try except block
-    def set_standard_blob_tier(self, **args):
+    def set_standard_blob_tier(self, *args):
+        args = list(args)
         print(self.service + ": Setting blob tier...")
         # standard blob tier
-        if args['standard_blob_tier'] is None:
-            args['standard_blob_tier'] = random.choice(['Hot', 'Cool', 'Archive'])
+        if not len(args) > 0:
+            args.append(random.choice(['Hot', 'Cool', 'Archive']))
 
         try:
-            self.blob_client.set_standard_blob_tier(args['standard_blob_tier'])
+            self.blob_client.set_standard_blob_tier(args[0])
             print(self.service + ": Blob tier is set.")
             return True
         except Exception as e:
@@ -522,26 +548,27 @@ class BlobClient:
 
     # Not implemented in the emulator
     # stage block from url with try except block
-    def stage_block_from_url(self, **args):
+    def stage_block_from_url(self, *args):
+        args = list(args)
         # block id
-        if args['block_id'] is None:
-            args['block_id'] = b'0x8D'
+        if not len(args) > 0:
+            args.append(b'0x8D')
         # source url
-        if args['source_url'] is None:
-            args['source_url'] = f'https://{self.account_name}.blob.core.windows.net/mycontainer/myblob'
+        if not len(args) > 1:
+            args.append(f'https://{self.account_name}.blob.core.windows.net/mycontainer/myblob')
         # source offset
-        if args['source_offset'] is None:
-            args['source_offset'] = 0
+        if not len(args) > 2:
+            args.append(0)
         # source length
-        if args['source_length'] is None:
-            args['source_length'] = 512
+        if not len(args) > 3:
+            args.append(512)
         # source content md5
-        if args['source_content_md5'] is None:
-            args['source_content_md5'] = b'0x8D'
+        if not len(args) > 4:
+            args.append(b'0x8D')
 
 
         try:
-            self.blob_client.stage_block_from_url(block_id=args['block_id'], source_url=args['source_url'], source_offset=args['source_offset'], source_length=args['source_length'], source_content_md5=args['source_content_md5'])
+            self.blob_client.stage_block_from_url(block_id=args[0], source_url=args[1], source_offset=args[2], source_length=args[3], source_content_md5=args[4])
             print(self.service + ": Block is staged from url.")
             return True
         except Exception as e:
@@ -550,19 +577,20 @@ class BlobClient:
         
 
     # stage block with try except block
-    def stage_block(self, **args):
+    def stage_block(self, *args):
+        args = list(args)
         # block id
-        if args['block_id'] is None:
-            args['block_id'] = b'0x8D'
+        if not len(args) > 0:
+            args.append(b'0x8D')
         # data
-        if args['data'] is None:
-            args['data'] = b'Hello World'
+        if not len(args) > 1:
+            args.append(b'Hello World')
         # length
-        if args['length'] is None:
-            args['length'] = len(args['data'])
+        if not len(args) > 2:
+            args.append(len(args[1]))
 
         try:
-            self.blob_client.stage_block(args['block_id'], args['data'], length=args['length'])
+            self.blob_client.stage_block(args[0], args[1], length=args[2])
             print(self.service + ": Block is staged.")
             return True
         except Exception as e:
@@ -572,7 +600,8 @@ class BlobClient:
 
     # Not implemented in the emulator
     # undelete blob with try except block
-    def undelete_blob(self, **args):
+    def undelete_blob(self, *args):
+        args = list(args)
             
         try:
             self.blob_client.undelete_blob()
@@ -584,22 +613,23 @@ class BlobClient:
         
 
     # upload blob from bytes with try except block
-    def upload_blob_from_bytes(self, **args):
+    def upload_blob_from_bytes(self, *args):
+        args = list(args)
         # data
-        if args['data'] is None:
-            args['data'] = b'Hello World'
+        if not len(args) > 0:
+            args.append(b'Hello World')
         # blob type
-        if args['blob_type'] is None:
-            args['blob_type'] = 'BlockBlob'
+        if not len(args) > 1:
+            args.append('BlockBlob')
         # length
-        if args['length'] is None:
-            args['length'] = len(args['data'])
+        if not len(args) > 2:
+            args.append(len(args[0]))
         # metadata
-        if args['metadata'] is None:
-            args['metadata'] = {'metadata1': 'value1', 'metadata2': 'value2'}
+        if not len(args) > 3:
+            args.append({'metadata1': 'value1', 'metadata2': 'value2'})
 
         try:
-            self.blob_client.upload_blob(data=args['data'], blob_type=args['blob_type'], length=args['length'], metadata=args['metadata'])
+            self.blob_client.upload_blob(data=args[0], blob_type=args[1], length=args[2], metadata=args[3])
             print(self.service + ": Blob is uploaded from bytes.")
             return True
         except Exception as e:
@@ -608,12 +638,13 @@ class BlobClient:
         
 
     # upload blob from a url with try except block
-    def upload_blob_from_url(self, **args):
+    def upload_blob_from_url(self, *args):
+        args = list(args)
         # source url
-        if args['source_url'] is None:
-            args['source_url'] = f'https://{self.account_name}.blob.core.windows.net/mycontainer/myblob'
+        if not len(args) > 0:
+            args.append(f'https://{self.account_name}.blob.core.windows.net/mycontainer/myblob')
         try:    
-            self.blob_client.upload_blob_from_url(args['source_url'])
+            self.blob_client.upload_blob_from_url(args[0])
             print(self.service + ": Blob is uploaded from url.")
             return True
         except Exception as e:
@@ -622,18 +653,18 @@ class BlobClient:
 
 
     # upload page
-    def upload_page(self, **args):
+    def upload_page(self, *args):
+        args = list(args)
         # data
-        if args['data'] is None:
+        if not len(args) > 0:
             # open page.txt file
             with open('page', 'rb') as f:
-                args['data'] = f.read()
-        # offset
-        if offset is None:
+                args.append(f.read())
+        # offif not len(args) > 0:
             offset = 0
 
         try:
-            self.blob_client.upload_page(args['data'], offset, length=len(args['data']))
+            self.blob_client.upload_page(args[0], offset, length=len(args[0]))
             print(self.service + ": Page is uploaded.")
             return True
         except Exception as e:
@@ -642,21 +673,22 @@ class BlobClient:
     
     # Not implemented in the emulator
     # upload pages from url
-    def upload_pages_from_url(self, **args):
+    def upload_pages_from_url(self, *args):
+        args = list(args)
         # source url
-        if args['source_url'] is None:
-            args['source_url'] = f'https://{self.account_name}.blob.core.windows.net/mycontainer/myblob'
+        if not len(args) > 0:
+            args.append(f'https://{self.account_name}.blob.core.windows.net/mycontainer/myblob')
         # offset
-        if args['offset'] is None:
-            args['offset'] = 0
+        if not len(args) > 1:
+            args.append(0)
         # length
-        if args['length'] is None:
-            args['length'] = 512
+        if not len(args) > 2:
+            args.append(512)
         # source offset
-        if args['source_offset'] is None:
-            args['source_offset'] = 0
+        if not len(args) > 3:
+            args.append(0)
         try:
-            self.blob_client.upload_pages_from_url(args['source_url'], args['offset'], args['length'], args['source_offset'])
+            self.blob_client.upload_pages_from_url(args[0], args[1], args[2], args[3])
             print(self.service + ": Pages are uploaded from url.")
             return True
         except Exception as e:
