@@ -187,6 +187,8 @@ Test Run Aborted with error System.Exception: One or more errors occurred.
    at Microsoft.VisualStudio.TestPlatform.CommunicationUtilities.TcpClientExtensions.MessageLoopAsync(TcpClient client, ICommunicationChannel channel, Action`1 errorHandler, CancellationToken cancellationToken)
    --- End of inner exception stack trace ---.
 
+******* Orleans--Cloud--MacOS-M1
+
 
 ******* Streamstone--Azurite--MacOS-M1
 A total of 1 test files matched the specified pattern.
@@ -205,3 +207,12 @@ A total of 1 test files matched the specified pattern.
 
 
 Failed!  - Failed:     1, Passed:    84, Skipped:     0, Total:    85, Duration: 13 h 50 m - Streamstone.Tests.dll (net6.0)
+
+******* Streamstone--Azure--MacOS-M1
+A total of 1 test files matched the specified pattern.
+  Skipped Check_can_write
+  Skipped When_hitting_request_limit_during_writes
+  Skipped When_writing_duplicate_event
+  Skipped When_slice_size_is_bigger_than_azure_storage_page_limit [< 1 ms]
+
+Passed!  - Failed:     0, Passed:    85, Skipped:     0, Total:    85, Duration: 6 h 3 m - Streamstone.Tests.dll (net6.0)
