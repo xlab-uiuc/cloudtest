@@ -161,13 +161,13 @@ class BlobClient:
         # block list
         if not len(args) > 0:
             args.append(['AAA=', 'BBB=', 'CCC='])
-        # content settings
-        if not len(args) > 1:
-            args.append(ContentSettings(content_type='text/plain', content_encoding='utf-8', cache_control='None', content_language='en-US', content_disposition='inline'))
+            
         # metadata
-        if not len(args) > 2:
+        if not len(args) > 1:
             args.append({'category': 'test', 'created': '2020-01-01', 'author': 'test', 'description': 'test', 'tags': 'test', 'title': 'test', 'version': '1.0', 'filename': 'test'})
 
+
+        content_setting = ContentSettings(content_type='text/plain', content_encoding='utf-8', cache_control='None', content_language='en-US', content_disposition='inline')
 
         try:
             random_blob_name = f'blob{random.randint(1, 1000000000)}'
@@ -175,7 +175,7 @@ class BlobClient:
             self.container_client.upload_blob(data=b'First one', name=random_blob_name, blob_type='BlockBlob', length=len('First one'), metadata={'hello': 'world', 'number': '42'})
             blobclient = self.container_client.get_blob_client(random_blob_name)
 
-            blobclient.commit_block_list(args[0], content_settings=args[1], metadata=args[2])
+            blobclient.commit_block_list(args[0], content_settings=content_setting, metadata=args[1])
             print(self.service + ": Block list is committed.")
             return True
         except Exception as e:
@@ -186,12 +186,12 @@ class BlobClient:
     # create append blob with try except block
     def create_append_blob(self, *args):
         args = list(args)
-        # content settings
-        if not len(args) > 0:
-            args.append(ContentSettings(content_type='text/plain', content_encoding='utf-8', cache_control='None', content_language='en-US', content_disposition='inline'))
+        
         # metadata
-        if not len(args) > 1:
+        if not len(args) > 0:
             args.append({'category': 'test', 'created': '2020-01-01', 'author': 'test', 'description': 'test', 'tags': 'test', 'title': 'test', 'version': '1.0', 'filename': 'test'})
+
+        content_setting = ContentSettings(content_type='text/plain', content_encoding='utf-8', cache_control='None', content_language='en-US', content_disposition='inline')
 
         try:
             random_blob_name = f'blob{random.randint(1, 1000000000)}'
@@ -201,7 +201,7 @@ class BlobClient:
                 self.container_client.upload_blob(data=data, name=random_blob_name, blob_type='AppendBlob')
             blobclient = self.container_client.get_blob_client(random_blob_name)
 
-            blobclient.create_append_blob(args[0], args[1])
+            blobclient.create_append_blob(content_setting, args[0])
             print(self.service + ": Append blob is created.")
             return True
         except Exception as e:
@@ -215,15 +215,14 @@ class BlobClient:
         # size
         if not len(args) > 0:
             args.append(512)
-        # content settings
-        if not len(args) > 1:
-            args.append(ContentSettings(content_type='text/plain', content_encoding='utf-8', cache_control='None', content_language='en-US', content_disposition='inline'))
         # metadata
-        if not len(args) > 2:
+        if not len(args) > 1:
             args.append({'category': 'test', 'created': '2020-01-01', 'author': 'test', 'description': 'test', 'tags': 'test', 'title': 'test', 'version': '1.0', 'filename': 'test'})
         # premium page blob tier
-        if not len(args) > 3:
+        if not len(args) > 2:
             args.append('P4')
+
+        content_setting = ContentSettings(content_type='text/plain', content_encoding='utf-8', cache_control='None', content_language='en-US', content_disposition='inline')
 
         try:
             random_blob_name = f'blob{random.randint(1, 1000000000)}'
@@ -233,7 +232,7 @@ class BlobClient:
                 self.container_client.upload_blob(data=data, name=random_blob_name, blob_type='PageBlob')
             blobclient = self.container_client.get_blob_client(random_blob_name)
 
-            blobclient.create_page_blob(args[0], args[1], args[2])
+            blobclient.create_page_blob(args[0], content_setting, args[1])
             print(self.service + ": Page blob is created.")
             return True
         except Exception as e:
@@ -480,12 +479,12 @@ class BlobClient:
     # set http headers with try except block
     def set_http_headers(self, *args):
         args = list(args)
+        
         # content settings
-        if not len(args) > 0:
-            args.append(ContentSettings(content_type='text/plain'))
+        content_setting = ContentSettings(content_type='text/plain')
 
         try:
-            self.blob_client.set_http_headers(args[0])
+            self.blob_client.set_http_headers(content_setting)
             print(self.service + ": HTTP headers are set.")
             return True
         except Exception as e:
@@ -498,11 +497,10 @@ class BlobClient:
     def set_immutability_policy(self, *args):
         args = list(args)
         # immutability policy
-        if not len(args) > 0:
-            args.append(ImmutabilityPolicy(expiry_time=datetime.datetime.utcnow() + datetime.timedelta(days=1), policy_mode='unlocked'))
+        policy = ImmutabilityPolicy(expiry_time=datetime.datetime.utcnow() + datetime.timedelta(days=1), policy_mode='unlocked')
 
         try:
-            self.blob_client.set_immutability_policy(args[0])
+            self.blob_client.set_immutability_policy(policy)
             print(self.service + ": Immutability policy is set.")
             return True
         except Exception as e:
