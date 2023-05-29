@@ -39,12 +39,12 @@ class MyQueueClient:
 
 
     # create queue if not exists with try except
-    def queue_create(self, queue_name=None):
-        if queue_name is None:
-            queue_name = f'queue{random.randint(1, 1000000000)}'
+    def queue_create(self, *args):
+        if not len(args) > 0:
+            args.append(f'queue{random.randint(1, 1000000000)}')
         
         try:
-            self.queue_client = self.queue_client.from_connection_string(self.connection_string, queue_name)
+            self.queue_client = self.queue_client.from_connection_string(self.connection_string, args[0])
             self.queue_client.create_queue()
             print(self.service, ': Success -- Queue created')
             return True
@@ -54,14 +54,13 @@ class MyQueueClient:
 
 
     # delete message with arguments as none try except
-    def queue_delete_message(self, message_id=None, pop_receipt=None):
-        if message_id is None:
-            message_id = 'message_id'
-        if pop_receipt is None:
-            pop_receipt = 'pop_receipt'
+    def queue_delete_message(self, *args):
+        if not len(args) > 0:
+            args.append('message content')
+
         try:
             # send message
-            resp = self.queue_client.send_message('Hello World')
+            resp = self.queue_client.send_message(args[0])
             print(self.service, ': Success -- Message sent')
             # msg id and pop receipt
             message_id = resp['id']
@@ -114,10 +113,13 @@ class MyQueueClient:
             return False
         
     # peek messages with arguments as none try except
-    def queue_peek_messages(self, number_of_messages=5):
+    def queue_peek_messages(self, *args):
+
+        if not len(args) > 0:
+            args.append(5)
         
         try:
-            self.queue_client.peek_messages(number_of_messages)
+            self.queue_client.peek_messages(args[0])
             print(self.service, ': Success -- Queue messages peeked')
             return True
         except Exception as e:
@@ -137,14 +139,13 @@ class MyQueueClient:
         
 
     # receive messages with arguments as none try except
-    def queue_receive_messages(self, number_of_messages=None):
+    def queue_receive_messages(self, *args):
 
-        if number_of_messages is None:
-            number_of_messages = 5
+        if not len(args) > 0:
+            args.append(5)
                 
         try:
-            kwargs = {'max_messages':number_of_messages}
-            self.queue_client.receive_messages(**kwargs)
+            self.queue_client.receive_messages(max_messages=args[0])
             print(self.service, ': Success -- Queue messages received')
             return True
         except Exception as e:
@@ -153,10 +154,13 @@ class MyQueueClient:
     
 
     # send message with arguments as none try except
-    def queue_send_message(self, content='Hello World'):
+    def queue_send_message(self, *args):
+
+        if not len(args) > 0:
+            args.append('Hello World')
                         
         try:
-            self.queue_client.send_message(content)
+            self.queue_client.send_message(args[0])
             print(self.service, ': Success -- Message sent')
             return True
         except Exception as e:
@@ -165,7 +169,7 @@ class MyQueueClient:
         
 
     # set queue access policy with arguments as none try except
-    def queue_set_access_policy(self, signed_identifiers=None):
+    def queue_set_access_policy(self, *args):
                
         try:
             # get access policy
@@ -181,11 +185,11 @@ class MyQueueClient:
 
 
     # set queue metadata with arguments as none try except
-    def queue_set_metadata(self, metadata=None):
-        if metadata is None:
-            metadata = {'val': 'test'}
+    def queue_set_metadata(self, *args):
+        if not len(args) > 0:
+            args.append({'key':'value'})
         try:
-            self.queue_client.set_queue_metadata(metadata)
+            self.queue_client.set_queue_metadata(args[0])
             print(self.service, ': Success -- Queue metadata set')
             return True
         except Exception as e:
@@ -194,21 +198,20 @@ class MyQueueClient:
         
 
     # update message with arguments as none try except
-    def queue_update_message(self, message_id=None, pop_receipt=None, content=None):
-        if message_id is None:
-            message_id = 'message_id'
-        if pop_receipt is None:
-            pop_receipt = 'pop_receipt'
-        if content is None:
-            content = 'New Hello World'
+    def queue_update_message(self, *args):
+        
+        if not len(args) > 0:
+            args.append('Hello World')
+        if not len(args) > 1:
+            args.append('updated message content')
         try:
             # send message
-            resp = self.queue_client.send_message('Hello World')
+            resp = self.queue_client.send_message(args[0])
             print(self.service, ': Success -- Message sent')
             # msg id and pop receipt
             message_id = resp['id']
             pop_receipt = resp['pop_receipt']
-            self.queue_client.update_message(message_id, pop_receipt, content)
+            self.queue_client.update_message(message_id, pop_receipt, args[1])
             print(self.service, ': Success -- Message updated')
             return True
         except Exception as e:
