@@ -39,44 +39,44 @@ class MyBlobServiceClient:
 
 
     # create container with default container name as none with try except
-    def create_container(self, container_name=None):
-        if container_name is None:
-            container_name = f'container{random.randint(1, 1000000000)}'
+    def create_container(self, **args):
+        if args['container_name'] is None:
+            args['container_name'] = f'container{random.randint(1, 1000000000)}'
 
         try:
-            self.container_client = self.blob_service_client.create_container(container_name)
-            print(self.service, ': Container created with name: ', container_name)
+            self.container_client = self.blob_service_client.create_container(args['container_name'])
+            print(self.service, ': Container created with name: ', args['container_name'])
             return True
         except Exception as e:
-            print(self.service, ': Container creation failed with name: ', container_name, ' and error: ', e)
+            print(self.service, ': Container creation failed with name: ', args['container_name'], ' and error: ', e)
             return False
         
 
     # delete container with default container name as none with try except
-    def delete_container(self, container_name=None):
-        if container_name is None:
-            container_name = self.container_name
+    def delete_container(self, **args):
+        if args['container_name'] is None:
+            args['container_name'] = self.container_name
 
         try:
-            self.blob_service_client.delete_container(container_name)
-            print(self.service, ': Container deleted with name: ', container_name)
+            self.blob_service_client.delete_container(args['container_name'])
+            print(self.service, ': Container deleted with name: ', args['container_name'])
             # create container again
             self.container_client.create_container()
             return True
         except Exception as e:
-            print(self.service, ': Container deletion failed with name: ', container_name, ' and error: ', e)
+            print(self.service, ': Container deletion failed with name: ', args['container_name'], ' and error: ', e)
             return False
         
 
     # find blobs by tags
-    def find_blobs_by_tags(self, filter_expression=None):
+    def find_blobs_by_tags(self, **args):
         # tag name
-        if filter_expression is None:
-            filter_expression = 'test'
+        if args['tag_name'] is None:
+            args['tag_name'] = 'hello'
         
         try:
-            blobs = self.blob_service_client.find_blobs_by_tags(filter_expression)
-            print(self.service, ': Blobs found with filter expression: ', filter_expression)
+            blobs = self.blob_service_client.find_blobs_by_tags(args['tag_name'])
+            print(self.service, ': Blobs found with filter expression: ', args['tag_name'])
             return True
         except Exception as e:
             print(self.service, ': Blob search failed, error: ', e)
@@ -84,7 +84,7 @@ class MyBlobServiceClient:
 
 
     # get account info with try except
-    def get_account_info(self):
+    def get_account_info(self, **args):
         try:
             self.blob_service_client.get_account_information()
             print(self.service, ': Account info retrieved')
@@ -95,35 +95,35 @@ class MyBlobServiceClient:
         
 
     # get blob client with default blob name as none with try except
-    def get_blob_client(self, blob_name=None):
-        if blob_name is None:
-            blob_name = self.blob_name
+    def get_blob_client(self, **args):
+        if args['blob_name'] is None:
+            args['blob_name'] = self.blob_name
 
         try:
-            self.blob_client = self.container_client.get_blob_client(blob_name)
-            print(self.service, ': Blob client retrieved with name: ', blob_name)
+            self.blob_client = self.container_client.get_blob_client(args['blob_name'])
+            print(self.service, ': Blob client retrieved with name: ', args['blob_name'])
             return True
         except Exception as e:
-            print(self.service, ': Blob client retrieval failed with name: ', blob_name, ' and error: ', e)
+            print(self.service, ': Blob client retrieval failed with name: ', args['blob_name'], ' and error: ', e)
             return False
         
 
     # get container client with default container name as none with try except
-    def get_container_client(self, container_name=None):
-        if container_name is None:
-            container_name = self.container_name
+    def get_container_client(self, **args):
+        if args['container_name'] is None:
+            args['container_name'] = self.container_name
 
         try:
-            self.container_client = self.blob_service_client.get_container_client(container_name)
-            print(self.service, ': Container client retrieved with name: ', container_name)
+            self.container_client = self.blob_service_client.get_container_client(args['container_name'])
+            print(self.service, ': Container client retrieved with name: ', args['container_name'])
             return True
         except Exception as e:
-            print(self.service, ': Container client retrieval failed with name: ', container_name, ' and error: ', e)
+            print(self.service, ': Container client retrieval failed with name: ', args['container_name'], ' and error: ', e)
             return False
         
 
     # get service properties with try except
-    def get_service_properties(self):
+    def get_service_properties(self, **args):
         try:
             self.blob_service_client.get_service_properties()
             print(self.service, ': Service properties retrieved')
@@ -134,7 +134,7 @@ class MyBlobServiceClient:
         
 
     # get service stats with try except
-    def get_service_stats(self):
+    def get_service_stats(self, **args):
         try:
             self.blob_service_client.get_service_stats()
             print(self.service, ': Service stats retrieved')
@@ -145,7 +145,7 @@ class MyBlobServiceClient:
         
 
     # list containers with try except
-    def list_containers(self):
+    def list_containers(self, **args):
         try:
             self.blob_service_client.list_containers()
             print(self.service, ': Container list retrieved')
@@ -160,19 +160,19 @@ class MyBlobServiceClient:
 
 
     # undelete container with default container name as none with try except
-    def undelete_container(self, container_name=None, version_id=None):
-        if container_name is None:
-            container_name = self.container_name
+    def undelete_container(self, **args):
+        if args['container_name'] is None:
+            args['container_name'] = self.container_name
 
-        if version_id is None:
-            version_id = ""
+        if args['version_id'] is None:
+            args['version_id'] = ''
 
         try:
-            self.blob_service_client.undelete_container(container_name, version_id)
-            print(self.service, ': Container undeleted with name: ', container_name)
+            self.blob_service_client.undelete_container(args['container_name'], args['version_id'])
+            print(self.service, ': Container undeleted with name: ', args['container_name'])
             return True
         except Exception as e:
-            print(self.service, ': Container undeletion failed with name: ', container_name, ' and error: ', e)
+            print(self.service, ': Container undeletion failed with name: ', args['container_name'], ' and error: ', e)
             return False
     
 
