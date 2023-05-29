@@ -447,7 +447,7 @@ class BlobClient:
             args['tags'] = {'tag1': 'value1', 'tag2': 'value2'}
 
         try:
-            self.blob_client.set_blob_tags(tags)
+            self.blob_client.set_blob_tags(args['tags'])
             print(self.service + ": Blob tags are set.")
             return True
         except Exception as e:
