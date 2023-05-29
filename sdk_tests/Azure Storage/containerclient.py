@@ -36,13 +36,14 @@ class ContainerClient:
 
 
     # acquire lease with try except block
-    def acquire_lease(self, **kwargs):
+    def acquire_lease(self, *args):
+        args = list(args)
         # lease id
-        if kwargs['lease_id'] is None:
-            kwargs['lease_id'] = 'ashg-jaha-jhds0a-23sds-23423'
+        if not len(args) > 0:
+            args.append('ashg-jaha-jhds0a-23sds-23423')
         # lease duration
-        if lease_duration is None:
-            lease_duration = 10
+        if not len(args) > 1:
+            args.append(10)
 
         try:
             self.container_client.acquire_lease()
@@ -54,13 +55,14 @@ class ContainerClient:
         
 
       # create a container with random name with try except block
-    def create_container(self, **kwargs):
+    def create_container(self, *args):
+        args = list(args)
         # container name
-        if kwargs['container_name'] is None:
-            kwargs['container_name'] = f'container{random.randint(1, 1000000000)}'
+        if not len(args) > 0:
+            args.append(f'container{random.randint(1, 1000000000)}')
 
         try:
-            self.blob_service_client.get_container_client(kwargs['container_name']).create_container()
+            self.blob_service_client.get_container_client(args[0]).create_container()
             print(self.service + ": Container is created")
             return True
         except Exception as e:
@@ -69,12 +71,13 @@ class ContainerClient:
 
 
     # delete a given blob with try except block
-    def delete_blob(self, **kwargs):
+    def delete_blob(self, *args):
+        args = list(args)
         # blob name
-        if kwargs['blob_name'] is None:
-            kwargs['blob_name'] = self.blob_name
+        if not len(args) > 0:
+            args.append(self.blob_name)
         try:
-            self.container_client.delete_blob(kwargs['blob_name'])
+            self.container_client.delete_blob(args[0])
             print(self.service + ": Blob is deleted")
             # create blob again
             self.container_client.upload_blob(data=b'Second one', name=self.blob_name, blob_type='BlockBlob', length=len('First one'), metadata={'hello': 'world', 'number': '42'})
@@ -85,13 +88,14 @@ class ContainerClient:
 
 
     # delete given list of blobs (delete_blobs operation) with try except block
-    def delete_blobs(self, **kwargs):
+    def delete_blobs(self, *args):
+        args = list(args)
         # blob list
-        if kwargs['blob_list'] is None:
-            kwargs['blob_list'] = {'name':'blob1', 'name':'blob2', 'name':'blob3'}
+        if not len(args) > 0:
+            args.append({'name':'blob1', 'name':'blob2', 'name':'blob3'})
 
         try:
-            self.container_client.delete_blobs(kwargs['blob_list'])
+            self.container_client.delete_blobs(args[0])
             print(self.service + ": Blobs are deleted successfully.")
             # create blob again
             self.container_client.upload_blob(data=b'Third one', name=self.blob_name, blob_type='BlockBlob', length=len('First one'), metadata={'hello': 'world', 'number': '42'})
@@ -102,7 +106,8 @@ class ContainerClient:
 
 
     # delete container with try except block
-    def delete_container(self, **kwargs):
+    def delete_container(self, *args):
+        args = list(args)
         try:
             self.container_client.delete_container()
             print(self.service + ": Container deleted successfully.")
@@ -115,12 +120,13 @@ class ContainerClient:
 
 
     # download a blob (download_blob operation) with try except block
-    def download_blob(self, **kwargs):
+    def download_blob(self, *args):
+        args = list(args)
         # blob name
-        if kwargs['blob_name'] is None:
-            kwargs['blob_name'] = self.blob_name
+        if not len(args) > 0:
+            args.append(self.blob_name)
         try:
-            self.container_client.download_blob(kwargs['blob_name'])
+            self.container_client.download_blob(args[0])
             print(self.service + ": Blob is downloaded")
             return True
         except Exception as e:
@@ -129,7 +135,8 @@ class ContainerClient:
     
 
     # check if a container exists
-    def exists(self, **kwargs):
+    def exists(self, *args):
+        args = list(args)
         print(self.service + ": " + 'Checking if container exists: ')
         
         try:
@@ -142,12 +149,13 @@ class ContainerClient:
 
 
     # find blobs by tags with try except block
-    def find_blobs_by_tags(self, **kwargs):
+    def find_blobs_by_tags(self, *args):
+        args = list(args)
         # tags
-        if kwargs['tags'] is None:
-            kwargs['tags'] = {'tag1': 'value1', 'tag2': 'value2'}
+        if not len(args) > 0:
+            args.append({'tag1': 'value1', 'tag2': 'value2'})
         try:
-            self.container_client.find_blobs_by_tags(kwargs['tags'])
+            self.container_client.find_blobs_by_tags(args[0])
             print(self.service + ": Blobs are found.")
             return True
         except Exception as e:
@@ -156,7 +164,8 @@ class ContainerClient:
 
 
     # get account information with try except block
-    def get_account_information(self, **kwargs):
+    def get_account_information(self, *args):
+        args = list(args)
         try:
             self.container_client.get_account_information()
             print(self.service + ": Account information found")
@@ -167,12 +176,13 @@ class ContainerClient:
 
 
     # get blob client with try except block
-    def get_blob_client(self, **kwargs):
+    def get_blob_client(self, *args):
+        args = list(args)
         # blob name
-        if kwargs['blob_name'] is None:
-            kwargs['blob_name'] = self.blob_name
+        if not len(args) > 0:
+            args.append(self.blob_name)
         try:
-            self.container_client.get_blob_client(kwargs['blob_name'])
+            self.container_client.get_blob_client(args[0])
             print(self.service + ": Blob client accessed")
             return True
         except Exception as e:
@@ -181,7 +191,8 @@ class ContainerClient:
 
 
     # get container access policy with try except block
-    def get_container_access_policy(self, **kwargs):
+    def get_container_access_policy(self, *args):
+        args = list(args)
         try:
             self.container_client.get_container_access_policy()
             print(self.service + ": Container access policy accessed")
@@ -192,7 +203,8 @@ class ContainerClient:
 
 
     # get container properties with try except block
-    def get_container_properties(self, **kwargs):
+    def get_container_properties(self, *args):
+        args = list(args)
         try:
             self.container_client.get_container_properties()
             print(self.service + ": Container properties found")
@@ -203,7 +215,8 @@ class ContainerClient:
         
 
     # list blob names with try except block
-    def list_blob_names(self, **kwargs):
+    def list_blob_names(self, *args):
+        args = list(args)
         try:
             print(self.service + ": Listing blob names...")
             self.container_client.list_blob_names()
@@ -216,7 +229,8 @@ class ContainerClient:
 
 
     # list blobs with try except block
-    def list_blobs(self, **kwargs):
+    def list_blobs(self, *args):
+        args = list(args)
         try:
             print(self.service + ": Listing blobs...")
             res = self.container_client.list_blobs()
@@ -228,18 +242,19 @@ class ContainerClient:
         
 
     # set container access policy with try except block
-    def set_container_access_policy(self, **kwargs):
+    def set_container_access_policy(self, *args):
+        args = list(args)
 
         # signed identifiers
-        if kwargs['signed_identifier'] is None:
-            kwargs['signed_identifier'] = {'id': AccessPolicy()}
+        if not len(args) > 0:
+            args.append({'id': AccessPolicy()})
 
         # public access
         if public_access is None:
             public_access = PublicAccess('blob')
 
         try:
-            self.container_client.set_container_access_policy(kwargs['signed_identifier'], public_access)
+            self.container_client.set_container_access_policy(args[0], public_access)
             print(self.service + ": Container access policy is set.")
             return True
         except Exception as e:
@@ -248,12 +263,13 @@ class ContainerClient:
         
 
     # set container metadata with try except block
-    def set_container_metadata(self, **kwargs):
+    def set_container_metadata(self, *args):
+        args = list(args)
         # metadata
-        if kwargs['metadata'] is None:
-            kwargs['metadata'] = {'hello': 'world', 'number': '42'}
+        if not len(args) > 0:
+            args.append({'hello': 'world', 'number': '42'})
         try:
-            self.container_client.set_container_metadata(metadata=kwargs['metadata'])
+            self.container_client.set_container_metadata(metadata=args[0])
             print(self.service + ": Container metadata is set.")
             return True
         except Exception as e:
@@ -262,15 +278,16 @@ class ContainerClient:
 
     '''Applied to premium acounts only'''
     # set premium page blob tier with try except block
-    def set_premium_page_blob_tier(self, **kwargs):
+    def set_premium_page_blob_tier(self, *args):
+        args = list(args)
         # blob name
-        if kwargs['blob_name'] is None:
-            kwargs['blob_name'] = self.blob_name
+        if not len(args) > 0:
+            args.append(self.blob_name)
         # premium page blob tier
-        if kwargs['premium_blob_tier'] is None:
-            kwargs['premium_blob_tier'] = PremiumPageBlobTier('P4')
+        if not len(args) > 1:
+            args.append(PremiumPageBlobTier('P4'))
         try:
-            self.container_client.set_premium_page_blob_tier_blobs(kwargs['premium_blob_tier'], kwargs['blob_name'])
+            self.container_client.set_premium_page_blob_tier_blobs(args[1], args[0])
             print(self.service + ": premium page blob tier is set.")
             return True
         except Exception as e:
@@ -279,15 +296,16 @@ class ContainerClient:
 
 
     # set standard page blob tier with try except block
-    def set_standard_page_blob_tier(self, **kwargs):
+    def set_standard_page_blob_tier(self, *args):
+        args = list(args)
         # blob name
-        if kwargs['blob_name'] is None:
-            kwargs['blob_name'] = self.blob_name
+        if not len(args) > 0:
+            args.append(self.blob_name)
         # standard page blob tier
-        if kwargs['standard_blob_tier'] is None:
-            kwargs['standard_blob_tier'] = StandardBlobTier('Cool')
+        if not len(args) > 1:
+            args.append(StandardBlobTier('Cool'))
         try:
-            self.container_client.set_standard_blob_tier_blobs(kwargs['standard_blob_tier'], kwargs['blob_name'])
+            self.container_client.set_standard_blob_tier_blobs(args[1], args[0])
             print(self.service + ": standard page blob tier is set")
             return True
         except Exception as e:
@@ -296,26 +314,27 @@ class ContainerClient:
         
 
     # upload blob
-    def upload_blob(self, **kwargs):
+    def upload_blob(self, *args):
+        args = list(args)
         # blob name
-        if kwargs['blob_name'] is None:
-            kwargs['blob_name'] = f'blob{random.randint(1, 1000000000)}'
+        if not len(args) > 0:
+            args.append(f'blob{random.randint(1, 1000000000)}')
         # blob data
-        if kwargs['data'] is None:
-            kwargs['data'] = b'hello world'
+        if not len(args) > 1:
+            args.append(b'hello world')
         # blob type
-        if kwargs['blob_type'] is None:
-            kwargs['blob_type'] = 'BlockBlob'
+        if not len(args) > 2:
+            args.append('BlockBlob')
         # blob metadata
-        if kwargs['metadata'] is None:
-            kwargs['metadata'] = {'hello': 'world', 'number': '42'}
+        if not len(args) > 3:
+            args.append({'hello': 'world', 'number': '42'})
 
         if container_client is None:
             container_client = self.container_client
 
         try:
-            print(self.service + ": Uploading blob: ", kwargs['blob_name'])
-            container_client.upload_blob(data=kwargs['data'], name=kwargs['blob_name'], blob_type=kwargs['blob_type'], length=len(kwargs['data']), metadata=kwargs['metadata'])
+            print(self.service + ": Uploading blob: ", args[0])
+            container_client.upload_blob(data=args[1], name=args[0], blob_type=args[2], length=len(args[1]), metadata=args[3])
             print(self.service + ": Blob is uploaded.")
             return True
         except Exception as e:
@@ -324,18 +343,19 @@ class ContainerClient:
         
 
      # walk blob
-    def walk_blobs(self, **kwargs):
+    def walk_blobs(self, *args):
+        args = list(args)
         # name starts with
-        if kwargs['name_starts_with'] is None:
-            kwargs['name_starts_with'] = 'blob'
+        if not len(args) > 0:
+            args.append('blob')
         # include
-        if kwargs['include'] is None:
-            kwargs['include'] = ['metadata']
+        if not len(args) > 1:
+            args.append(['metadata'])
         # delimiter
-        if kwargs['delimiter'] is None:
-            kwargs['delimiter'] = '/'
+        if not len(args) > 2:
+            args.append('/')
         try:
-            self.container_client.walk_blobs(name_starts_with=kwargs['name_starts_with'], include=kwargs['include'], delimiter=kwargs['delimiter'])
+            self.container_client.walk_blobs(name_starts_with=args[0], include=args[1], delimiter=args[2])
             print(self.service + ": Blobs walk successful.")
             return True
         except Exception as e:
