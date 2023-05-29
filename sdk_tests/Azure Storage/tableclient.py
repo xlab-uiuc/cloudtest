@@ -32,6 +32,8 @@ class MyTableClient():
         
     # creat entity with default table name as none with try except
     def table_create_entity(self, *args):
+        args = list(args)
+
         if not len(args) > 0:
             self.entity = {
             "PartitionKey": "color",
@@ -56,6 +58,7 @@ class MyTableClient():
         
     # delete entity with default entity none with try except
     def table_delete_entity(self, *args):
+        args = list(args)
         try:
             self.table_client.create_entity({
             "PartitionKey": "colortwo",
@@ -84,6 +87,7 @@ class MyTableClient():
 
     # delete table with default table name as none with try except
     def table_delete_table(self, *args):
+        args = list(args)
         if not len(args) > 0:
             args.append(self.table_name)
 
@@ -100,6 +104,7 @@ class MyTableClient():
 
     # get entity with default entity none with try except
     def table_get_entity(self, *args):
+        args = list(args)
         try:
             self.table_client.create_entity(entity={
             "PartitionKey": "colorthree",
@@ -131,6 +136,7 @@ class MyTableClient():
 
     # get table access policy with try except
     def table_get_table_access_policy(self, *args):
+        args = list(args)
         tab = f'table{random.randint(1, 1000000000)}'
         table_client = TableClient.from_connection_string(self.connection_string, tab)
         table_client.create_table()
@@ -145,6 +151,7 @@ class MyTableClient():
 
     # list entities in the table with try except
     def table_list_entities(self, *args):
+        args = list(args)
         try:
             self.table_client.list_entities()
             print(self.service, ': Entities listed')
@@ -156,6 +163,7 @@ class MyTableClient():
 
     # query entities with default query filter none with try except
     def table_query_entities(self, *args):
+        args = list(args)
         if not len(args) > 0:
             args.append("PartitionKey eq 'color'")
 
@@ -170,6 +178,7 @@ class MyTableClient():
 
     # set table access policy default policy none with try except
     def table_set_table_access_policy(self, *args):
+        args = list(args)
         if not len(args) > 0:
             args.append({})
         try:
@@ -183,6 +192,7 @@ class MyTableClient():
 
     # submit transaction with default transaction none with try except
     def table_submit_transaction(self, *args):
+        args = list(args)
         if not len(args) > 0:
             args.append([
                 {
@@ -211,6 +221,7 @@ class MyTableClient():
 
     # update entity with default entity none with try except
     def table_update_entity(self, *args):
+        args = list(args)
         if not len(args) > 0:
             args.append({
                 "PartitionKey": "color",
@@ -237,6 +248,7 @@ class MyTableClient():
 
     # upsert entity with default entity none with try except
     def table_upsert_entity(self, *args):
+        args = list(args)
         if not len(args) > 0:
             args.append({
                 "PartitionKey": "color",

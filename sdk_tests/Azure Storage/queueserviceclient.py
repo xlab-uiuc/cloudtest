@@ -29,6 +29,7 @@ class MyQueueServiceClient:
 
     # create queue with try except
     def queue_create(self, *args):
+        args = list(args)
         if queue_name is None:
             queue_name = f'queue{random.randint(1, 1000000000)}'
         
@@ -43,6 +44,7 @@ class MyQueueServiceClient:
 
     # delete queue with try except
     def queue_delete(self, *args):
+        args = list(args)
         
         if not len(args) > 0:
             args.append(self.queue_name)
@@ -61,6 +63,7 @@ class MyQueueServiceClient:
 
     # get queue client with try except
     def queue_get_client(self, *args):
+        args = list(args)
         
         if not len(args) > 0:
             args.append(self.queue_name)
@@ -76,6 +79,7 @@ class MyQueueServiceClient:
 
     # get service properties with try except
     def queue_get_service_properties(self, *args):
+        args = list(args)
         try:
             self.queue_service_client.get_service_properties()
             print(self.service, ': Success -- Service properties retrieved')
@@ -87,6 +91,7 @@ class MyQueueServiceClient:
 
     # get service stats with try except
     def queue_get_service_stats(self, *args):
+        args = list(args)
         try:
             self.queue_service_client.get_service_stats()
             print(self.service, ': Success -- Service stats retrieved')
@@ -98,6 +103,7 @@ class MyQueueServiceClient:
 
     # list queues with try except
     def queue_list(self, *args):
+        args = list(args)
         try:
             self.queue_service_client.list_queues()
             print(self.service, ': Success -- Queues listed')
