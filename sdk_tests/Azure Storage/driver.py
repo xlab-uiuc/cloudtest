@@ -130,7 +130,7 @@ def run1v1():
     test_em_qsc = MyQueueServiceClient()
 
     count = 0
-    t_count = 0
+    t_count = -1
     
     with open('discrepancy.txt', 'w') as f:
         f.write('')
@@ -140,7 +140,7 @@ def run1v1():
         # run blob client ops
         for methods in methods_blobClient:
             t_count += 1
-            if not methods(test_cloud_bc) == methods(test_em_bc):
+            if not methods(test_cloud_bc, arg[t_count]) == methods(test_em_bc, arg[t_count]):
                 count += 1
                 output = buf.getvalue().strip()
                 with open('discrepancy.txt', 'a') as f:
@@ -150,7 +150,7 @@ def run1v1():
         # run container client ops
         for methods in methods_containerClient:
             t_count += 1
-            if not methods(test_cloud_cc) == methods(test_em_cc):
+            if not methods(test_cloud_cc, arg[t_count]) == methods(test_em_cc, arg[t_count]):
                 count += 1
                 output = buf.getvalue().strip()
                 with open('discrepancy.txt', 'a') as f:
@@ -160,7 +160,7 @@ def run1v1():
         # run blob service client ops
         for methods in methods_blobServiceClient:
             t_count += 1
-            if not methods(test_cloud_bsc) == methods(test_em_bsc):
+            if not methods(test_cloud_bsc, arg[t_count]) == methods(test_em_bsc, arg[t_count]):
                 count += 1
                 output = buf.getvalue().strip()
                 with open('discrepancy.txt', 'a') as f:
@@ -170,7 +170,7 @@ def run1v1():
         # run table client ops
         for methods in methods_tableClient:
             t_count += 1
-            if not methods(test_cloud_tc) == methods(test_em_tc):
+            if not methods(test_cloud_tc, arg[t_count]) == methods(test_em_tc, arg[t_count]):
                 count += 1
                 output = buf.getvalue().strip()
                 with open('discrepancy.txt', 'a') as f:
@@ -180,7 +180,7 @@ def run1v1():
         # run table service client ops
         for methods in methods_tableServiceClient:
             t_count += 1
-            if not methods(test_cloud_tsc) == methods(test_em_tsc):
+            if not methods(test_cloud_tsc, arg[t_count]) == methods(test_em_tsc, arg[t_count]):
                 count += 1
                 output = buf.getvalue().strip()
                 with open('discrepancy.txt', 'a') as f:
@@ -190,7 +190,7 @@ def run1v1():
         # run queue client ops
         for methods in methods_queueClient:
             t_count += 1
-            if not methods(test_cloud_qc) == methods(test_em_qc):
+            if not methods(test_cloud_qc, arg) == methods(test_em_qc, arg):
                 count += 1
                 output = buf.getvalue().strip()
                 with open('discrepancy.txt', 'a') as f:
@@ -200,7 +200,7 @@ def run1v1():
         # run queue service client ops
         for methods in methods_queueServiceClient:
             t_count += 1
-            if not methods(test_cloud_qsc) == methods(test_em_qsc):
+            if not methods(test_cloud_qsc, arg) == methods(test_em_qsc, arg):
                 count += 1
                 output = buf.getvalue().strip()
                 with open('discrepancy.txt', 'a') as f:
