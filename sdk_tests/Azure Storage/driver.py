@@ -102,7 +102,7 @@ def run_sequences():
 
 def run1v1():
 
-    # get all methods of ContainerClient
+    # get all methods of all the clients
     methods_blobClient = [getattr(BlobClient, attr) for attr in dir(BlobClient) if callable(getattr(BlobClient, attr)) and not attr.startswith("__")]
     methods_containerClient = [getattr(ContainerClient, attr) for attr in dir(ContainerClient) if callable(getattr(ContainerClient, attr)) and not attr.startswith("__")]
     methods_blobServiceClient = [getattr(MyBlobServiceClient, attr) for attr in dir(MyBlobServiceClient) if callable(getattr(MyBlobServiceClient, attr))
@@ -135,35 +135,102 @@ def run1v1():
     with open('discrepancy.txt', 'w') as f:
         f.write('')
 
+
     with io.StringIO() as buf, redirect_stdout(buf):
-        for method in methods:
+        # run blob client ops
+        for methods in methods_blobClient:
             t_count += 1
-            if method in methods_blobClient and not method(test_cloud_bc) == method(test_em_bc) or method in methods_containerClient and not method(test_cloud_cc) == method(test_em_cc) or method in methods_blobServiceClient and not method(test_cloud_bsc) == method(test_em_bsc) or method in methods_tableClient and not method(test_cloud_tc) == method(test_em_tc) or method in methods_tableServiceClient and not method(test_cloud_tsc) == method(test_em_tsc) or method in methods_queueClient and not method(test_cloud_qc) == method(test_em_qc) or method in methods_queueServiceClient and not method(test_cloud_qsc) == method(test_em_qsc):
-                
+            if not methods(test_cloud_bc) == methods(test_em_bc):
                 count += 1
                 output = buf.getvalue().strip()
-
                 with open('discrepancy.txt', 'a') as f:
-                    f.write(f'{method.__name__}' + '\n\n' + output)
+                    f.write(methods.__name__ + '\n\n' + output)
                     f.write(f'\n\n\n{count}/{t_count}   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n\n\n')
+
+        # run container client ops
+        for methods in methods_containerClient:
+            t_count += 1
+            if not methods(test_cloud_cc) == methods(test_em_cc):
+                count += 1
+                output = buf.getvalue().strip()
+                with open('discrepancy.txt', 'a') as f:
+                    f.write(methods.__name__ + '\n\n' + output)
+                    f.write(f'\n\n\n{count}/{t_count}   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n\n\n')
+
+        # run blob service client ops
+        for methods in methods_blobServiceClient:
+            t_count += 1
+            if not methods(test_cloud_bsc) == methods(test_em_bsc):
+                count += 1
+                output = buf.getvalue().strip()
+                with open('discrepancy.txt', 'a') as f:
+                    f.write(methods.__name__ + '\n\n' + output)
+                    f.write(f'\n\n\n{count}/{t_count}   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n\n\n')
+
+        # run table client ops
+        for methods in methods_tableClient:
+            t_count += 1
+            if not methods(test_cloud_tc) == methods(test_em_tc):
+                count += 1
+                output = buf.getvalue().strip()
+                with open('discrepancy.txt', 'a') as f:
+                    f.write(methods.__name__ + '\n\n' + output)
+                    f.write(f'\n\n\n{count}/{t_count}   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n\n\n')
+
+        # run table service client ops
+        for methods in methods_tableServiceClient:
+            t_count += 1
+            if not methods(test_cloud_tsc) == methods(test_em_tsc):
+                count += 1
+                output = buf.getvalue().strip()
+                with open('discrepancy.txt', 'a') as f:
+                    f.write(methods.__name__ + '\n\n' + output)
+                    f.write(f'\n\n\n{count}/{t_count}   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n\n\n')
+
+        # run queue client ops
+        for methods in methods_queueClient:
+            t_count += 1
+            if not methods(test_cloud_qc) == methods(test_em_qc):
+                count += 1
+                output = buf.getvalue().strip()
+                with open('discrepancy.txt', 'a') as f:
+                    f.write(methods.__name__ + '\n\n' + output)
+                    f.write(f'\n\n\n{count}/{t_count}   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n\n\n')
+
+        # run queue service client ops
+        for methods in methods_queueServiceClient:
+            t_count += 1
+            if not methods(test_cloud_qsc) == methods(test_em_qsc):
+                count += 1
+                output = buf.getvalue().strip()
+                with open('discrepancy.txt', 'a') as f:
+                    f.write(methods.__name__ + '\n\n' + output)
+                    f.write(f'\n\n\n{count}/{t_count}   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n\n\n')
+
+        print(f'{count}/{t_count}   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------')
+        print('Round ended')
                 
 
     extract_discrepancy('discrepancy.txt')
 
 
-
-'''Get all the test functions'''
-if __name__ == '__main__':
-
-    
+'''test suites'''
+def main(arg):
     # methods_tableClient = [getattr(MyTableClient, attr) for attr in dir(MyTableClient) if callable(getattr(MyTableClient, attr)) and not attr.startswith("__")]
     # methods_tableServiceClient = [getattr(MyTableServiceClient, attr) for attr in dir(MyTableServiceClient) if callable(getattr(MyTableServiceClient, attr)) and not attr.startswith("__")]
     # methods = methods_tableClient + methods_tableServiceClient
     # print(len(methods))
 
-    run1v1()
+    run1v1(arg)
     # run_sequences()
 
+
+'''Get fuzz data'''
+if __name__ == '__main__':
+    arg = ()
+    main(arg)
+    
+    
 
 
     
