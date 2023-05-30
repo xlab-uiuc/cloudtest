@@ -114,7 +114,7 @@ class MyQueueServiceClient:
         
 
     # set service properties with try except
-    def queue_set_service_properties(self, analytics_logging=None, hour_metrics=None, minute_metrics=None, cors=None):
+    def queue_set_service_properties(self, *args):
         if analytics_logging is None:
             analytics_logging = QueueAnalyticsLogging(read=True, write=True, delete=True, retention_policy=RetentionPolicy(enabled=True, days=5))
         if hour_metrics is None:
