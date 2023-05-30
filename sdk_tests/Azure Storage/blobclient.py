@@ -658,11 +658,11 @@ class BlobClient:
             # open page.txt file
             with open('page', 'rb') as f:
                 args.append(f.read())
-        # offif not len(args) > 0:
+        if not len(args) > 1:
             offset = 0
 
         try:
-            self.blob_client.upload_page(args[0], offset, length=len(args[0]))
+            self.blob_client.upload_page(args[0], args[1], length=len(args[0]))
             print(self.service + ": Page is uploaded.")
             return True
         except Exception as e:
