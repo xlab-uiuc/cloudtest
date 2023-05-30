@@ -14,14 +14,14 @@ class MyTableClient():
         else:
             self.table_name = table_name
 
-        self.account_name = 'restlertest1'
+        self.account_name = 'sdkfuzz'
 
         # connection string
         if emulator:
             self.connection_string = 'DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;TableEndpoint=http://127.0.0.1:10002/devstoreaccount1;'
             self.service = "**EMULATOR**"
         else:
-            self.connection_string = 'DefaultEndpointsProtocol=https;AccountName=restlertest1;AccountKey=En0z7F3kBwgMv8YIlU57bifLmr2Nb71m4sNVndRvtFiOlpWRNhnlOOPsJG5C7uwZgP92rkFFj4rx+AStw5Q7sA==;EndpointSuffix=core.windows.net'
+            self.connection_string = 'DefaultEndpointsProtocol=https;AccountName=sdkfuzz;AccountKey=Kt8fMYDEpeaq/A6TRBU+1+LRMIqd2h9Nv7Hd/qCn4B9DqvbNDXPJWU4BRqu50GVEjFfcocumL1lr+AStfVsaPA==;EndpointSuffix=core.windows.net'
             self.service = '**AZURE**'
 
         # create table client
@@ -277,17 +277,5 @@ class MyTableClient():
             return False
         
 
-# if __name__ == '__main__':
-
-
-#     # create blob client
-#     table_client = MyTableClient(False)
-#     # get all methods
-#     methods = [getattr(MyTableClient, attr) for attr in dir(MyTableClient) if callable(getattr(MyTableClient, attr)) and not attr.startswith("__")]
-
-#     for i in methods:
-#         print(i.__name__)
-#         i(table_client)
-        
 
     

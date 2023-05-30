@@ -11,14 +11,14 @@ class MyQueueServiceClient:
         else:
             self.queue_name = queue_name
 
-        self.account_name = 'restlertest1'
+        self.account_name = 'sdkfuzz'
 
         # connection string
         if emulator:
             self.connection_string = 'DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;QueueEndpoint=http://127.0.0.1:10001/devstoreaccount1;'
             self.service = "**EMULATOR**"
         else:
-            self.connection_string = 'DefaultEndpointsProtocol=https;AccountName=restlertest1;AccountKey=En0z7F3kBwgMv8YIlU57bifLmr2Nb71m4sNVndRvtFiOlpWRNhnlOOPsJG5C7uwZgP92rkFFj4rx+AStw5Q7sA==;EndpointSuffix=core.windows.net'
+            self.connection_string = 'DefaultEndpointsProtocol=https;AccountName=sdkfuzz;AccountKey=Kt8fMYDEpeaq/A6TRBU+1+LRMIqd2h9Nv7Hd/qCn4B9DqvbNDXPJWU4BRqu50GVEjFfcocumL1lr+AStfVsaPA==;EndpointSuffix=core.windows.net'
             self.service = '**AZURE**'
 
         # create a queue
@@ -30,8 +30,8 @@ class MyQueueServiceClient:
     # create queue with try except
     def queue_create(self, *args):
         args = list(args)
-        if queue_name is None:
-            queue_name = f'queue{random.randint(1, 1000000000)}'
+
+        queue_name = f'queue{random.randint(1, 1000000000)}'
         
         try:
             self.queue_service_client.create_queue(queue_name)
@@ -115,14 +115,12 @@ class MyQueueServiceClient:
 
     # set service properties with try except
     def queue_set_service_properties(self, *args):
-        if analytics_logging is None:
-            analytics_logging = QueueAnalyticsLogging(read=True, write=True, delete=True, retention_policy=RetentionPolicy(enabled=True, days=5))
-        if hour_metrics is None:
-            hour_metrics = Metrics(version='1.0', enabled=True, include_apis=True, retention_policy=RetentionPolicy(enabled=True, days=5))
-        if minute_metrics is None:
-            minute_metrics = Metrics(version='1.0', enabled=True, include_apis=True, retention_policy=RetentionPolicy(enabled=True, days=5))
-        if cors is None:
-            cors = [CorsRule(allowed_origins=['*'], allowed_methods=['GET', 'PUT'], allowed_headers=['*'], exposed_headers=['*'], max_age_in_seconds=3600)]
+
+        analytics_logging = QueueAnalyticsLogging(read=True, write=True, delete=True, retention_policy=RetentionPolicy(enabled=True, days=5))
+        hour_metrics = Metrics(version='1.0', enabled=True, include_apis=True, retention_policy=RetentionPolicy(enabled=True, days=5))
+        minute_metrics = Metrics(version='1.0', enabled=True, include_apis=True, retention_policy=RetentionPolicy(enabled=True, days=5))
+        cors = [CorsRule(allowed_origins=['*'], allowed_methods=['GET', 'PUT'], allowed_headers=['*'], exposed_headers=['*'], max_age_in_seconds=3600)]
+
         try:
             self.queue_service_client.set_service_properties(analytics_logging=analytics_logging, hour_metrics=hour_metrics, minute_metrics=minute_metrics, cors=cors)
             print(self.service, ': Success -- Service properties set')
@@ -135,11 +133,11 @@ class MyQueueServiceClient:
 # if __name__ == '__main__':
 
 
-#     # create blob client
-#     table_client = MyQueueServiceClient(False)
-#     # get all methods
-#     methods = [getattr(MyQueueServiceClient, attr) for attr in dir(MyQueueServiceClient) if callable(getattr(MyQueueServiceClient, attr)) and not attr.startswith("__")]
-#     print(len(methods))
-#     for i in methods:
-#         print(i.__name__)
-#         i(table_client)
+#     # create a queue
+#     qc = MyQueueServiceClient(emulator=False)
+#     # list all queues
+#     queues = qc.queue_service_client.list_queues()
+#     # delete all queues
+#     for queue in queues:
+#         qc.queue_service_client.delete_queue(queue.name)
+    

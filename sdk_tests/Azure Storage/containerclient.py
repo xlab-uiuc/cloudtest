@@ -22,7 +22,7 @@ class ContainerClient:
             self.connection_string = 'DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=http://127.0.0.1:10000/devstoreaccount1;'
             self.service = '**EMULATOR**'
         else:
-            self.connection_string = 'DefaultEndpointsProtocol=https;AccountName=restlertest1;AccountKey=En0z7F3kBwgMv8YIlU57bifLmr2Nb71m4sNVndRvtFiOlpWRNhnlOOPsJG5C7uwZgP92rkFFj4rx+AStw5Q7sA==;EndpointSuffix=core.windows.net'
+            self.connection_string = 'DefaultEndpointsProtocol=https;AccountName=sdkfuzz;AccountKey=Kt8fMYDEpeaq/A6TRBU+1+LRMIqd2h9Nv7Hd/qCn4B9DqvbNDXPJWU4BRqu50GVEjFfcocumL1lr+AStfVsaPA==;EndpointSuffix=core.windows.net'
             self.service = '**AZURE**'
 
         # use blob service client to create a container client
@@ -44,7 +44,7 @@ class ContainerClient:
             args.append(10)
 
         try:
-            self.container_client.acquire_lease()
+            self.container_client.acquire_lease(lease_duration=args[1], lease_id=args[0])
             print(self.service + ": Lease is acquired")
             return True
         except Exception as e:
@@ -247,9 +247,7 @@ class ContainerClient:
         if not len(args) > 0:
             args.append({'id': AccessPolicy()})
 
-        # public access
-        if public_access is None:
-            public_access = PublicAccess('blob')
+        public_access = PublicAccess('blob')
 
         try:
             self.container_client.set_container_access_policy(args[0], public_access)
@@ -327,8 +325,7 @@ class ContainerClient:
         if not len(args) > 3:
             args.append({'hello': 'world', 'number': '42'})
 
-        if container_client is None:
-            container_client = self.container_client
+        container_client = self.container_client
 
         try:
             print(self.service + ": Uploading blob: ", args[0])
@@ -362,13 +359,26 @@ class ContainerClient:
 
     
 
-# '''Check if a sublist exists in a list'''
-# def check_sublist_in_list(given_list, sublist):
-#     res = False
-#     for idx in range(len(given_list) - len(sublist) + 1):
-#         if given_list[idx: idx + len(sublist)] == sublist:
-#             res = True
-#             break
+# # delete all containers and blobs (Uncomment this after long testing)
+# cc = ContainerClient(False)
+# containers = cc.blob_service_client.list_containers()
 
-#     return res
-        
+# for container in containers:
+#     concli = cc.blob_service_client.get_container_client(container.name)
+#     print("Container: ", container.name)
+# #     # list blobs
+# #     # blobs = concli.list_blobs()
+# #     # for blob in blobs:
+# #     #     blobcli = concli.get_blob_client(blob)
+# #     #     # delete blob
+# #     #     try:
+# #     #         blobcli.delete_blob()
+# #     #     except Exception as e:
+# #     #         print("Blob cannot be deleted.")
+
+# #     # delete container
+#     try:
+#         concli.delete_container()
+#         print("Container deleted successfully: ", container)
+#     except Exception as e:
+#         print("Container cannot be deleted.")
