@@ -129,15 +129,21 @@ class MyQueueServiceClient:
             print(self.service, ': Failed -- Service properties setting failed; error: ', e)
             return False
 
+    def __del__(self):
 
-# if __name__ == '__main__':
+        try:
+            queues = self.queue_service_client.list_queues()
+            # list queues 
+            for queue in queues:
+                try: 
+                    # delete queue
+                    self.queue_service_client.delete_queue(queue.name)
+                    print('Success -- Queue deleted')
+                except:
+                    print('Failed -- Queue deletion failed')
+
+        except:
+            print('Failed -- Queue list failed')
 
 
-#     # create a queue
-#     qc = MyQueueServiceClient(emulator=False)
-#     # list all queues
-#     queues = qc.queue_service_client.list_queues()
-#     # delete all queues
-#     for queue in queues:
-#         qc.queue_service_client.delete_queue(queue.name)
     

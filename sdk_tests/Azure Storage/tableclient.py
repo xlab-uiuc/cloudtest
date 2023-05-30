@@ -1,5 +1,5 @@
 import datetime
-from azure.data.tables import TableClient, TableServiceClient, TableEntity, UpdateMode
+from azure.data.tables import TableClient, TableServiceClient, UpdateMode
 import random
 from uuid import uuid4
 
@@ -23,6 +23,9 @@ class MyTableClient():
         else:
             self.connection_string = 'DefaultEndpointsProtocol=https;AccountName=sdkfuzz;AccountKey=Kt8fMYDEpeaq/A6TRBU+1+LRMIqd2h9Nv7Hd/qCn4B9DqvbNDXPJWU4BRqu50GVEjFfcocumL1lr+AStfVsaPA==;EndpointSuffix=core.windows.net'
             self.service = '**AZURE**'
+
+        # service client
+        self.table_service_client = TableServiceClient.from_connection_string(self.connection_string)
 
         # create table client
         self.table_client = TableClient.from_connection_string(self.connection_string, self.table_name)
@@ -276,6 +279,21 @@ class MyTableClient():
             print(self.service, ': Entity upsert failed; error: ', e)
             return False
         
+        
+    # destructor
+    def __del__(self):
 
+        try:
+            tables = self.table_service_client.list_tables()
+            # list tables 
+            for table in tables:
+                try:
+                    self.table_service_client.delete_table(table.name)
+                    print('Table deleted: ', table.name)
+                except:
+                    print('Table deletion failed: ', table.name)
 
+        except Exception as e:
+
+            print('Tables could not be listed: ', e)
     

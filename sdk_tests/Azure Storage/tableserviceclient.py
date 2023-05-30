@@ -1,5 +1,4 @@
-import datetime
-from azure.data.tables import TableClient, TableServiceClient, TableEntity, UpdateMode
+from azure.data.tables import TableServiceClient
 import random
 
 
@@ -181,15 +180,20 @@ class MyTableServiceClient():
             return False
         
 
+    # destructor
+    def __del__(self):
 
+        try:
+            tables = self.table_service_client.list_tables()
+            # list tables 
+            for table in tables:
+                try:
+                    self.table_service_client.delete_table(table.name)
+                    print('Table deleted: ', table.name)
+                except:
+                    print('Table deletion failed: ', table.name)
 
+        except Exception as e:
 
-# tc = MyTableServiceClient(False)
+            print('Tables could not be listed: ', e)
 
-# # list tables
-# tables = tc.table_service_client.list_tables()
-# # delete tables
-# for table in tables:
-#     tc.table_service_client.delete_table(table.name)
-#     print('Table deleted: ', table.name)
-# print('All tables deleted')

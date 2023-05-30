@@ -230,4 +230,22 @@ class MyQueueClient:
             print(self.service, ': Failed -- Message update failed; error: ', e)
             return False
         
+    # destructor
+    def __del__(self):
+
+        try:
+            queues = self.queue_service_client.list_queues()
+            # list queues 
+            for queue in queues:
+                try: 
+                    # delete queue
+                    self.queue_service_client.delete_queue(queue.name)
+                    print('Success -- Queue deleted')
+                except:
+                    print('Failed -- Queue deletion failed')
+
+        except:
+            print('Failed -- Queue list failed')
+
+        
 

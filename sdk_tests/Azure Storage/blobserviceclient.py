@@ -184,18 +184,22 @@ class MyBlobServiceClient:
             print(self.service, ': Container undeletion failed with name: ', args[0], ' and error: ', e)
             return False
     
+    # destructor
+    def __del__(self):
+        
+        try:
+            containers = self.blob_service_client.list_containers()
+            # delete all containers
+            for container in containers:
+                try:
+                    self.blob_service_client.delete_container(container.name)
+                    print("Container is deleted.")
+                except Exception as e:
+                    print("Container is not deleted. Error: ", e)
+        except Exception as e:
+            print("Containers could not be listed. Error: ", e)
 
 
-# if __name__ == '__main__':
 
-
-#     # create blob client
-#     blob_service_client = MyBlobServiceClient(False)
-#     # get all methods
-#     methods = [getattr(MyBlobServiceClient, attr) for attr in dir(MyBlobServiceClient) if callable(getattr(MyBlobServiceClient, attr)) and not attr.startswith("__")]
-
-#     for i in methods:
-#         print(i.__name__)
-#         i(blob_service_client)
 
 
