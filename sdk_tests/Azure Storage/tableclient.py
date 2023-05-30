@@ -74,8 +74,13 @@ class MyTableClient():
         except Exception as e:
             print("Entity already exists!", e)
 
+        if not len(args) > 0:
+            args.append('brandtwo')
+        if not len(args) > 1:
+            args.append('colortwo')
+
         try:
-            self.table_client.delete_entity(row_key="brandtwo", partition_key="colortwo")
+            self.table_client.delete_entity(row_key=args[0], partition_key=args[1])
             print(self.service, ': Entity deleted')
             # create entity again
             self.table_create_entity()
