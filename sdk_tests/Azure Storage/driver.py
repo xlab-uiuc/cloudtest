@@ -58,20 +58,23 @@ def run_ops(arg, methods, test_cloud, test_em, t_count, count, buf, discrepant_m
     for method in methods:
             t_count += 1
             if method in discrepant_methods:
-                t_count += 1
+                t_count += 1 
 
-            if not method(test_cloud, arg[t_count]) == method(test_em, arg[t_count]) and not method.__name__ in discrepant_methods:
-                count += 1
-                output = buf.getvalue().strip()
+            try:
+                if not method(test_cloud, arg[t_count]) == method(test_em, arg[t_count]) and not method.__name__ in discrepant_methods:
+                    count += 1
+                    output = buf.getvalue().strip()
 
-                # empty buffer
-                buf.truncate(0)
+                    # empty buffer
+                    buf.truncate(0)
 
-                discrepant_methods.append(method.__name__)
+                    discrepant_methods.append(method.__name__)
 
-                with open('discrepancy.txt', 'a') as f:
-                    f.write(method.__name__ + '\n\n' + output)
-                    f.write(f'\n\n\n{count}/{t_count}   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n\n\n')
+                    with open('discrepancy.txt', 'a') as f:
+                        f.write(method.__name__ + '\n\n' + output)
+                        f.write(f'\n\n\n{count}/{t_count}   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n\n\n')
+            except Exception as e:
+                print("Exception: ", e)
 
     return discrepant_methods, t_count, count
 
@@ -145,16 +148,16 @@ def run1v1(arg):
     discrepant_methods = f.read().split('\n')
     f.close()
 
-    test_cloud_bc = BlobClient(False)
-    test_em_bc = BlobClient()
-    test_cloud_cc = ContainerClient(False)
-    test_em_cc = ContainerClient()
-    test_cloud_bsc = MyBlobServiceClient(False)
-    test_em_bsc = MyBlobServiceClient()
-    test_cloud_tc = MyTableClient(False)
-    test_em_tc = MyTableClient()
-    test_cloud_tsc = MyTableServiceClient(False)
-    test_em_tsc = MyTableServiceClient()
+    # test_cloud_bc = BlobClient(False)
+    # test_em_bc = BlobClient()
+    # test_cloud_cc = ContainerClient(False)
+    # test_em_cc = ContainerClient()
+    # test_cloud_bsc = MyBlobServiceClient(False)
+    # test_em_bsc = MyBlobServiceClient()
+    # test_cloud_tc = MyTableClient(False)
+    # test_em_tc = MyTableClient()
+    # test_cloud_tsc = MyTableServiceClient(False)
+    # test_em_tsc = MyTableServiceClient()
     test_cloud_qc = MyQueueClient(False)
     test_em_qc = MyQueueClient()
     test_cloud_qsc = MyQueueServiceClient(False)
@@ -176,23 +179,24 @@ def run1v1(arg):
         # # run blob service client ops
         # discrepant_methods, t_count, count = run_ops(arg, methods_blobServiceClient, test_cloud_bsc, test_em_bsc, t_count, count, buf, discrepant_methods)
         # # run table client ops
-        discrepant_methods, t_count, count = run_ops(arg, methods_tableClient, test_cloud_tc, test_em_tc, t_count, count, buf, discrepant_methods)
+        # discrepant_methods, t_count, count = run_ops(arg, methods_tableClient, test_cloud_tc, test_em_tc, t_count, count, buf, discrepant_methods)
         # # run table service client ops
         # discrepant_methods, t_count, count = run_ops(arg, methods_tableServiceClient, test_cloud_tsc, test_em_tsc, t_count, count, buf, discrepant_methods)
-        # # run queue client ops
-        # discrepant_methods, t_count, count = run_ops(arg, methods_queueClient, test_cloud_qc, test_em_qc, t_count, count, buf, discrepant_methods)
-        # # run queue service client ops
-        # discrepant_methods, t_count, count = run_ops(arg, methods_queueServiceClient, test_cloud_qsc, test_em_qsc, t_count, count, buf, discrepant_methods)
+        # run queue client ops
+        discrepant_methods, t_count, count = run_ops(arg["0"], methods_queueClient, test_cloud_qc, test_em_qc, t_count, count, buf, discrepant_methods)
+        # run queue service client ops
+        discrepant_methods, t_count, count = run_ops(arg["1"], methods_queueServiceClient, test_cloud_qsc, test_em_qsc, t_count, count, buf, discrepant_methods)
 
     with open('discrepancy.txt', 'a') as f:
         f.write(f'{count}/{t_count}   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------')
         f.write('Round ended')
 
-    
+    print(discrepant_methods)
     with open('discrepant_methods.txt', 'w') as f:
         f.write("\n".join(discrepant_methods))         
-
+    print('done')
     extract_discrepancy('discrepancy.txt')
+    print('done')
 
 
 '''test suites'''
@@ -203,6 +207,7 @@ def main(arg):
     # print(len(methods))
 
     run1v1(arg)
+    print('done')
     # run_sequences()
 
 
