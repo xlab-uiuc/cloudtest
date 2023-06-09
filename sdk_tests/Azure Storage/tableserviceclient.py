@@ -23,8 +23,15 @@ class MyTableServiceClient():
 
 
         # create table service client
-        self.table_service_client = TableServiceClient.from_connection_string(self.connection_string)
-        self.table_service_client.create_table(self.table_name)
+        try:
+            self.table_service_client = TableServiceClient.from_connection_string(self.connection_string)
+        except Exception as e:
+            print('Table service client creation failed; error: ', e)
+
+        try:
+            self.table_service_client.create_table(self.table_name)
+        except:
+            pass
 
 
 

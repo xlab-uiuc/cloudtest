@@ -21,9 +21,16 @@ class MyQueueServiceClient:
             self.connection_string = 'DefaultEndpointsProtocol=https;AccountName=sdkfuzz;AccountKey=Kt8fMYDEpeaq/A6TRBU+1+LRMIqd2h9Nv7Hd/qCn4B9DqvbNDXPJWU4BRqu50GVEjFfcocumL1lr+AStfVsaPA==;EndpointSuffix=core.windows.net'
             self.service = '**AZURE**'
 
-        # create a queue
-        self.queue_service_client = QueueServiceClient.from_connection_string(self.connection_string)
-        self.queue_service_client.create_queue(self.queue_name)
+        try:
+            # create a queue
+            self.queue_service_client = QueueServiceClient.from_connection_string(self.connection_string)
+        except Exception as e:
+            print('Queue service client creation failed; error: ', e)
+            
+        try:
+            self.queue_service_client.create_queue(self.queue_name)
+        except:
+            pass
 
 
 

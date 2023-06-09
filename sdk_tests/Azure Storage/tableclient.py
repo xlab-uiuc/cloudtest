@@ -24,12 +24,18 @@ class MyTableClient():
             self.connection_string = 'DefaultEndpointsProtocol=https;AccountName=sdkfuzz;AccountKey=Kt8fMYDEpeaq/A6TRBU+1+LRMIqd2h9Nv7Hd/qCn4B9DqvbNDXPJWU4BRqu50GVEjFfcocumL1lr+AStfVsaPA==;EndpointSuffix=core.windows.net'
             self.service = '**AZURE**'
 
-        # service client
-        self.table_service_client = TableServiceClient.from_connection_string(self.connection_string)
+        try:
+            # service client
+            self.table_service_client = TableServiceClient.from_connection_string(self.connection_string)
+            # create table client
+            self.table_client = TableClient.from_connection_string(self.connection_string, self.table_name)
+        except Exception as e:
+            print('Table client creation failed; error: ', e)
 
-        # create table client
-        self.table_client = TableClient.from_connection_string(self.connection_string, self.table_name)
-        self.table_client.create_table()
+        try:
+            self.table_client.create_table()
+        except:
+            pass
 
 
         

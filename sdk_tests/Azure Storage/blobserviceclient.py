@@ -28,13 +28,23 @@ class MyBlobServiceClient:
 
 
         # create container client
-        self.blob_service_client = BlobServiceClient.from_connection_string(self.connection_string)
-        self.container_client = self.blob_service_client.get_container_client(self.container_name)
-        self.container_client.create_container()
+        try:
+            self.blob_service_client = BlobServiceClient.from_connection_string(self.connection_string)
+            self.container_client = self.blob_service_client.get_container_client(self.container_name)
+        except Exception as e:
+            print('Blob service client creation failed; error: ', e)
+
+        try:
+            self.container_client.create_container()
+        except:
+            pass
 
         # create blob client
-        self.container_client.upload_blob(data=b'First one', name=self.blob_name, blob_type='BlockBlob', length=len('First one'), metadata={'hello': 'world', 'number': '42'})
-        self.blob_client = self.container_client.get_blob_client(self.blob_name)
+        try:
+            self.container_client.upload_blob(data=b'First one', name=self.blob_name, blob_type='BlockBlob', length=len('First one'), metadata={'hello': 'world', 'number': '42'})
+            self.blob_client = self.container_client.get_blob_client(self.blob_name)
+        except Exception as e:
+            print('Blob client creation failed; error: ', e)
 
 
     # create container with default container name as none with try except

@@ -26,12 +26,21 @@ class ContainerClient:
             self.service = '**AZURE**'
 
         # use blob service client to create a container client
-        self.blob_service_client = BlobServiceClient.from_connection_string(self.connection_string)
-        self.container_client = self.blob_service_client.get_container_client(self.container_name)
-        self.container_client.create_container()
+        try:
+            self.blob_service_client = BlobServiceClient.from_connection_string(self.connection_string)
+            self.container_client = self.blob_service_client.get_container_client(self.container_name)
+        except Exception as e:
+            print('Container creation failed; error: ', e)
 
-        self.container_client.upload_blob(data=b'First one', name=self.blob_name, blob_type='BlockBlob', length=len('First one'), metadata={'hello': 'world', 'number': '42'})
+        try:
+            self.container_client.create_container()
+        except:
+            pass
 
+        try:
+            self.container_client.upload_blob(data=b'First one', name=self.blob_name, blob_type='BlockBlob', length=len('First one'), metadata={'hello': 'world', 'number': '42'})
+        except:
+            pass
 
     # acquire lease with try except block
     def acquire_lease(self, *args):
