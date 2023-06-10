@@ -44,8 +44,10 @@ if __name__ == '__main__':
 
     input_data = json.loads(input_data)
 
+    # to-do: do random input fuzzing instead of property based fuzzing 
+
     # iterate through json object and mutate
-    for i in range(1):
+    for i in range(15):
         for key, _ in input_data.items():
             list_fuzzer = random.choice([list_fuzzer_int, list_fuzzer_float, list_fuzzer_string])
 
@@ -54,13 +56,7 @@ if __name__ == '__main__':
                     input_data[key][i] = list(list_fuzzer.fuzz())
                     continue
 
-                # print(input_data[key])
-                # print(input_data[key][i])
-
                 for j in range(len(input_data[key][i])):
-
-                    # print(type(input_data[key][i][j]).__name__)
-                    # print(input_data[key][i][j])
                     
                     if type(input_data[key][i][j]).__name__ == 'int':
                         input_data[key][i][j] = int_fuzzer.fuzz()
@@ -76,7 +72,7 @@ if __name__ == '__main__':
                         input_data[key][i][j] = mutation_fuzzer.fuzz()
 
 
-    print(input_data)
+        print(input_data)
 
-    
-    driver.main(input_data)
+        
+        driver.main(input_data)

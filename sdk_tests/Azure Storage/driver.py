@@ -6,7 +6,7 @@ from tableclient import MyTableClient
 from tableserviceclient import MyTableServiceClient
 from queueclient import MyQueueClient
 from queueserviceclient import MyQueueServiceClient
-import io
+import io, random
 import itertools
 
 
@@ -58,7 +58,7 @@ def run_ops(arg, methods, test_cloud, test_em, count, buf, discrepant_methods):
     t_count = -1
     for method in methods:
             t_count += 1
-            if method in discrepant_methods:
+            if method.__name__ in discrepant_methods:
                 continue
 
             try:
@@ -71,7 +71,7 @@ def run_ops(arg, methods, test_cloud, test_em, count, buf, discrepant_methods):
 
                     with open('../sdk_tests/Azure Storage/discrepancy.txt', 'a') as f:
                         f.write(method.__name__ + '\n\n' + output)
-                        f.write(f'\n\n\n{count}/{t_count}   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n\n\n')
+                        f.write(f'\n\n\ncount: {count}   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n\n\n')
             
             except Exception as e:
                 print("Exception: ", e)
@@ -115,7 +115,7 @@ def run_sequences():
 
                     with open('../sdk_tests/Azure Storage/discrepancy.txt', 'a') as f:
                         f.write('\n'.join(i.__name__ for i in list_seqs[counter]) + '\n\n' + output)
-                        f.write(f'\n\n\n{count})   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n\n\n')
+                        f.write(f'\n\n\ncount: {count})   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n\n\n')
                     list_seqs = list_seqs[:counter+1] + [list_seqs[i] for i in range(counter, len(list_seqs)) if not check_sublist_in_list(list(list_seqs[i]), sublist)]
                     break
 
@@ -125,6 +125,8 @@ def run_sequences():
 
 
 def run1v1(arg):
+
+    # to-do: ordering of methods --> done
 
     # get all methods of all the clients
     methods_blobClient = [getattr(BlobClient, attr) for attr in dir(BlobClient) if callable(getattr(BlobClient, attr)) and not attr.startswith("__")]
@@ -138,6 +140,19 @@ def run1v1(arg):
     total_methods = methods_blobClient + methods_containerClient + methods_blobServiceClient + methods_tableClient + methods_tableServiceClient + methods_queueClient + methods_queueServiceClient
     t_count = len(total_methods)
     # logging.basicConfig(level=logging.DEBUG)
+
+    # randomize seed
+    seed = random.randint(0, 1000000)
+
+    # shuffle all methods
+    random.Random(seed).shuffle(methods_blobClient)
+    random.Random(seed).shuffle(methods_containerClient)
+    random.Random(seed).shuffle(methods_blobServiceClient)
+    random.Random(seed).shuffle(methods_tableClient)
+    random.Random(seed).shuffle(methods_tableServiceClient)
+    random.Random(seed).shuffle(methods_queueClient)
+    random.Random(seed).shuffle(methods_queueServiceClient)
+
 
     # empty args for default run of ops
     if arg == ():
@@ -158,6 +173,10 @@ def run1v1(arg):
         assert len(arg['5']) == len(methods_tableServiceClient), "Invalid number of methods for TableServiceClient"
         assert len(arg['6']) == len(methods_queueClient), "Invalid number of methods for QueueClient"
         assert len(arg['7']) == len(methods_queueServiceClient), "Invalid number of methods for QueueServiceClient"
+
+        for i in arg.items():
+            random.Random(seed).shuffle(i[1])
+
 
     # do not run discrepant methods again
     f = open("../sdk_tests/Azure Storage/discrepant_methods.txt", "r")
@@ -203,9 +222,9 @@ def run1v1(arg):
 
     with open('../sdk_tests/Azure Storage/discrepancy.txt', 'a') as f:
         f.write(f'{d_count}/{t_count}   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n')
-        f.write('Round ended\n')
+        f.write('Round ended\n\n')
 
-    print(discrepant_methods)
+    # store methods names in order to skip in the next run
     with open('../sdk_tests/Azure Storage/discrepant_methods.txt', 'w') as f:
         f.write("\n".join(discrepant_methods))  
 
