@@ -62,7 +62,7 @@ def run_ops(arg, methods, test_cloud, test_em, count, buf, discrepant_methods):
                 continue
 
             try:
-                if not method(test_cloud, arg[t_count]) == method(test_em, arg[t_count]) and not method.__name__ in discrepant_methods:
+                if not method(test_cloud, arg[t_count]) == method(test_em, arg[t_count]):
                     count += 1
                     output = buf.getvalue().strip()
 
