@@ -53,13 +53,39 @@ def extract_discrepancy(file):
         f.write('\n\n'.join(li))
 
 
-def run_ops(arg, methods, test_cloud, test_em, count, buf, discrepant_methods):
+
+def run_ops(arg, methods, client, count, buf, discrepant_methods):
+    
 
     t_count = -1
     for method in methods:
             t_count += 1
-            if method.__name__ in discrepant_methods:
-                continue
+            
+            # if method.__name__ in discrepant_methods:
+            #     continue
+
+            # we make a new client in order to run an operation independently
+            if client == "bc":
+                test_cloud = BlobClient(False)
+                test_em = BlobClient()
+            elif client == "cc":
+                test_cloud = ContainerClient(False)
+                test_em = ContainerClient()
+            elif client == "bsc":
+                test_cloud = MyBlobServiceClient(False)
+                test_em = MyBlobServiceClient()
+            elif client == "tc":
+                test_cloud = MyTableClient(False)
+                test_em = MyTableClient()
+            elif client == "tsc":
+                test_cloud = MyTableServiceClient(False)
+                test_em = MyTableServiceClient()
+            elif client == "qc":
+                test_cloud = MyQueueClient(False)
+                test_em = MyQueueClient()
+            elif client == "qsc":
+                test_cloud = MyQueueServiceClient(False)
+                test_em = MyQueueServiceClient()
 
             try:
                 if not method(test_cloud, arg[t_count]) == method(test_em, arg[t_count]):
@@ -79,14 +105,20 @@ def run_ops(arg, methods, test_cloud, test_em, count, buf, discrepant_methods):
     return count
 
 
-def run_sequences():
+# to-do: implement type
+
+def run_sequences_permuation(arg, type):
     
-    # get all methods of ContainerClient
+    # get all methods of all the clients
     methods_blobClient = [getattr(BlobClient, attr) for attr in dir(BlobClient) if callable(getattr(BlobClient, attr)) and not attr.startswith("__")]
     methods_containerClient = [getattr(ContainerClient, attr) for attr in dir(ContainerClient) if callable(getattr(ContainerClient, attr)) and not attr.startswith("__")]
-    methods_blobServiceClient = [getattr(MyBlobServiceClient, attr) for attr in dir(MyBlobServiceClient) if callable(getattr(MyBlobServiceClient, attr)) and not attr.startswith("__")]
-    methods = methods_blobClient + methods_containerClient + methods_blobServiceClient
-    # logging.basicConfig(level=logging.DEBUG)
+    methods_blobServiceClient = [getattr(MyBlobServiceClient, attr) for attr in dir(MyBlobServiceClient) if callable(getattr(MyBlobServiceClient, attr))
+     and not attr.startswith("__")]
+    methods_tableClient = [getattr(MyTableClient, attr) for attr in dir(MyTableClient) if callable(getattr(MyTableClient, attr)) and not attr.startswith("__")]
+    methods_tableServiceClient = [getattr(MyTableServiceClient, attr) for attr in dir(MyTableServiceClient) if callable(getattr(MyTableServiceClient, attr)) and not attr.startswith("__")]
+    methods_queueClient = [getattr(MyQueueClient, attr) for attr in dir(MyQueueClient) if callable(getattr(MyQueueClient, attr)) and not attr.startswith("__")]
+    methods_queueServiceClient = [getattr(MyQueueServiceClient, attr) for attr in dir(MyQueueServiceClient) if callable(getattr(MyQueueServiceClient, attr)) and not attr.startswith("__")]
+    methods = methods_blobClient + methods_containerClient + methods_blobServiceClient + methods_tableClient + methods_tableServiceClient + methods_queueClient + methods_queueServiceClient
 
     test_cloud_bc = BlobClient(False)
     test_em_bc = BlobClient()
@@ -94,6 +126,14 @@ def run_sequences():
     test_em_cc = ContainerClient()
     test_cloud_bsc = MyBlobServiceClient(False)
     test_em_bsc = MyBlobServiceClient()
+    test_cloud_tc = MyTableClient(False)
+    test_em_tc = MyTableClient()
+    test_cloud_tsc = MyTableServiceClient(False)
+    test_em_tsc = MyTableServiceClient()
+    test_cloud_qc = MyQueueClient(False)
+    test_em_qc = MyQueueClient()
+    test_cloud_qsc = MyQueueServiceClient(False)
+    test_em_qsc = MyQueueServiceClient()
 
     count = 0
     t_count = 0
@@ -108,7 +148,7 @@ def run_sequences():
 
             for method in list_seqs[counter]:
                 sublist.append(method)
-                if method in methods_blobClient and not method(test_cloud_bc) == method(test_em_bc) or method in methods_containerClient and not method(test_cloud_cc) == method(test_em_cc) or method in methods_blobServiceClient and not method(test_cloud_bsc) == method(test_em_bsc):
+                if method in methods_blobClient and not method(test_cloud_bc) == method(test_em_bc) or method in methods_containerClient and not method(test_cloud_cc) == method(test_em_cc) or method in methods_blobServiceClient and not method(test_cloud_bsc) == method(test_em_bsc) or method in methods_tableClient and not method(test_cloud_tc) == method(test_em_tc) or method in methods_tableServiceClient and not method(test_cloud_tsc) == method(test_em_tsc) or method in methods_queueClient and not method(test_cloud_qc) == method(test_em_qc) or method in methods_queueServiceClient and not method(test_cloud_qsc) == method(test_em_qsc):
                     
                     count += 1
                     output = buf.getvalue().strip()
@@ -122,6 +162,7 @@ def run_sequences():
         counter += 1
 
     extract_discrepancy('discrepancy.txt')
+
 
 
 def run1v1(arg):
@@ -183,21 +224,6 @@ def run1v1(arg):
     discrepant_methods = f.read().split('\n')
     f.close()
 
-    test_cloud_bc = BlobClient(False)
-    test_em_bc = BlobClient()
-    test_cloud_cc = ContainerClient(False)
-    test_em_cc = ContainerClient()
-    test_cloud_bsc = MyBlobServiceClient(False)
-    test_em_bsc = MyBlobServiceClient()
-    test_cloud_tc = MyTableClient(False)
-    test_em_tc = MyTableClient()
-    test_cloud_tsc = MyTableServiceClient(False)
-    test_em_tsc = MyTableServiceClient()
-    test_cloud_qc = MyQueueClient(False)
-    test_em_qc = MyQueueClient()
-    test_cloud_qsc = MyQueueServiceClient(False)
-    test_em_qsc = MyQueueServiceClient()
-
     d_count = 0
 
 
@@ -206,19 +232,19 @@ def run1v1(arg):
     with io.StringIO() as buf, redirect_stdout(buf):
 
         # run blob client ops
-        d_count = run_ops(arg["1"], methods_blobClient, test_cloud_bc, test_em_bc, d_count, buf, discrepant_methods)
+        d_count = run_ops(arg["1"], methods_blobClient, "bc", d_count, buf, discrepant_methods)
         # run container client ops
-        d_count = run_ops(arg["2"], methods_containerClient, test_cloud_cc, test_em_cc, d_count, buf, discrepant_methods)
+        d_count = run_ops(arg["2"], methods_containerClient, "cc", d_count, buf, discrepant_methods)
         # run blob service client ops
-        d_count = run_ops(arg["3"], methods_blobServiceClient, test_cloud_bsc, test_em_bsc, d_count, buf, discrepant_methods)
+        d_count = run_ops(arg["3"], methods_blobServiceClient, "bsc", d_count, buf, discrepant_methods)
         # run table client ops
-        d_count = run_ops(arg["4"], methods_tableClient, test_cloud_tc, test_em_tc, d_count, buf, discrepant_methods)
+        d_count = run_ops(arg["4"], methods_tableClient, "tc", d_count, buf, discrepant_methods)
         # run table service client ops
-        d_count = run_ops(arg["5"], methods_tableServiceClient, test_cloud_tsc, test_em_tsc, d_count, buf, discrepant_methods)
+        d_count = run_ops(arg["5"], methods_tableServiceClient, "tsc", d_count, buf, discrepant_methods)
         # run queue client ops
-        d_count = run_ops(arg["6"], methods_queueClient, test_cloud_qc, test_em_qc, d_count, buf, discrepant_methods)
+        d_count = run_ops(arg["6"], methods_queueClient, "qc", d_count, buf, discrepant_methods)
         # run queue service client ops
-        d_count = run_ops(arg["7"], methods_queueServiceClient, test_cloud_qsc, test_em_qsc, d_count, buf, discrepant_methods)
+        d_count = run_ops(arg["7"], methods_queueServiceClient, "qsc", d_count, buf, discrepant_methods)
 
     with open('../sdk_tests/Azure Storage/discrepancy.txt', 'a') as f:
         f.write(f'{d_count}/{t_count}   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n')
