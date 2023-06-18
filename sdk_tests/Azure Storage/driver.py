@@ -122,6 +122,7 @@ def run_ops(arg, methods, client, count, buf, discrepant_methods):
                 test_em = MyQueueServiceClient()
 
             try:
+                print('method: '+ method.__name__, 'args: ',arg[t_count])
                 if not method(test_cloud, arg[t_count]) == method(test_em, arg[t_count]):
                     count += 1
                     output = buf.getvalue().strip()
