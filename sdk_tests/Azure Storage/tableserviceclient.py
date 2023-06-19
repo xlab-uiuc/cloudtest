@@ -1,10 +1,22 @@
 from azure.data.tables import TableServiceClient
-import random
+from azure.identity import DefaultAzureCredential
+import random, os, datetime
+
+# Point to certificates
+os.environ["REQUESTS_CA_BUNDLE"] = "/etc/ssl/certs/ca-certificates.crt"
+
+credential = DefaultAzureCredential()
 
 
 class MyTableServiceClient():
 
     def __init__(self, emulator=True, table_name=None):
+
+        # randomize seed
+        random.seed(datetime.datetime.now())
+
+        print("****************************************************************************")
+
         # table name
         if table_name is None:
             self.table_name = f'table{random.randint(1, 1000000000)}'
@@ -15,12 +27,14 @@ class MyTableServiceClient():
 
         # connection string
         if emulator:
-            self.connection_string = 'DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;TableEndpoint=http://127.0.0.1:10002/devstoreaccount1;'
+            self.connection_string = 'DefaultEndpointsProtocol=https;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;TableEndpoint=https://127.0.0.1:10002/devstoreaccount1;'
             self.service = "**EMULATOR**"
         else:
-            self.connection_string = 'DefaultEndpointsProtocol=https;AccountName=sdkfuzz;AccountKey=KPh28d77wMJA1De3IsRObHapOtxJU01LTaFnrDCkqnyiLh564NEAb1IipT+mG7scISEEobMOqTj2+AStAVeigA==;EndpointSuffix=core.windows.net'
+            self.connection_string = 'DefaultEndpointsProtocol=https;AccountName=sdkfuzz;AccountKey=LGHPh+f0PHvNw8PVYtEkN0fWsqWO9ZsY3DrQox0veta/Ii+aW3m/E7VLVFna/qDMqm/CCg4lou9N+AStwMBcgA==;EndpointSuffix=core.windows.net'
             self.service = '**AZURE**'
 
+        # credential
+        global credential
 
         # create table service client
         try:

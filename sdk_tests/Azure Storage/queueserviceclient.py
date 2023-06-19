@@ -1,10 +1,22 @@
 import datetime
 from azure.storage.queue import QueueServiceClient, QueueAnalyticsLogging, RetentionPolicy, Metrics, CorsRule
-import random
+from azure.identity import DefaultAzureCredential
+import random, os
+
+# Point to certificates
+os.environ["REQUESTS_CA_BUNDLE"] = "/etc/ssl/certs/ca-certificates.crt"
+
+credential = DefaultAzureCredential()
 
 
 class MyQueueServiceClient:
     def __init__(self, emulator=True, queue_name=None):
+
+        # randomize seed
+        random.seed(datetime.datetime.now())
+
+        print("****************************************************************************")
+        
         # queue name
         if queue_name is None:
             self.queue_name = f'queue{random.randint(1, 1000000000)}'
@@ -15,15 +27,18 @@ class MyQueueServiceClient:
 
         # connection string
         if emulator:
-            self.connection_string = 'DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;QueueEndpoint=http://127.0.0.1:10001/devstoreaccount1;'
+            self.connection_string = 'DefaultEndpointsProtocol=https;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;QueueEndpoint=https://127.0.0.1:10001/devstoreaccount1;'
             self.service = "**EMULATOR**"
         else:
-            self.connection_string = 'DefaultEndpointsProtocol=https;AccountName=sdkfuzz;AccountKey=KPh28d77wMJA1De3IsRObHapOtxJU01LTaFnrDCkqnyiLh564NEAb1IipT+mG7scISEEobMOqTj2+AStAVeigA==;EndpointSuffix=core.windows.net'
+            self.connection_string = 'DefaultEndpointsProtocol=https;AccountName=sdkfuzz;AccountKey=LGHPh+f0PHvNw8PVYtEkN0fWsqWO9ZsY3DrQox0veta/Ii+aW3m/E7VLVFna/qDMqm/CCg4lou9N+AStwMBcgA==;EndpointSuffix=core.windows.net'
             self.service = '**AZURE**'
+
+        # credential
+        global credential
 
         try:
             # create a queue
-            self.queue_service_client = QueueServiceClient.from_connection_string(self.connection_string)
+            self.queue_service_client = QueueServiceClient.from_connection_string(self.connection_string, credential=credential)
         except Exception as e:
             print('Queue service client creation failed; error: ', e)
             

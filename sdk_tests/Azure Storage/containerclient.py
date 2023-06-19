@@ -1,10 +1,21 @@
 from azure.storage.blob import BlobServiceClient, PublicAccess, AccessPolicy, PremiumPageBlobTier, StandardBlobTier
-import random
+from azure.identity import DefaultAzureCredential
+import random, os, datetime
+
+# Point to certificates
+os.environ["REQUESTS_CA_BUNDLE"] = "/etc/ssl/certs/ca-certificates.crt"
+
+credential = DefaultAzureCredential()
 
 # all functions are individually tested cloud service
 
 class ContainerClient:
     def __init__(self, emulator=True, container_name=None, blob_name=None):
+
+        # randomize seed
+        random.seed(datetime.datetime.now())
+
+        print("****************************************************************************")
         
         # container name
         if container_name is None:
@@ -19,15 +30,17 @@ class ContainerClient:
 
         # connection string
         if emulator:
-            self.connection_string = 'DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=http://127.0.0.1:10000/devstoreaccount1;'
+            self.connection_string = 'DefaultEndpointsProtocol=https;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=https://127.0.0.1:10000/devstoreaccount1;'
             self.service = '**EMULATOR**'
         else:
-            self.connection_string = 'DefaultEndpointsProtocol=https;AccountName=sdkfuzz;AccountKey=KPh28d77wMJA1De3IsRObHapOtxJU01LTaFnrDCkqnyiLh564NEAb1IipT+mG7scISEEobMOqTj2+AStAVeigA==;EndpointSuffix=core.windows.net'
+            self.connection_string = 'DefaultEndpointsProtocol=https;AccountName=sdkfuzz;AccountKey=LGHPh+f0PHvNw8PVYtEkN0fWsqWO9ZsY3DrQox0veta/Ii+aW3m/E7VLVFna/qDMqm/CCg4lou9N+AStwMBcgA==;EndpointSuffix=core.windows.net'
             self.service = '**AZURE**'
+
+        global credential
 
         # use blob service client to create a container client
         try:
-            self.blob_service_client = BlobServiceClient.from_connection_string(self.connection_string)
+            self.blob_service_client = BlobServiceClient.from_connection_string(self.connection_string, credential=credential)
             self.container_client = self.blob_service_client.get_container_client(self.container_name)
         except Exception as e:
             print('Container creation failed; error: ', e)
