@@ -286,8 +286,8 @@ class MyTableClient():
             return False
         
         
-    # destructor
-    def __del__(self):
+    # garbage collection
+    def __cleanup__(self):
 
         try:
             tables = self.table_service_client.list_tables()

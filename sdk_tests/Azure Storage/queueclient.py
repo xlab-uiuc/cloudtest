@@ -241,8 +241,8 @@ class MyQueueClient:
             print(self.service, ': Failed -- Message update failed; error: ', e)
             return False
         
-    # destructor
-    def __del__(self):
+    # garbage collection
+    def __cleanup__(self):
 
         try:
             queues = self.queue_service_client.list_queues()

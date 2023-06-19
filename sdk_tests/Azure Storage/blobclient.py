@@ -775,8 +775,8 @@ class BlobClient:
     #         print(self.service + ": Pages are not uploaded from url. Error: ", e)
     #         return False
 
-    # destructor
-    def __del__(self):
+    # garbage collection
+    def __cleanup__(self):
         try:
             containers = self.blob_service_client.list_containers()
             # delete all containers

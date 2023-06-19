@@ -366,8 +366,8 @@ class ContainerClient:
             print(self.service + ": Blobs cannot be walked. Error: ", e)
             return False
         
-    # destructor
-    def __del__(self):
+    # garbage collection
+    def __cleanup__(self):
         
         try:
             containers = self.blob_service_client.list_containers()

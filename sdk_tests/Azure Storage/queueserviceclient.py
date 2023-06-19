@@ -136,7 +136,8 @@ class MyQueueServiceClient:
             print(self.service, ': Failed -- Service properties setting failed; error: ', e)
             return False
 
-    def __del__(self):
+    # garbage collection
+    def __cleanup__(self):
 
         try:
             queues = self.queue_service_client.list_queues()
