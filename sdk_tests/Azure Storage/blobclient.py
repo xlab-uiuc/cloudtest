@@ -2,14 +2,21 @@ import datetime
 from azure.identity import DefaultAzureCredential
 from azure.storage.blob import BlobServiceClient, ContentSettings, ImmutabilityPolicy
 import random
+import os
 
-# todo: add param logs --> done
+# Point to certificates
+os.environ["REQUESTS_CA_BUNDLE"] = "/etc/ssl/certs/ca-certificates.crt"
 
 credential = DefaultAzureCredential()
 
 class BlobClient:
     def __init__(self, emulator=True, container_name=None, blob_name=None):
         
+        # randomize seed
+        random.seed(datetime.datetime.now())
+
+        print("****************************************************************************")
+
         # container name
         if container_name is None:
             self.container_name = f'container{random.randint(1, 1000000000)}'
@@ -25,32 +32,40 @@ class BlobClient:
 
         # connection string
         if emulator:
-            self.connection_string = 'DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=http://127.0.0.1:10000/devstoreaccount1;'
+            self.connection_string = 'DefaultEndpointsProtocol=https;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=https://127.0.0.1:10000/devstoreaccount1;'
             self.service = "**EMULATOR**"
         else:
-            self.connection_string = 'DefaultEndpointsProtocol=https;AccountName=sdkfuzz;AccountKey=Kt8fMYDEpeaq/A6TRBU+1+LRMIqd2h9Nv7Hd/qCn4B9DqvbNDXPJWU4BRqu50GVEjFfcocumL1lr+AStfVsaPA==;EndpointSuffix=core.windows.net'
+            self.connection_string = 'DefaultEndpointsProtocol=https;AccountName=sdkfuzz;AccountKey=KPh28d77wMJA1De3IsRObHapOtxJU01LTaFnrDCkqnyiLh564NEAb1IipT+mG7scISEEobMOqTj2+AStAVeigA==;EndpointSuffix=core.windows.net'
             self.service = "**AZURE**"
 
+        # token
         global credential
-        # create container client
+
+        # create service client
         try:
             self.blob_service_client = BlobServiceClient.from_connection_string(self.connection_string, credential=credential)
         except Exception as e:
             print(self.service + ": Blob service client is not received. Error: ", e)
+            
+        # create container client
         try:
             self.container_client = self.blob_service_client.get_container_client(self.container_name)
         except Exception as e:
             print(self.service + ": Container client is not received. Error: ", e)
+        
+        # create container
         try:
             self.container_client.create_container()
         except Exception as e:
             print(self.service + ": Container is not created. Error: ", e)
 
-        # create blob client
+        # upload blob
         try:
             self.container_client.upload_blob(data=b'First one', name=self.blob_name, blob_type='BlockBlob', length=len('First one'), metadata={'hello': 'world', 'number': '42'})
         except Exception as e:
             print(self.service + ": Blob is not created. Error: ", e)
+
+        # create blob client
         try:
             self.blob_client = self.container_client.get_blob_client(self.blob_name)
         except Exception as e:
@@ -69,7 +84,7 @@ class BlobClient:
             if self.service == '**AZURE**':
                 resp = self.blob_client.start_copy_from_url(f'https://{self.account_name}.blob.core.windows.net/{self.container_name}/{random_blob_name}')
             else:
-                resp = self.blob_client.start_copy_from_url(f'http://127.0.0.1:10000/devstoreaccount1/{self.container_name}/{random_blob_name}')
+                resp = self.blob_client.start_copy_from_url(f'https://127.0.0.1:10000/devstoreaccount1/{self.container_name}/{random_blob_name}')
     
 
             self.blob_client.abort_copy(resp['copy_id'])
@@ -522,7 +537,7 @@ class BlobClient:
     def set_immutability_policy(self, *args):
         args = list(args)
         # immutability policy
-        policy = ImmutabilityPolicy(expiry_time=datetime.datetime.utcnow() + datetime.timedelta(days=1), policy_mode='unlocked')
+        policy = ImmutabilityPolicy(expiry_time=datetime.datetime.utcnow() + datetime.timedelta(1), policy_mode='unlocked')
 
         try:
             self.blob_client.set_immutability_policy(policy)
@@ -538,7 +553,7 @@ class BlobClient:
         args = list(args)
         # legal hold
         if not len(args) > 0:
-            args.append(random.choice([True, False]))
+            args.append(False)
 
         try:
             self.blob_client.set_legal_hold(args[0])
@@ -632,7 +647,7 @@ class BlobClient:
         if self.service == '**AZURE**':
             url = f'https://{self.account_name}.blob.core.windows.net/{self.container_name}/{args[0]}'
         else:
-            url = f'http://127.0.0.1:10000/devstoreaccount1/{self.container_name}/{args[0]}'
+            url = f'https://127.0.0.1:10000/devstoreaccount1/{self.container_name}/{args[0]}'
     
        
         # metadata
@@ -700,7 +715,7 @@ class BlobClient:
             if self.service == '**AZURE**':
                 args.append(f'https://{self.account_name}.blob.core.windows.net/{self.container_name}/{self.blob_name}')
             else:
-                args.append(f'http://127.0.0.1:10000/devstoreaccount1/{self.container_name}/{self.blob_name}')
+                args.append(f'https://127.0.0.1:10000/devstoreaccount1/{self.container_name}/{self.blob_name}')
         try:
             blob_client = self.container_client.get_blob_client(random_blob_name)    
             blob_client.upload_blob_from_url(args[0])
@@ -736,8 +751,8 @@ class BlobClient:
             print(self.service + ": Page is not uploaded. Error: ", e)
             return False
     
-    # Not implemented in the emulator
-    # upload pages from url
+    # # Not implemented in the emulator
+    # # upload pages from url
     # def upload_pages_from_url(self, *args):
     #     args = list(args)
     #     # source url
@@ -762,11 +777,19 @@ class BlobClient:
 
     # destructor
     def __del__(self):
-        
         try:
             containers = self.blob_service_client.list_containers()
             # delete all containers
             for container in containers:
+                # delete all blobs in a container
+                # cc = self.blob_service_client.get_container_client(container.name)
+                # blobs = cc.list_blobs()
+                # for blob in blobs:
+                #     try:
+                #         cc.delete_blob(blob.name)
+                #         print("Blob is deleted.")
+                #     except Exception as e:
+                #         print("Blob is not deleted. Error: ", e)
                 try:
                     self.blob_service_client.delete_container(container.name)
                     print("Container is deleted.")
