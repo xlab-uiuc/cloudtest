@@ -1,4 +1,4 @@
-from azure.storage.blob import BlobServiceClient, PublicAccess, AccessPolicy, PremiumPageBlobTier, StandardBlobTier
+from azure.storage.blob import BlobServiceClient, PublicAccess, AccessPolicy, PremiumPageBlobTier, StandardBlobTier, BlobLeaseClient
 from azure.identity import DefaultAzureCredential
 import random, os, datetime
 
@@ -40,7 +40,7 @@ class ContainerClient:
 
         # use blob service client to create a container client
         try:
-            self.blob_service_client = BlobServiceClient.from_connection_string(self.connection_string, credential=credential)
+            self.blob_service_client = BlobServiceClient.from_connection_string(self.connection_string)
             self.container_client = self.blob_service_client.get_container_client(self.container_name)
         except Exception as e:
             print('Container creation failed; error: ', e)
@@ -60,14 +60,19 @@ class ContainerClient:
         args = list(args)
         # lease id
         if not len(args) > 0:
-            args.append('ashg-jaha-jhds0a-23sds-23423')
+            args.append('7c9e6679-7425-40de-944b-e07fc1f90ae7')
         # lease duration
         if not len(args) > 1:
-            args.append(10)
+            args.append(15)
 
         try:
             self.container_client.acquire_lease(lease_duration=args[1], lease_id=args[0])
             print(self.service + ": Lease is acquired")
+
+            # break lease for garbage collection
+            blob_lease_client = BlobLeaseClient(self.container_client)
+            blob_lease_client.break_lease(lease_break_period=0)
+            
             return True
         except Exception as e:
             print(self.service + ": Lease is not acquired. Error: ", e)
@@ -115,10 +120,17 @@ class ContainerClient:
             args.append({'name':'blob1', 'name':'blob2', 'name':'blob3'})
 
         try:
+            # upload three new blobs in order to perform batch deletion of them
+            self.container_client.upload_blob(data=b'First one', name='blob1', blob_type='BlockBlob', length=len('First one'), metadata={'hello': 'world', 'number': '42'})
+            self.container_client.upload_blob(data=b'Second one', name='blob2', blob_type='BlockBlob', length=len('Second one'), metadata={'hello': 'world', 'number': '42'})
+            self.container_client.upload_blob(data=b'Third one', name='blob3', blob_type='BlockBlob', length=len('Third one'), metadata={'hello': 'world', 'number': '42'})
+
+            # perform delete batch
             self.container_client.delete_blobs(args[0])
             print(self.service + ": Blobs are deleted successfully.")
-            # create blob again
-            self.container_client.upload_blob(data=b'Third one', name=self.blob_name, blob_type='BlockBlob', length=len('First one'), metadata={'hello': 'world', 'number': '42'})
+
+            # # create blob again in order to perform other operations in sequences
+            # self.container_client.upload_blob(data=b'First one', name=self.blob_name, blob_type='BlockBlob', length=len('First one'), metadata={'hello': 'world', 'number': '42'})
             return True
         except Exception as e:
             print(self.service + ": Blobs are not deleted. Error: ", e)
@@ -132,6 +144,8 @@ class ContainerClient:
             self.container_client.delete_container()
             print(self.service + ": Container deleted successfully.")
             # create container again
+            random_name = f'container{random.randint(1, 1000000000)}'
+            self.container_client = self.blob_service_client.get_container_client(random_name)
             self.container_client.create_container()
             return True
         except Exception as e:
@@ -300,12 +314,17 @@ class ContainerClient:
         args = list(args)
         # blob name
         if not len(args) > 0:
-            args.append(self.blob_name)
+            args.append(f'(blob{random.randint(1, 10000)}')
         # premium page blob tier
         if not len(args) > 1:
             args.append(PremiumPageBlobTier('P4'))
         try:
-            self.container_client.set_premium_page_blob_tier_blobs(args[1], args[0])
+            # create page blob
+            # create page blob, data as file page.txt and upload
+            with open('page', 'rb') as data:
+                self.container_client.upload_blob(data=data, name=args[1], blob_type='PageBlob')
+
+            self.container_client.set_premium_page_blob_tier_blobs(premium_page_blob_tier=args[1])
             print(self.service + ": premium page blob tier is set.")
             return True
         except Exception as e:
