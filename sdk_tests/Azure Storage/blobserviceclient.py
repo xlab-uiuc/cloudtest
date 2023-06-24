@@ -1,6 +1,7 @@
+import datetime
 from azure.storage.blob import BlobServiceClient
 from azure.identity import DefaultAzureCredential
-import random, os
+import random, os, time
 
 # Point to certificates
 os.environ["REQUESTS_CA_BUNDLE"] = "/etc/ssl/certs/ca-certificates.crt"
@@ -41,7 +42,7 @@ class MyBlobServiceClient:
 
         # create container client
         try:
-            self.blob_service_client = BlobServiceClient.from_connection_string(self.connection_string, credential=credential)
+            self.blob_service_client = BlobServiceClient.from_connection_string(self.connection_string)
             self.container_client = self.blob_service_client.get_container_client(self.container_name)
         except Exception as e:
             print('Blob service client creation failed; error: ', e)
@@ -83,8 +84,12 @@ class MyBlobServiceClient:
         try:
             self.blob_service_client.delete_container(args[0])
             print(self.service, ': Container deleted with name: ', args[0])
-            # create container again
+
+            # create container again for sequences run
+            self.container_name = f'container{random.randint(1, 1000000000)}'
+            self.container_client = self.blob_service_client.get_container_client(self.container_name)
             self.container_client.create_container()
+
             return True
         except Exception as e:
             print(self.service, ': Container deletion failed with name: ', args[0], ' and error: ', e)
@@ -160,7 +165,7 @@ class MyBlobServiceClient:
             print(self.service, ': Service properties retrieval failed, error: ', e)
             return False
         
-
+    # will get "Failed to establish a connection" error if geo replication is disabled in cloud
     # get service stats with try except
     def get_service_stats(self, *args):
         args = list(args)
@@ -196,10 +201,22 @@ class MyBlobServiceClient:
             args.append(self.container_name)
 
         if not len(args) > 1:
-            args.append('')
+            args.append('0x8DB74AF1E107D84')
 
         try:
-            self.blob_service_client.undelete_container(args[0], args[1])
+            # delete the container first
+            if args[0] == self.container_name:
+                self.blob_service_client.delete_container(self.container_name)
+
+                # list container to get version id
+                containers = self.blob_service_client.list_containers(include_deleted=True)
+                for container in containers:
+                    if container.name == self.container_name:
+                        args[1] = container.version
+                        # max time for resource deletion is 30 seconds
+                        time.sleep(30)
+
+            self.blob_service_client.undelete_container(deleted_container_name=args[0], deleted_container_version=args[1])
             print(self.service, ': Container undeleted with name: ', args[0])
             return True
         except Exception as e:
