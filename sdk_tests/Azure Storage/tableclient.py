@@ -123,6 +123,8 @@ class MyTableClient():
             self.table_client.delete_table()
             print(self.service, ': Table deleted with name: ', args[0])
             # create table again
+            self.table_name = f'table{random.randint(1, 1000000000)}'
+            self.table_client = TableClient.from_connection_string(self.connection_string, self.table_name)
             self.table_client.create_table()
             return True
         except Exception as e:
@@ -223,22 +225,14 @@ class MyTableClient():
         args = list(args)
         if not len(args) > 0:
             args.append([
-                {
-                    "UpdateEntity": {
-                        "PartitionKey": "color",
-                        "RowKey": "brand",
-                        "text": "Marker",
-                        "color": "Purple",
-                        "price": 4.99,
-                        "last_updated": datetime.datetime.today(),
-                        "product_id": uuid4(),
-                        "inventory_count": 42,
-                        "barcode": b"135aefg8oj0ld58" # cspell:disable-line
-                    }
-                }
-            ])
+            ('upsert', {'PartitionKey': 'color3', 'RowKey': 'brand3'}, {'mode': UpdateMode.REPLACE}),
+            ]
+            )
 
         try:
+            # create entity and then update it
+            self.table_create_entity()
+
             self.table_client.submit_transaction(args[0])
             print(self.service, ': Transaction submitted')
             return True
@@ -266,6 +260,9 @@ class MyTableClient():
             args.append(UpdateMode.MERGE)
 
         try:
+            # create entity and then update it
+            self.table_create_entity()
+
             self.table_client.update_entity(entity=args[0], mode=args[1])
             print(self.service, ': Entity updated')
             return True
