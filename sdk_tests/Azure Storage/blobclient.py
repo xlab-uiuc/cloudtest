@@ -1,6 +1,6 @@
 import datetime
 from azure.identity import DefaultAzureCredential
-from azure.storage.blob import BlobServiceClient, ContentSettings, ImmutabilityPolicy
+from azure.storage.blob import BlobServiceClient, ContentSettings, ImmutabilityPolicy, BlobLeaseClient
 import random
 import os
 
@@ -95,24 +95,28 @@ class BlobClient:
             return False
 
 
-    # decreases coverage during testing
     # acquire lease with try except block
-    # def acquire_lease(self, *args):
-    #     args = list(args)
-    #     # lease duration
-    #     if not len(args) > 0:
-    #         args.append(20)
-    #     # lease id
-    #     if not len(args) > 1:
-    #         args.append('f81d4fae-7dec-11d0-a765-00a0c91e6bf6')
+    def acquire_lease(self, *args):
+        args = list(args)
+        # lease duration
+        if not len(args) > 0:
+            args.append(20)
+        # lease id
+        if not len(args) > 1:
+            args.append('f81d4fae-7dec-11d0-a765-00a0c91e6bf6')
 
-    #     try:
-    #         self.blob_client.acquire_lease(args[0], args[1])
-    #         print(self.service + ": Lease is acquired.")
-    #         return True
-    #     except Exception as e:
-    #         print(self.service + ": Lease is not acquired. Error: ", e)
-    #         return False
+        try:
+            self.blob_client.acquire_lease(args[0], args[1])
+            print(self.service + ": Lease is acquired.")
+
+            # break lease for garbage collection
+            blob_lease_client = BlobLeaseClient(self.blob_client)
+            blob_lease_client.break_lease(lease_break_period=0)
+
+            return True
+        except Exception as e:
+            print(self.service + ": Lease is not acquired. Error: ", e)
+            return False
 
     # append blob with try except block
     def append_block(self, *args):
@@ -140,30 +144,30 @@ class BlobClient:
 
     # Not implemented in the emulator
     # append block from url with try except block
-    # def append_block_from_url(self, *args):
-    #     args = list(args)
-    #     # copy blob name
-    #     if not len(args) > 0:
-    #         args.append(f'blob{random.randint(1, 1000000000)}')
-    #     self.container_client.upload_blob(data=b'For append blob', name=args[0], blob_type='AppendBlob')
-    #     # source url
-    #     if not len(args) > 1:
-    #         args.append(f'https://{self.account_name}.blob.core.windows.net/{self.container_name}/{args[0]}')
-    #     # source offset
-    #     if not len(args) > 2:
-    #         args.append(0)
-    #     # source length
-    #     if not len(args) > 3:
-    #         args.append(512)
+    def append_block_from_url(self, *args):
+        args = list(args)
+        # copy blob name
+        if not len(args) > 0:
+            args.append(f'blob{random.randint(1, 1000000000)}')
+        self.container_client.upload_blob(data=b'For append blob', name=args[0], blob_type='AppendBlob')
+        # source url
+        if not len(args) > 1:
+            args.append(f'https://{self.account_name}.blob.core.windows.net/{self.container_name}/{args[0]}')
+        # source offset
+        if not len(args) > 2:
+            args.append(0)
+        # source length
+        if not len(args) > 3:
+            args.append(512)
         
 
-    #     try:
-    #         self.blob_client.append_block_from_url(copy_source_url=args[1], source_offset=args[2], source_length=args[3])
-    #         print(self.service + ": Block is appended.")
-    #         return True
-    #     except Exception as e:
-    #         print(self.service + ": Block is not appended. Error: ", e)
-    #         return False
+        try:
+            self.blob_client.append_block_from_url(copy_source_url=args[1], source_offset=args[2], source_length=args[3])
+            print(self.service + ": Block is appended.")
+            return True
+        except Exception as e:
+            print(self.service + ": Block is not appended. Error: ", e)
+            return False
         
 
     # clear page with try except block
@@ -296,24 +300,24 @@ class BlobClient:
             return False
         
 
-    # # delete blob with try except block
-    # def delete_blob(self, *args):
-    #     args = list(args)
-    #     # delete snapshots
-    #     if not len(args) > 0:
-    #         args.append('include')
+    # delete blob with try except block
+    def delete_blob(self, *args):
+        args = list(args)
+        # delete snapshots
+        if not len(args) > 0:
+            args.append('include')
 
-    #     try:
-    #         self.blob_client.delete_blob(args[0])
-    #         print(self.service + ": Blob is deleted.")
-    #         # create another blob in its place
-    #         self.blob_name = f'blob{random.randint(1, 1000000000)}'
-    #         self.container_client.upload_blob(data=b'Second one', name=self.blob_name, blob_type='BlockBlob', length=len('First one'), metadata={'hello': 'world', 'number': '42'})
-    #         self.blob_client = self.container_client.get_blob_client(self.blob_name)
-    #         return True
-    #     except Exception as e:
-    #         print(self.service + ": Blob is not deleted. Error: ", e)
-    #         return False
+        try:
+            self.blob_client.delete_blob(args[0])
+            print(self.service + ": Blob is deleted.")
+            # create another blob in its place
+            self.blob_name = f'blob{random.randint(1, 1000000000)}'
+            self.container_client.upload_blob(data=b'Second one', name=self.blob_name, blob_type='BlockBlob', length=len('First one'), metadata={'hello': 'world', 'number': '42'})
+            self.blob_client = self.container_client.get_blob_client(self.blob_name)
+            return True
+        except Exception as e:
+            print(self.service + ": Blob is not deleted. Error: ", e)
+            return False
         
     
     # delete immutability policy with try except block
@@ -607,32 +611,32 @@ class BlobClient:
 
     # Not implemented in the emulator
     # stage block from url with try except block
-    # def stage_block_from_url(self, *args):
-    #     args = list(args)
-    #     # block id
-    #     if not len(args) > 0:
-    #         args.append(b'0x8D')
-    #     # source url
-    #     if not len(args) > 1:
-    #         args.append(f'https://{self.account_name}.blob.core.windows.net/mycontainer/myblob')
-    #     # source offset
-    #     if not len(args) > 2:
-    #         args.append(0)
-    #     # source length
-    #     if not len(args) > 3:
-    #         args.append(512)
-    #     # source content md5
-    #     if not len(args) > 4:
-    #         args.append(b'0x8D')
+    def stage_block_from_url(self, *args):
+        args = list(args)
+        # block id
+        if not len(args) > 0:
+            args.append(b'0x8D')
+        # source url
+        if not len(args) > 1:
+            args.append(f'https://{self.account_name}.blob.core.windows.net/mycontainer/myblob')
+        # source offset
+        if not len(args) > 2:
+            args.append(0)
+        # source length
+        if not len(args) > 3:
+            args.append(512)
+        # source content md5
+        if not len(args) > 4:
+            args.append(b'0x8D')
 
 
-    #     try:
-    #         self.blob_client.stage_block_from_url(block_id=args[0], source_url=args[1], source_offset=args[2], source_length=args[3], source_content_md5=args[4])
-    #         print(self.service + ": Block is staged from url.")
-    #         return True
-    #     except Exception as e:
-    #         print(self.service + ": Block is not staged from url. Error: ", e)
-    #         return False
+        try:
+            self.blob_client.stage_block_from_url(block_id=args[0], source_url=args[1], source_offset=args[2], source_length=args[3], source_content_md5=args[4])
+            print(self.service + ": Block is staged from url.")
+            return True
+        except Exception as e:
+            print(self.service + ": Block is not staged from url. Error: ", e)
+            return False
         
         
 
@@ -667,16 +671,16 @@ class BlobClient:
 
     # Not implemented in the emulator
     # undelete blob with try except block
-    # def undelete_blob(self, *args):
-    #     args = list(args)
+    def undelete_blob(self, *args):
+        args = list(args)
             
-    #     try:
-    #         self.blob_client.undelete_blob()
-    #         print(self.service + ": Blob is undeleted.")
-    #         return True
-    #     except Exception as e:
-    #         print(self.service + ": Blob is not undeleted. Error: ", e)
-    #         return False
+        try:
+            self.blob_client.undelete_blob()
+            print(self.service + ": Blob is undeleted.")
+            return True
+        except Exception as e:
+            print(self.service + ": Blob is not undeleted. Error: ", e)
+            return False
         
 
     # upload blob from bytes with try except block
@@ -751,29 +755,29 @@ class BlobClient:
             print(self.service + ": Page is not uploaded. Error: ", e)
             return False
     
-    # # Not implemented in the emulator
-    # # upload pages from url
-    # def upload_pages_from_url(self, *args):
-    #     args = list(args)
-    #     # source url
-    #     if not len(args) > 0:
-    #         args.append(f'https://{self.account_name}.blob.core.windows.net/mycontainer/myblob')
-    #     # offset
-    #     if not len(args) > 1:
-    #         args.append(0)
-    #     # length
-    #     if not len(args) > 2:
-    #         args.append(512)
-    #     # source offset
-    #     if not len(args) > 3:
-    #         args.append(0)
-    #     try:
-    #         self.blob_client.upload_pages_from_url(args[0], args[1], args[2], args[3])
-    #         print(self.service + ": Pages are uploaded from url.")
-    #         return True
-    #     except Exception as e:
-    #         print(self.service + ": Pages are not uploaded from url. Error: ", e)
-    #         return False
+    # Not implemented in the emulator
+    # upload pages from url
+    def upload_pages_from_url(self, *args):
+        args = list(args)
+        # source url
+        if not len(args) > 0:
+            args.append(f'https://{self.account_name}.blob.core.windows.net/mycontainer/myblob')
+        # offset
+        if not len(args) > 1:
+            args.append(0)
+        # length
+        if not len(args) > 2:
+            args.append(512)
+        # source offset
+        if not len(args) > 3:
+            args.append(0)
+        try:
+            self.blob_client.upload_pages_from_url(args[0], args[1], args[2], args[3])
+            print(self.service + ": Pages are uploaded from url.")
+            return True
+        except Exception as e:
+            print(self.service + ": Pages are not uploaded from url. Error: ", e)
+            return False
 
     # garbage collection
     def __cleanup__(self):
