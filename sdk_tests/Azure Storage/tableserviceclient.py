@@ -1,4 +1,4 @@
-from azure.data.tables import TableServiceClient
+from azure.data.tables import TableServiceClient, TableAnalyticsLogging, TableMetrics, TableCorsRule, TableRetentionPolicy
 from azure.identity import DefaultAzureCredential
 import random, os, datetime
 
@@ -68,6 +68,7 @@ class MyTableServiceClient():
             self.table_service_client.delete_table(self.table_name)
             print(self.service, ': Table deleted')
             # create table again
+            self.table_name = f'table{random.randint(1, 1000000000)}'
             self.table_service_client.create_table_if_not_exists(self.table_name)
             return True
         except Exception as e:
@@ -86,7 +87,7 @@ class MyTableServiceClient():
             print(self.service, ': Service properties retrieval failed; error: ', e)
             return False
         
-
+    # will fail on cloud without geo-replication
     # get service stats with try except
     def table_get_service_stats(self, *args):
         args = list(args)
@@ -140,57 +141,16 @@ class MyTableServiceClient():
     def table_set_service_properties(self, *args):
         args = list(args)
         if not len(args) > 0:
-            args.append({
-                'analytics_logging': {
-                    'version': '1.0',
-                    'delete': True,
-                    'read': True,
-                    'write': True,
-                    'retention_policy': {
-                        'enabled': True,
-                        'days': 7
-                    }
-                }
-            })
+            args.append(TableAnalyticsLogging(read=True, write=True, delete=True, retention_policy=TableRetentionPolicy(enabled=True, days=7)))
         
         if not len(args) > 1:
-            args.append({
-                'hour_metrics': {
-                    'version': '1.0',
-                    'enabled': True,
-                    'include_apis': True,
-                    'retention_policy': {
-                        'enabled': True,
-                        'days': 7
-                    }
-                }
-            })
+            args.append(TableMetrics(version='1.0', enabled=True, include_apis=True, retention_policy=TableRetentionPolicy(enabled=True, days=7)))
+             
         if not len(args) > 2:
-            args.append({
-                'minute_metrics': {
-                    'version': '1.0',
-                    'enabled': True,
-                    'include_apis': True,
-                    'retention_policy': {
-                        'enabled': True,
-                        'days': 7
-                    }
-                }
-            })
+            args.append(TableMetrics(version='1.0', enabled=True, include_apis=True, retention_policy=TableRetentionPolicy(enabled=True, days=7)))
+
         if not len(args) > 3:
-            args.append({
-                'cors': {
-                    'cors_rules': [
-                        {
-                            'allowed_origins': ['*'],
-                            'allowed_methods': ['GET'],
-                            'max_age_in_seconds': 3600,
-                            'exposed_headers': ['x-ms-request-id'],
-                            'allowed_headers': ['*']
-                        }
-                    ]
-                }
-            })
+            args.append([TableCorsRule(allowed_origins=['*'], allowed_methods=['GET'], max_age_in_seconds=3600, exposed_headers=['x-ms-request-id'], allowed_headers=['*'])])
             
         try:
             self.table_service_client.set_service_properties(analytics_logging=args[0], hour_metrics=args[1], minute_metrics=args[2], cors=args[3])
