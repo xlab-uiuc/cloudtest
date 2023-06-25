@@ -50,7 +50,7 @@ class MyQueueServiceClient:
 
 
     # create queue with try except
-    def queue_create(self, *args):
+    def queue_create(self, args):
         args = list(args)
 
         queue_name = f'queue{random.randint(1, 1000000000)}'
@@ -65,7 +65,7 @@ class MyQueueServiceClient:
         
 
     # delete queue with try except
-    def queue_delete(self, *args):
+    def queue_delete(self, args):
         args = list(args)
         
         if not len(args) > 0:
@@ -84,7 +84,7 @@ class MyQueueServiceClient:
         
 
     # get queue client with try except
-    def queue_get_client(self, *args):
+    def queue_get_client(self, args):
         args = list(args)
         
         if not len(args) > 0:
@@ -100,7 +100,7 @@ class MyQueueServiceClient:
         
 
     # get service properties with try except
-    def queue_get_service_properties(self, *args):
+    def queue_get_service_properties(self, args):
         args = list(args)
         try:
             self.queue_service_client.get_service_properties()
@@ -112,7 +112,7 @@ class MyQueueServiceClient:
         
 
     # get service stats with try except
-    def queue_get_service_stats(self, *args):
+    def queue_get_service_stats(self, args):
         args = list(args)
         try:
             self.queue_service_client.get_service_stats()
@@ -124,7 +124,7 @@ class MyQueueServiceClient:
         
 
     # list queues with try except
-    def queue_list(self, *args):
+    def queue_list(self, args):
         args = list(args)
         try:
             self.queue_service_client.list_queues()
@@ -136,7 +136,7 @@ class MyQueueServiceClient:
         
 
     # set service properties with try except
-    def queue_set_service_properties(self, *args):
+    def queue_set_service_properties(self, args):
 
         analytics_logging = QueueAnalyticsLogging(read=True, write=True, delete=True, retention_policy=RetentionPolicy(enabled=True, days=5))
         hour_metrics = Metrics(version='1.0', enabled=True, include_apis=True, retention_policy=RetentionPolicy(enabled=True, days=5))

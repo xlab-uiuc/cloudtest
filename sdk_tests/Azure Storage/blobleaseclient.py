@@ -73,7 +73,7 @@ class MyBlobLeaseClient:
             print(self.service + ": Blob lease client is not received. Error: ", e)
 
 
-    def acquire_lease(self, *args):
+    def acquire_lease(self, args):
         args = list(args)
 
         if not len(args) > 0:
@@ -89,7 +89,7 @@ class MyBlobLeaseClient:
             print(self.service + ": Blob lease is not acquired. Error: ", e)
 
 
-    def break_lease(self, *args):
+    def break_lease(self, args):
         args = list(args)
 
         if not len(args) > 0:
@@ -105,7 +105,7 @@ class MyBlobLeaseClient:
         except Exception as e:
             print(self.service + ": Blob lease is not broken. Error: ", e)
 
-    def change_lease(self, *args):
+    def change_lease(self, args):
         args = list(args)
 
         if not len(args) > 0:
@@ -125,7 +125,7 @@ class MyBlobLeaseClient:
             print(self.service + ": Blob lease is not changed. Error: ", e)
 
 
-    def release_lease(self, *args):
+    def release_lease(self, args):
         args = list(args)
 
         try:
@@ -139,7 +139,7 @@ class MyBlobLeaseClient:
             print(self.service + ": Blob lease is not released. Error: ", e)
 
 
-    def renew_lease(self, *args):
+    def renew_lease(self, args):
         args = list(args)
 
         try:

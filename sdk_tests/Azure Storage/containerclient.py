@@ -56,7 +56,7 @@ class ContainerClient:
             pass
 
     # acquire lease with try except block
-    def acquire_lease(self, *args):
+    def acquire_lease(self, args):
         args = list(args)
         # lease id
         if not len(args) > 0:
@@ -80,7 +80,7 @@ class ContainerClient:
         
 
       # create a container with random name with try except block
-    def create_container(self, *args):
+    def create_container(self, args):
         args = list(args)
         # container name
         if not len(args) > 0:
@@ -96,7 +96,7 @@ class ContainerClient:
 
 
     # delete a given blob with try except block
-    def delete_blob(self, *args):
+    def delete_blob(self, args):
         args = list(args)
         # blob name
         if not len(args) > 0:
@@ -113,7 +113,7 @@ class ContainerClient:
 
 
     # delete given list of blobs (delete_blobs operation) with try except block
-    def delete_blobs(self, *args):
+    def delete_blobs(self, args):
         args = list(args)
         # blob list
         if not len(args) > 0:
@@ -138,7 +138,7 @@ class ContainerClient:
 
 
     # delete container with try except block
-    def delete_container(self, *args):
+    def delete_container(self, args):
         args = list(args)
         try:
             self.container_client.delete_container()
@@ -154,7 +154,7 @@ class ContainerClient:
 
 
     # download a blob (download_blob operation) with try except block
-    def download_blob(self, *args):
+    def download_blob(self, args):
         args = list(args)
         # blob name
         if not len(args) > 0:
@@ -169,7 +169,7 @@ class ContainerClient:
     
 
     # check if a container exists
-    def exists(self, *args):
+    def exists(self, args):
         args = list(args)
         print(self.service + ": " + 'Checking if container exists: ')
         
@@ -183,7 +183,7 @@ class ContainerClient:
 
 
     # find blobs by tags with try except block
-    def find_blobs_by_tags(self, *args):
+    def find_blobs_by_tags(self, args):
         args = list(args)
         # tags
         if not len(args) > 0:
@@ -198,7 +198,7 @@ class ContainerClient:
 
 
     # get account information with try except block
-    def get_account_information(self, *args):
+    def get_account_information(self, args):
         args = list(args)
         try:
             self.container_client.get_account_information()
@@ -210,7 +210,7 @@ class ContainerClient:
 
 
     # get blob client with try except block
-    def get_blob_client(self, *args):
+    def get_blob_client(self, args):
         args = list(args)
         # blob name
         if not len(args) > 0:
@@ -225,7 +225,7 @@ class ContainerClient:
 
 
     # get container access policy with try except block
-    def get_container_access_policy(self, *args):
+    def get_container_access_policy(self, args):
         args = list(args)
         try:
             self.container_client.get_container_access_policy()
@@ -237,7 +237,7 @@ class ContainerClient:
 
 
     # get container properties with try except block
-    def get_container_properties(self, *args):
+    def get_container_properties(self, args):
         args = list(args)
         try:
             self.container_client.get_container_properties()
@@ -249,7 +249,7 @@ class ContainerClient:
         
 
     # list blob names with try except block
-    def list_blob_names(self, *args):
+    def list_blob_names(self, args):
         args = list(args)
         try:
             print(self.service + ": Listing blob names...")
@@ -263,7 +263,7 @@ class ContainerClient:
 
 
     # list blobs with try except block
-    def list_blobs(self, *args):
+    def list_blobs(self, args):
         args = list(args)
         try:
             print(self.service + ": Listing blobs...")
@@ -276,7 +276,7 @@ class ContainerClient:
         
 
     # set container access policy with try except block
-    def set_container_access_policy(self, *args):
+    def set_container_access_policy(self, args):
         args = list(args)
 
         # signed identifiers
@@ -295,7 +295,7 @@ class ContainerClient:
         
 
     # set container metadata with try except block
-    def set_container_metadata(self, *args):
+    def set_container_metadata(self, args):
         args = list(args)
         # metadata
         if not len(args) > 0:
@@ -310,7 +310,7 @@ class ContainerClient:
 
     '''Applied to premium acounts only'''
     # set premium page blob tier with try except block
-    def set_premium_page_blob_tier(self, *args):
+    def set_premium_page_blob_tier(self, args):
         args = list(args)
         # blob name
         if not len(args) > 0:
@@ -333,7 +333,7 @@ class ContainerClient:
 
 
     # set standard page blob tier with try except block
-    def set_standard_page_blob_tier(self, *args):
+    def set_standard_page_blob_tier(self, args):
         args = list(args)
         # blob name
         if not len(args) > 0:
@@ -351,7 +351,7 @@ class ContainerClient:
         
 
     # upload blob
-    def upload_blob(self, *args):
+    def upload_blob(self, args):
         args = list(args)
         # blob name
         if not len(args) > 0:
@@ -379,7 +379,7 @@ class ContainerClient:
         
 
      # walk blob
-    def walk_blobs(self, *args):
+    def walk_blobs(self, args):
         args = list(args)
         # name starts with
         if not len(args) > 0:

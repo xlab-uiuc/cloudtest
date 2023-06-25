@@ -72,7 +72,7 @@ class BlobClient:
             print(self.service + ": Blob client is not received. Error: ", e)
 
     # abort copy with parameters default none and try except block
-    def abort_copy(self, *args):
+    def abort_copy(self, args):
         args = list(args)
 
         try:
@@ -96,7 +96,7 @@ class BlobClient:
 
 
     # acquire lease with try except block
-    def acquire_lease(self, *args):
+    def acquire_lease(self, args):
         args = list(args)
         # lease duration
         if not len(args) > 0:
@@ -119,7 +119,7 @@ class BlobClient:
             return False
 
     # append blob with try except block
-    def append_block(self, *args):
+    def append_block(self, args):
         args = list(args)
         # data
         if not len(args) > 0:
@@ -144,7 +144,7 @@ class BlobClient:
 
     # Not implemented in the emulator
     # append block from url with try except block
-    def append_block_from_url(self, *args):
+    def append_block_from_url(self, args):
         args = list(args)
         # copy blob name
         if not len(args) > 0:
@@ -171,7 +171,7 @@ class BlobClient:
         
 
     # clear page with try except block
-    def clear_page(self, *args):
+    def clear_page(self, args):
         args = list(args)
 
         # offset
@@ -199,7 +199,7 @@ class BlobClient:
         
     
     # commit block list with try except block
-    def commit_block_list(self, *args):
+    def commit_block_list(self, args):
         args = list(args)
         # block list
         if not len(args) > 0:
@@ -227,7 +227,7 @@ class BlobClient:
         
 
     # create append blob with try except block
-    def create_append_blob(self, *args):
+    def create_append_blob(self, args):
         args = list(args)
         
         # metadata
@@ -253,7 +253,7 @@ class BlobClient:
     
 
     # create page blob with try except block
-    def create_page_blob(self, *args):
+    def create_page_blob(self, args):
         args = list(args)
         # size
         if not len(args) > 0:
@@ -285,7 +285,7 @@ class BlobClient:
 
 
     # create snapshot with try except block
-    def create_snapshot(self, *args):
+    def create_snapshot(self, args):
         args = list(args)
         # metadata
         if not len(args) > 0:
@@ -301,7 +301,7 @@ class BlobClient:
         
 
     # delete blob with try except block
-    def delete_blob(self, *args):
+    def delete_blob(self, args):
         args = list(args)
         # delete snapshots
         if not len(args) > 0:
@@ -321,7 +321,7 @@ class BlobClient:
         
     
     # delete immutability policy with try except block
-    def delete_immutability_policy(self, *args):
+    def delete_immutability_policy(self, args):
         args = list(args)
         try:
             self.blob_client.delete_immutability_policy()
@@ -334,7 +334,7 @@ class BlobClient:
 
 
     # download blob with try except block
-    def download_blob(self, *args):
+    def download_blob(self, args):
         args = list(args)
         # offset
         if not len(args) > 0:
@@ -353,7 +353,7 @@ class BlobClient:
         
 
     # check if blob exists with try except block
-    def exists(self, *args):
+    def exists(self, args):
         args = list(args)
 
         try:
@@ -366,7 +366,7 @@ class BlobClient:
         
 
     # get account information with try except block
-    def get_account_information(self, *args):
+    def get_account_information(self, args):
         args = list(args)
         try:
             self.blob_client.get_account_information()
@@ -378,7 +378,7 @@ class BlobClient:
         
 
     # get blob properties with try except block
-    def get_blob_properties(self, *args):
+    def get_blob_properties(self, args):
         args = list(args)
 
         try:
@@ -392,7 +392,7 @@ class BlobClient:
 
 
     # get blob tags with try except block
-    def get_blob_tags(self, *args):
+    def get_blob_tags(self, args):
         args = list(args)
 
         try:
@@ -405,7 +405,7 @@ class BlobClient:
         
 
     # get block list with try except block
-    def get_block_list(self, *args):
+    def get_block_list(self, args):
         args = list(args)
         # block list type
         if not len(args) > 0:
@@ -421,7 +421,7 @@ class BlobClient:
         
         
     # get page ranges with try except block
-    def get_page_ranges(self, *args):
+    def get_page_ranges(self, args):
         args = list(args)
 
         # start range
@@ -447,7 +447,7 @@ class BlobClient:
             
 
     # list page ranges diff with try except block
-    def list_page_ranges_diff(self, *args):
+    def list_page_ranges_diff(self, args):
         args = list(args)
         # previous snapshot
         if not len(args) > 0:
@@ -469,7 +469,7 @@ class BlobClient:
         
 
     # query blob contents with try except block
-    def query_blob(self, *args):
+    def query_blob(self, args):
         args = list(args)
         # query expression
         if not len(args) > 0:
@@ -487,7 +487,7 @@ class BlobClient:
         
 
     # set blob metadata with try except block
-    def set_blob_metadata(self, *args):
+    def set_blob_metadata(self, args):
         args = list(args)
         # metadata
         if not len(args) > 0:
@@ -505,7 +505,7 @@ class BlobClient:
 
 
     # set blob tags with try except block
-    def set_blob_tags(self, *args):
+    def set_blob_tags(self, args):
         args = list(args)
         # tags
         if not len(args) > 0:
@@ -521,7 +521,7 @@ class BlobClient:
         
 
     # set http headers with try except block
-    def set_http_headers(self, *args):
+    def set_http_headers(self, args):
         args = list(args)
         
         # content settings
@@ -538,7 +538,7 @@ class BlobClient:
 
 
     # set immutability policy with try except block
-    def set_immutability_policy(self, *args):
+    def set_immutability_policy(self, args):
         args = list(args)
         # immutability policy
         policy = ImmutabilityPolicy(expiry_time=datetime.datetime.utcnow() + datetime.timedelta(1), policy_mode='unlocked')
@@ -553,7 +553,7 @@ class BlobClient:
         
 
     # set legal hold with try except block
-    def set_legal_hold(self, *args):
+    def set_legal_hold(self, args):
         args = list(args)
         # legal hold
         if not len(args) > 0:
@@ -572,7 +572,7 @@ class BlobClient:
 
 
     # set tier with try except block
-    def set_standard_blob_tier(self, *args):
+    def set_standard_blob_tier(self, args):
         args = list(args)
       
         # standard blob tier
@@ -589,7 +589,7 @@ class BlobClient:
 
 
     # stage block with try except block
-    def stage_block(self, *args):
+    def stage_block(self, args):
         args = list(args)
         # block id
         if not len(args) > 0:
@@ -611,7 +611,7 @@ class BlobClient:
 
     # Not implemented in the emulator
     # stage block from url with try except block
-    def stage_block_from_url(self, *args):
+    def stage_block_from_url(self, args):
         args = list(args)
         # block id
         if not len(args) > 0:
@@ -641,7 +641,7 @@ class BlobClient:
         
 
     # start copy from url with try except block
-    def start_copy_from_url(self, *args):
+    def start_copy_from_url(self, args):
         args = list(args)
         # source url
         blob_name = ''
@@ -671,7 +671,7 @@ class BlobClient:
 
     # Not implemented in the emulator
     # undelete blob with try except block
-    def undelete_blob(self, *args):
+    def undelete_blob(self, args):
         args = list(args)
             
         try:
@@ -684,7 +684,7 @@ class BlobClient:
         
 
     # upload blob from bytes with try except block
-    def upload_blob_from_bytes(self, *args):
+    def upload_blob_from_bytes(self, args):
         args = list(args)
         # data
         if not len(args) > 0:
@@ -710,7 +710,7 @@ class BlobClient:
         
 
     # upload blob from a url with try except block
-    def upload_blob_from_url(self, *args):
+    def upload_blob_from_url(self, args):
         args = list(args)
 
         random_blob_name = f'blob{random.randint(0, 1000000)}'
@@ -731,7 +731,7 @@ class BlobClient:
 
 
     # upload page
-    def upload_page(self, *args):
+    def upload_page(self, args):
         args = list(args)
         # data
         if not len(args) > 0:
@@ -757,7 +757,7 @@ class BlobClient:
     
     # Not implemented in the emulator
     # upload pages from url
-    def upload_pages_from_url(self, *args):
+    def upload_pages_from_url(self, args):
         args = list(args)
         # source url
         if not len(args) > 0:

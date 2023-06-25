@@ -61,7 +61,7 @@ class MyBlobServiceClient:
 
 
     # create container with default container name as none with try except
-    def create_container(self, *args):
+    def create_container(self, args):
         args = list(args)
         if not len(args) > 0:
             args.append(f'container{random.randint(1, 1000000000)}')
@@ -76,7 +76,7 @@ class MyBlobServiceClient:
         
 
     # delete container with default container name as none with try except
-    def delete_container(self, *args):
+    def delete_container(self, args):
         args = list(args)
         if not len(args) > 0:
             args.append(self.container_name)
@@ -97,7 +97,7 @@ class MyBlobServiceClient:
         
 
     # find blobs by tags
-    def find_blobs_by_tags(self, *args):
+    def find_blobs_by_tags(self, args):
         args = list(args)
         # tag name
         if not len(args) > 0:
@@ -113,7 +113,7 @@ class MyBlobServiceClient:
 
 
     # get account info with try except
-    def get_account_info(self, *args):
+    def get_account_info(self, args):
         args = list(args)
         try:
             self.blob_service_client.get_account_information()
@@ -125,7 +125,7 @@ class MyBlobServiceClient:
         
 
     # get blob client with default blob name as none with try except
-    def get_blob_client(self, *args):
+    def get_blob_client(self, args):
         args = list(args)
         if not len(args) > 0:
             args.append(self.blob_name)
@@ -140,7 +140,7 @@ class MyBlobServiceClient:
         
 
     # get container client with default container name as none with try except
-    def get_container_client(self, *args):
+    def get_container_client(self, args):
         args = list(args)
         if not len(args) > 0:
             args.append(self.container_name)
@@ -155,7 +155,7 @@ class MyBlobServiceClient:
         
 
     # get service properties with try except
-    def get_service_properties(self, *args):
+    def get_service_properties(self, args):
         args = list(args)
         try:
             self.blob_service_client.get_service_properties()
@@ -167,7 +167,7 @@ class MyBlobServiceClient:
         
     # will get "Failed to establish a connection" error if geo replication is disabled in cloud
     # get service stats with try except
-    def get_service_stats(self, *args):
+    def get_service_stats(self, args):
         args = list(args)
         try:
             self.blob_service_client.get_service_stats()
@@ -179,7 +179,7 @@ class MyBlobServiceClient:
         
 
     # list containers with try except
-    def list_containers(self, *args):
+    def list_containers(self, args):
         args = list(args)
         try:
             self.blob_service_client.list_containers()
@@ -195,7 +195,7 @@ class MyBlobServiceClient:
 
 
     # undelete container with default container name as none with try except
-    def undelete_container(self, *args):
+    def undelete_container(self, args):
         args = list(args)
         if not len(args) > 0:
             args.append(self.container_name)

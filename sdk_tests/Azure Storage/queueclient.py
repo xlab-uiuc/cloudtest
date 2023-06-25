@@ -54,7 +54,7 @@ class MyQueueClient:
 
 
     # clear messages with params none try except
-    def queue_clear_messages(self, *args):
+    def queue_clear_messages(self, args):
         args = list(args)
         try:
             self.queue_client.clear_messages()
@@ -66,7 +66,7 @@ class MyQueueClient:
 
 
     # create queue if not exists with try except
-    def queue_create(self, *args):
+    def queue_create(self, args):
         args = list(args)
         if not len(args) > 0:
             args.append(f'queue{random.randint(1, 1000000000)}')
@@ -82,7 +82,7 @@ class MyQueueClient:
 
 
     # delete message with arguments as none try except
-    def queue_delete_message(self, *args):
+    def queue_delete_message(self, args):
         args = list(args)
         if not len(args) > 0:
             args.append('message content')
@@ -104,7 +104,7 @@ class MyQueueClient:
 
 
     # delete queue with arguments as none try except
-    def queue_delete(self, *args):
+    def queue_delete(self, args):
         args = list(args)
         
         try:
@@ -120,7 +120,7 @@ class MyQueueClient:
 
 
     # get queue access policy with arguments as none try except
-    def queue_get_access_policy(self, *args):
+    def queue_get_access_policy(self, args):
         args = list(args)
         
         try:
@@ -133,7 +133,7 @@ class MyQueueClient:
         
 
     # get queue properties with arguments as none try except
-    def queue_get_properties(self, *args):
+    def queue_get_properties(self, args):
         args = list(args)
             
         try:
@@ -145,7 +145,7 @@ class MyQueueClient:
             return False
         
     # peek messages with arguments as none try except
-    def queue_peek_messages(self, *args):
+    def queue_peek_messages(self, args):
         args = list(args)
 
         if not len(args) > 0:
@@ -160,7 +160,7 @@ class MyQueueClient:
             return False
         
     # receive message with arguments as none try except
-    def queue_receive_message(self, *args):
+    def queue_receive_message(self, args):
             
         try:
             self.queue_client.receive_message()
@@ -172,7 +172,7 @@ class MyQueueClient:
         
 
     # receive messages with arguments as none try except
-    def queue_receive_messages(self, *args):
+    def queue_receive_messages(self, args):
         args = list(args)
 
         if not len(args) > 0:
@@ -188,7 +188,7 @@ class MyQueueClient:
     
 
     # send message with arguments as none try except
-    def queue_send_message(self, *args):
+    def queue_send_message(self, args):
         args = list(args)
 
         if not len(args) > 0:
@@ -204,7 +204,7 @@ class MyQueueClient:
         
 
     # set queue access policy with arguments as none try except
-    def queue_set_access_policy(self, *args):
+    def queue_set_access_policy(self, args):
         args = list(args)
                
         try:
@@ -221,7 +221,7 @@ class MyQueueClient:
 
 
     # set queue metadata with arguments as none try except
-    def queue_set_metadata(self, *args):
+    def queue_set_metadata(self, args):
         args = list(args)
         if not len(args) > 0:
             args.append({'key':'value'})
@@ -235,7 +235,7 @@ class MyQueueClient:
         
 
     # update message with arguments as none try except
-    def queue_update_message(self, *args):
+    def queue_update_message(self, args):
         args = list(args)
         
         if not len(args) > 0:
