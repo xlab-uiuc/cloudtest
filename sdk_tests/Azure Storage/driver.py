@@ -2,11 +2,12 @@ from contextlib import redirect_stdout
 from containerclient import ContainerClient
 from blobclient import BlobClient
 from blobserviceclient import MyBlobServiceClient
+from blobleaseclient import MyBlobLeaseClient
 from tableclient import MyTableClient
 from tableserviceclient import MyTableServiceClient
 from queueclient import MyQueueClient
 from queueserviceclient import MyQueueServiceClient
-import io, random
+import io, random, os
 import itertools
 
 
@@ -54,38 +55,81 @@ def extract_discrepancy(file):
 
 
 def simple_test_run(flag):
-    test_bc = BlobClient(flag)
-    # test_cc = ContainerClient(flag)
-    # test_bsc = MyBlobServiceClient(flag)
-    # test_tc = MyTableClient(flag)
-    # test_tsc = MyTableServiceClient(flag)
-    # test_qc = MyQueueClient(flag)
-    # test_qsc = MyQueueServiceClient(flag)
+    flag = False
 
     # get methods
     methods_bc = [getattr(BlobClient, attr) for attr in dir(BlobClient) if callable(getattr(BlobClient, attr)) and not attr.startswith("__")]
-    # methods_cc = [getattr(ContainerClient, attr) for attr in dir(ContainerClient) if callable(getattr(ContainerClient, attr)) and not attr.startswith("__")]
-    # methods_bsc = [getattr(MyBlobServiceClient, attr) for attr in dir(MyBlobServiceClient) if callable(getattr(MyBlobServiceClient, attr)) and not attr.startswith("__")]
-    # methods_tc = [getattr(MyTableClient, attr) for attr in dir(MyTableClient) if callable(getattr(MyTableClient, attr)) and not attr.startswith("__")]
-    # methods_tsc = [getattr(MyTableServiceClient, attr) for attr in dir(MyTableServiceClient) if callable(getattr(MyTableServiceClient, attr)) and not attr.startswith("__")]
-    # methods_qc = [getattr(MyQueueClient, attr) for attr in dir(MyQueueClient) if callable(getattr(MyQueueClient, attr)) and not attr.startswith("__")]
-    # methods_qsc = [getattr(MyQueueServiceClient, attr) for attr in dir(MyQueueServiceClient) if callable(getattr(MyQueueServiceClient, attr)) and not attr.startswith("__")]
+    methods_cc = [getattr(ContainerClient, attr) for attr in dir(ContainerClient) if callable(getattr(ContainerClient, attr)) and not attr.startswith("__")]
+    methods_bsc = [getattr(MyBlobServiceClient, attr) for attr in dir(MyBlobServiceClient) if callable(getattr(MyBlobServiceClient, attr)) and not attr.startswith("__")]
+    methods_blc = [getattr(MyBlobLeaseClient, attr) for attr in dir(MyBlobLeaseClient) if callable(getattr(MyBlobLeaseClient, attr)) and not attr.startswith("__")]
+    methods_tc = [getattr(MyTableClient, attr) for attr in dir(MyTableClient) if callable(getattr(MyTableClient, attr)) and not attr.startswith("__")]
+    methods_tsc = [getattr(MyTableServiceClient, attr) for attr in dir(MyTableServiceClient) if callable(getattr(MyTableServiceClient, attr)) and not attr.startswith("__")]
+    methods_qc = [getattr(MyQueueClient, attr) for attr in dir(MyQueueClient) if callable(getattr(MyQueueClient, attr)) and not attr.startswith("__")]
+    methods_qsc = [getattr(MyQueueServiceClient, attr) for attr in dir(MyQueueServiceClient) if callable(getattr(MyQueueServiceClient, attr)) and not attr.startswith("__")]
     
     # run methods
     for i in methods_bc:
-        i(test_bc)
-    # for i in methods_cc:
-    #     i(test_cc)
-    # for i in methods_bsc:
-    #     i(test_bsc)
-    # for i in methods_tc:
-    #     i(test_tc)
-    # for i in methods_tsc:
-    #     i(test_tsc)
-    # for i in methods_qc:
-    #     i(test_qc)
-    # for i in methods_qsc:
-    #     i(test_qsc)
+        
+    #     if 'acquire_lease' in i.__name__:
+        test_bc = BlobClient(flag)
+        try:
+            i(test_bc)
+        finally:
+            test_bc.__cleanup__()
+        
+    for i in methods_cc:
+        # if 'set_premium_page_blob_tier' in i.__name__:
+        test_cc = ContainerClient(flag)
+        try:
+            i(test_cc)
+        finally:
+            test_cc.__cleanup__()
+
+    for i in methods_bsc:
+        # if 'undelete_container' in i.__name__:
+        test_bsc = MyBlobServiceClient(flag)
+        try:
+            i(test_bsc)
+        finally:
+            test_bsc.__cleanup__()
+
+    for i in methods_blc:
+        # if 'acquire_blob_lease' in i.__name__:
+        test_blc = MyBlobLeaseClient(flag)
+        try:
+            i(test_blc)
+        finally:
+            test_blc.__cleanup__()
+
+    for i in methods_tc:
+        # if 'table_submit_transaction' in i.__name__:
+        test_tc = MyTableClient(flag)
+        try:
+            i(test_tc)
+        finally:
+            test_tc.__cleanup__()
+
+    for i in methods_tsc:
+        # if 'table_set_service_properties' in i.__name__:
+        test_tsc = MyTableServiceClient(flag)
+        try:
+            i(test_tsc)
+        finally:
+            test_tsc.__cleanup__()
+
+    for i in methods_qc:
+        test_qc = MyQueueClient(flag)
+        try:
+            i(test_qc)
+        finally:
+            test_qc.__cleanup__()
+
+    for i in methods_qsc:
+        test_qsc = MyQueueServiceClient(flag)
+        try:
+            i(test_qsc)
+        finally:
+            test_qsc.__cleanup__()
 
 
 def run_ops(arg, methods, client, count, buf, discrepant_methods):
@@ -136,6 +180,10 @@ def run_ops(arg, methods, client, count, buf, discrepant_methods):
             
             except Exception as e:
                 print("Exception: ", e)
+
+            finally:
+                test_cloud.__cleanup__()
+                test_em.__cleanup__()
 
     return count
 
