@@ -37,7 +37,7 @@ class MyQueueClient:
 
         try:
             # create a queue
-            self.queue_service_client = QueueServiceClient.from_connection_string(self.connection_string, credential=credential)
+            self.queue_service_client = QueueServiceClient.from_connection_string(self.connection_string)
         except Exception as e:
             print('Queue service client creation failed; error: ', e)
 
