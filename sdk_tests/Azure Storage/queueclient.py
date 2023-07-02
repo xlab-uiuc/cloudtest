@@ -111,7 +111,7 @@ class MyQueueClient:
             self.queue_client.delete_queue()
             print(self.service, ': Success -- Queue deleted')
             # create queue again
-            self.queue_create()
+            self.queue_create([])
             return True
         except Exception as e:
             print(self.service, ': Failed -- Queue deletion failed; error: ', e)

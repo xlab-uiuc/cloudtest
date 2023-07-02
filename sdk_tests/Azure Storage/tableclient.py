@@ -106,7 +106,7 @@ class MyTableClient():
             self.table_client.delete_entity(row_key=args[0], partition_key=args[1])
             print(self.service, ': Entity deleted')
             # create entity again
-            self.table_create_entity()
+            self.table_create_entity([])
             return True
         except Exception as e:
             print(self.service, ': Entity deletion failed; error: ', e)
@@ -231,7 +231,7 @@ class MyTableClient():
 
         try:
             # create entity and then update it
-            self.table_create_entity()
+            self.table_create_entity([])
 
             self.table_client.submit_transaction(args[0])
             print(self.service, ': Transaction submitted')
@@ -261,7 +261,7 @@ class MyTableClient():
 
         try:
             # create entity and then update it
-            self.table_create_entity()
+            self.table_create_entity([])
 
             self.table_client.update_entity(entity=args[0], mode=args[1])
             print(self.service, ': Entity updated')
