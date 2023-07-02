@@ -1,12 +1,13 @@
 from contextlib import redirect_stdout
 from containerclient import ContainerClient
-from blobclient import BlobClient
+from blobclient import MyBlobClient
 from blobserviceclient import MyBlobServiceClient
 from blobleaseclient import MyBlobLeaseClient
 from tableclient import MyTableClient
 from tableserviceclient import MyTableServiceClient
 from queueclient import MyQueueClient
 from queueserviceclient import MyQueueServiceClient
+from azure.core.exceptions import HttpResponseError
 import io, random, os
 import itertools
 
@@ -54,11 +55,49 @@ def extract_discrepancy(file):
         f.write('\n\n'.join(li))
 
 
+def outcome(flag):
+    if flag:
+        return 'SUCCESS'
+    else:
+        return 'FAILURE'
+
+
+def oracles(res_cloud, res_em):
+    log = ''
+    flag =  False
+    httpException = False
+
+    # check exception nature for 2nd and 3rd oracle
+    if not res_cloud[0] and isinstance(res_cloud[1], HttpResponseError):
+        if not res_em[0] and isinstance(res_em[1], HttpResponseError):
+            httpException = True
+
+    if res_cloud[0] != res_em[0]:
+        flag = True
+        log += (f'--Behavior mismatch--\n')
+        log += (f'CLOUD: {outcome(res_cloud[0])} -- Response: {res_cloud[1]} \n')
+        log += (f'EMULATOR: {outcome(res_em[0])} -- Response: {res_em[1]}')
+
+    elif httpException and res_cloud[1].response.status_code != res_em[1].response.status_code:
+        flag = True
+        log += (f'--Status code mismatch--\n')
+        log += (f'CLOUD: {outcome(res_cloud[0])} -- Error Code: {res_cloud[1].response.status_code} -- Error Message: {res_cloud[1].response.reason}\n')
+        log += (f'EMULATOR: {outcome(res_em[0])} -- Error Code: {res_em[1].response.status_code} -- Error Message: {res_em[1].response.reason}')
+
+    elif httpException and res_cloud[1].response.reason != res_em[1].response.reason:
+        flag = True
+        log += (f'--Error message mismatch--\n')
+        log += (f'CLOUD: {outcome(res_cloud[0])}  -- Error Message: {res_cloud[1].response.reason}\n')
+        log += (f'EMULATOR: {outcome(res_em[0])} -- Error Message: {res_em[1].response.reason}')
+
+    return flag, log
+        
+# for testing purposes (Remove later)
 def simple_test_run(flag):
     flag = False
 
     # get methods
-    methods_bc = [getattr(BlobClient, attr) for attr in dir(BlobClient) if callable(getattr(BlobClient, attr)) and not attr.startswith("__")]
+    methods_bc = [getattr(MyBlobClient, attr) for attr in dir(MyBlobClient) if callable(getattr(MyBlobClient, attr)) and not attr.startswith("__")]
     methods_cc = [getattr(ContainerClient, attr) for attr in dir(ContainerClient) if callable(getattr(ContainerClient, attr)) and not attr.startswith("__")]
     methods_bsc = [getattr(MyBlobServiceClient, attr) for attr in dir(MyBlobServiceClient) if callable(getattr(MyBlobServiceClient, attr)) and not attr.startswith("__")]
     methods_blc = [getattr(MyBlobLeaseClient, attr) for attr in dir(MyBlobLeaseClient) if callable(getattr(MyBlobLeaseClient, attr)) and not attr.startswith("__")]
@@ -70,10 +109,10 @@ def simple_test_run(flag):
     # run methods
     for i in methods_bc:
         
-    #     if 'acquire_lease' in i.__name__:
-        test_bc = BlobClient(flag)
+        # if 'stage_block_from_url' in i.__name__:
+        test_bc = MyBlobClient(flag)
         try:
-            i(test_bc)
+            r = i(test_bc, [])
         finally:
             test_bc.__cleanup__()
         
@@ -81,7 +120,9 @@ def simple_test_run(flag):
         # if 'set_premium_page_blob_tier' in i.__name__:
         test_cc = ContainerClient(flag)
         try:
-            i(test_cc)
+            res = i(test_cc, [])
+            if not res[0] and isinstance(res[1], HttpResponseError):
+                print(res[1].response.reason)
         finally:
             test_cc.__cleanup__()
 
@@ -89,7 +130,9 @@ def simple_test_run(flag):
         # if 'undelete_container' in i.__name__:
         test_bsc = MyBlobServiceClient(flag)
         try:
-            i(test_bsc)
+            res = i(test_bsc, [])
+            if not res[0] and isinstance(res[1], HttpResponseError):
+                print(res[1].response.reason)
         finally:
             test_bsc.__cleanup__()
 
@@ -97,7 +140,9 @@ def simple_test_run(flag):
         # if 'acquire_blob_lease' in i.__name__:
         test_blc = MyBlobLeaseClient(flag)
         try:
-            i(test_blc)
+            res = i(test_blc, [])
+            if not res[0]:
+                print(res[1].response.reason)
         finally:
             test_blc.__cleanup__()
 
@@ -105,7 +150,9 @@ def simple_test_run(flag):
         # if 'table_submit_transaction' in i.__name__:
         test_tc = MyTableClient(flag)
         try:
-            i(test_tc)
+            res = i(test_tc, [])
+            if not res[0]:
+                print(res[1].response.reason)
         finally:
             test_tc.__cleanup__()
 
@@ -113,45 +160,54 @@ def simple_test_run(flag):
         # if 'table_set_service_properties' in i.__name__:
         test_tsc = MyTableServiceClient(flag)
         try:
-            i(test_tsc)
+            res = i(test_tsc, [])
+            if not res[0] and isinstance(res[1], HttpResponseError):
+                print(res[1].response.reason)
         finally:
             test_tsc.__cleanup__()
 
     for i in methods_qc:
         test_qc = MyQueueClient(flag)
         try:
-            i(test_qc)
+            res = i(test_qc, [])
+            if not res[0]:
+                print(res[1].response.reason)
         finally:
             test_qc.__cleanup__()
 
     for i in methods_qsc:
         test_qsc = MyQueueServiceClient(flag)
         try:
-            i(test_qsc)
+            res = i(test_qsc, [])
+            if not res[0]  and isinstance(res[1], HttpResponseError):
+                print(res[1].response.reason)
         finally:
             test_qsc.__cleanup__()
 
 
 def run_ops(arg, methods, client, count, buf, discrepant_methods):
-    
 
     t_count = -1
     for method in methods:
             t_count += 1
             
+            # to increase fuzzing efficiency however it trades off coverage
             # if method.__name__ in discrepant_methods:
             #     continue
 
             # we make a new client in order to run an operation independently
             if client == "bc":
-                test_cloud = BlobClient(False)
-                test_em = BlobClient()
+                test_cloud = MyBlobClient(False)
+                test_em = MyBlobClient()
             elif client == "cc":
                 test_cloud = ContainerClient(False)
                 test_em = ContainerClient()
             elif client == "bsc":
                 test_cloud = MyBlobServiceClient(False)
                 test_em = MyBlobServiceClient()
+            elif client == "blc":
+                test_cloud = MyBlobLeaseClient(False)
+                test_em = MyBlobLeaseClient()
             elif client == "tc":
                 test_cloud = MyTableClient(False)
                 test_em = MyTableClient()
@@ -166,16 +222,26 @@ def run_ops(arg, methods, client, count, buf, discrepant_methods):
                 test_em = MyQueueServiceClient()
 
             try:
-                print('method: '+ method.__name__, 'args: ',arg[t_count])
-                if not method(test_cloud, arg[t_count]) == method(test_em, arg[t_count]):
+                print('METHOD: '+ method.__name__, '--- ARGS: ',arg[t_count])
+
+                # run method on cloud and emulator
+                res_cloud = method(test_cloud, arg[t_count])
+                res_em = method(test_em, arg[t_count])
+
+                # oracles
+                result = oracles(res_cloud, res_em)
+                
+                if result[0]:
                     count += 1
-                    output = buf.getvalue().strip()
+                    print('\nDISCREPANCY FOUND!\n')
+                    print(result[1])
 
                     if method.__name__ not in discrepant_methods:
                         discrepant_methods.append(method.__name__)
 
                     with open('../sdk_tests/Azure Storage/discrepancy.txt', 'a') as f:
-                        f.write(method.__name__ + '\n\n' + output)
+                        f.write(f'DISCREPANT METHOD: {method.__name__} --- ARGS: {arg[t_count]}\n')
+                        f.write(result[1])
                         f.write(f'\n\n\ncount: {count}   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n\n\n')
             
             except Exception as e:
@@ -193,7 +259,7 @@ def run_ops(arg, methods, client, count, buf, discrepant_methods):
 def run_sequences_permuation(arg, type):
     
     # get all methods of all the clients
-    methods_blobClient = [getattr(BlobClient, attr) for attr in dir(BlobClient) if callable(getattr(BlobClient, attr)) and not attr.startswith("__")]
+    methods_blobClient = [getattr(MyBlobClient, attr) for attr in dir(MyBlobClient) if callable(getattr(MyBlobClient, attr)) and not attr.startswith("__")]
     methods_containerClient = [getattr(ContainerClient, attr) for attr in dir(ContainerClient) if callable(getattr(ContainerClient, attr)) and not attr.startswith("__")]
     methods_blobServiceClient = [getattr(MyBlobServiceClient, attr) for attr in dir(MyBlobServiceClient) if callable(getattr(MyBlobServiceClient, attr))
      and not attr.startswith("__")]
@@ -203,8 +269,8 @@ def run_sequences_permuation(arg, type):
     methods_queueServiceClient = [getattr(MyQueueServiceClient, attr) for attr in dir(MyQueueServiceClient) if callable(getattr(MyQueueServiceClient, attr)) and not attr.startswith("__")]
     methods = methods_blobClient + methods_containerClient + methods_blobServiceClient + methods_tableClient + methods_tableServiceClient + methods_queueClient + methods_queueServiceClient
 
-    test_cloud_bc = BlobClient(False)
-    test_em_bc = BlobClient()
+    test_cloud_bc = MyBlobClient(False)
+    test_em_bc = MyBlobClient()
     test_cloud_cc = ContainerClient(False)
     test_em_cc = ContainerClient()
     test_cloud_bsc = MyBlobServiceClient(False)
@@ -248,59 +314,7 @@ def run_sequences_permuation(arg, type):
 
 
 
-def run1v1(arg):
-
-    # to-do: ordering of methods --> done
-
-    # get all methods of all the clients
-    methods_blobClient = [getattr(BlobClient, attr) for attr in dir(BlobClient) if callable(getattr(BlobClient, attr)) and not attr.startswith("__")]
-    methods_containerClient = [getattr(ContainerClient, attr) for attr in dir(ContainerClient) if callable(getattr(ContainerClient, attr)) and not attr.startswith("__")]
-    methods_blobServiceClient = [getattr(MyBlobServiceClient, attr) for attr in dir(MyBlobServiceClient) if callable(getattr(MyBlobServiceClient, attr))
-     and not attr.startswith("__")]
-    methods_tableClient = [getattr(MyTableClient, attr) for attr in dir(MyTableClient) if callable(getattr(MyTableClient, attr)) and not attr.startswith("__")]
-    methods_tableServiceClient = [getattr(MyTableServiceClient, attr) for attr in dir(MyTableServiceClient) if callable(getattr(MyTableServiceClient, attr)) and not attr.startswith("__")]
-    methods_queueClient = [getattr(MyQueueClient, attr) for attr in dir(MyQueueClient) if callable(getattr(MyQueueClient, attr)) and not attr.startswith("__")]
-    methods_queueServiceClient = [getattr(MyQueueServiceClient, attr) for attr in dir(MyQueueServiceClient) if callable(getattr(MyQueueServiceClient, attr)) and not attr.startswith("__")]
-    total_methods = methods_blobClient + methods_containerClient + methods_blobServiceClient + methods_tableClient + methods_tableServiceClient + methods_queueClient + methods_queueServiceClient
-    t_count = len(total_methods)
-    # logging.basicConfig(level=logging.DEBUG)
-
-    # randomize seed
-    seed = random.randint(0, 1000000)
-
-    # shuffle all methods
-    random.Random(seed).shuffle(methods_blobClient)
-    random.Random(seed).shuffle(methods_containerClient)
-    random.Random(seed).shuffle(methods_blobServiceClient)
-    random.Random(seed).shuffle(methods_tableClient)
-    random.Random(seed).shuffle(methods_tableServiceClient)
-    random.Random(seed).shuffle(methods_queueClient)
-    random.Random(seed).shuffle(methods_queueServiceClient)
-
-
-    # empty args for default run of ops
-    if arg == ():
-        arg = {}
-        arg['1'] = [[]] * len(methods_blobClient)
-        arg['2'] = [[]] * len(methods_containerClient)
-        arg['3'] = [[]] * len(methods_blobServiceClient)
-        arg['4'] = [[]] * len(methods_tableClient)
-        arg['5'] = [[]] * len(methods_tableServiceClient)
-        arg['6'] = [[]] * len(methods_queueClient)
-        arg['7'] = [[]] * len(methods_queueServiceClient)
-    else:
-        assert len(arg) == 7, "Invalid number of clients"
-        assert len(arg['1']) == len(methods_blobClient), "Invalid number of methods for BlobClient"
-        assert len(arg['2']) == len(methods_containerClient), "Invalid number of methods for ContainerClient"
-        assert len(arg['3']) == len(methods_blobServiceClient), "Invalid number of methods for BlobServiceClient"
-        assert len(arg['4']) == len(methods_tableClient), "Invalid number of methods for TableClient"
-        assert len(arg['5']) == len(methods_tableServiceClient), "Invalid number of methods for TableServiceClient"
-        assert len(arg['6']) == len(methods_queueClient), "Invalid number of methods for QueueClient"
-        assert len(arg['7']) == len(methods_queueServiceClient), "Invalid number of methods for QueueServiceClient"
-
-        for i in arg.items():
-            random.Random(seed).shuffle(i[1])
-
+def run1v1(arg, methods_blobClient, methods_containerClient, methods_blobServiceClient, methods_blobLeaseClient, methods_tableClient, methods_tableServiceClient, methods_queueClient, methods_queueServiceClient, t_count):
 
     # do not run discrepant methods again
     f = open("../sdk_tests/Azure Storage/discrepant_methods.txt", "r")
@@ -308,7 +322,6 @@ def run1v1(arg):
     f.close()
 
     d_count = 0
-
 
     # to-do: compare error message when res[0] === false, compare using .response.status_code and response.reason
 
@@ -320,14 +333,17 @@ def run1v1(arg):
         d_count = run_ops(arg["2"], methods_containerClient, "cc", d_count, buf, discrepant_methods)
         # run blob service client ops
         d_count = run_ops(arg["3"], methods_blobServiceClient, "bsc", d_count, buf, discrepant_methods)
+        # run blob lease client ops
+        d_count = run_ops(arg["4"], methods_blobLeaseClient, "blc", d_count, buf, discrepant_methods)
         # run table client ops
-        d_count = run_ops(arg["4"], methods_tableClient, "tc", d_count, buf, discrepant_methods)
+        d_count = run_ops(arg["5"], methods_tableClient, "tc", d_count, buf, discrepant_methods)
         # run table service client ops
-        d_count = run_ops(arg["5"], methods_tableServiceClient, "tsc", d_count, buf, discrepant_methods)
+        d_count = run_ops(arg["6"], methods_tableServiceClient, "tsc", d_count, buf, discrepant_methods)
         # run queue client ops
-        d_count = run_ops(arg["6"], methods_queueClient, "qc", d_count, buf, discrepant_methods)
+        d_count = run_ops(arg["7"], methods_queueClient, "qc", d_count, buf, discrepant_methods)
         # run queue service client ops
-        d_count = run_ops(arg["7"], methods_queueServiceClient, "qsc", d_count, buf, discrepant_methods)
+        d_count = run_ops(arg["8"], methods_queueServiceClient, "qsc", d_count, buf, discrepant_methods)
+        output = buf.getvalue().strip()
 
     with open('../sdk_tests/Azure Storage/discrepancy.txt', 'a') as f:
         f.write(f'{d_count}/{t_count}   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n')
@@ -339,12 +355,71 @@ def run1v1(arg):
 
     extract_discrepancy('../sdk_tests/Azure Storage/discrepancy.txt')
 
+    # write buf to a new file
+    with open('../sdk_tests/Azure Storage/log_all.txt', 'w') as f:
+        f.write(output)
+
 
 '''test suites'''
 def main(arg):
 
-    simple_test_run(True)
-    # run1v1(arg)
+
+    # get all methods of all the clients
+    methods_blobClient = [getattr(MyBlobClient, attr) for attr in dir(MyBlobClient) if callable(getattr(MyBlobClient, attr)) and not attr.startswith("__")]
+    methods_containerClient = [getattr(ContainerClient, attr) for attr in dir(ContainerClient) if callable(getattr(ContainerClient, attr)) and not attr.startswith("__")]
+    methods_blobServiceClient = [getattr(MyBlobServiceClient, attr) for attr in dir(MyBlobServiceClient) if callable(getattr(MyBlobServiceClient, attr))
+     and not attr.startswith("__")]
+    methods_blobLeaseClient = [getattr(MyBlobLeaseClient, attr) for attr in dir(MyBlobLeaseClient) if callable(getattr(MyBlobLeaseClient, attr)) and not attr.startswith("__")]
+    methods_tableClient = [getattr(MyTableClient, attr) for attr in dir(MyTableClient) if callable(getattr(MyTableClient, attr)) and not attr.startswith("__")]
+    methods_tableServiceClient = [getattr(MyTableServiceClient, attr) for attr in dir(MyTableServiceClient) if callable(getattr(MyTableServiceClient, attr)) and not attr.startswith("__")]
+    methods_queueClient = [getattr(MyQueueClient, attr) for attr in dir(MyQueueClient) if callable(getattr(MyQueueClient, attr)) and not attr.startswith("__")]
+    methods_queueServiceClient = [getattr(MyQueueServiceClient, attr) for attr in dir(MyQueueServiceClient) if callable(getattr(MyQueueServiceClient, attr)) and not attr.startswith("__")]
+    total_methods = methods_blobClient + methods_containerClient + methods_blobServiceClient + methods_blobLeaseClient + methods_tableClient + methods_tableServiceClient + methods_queueClient + methods_queueServiceClient
+    t_count = len(total_methods)
+    # logging.basicConfig(level=logging.DEBUG)
+
+
+    # empty args for default run of ops
+    if arg == ():
+        arg = {}
+        arg['1'] = [[]] * len(methods_blobClient)
+        arg['2'] = [[]] * len(methods_containerClient)
+        arg['3'] = [[]] * len(methods_blobServiceClient)
+        arg['4'] = [[]] * len(methods_blobLeaseClient)
+        arg['5'] = [[]] * len(methods_tableClient)
+        arg['6'] = [[]] * len(methods_tableServiceClient)
+        arg['7'] = [[]] * len(methods_queueClient)
+        arg['8'] = [[]] * len(methods_queueServiceClient)
+    else:
+        assert len(arg) == 8, "Invalid number of clients"
+        assert len(arg['1']) == len(methods_blobClient), "Invalid number of methods for BlobClient"
+        assert len(arg['2']) == len(methods_containerClient), "Invalid number of methods for ContainerClient"
+        assert len(arg['3']) == len(methods_blobServiceClient), "Invalid number of methods for BlobServiceClient"
+        assert len(arg['4']) == len(methods_blobLeaseClient), "Invalid number of methods for BlobLeaseClient"
+        assert len(arg['5']) == len(methods_tableClient), "Invalid number of methods for TableClient"
+        assert len(arg['6']) == len(methods_tableServiceClient), "Invalid number of methods for TableServiceClient"
+        assert len(arg['7']) == len(methods_queueClient), "Invalid number of methods for QueueClient"
+        assert len(arg['8']) == len(methods_queueServiceClient), "Invalid number of methods for QueueServiceClient"
+
+    # randomize seed
+    seed = random.randint(0, 1000000)
+
+    # shuffle all methods
+    # random.Random(seed).shuffle(methods_blobClient)
+    # random.Random(seed).shuffle(methods_containerClient)
+    # random.Random(seed).shuffle(methods_blobServiceClient)
+    # random.Random(seed).shuffle(methods_blobLeaseClient)
+    # random.Random(seed).shuffle(methods_tableClient)
+    # random.Random(seed).shuffle(methods_tableServiceClient)
+    # random.Random(seed).shuffle(methods_queueClient)
+    # random.Random(seed).shuffle(methods_queueServiceClient)
+
+    # for i in arg.items():
+    #     random.Random(seed).shuffle(i[1])
+
+
+    # simple_test_run(True)
+    run1v1(arg, methods_blobClient, methods_containerClient, methods_blobServiceClient, methods_blobLeaseClient, methods_tableClient, methods_tableServiceClient, methods_queueClient, methods_queueServiceClient, t_count)
     # run_sequences()
 
 

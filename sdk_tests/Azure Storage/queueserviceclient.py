@@ -14,8 +14,6 @@ class MyQueueServiceClient:
 
         # randomize seed
         random.seed(datetime.datetime.now())
-
-        print("****************************************************************************")
         
         # queue name
         if queue_name is None:
@@ -44,8 +42,8 @@ class MyQueueServiceClient:
             
         try:
             self.queue_service_client.create_queue(self.queue_name)
-        except:
-            pass
+        except Exception as e:
+            print('Queue creation failed; error: ', e)
 
 
 
@@ -56,12 +54,12 @@ class MyQueueServiceClient:
         queue_name = f'queue{random.randint(1, 1000000000)}'
         
         try:
-            self.queue_service_client.create_queue(queue_name)
+            res = self.queue_service_client.create_queue(queue_name)
             print(self.service, ': Success -- Queue created')
-            return True
+            return True, res
         except Exception as e:
             print(self.service, ': Failed -- Queue creation failed; error: ', e)
-            return False
+            return False, e
         
 
     # delete queue with try except
@@ -72,15 +70,15 @@ class MyQueueServiceClient:
             args.append(self.queue_name)
         
         try:
-            self.queue_service_client.delete_queue(args[0])
+            res = self.queue_service_client.delete_queue(args[0])
             print(self.service, ': Success -- Queue deleted')
             # create another queue in its place
             self.queue_service_client.create_queue(f'queue{random.randint(1, 1000000000)}')
             print(self.service, ': Success -- Queue created')
-            return True
+            return True, res
         except Exception as e:
             print(self.service, ': Failed -- Queue deletion failed; error: ', e)
-            return False
+            return False, e
         
 
     # get queue client with try except
@@ -91,48 +89,48 @@ class MyQueueServiceClient:
             args.append(self.queue_name)
         
         try:
-            queue_client = self.queue_service_client.get_queue_client(args[0])
+            res = self.queue_service_client.get_queue_client(args[0])
             print(self.service, ': Success -- Queue client retrieved')
-            return True
+            return True, res
         except Exception as e:
             print(self.service, ': Failed -- Queue client retrieval failed; error: ', e)
-            return False
+            return False, e
         
 
     # get service properties with try except
     def queue_get_service_properties(self, args):
         args = list(args)
         try:
-            self.queue_service_client.get_service_properties()
+            res = self.queue_service_client.get_service_properties()
             print(self.service, ': Success -- Service properties retrieved')
-            return True
+            return True, res
         except Exception as e:
             print(self.service, ': Failed -- Service properties retrieval failed; error: ', e)
-            return False
+            return False, e
         
 
     # get service stats with try except
     def queue_get_service_stats(self, args):
         args = list(args)
         try:
-            self.queue_service_client.get_service_stats()
+            res = self.queue_service_client.get_service_stats()
             print(self.service, ': Success -- Service stats retrieved')
-            return True
+            return True, res
         except Exception as e:
             print(self.service, ': Failed -- Service stats retrieval failed; error: ', e)
-            return False
+            return False, e
         
 
     # list queues with try except
     def queue_list(self, args):
         args = list(args)
         try:
-            self.queue_service_client.list_queues()
+            res = self.queue_service_client.list_queues()
             print(self.service, ': Success -- Queues listed')
-            return True
+            return True, res
         except Exception as e:
             print(self.service, ': Failed -- Queue listing failed; error: ', e)
-            return False
+            return False, e
         
 
     # set service properties with try except
@@ -144,12 +142,12 @@ class MyQueueServiceClient:
         cors = [CorsRule(allowed_origins=['*'], allowed_methods=['GET', 'PUT'], allowed_headers=['*'], exposed_headers=['*'], max_age_in_seconds=3600)]
 
         try:
-            self.queue_service_client.set_service_properties(analytics_logging=analytics_logging, hour_metrics=hour_metrics, minute_metrics=minute_metrics, cors=cors)
+            res = self.queue_service_client.set_service_properties(analytics_logging=analytics_logging, hour_metrics=hour_metrics, minute_metrics=minute_metrics, cors=cors)
             print(self.service, ': Success -- Service properties set')
-            return True
+            return True, res
         except Exception as e:
             print(self.service, ': Failed -- Service properties setting failed; error: ', e)
-            return False
+            return False, e
 
     # garbage collection
     def __cleanup__(self):

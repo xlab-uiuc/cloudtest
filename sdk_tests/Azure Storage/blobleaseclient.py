@@ -15,8 +15,6 @@ class MyBlobLeaseClient:
         # randomize seed
         random.seed(datetime.datetime.now())
 
-        print("****************************************************************************")
-
         # container name
         if container_name is None:
             self.container_name = f'container{random.randint(1, 1000000000)}'
@@ -80,13 +78,15 @@ class MyBlobLeaseClient:
             args.append(15)
 
         try:
-            self.blob_lease_client.acquire(args[0])
+            res = self.blob_lease_client.acquire(args[0])
             print(self.service + ": Blob lease is acquired.")
 
             # break lease for sequences run
             self.blob_lease_client.break_lease(0)
+            return True, res
         except Exception as e:
             print(self.service + ": Blob lease is not acquired. Error: ", e)
+            return False, e
 
 
     def break_lease(self, args):
@@ -100,10 +100,12 @@ class MyBlobLeaseClient:
             self.blob_lease_client.acquire(15)
 
             # break lease
-            self.blob_lease_client.break_lease(args[0])
+            res = self.blob_lease_client.break_lease(args[0])
             print(self.service + ": Blob lease is broken.")
+            return True, res
         except Exception as e:
             print(self.service + ": Blob lease is not broken. Error: ", e)
+            return False, e
 
     def change_lease(self, args):
         args = list(args)
@@ -116,13 +118,15 @@ class MyBlobLeaseClient:
             self.blob_lease_client.acquire(15)
 
             # change lease
-            self.blob_lease_client.change(args[0])
+            res = self.blob_lease_client.change(args[0])
             print(self.service + ": Blob lease is changed.")
 
             # break lease for sequences run
             self.blob_lease_client.break_lease(0)
+            return True, res
         except Exception as e:
             print(self.service + ": Blob lease is not changed. Error: ", e)
+            return False, e
 
 
     def release_lease(self, args):
@@ -133,10 +137,12 @@ class MyBlobLeaseClient:
             self.blob_lease_client.acquire(15)
 
             # release lease
-            self.blob_lease_client.release()
+            res = self.blob_lease_client.release()
             print(self.service + ": Blob lease is released.")
+            return True, res
         except Exception as e:
             print(self.service + ": Blob lease is not released. Error: ", e)
+            return False, e
 
 
     def renew_lease(self, args):
@@ -147,13 +153,15 @@ class MyBlobLeaseClient:
             self.blob_lease_client.acquire(15)
 
             # renew lease
-            self.blob_lease_client.renew()
+            res = self.blob_lease_client.renew()
             print(self.service + ": Blob lease is renewed.")
 
             # break lease for sequences run
             self.blob_lease_client.break_lease(0)
+            return True, res
         except Exception as e:
             print(self.service + ": Blob lease is not renewed. Error: ", e)
+            return False, e
 
 
     # garbage collection

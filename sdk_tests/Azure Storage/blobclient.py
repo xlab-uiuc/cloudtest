@@ -15,8 +15,6 @@ class MyBlobClient:
         # randomize seed
         random.seed(datetime.datetime.now())
 
-        print("****************************************************************************")
-
         # container name
         if container_name is None:
             self.container_name = f'container{random.randint(1, 1000000000)}'
@@ -88,12 +86,12 @@ class MyBlobClient:
                 resp = self.blob_client.start_copy_from_url(f'https://127.0.0.1:10000/devstoreaccount1/{self.container_name}/{random_blob_name}')
     
 
-            self.blob_client.abort_copy(resp['copy_id'])
+            res = self.blob_client.abort_copy(resp['copy_id'])
             print(self.service + ": Copy is aborted -- successful.")
-            return True
+            return True, res
         except Exception as e:
             print(self.service + ": Copy is not aborted -- unsuccessful. Error: ", e)
-            return False
+            return False, e
 
 
     # acquire lease with try except block
@@ -107,17 +105,17 @@ class MyBlobClient:
             args.append('f81d4fae-7dec-11d0-a765-00a0c91e6bf6')
 
         try:
-            self.blob_client.acquire_lease(args[0], args[1])
+            res = self.blob_client.acquire_lease(args[0], args[1])
             print(self.service + ": Lease is acquired.")
 
             # break lease for garbage collection
             blob_lease_client = BlobLeaseClient(self.blob_client)
             blob_lease_client.break_lease(lease_break_period=0)
 
-            return True
+            return True, res
         except Exception as e:
             print(self.service + ": Lease is not acquired. Error: ", e)
-            return False
+            return False, e
 
     # append blob with try except block
     def append_block(self, args):
@@ -135,12 +133,12 @@ class MyBlobClient:
             self.container_client.upload_blob(data=b'For append blob', name=random_blob_name, blob_type='AppendBlob')
 
             blobclient = self.container_client.get_blob_client(random_blob_name)
-            blobclient.append_block(args[0], length=args[1])
+            res = blobclient.append_block(args[0], length=args[1])
             print(self.service + ": Blob is appended.")
-            return True
+            return True, res
         except Exception as e:
             print(self.service + ": Blob is not appended. Error: ", e)
-            return False
+            return False, e
         
 
     # Not implemented in the emulator
@@ -164,12 +162,12 @@ class MyBlobClient:
 
         try:
             cc = self.container_client.get_blob_client(args[0])
-            cc.append_block_from_url(copy_source_url=args[1], source_offset=args[2], source_length=args[3])
+            res = cc.append_block_from_url(copy_source_url=args[1], source_offset=args[2], source_length=args[3])
             print(self.service + ": Block is appended from url.")
-            return True
+            return True, res
         except Exception as e:
             print(self.service + ": Block is not appended from url. Error: ", e)
-            return False
+            return False, e
         
 
     # clear page with try except block
@@ -190,14 +188,14 @@ class MyBlobClient:
             with open('page', 'rb') as data:
                 self.container_client.upload_blob(data=data, name=random_blob_name, blob_type='PageBlob')
             blobclient = self.container_client.get_blob_client(random_blob_name)
-            blobclient.clear_page(args[0], args[1])
+            res = blobclient.clear_page(args[0], args[1])
             print(self.service + ": Page is cleared.")
-            return True
+            return True, res
                 
             
         except Exception as e:
             print(self.service + ": Page is not cleared. Error: ", e)
-            return False
+            return False, e
         
     
     # commit block list with try except block
@@ -220,12 +218,12 @@ class MyBlobClient:
             self.container_client.upload_blob(data=b'First one', name=random_blob_name, blob_type='BlockBlob', length=len('First one'), metadata={'hello': 'world', 'number': '42'})
             blobclient = self.container_client.get_blob_client(random_blob_name)
 
-            blobclient.commit_block_list(args[0], content_settings=content_setting, metadata=args[1])
+            res = blobclient.commit_block_list(args[0], content_settings=content_setting, metadata=args[1])
             print(self.service + ": Block list is committed.")
-            return True
+            return True, res
         except Exception as e:
             print(self.service + ": Block list is not committed. Error: ", e)
-            return False
+            return False, e
         
 
     # create append blob with try except block
@@ -246,12 +244,12 @@ class MyBlobClient:
                 self.container_client.upload_blob(data=data, name=random_blob_name, blob_type='AppendBlob')
             blobclient = self.container_client.get_blob_client(random_blob_name)
 
-            blobclient.create_append_blob(content_setting, args[0])
+            res = blobclient.create_append_blob(content_setting, args[0])
             print(self.service + ": Append blob is created.")
-            return True
+            return True, res
         except Exception as e:
             print(self.service + ": Append blob is not created. Error: ", e)
-            return False
+            return False, e
     
 
     # create page blob with try except block
@@ -277,12 +275,12 @@ class MyBlobClient:
                 self.container_client.upload_blob(data=data, name=random_blob_name, blob_type='PageBlob')
             blobclient = self.container_client.get_blob_client(random_blob_name)
 
-            blobclient.create_page_blob(args[0], content_setting, args[1])
+            res = blobclient.create_page_blob(args[0], content_setting, args[1])
             print(self.service + ": Page blob is created.")
-            return True
+            return True, res
         except Exception as e:
             print(self.service + ": Page blob is not created. Error: ", e)
-            return False
+            return False, e
     
 
 
@@ -294,12 +292,12 @@ class MyBlobClient:
             args.append({'category': 'test', 'created': '2020-01-01', 'author': 'test', 'description': 'test', 'tags': 'test', 'title': 'test', 'version': '1.0', 'filename': 'test'})
 
         try:
-            self.blob_client.create_snapshot(args[0])
+            res = self.blob_client.create_snapshot(args[0])
             print(self.service + ": Snapshot is created.")
-            return True
+            return True, res
         except Exception as e:
             print(self.service + ": Snapshot is not created. Error: ", e)
-            return False
+            return False, e
         
 
     # delete blob with try except block
@@ -310,28 +308,28 @@ class MyBlobClient:
             args.append('include')
 
         try:
-            self.blob_client.delete_blob(args[0])
+            res = self.blob_client.delete_blob(args[0])
             print(self.service + ": Blob is deleted.")
             # create another blob in its place
             self.blob_name = f'blob{random.randint(1, 1000000000)}'
             self.container_client.upload_blob(data=b'Second one', name=self.blob_name, blob_type='BlockBlob', length=len('First one'), metadata={'hello': 'world', 'number': '42'})
             self.blob_client = self.container_client.get_blob_client(self.blob_name)
-            return True
+            return True, res
         except Exception as e:
             print(self.service + ": Blob is not deleted. Error: ", e)
-            return False
+            return False, e
         
     
     # delete immutability policy with try except block
     def delete_immutability_policy(self, args):
         args = list(args)
         try:
-            self.blob_client.delete_immutability_policy()
+            res = self.blob_client.delete_immutability_policy()
             print(self.service + ": Immutability policy is deleted.")
-            return True
+            return True, res
         except Exception as e:
             print(self.service + ": Immutability policy is not deleted. Error: ", e)
-            return False
+            return False, e
         
 
 
@@ -346,12 +344,12 @@ class MyBlobClient:
             args.append(512)
 
         try:
-            self.blob_client.download_blob(args[0], args[1])
+            res = self.blob_client.download_blob(args[0], args[1])
             print(self.service + ": Blob is downloaded.")
-            return True
+            return True, res
         except Exception as e:
             print(self.service + ": Blob is not downloaded. Error: ", e)
-            return False
+            return False, e
         
 
     # check if blob exists with try except block
@@ -359,24 +357,24 @@ class MyBlobClient:
         args = list(args)
 
         try:
-            resp = self.blob_client.exists()
-            print(self.service + ": Blob exists succeeded -- ", resp)
-            return True
+            res = self.blob_client.exists()
+            print(self.service + ": Blob exists succeeded -- ", res)
+            return True, res
         except Exception as e:
             print(self.service + ": Blob exists failed. Error: ", e)
-            return False
+            return False, e
         
 
     # get account information with try except block
     def get_account_information(self, args):
         args = list(args)
         try:
-            self.blob_client.get_account_information()
+            res = self.blob_client.get_account_information()
             print(self.service + ": Account information is retrieved.")
-            return True
+            return True, res
         except Exception as e:
             print(self.service + ": Account information is not retrieved. Error: ", e)
-            return False
+            return False, e
         
 
     # get blob properties with try except block
@@ -384,12 +382,12 @@ class MyBlobClient:
         args = list(args)
 
         try:
-            self.blob_client.get_blob_properties()
+            res = self.blob_client.get_blob_properties()
             print(self.service + ": Blob properties are retrieved.")
-            return True
+            return True, res
         except Exception as e:
             print(self.service + ": Blob properties are not retrieved. Error: ", e)
-            return False
+            return False, e
         
 
 
@@ -398,12 +396,12 @@ class MyBlobClient:
         args = list(args)
 
         try:
-            self.blob_client.get_blob_tags()
+            res = self.blob_client.get_blob_tags()
             print(self.service + ": Blob tags are retrieved.")
-            return True
+            return True, res
         except Exception as e:
             print(self.service + ": Blob tags are not retrieved. Error: ", e)
-            return False
+            return False, e
         
 
     # get block list with try except block
@@ -414,12 +412,12 @@ class MyBlobClient:
             args.append('committed')
 
         try:
-            self.blob_client.get_block_list(args[0])
+            res = self.blob_client.get_block_list(args[0])
             print(self.service + ": Block list is retrieved.")
-            return True
+            return True, res
         except Exception as e:
             print(self.service + ": Block list is not retrieved. Error: ", e)
-            return False
+            return False, e
         
         
     # get page ranges with try except block
@@ -439,13 +437,13 @@ class MyBlobClient:
             with open('page', 'rb') as data:
                 self.container_client.upload_blob(data=data, name=random_blob_name, blob_type='PageBlob')
             blobclient = self.container_client.get_blob_client(random_blob_name)
-            blobclient.get_page_ranges(offset=args[0], length=args[1])
+            res = blobclient.get_page_ranges(offset=args[0], length=args[1])
             print(self.service + ": Page ranges are retrieved.")
-            return True
+            return True, res
             
         except Exception as e:
             print(self.service + ": Page ranges are not retrieved. Error: ", e)
-            return False
+            return False, e
             
 
     # list page ranges diff with try except block
@@ -462,12 +460,12 @@ class MyBlobClient:
             args.append(512)
 
         try:
-            self.blob_client.list_page_ranges(previous_snapshot=args[0], offset=args[1], length=args[2])
+            res = self.blob_client.list_page_ranges(previous_snapshot=args[0], offset=args[1], length=args[2])
             print(self.service + ": Page ranges diff is retrieved.")
-            return True
+            return True, res
         except Exception as e:
             print(self.service + ": Page ranges diff is not retrieved. Error: ", e)
-            return False
+            return False, e
         
 
     # query blob contents with try except block
@@ -478,12 +476,12 @@ class MyBlobClient:
             args.append('SELECT _2 from BlobStorage')
 
         try:
-            self.blob_client.query_blob(args[0])
+            res = self.blob_client.query_blob(args[0])
             print(self.service + ": Blob contents are queried.")
-            return True
+            return True, res
         except Exception as e:
             print(self.service + ": Blob contents are not queried. Error: ", e)
-            return False
+            return False, e
         
 
         
@@ -497,12 +495,12 @@ class MyBlobClient:
 
 
         try:
-            self.blob_client.set_blob_metadata(args[0])
+            res = self.blob_client.set_blob_metadata(args[0])
             print(self.service + ": Blob metadata is set.")
-            return True
+            return True, res
         except Exception as e:
             print(self.service + ": Blob metadata is not set. Error: ", e)
-            return False
+            return False, e
         
 
 
@@ -514,12 +512,12 @@ class MyBlobClient:
             args.append({'tag1': 'value1', 'tag2': 'value2'})
 
         try:
-            self.blob_client.set_blob_tags(args[0])
+            res = self.blob_client.set_blob_tags(args[0])
             print(self.service + ": Blob tags are set.")
-            return True
+            return True, res
         except Exception as e:
             print(self.service + ": Blob tags are not set. Error: ", e)
-            return False
+            return False, e
         
 
     # set http headers with try except block
@@ -530,12 +528,12 @@ class MyBlobClient:
         content_setting = ContentSettings(content_type='text/plain')
 
         try:
-            self.blob_client.set_http_headers(content_setting)
+            res = self.blob_client.set_http_headers(content_setting)
             print(self.service + ": HTTP headers are set.")
-            return True
+            return True, res
         except Exception as e:
             print(self.service + ": HTTP headers are not set. Error: ", e)
-            return False
+            return False, e
         
 
 
@@ -546,12 +544,12 @@ class MyBlobClient:
         policy = ImmutabilityPolicy(expiry_time=datetime.datetime.utcnow() + datetime.timedelta(1), policy_mode='unlocked')
 
         try:
-            self.blob_client.set_immutability_policy(policy)
+            res = self.blob_client.set_immutability_policy(policy)
             print(self.service + ": Immutability policy is set.")
-            return True
+            return True, res
         except Exception as e:
             print(self.service + ": Immutability policy is not set. Error: ", e)
-            return False
+            return False, e
         
 
     # set legal hold with try except block
@@ -562,12 +560,12 @@ class MyBlobClient:
             args.append(False)
 
         try:
-            self.blob_client.set_legal_hold(args[0])
+            res = self.blob_client.set_legal_hold(args[0])
             print(self.service + ": Legal hold is set.")
-            return True
+            return True, res
         except Exception as e:
             print(self.service + ": Legal hold is not set. Error: ", e)
-            return False
+            return False, e
         
     
     # skip premium page blob tier (with premium acc)
@@ -582,12 +580,12 @@ class MyBlobClient:
             args.append(random.choice(['Hot']))
 
         try:
-            self.blob_client.set_standard_blob_tier(args[0])
+            res = self.blob_client.set_standard_blob_tier(args[0])
             print(self.service + ": Blob tier is set.")
-            return True
+            return True, res
         except Exception as e:
             print(self.service + ": Blob tier is not set. Error: ", e)
-            return False
+            return False, e
 
 
     # stage block with try except block
@@ -604,12 +602,12 @@ class MyBlobClient:
             args.append(len(args[1]))
 
         try:
-            self.blob_client.stage_block(args[0], args[1], length=args[2])
+            res = self.blob_client.stage_block(args[0], args[1], length=args[2])
             print(self.service + ": Block is staged.")
-            return True
+            return True, res
         except Exception as e:
             print(self.service + ": Block is not staged. Error: ", e)
-            return False    
+            return False, e    
 
     # Not implemented in the emulator
     # stage block from url with try except block
@@ -625,7 +623,7 @@ class MyBlobClient:
             print(self.service + ": Blob is uploaded.")
         except Exception as e:
             print(self.service + ": Blob is not uploaded. Error: ", e)
-            return False
+            return False, e
  
         # block id
         if not len(args) > 0:
@@ -645,12 +643,12 @@ class MyBlobClient:
 
 
         try:
-            self.blob_client.stage_block_from_url(block_id=args[0], source_url=args[1], source_offset=args[2], source_length=args[3], source_content_md5=args[4])
+            res = self.blob_client.stage_block_from_url(block_id=args[0], source_url=args[1], source_offset=args[2], source_length=args[3], source_content_md5=args[4])
             print(self.service + ": Block is staged from url.")
-            return True
+            return True, res
         except Exception as e:
             print(self.service + ": Block is not staged from url. Error: ", e)
-            return False
+            return False, e
         
         
 
@@ -675,12 +673,12 @@ class MyBlobClient:
         try:
             with open('page', 'rb') as data1:
                 self.container_client.upload_blob(data=data1, name=args[0], blob_type='BlockBlob')
-            self.blob_client.start_copy_from_url(url, metadata=args[1])
+            res = self.blob_client.start_copy_from_url(url, metadata=args[1])
             print(self.service + ": Copy from url started.")
-            return True
+            return True, res
         except Exception as e:
             print(self.service + ": Copy from url not started. Error: ", e)
-            return False
+            return False, e
         
 
     # Not implemented in the emulator
@@ -689,12 +687,12 @@ class MyBlobClient:
         args = list(args)
             
         try:
-            self.blob_client.undelete_blob()
+            res = self.blob_client.undelete_blob()
             print(self.service + ": Blob is undeleted.")
-            return True
+            return True, res
         except Exception as e:
             print(self.service + ": Blob is not undeleted. Error: ", e)
-            return False
+            return False, e
         
 
     # upload blob from bytes with try except block
@@ -715,12 +713,12 @@ class MyBlobClient:
 
         try:
             blob_client = self.container_client.get_blob_client(f'blob{random.randint(0, 1000000)}')
-            blob_client.upload_blob(data=args[0], blob_type=args[1], length=args[2], metadata=args[3])
+            res = blob_client.upload_blob(data=args[0], blob_type=args[1], length=args[2], metadata=args[3])
             print(self.service + ": Blob is uploaded from bytes.")
-            return True
+            return True, res
         except Exception as e:
             print(self.service + ": Blob is not uploaded from bytes. Error: ", e)
-            return False
+            return False, e
         
 
     # upload blob from a url with try except block
@@ -736,12 +734,12 @@ class MyBlobClient:
                 args.append(f'https://127.0.0.1:10000/devstoreaccount1/{self.container_name}/{self.blob_name}')
         try:
             blob_client = self.container_client.get_blob_client(random_blob_name)    
-            blob_client.upload_blob_from_url(args[0])
+            res = blob_client.upload_blob_from_url(args[0])
             print(self.service + ": Blob is uploaded from url.")
-            return True
+            return True, res
         except Exception as e:
             print(self.service + ": Blob is not uploaded from url. Error: ", e)
-            return False
+            return False, e
 
 
     # upload page
@@ -762,12 +760,12 @@ class MyBlobClient:
                 self.container_client.upload_blob(data=data, name=blob, blob_type='PageBlob')
 
             blob_client = self.container_client.get_blob_client(blob)
-            blob_client.upload_page(args[0], args[1], length=len(args[0]))
+            res = blob_client.upload_page(args[0], args[1], length=len(args[0]))
             print(self.service + ": Page is uploaded.")
-            return True
+            return True, res
         except Exception as e:
             print(self.service + ": Page is not uploaded. Error: ", e)
-            return False
+            return False, e
     
     # Not implemented in the emulator
     # upload pages from url
@@ -781,7 +779,7 @@ class MyBlobClient:
                 self.container_client.upload_blob(data=data, name=random_blob, blob_type='PageBlob')
         except Exception as e:
             print(self.service + ": Page is not uploaded. Error: ", e)
-            return False
+            return False, e
 
         # source url
         if not len(args) > 0:
@@ -797,12 +795,12 @@ class MyBlobClient:
             args.append(0)
         try:
             cc = self.container_client.get_blob_client(random_blob)
-            cc.upload_pages_from_url(args[0], args[1], args[2], args[3])
+            res = cc.upload_pages_from_url(args[0], args[1], args[2], args[3])
             print(self.service + ": Pages are uploaded from url.")
-            return True
+            return True, res
         except Exception as e:
             print(self.service + ": Pages are not uploaded from url. Error: ", e)
-            return False
+            return False, e
 
     # garbage collection
     def __cleanup__(self):

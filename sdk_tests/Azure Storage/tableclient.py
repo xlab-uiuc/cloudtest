@@ -17,8 +17,6 @@ class MyTableClient():
         # randomize seed
         random.seed(datetime.datetime.now())
 
-        print("****************************************************************************")
-
         # table name
         if table_name is None:
             self.table_name = f'table{random.randint(1, 1000000000)}'
@@ -48,8 +46,8 @@ class MyTableClient():
 
         try:
             self.table_client.create_table()
-        except:
-            pass
+        except Exception as e:
+            print('Table creation failed; error: ', e)
 
 
         
@@ -72,12 +70,12 @@ class MyTableClient():
             args.append(self.entity)
 
         try:
-            self.table_client.create_entity(args[0])
+            res = self.table_client.create_entity(args[0])
             print(self.service, ': Entity created')
-            return True
+            return True, res
         except Exception as e:
             print(self.service, ': Entity creation failed; error: ', e)
-            return False
+            return False, e
         
     # delete entity with default entity none with try except
     def table_delete_entity(self, args):
@@ -103,14 +101,14 @@ class MyTableClient():
             args.append('colortwo')
 
         try:
-            self.table_client.delete_entity(row_key=args[0], partition_key=args[1])
+            res = self.table_client.delete_entity(row_key=args[0], partition_key=args[1])
             print(self.service, ': Entity deleted')
             # create entity again
             self.table_create_entity([])
-            return True
+            return True, res
         except Exception as e:
             print(self.service, ': Entity deletion failed; error: ', e)
-            return False
+            return False, e
         
 
     # delete table with default table name as none with try except
@@ -120,16 +118,16 @@ class MyTableClient():
             args.append(self.table_name)
 
         try:
-            self.table_client.delete_table()
+            res = self.table_client.delete_table()
             print(self.service, ': Table deleted with name: ', args[0])
             # create table again
             self.table_name = f'table{random.randint(1, 1000000000)}'
             self.table_client = TableClient.from_connection_string(self.connection_string, self.table_name)
             self.table_client.create_table()
-            return True
+            return True, res
         except Exception as e:
             print(self.service, ': Table deletion failed with name: ', args[0], ' and error: ', e)
-            return False
+            return False, e
         
 
     # get entity with default entity none with try except
@@ -156,12 +154,12 @@ class MyTableClient():
             args.append("colorthree")
 
         try:
-            self.table_client.get_entity(row_key=args[0], partition_key=args[1])
+            res = self.table_client.get_entity(row_key=args[0], partition_key=args[1])
             print(self.service, ': Entity retrieved')
-            return True
+            return True, res
         except Exception as e:
             print(self.service, ': Entity retrieval failed; error: ', e)
-            return False
+            return False, e
         
 
     # get table access policy with try except
@@ -171,24 +169,24 @@ class MyTableClient():
         table_client = TableClient.from_connection_string(self.connection_string, tab)
         table_client.create_table()
         try:
-            table_client.get_table_access_policy()
+            res = table_client.get_table_access_policy()
             print(self.service, ': Table access policy retrieved')
-            return True
+            return True, res
         except Exception as e:
             print(self.service, ': Table access policy retrieval failed; error: ', e)
-            return False
+            return False, e
         
 
     # list entities in the table with try except
     def table_list_entities(self, args):
         args = list(args)
         try:
-            self.table_client.list_entities()
+            res = self.table_client.list_entities()
             print(self.service, ': Entities listed')
-            return True
+            return True, res
         except Exception as e:
             print(self.service, ': Entities listing failed; error: ', e)
-            return False
+            return False, e
         
 
     # query entities with default query filter none with try except
@@ -198,12 +196,12 @@ class MyTableClient():
             args.append("PartitionKey eq 'color'")
 
         try:
-            self.table_client.query_entities(args[0])
+            res = self.table_client.query_entities(args[0])
             print(self.service, ': Entities queried')
-            return True
+            return True, res
         except Exception as e:
             print(self.service, ': Entities query failed; error: ', e)
-            return False
+            return False, e
         
 
     # set table access policy default policy none with try except
@@ -212,12 +210,12 @@ class MyTableClient():
         if not len(args) > 0:
             args.append({})
         try:
-            self.table_client.set_table_access_policy(signed_identifiers=args[0])
+            res = self.table_client.set_table_access_policy(signed_identifiers=args[0])
             print(self.service, ': Table access policy set')
-            return True
+            return True, res
         except Exception as e:
             print(self.service, ': Table access policy set failed; error: ', e)
-            return False
+            return False, e
         
 
     # submit transaction with default transaction none with try except
@@ -233,12 +231,12 @@ class MyTableClient():
             # create entity and then update it
             self.table_create_entity([])
 
-            self.table_client.submit_transaction(args[0])
+            res = self.table_client.submit_transaction(args[0])
             print(self.service, ': Transaction submitted')
-            return True
+            return True, res
         except Exception as e:
             print(self.service, ': Transaction submission failed; error: ', e)
-            return False
+            return False, e
         
 
     # update entity with default entity none with try except
@@ -263,12 +261,12 @@ class MyTableClient():
             # create entity and then update it
             self.table_create_entity([])
 
-            self.table_client.update_entity(entity=args[0], mode=args[1])
+            res = self.table_client.update_entity(entity=args[0], mode=args[1])
             print(self.service, ': Entity updated')
-            return True
+            return True, res
         except Exception as e:
             print(self.service, ': Entity update failed; error: ', e)
-            return False
+            return False, e
         
 
     # upsert entity with default entity none with try except
@@ -289,12 +287,12 @@ class MyTableClient():
         if not len(args) > 1:
             args.append(UpdateMode.MERGE)
         try:
-            self.table_client.upsert_entity(entity=args[0], mode=args[1])
+            res = self.table_client.upsert_entity(entity=args[0], mode=args[1])
             print(self.service, ': Entity upserted')
-            return True
+            return True, res
         except Exception as e:
             print(self.service, ': Entity upsert failed; error: ', e)
-            return False
+            return False, e
         
         
     # garbage collection

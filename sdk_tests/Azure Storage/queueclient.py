@@ -13,8 +13,6 @@ class MyQueueClient:
 
         # randomize seed
         random.seed(datetime.datetime.now())
-
-        print("****************************************************************************")
         
         # queue name
         if queue_name is None:
@@ -43,8 +41,8 @@ class MyQueueClient:
 
         try:
             self.queue_service_client.create_queue(self.queue_name)
-        except:
-            pass
+        except Exception as e:
+            print('Queue creation failed; error: ', e)
 
         try:
             self.queue_client = self.queue_service_client.get_queue_client(self.queue_name)
@@ -57,12 +55,12 @@ class MyQueueClient:
     def queue_clear_messages(self, args):
         args = list(args)
         try:
-            self.queue_client.clear_messages()
+            res = self.queue_client.clear_messages()
             print(self.service, ': Success -- Queue cleared')
-            return True
+            return True, res
         except Exception as e:
             print(self.service, ': Failed -- Queue clear failed; error: ', e)
-            return False
+            return False, e
 
 
     # create queue if not exists with try except
@@ -73,12 +71,12 @@ class MyQueueClient:
         
         try:
             self.queue_client = self.queue_client.from_connection_string(self.connection_string, args[0])
-            self.queue_client.create_queue()
+            res = self.queue_client.create_queue()
             print(self.service, ': Success -- Queue created')
-            return True
+            return True, res
         except Exception as e:
             print(self.service, ': Failed -- Queue creation failed; error: ', e)
-            return False
+            return False, e
 
 
     # delete message with arguments as none try except
@@ -94,12 +92,12 @@ class MyQueueClient:
             # msg id and pop receipt
             message_id = resp['id']
             pop_receipt = resp['pop_receipt']
-            self.queue_client.delete_message(message_id, pop_receipt)
+            res = self.queue_client.delete_message(message_id, pop_receipt)
             print(self.service, ': Success -- Message deleted')
-            return True
+            return True, res
         except Exception as e:
             print(self.service, ': Failed -- Message deletion failed; error: ', e)
-            return False
+            return False, e
         
 
 
@@ -108,14 +106,14 @@ class MyQueueClient:
         args = list(args)
         
         try:
-            self.queue_client.delete_queue()
+            res = self.queue_client.delete_queue()
             print(self.service, ': Success -- Queue deleted')
             # create queue again
             self.queue_create([])
-            return True
+            return True, res
         except Exception as e:
             print(self.service, ': Failed -- Queue deletion failed; error: ', e)
-            return False
+            return False, e
         
 
 
@@ -124,12 +122,12 @@ class MyQueueClient:
         args = list(args)
         
         try:
-            self.queue_client.get_queue_access_policy()
+            res = self.queue_client.get_queue_access_policy()
             print(self.service, ': Success -- Queue access policy retrieved')
-            return True
+            return True, res
         except Exception as e:
             print(self.service, ': FAILED : Queue access policy retrieval failed; error: ', e)
-            return False
+            return False, e
         
 
     # get queue properties with arguments as none try except
@@ -137,12 +135,12 @@ class MyQueueClient:
         args = list(args)
             
         try:
-            self.queue_client.get_queue_properties()
+            res = self.queue_client.get_queue_properties()
             print(self.service, ': Success -- Queue properties retrieved')
-            return True
+            return True, res
         except Exception as e:
             print(self.service, ': Failed -- Queue properties retrieval failed; error: ', e)
-            return False
+            return False, e
         
     # peek messages with arguments as none try except
     def queue_peek_messages(self, args):
@@ -152,23 +150,23 @@ class MyQueueClient:
             args.append(5)
         
         try:
-            self.queue_client.peek_messages(args[0])
+            res = self.queue_client.peek_messages(args[0])
             print(self.service, ': Success -- Queue messages peeked')
-            return True
+            return True, res
         except Exception as e:
             print(self.service, ': Failed -- Queue messages peek failed; error: ', e)
-            return False
+            return False, e
         
     # receive message with arguments as none try except
     def queue_receive_message(self, args):
             
         try:
-            self.queue_client.receive_message()
+            res = self.queue_client.receive_message()
             print(self.service, ': Success -- Queue messages received')
-            return True
+            return True, res
         except Exception as e:
             print(self.service, ': Queue messages receive failed; error: ', e)
-            return False
+            return False, e
         
 
     # receive messages with arguments as none try except
@@ -179,12 +177,12 @@ class MyQueueClient:
             args.append(5)
                 
         try:
-            self.queue_client.receive_messages(max_messages=args[0])
+            res = self.queue_client.receive_messages(max_messages=args[0])
             print(self.service, ': Success -- Queue messages received')
-            return True
+            return True, res
         except Exception as e:
             print(self.service, ': Failed -- Queue messages receive failed; error: ', e)
-            return False
+            return False, e
     
 
     # send message with arguments as none try except
@@ -195,12 +193,12 @@ class MyQueueClient:
             args.append('Hello World')
                         
         try:
-            self.queue_client.send_message(args[0])
+            res = self.queue_client.send_message(args[0])
             print(self.service, ': Success -- Message sent')
-            return True
+            return True, res
         except Exception as e:
             print(self.service, ': Failed -- Message send failed; error: ', e)
-            return False
+            return False, e
         
 
     # set queue access policy with arguments as none try except
@@ -212,12 +210,12 @@ class MyQueueClient:
             resp = self.queue_client.get_queue_access_policy()
             print(self.service, ': Success -- Queue access policy retrieved')
             # set access policy
-            self.queue_client.set_queue_access_policy(resp)
+            res = self.queue_client.set_queue_access_policy(resp)
             print(self.service, ': Success -- Queue access policy set')
-            return True
+            return True, res
         except Exception as e:
             print(self.service, ': Failed -- Queue access policy set failed; error: ', e)
-            return False
+            return False, e
 
 
     # set queue metadata with arguments as none try except
@@ -226,12 +224,12 @@ class MyQueueClient:
         if not len(args) > 0:
             args.append({'key':'value'})
         try:
-            self.queue_client.set_queue_metadata(args[0])
+            res = self.queue_client.set_queue_metadata(args[0])
             print(self.service, ': Success -- Queue metadata set')
-            return True
+            return True, res
         except Exception as e:
             print(self.service, ': Failed -- Queue metadata set failed; error: ', e)
-            return False
+            return False, e
         
 
     # update message with arguments as none try except
@@ -249,12 +247,12 @@ class MyQueueClient:
             # msg id and pop receipt
             message_id = resp['id']
             pop_receipt = resp['pop_receipt']
-            self.queue_client.update_message(message_id, pop_receipt, args[1])
+            res = self.queue_client.update_message(message_id, pop_receipt, args[1])
             print(self.service, ': Success -- Message updated')
-            return True
+            return True, res
         except Exception as e:
             print(self.service, ': Failed -- Message update failed; error: ', e)
-            return False
+            return False, e
         
     # garbage collection
     def __cleanup__(self):
