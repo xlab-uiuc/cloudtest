@@ -9,7 +9,7 @@ os.environ["REQUESTS_CA_BUNDLE"] = "/etc/ssl/certs/ca-certificates.crt"
 
 credential = DefaultAzureCredential()
 
-class BlobClient:
+class MyBlobClient:
     def __init__(self, emulator=True, container_name=None, blob_name=None):
         
         # randomize seed
@@ -70,6 +70,7 @@ class BlobClient:
             self.blob_client = self.container_client.get_blob_client(self.blob_name)
         except Exception as e:
             print(self.service + ": Blob client is not received. Error: ", e)
+
 
     # abort copy with parameters default none and try except block
     def abort_copy(self, args):
@@ -152,7 +153,7 @@ class BlobClient:
         self.container_client.upload_blob(data=b'For append blob', name=args[0], blob_type='AppendBlob')
         # source url
         if not len(args) > 1:
-            args.append(f'https://{self.account_name}.blob.core.windows.net/{self.container_name}/{args[0]}')
+            args.append(f'https://{self.account_name}.blob.core.windows.net/{self.container_name}/{self.blob_name}')
         # source offset
         if not len(args) > 2:
             args.append(0)
@@ -162,11 +163,12 @@ class BlobClient:
         
 
         try:
-            self.blob_client.append_block_from_url(copy_source_url=args[1], source_offset=args[2], source_length=args[3])
-            print(self.service + ": Block is appended.")
+            cc = self.container_client.get_blob_client(args[0])
+            cc.append_block_from_url(copy_source_url=args[1], source_offset=args[2], source_length=args[3])
+            print(self.service + ": Block is appended from url.")
             return True
         except Exception as e:
-            print(self.service + ": Block is not appended. Error: ", e)
+            print(self.service + ": Block is not appended from url. Error: ", e)
             return False
         
 
@@ -613,21 +615,33 @@ class BlobClient:
     # stage block from url with try except block
     def stage_block_from_url(self, args):
         args = list(args)
+
+        random_blob = f'blob{random.randint(1, 1000000)}'
+        # upload blob
+        try:
+            #upload blob from file page
+            with open('page', 'rb') as data:
+                self.container_client.upload_blob(random_blob, data, blob_type='BlockBlob')
+            print(self.service + ": Blob is uploaded.")
+        except Exception as e:
+            print(self.service + ": Blob is not uploaded. Error: ", e)
+            return False
+ 
         # block id
         if not len(args) > 0:
             args.append(b'0x8D')
         # source url
         if not len(args) > 1:
-            args.append(f'https://{self.account_name}.blob.core.windows.net/mycontainer/myblob')
+            args.append(f'https://{self.account_name}.blob.core.windows.net/{self.container_name}/{random_blob}')
         # source offset
         if not len(args) > 2:
             args.append(0)
         # source length
         if not len(args) > 3:
             args.append(512)
-        # source content md5
+        # source content valid md5
         if not len(args) > 4:
-            args.append(b'0x8D')
+            args.append('')
 
 
         try:
@@ -759,9 +773,19 @@ class BlobClient:
     # upload pages from url
     def upload_pages_from_url(self, args):
         args = list(args)
+
+        random_blob = f'blob{random.randint(0, 1000000)}'
+        # upload blob
+        try:
+            with open('page', 'rb') as data:
+                self.container_client.upload_blob(data=data, name=random_blob, blob_type='PageBlob')
+        except Exception as e:
+            print(self.service + ": Page is not uploaded. Error: ", e)
+            return False
+
         # source url
         if not len(args) > 0:
-            args.append(f'https://{self.account_name}.blob.core.windows.net/mycontainer/myblob')
+            args.append(f'https://{self.account_name}.blob.core.windows.net/{self.container_name}/{random_blob}')
         # offset
         if not len(args) > 1:
             args.append(0)
@@ -772,7 +796,8 @@ class BlobClient:
         if not len(args) > 3:
             args.append(0)
         try:
-            self.blob_client.upload_pages_from_url(args[0], args[1], args[2], args[3])
+            cc = self.container_client.get_blob_client(random_blob)
+            cc.upload_pages_from_url(args[0], args[1], args[2], args[3])
             print(self.service + ": Pages are uploaded from url.")
             return True
         except Exception as e:
