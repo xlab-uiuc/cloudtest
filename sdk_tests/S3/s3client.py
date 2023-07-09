@@ -944,19 +944,17 @@ class S3Client:
             return False
         
 
-    # # !!ignore
-    # # get paginator with try accept and args as none
-    # def s3_get_paginator(self, bucket_name=None):
-    #     if bucket_name is None:
-    #         bucket_name = self.bucket_name
+    # !!ignore
+    # get paginator with try accept and args as none
+    def s3_get_paginator(self):
 
-    #     try:
-    #         self.client.get_paginator(bucket_name)
-    #         print(self.service, ': ' + f'Success -- Paginator retrieved from bucket {bucket_name}')
-    #         return True
-    #     except Exception as e:
-    #         print(self.service, ': ' + f'Fail -- Error retrieving paginator from bucket {bucket_name}: {e}')
-    #         return False
+        try:
+            self.client.get_paginator('list_object_versions')
+            print(self.service, ': ' + f'Success -- Paginator retrieved from bucket {bucket_name}')
+            return True
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error retrieving paginator from bucket {bucket_name}: {e}')
+            return False
         
 
     # get public access block with try accept and args as none
@@ -1428,32 +1426,32 @@ class S3Client:
             print(self.service, ': ' + f'Fail -- Error creating bucket ownership controls for bucket {bucket_name}: {e}')
             return False
 
-    # # !!ignore
-    # # put bucket policy with try accept and args as none
-    # def s3_put_bucket_policy(self, bucket_name=None, policy=None):
-    #     if bucket_name is None:
-    #         bucket_name = self.bucket_name
-    #     if policy is None:
-    #         policy = {
-    #             'Version': '2012-10-17',
-    #             'Statement': [
-    #                 {
-    #                     'Sid': 'AddPerm',
-    #                     'Effect': 'Allow',
-    #                     'Principal': '*',
-    #                     'Action': ['s3:GetObject'],
-    #                     'Resource': f'arn:aws:s3:::{bucket_name}/*'
-    #                 },
-    #             ]
-    #         }
+    # !!ignore
+    # put bucket policy with try accept and args as none
+    def s3_put_bucket_policy(self, bucket_name=None, policy=None):
+        if bucket_name is None:
+            bucket_name = self.bucket_name
+        if policy is None:
+            policy = {
+                'Version': '2012-10-17',
+                'Statement': [
+                    {
+                        'Sid': 'AddPerm',
+                        'Effect': 'Allow',
+                        'Principal': '*',
+                        'Action': ['s3:GetObject'],
+                        'Resource': f'arn:aws:s3:::{bucket_name}/*'
+                    },
+                ]
+            }
 
-    #     try:
-    #         self.client.put_bucket_policy(Bucket=bucket_name, Policy=json.dumps(policy))
-    #         print(self.service, ': ' + f'Success -- Bucket policy created for bucket {bucket_name}')
-    #         return True
-    #     except Exception as e:
-    #         print(self.service, ': ' + f'Fail -- Error creating bucket policy for bucket {bucket_name}: {e}')
-    #         return False
+        try:
+            self.client.put_bucket_policy(Bucket=bucket_name, Policy=json.dumps(policy))
+            print(self.service, ': ' + f'Success -- Bucket policy created for bucket {bucket_name}')
+            return True
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error creating bucket policy for bucket {bucket_name}: {e}')
+            return False
 
 
     # put bucket replication with try accept and args as none
@@ -1520,7 +1518,8 @@ class S3Client:
             bucket_name = self.bucket_name
         if versioning_configuration is None:
             versioning_configuration = {
-                'Status': 'Enabled'
+                'Status': 'Enabled',
+                'MFADelete': 'Disabled',
             }
 
         try:
@@ -1829,6 +1828,44 @@ class S3Client:
     # upload part copy 
     # write get object response body
 
+    # garbage collector
+    def __clean__(self):
+        # delete all buckets
+        try:
+            for bucket in self.client.list_buckets()['Buckets']:
+
+                try:
+                    # delete all object versions
+                    object_response_paginator = self.client.get_paginator('list_object_versions')
+                    for object_response_itr in object_response_paginator.paginate(Bucket=bucket['Name']):
+
+                        if 'DeleteMarkers' in object_response_itr:
+                            for delete_marker in object_response_itr['DeleteMarkers']:
+                                try:
+                                    self.client.delete_object(Bucket=bucket['Name'], Key=delete_marker['Key'], VersionId=delete_marker['VersionId'], BypassGovernanceRetention=True)
+                                except:
+                                    self.client.delete_object(Bucket=bucket['Name'], Key=delete_marker['Key'], VersionId=delete_marker['VersionId'])
+
+                        if 'Versions' in object_response_itr:
+                            for version in object_response_itr['Versions']:
+                                try:
+                                    self.client.delete_object(Bucket=bucket['Name'], Key=version['Key'], VersionId=version['VersionId'], BypassGovernanceRetention=True)
+                                except:
+                                    self.client.delete_object(Bucket=bucket['Name'], Key=version['Key'], VersionId=version['VersionId'])
+                   
+                    # delete the bucket
+                    self.client.delete_bucket(Bucket=bucket['Name'])
+                    print(self.service, ': ' + f'Success -- Bucket {bucket["Name"]} deleted in {self.service} S3')
+                except Exception as e:
+                    print(self.service, ': ' + f'Fail -- Error deleting bucket {bucket["Name"]} in {self.service} S3: {e}')
+
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error listing buckets in {self.service} S3: {e}')
+
+            
+        print(self.service, ': ' + f'Cleaned all buckets in {self.service} S3')
+
+
 
 
 
@@ -1838,12 +1875,14 @@ if __name__ == '__main__':
     table_client = S3Client(emulator=False)
     # logging.basicConfig(level=logging.DEBUG)
 
-    table_client.s3_list_buckets()
+    # table_client.s3_list_buckets()
 
     # get all methods and run them
     methods = [getattr(S3Client, attr) for attr in dir(S3Client) if callable(getattr(S3Client, attr)) and not attr.startswith("__")]
 
     # print(len(methods))
-    for i in methods:
-        print(i.__name__)
+    # for i in methods:
+    #     print(i.__name__)
     #     i(table_client)
+
+    table_client.__clean__()
