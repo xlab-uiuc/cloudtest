@@ -21,13 +21,15 @@ def oracles(res_cloud, res_em):
     global ERROR_MISMATCH_COUNT
     global STATUS_CODE_MISMATCH_COUNT
 
-    if res_cloud[0] != res_em[0]:
+    if res_cloud[0] == res_em[0] and res_em[0] == True:
+        return flag, ""
+
+    elif res_cloud[0] != res_em[0]:
         flag = True
         log += (f'--Behavior mismatch--\n')
         log += (f'CLOUD: {outcome(res_cloud[0])} -- Response: {res_cloud[1]} \n')
         log += (f'EMULATOR: {outcome(res_em[0])} -- Response: {res_em[1]}\n\n')
         BEHAVIOR_MISMATCH_COUNT += 1
-
         return flag, log
 
     cloud_code = res_cloud[1].response['Error']['Code']
@@ -47,8 +49,8 @@ def oracles(res_cloud, res_em):
     elif cloud_msg != em_msg:
         flag = True
         log += (f'--Error message mismatch--\n')
-        log += (f'CLOUD: {outcome(res_cloud[0])}  -- Error Message: {cloud_msg} -- Error Code: {cloud_code}\n')
-        log += (f'EMULATOR: {outcome(res_em[0])} -- Error Message: {em_msg} -- Error Code: {em_code}\n\n')
+        log += (f'CLOUD: {outcome(res_cloud[0])}  -- Error Message: {cloud_msg} -- Error Code: {cloud_code} -- HTTP Status code: {cloud_http}\n')
+        log += (f'EMULATOR: {outcome(res_em[0])} -- Error Message: {em_msg} -- Error Code: {em_code}-- HTTP Status code: {em_http}\n\n')
         ERROR_MISMATCH_COUNT += 1
 
     return flag, log
@@ -108,7 +110,7 @@ def run_ops(arg, methods, count, discrepant_methods):
                     with open('discrepancy.txt', 'a') as f:
                         f.write(f'DISCREPANT METHOD: {method.__name__} --- ARGS: {arg[t_count]}\n')
                         f.write(result[1])
-                        f.write(f'\n\n\ncount: {count}   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n\n\n')
+                        f.write(f'\n\ncount: {count}   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n\n\n')
             
             except Exception as e:
                 print("Exception: ", e)
@@ -131,7 +133,7 @@ def run1v1(arg, methods_dd, t_count):
     # f = open("discrepant_methods.txt", "r")
     # discrepant_methods = f.read().split('\n')
     # f.close()
-    
+
     discrepant_methods = []
 
     d_count = 0

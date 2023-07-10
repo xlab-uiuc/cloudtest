@@ -21,7 +21,10 @@ def oracles(res_cloud, res_em):
     global ERROR_MISMATCH_COUNT
     global STATUS_CODE_MISMATCH_COUNT
 
-    if res_cloud[0] != res_em[0]:
+    if res_cloud[0] == res_em[0] and res_em[0] == True:
+        return flag, ""
+
+    elif res_cloud[0] != res_em[0]:
         flag = True
         log += (f'--Behavior mismatch--\n')
         log += (f'CLOUD: {outcome(res_cloud[0])} -- Response: {res_cloud[1]} \n')
