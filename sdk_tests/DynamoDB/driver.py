@@ -1,0 +1,166 @@
+from contextlib import redirect_stdout
+import io
+from dynamodbclient import DynamoDBClient
+
+def outcome(flag):
+    if flag:
+        return 'SUCCESS'
+    else:
+        return 'FAILURE'
+
+
+def oracles(res_cloud, res_em):
+    log = ''
+    flag =  False
+
+    cloud_code = res_cloud[1].response['Error']['Code']
+    em_code = res_em[1].response['Error']['Code']
+    cloud_msg = res_cloud[1].response['Error']['Message']
+    em_msg = res_em[1].response['Error']['Message']
+    cloud_http = res_cloud[1].response['ResponseMetadata']['HTTPStatusCode']
+    em_http = res_em[1].response['ResponseMetadata']['HTTPStatusCode']
+
+    if res_cloud[0] != res_em[0]:
+        flag = True
+        log += (f'--Behavior mismatch--\n')
+        log += (f'CLOUD: {outcome(res_cloud[0])} -- Response: {res_cloud[1]} \n')
+        log += (f'EMULATOR: {outcome(res_em[0])} -- Response: {res_em[1]}\n\n')
+
+    elif cloud_http != em_http:
+        flag = True
+        log += (f'--Status code mismatch--\n')
+        log += (f'CLOUD: {outcome(res_cloud[0])} -- HTTP Status code: {cloud_http} -- Error Code: {cloud_code} -- Error Message: {cloud_msg}\n')
+        log += (f'EMULATOR: {outcome(res_em[0])} -- HTTP Status code: {em_http} -- Error Code: {em_code} -- Error Message: {em_msg}\n\n')
+
+    elif cloud_msg != em_msg:
+        flag = True
+        log += (f'--Error message mismatch--\n')
+        log += (f'CLOUD: {outcome(res_cloud[0])}  -- Error Message: {cloud_msg} -- Error Code: {cloud_code}\n')
+        log += (f'EMULATOR: {outcome(res_em[0])} -- Error Message: {em_msg} -- Error Code: {em_code}\n\n')
+
+    return flag, log
+
+
+# for testing purposes (Remove later)
+def simple_test_run(flag):
+    flag = False
+
+    # get methods
+    methods_dd = [getattr(DynamoDBClient, attr) for attr in dir(DynamoDBClient) if callable(getattr(DynamoDBClient, attr)) and not attr.startswith("__")]
+
+    # run methods
+    for i in methods_dd:
+        
+        # if 'stage_block_from_url' in i.__name__:
+        test_bc = DynamoDBClient(flag)
+        try:
+            r = i(test_bc, [])
+        finally:
+            test_bc.__cleanup__()
+
+
+
+def run_ops(arg, methods, count, discrepant_methods):
+
+    t_count = -1
+    for method in methods:
+            t_count += 1
+            
+            # to increase fuzzing efficiency however it trades off coverage
+            # if method.__name__ in discrepant_methods:
+            #     continue
+
+            test_cloud = DynamoDBClient(False)
+            test_em = DynamoDBClient()
+           
+            try:
+                print('METHOD: '+ method.__name__, '--- ARGS: ') #arg[t_count]
+
+                # run method on cloud and emulator
+                res_cloud = method(test_cloud) #arg[t_count]
+                res_em = method(test_em) #arg[t_count]
+
+                # oracles
+                result = oracles(res_cloud, res_em)
+                
+                if result[0]:
+                    count += 1
+                    print('\nDISCREPANCY FOUND!\n')
+                    print(result[1])
+
+                    if method.__name__ not in discrepant_methods:
+                        discrepant_methods.append(method.__name__)
+
+                    # with open('../sdk_tests/DynamoDB/discrepancy.txt', 'a') as f:
+                    with open('discrepancy.txt', 'a') as f:
+                        f.write(f'DISCREPANT METHOD: {method.__name__} --- ARGS: {arg[t_count]}\n')
+                        f.write(result[1])
+                        f.write(f'\n\n\ncount: {count}   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n\n\n')
+            
+            except Exception as e:
+                print("Exception: ", e)
+
+            finally:
+                test_cloud.__cleanup__()
+                test_em.__cleanup__()
+
+    return count
+
+
+def run1v1(arg, methods_dd, t_count):
+
+    # do not run discrepant methods again
+    # f = open("../sdk_tests/DynamoDB/discrepant_methods.txt", "r")
+    # f = open("discrepant_methods.txt", "r")
+    # discrepant_methods = f.read().split('\n')
+    # f.close()
+    discrepant_methods = []
+
+    d_count = 0
+
+    # done --> to-do: compare error message when res[0] === false, compare using .response.status_code and response.reason
+
+    with io.StringIO() as buf, redirect_stdout(buf):
+
+        # run dynamodb client ops
+        d_count = run_ops(arg["1"], methods_dd, d_count, discrepant_methods)
+        
+        output = buf.getvalue().strip()
+
+    # with open('../sdk_tests/DynamoDB/discrepancy.txt', 'a') as f:
+    with open('discrepancy.txt', 'a') as f:
+        f.write(f'{d_count}/{t_count}   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n')
+        f.write('Round ended\n\n')
+
+    # store methods names in order to skip in the next run
+    # with open('../sdk_tests/DynamoDB/discrepant_methods.txt', 'w') as f:
+    with open('discrepant_methods.txt', 'w') as f:
+        f.write("\n".join(discrepant_methods))  
+
+    # extract_discrepancy('../sdk_tests/DynamoDB/discrepancy.txt')
+
+    # write buf to a new file
+    # with open('../sdk_tests/DynamoDB/log_all.txt', 'w') as f:
+    with open('log_all.txt', 'w') as f:
+        f.write(output)
+
+
+
+'''test suites'''
+def main(arg):
+    # get methods
+    methods_dd = [getattr(DynamoDBClient, attr) for attr in dir(DynamoDBClient) if callable(getattr(DynamoDBClient, attr)) and not attr.startswith("__")]
+    t_count = len(methods_dd)
+
+    if arg == ():
+        arg = {}
+        arg['1'] = [[]] * len(methods_dd)
+
+    # run methods
+    run1v1(arg, methods_dd, t_count)
+
+
+'''Get fuzz data'''
+if __name__ == '__main__':
+    arg = ()
+    main(arg)
