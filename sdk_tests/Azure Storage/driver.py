@@ -68,6 +68,7 @@ def oracles(res_cloud, res_em):
     httpException = False
 
     # check exception nature for 2nd and 3rd oracle
+    # https://learn.microsoft.com/en-us/python/api/azure-core/azure.core.exceptions?view=azure-python
     if not res_cloud[0] and isinstance(res_cloud[1], HttpResponseError):
         if not res_em[0] and isinstance(res_em[1], HttpResponseError):
             httpException = True
@@ -323,26 +324,26 @@ def run1v1(arg, methods_blobClient, methods_containerClient, methods_blobService
 
     d_count = 0
 
-    # to-do: compare error message when res[0] === false, compare using .response.status_code and response.reason
+    # done --> to-do: compare error message when res[0] === false, compare using .response.status_code and response.reason
 
     with io.StringIO() as buf, redirect_stdout(buf):
 
         # run blob client ops
-        d_count = run_ops(arg["1"], methods_blobClient, "bc", d_count, buf, discrepant_methods)
+        d_count = run_ops(arg["1"], methods_blobClient, "bc", d_count, discrepant_methods)
         # run container client ops
-        d_count = run_ops(arg["2"], methods_containerClient, "cc", d_count, buf, discrepant_methods)
+        d_count = run_ops(arg["2"], methods_containerClient, "cc", d_count, discrepant_methods)
         # run blob service client ops
-        d_count = run_ops(arg["3"], methods_blobServiceClient, "bsc", d_count, buf, discrepant_methods)
+        d_count = run_ops(arg["3"], methods_blobServiceClient, "bsc", d_count, discrepant_methods)
         # run blob lease client ops
-        d_count = run_ops(arg["4"], methods_blobLeaseClient, "blc", d_count, buf, discrepant_methods)
+        d_count = run_ops(arg["4"], methods_blobLeaseClient, "blc", d_count, discrepant_methods)
         # run table client ops
-        d_count = run_ops(arg["5"], methods_tableClient, "tc", d_count, buf, discrepant_methods)
+        d_count = run_ops(arg["5"], methods_tableClient, "tc", d_count, discrepant_methods)
         # run table service client ops
-        d_count = run_ops(arg["6"], methods_tableServiceClient, "tsc", d_count, buf, discrepant_methods)
+        d_count = run_ops(arg["6"], methods_tableServiceClient, "tsc", d_count, discrepant_methods)
         # run queue client ops
-        d_count = run_ops(arg["7"], methods_queueClient, "qc", d_count, buf, discrepant_methods)
+        d_count = run_ops(arg["7"], methods_queueClient, "qc", d_count, discrepant_methods)
         # run queue service client ops
-        d_count = run_ops(arg["8"], methods_queueServiceClient, "qsc", d_count, buf, discrepant_methods)
+        d_count = run_ops(arg["8"], methods_queueServiceClient, "qsc", d_count, discrepant_methods)
         output = buf.getvalue().strip()
 
     with open('../sdk_tests/Azure Storage/discrepancy.txt', 'a') as f:
