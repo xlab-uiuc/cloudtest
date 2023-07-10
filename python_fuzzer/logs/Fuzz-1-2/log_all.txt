@@ -1,0 +1,1096 @@
+****************************************************************************
+****************************************************************************
+method: abort_copy args:  [0]
+**AZURE**: Copy is not aborted -- unsuccessful. Error:  There is currently no pending copy operation.
+RequestId:9f7a821d-d01e-0028-59ba-aba937000000
+Time:2023-07-01T01:19:38.4042917Z
+ErrorCode:NoPendingCopyOperation
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>NoPendingCopyOperation</Code><Message>There is currently no pending copy operation.
+RequestId:9f7a821d-d01e-0028-59ba-aba937000000
+Time:2023-07-01T01:19:38.4042917Z</Message></Error>
+**EMULATOR**: Copy is not aborted -- unsuccessful. Error:  There is currently no pending copy operation.
+RequestId:b8b47f2e-df53-4be3-a209-4060a38bb3e6
+Time:2023-07-01T01:19:38.448Z
+ErrorCode:NoPendingCopyOperation
+Content: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>NoPendingCopyOperation</Code>
+  <Message>There is currently no pending copy operation.
+RequestId:b8b47f2e-df53-4be3-a209-4060a38bb3e6
+Time:2023-07-01T01:19:38.448Z</Message>
+</Error>
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: acquire_lease args:  ['6', 1]
+**AZURE**: Lease is not acquired. Error:  The value for one of the HTTP headers is not in the correct format.
+RequestId:fe96a9f6-001e-003b-6cba-ab8d3b000000
+Time:2023-07-01T01:19:39.3023402Z
+ErrorCode:InvalidHeaderValue
+headername:x-ms-lease-duration
+headervalue:6
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>InvalidHeaderValue</Code><Message>The value for one of the HTTP headers is not in the correct format.
+RequestId:fe96a9f6-001e-003b-6cba-ab8d3b000000
+Time:2023-07-01T01:19:39.3023402Z</Message><HeaderName>x-ms-lease-duration</HeaderName><HeaderValue>6</HeaderValue></Error>
+**EMULATOR**: Lease is not acquired. Error:  The value for one of the HTTP headers is not in the correct format.
+RequestId:c8e6ee64-4ebb-4f68-9c54-02ead0c134b9
+Time:2023-07-01T01:19:39.327Z
+ErrorCode:InvalidHeaderValue
+Content: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>InvalidHeaderValue</Code>
+  <Message>The value for one of the HTTP headers is not in the correct format.
+RequestId:c8e6ee64-4ebb-4f68-9c54-02ead0c134b9
+Time:2023-07-01T01:19:39.327Z</Message>
+</Error>
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: append_block args:  [0, '0']
+**AZURE**: Blob is not appended. Error:  Unexpected type for 'content': '<class 'int'>'. We expect 'content' to either be str, bytes, a open file-like object or an iterable/asynciterable.
+**EMULATOR**: Blob is not appended. Error:  Unexpected type for 'content': '<class 'int'>'. We expect 'content' to either be str, bytes, a open file-like object or an iterable/asynciterable.
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: append_block_from_url args:  [0, 1, '0', '1']
+Exception:  Please specify a container name and blob name.
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: clear_page args:  ['-4', '0']
+**AZURE**: Page is not cleared. Error:  not all arguments converted during string formatting
+**EMULATOR**: Page is not cleared. Error:  not all arguments converted during string formatting
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: commit_block_list args:  ['[":9rz$v3]w", "@7X", "", ""]', {'message': 'Hello, World!'}]
+**AZURE**: Block list is not committed. Error:  The specified blob or block content is invalid.
+RequestId:b7f59e95-001e-0004-14ba-ab4598000000
+Time:2023-07-01T01:19:43.4227997Z
+ErrorCode:InvalidBlobOrBlock
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>InvalidBlobOrBlock</Code><Message>The specified blob or block content is invalid.
+RequestId:b7f59e95-001e-0004-14ba-ab4598000000
+Time:2023-07-01T01:19:43.4227997Z</Message></Error>
+**EMULATOR**: Block list is not committed. Error:  The specified block list is invalid.
+RequestId:a6dfe51a-4668-4811-9176-53c82734324e
+Time:2023-07-01T01:19:43.461Z
+ErrorCode:InvalidBlockList
+Content: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>InvalidBlockList</Code>
+  <Message>The specified block list is invalid.
+RequestId:a6dfe51a-4668-4811-9176-53c82734324e
+Time:2023-07-01T01:19:43.461Z</Message>
+</Error>
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: create_append_blob args:  [{'name': 'Jane Doe', 'age': 25, 'address': '456 Elm Street, Anytown, USA'}]
+**AZURE**: Append blob is not created. Error:  'int' object has no attribute 'strip'
+**EMULATOR**: Append blob is not created. Error:  'int' object has no attribute 'strip'
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: create_page_blob args:  ['6', {'name': 'Apple', 'price': 100}, 2]
+**AZURE**: Page blob is not created. Error:  'int' object has no attribute 'strip'
+**EMULATOR**: Page blob is not created. Error:  'int' object has no attribute 'strip'
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: create_snapshot args:  [{'name': 'Apple', 'price': 100}]
+**AZURE**: Snapshot is not created. Error:  'int' object has no attribute 'strip'
+**EMULATOR**: Snapshot is not created. Error:  'int' object has no attribute 'strip'
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: delete_blob args:  [0]
+**AZURE**: Blob is deleted.
+**EMULATOR**: Blob is deleted.
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: delete_immutability_policy args:  ['[', '"', 'q', ',', 'L', 'X', 'k', 'v', '"', ',', ' ', '"', 'M', '"', ',', ' ', '"', ',', '=', '"', ',', ' ', '"', 'r', '"', ']']
+**AZURE**: Immutability policy is not deleted. Error:  Operation returned an invalid status 'ImmutableStorageWithVersioning: feature is not enabled.'
+Content: <?xml version="1.0" encoding="utf-8"?>
+<Error><Code>ImmutableStorageWithVersioningIsNotEnabled</Code><Message>ImmutableStorageWithVersioning: feature is not enabled.
+RequestId:61c045c3-301e-001f-2dba-ab7b9b000000
+Time:2023-07-01T01:19:48.5782577Z</Message></Error>
+**EMULATOR**: Immutability policy is not deleted. Error:  Operation returned an invalid status 'Accepted'
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: download_blob args:  ['0', '4']
+**AZURE**: Blob is not downloaded. Error:  unsupported operand type(s) for -: 'str' and 'int'
+**EMULATOR**: Blob is not downloaded. Error:  unsupported operand type(s) for -: 'str' and 'int'
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: exists args:  ['[', '"', 'k', ' ', 'P', 'S', 'z', ')', '*', 'K', '7', '"', ',', ' ', '"', '}', 'm', '2', '`', 'P', '{', '/', 'r', '"', ']']
+**AZURE**: Blob exists succeeded --  True
+**EMULATOR**: Blob exists succeeded --  True
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: get_account_information args:  ['[', '"', '-', 'u', 'G', 'F', 'y', 'x', 'e', 'y', '#', 'B', 'm', 'b', ']', '?', 'Q', 'p', '/', 'c', 'j', 'v', 'b', '~', '"', ',', ' ', '"', '"', ']']
+**AZURE**: Account information is not retrieved. Error:  The specified resource does not exist.
+RequestId:a77a57fb-401e-0077-13ba-ab1d0b000000
+Time:2023-07-01T01:19:51.4729140Z
+ErrorCode:ResourceNotFound
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>ResourceNotFound</Code><Message>The specified resource does not exist.
+RequestId:a77a57fb-401e-0077-13ba-ab1d0b000000
+Time:2023-07-01T01:19:51.4729140Z</Message></Error>
+**EMULATOR**: Account information is retrieved.
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: get_blob_properties args:  ['[', '"', '>', ',', 'L', 'H', 'c', '"', ',', ' ', '"', 't', '-', ';', '"', ',', ' ', '"', '>', '"', ',', ' ', '"', '2', '"', ']']
+**AZURE**: Blob properties are retrieved.
+**EMULATOR**: Blob properties are retrieved.
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: get_blob_tags args:  ['[', '"', 'k', '^', 'p', '5', '}', 'A', 'l', '"', ',', ' ', '"', '4', 'g', 'N', 'F', '4', 'H', '}', '!', 'O', 'g', '"', ']']
+**AZURE**: Blob tags are retrieved.
+**EMULATOR**: Blob tags are not retrieved. Error:  Cannot deserialize content-type: application/octet-stream
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: get_block_list args:  [0]
+**AZURE**: Block list is not retrieved. Error:  Value for one of the query parameters specified in the request URI is invalid.
+RequestId:bc9dc88d-f01e-0072-5bba-abcfd0000000
+Time:2023-07-01T01:19:54.3270690Z
+ErrorCode:InvalidQueryParameterValue
+queryparametername:blocklisttype
+queryparametervalue:0
+reason:This is not a valid block list type.
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>InvalidQueryParameterValue</Code><Message>Value for one of the query parameters specified in the request URI is invalid.
+RequestId:bc9dc88d-f01e-0072-5bba-abcfd0000000
+Time:2023-07-01T01:19:54.3270690Z</Message><QueryParameterName>blocklisttype</QueryParameterName><QueryParameterValue>0</QueryParameterValue><Reason>This is not a valid block list type.</Reason></Error>
+**EMULATOR**: Block list is not retrieved. Error:  Bad Request
+ErrorCode:None
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: get_page_ranges args:  ['260', '81400']
+**AZURE**: Page ranges are not retrieved. Error:  unsupported operand type(s) for -: 'str' and 'int'
+**EMULATOR**: Page ranges are not retrieved. Error:  unsupported operand type(s) for -: 'str' and 'int'
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: list_page_ranges_diff args:  [0, '-7', '0']
+**AZURE**: Page ranges diff is not retrieved. Error:  unsupported operand type(s) for -: 'str' and 'int'
+**EMULATOR**: Page ranges diff is not retrieved. Error:  unsupported operand type(s) for -: 'str' and 'int'
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: query_blob args:  [0]
+**AZURE**: Blob contents are not queried. Error:  Syntax error in query: 0
+RequestId:502db57e-901e-005b-08ba-abf1a4000000
+Time:2023-07-01T01:19:57.3549826Z
+ErrorCode:ErrorProcessingQueryExpression
+Content: <?xml version="1.0" encoding="utf-8"?>
+<Error><Code>ErrorProcessingQueryExpression</Code><Message>Syntax error in query: 0
+RequestId:502db57e-901e-005b-08ba-abf1a4000000
+Time:2023-07-01T01:19:57.3549826Z</Message></Error>
+**EMULATOR**: Blob contents are not queried. Error:  Bad Request
+ErrorCode:None
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: set_blob_metadata args:  [{'name': 'John Doe', 'age': 30, 'address': '123 Main Street, Anytown, USA'}]
+**AZURE**: Blob metadata is not set. Error:  'int' object has no attribute 'strip'
+**EMULATOR**: Blob metadata is not set. Error:  'int' object has no attribute 'strip'
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: set_blob_tags args:  [{'name': 'Orange', 'price': 50}]
+**AZURE**: Blob tags are set.
+**EMULATOR**: Blob tags are not set. Error:  Bad Request
+ErrorCode:None
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: set_http_headers args:  ['[', '"', 'K', '?', 'c', '*', 'I', '(', '8', 'o', ':', '<', '"', ',', ' ', '"', '"', ',', ' ', '"', 'e', 'f', '3', "'", '4', 'L', 'N', 'C', ' ', 'm', 'I', 'C', '$', '~', '"', ',', ' ', '"', '"', ',', ' ', '"', 'C', 'X', '"', ',', ' ', '"', '"', ',', ' ', '"', '"', ',', ' ', '"', '3', '"', ']']
+**AZURE**: HTTP headers are set.
+**EMULATOR**: HTTP headers are set.
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: set_immutability_policy args:  ['[', '"', '\\', 'L', 'q', 'A', '&', 'U', '*', 'L', '=', 'A', 'c', '"', ']']
+**AZURE**: Immutability policy is not set. Error:  Operation returned an invalid status 'ImmutableStorageWithVersioning: feature is not enabled.'
+Content: <?xml version="1.0" encoding="utf-8"?>
+<Error><Code>ImmutableStorageWithVersioningIsNotEnabled</Code><Message>ImmutableStorageWithVersioning: feature is not enabled.
+RequestId:bc5c1333-b01e-003e-08ba-ab5fe0000000
+Time:2023-07-01T01:20:00.9803708Z</Message></Error>
+**EMULATOR**: Immutability policy is not set. Error:  Operation returned an invalid status 'Bad Request'
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: set_legal_hold args:  [0]
+**AZURE**: Legal hold is not set. Error:  Operation returned an invalid status 'ImmutableStorageWithVersioning: feature is not enabled.'
+Content: <?xml version="1.0" encoding="utf-8"?>
+<Error><Code>ImmutableStorageWithVersioningIsNotEnabled</Code><Message>ImmutableStorageWithVersioning: feature is not enabled.
+RequestId:003ca784-c01e-000b-4cba-ab33f4000000
+Time:2023-07-01T01:20:02.0933287Z</Message></Error>
+**EMULATOR**: Legal hold is not set. Error:  Operation returned an invalid status 'Bad Request'
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: set_standard_blob_tier args:  [0]
+**AZURE**: Blob tier is not set. Error:  The value for one of the HTTP headers is not in the correct format.
+RequestId:7f22051a-001e-0014-0dba-ab80f0000000
+Time:2023-07-01T01:20:03.0795616Z
+ErrorCode:InvalidHeaderValue
+headername:x-ms-access-tier
+headervalue:0
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>InvalidHeaderValue</Code><Message>The value for one of the HTTP headers is not in the correct format.
+RequestId:7f22051a-001e-0014-0dba-ab80f0000000
+Time:2023-07-01T01:20:03.0795616Z</Message><HeaderName>x-ms-access-tier</HeaderName><HeaderValue>0</HeaderValue></Error>
+**EMULATOR**: Blob tier is not set. Error:  The access tier is not supported for this blob type.
+RequestId:e1353ba7-2c36-4835-9b92-f1c9691ee667
+Time:2023-07-01T01:20:03.104Z
+ErrorCode:AccessTierNotSupportedForBlobType
+Content: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>AccessTierNotSupportedForBlobType</Code>
+  <Message>The access tier is not supported for this blob type.
+RequestId:e1353ba7-2c36-4835-9b92-f1c9691ee667
+Time:2023-07-01T01:20:03.104Z</Message>
+</Error>
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: stage_block args:  [0, 1, '0']
+**AZURE**: Block is not staged. Error:  Unexpected type for 'content': '<class 'int'>'. We expect 'content' to either be str, bytes, a open file-like object or an iterable/asynciterable.
+**EMULATOR**: Block is not staged. Error:  Unexpected type for 'content': '<class 'int'>'. We expect 'content' to either be str, bytes, a open file-like object or an iterable/asynciterable.
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: stage_block_from_url args:  [0, 1, '0', '-1', 4]
+**AZURE**: Blob is uploaded.
+**AZURE**: Block is not staged from url. Error:  'int' object has no attribute 'decode'
+**EMULATOR**: Blob is uploaded.
+**EMULATOR**: Block is not staged from url. Error:  'int' object has no attribute 'decode'
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: start_copy_from_url args:  [0, {'message': 'Hello, World!'}]
+**AZURE**: Copy from url not started. Error:  Please specify a container name and blob name.
+**EMULATOR**: Copy from url not started. Error:  Please specify a container name and blob name.
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: undelete_blob args:  ['[', '"', "'", 'D', 'a', '$', 'y', '_', '"', ',', ' ', '"', '&', 'V', '_', '"', ',', ' ', '"', ' ', 'a', '`', '"', ']']
+**AZURE**: Blob is undeleted.
+**EMULATOR**: Blob is not undeleted. Error:  Current API is not implemented yet. Please vote your wanted features to https://github.com/azure/azurite/issues
+RequestId:1ff7129d-b444-4497-b41f-ec6249db33c4
+Time:2023-07-01T01:21:34.507Z
+ErrorCode:APINotImplemented
+Content: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>APINotImplemented</Code>
+  <Message>Current API is not implemented yet. Please vote your wanted features to https://github.com/azure/azurite/issues
+RequestId:1ff7129d-b444-4497-b41f-ec6249db33c4
+Time:2023-07-01T01:21:34.507Z</Message>
+</Error>
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: upload_blob_from_bytes args:  [0, 1, '-1', {'name': 'Jane Doe', 'age': 25, 'address': '456 Elm Street, Anytown, USA'}]
+**AZURE**: Blob is not uploaded from bytes. Error:  Unsupported data type: <class 'int'>
+**EMULATOR**: Blob is not uploaded from bytes. Error:  Unsupported data type: <class 'int'>
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: upload_blob_from_url args:  [0]
+**AZURE**: Blob is not uploaded from url. Error:  a bytes-like object is required, not 'str'
+**EMULATOR**: Blob is not uploaded from url. Error:  a bytes-like object is required, not 'str'
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: upload_page args:  [0, '0']
+**AZURE**: Page is not uploaded. Error:  object of type 'int' has no len()
+**EMULATOR**: Page is not uploaded. Error:  object of type 'int' has no len()
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: upload_pages_from_url args:  [0, '1', '0', '-8']
+**AZURE**: Pages are not uploaded from url. Error:  a bytes-like object is required, not 'str'
+**EMULATOR**: Pages are not uploaded from url. Error:  a bytes-like object is required, not 'str'
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: acquire_lease args:  [0, '83']
+**AZURE**: Lease is not acquired. Error:  The value for one of the HTTP headers is not in the correct format.
+RequestId:f4038a0a-201e-0071-47ba-ab2eb4000000
+Time:2023-07-01T01:21:39.0877430Z
+ErrorCode:InvalidHeaderValue
+headername:x-ms-lease-duration
+headervalue:83
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>InvalidHeaderValue</Code><Message>The value for one of the HTTP headers is not in the correct format.
+RequestId:f4038a0a-201e-0071-47ba-ab2eb4000000
+Time:2023-07-01T01:21:39.0877430Z</Message><HeaderName>x-ms-lease-duration</HeaderName><HeaderValue>83</HeaderValue></Error>
+**EMULATOR**: Lease is not acquired. Error:  The value for one of the HTTP headers is not in the correct format.
+RequestId:c3c044f3-dbd8-4e4b-8ca4-73529ac1cb97
+Time:2023-07-01T01:21:39.118Z
+ErrorCode:InvalidHeaderValue
+Content: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>InvalidHeaderValue</Code>
+  <Message>The value for one of the HTTP headers is not in the correct format.
+RequestId:c3c044f3-dbd8-4e4b-8ca4-73529ac1cb97
+Time:2023-07-01T01:21:39.118Z</Message>
+</Error>
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: create_container args:  [0]
+**AZURE**: Container is not created. Error:  Please specify a container name.
+**EMULATOR**: Container is not created. Error:  Please specify a container name.
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: delete_blob args:  [0]
+**AZURE**: Blob is not deleted. Error:  Please specify a container name and blob name.
+**EMULATOR**: Blob is not deleted. Error:  Please specify a container name and blob name.
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: delete_blobs args:  [{'name': 'Orange', 'price': 50}, {'name': 'John Doe', 'age': 30, 'address': '123 Main Street, Anytown, USA'}, {'name': 'Apple', 'price': 100}]
+**AZURE**: Blobs are not deleted. Error:  There is a partial failure in the batch operation.
+ErrorCode:None
+Content: --batchresponse_0c16c550-040e-401f-9c92-c0e46a3ee7e0
+Content-Type: application/http
+Content-ID: 0
+
+HTTP/1.1 404 The specified blob does not exist.
+x-ms-error-code: BlobNotFound
+x-ms-request-id: bc5e7150-b01e-003e-42ba-ab5fe01e03cf
+x-ms-version: 2021-12-02
+x-ms-client-request-id: a1cac104-17ad-11ee-ac9c-ad150163ee0c
+Content-Length: 216
+Content-Type: application/xml
+Server: Windows-Azure-Blob/1.0
+
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Error><Code>BlobNotFound</Code><Message>The specified blob does not exist.
+RequestId:bc5e7150-b01e-003e-42ba-ab5fe01e03cf
+Time:2023-07-01T01:21:40.6490413Z</Message></Error>
+--batchresponse_0c16c550-040e-401f-9c92-c0e46a3ee7e0--
+**EMULATOR**: Blobs are not deleted. Error:  There is a partial failure in the batch operation.
+ErrorCode:None
+Content: --batch_a170e10a-17ad-11ee-ac9c-ad150163ee0c
+Content-Type: application/http
+
+HTTP/1.1 400 One of the request inputs is not valid.
+x-ms-error-code: InvalidInput
+x-ms-request-id: e7e6beef-6320-4df7-9cfb-ce5ca5b43180
+content-type: application/xml
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>InvalidInput</Code>
+  <Message>One of the request inputs is not valid.
+RequestId:e7e6beef-6320-4df7-9cfb-ce5ca5b43180
+Time:2023-07-01T01:21:40.720Z</Message>
+</Error>
+--batch_a170e10a-17ad-11ee-ac9c-ad150163ee0c--
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: delete_container args:  ['[', '"', 'B', '7', '+', 'F', '(', 'A', '"', ',', ' ', '"', 'v', '"', ',', ' ', '"', '"', ',', ' ', '"', '"', ',', ' ', '"', '"', ',', ' ', '"', '"', ']']
+**AZURE**: Container deleted successfully.
+**EMULATOR**: Container deleted successfully.
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: download_blob args:  [0]
+**AZURE**: Blob is not downloaded. Error:  Please specify a container name and blob name.
+**EMULATOR**: Blob is not downloaded. Error:  Please specify a container name and blob name.
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: exists args:  ['[', '"', ')', 'U', 'E', 'g', ':', 'l', 'g', '<', '0', 'D', '"', ']']
+**AZURE**: Checking if container exists: 
+**AZURE**: Container exists: True
+**EMULATOR**: Checking if container exists: 
+**EMULATOR**: Container exists: True
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: find_blobs_by_tags args:  [{'name': 'Jane Doe', 'age': 25, 'address': '456 Elm Street, Anytown, USA'}]
+**AZURE**: Blobs are found.
+**EMULATOR**: Blobs are found.
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: get_account_information args:  ['[', '"', '<', '.', 's', '"', ',', ' ', '"', '(', '[', 'T', '~', '>', 'L', 'K', '|', '5', 't', 'o', '"', ',', ' ', '"', '.', 'g', 'q', '"', ',', ' ', '"', '`', 'F', '"', ',', ' ', '"', '"', ']']
+**AZURE**: Account information found
+**EMULATOR**: Account information found
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: get_blob_client args:  [0]
+**AZURE**: Blob client is not found. Error:  Please specify a container name and blob name.
+**EMULATOR**: Blob client is not found. Error:  Please specify a container name and blob name.
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: get_container_access_policy args:  ['[', '"', 'C', '[', '>', '7', '=', '3', '"', ',', ' ', '"', 's', 'o', '"', ',', ' ', '"', '\\', '"', 'y', '"', ',', ' ', '"', '"', ',', ' ', '"', '"', ']']
+**AZURE**: Container access policy accessed
+**EMULATOR**: Container access policy accessed
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: get_container_properties args:  ['[', '"', 'y', '5', ')', '#', '/', '~', 'H', '+', "'", '9', '+', '$', '~', '=', '^', '&', 'W', '}', 'w', '^', 'p', 'M', 'G', 'C', 'n', 'z', 'w', 'l', 'n', 'V', '%', 't', 'y', 'T', '\\', '"', 'f', 'y', 'V', 'S', '2', ':', 'c', 'z', 'l', '"', ']']
+**AZURE**: Container properties found
+**EMULATOR**: Container properties found
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: list_blob_names args:  ['[', '"', 'O', '!', 'l', '3', '?', '0', 'h', 'B', ' ', 'K', '1', '"', ',', ' ', '"', 'N', '7', 'a', '"', ',', ' ', '"', '|', 'u', '1', 'z', '"', ',', ' ', '"', '`', ']', '"', ',', ' ', '"', '"', ',', ' ', '"', '"', ',', ' ', '"', '"', ']']
+**AZURE**: Listing blob names...
+**AZURE**: Blob names listed successfully
+**EMULATOR**: Listing blob names...
+**EMULATOR**: Blob names listed successfully
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: list_blobs args:  ['[', '"', '+', '>', '{', '&', 'c', 'E', 'Z', '8', 'w', '3', '%', '=', 's', 'Y', 'R', '8', '2', '8', '=', ':', '<', 'I', 'v', 'V', 'G', 'a', 't', 'v', 'L', '4', '&', '$', ',', ':', ']', ')', '4', '[', 'o', 'I', 'h', 'Z', ',', 'E', 'h', 'e', 'D', 'I', '$', '"', ',', ' ', '"', '|', '"', ',', ' ', '"', '\\', 'E', 'U', '{', '=', '!', 'e', '0', 'f', 'B', '"', ',', ' ', '"', 'x', '\\', '`', '8', '"', ']']
+**AZURE**: Listing blobs...
+**AZURE**: Blob listed successfully
+**EMULATOR**: Listing blobs...
+**EMULATOR**: Blob listed successfully
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: set_container_access_policy args:  [{'name': 'Jane Doe', 'age': 25, 'address': '456 Elm Street, Anytown, USA'}]
+**AZURE**: Container access policy is not set. Error:  'str' object has no attribute 'start'
+**EMULATOR**: Container access policy is not set. Error:  'str' object has no attribute 'start'
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: set_container_metadata args:  [{'name': 'John Doe', 'age': 30, 'address': '123 Main Street, Anytown, USA'}]
+**AZURE**: Container metadata is not set. Error:  'int' object has no attribute 'strip'
+**EMULATOR**: Container metadata is not set. Error:  'int' object has no attribute 'strip'
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: set_premium_page_blob_tier args:  [0, 1]
+**AZURE**: premium page blob tier is not set. Error:  quote_from_bytes() expected bytes
+**EMULATOR**: premium page blob tier is not set. Error:  quote_from_bytes() expected bytes
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: set_standard_page_blob_tier args:  [0, 1]
+**AZURE**: standard page blob tier is not set. Error:  quote_from_bytes() expected bytes
+**EMULATOR**: standard page blob tier is not set. Error:  quote_from_bytes() expected bytes
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: upload_blob args:  [0, 1, 2, {'name': 'Orange', 'price': 50}]
+**AZURE**: Uploading blob:  0
+**AZURE**: Blob is not uploaded. Error:  object of type 'int' has no len()
+**EMULATOR**: Uploading blob:  0
+**EMULATOR**: Blob is not uploaded. Error:  object of type 'int' has no len()
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: walk_blobs args:  [0, '["RLmSmdy9", "sRW?*ti6#9e"]', 2]
+**AZURE**: Blobs walk successful.
+**EMULATOR**: Blobs walk successful.
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: create_container args:  [0]
+**AZURE** : Container creation failed with name:  0  and error:  Please specify a container name.
+**EMULATOR** : Container creation failed with name:  0  and error:  Please specify a container name.
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: delete_container args:  [0]
+**AZURE** : Container deletion failed with name:  0  and error:  Please specify a container name.
+**EMULATOR** : Container deletion failed with name:  0  and error:  Please specify a container name.
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: find_blobs_by_tags args:  [0]
+**AZURE** : Blobs found with filter expression:  0
+**EMULATOR** : Blobs found with filter expression:  0
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: get_account_info args:  ['[', '"', 'L', '"', ',', ' ', '"', 'z', 'D', 'D', '"', ',', ' ', '"', ')', 'T', '6', '"', ',', ' ', '"', '"', ']']
+**AZURE** : Account info retrieved
+**EMULATOR** : Account info retrieved
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: get_blob_client args:  [0]
+**AZURE** : Blob client retrieval failed with name:  0  and error:  Please specify a container name and blob name.
+**EMULATOR** : Blob client retrieval failed with name:  0  and error:  Please specify a container name and blob name.
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: get_container_client args:  [0]
+**AZURE** : Container client retrieval failed with name:  0  and error:  Please specify a container name.
+**EMULATOR** : Container client retrieval failed with name:  0  and error:  Please specify a container name.
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: get_service_properties args:  ['[', '"', ')', ' ', 'M', 'U', 'v', 'n', '#', '"', ',', ' ', '"', 'Z', '"', ',', ' ', '"', '.', '"', ',', ' ', '"', 'f', '"', ',', ' ', '"', '"', ',', ' ', '"', '"', ',', ' ', '"', '"', ']']
+**AZURE** : Service properties retrieved
+**EMULATOR** : Service properties retrieved
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: get_service_stats args:  ['[', '"', 'o', 'I', '}', '%', 'j', 'f', '"', ',', ' ', '"', '"', ',', ' ', '"', '5', 'X', 'Z', '-', '8', '"', ',', ' ', '"', 'G', 'z', '"', ',', ' ', '"', 'h', 'C', '"', ',', ' ', '"', '"', ',', ' ', '"', '"', ',', ' ', '"', '"', ']']
+**AZURE** : Service stats retrieval failed, error:  <urllib3.connection.HTTPSConnection object at 0x7fb378a3c040>: Failed to establish a new connection: [Errno -2] Name or service not known
+**EMULATOR** : Service stats retrieval failed, error:  <urllib3.connection.HTTPSConnection object at 0x7fb3793014c0>: Failed to establish a new connection: [Errno -2] Name or service not known
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: list_containers args:  ['[', '"', '5', 'E', 'H', 'F', 'f', ')', '\\', 'f', 'R', '$', '!', '"', ',', ' ', '"', 'r', 'w', '{', 'N', 'y', 'I', 'f', 'j', "'", 'O', 'M', 'o', 'F', 'v', ',', 'W', '*', '*', '4', 'T', 'W', 'F', 'o', 'o', 'U', '1', 'D', 'B', 'm', '=', 'F', ',', 'L', 'B', '\\', 'Z', '|', '[', '#', 'g', '7', 'V', '6', ':', '.', '$', '|', 'N', '_', '@', '2', '"', ',', ' ', '"', '#', 'T', 'W', '"', ']']
+**AZURE** : Container list retrieved
+**EMULATOR** : Container list retrieved
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: undelete_container args:  [0, 1]
+**AZURE** : Container undeletion failed with name:  0  and error:  Please specify a container name.
+**EMULATOR** : Container undeletion failed with name:  0  and error:  Please specify a container name.
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: acquire_lease args:  ['0']
+**AZURE**: Blob lease is not acquired. Error:  The value for one of the HTTP headers is not in the correct format.
+RequestId:d8d10c30-b01e-005c-40ba-ab9dc7000000
+Time:2023-07-01T01:24:46.7656048Z
+ErrorCode:InvalidHeaderValue
+headername:x-ms-lease-duration
+headervalue:0
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>InvalidHeaderValue</Code><Message>The value for one of the HTTP headers is not in the correct format.
+RequestId:d8d10c30-b01e-005c-40ba-ab9dc7000000
+Time:2023-07-01T01:24:46.7656048Z</Message><HeaderName>x-ms-lease-duration</HeaderName><HeaderValue>0</HeaderValue></Error>
+**EMULATOR**: Blob lease is not acquired. Error:  The value for one of the HTTP headers is not in the correct format.
+RequestId:98a51da0-260a-4129-8087-9b5bf1227870
+Time:2023-07-01T01:24:46.788Z
+ErrorCode:InvalidHeaderValue
+Content: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>InvalidHeaderValue</Code>
+  <Message>The value for one of the HTTP headers is not in the correct format.
+RequestId:98a51da0-260a-4129-8087-9b5bf1227870
+Time:2023-07-01T01:24:46.788Z</Message>
+</Error>
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: break_lease args:  ['-3']
+**AZURE**: Blob lease is not broken. Error:  The value for one of the HTTP headers is not in the correct format.
+RequestId:96d1ed43-901e-004b-2aba-ab34cc000000
+Time:2023-07-01T01:24:47.1964185Z
+ErrorCode:InvalidHeaderValue
+headername:x-ms-lease-break-period
+headervalue:-3
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>InvalidHeaderValue</Code><Message>The value for one of the HTTP headers is not in the correct format.
+RequestId:96d1ed43-901e-004b-2aba-ab34cc000000
+Time:2023-07-01T01:24:47.1964185Z</Message><HeaderName>x-ms-lease-break-period</HeaderName><HeaderValue>-3</HeaderValue></Error>
+**EMULATOR**: Blob lease is not broken. Error:  The value for one of the HTTP headers is not in the correct format.
+RequestId:1ffa4c89-d928-4195-afb3-350ae164ca9a
+Time:2023-07-01T01:24:47.230Z
+ErrorCode:InvalidHeaderValue
+Content: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>InvalidHeaderValue</Code>
+  <Message>The value for one of the HTTP headers is not in the correct format.
+RequestId:1ffa4c89-d928-4195-afb3-350ae164ca9a
+Time:2023-07-01T01:24:47.230Z</Message>
+</Error>
+Container is not deleted. Error:  There is currently a lease on the container and no lease ID was specified in the request.
+RequestId:96d1ede8-901e-004b-26ba-ab34cc000000
+Time:2023-07-01T01:24:47.2883667Z
+ErrorCode:LeaseIdMissing
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>LeaseIdMissing</Code><Message>There is currently a lease on the container and no lease ID was specified in the request.
+RequestId:96d1ede8-901e-004b-26ba-ab34cc000000
+Time:2023-07-01T01:24:47.2883667Z</Message></Error>
+Container is not deleted. Error:  There is currently a lease on the container and no lease ID was specified in the request.
+RequestId:04efe2f5-9932-4582-98fa-a7c4b677c44c
+Time:2023-07-01T01:24:47.325Z
+ErrorCode:LeaseIdMissing
+Content: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>LeaseIdMissing</Code>
+  <Message>There is currently a lease on the container and no lease ID was specified in the request.
+RequestId:04efe2f5-9932-4582-98fa-a7c4b677c44c
+Time:2023-07-01T01:24:47.325Z</Message>
+</Error>
+****************************************************************************
+****************************************************************************
+method: change_lease args:  [0]
+**AZURE**: Blob lease is not changed. Error:  The value for one of the HTTP headers is not in the correct format.
+RequestId:4bc8da66-b01e-0073-72ba-ab900c000000
+Time:2023-07-01T01:24:47.6097988Z
+ErrorCode:InvalidHeaderValue
+headername:x-ms-proposed-lease-id
+headervalue:0
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>InvalidHeaderValue</Code><Message>The value for one of the HTTP headers is not in the correct format.
+RequestId:4bc8da66-b01e-0073-72ba-ab900c000000
+Time:2023-07-01T01:24:47.6097988Z</Message><HeaderName>x-ms-proposed-lease-id</HeaderName><HeaderValue>0</HeaderValue></Error>
+**EMULATOR**: Blob lease is changed.
+Container is not deleted. Error:  There is currently a lease on the container and no lease ID was specified in the request.
+RequestId:4bc8daff-b01e-0073-7bba-ab900c000000
+Time:2023-07-01T01:24:47.7347279Z
+ErrorCode:LeaseIdMissing
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>LeaseIdMissing</Code><Message>There is currently a lease on the container and no lease ID was specified in the request.
+RequestId:4bc8daff-b01e-0073-7bba-ab900c000000
+Time:2023-07-01T01:24:47.7347279Z</Message></Error>
+Container is not deleted. Error:  There is currently a lease on the container and no lease ID was specified in the request.
+RequestId:4bc8db22-b01e-0073-1bba-ab900c000000
+Time:2023-07-01T01:24:47.7757068Z
+ErrorCode:LeaseIdMissing
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>LeaseIdMissing</Code><Message>There is currently a lease on the container and no lease ID was specified in the request.
+RequestId:4bc8db22-b01e-0073-1bba-ab900c000000
+Time:2023-07-01T01:24:47.7757068Z</Message></Error>
+Container is not deleted. Error:  There is currently a lease on the container and no lease ID was specified in the request.
+RequestId:d955a5f6-4b86-4e82-aef0-4e1cb1fe330e
+Time:2023-07-01T01:24:47.806Z
+ErrorCode:LeaseIdMissing
+Content: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>LeaseIdMissing</Code>
+  <Message>There is currently a lease on the container and no lease ID was specified in the request.
+RequestId:d955a5f6-4b86-4e82-aef0-4e1cb1fe330e
+Time:2023-07-01T01:24:47.806Z</Message>
+</Error>
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: release_lease args:  ['[', 'i', 'n', 'f', ',', ' ', '3', ',', ' ', '-', '8', '.', '0', ']']
+**AZURE**: Blob lease is released.
+**EMULATOR**: Blob lease is released.
+Container is deleted.
+Container is not deleted. Error:  There is currently a lease on the container and no lease ID was specified in the request.
+RequestId:e18981e2-801e-000a-43ba-ab6c28000000
+Time:2023-07-01T01:24:48.2145857Z
+ErrorCode:LeaseIdMissing
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>LeaseIdMissing</Code><Message>There is currently a lease on the container and no lease ID was specified in the request.
+RequestId:e18981e2-801e-000a-43ba-ab6c28000000
+Time:2023-07-01T01:24:48.2145857Z</Message></Error>
+Container is not deleted. Error:  There is currently a lease on the container and no lease ID was specified in the request.
+RequestId:e189821d-801e-000a-6dba-ab6c28000000
+Time:2023-07-01T01:24:48.2515633Z
+ErrorCode:LeaseIdMissing
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>LeaseIdMissing</Code><Message>There is currently a lease on the container and no lease ID was specified in the request.
+RequestId:e189821d-801e-000a-6dba-ab6c28000000
+Time:2023-07-01T01:24:48.2515633Z</Message></Error>
+Container is not deleted. Error:  There is currently a lease on the container and no lease ID was specified in the request.
+RequestId:cf9c9d78-c233-4574-b136-5ea69f3964cc
+Time:2023-07-01T01:24:48.282Z
+ErrorCode:LeaseIdMissing
+Content: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>LeaseIdMissing</Code>
+  <Message>There is currently a lease on the container and no lease ID was specified in the request.
+RequestId:cf9c9d78-c233-4574-b136-5ea69f3964cc
+Time:2023-07-01T01:24:48.282Z</Message>
+</Error>
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: renew_lease args:  ['[', '0', ',', ' ', '0', ',', ' ', '0', '.', '7', 'e', '0', ',', ' ', 'i', 'n', 'f', ',', ' ', '-', '8', ']']
+**AZURE**: Blob lease is renewed.
+**EMULATOR**: Blob lease is renewed.
+Container is deleted.
+Container is not deleted. Error:  There is currently a lease on the container and no lease ID was specified in the request.
+RequestId:3e2986a9-c01e-0056-04ba-ab3970000000
+Time:2023-07-01T01:24:48.8435305Z
+ErrorCode:LeaseIdMissing
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>LeaseIdMissing</Code><Message>There is currently a lease on the container and no lease ID was specified in the request.
+RequestId:3e2986a9-c01e-0056-04ba-ab3970000000
+Time:2023-07-01T01:24:48.8435305Z</Message></Error>
+Container is not deleted. Error:  There is currently a lease on the container and no lease ID was specified in the request.
+RequestId:3e2986d1-c01e-0056-29ba-ab3970000000
+Time:2023-07-01T01:24:48.8815092Z
+ErrorCode:LeaseIdMissing
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>LeaseIdMissing</Code><Message>There is currently a lease on the container and no lease ID was specified in the request.
+RequestId:3e2986d1-c01e-0056-29ba-ab3970000000
+Time:2023-07-01T01:24:48.8815092Z</Message></Error>
+Container is not deleted. Error:  There is currently a lease on the container and no lease ID was specified in the request.
+RequestId:9940e722-c63e-426c-a03c-798cdfd07151
+Time:2023-07-01T01:24:48.912Z
+ErrorCode:LeaseIdMissing
+Content: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>LeaseIdMissing</Code>
+  <Message>There is currently a lease on the container and no lease ID was specified in the request.
+RequestId:9940e722-c63e-426c-a03c-798cdfd07151
+Time:2023-07-01T01:24:48.912Z</Message>
+</Error>
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: table_create_entity args:  [{'name': 'John Doe', 'age': 30, 'address': '123 Main Street, Anytown, USA'}]
+**AZURE** : Entity creation failed; error:  PartitionKey must be present in an entity
+**EMULATOR** : Entity creation failed; error:  Operation returned an invalid status 'Internal Server Error'
+Table deleted:  table358709591
+Table deleted:  table730272439
+****************************************************************************
+****************************************************************************
+method: table_delete_entity args:  [0, 1]
+**AZURE** : Entity deletion failed; error:  PartitionKey or RowKey must be of type string.
+**EMULATOR** : Entity deletion failed; error:  PartitionKey or RowKey must be of type string.
+Table deleted:  table713868533
+Table deleted:  table117608104
+****************************************************************************
+****************************************************************************
+method: table_delete_table args:  [0]
+**AZURE** : Table deleted with name:  0
+**EMULATOR** : Table deleted with name:  0
+Table deleted:  table767278239
+Table deleted:  table581937183
+****************************************************************************
+****************************************************************************
+method: table_get_entity args:  [0, 1]
+**AZURE** : Entity retrieval failed; error:  PartitionKey or RowKey must be of type string.
+**EMULATOR** : Entity retrieval failed; error:  PartitionKey or RowKey must be of type string.
+Table deleted:  table743096948
+Table deleted:  table665450670
+****************************************************************************
+****************************************************************************
+method: table_get_table_access_policy args:  ['[', '3', '5', '2', ']']
+**AZURE** : Table access policy retrieved
+**EMULATOR** : Table access policy retrieved
+Table deleted:  table135267911
+Table deleted:  table655472666
+Table deleted:  table268112082
+Table deleted:  table99839697
+****************************************************************************
+****************************************************************************
+method: table_list_entities args:  ['[', '8', ',', ' ', '-', '7', '5', ',', ' ', '-', '5', ',', ' ', '0', ',', ' ', '-', '5', '4', '5', '7', '4', ',', ' ', '0', ',', ' ', '3', '8', ',', ' ', '0', ',', ' ', '-', '6', '0', '9', ',', ' ', '0', ',', ' ', '0', ',', ' ', '-', '1', '0', '9', '6', ',', ' ', '0', ',', ' ', '0', ']']
+**AZURE** : Entities listed
+**EMULATOR** : Entities listed
+Table deleted:  table735806576
+Table deleted:  table24541328
+****************************************************************************
+****************************************************************************
+method: table_query_entities args:  [0]
+**AZURE** : Entities queried
+**EMULATOR** : Entities queried
+Table deleted:  table453664801
+Table deleted:  table365277672
+****************************************************************************
+****************************************************************************
+method: table_set_table_access_policy args:  [{'message': 'Hello, World!'}]
+**AZURE** : Table access policy set failed; error:  'str' object has no attribute 'start'
+**EMULATOR** : Table access policy set failed; error:  'str' object has no attribute 'start'
+Table deleted:  table507639711
+Table deleted:  table813973045
+****************************************************************************
+****************************************************************************
+method: table_submit_transaction args:  [{'name': 'Apple', 'price': 100}]
+**AZURE** : Entity created
+**AZURE** : Transaction submission failed; error:  Unrecognized operation: name
+**EMULATOR** : Entity created
+**EMULATOR** : Transaction submission failed; error:  Unrecognized operation: name
+Table deleted:  table816343121
+Table deleted:  table623288429
+****************************************************************************
+****************************************************************************
+method: table_update_entity args:  [{'name': 'Orange', 'price': 50}, 1]
+**AZURE** : Entity created
+**AZURE** : Entity update failed; error:  'PartitionKey'
+**EMULATOR** : Entity created
+**EMULATOR** : Entity update failed; error:  'PartitionKey'
+Table deleted:  table558835690
+Table deleted:  table784139314
+****************************************************************************
+****************************************************************************
+method: table_upsert_entity args:  [{'message': 'Hello, World!'}, 1]
+**AZURE** : Entity upsert failed; error:  'PartitionKey'
+**EMULATOR** : Entity upsert failed; error:  'PartitionKey'
+Table deleted:  table532050279
+Table deleted:  table279139295
+****************************************************************************
+****************************************************************************
+method: table_create args:  ['[', '0', '.', '2', '8', 'e', '9', '0', '6', '3', '9', '3', '9', ',', ' ', 'i', 'n', 'f', ']']
+**AZURE** : Table created
+**EMULATOR** : Table created
+Table deleted:  table102736990
+Table deleted:  table360581052
+****************************************************************************
+****************************************************************************
+method: table_delete args:  ['[', '-', '1', '7', '.', '4', 'e', '0', ']']
+**AZURE** : Table deleted
+**EMULATOR** : Table deleted
+Table deleted:  table376688038
+Table deleted:  table582801404
+****************************************************************************
+****************************************************************************
+method: table_get_service_properties args:  ['[', '-', '9', '5', '.', '5', '5', ']']
+**AZURE** : Service properties retrieved
+**EMULATOR** : Service properties retrieved
+Table deleted:  table405975773
+Table deleted:  table890117172
+****************************************************************************
+****************************************************************************
+method: table_get_service_stats args:  ['[', '0', '.', '4', 'e', '0', ',', ' ', '-', '8', 'e', '6', '9', ',', ' ', 'i', 'n', 'f', ',', ' ', '-', '7', '7', ']']
+**AZURE** : Service stats retrieval failed; error:  <urllib3.connection.HTTPSConnection object at 0x7fb3792fb220>: Failed to establish a new connection: [Errno -2] Name or service not known
+**EMULATOR** : Service stats retrieval failed; error:  Atom format is not supported.
+RequestId:b5a76514-3895-4866-8639-ef7dcf0b1f37
+Time:2023-07-01T01:25:06.680Z
+ErrorCode:AtomFormatNotSupported
+Error:
+  
+Content: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>AtomFormatNotSupported</Code>
+  <Message>Atom format is not supported.
+RequestId:b5a76514-3895-4866-8639-ef7dcf0b1f37
+Time:2023-07-01T01:25:06.680Z</Message>
+</Error>
+Table deleted:  table930255294
+Table deleted:  table506288098
+****************************************************************************
+****************************************************************************
+method: table_get_table_client args:  ['[', '-', '6', 'e', '0', ',', ' ', 'i', 'n', 'f', ',', ' ', '0', ',', ' ', '0', ',', ' ', 'i', 'n', 'f', ']']
+**AZURE** : Table client retrieved
+**EMULATOR** : Table client retrieved
+Table deleted:  table774085523
+Table deleted:  table7512972
+****************************************************************************
+****************************************************************************
+method: table_list_tables args:  ['[', 'i', 'n', 'f', ',', ' ', 'i', 'n', 'f', ',', ' ', '0', '.', '4', 'e', '0', ',', ' ', '4', ',', ' ', '0', ',', ' ', '0', ',', ' ', 'N', 'a', 'N', ']']
+**AZURE** : Tables listed
+**EMULATOR** : Tables listed
+Table deleted:  table539903084
+Table deleted:  table633302635
+****************************************************************************
+****************************************************************************
+method: table_query_tables args:  [0]
+**AZURE** : Tables queried
+**EMULATOR** : Tables queried
+Table deleted:  table788546245
+Table deleted:  table316321304
+****************************************************************************
+****************************************************************************
+method: table_set_service_properties args:  [{'message': 'Hello, World!'}, {'name': 'Apple', 'price': 100}, {'name': 'Jane Doe', 'age': 25, 'address': '456 Elm Street, Anytown, USA'}, {'message': 'Hello, World!'}]
+**AZURE** : Service properties set failed; error:  'str' object has no attribute '_to_generated'
+**EMULATOR** : Service properties set failed; error:  'str' object has no attribute '_to_generated'
+Table deleted:  table810371714
+Table deleted:  table10317193
+****************************************************************************
+****************************************************************************
+method: queue_clear_messages args:  ['[', ']']
+**AZURE** : Success -- Queue cleared
+**EMULATOR** : Success -- Queue cleared
+Success -- Queue deleted
+Success -- Queue deleted
+****************************************************************************
+****************************************************************************
+method: queue_create args:  [0]
+**AZURE** : Failed -- Queue creation failed; error:  Please specify a queue name.
+**EMULATOR** : Failed -- Queue creation failed; error:  Please specify a queue name.
+Success -- Queue deleted
+Success -- Queue deleted
+****************************************************************************
+****************************************************************************
+method: queue_delete args:  [0]
+**AZURE** : Success -- Queue deleted
+**AZURE** : Success -- Queue created
+**EMULATOR** : Success -- Queue deleted
+**EMULATOR** : Success -- Queue created
+Success -- Queue deleted
+Success -- Queue deleted
+****************************************************************************
+****************************************************************************
+method: queue_delete_message args:  ['[', '"', 'Z', '@', 'k', 'B', '(', 'M', '6', 'S', '2', 'n', 'd', 'X', 'q', '*', '`', '"', ']']
+**AZURE** : Success -- Message sent
+**AZURE** : Success -- Message deleted
+**EMULATOR** : Success -- Message sent
+**EMULATOR** : Success -- Message deleted
+Success -- Queue deleted
+Success -- Queue deleted
+****************************************************************************
+****************************************************************************
+method: queue_get_access_policy args:  ['[', '"', '1', 'q', 'H', ')', '"', ',', ' ', '"', '\\', '"', '8', '!', 'G', "'", ' ', '3', 't', 'r', '=', 'M', 'n', 'X', 'B', ':', 'C', 'U', '4', 'T', 'e', ']', 'x', 'f', 'T', 'R', 'K', '!', 'c', 'f', 't', 'W', 'Z', 'I', '=', '$', 'R', 'z', '|', '@', 'a', 'l', '$', 'k', '4', ' ', '7', ',', '!', 'G', 'a', '9', 'U', 'p', 'd', '[', '4', '@', 'u', '6', 'X', 'N', 'U', 'n', '-', 'v', 'P', 'l', '\\', '"', 'g', '&', 'h', '*', 'e', '+', '>', '"', ',', ' ', '"', 'O', 'a', '|', ';', 'O', 'G', 'x', 'U', 'Z', 'G', 'K', '"', ']']
+**AZURE** : Success -- Queue access policy retrieved
+**EMULATOR** : Success -- Queue access policy retrieved
+Success -- Queue deleted
+Success -- Queue deleted
+****************************************************************************
+****************************************************************************
+method: queue_get_properties args:  ['[', '"', 'X', '}', 'S', '$', 'K', '?', 'E', '_', '[', 'Y', '"', ',', ' ', '"', 'G', '|', '"', ',', ' ', '"', '\\', '"', ',', ' ', '"', '|', '"', ',', ' ', '"', '"', ']']
+**AZURE** : Success -- Queue properties retrieved
+**EMULATOR** : Success -- Queue properties retrieved
+Success -- Queue deleted
+Success -- Queue deleted
+****************************************************************************
+****************************************************************************
+method: queue_peek_messages args:  ['0']
+**AZURE** : Failed -- Queue messages peek failed; error:  '<=' not supported between instances of 'int' and 'str'
+**EMULATOR** : Failed -- Queue messages peek failed; error:  '<=' not supported between instances of 'int' and 'str'
+Success -- Queue deleted
+Success -- Queue deleted
+****************************************************************************
+****************************************************************************
+method: queue_receive_message args:  ['[', '"', 'V', '"', ',', ' ', '"', 'l', 'C', 'V', '"', ',', ' ', '"', '"', ',', ' ', '"', '"', ',', ' ', '"', '"', ',', ' ', '"', '"', ']']
+**AZURE** : Success -- Queue messages received
+**EMULATOR** : Success -- Queue messages received
+Success -- Queue deleted
+Success -- Queue deleted
+****************************************************************************
+****************************************************************************
+method: queue_receive_messages args:  ['-768']
+**AZURE** : Success -- Queue messages received
+**EMULATOR** : Success -- Queue messages received
+Success -- Queue deleted
+Success -- Queue deleted
+****************************************************************************
+****************************************************************************
+method: queue_send_message args:  [0]
+**AZURE** : Success -- Message sent
+**EMULATOR** : Success -- Message sent
+Success -- Queue deleted
+Success -- Queue deleted
+****************************************************************************
+****************************************************************************
+method: queue_set_access_policy args:  ['[', '"', 'U', '\\', 'd', '*', 'w', ']', 'V', '"', ',', ' ', '"', 's', '1', '6', '"', ',', ' ', '"', 'C', '"', ',', ' ', '"', '"', ',', ' ', '"', '"', ']']
+**AZURE** : Success -- Queue access policy retrieved
+**AZURE** : Success -- Queue access policy set
+**EMULATOR** : Success -- Queue access policy retrieved
+**EMULATOR** : Success -- Queue access policy set
+Success -- Queue deleted
+Success -- Queue deleted
+****************************************************************************
+****************************************************************************
+method: queue_set_metadata args:  [{'name': 'Orange', 'price': 50}]
+**AZURE** : Failed -- Queue metadata set failed; error:  'int' object has no attribute 'strip'
+**EMULATOR** : Failed -- Queue metadata set failed; error:  'int' object has no attribute 'strip'
+Success -- Queue deleted
+Success -- Queue deleted
+****************************************************************************
+****************************************************************************
+method: queue_update_message args:  [0, 1]
+**AZURE** : Success -- Message sent
+**AZURE** : Success -- Message updated
+**EMULATOR** : Success -- Message sent
+**EMULATOR** : Success -- Message updated
+Success -- Queue deleted
+Success -- Queue deleted
+****************************************************************************
+****************************************************************************
+method: queue_create args:  [0]
+**AZURE** : Success -- Queue created
+**EMULATOR** : Success -- Queue created
+Success -- Queue deleted
+Success -- Queue deleted
+Success -- Queue deleted
+Success -- Queue deleted
+****************************************************************************
+****************************************************************************
+method: queue_delete args:  [0]
+**AZURE** : Failed -- Queue deletion failed; error:  Please specify a queue name.
+**EMULATOR** : Failed -- Queue deletion failed; error:  Please specify a queue name.
+Success -- Queue deleted
+Success -- Queue deleted
+****************************************************************************
+****************************************************************************
+method: queue_get_client args:  [0]
+**AZURE** : Failed -- Queue client retrieval failed; error:  Please specify a queue name.
+**EMULATOR** : Failed -- Queue client retrieval failed; error:  Please specify a queue name.
+Success -- Queue deleted
+Success -- Queue deleted
+****************************************************************************
+****************************************************************************
+method: queue_get_service_properties args:  ['[', '0', '.', '4', ',', ' ', '0', '.', '5', 'e', '0', ',', ' ', '0', ',', ' ', 'i', 'n', 'f', ',', ' ', 'N', 'a', 'N', ']']
+**AZURE** : Success -- Service properties retrieved
+**EMULATOR** : Success -- Service properties retrieved
+Success -- Queue deleted
+Success -- Queue deleted
+****************************************************************************
+****************************************************************************
+method: queue_get_service_stats args:  ['[', '0', ']']
+**AZURE** : Failed -- Service stats retrieval failed; error:  <urllib3.connection.HTTPSConnection object at 0x7fb3792b3f10>: Failed to establish a new connection: [Errno -2] Name or service not known
+**EMULATOR** : Failed -- Service stats retrieval failed; error:  Invalid URL 'https:///devstoreaccount1/?restype=service&comp=stats': No host supplied
+Success -- Queue deleted
+Success -- Queue deleted
+****************************************************************************
+****************************************************************************
+method: queue_list args:  ['[', '-', '9', '2', '5', 'e', '-', '8', '0', ']']
+**AZURE** : Success -- Queues listed
+**EMULATOR** : Success -- Queues listed
+Success -- Queue deleted
+Success -- Queue deleted
+****************************************************************************
+****************************************************************************
+method: queue_set_service_properties args:  ['[', '0', '.', '2', '7', '9', '3', ']']
+**AZURE** : Success -- Service properties set
+**EMULATOR** : Success -- Service properties set
+Success -- Queue deleted
+Success -- Queue deleted

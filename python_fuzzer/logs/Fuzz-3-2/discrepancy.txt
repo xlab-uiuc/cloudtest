@@ -1,0 +1,508 @@
+DISCREPANT METHOD: append_block_from_url --- ARGS: []
+--Behavior mismatch--
+CLOUD: SUCCESS -- Response: {'etag': '"0x8DB7B462A933BE7"', 'last_modified': datetime.datetime(2023, 7, 2, 21, 49, 9, tzinfo=datetime.timezone.utc), 'content_md5': bytearray(b'\x1c\xe4\xd4_\xa0\x9a\xce\xb5\x96~Z\xc8\x16\xb9\xa4]'), 'content_crc64': None, 'request_id': 'e3a35969-101e-0037-7b2f-ad1a33000000', 'version': '2021-12-02', 'date': datetime.datetime(2023, 7, 2, 21, 49, 8, tzinfo=datetime.timezone.utc), 'blob_append_offset': '15', 'blob_committed_block_count': 2, 'encryption_key_sha256': None, 'encryption_scope': None, 'request_server_encrypted': True} 
+EMULATOR: FAILURE -- Response: Current API is not implemented yet. Please vote your wanted features to https://github.com/azure/azurite/issues
+RequestId:5c5bcd37-445c-405b-8889-c020f1cf6571
+Time:2023-07-02T21:50:33.232Z
+ErrorCode:APINotImplemented
+Content: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>APINotImplemented</Code>
+  <Message>Current API is not implemented yet. Please vote your wanted features to https://github.com/azure/azurite/issues
+RequestId:5c5bcd37-445c-405b-8889-c020f1cf6571
+Time:2023-07-02T21:50:33.232Z</Message>
+</Error>
+
+
+count: 1   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: delete_immutability_policy --- ARGS: []
+--Status code mismatch--
+CLOUD: FAILURE -- Error Code: 400 -- Error Message: ImmutableStorageWithVersioning: feature is not enabled.
+EMULATOR: FAILURE -- Error Code: 202 -- Error Message: Accepted
+
+
+count: 2   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: get_account_information --- ARGS: []
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: The specified resource does not exist.
+RequestId:8168c4fa-001e-002b-3c2f-ad4853000000
+Time:2023-07-02T21:50:42.9475832Z
+ErrorCode:ResourceNotFound
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>ResourceNotFound</Code><Message>The specified resource does not exist.
+RequestId:8168c4fa-001e-002b-3c2f-ad4853000000
+Time:2023-07-02T21:50:42.9475832Z</Message></Error> 
+EMULATOR: SUCCESS -- Response: {'client_request_id': '7cfd8c70-1922-11ee-82a2-f75bd25b5140', 'request_id': 'bc17b059-debb-4c0a-9440-aec152dafa7f', 'version': '2021-10-04', 'date': datetime.datetime(2023, 7, 2, 21, 50, 42, tzinfo=datetime.timezone.utc), 'sku_name': 'Standard_RAGRS', 'account_kind': 'StorageV2'}
+
+
+count: 3   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: get_blob_tags --- ARGS: []
+--Behavior mismatch--
+CLOUD: SUCCESS -- Response: {} 
+EMULATOR: FAILURE -- Response: Cannot deserialize content-type: application/octet-stream
+
+
+count: 4   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: query_blob --- ARGS: []
+--Behavior mismatch--
+CLOUD: SUCCESS -- Response: <azure.storage.blob._quick_query_helper.BlobQueryReader object at 0x7f962cdf2a60> 
+EMULATOR: FAILURE -- Response: Bad Request
+ErrorCode:None
+
+
+count: 5   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: set_blob_tags --- ARGS: []
+--Behavior mismatch--
+CLOUD: SUCCESS -- Response: {'client_request_id': '81c190b7-1922-11ee-82a2-f75bd25b5140', 'request_id': 'd7b8c627-201e-003c-152f-ade158000000', 'version': '2021-12-02', 'date': datetime.datetime(2023, 7, 2, 21, 50, 50, tzinfo=datetime.timezone.utc)} 
+EMULATOR: FAILURE -- Response: Bad Request
+ErrorCode:None
+
+
+count: 6   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: set_immutability_policy --- ARGS: []
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: ImmutableStorageWithVersioning: feature is not enabled.
+EMULATOR: FAILURE -- Error Message: Bad Request
+
+
+count: 7   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: set_legal_hold --- ARGS: []
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: ImmutableStorageWithVersioning: feature is not enabled.
+EMULATOR: FAILURE -- Error Message: Bad Request
+
+
+count: 8   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: stage_block_from_url --- ARGS: []
+--Behavior mismatch--
+CLOUD: SUCCESS -- Response: {'content_md5': None, 'content_crc64': bytearray(b'\xc0">,L%\x9a\x84'), 'client_request_id': '856ee28e-1922-11ee-82a2-f75bd25b5140', 'request_id': 'a4c5c93a-001e-0014-562f-ad80f0000000', 'version': '2021-12-02', 'date': datetime.datetime(2023, 7, 2, 21, 50, 56, tzinfo=datetime.timezone.utc), 'request_server_encrypted': True, 'encryption_key_sha256': None, 'encryption_scope': None} 
+EMULATOR: FAILURE -- Response: Current API is not implemented yet. Please vote your wanted features to https://github.com/azure/azurite/issues
+RequestId:e93423d3-9b4b-4095-8d6e-4b3ff14eb37e
+Time:2023-07-02T21:52:27.172Z
+ErrorCode:APINotImplemented
+Content: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>APINotImplemented</Code>
+  <Message>Current API is not implemented yet. Please vote your wanted features to https://github.com/azure/azurite/issues
+RequestId:e93423d3-9b4b-4095-8d6e-4b3ff14eb37e
+Time:2023-07-02T21:52:27.172Z</Message>
+</Error>
+
+
+count: 9   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: undelete_blob --- ARGS: []
+--Behavior mismatch--
+CLOUD: SUCCESS -- Response: None 
+EMULATOR: FAILURE -- Response: Current API is not implemented yet. Please vote your wanted features to https://github.com/azure/azurite/issues
+RequestId:ea9d71d9-316a-4695-b74b-28a337e01461
+Time:2023-07-02T21:53:54.672Z
+ErrorCode:APINotImplemented
+Content: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>APINotImplemented</Code>
+  <Message>Current API is not implemented yet. Please vote your wanted features to https://github.com/azure/azurite/issues
+RequestId:ea9d71d9-316a-4695-b74b-28a337e01461
+Time:2023-07-02T21:53:54.672Z</Message>
+</Error>
+
+
+count: 10   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: upload_pages_from_url --- ARGS: []
+--Behavior mismatch--
+CLOUD: SUCCESS -- Response: {'etag': '"0x8DB7B46D6E73C93"', 'last_modified': datetime.datetime(2023, 7, 2, 21, 53, 58, tzinfo=datetime.timezone.utc), 'content_md5': bytearray(b'\x94>_\xdc\xeeX\x97q\xd7\xf8)*6\x85\xb0t'), 'content_crc64': None, 'blob_sequence_number': 0, 'request_id': 'ab322e92-901e-0016-602f-ad3e48000000', 'version': '2021-12-02', 'date': datetime.datetime(2023, 7, 2, 21, 53, 58, tzinfo=datetime.timezone.utc), 'request_server_encrypted': True, 'encryption_key_sha256': None, 'encryption_scope': None} 
+EMULATOR: FAILURE -- Response: Current API is not implemented yet. Please vote your wanted features to https://github.com/azure/azurite/issues
+RequestId:8ad93bd0-e07b-4e9e-a187-cce47550003c
+Time:2023-07-02T21:55:26.747Z
+ErrorCode:APINotImplemented
+Content: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>APINotImplemented</Code>
+  <Message>Current API is not implemented yet. Please vote your wanted features to https://github.com/azure/azurite/issues
+RequestId:8ad93bd0-e07b-4e9e-a187-cce47550003c
+Time:2023-07-02T21:55:26.747Z</Message>
+</Error>
+
+
+count: 11   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: delete_blobs --- ARGS: []
+--Behavior mismatch--
+CLOUD: SUCCESS -- Response: <list_iterator object at 0x7f962cdb1670> 
+EMULATOR: FAILURE -- Response: There is a partial failure in the batch operation.
+ErrorCode:None
+Content: --batch_292aebd1-1923-11ee-82a2-f75bd25b5140
+Content-Type: application/http
+
+HTTP/1.1 400 One of the request inputs is not valid.
+x-ms-error-code: InvalidInput
+x-ms-request-id: fc68dc47-b3af-4663-af2f-34ed10b55667
+content-type: application/xml
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>InvalidInput</Code>
+  <Message>One of the request inputs is not valid.
+RequestId:fc68dc47-b3af-4663-af2f-34ed10b55667
+Time:2023-07-02T21:55:30.411Z</Message>
+</Error>
+--batch_292aebd1-1923-11ee-82a2-f75bd25b5140--
+
+
+count: 12   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: set_container_access_policy --- ARGS: []
+--Behavior mismatch--
+CLOUD: SUCCESS -- Response: {'etag': '"0x8DB7B4710517A98"', 'last_modified': datetime.datetime(2023, 7, 2, 21, 55, 34, tzinfo=datetime.timezone.utc), 'client_request_id': '2b8d5c77-1923-11ee-82a2-f75bd25b5140', 'request_id': 'a4c87c07-001e-0014-502f-ad80f0000000', 'version': '2021-12-02', 'date': datetime.datetime(2023, 7, 2, 21, 55, 34, tzinfo=datetime.timezone.utc)} 
+EMULATOR: FAILURE -- Response: Bad Request
+ErrorCode:None
+
+
+count: 13   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: set_standard_page_blob_tier --- ARGS: []
+--Behavior mismatch--
+CLOUD: SUCCESS -- Response: <list_iterator object at 0x7f962ce4d940> 
+EMULATOR: FAILURE -- Response: There is a partial failure in the batch operation.
+ErrorCode:None
+Content: --batch_2cd018d7-1923-11ee-82a2-f75bd25b5140
+Content-Type: application/http
+
+HTTP/1.1 400 One of the request inputs is not valid.
+x-ms-error-code: InvalidInput
+x-ms-request-id: 1659849e-69a1-438f-99ba-102d93eea25a
+content-type: application/xml
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>InvalidInput</Code>
+  <Message>One of the request inputs is not valid.
+RequestId:1659849e-69a1-438f-99ba-102d93eea25a
+Time:2023-07-02T21:55:36.317Z</Message>
+</Error>
+--batch_2cd018d7-1923-11ee-82a2-f75bd25b5140--
+
+
+count: 14   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+14/108   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Round ended
+
+DISCREPANT METHOD: commit_block_list --- ARGS: ['[11e0, 3, NaN]', {'message': 'Hello, World!'}]
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: The specified blob or block content is invalid.
+EMULATOR: FAILURE -- Error Message: The specified block list is invalid.
+
+
+count: 1   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: delete_immutability_policy --- ARGS: ['[', '0', ',', ' ', 'N', 'a', 'N', ',', ' ', '6', '9', '0', 'e', '0', ',', ' ', '0', '.', '5', 'e', '0', ',', ' ', '5', ']']
+--Status code mismatch--
+CLOUD: FAILURE -- Error Code: 400 -- Error Message: ImmutableStorageWithVersioning: feature is not enabled.
+EMULATOR: FAILURE -- Error Code: 202 -- Error Message: Accepted
+
+
+count: 2   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: get_account_information --- ARGS: ['[', '3', '1', ',', ' ', '0', ',', ' ', 'N', 'a', 'N', ',', ' ', 'N', 'a', 'N', ']']
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: The specified resource does not exist.
+RequestId:8c4982a4-001e-0004-7530-ad4598000000
+Time:2023-07-02T22:02:31.3519257Z
+ErrorCode:ResourceNotFound
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>ResourceNotFound</Code><Message>The specified resource does not exist.
+RequestId:8c4982a4-001e-0004-7530-ad4598000000
+Time:2023-07-02T22:02:31.3519257Z</Message></Error> 
+EMULATOR: SUCCESS -- Response: {'client_request_id': '23866af4-1924-11ee-82a2-f75bd25b5140', 'request_id': 'e8a37271-f7f9-439a-84c0-336393543432', 'version': '2021-10-04', 'date': datetime.datetime(2023, 7, 2, 22, 2, 31, tzinfo=datetime.timezone.utc), 'sku_name': 'Standard_RAGRS', 'account_kind': 'StorageV2'}
+
+
+count: 3   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: get_blob_tags --- ARGS: ['[', '0', '.', '3', '6', ',', ' ', '-', '9', 'e', '0', ']']
+--Behavior mismatch--
+CLOUD: SUCCESS -- Response: {} 
+EMULATOR: FAILURE -- Response: Cannot deserialize content-type: application/octet-stream
+
+
+count: 4   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: get_block_list --- ARGS: [0]
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: Value for one of the query parameters specified in the request URI is invalid.
+EMULATOR: FAILURE -- Error Message: Bad Request
+
+
+count: 5   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: query_blob --- ARGS: [0]
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: Syntax error in query: 0
+EMULATOR: FAILURE -- Error Message: Bad Request
+
+
+count: 6   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: set_blob_tags --- ARGS: [{'message': 'Hello, World!'}]
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: The tags specified are invalid. It contains characters that are not permitted.
+EMULATOR: FAILURE -- Error Message: Bad Request
+
+
+count: 7   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: set_immutability_policy --- ARGS: ['[', '0', '.', '4', ',', ' ', '0', '.', '3', ']']
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: ImmutableStorageWithVersioning: feature is not enabled.
+EMULATOR: FAILURE -- Error Message: Bad Request
+
+
+count: 8   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: set_legal_hold --- ARGS: [0]
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: ImmutableStorageWithVersioning: feature is not enabled.
+EMULATOR: FAILURE -- Error Message: Bad Request
+
+
+count: 9   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: set_standard_blob_tier --- ARGS: [0]
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: The value for one of the HTTP headers is not in the correct format.
+EMULATOR: FAILURE -- Error Message: The access tier is not supported for this blob type.
+
+
+count: 10   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: undelete_blob --- ARGS: ['[', '0', ',', ' ', '0', '.', '5', ',', ' ', '0', ',', ' ', '0', 'e', '0', ',', ' ', '0', 'e', '0', ',', ' ', 'N', 'a', 'N', ',', ' ', '0', '.', '0', '5', '3', '1', '5', '5', '3', 'e', '8', '9', '2', ']']
+--Behavior mismatch--
+CLOUD: SUCCESS -- Response: None 
+EMULATOR: FAILURE -- Response: Current API is not implemented yet. Please vote your wanted features to https://github.com/azure/azurite/issues
+RequestId:7b65d2b9-a4cc-40e7-b466-b93db9a96a1f
+Time:2023-07-02T22:04:12.982Z
+ErrorCode:APINotImplemented
+Content: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>APINotImplemented</Code>
+  <Message>Current API is not implemented yet. Please vote your wanted features to https://github.com/azure/azurite/issues
+RequestId:7b65d2b9-a4cc-40e7-b466-b93db9a96a1f
+Time:2023-07-02T22:04:12.982Z</Message>
+</Error>
+
+
+count: 11   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: change_lease --- ARGS: [0]
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: The value for one of the HTTP headers is not in the correct format.
+RequestId:bbdf7b77-201e-0003-6631-ad29fb000000
+Time:2023-07-02T22:07:15.8710555Z
+ErrorCode:InvalidHeaderValue
+headername:x-ms-proposed-lease-id
+headervalue:0
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>InvalidHeaderValue</Code><Message>The value for one of the HTTP headers is not in the correct format.
+RequestId:bbdf7b77-201e-0003-6631-ad29fb000000
+Time:2023-07-02T22:07:15.8710555Z</Message><HeaderName>x-ms-proposed-lease-id</HeaderName><HeaderValue>0</HeaderValue></Error> 
+EMULATOR: SUCCESS -- Response: None
+
+
+count: 12   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+12/108   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Round ended
+
+DISCREPANT METHOD: append_block_from_url --- ARGS: ['-63', '-48', 2, 3]
+--Status code mismatch--
+CLOUD: FAILURE -- Error Code: 400 -- Error Message: The value for one of the HTTP headers is not in the correct format.
+EMULATOR: FAILURE -- Error Code: 500 -- Error Message: Current API is not implemented yet. Please vote your wanted features to https://github.com/azure/azurite/issues
+
+
+count: 1   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: delete_immutability_policy --- ARGS: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
+--Status code mismatch--
+CLOUD: FAILURE -- Error Code: 400 -- Error Message: ImmutableStorageWithVersioning: feature is not enabled.
+EMULATOR: FAILURE -- Error Code: 202 -- Error Message: Accepted
+
+
+count: 2   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: get_account_information --- ARGS: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: The specified resource does not exist.
+RequestId:977c4096-c01e-000b-0e32-ad33f4000000
+Time:2023-07-02T22:12:20.8652765Z
+ErrorCode:ResourceNotFound
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>ResourceNotFound</Code><Message>The specified resource does not exist.
+RequestId:977c4096-c01e-000b-0e32-ad33f4000000
+Time:2023-07-02T22:12:20.8652765Z</Message></Error> 
+EMULATOR: SUCCESS -- Response: {'client_request_id': '82913d1c-1925-11ee-82a2-f75bd25b5140', 'request_id': '16d391b7-e6fa-4266-b00f-c8104398b479', 'version': '2021-10-04', 'date': datetime.datetime(2023, 7, 2, 22, 12, 20, tzinfo=datetime.timezone.utc), 'sku_name': 'Standard_RAGRS', 'account_kind': 'StorageV2'}
+
+
+count: 3   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: get_blob_tags --- ARGS: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+--Behavior mismatch--
+CLOUD: SUCCESS -- Response: {} 
+EMULATOR: FAILURE -- Response: Cannot deserialize content-type: application/octet-stream
+
+
+count: 4   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: get_block_list --- ARGS: ['-16']
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: Value for one of the query parameters specified in the request URI is invalid.
+EMULATOR: FAILURE -- Error Message: Bad Request
+
+
+count: 5   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: query_blob --- ARGS: ['73']
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: Syntax error in query: 73
+EMULATOR: FAILURE -- Error Message: Bad Request
+
+
+count: 6   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: set_blob_tags --- ARGS: [{'name': 'John Doe', 'age': 30, 'address': '123 Main Street, Anytown, USA'}]
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: The tags specified are invalid. It contains characters that are not permitted.
+EMULATOR: FAILURE -- Error Message: Bad Request
+
+
+count: 7   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: set_immutability_policy --- ARGS: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: ImmutableStorageWithVersioning: feature is not enabled.
+EMULATOR: FAILURE -- Error Message: Bad Request
+
+
+count: 8   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: set_legal_hold --- ARGS: ['-2']
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: ImmutableStorageWithVersioning: feature is not enabled.
+EMULATOR: FAILURE -- Error Message: Bad Request
+
+
+count: 9   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: set_standard_blob_tier --- ARGS: ['0']
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: The value for one of the HTTP headers is not in the correct format.
+EMULATOR: FAILURE -- Error Message: The access tier is not supported for this blob type.
+
+
+count: 10   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: undelete_blob --- ARGS: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40]
+--Behavior mismatch--
+CLOUD: SUCCESS -- Response: None 
+EMULATOR: FAILURE -- Response: Current API is not implemented yet. Please vote your wanted features to https://github.com/azure/azurite/issues
+RequestId:81e9d9a5-e1db-4466-ab7e-a91db77499fe
+Time:2023-07-02T22:13:56.077Z
+ErrorCode:APINotImplemented
+Content: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>APINotImplemented</Code>
+  <Message>Current API is not implemented yet. Please vote your wanted features to https://github.com/azure/azurite/issues
+RequestId:81e9d9a5-e1db-4466-ab7e-a91db77499fe
+Time:2023-07-02T22:13:56.077Z</Message>
+</Error>
+
+
+count: 11   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: upload_blob_from_url --- ARGS: ['-10']
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: The value for one of the HTTP headers is not in the correct format.
+RequestId:e3963b02-d01e-0007-1d32-ada4fc000000
+Time:2023-07-02T22:13:57.9267226Z
+ErrorCode:InvalidHeaderValue
+headername:x-ms-copy-source
+headervalue:://-10
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>InvalidHeaderValue</Code><Message>The value for one of the HTTP headers is not in the correct format.
+RequestId:e3963b02-d01e-0007-1d32-ada4fc000000
+Time:2023-07-02T22:13:57.9267226Z</Message><HeaderName>x-ms-copy-source</HeaderName><HeaderValue>://-10</HeaderValue></Error> 
+EMULATOR: SUCCESS -- Response: {'etag': '"0x1C04DB66D2BE880"', 'last_modified': datetime.datetime(2023, 7, 2, 22, 13, 57, tzinfo=datetime.timezone.utc), 'content_md5': bytearray(b'\xd4\x1d\x8c\xd9\x8f\x00\xb2\x04\xe9\x80\t\x98\xec\xf8B~'), 'client_request_id': 'bc6ae5fe-1925-11ee-82a2-f75bd25b5140', 'request_id': 'e540b966-f2bc-43f5-95d4-52e6f0d978e0', 'version': '2021-10-04', 'version_id': None, 'date': datetime.datetime(2023, 7, 2, 22, 13, 57, tzinfo=datetime.timezone.utc), 'request_server_encrypted': True, 'encryption_key_sha256': None, 'encryption_scope': None}
+
+
+count: 12   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: change_lease --- ARGS: ['7']
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: The value for one of the HTTP headers is not in the correct format.
+RequestId:36f56f80-b01e-002e-5e32-ad9a88000000
+Time:2023-07-02T22:16:53.6114671Z
+ErrorCode:InvalidHeaderValue
+headername:x-ms-proposed-lease-id
+headervalue:7
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>InvalidHeaderValue</Code><Message>The value for one of the HTTP headers is not in the correct format.
+RequestId:36f56f80-b01e-002e-5e32-ad9a88000000
+Time:2023-07-02T22:16:53.6114671Z</Message><HeaderName>x-ms-proposed-lease-id</HeaderName><HeaderValue>7</HeaderValue></Error> 
+EMULATOR: SUCCESS -- Response: None
+
+
+count: 13   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: queue_peek_messages --- ARGS: [0]
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: One of the query parameters specified in the request URI is outside the permissible range.
+EMULATOR: FAILURE -- Error Message: Bad Request
+
+
+count: 14   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+14/108   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Round ended
+

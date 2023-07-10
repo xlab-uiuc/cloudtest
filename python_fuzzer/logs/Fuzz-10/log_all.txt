@@ -1,0 +1,1217 @@
+****************************************************************************
+****************************************************************************
+method: abort_copy args:  ['0']
+**AZURE**: Copy is not aborted -- unsuccessful. Error:  There is currently no pending copy operation.
+RequestId:139ab969-e01e-001c-7c51-ac9aff000000
+Time:2023-07-01T19:20:43.1312186Z
+ErrorCode:NoPendingCopyOperation
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>NoPendingCopyOperation</Code><Message>There is currently no pending copy operation.
+RequestId:139ab969-e01e-001c-7c51-ac9aff000000
+Time:2023-07-01T19:20:43.1312186Z</Message></Error>
+**EMULATOR**: Copy is not aborted -- unsuccessful. Error:  There is currently no pending copy operation.
+RequestId:6dbb3dbd-700e-4028-8d55-1c202cc227c8
+Time:2023-07-01T19:20:43.174Z
+ErrorCode:NoPendingCopyOperation
+Content: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>NoPendingCopyOperation</Code>
+  <Message>There is currently no pending copy operation.
+RequestId:6dbb3dbd-700e-4028-8d55-1c202cc227c8
+Time:2023-07-01T19:20:43.174Z</Message>
+</Error>
+Container is deleted.
+Container is deleted.
+Container is deleted.
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: acquire_lease args:  [0, '0']
+**AZURE**: Lease is not acquired. Error:  The value for one of the HTTP headers is not in the correct format.
+RequestId:878099f8-801e-001a-5851-aca940000000
+Time:2023-07-01T19:20:44.1996078Z
+ErrorCode:InvalidHeaderValue
+headername:x-ms-lease-duration
+headervalue:0
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>InvalidHeaderValue</Code><Message>The value for one of the HTTP headers is not in the correct format.
+RequestId:878099f8-801e-001a-5851-aca940000000
+Time:2023-07-01T19:20:44.1996078Z</Message><HeaderName>x-ms-lease-duration</HeaderName><HeaderValue>0</HeaderValue></Error>
+**EMULATOR**: Lease is not acquired. Error:  The value for one of the HTTP headers is not in the correct format.
+RequestId:cc9fa445-59b5-4b6f-9e93-cd04da55c703
+Time:2023-07-01T19:20:44.220Z
+ErrorCode:InvalidHeaderValue
+Content: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>InvalidHeaderValue</Code>
+  <Message>The value for one of the HTTP headers is not in the correct format.
+RequestId:cc9fa445-59b5-4b6f-9e93-cd04da55c703
+Time:2023-07-01T19:20:44.220Z</Message>
+</Error>
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: append_block args:  ['41', 1]
+**AZURE**: Blob is appended.
+**EMULATOR**: Blob is appended.
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: append_block_from_url args:  ['0', '0', 2, 3]
+**AZURE**: Block is not appended from url. Error:  The value for one of the HTTP headers is not in the correct format.
+RequestId:6cd24ce7-d01e-004a-3851-ac6b10000000
+Time:2023-07-01T19:20:46.3995744Z
+ErrorCode:InvalidHeaderValue
+headername:x-ms-rename-destination
+headervalue:://0
+Content: <?xml version="1.0" encoding="utf-8"?>
+<Error><Code>InvalidHeaderValue</Code><Message>The value for one of the HTTP headers is not in the correct format.
+RequestId:6cd24ce7-d01e-004a-3851-ac6b10000000
+Time:2023-07-01T19:20:46.3995744Z</Message><HeaderName>x-ms-rename-destination</HeaderName><HeaderValue>://0</HeaderValue></Error>
+**EMULATOR**: Block is not appended from url. Error:  Current API is not implemented yet. Please vote your wanted features to https://github.com/azure/azurite/issues
+RequestId:9a39dc89-6faf-4238-9294-744b57c87961
+Time:2023-07-01T19:22:12.474Z
+ErrorCode:APINotImplemented
+Content: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>APINotImplemented</Code>
+  <Message>Current API is not implemented yet. Please vote your wanted features to https://github.com/azure/azurite/issues
+RequestId:9a39dc89-6faf-4238-9294-744b57c87961
+Time:2023-07-01T19:22:12.474Z</Message>
+</Error>
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: clear_page args:  [0, 1]
+**AZURE**: Page is not cleared. Error:  length must be an integer that aligns with 512 page size
+**EMULATOR**: Page is not cleared. Error:  length must be an integer that aligns with 512 page size
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: commit_block_list args:  [0, {'name': 'Apple', 'price': 100}]
+**AZURE**: Block list is not committed. Error:  'int' object is not iterable
+**EMULATOR**: Block list is not committed. Error:  'int' object is not iterable
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: create_append_blob args:  [{'name': 'Jane Doe', 'age': 25, 'address': '456 Elm Street, Anytown, USA'}]
+**AZURE**: Append blob is not created. Error:  'int' object has no attribute 'strip'
+**EMULATOR**: Append blob is not created. Error:  'int' object has no attribute 'strip'
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: create_page_blob args:  [0, {'name': 'Apple', 'price': 100}, '0']
+**AZURE**: Page blob is not created. Error:  'int' object has no attribute 'strip'
+**EMULATOR**: Page blob is not created. Error:  'int' object has no attribute 'strip'
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: create_snapshot args:  [{'name': 'Jane Doe', 'age': 25, 'address': '456 Elm Street, Anytown, USA'}]
+**AZURE**: Snapshot is not created. Error:  'int' object has no attribute 'strip'
+**EMULATOR**: Snapshot is not created. Error:  'int' object has no attribute 'strip'
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: delete_blob args:  ['-66']
+**AZURE**: Blob is not deleted. Error:  '-66' is not a valid DeleteSnapshotsOptionType
+**EMULATOR**: Blob is not deleted. Error:  '-66' is not a valid DeleteSnapshotsOptionType
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: delete_immutability_policy args:  [0, 1, 2, 3, 4, 5]
+**AZURE**: Immutability policy is not deleted. Error:  Operation returned an invalid status 'ImmutableStorageWithVersioning: feature is not enabled.'
+Content: <?xml version="1.0" encoding="utf-8"?>
+<Error><Code>ImmutableStorageWithVersioningIsNotEnabled</Code><Message>ImmutableStorageWithVersioning: feature is not enabled.
+RequestId:29905295-801e-000a-0751-ac6c28000000
+Time:2023-07-01T19:22:21.1164170Z</Message></Error>
+**EMULATOR**: Immutability policy is not deleted. Error:  Operation returned an invalid status 'Accepted'
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: download_blob args:  [0, 1]
+**AZURE**: Blob is downloaded.
+**EMULATOR**: Blob is downloaded.
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: exists args:  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38]
+**AZURE**: Blob exists succeeded --  True
+**EMULATOR**: Blob exists succeeded --  True
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: get_account_information args:  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57]
+**AZURE**: Account information is not retrieved. Error:  The specified resource does not exist.
+RequestId:0ca4b252-501e-0044-6351-ac42a0000000
+Time:2023-07-01T19:22:24.6276156Z
+ErrorCode:ResourceNotFound
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>ResourceNotFound</Code><Message>The specified resource does not exist.
+RequestId:0ca4b252-501e-0044-6351-ac42a0000000
+Time:2023-07-01T19:22:24.6276156Z</Message></Error>
+**EMULATOR**: Account information is retrieved.
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: get_blob_properties args:  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60]
+**AZURE**: Blob properties are retrieved.
+**EMULATOR**: Blob properties are retrieved.
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: get_blob_tags args:  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+**AZURE**: Blob tags are retrieved.
+**EMULATOR**: Blob tags are not retrieved. Error:  Cannot deserialize content-type: application/octet-stream
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: get_block_list args:  ['0']
+**AZURE**: Block list is not retrieved. Error:  Value for one of the query parameters specified in the request URI is invalid.
+RequestId:31a25cde-b01e-0073-1b51-ac900c000000
+Time:2023-07-01T19:22:27.8832556Z
+ErrorCode:InvalidQueryParameterValue
+queryparametername:blocklisttype
+queryparametervalue:0
+reason:This is not a valid block list type.
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>InvalidQueryParameterValue</Code><Message>Value for one of the query parameters specified in the request URI is invalid.
+RequestId:31a25cde-b01e-0073-1b51-ac900c000000
+Time:2023-07-01T19:22:27.8832556Z</Message><QueryParameterName>blocklisttype</QueryParameterName><QueryParameterValue>0</QueryParameterValue><Reason>This is not a valid block list type.</Reason></Error>
+**EMULATOR**: Block list is not retrieved. Error:  Bad Request
+ErrorCode:None
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: get_page_ranges args:  [0, 1]
+**AZURE**: Page ranges are not retrieved. Error:  Invalid page blob end_range: 0. The size must be aligned to a 512-byte boundary.
+**EMULATOR**: Page ranges are not retrieved. Error:  Invalid page blob end_range: 0. The size must be aligned to a 512-byte boundary.
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: list_page_ranges_diff args:  ['0', 1, 2]
+**AZURE**: Page ranges diff is not retrieved. Error:  Invalid page blob start_range: 1. The size must be aligned to a 512-byte boundary.
+**EMULATOR**: Page ranges diff is not retrieved. Error:  Invalid page blob start_range: 1. The size must be aligned to a 512-byte boundary.
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: query_blob args:  ['0']
+**AZURE**: Blob contents are not queried. Error:  Syntax error in query: 0
+RequestId:a9a71b4b-601e-0060-3651-acb400000000
+Time:2023-07-01T19:22:30.9159036Z
+ErrorCode:ErrorProcessingQueryExpression
+Content: <?xml version="1.0" encoding="utf-8"?>
+<Error><Code>ErrorProcessingQueryExpression</Code><Message>Syntax error in query: 0
+RequestId:a9a71b4b-601e-0060-3651-acb400000000
+Time:2023-07-01T19:22:30.9159036Z</Message></Error>
+**EMULATOR**: Blob contents are not queried. Error:  Bad Request
+ErrorCode:None
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: set_blob_metadata args:  [{'name': 'Jane Doe', 'age': 25, 'address': '456 Elm Street, Anytown, USA'}]
+**AZURE**: Blob metadata is not set. Error:  'int' object has no attribute 'strip'
+**EMULATOR**: Blob metadata is not set. Error:  'int' object has no attribute 'strip'
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: set_blob_tags args:  [{'name': 'Jane Doe', 'age': 25, 'address': '456 Elm Street, Anytown, USA'}]
+**AZURE**: Blob tags are not set. Error:  The tags specified are invalid. It contains characters that are not permitted.
+RequestId:dc0b7193-c01e-0034-0951-acfb57000000
+Time:2023-07-01T19:22:32.9859724Z
+ErrorCode:InvalidTag
+tagvalue:456 Elm Street, Anytown, USA
+Content: <?xml version="1.0" encoding="utf-8"?>
+<Error><Code>InvalidTag</Code><Message>The tags specified are invalid. It contains characters that are not permitted.
+RequestId:dc0b7193-c01e-0034-0951-acfb57000000
+Time:2023-07-01T19:22:32.9859724Z</Message><TagValue>456 Elm Street, Anytown, USA</TagValue></Error>
+**EMULATOR**: Blob tags are not set. Error:  Bad Request
+ErrorCode:None
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: set_http_headers args:  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50]
+**AZURE**: HTTP headers are set.
+**EMULATOR**: HTTP headers are set.
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: set_immutability_policy args:  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22]
+**AZURE**: Immutability policy is not set. Error:  Operation returned an invalid status 'ImmutableStorageWithVersioning: feature is not enabled.'
+Content: <?xml version="1.0" encoding="utf-8"?>
+<Error><Code>ImmutableStorageWithVersioningIsNotEnabled</Code><Message>ImmutableStorageWithVersioning: feature is not enabled.
+RequestId:25319adb-401e-003a-7a51-acd2e7000000
+Time:2023-07-01T19:22:36.4666268Z</Message></Error>
+**EMULATOR**: Immutability policy is not set. Error:  Operation returned an invalid status 'Bad Request'
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: set_legal_hold args:  ['1']
+**AZURE**: Legal hold is not set. Error:  Operation returned an invalid status 'ImmutableStorageWithVersioning: feature is not enabled.'
+Content: <?xml version="1.0" encoding="utf-8"?>
+<Error><Code>ImmutableStorageWithVersioningIsNotEnabled</Code><Message>ImmutableStorageWithVersioning: feature is not enabled.
+RequestId:b89b00ad-d01e-0065-3d51-ac66db000000
+Time:2023-07-01T19:22:37.4304576Z</Message></Error>
+**EMULATOR**: Legal hold is not set. Error:  Operation returned an invalid status 'Bad Request'
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: set_standard_blob_tier args:  ['0']
+**AZURE**: Blob tier is not set. Error:  The value for one of the HTTP headers is not in the correct format.
+RequestId:44796924-f01e-005d-4b51-acc21b000000
+Time:2023-07-01T19:22:38.5370658Z
+ErrorCode:InvalidHeaderValue
+headername:x-ms-access-tier
+headervalue:0
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>InvalidHeaderValue</Code><Message>The value for one of the HTTP headers is not in the correct format.
+RequestId:44796924-f01e-005d-4b51-acc21b000000
+Time:2023-07-01T19:22:38.5370658Z</Message><HeaderName>x-ms-access-tier</HeaderName><HeaderValue>0</HeaderValue></Error>
+**EMULATOR**: Blob tier is not set. Error:  The access tier is not supported for this blob type.
+RequestId:b2417efc-f87e-4bec-a04c-25c2cd6fde14
+Time:2023-07-01T19:22:38.560Z
+ErrorCode:AccessTierNotSupportedForBlobType
+Content: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>AccessTierNotSupportedForBlobType</Code>
+  <Message>The access tier is not supported for this blob type.
+RequestId:b2417efc-f87e-4bec-a04c-25c2cd6fde14
+Time:2023-07-01T19:22:38.560Z</Message>
+</Error>
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: stage_block args:  ['0', '-15', 2]
+**AZURE**: Block is staged.
+**EMULATOR**: Block is staged.
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: stage_block_from_url args:  ['-7', '62', 2, 3, '7454']
+**AZURE**: Blob is uploaded.
+**AZURE**: Block is not staged from url. Error:  string argument without an encoding
+**EMULATOR**: Blob is uploaded.
+**EMULATOR**: Block is not staged from url. Error:  string argument without an encoding
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: start_copy_from_url args:  ['0', {'name': 'Apple', 'price': 100}]
+**AZURE**: Copy from url not started. Error:  'int' object has no attribute 'strip'
+**EMULATOR**: Copy from url not started. Error:  'int' object has no attribute 'strip'
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: undelete_blob args:  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53]
+**AZURE**: Blob is undeleted.
+**EMULATOR**: Blob is not undeleted. Error:  Current API is not implemented yet. Please vote your wanted features to https://github.com/azure/azurite/issues
+RequestId:7ac30f8f-e885-421a-b7d4-8f76029b3e96
+Time:2023-07-01T19:24:08.383Z
+ErrorCode:APINotImplemented
+Content: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>APINotImplemented</Code>
+  <Message>Current API is not implemented yet. Please vote your wanted features to https://github.com/azure/azurite/issues
+RequestId:7ac30f8f-e885-421a-b7d4-8f76029b3e96
+Time:2023-07-01T19:24:08.383Z</Message>
+</Error>
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: upload_blob_from_bytes args:  ['0', '200', 2, {'name': 'Orange', 'price': 50}]
+**AZURE**: Blob is not uploaded from bytes. Error:  'int' object has no attribute 'strip'
+**EMULATOR**: Blob is not uploaded from bytes. Error:  'int' object has no attribute 'strip'
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: upload_blob_from_url args:  ['0']
+**AZURE**: Blob is not uploaded from url. Error:  The value for one of the HTTP headers is not in the correct format.
+RequestId:7b4ef994-d01e-0075-2051-aca3b3000000
+Time:2023-07-01T19:24:10.3148198Z
+ErrorCode:InvalidHeaderValue
+headername:x-ms-copy-source
+headervalue:://0
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>InvalidHeaderValue</Code><Message>The value for one of the HTTP headers is not in the correct format.
+RequestId:7b4ef994-d01e-0075-2051-aca3b3000000
+Time:2023-07-01T19:24:10.3148198Z</Message><HeaderName>x-ms-copy-source</HeaderName><HeaderValue>://0</HeaderValue></Error>
+**EMULATOR**: Blob is uploaded from url.
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: upload_page args:  ['0', 1]
+**AZURE**: Page is not uploaded. Error:  offset must be an integer that aligns with 512 page size
+**EMULATOR**: Page is not uploaded. Error:  offset must be an integer that aligns with 512 page size
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: upload_pages_from_url args:  ['0', 1, 2, 3]
+**AZURE**: Pages are not uploaded from url. Error:  offset must be an integer that aligns with 512 page size
+**EMULATOR**: Pages are not uploaded from url. Error:  offset must be an integer that aligns with 512 page size
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: acquire_lease args:  ['-6427', 1]
+**AZURE**: Lease is not acquired. Error:  The value for one of the HTTP headers is not in the correct format.
+RequestId:2f24751f-e01e-0023-5351-ac525c000000
+Time:2023-07-01T19:24:12.9270260Z
+ErrorCode:InvalidHeaderValue
+headername:x-ms-lease-duration
+headervalue:1
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>InvalidHeaderValue</Code><Message>The value for one of the HTTP headers is not in the correct format.
+RequestId:2f24751f-e01e-0023-5351-ac525c000000
+Time:2023-07-01T19:24:12.9270260Z</Message><HeaderName>x-ms-lease-duration</HeaderName><HeaderValue>1</HeaderValue></Error>
+**EMULATOR**: Lease is not acquired. Error:  The value for one of the HTTP headers is not in the correct format.
+RequestId:b1e2d906-a2b8-4b26-bd96-69295dad3e69
+Time:2023-07-01T19:24:12.942Z
+ErrorCode:InvalidHeaderValue
+Content: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>InvalidHeaderValue</Code>
+  <Message>The value for one of the HTTP headers is not in the correct format.
+RequestId:b1e2d906-a2b8-4b26-bd96-69295dad3e69
+Time:2023-07-01T19:24:12.942Z</Message>
+</Error>
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: create_container args:  ['0']
+**AZURE**: Container is not created. Error:  The specified resource name length is not within the permissible limits.
+RequestId:c387f8b9-401e-0015-6e51-acdf2c000000
+Time:2023-07-01T19:24:13.3279057Z
+ErrorCode:OutOfRangeInput
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>OutOfRangeInput</Code><Message>The specified resource name length is not within the permissible limits.
+RequestId:c387f8b9-401e-0015-6e51-acdf2c000000
+Time:2023-07-01T19:24:13.3279057Z</Message></Error>
+**EMULATOR**: Container is not created. Error:  The specified resource name length is not within the permissible limits.
+RequestId:2c5c96a5-ed57-4b9a-87d0-03bbd48d7fbc
+Time:2023-07-01T19:24:13.349Z
+ErrorCode:OutOfRangeInput
+Content: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>OutOfRangeInput</Code>
+  <Message>The specified resource name length is not within the permissible limits.
+RequestId:2c5c96a5-ed57-4b9a-87d0-03bbd48d7fbc
+Time:2023-07-01T19:24:13.349Z</Message>
+</Error>
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: delete_blob args:  ['-6']
+**AZURE**: Blob is not deleted. Error:  The specified blob does not exist.
+RequestId:613d3ac3-d01e-0007-0851-aca4fc000000
+Time:2023-07-01T19:24:13.7022677Z
+ErrorCode:BlobNotFound
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>BlobNotFound</Code><Message>The specified blob does not exist.
+RequestId:613d3ac3-d01e-0007-0851-aca4fc000000
+Time:2023-07-01T19:24:13.7022677Z</Message></Error>
+**EMULATOR**: Blob is not deleted. Error:  The specified blob does not exist.
+RequestId:c2c00133-016c-413a-992d-bc415e65c779
+Time:2023-07-01T19:24:13.725Z
+ErrorCode:BlobNotFound
+Content: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>BlobNotFound</Code>
+  <Message>The specified blob does not exist.
+RequestId:c2c00133-016c-413a-992d-bc415e65c779
+Time:2023-07-01T19:24:13.725Z</Message>
+</Error>
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: delete_blobs args:  [{'name': 'Orange', 'price': 50}, {'name': 'John Doe', 'age': 30, 'address': '123 Main Street, Anytown, USA'}, {'message': 'Hello, World!'}]
+**AZURE**: Blobs are not deleted. Error:  There is a partial failure in the batch operation.
+ErrorCode:None
+Content: --batchresponse_fcdc86eb-311c-49a6-9603-59166765e3d9
+Content-Type: application/http
+Content-ID: 0
+
+HTTP/1.1 404 The specified blob does not exist.
+x-ms-error-code: BlobNotFound
+x-ms-request-id: 71f630e9-401e-002a-2551-ac178f1ec0ff
+x-ms-version: 2021-12-02
+x-ms-client-request-id: dd4633d4-1844-11ee-a977-89bccf66e078
+Content-Length: 216
+Content-Type: application/xml
+Server: Windows-Azure-Blob/1.0
+
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Error><Code>BlobNotFound</Code><Message>The specified blob does not exist.
+RequestId:71f630e9-401e-002a-2551-ac178f1ec0ff
+Time:2023-07-01T19:24:14.4646024Z</Message></Error>
+--batchresponse_fcdc86eb-311c-49a6-9603-59166765e3d9--
+**EMULATOR**: Blobs are not deleted. Error:  There is a partial failure in the batch operation.
+ErrorCode:None
+Content: --batch_dd09dbf1-1844-11ee-a977-89bccf66e078
+Content-Type: application/http
+
+HTTP/1.1 400 One of the request inputs is not valid.
+x-ms-error-code: InvalidInput
+x-ms-request-id: eff6e034-9f97-470f-a7fe-463c8afcca9e
+content-type: application/xml
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>InvalidInput</Code>
+  <Message>One of the request inputs is not valid.
+RequestId:eff6e034-9f97-470f-a7fe-463c8afcca9e
+Time:2023-07-01T19:24:14.524Z</Message>
+</Error>
+--batch_dd09dbf1-1844-11ee-a977-89bccf66e078--
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: delete_container args:  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26]
+**AZURE**: Container deleted successfully.
+**EMULATOR**: Container deleted successfully.
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: download_blob args:  ['0']
+**AZURE**: Blob is not downloaded. Error:  The specified blob does not exist.
+RequestId:7478a219-c01e-0069-1151-acf1d3000000
+Time:2023-07-01T19:24:15.9729966Z
+ErrorCode:BlobNotFound
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>BlobNotFound</Code><Message>The specified blob does not exist.
+RequestId:7478a219-c01e-0069-1151-acf1d3000000
+Time:2023-07-01T19:24:15.9729966Z</Message></Error>
+**EMULATOR**: Blob is not downloaded. Error:  The specified blob does not exist.
+RequestId:d6489864-1295-4879-b0d4-b5fa79cc363d
+Time:2023-07-01T19:24:15.998Z
+ErrorCode:BlobNotFound
+Content: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>BlobNotFound</Code>
+  <Message>The specified blob does not exist.
+RequestId:d6489864-1295-4879-b0d4-b5fa79cc363d
+Time:2023-07-01T19:24:15.998Z</Message>
+</Error>
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: exists args:  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
+**AZURE**: Checking if container exists: 
+**AZURE**: Container exists: True
+**EMULATOR**: Checking if container exists: 
+**EMULATOR**: Container exists: True
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: find_blobs_by_tags args:  [{'name': 'Apple', 'price': 100}]
+**AZURE**: Blobs are found.
+**EMULATOR**: Blobs are found.
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: get_account_information args:  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27]
+**AZURE**: Account information found
+**EMULATOR**: Account information found
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: get_blob_client args:  ['0']
+**AZURE**: Blob client accessed
+**EMULATOR**: Blob client accessed
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: get_container_access_policy args:  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27]
+**AZURE**: Container access policy accessed
+**EMULATOR**: Container access policy accessed
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: get_container_properties args:  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44]
+**AZURE**: Container properties found
+**EMULATOR**: Container properties found
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: list_blob_names args:  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50]
+**AZURE**: Listing blob names...
+**AZURE**: Blob names listed successfully
+**EMULATOR**: Listing blob names...
+**EMULATOR**: Blob names listed successfully
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: list_blobs args:  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+**AZURE**: Listing blobs...
+**AZURE**: Blob listed successfully
+**EMULATOR**: Listing blobs...
+**EMULATOR**: Blob listed successfully
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: set_container_access_policy args:  [{'name': 'Orange', 'price': 50}]
+**AZURE**: Container access policy is not set. Error:  'str' object has no attribute 'start'
+**EMULATOR**: Container access policy is not set. Error:  'str' object has no attribute 'start'
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: set_container_metadata args:  [{'name': 'Orange', 'price': 50}]
+**AZURE**: Container metadata is not set. Error:  'int' object has no attribute 'strip'
+**EMULATOR**: Container metadata is not set. Error:  'int' object has no attribute 'strip'
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: set_premium_page_blob_tier args:  ['0', '0']
+**AZURE**: premium page blob tier is not set. Error:  Please provide sub-request(s) for this batch request
+**EMULATOR**: premium page blob tier is not set. Error:  Please provide sub-request(s) for this batch request
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: set_standard_page_blob_tier args:  ['0', '-97']
+**AZURE**: standard page blob tier is not set. Error:  There is a partial failure in the batch operation.
+ErrorCode:None
+Content: --batchresponse_8070844f-265b-4d3c-97c3-3784742aeaee
+Content-Type: application/http
+Content-ID: 0
+
+HTTP/1.1 400 The value for one of the HTTP headers is not in the correct format.
+x-ms-error-code: InvalidHeaderValue
+x-ms-request-id: 33f479aa-001e-0049-7651-ac8a741e1518
+x-ms-version: 2021-12-02
+x-ms-client-request-id: e12cb46e-1844-11ee-a977-89bccf66e078
+Content-Length: 255
+Content-Type: application/xml
+Server: Windows-Azure-Blob/1.0
+
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Error><Code>InvalidHeaderValue</Code><Message>The value for one of the HTTP headers is not in the correct format.
+RequestId:33f479aa-001e-0049-7651-ac8a741e1518
+Time:2023-07-01T19:24:20.9884205Z</Message></Error>
+--batchresponse_8070844f-265b-4d3c-97c3-3784742aeaee--
+**EMULATOR**: standard page blob tier is not set. Error:  There is a partial failure in the batch operation.
+ErrorCode:None
+Content: --batch_e09e8e39-1844-11ee-a977-89bccf66e078
+Content-Type: application/http
+
+HTTP/1.1 400 One of the request inputs is not valid.
+x-ms-error-code: InvalidInput
+x-ms-request-id: 15142e6d-84ed-4d8e-b174-75eb5c1dc92a
+content-type: application/xml
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>InvalidInput</Code>
+  <Message>One of the request inputs is not valid.
+RequestId:15142e6d-84ed-4d8e-b174-75eb5c1dc92a
+Time:2023-07-01T19:24:21.021Z</Message>
+</Error>
+--batch_e09e8e39-1844-11ee-a977-89bccf66e078--
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: upload_blob args:  ['-2', '0', '386', {'name': 'Apple', 'price': 100}]
+**AZURE**: Uploading blob:  -2
+**AZURE**: Blob is not uploaded. Error:  'int' object has no attribute 'strip'
+**EMULATOR**: Uploading blob:  -2
+**EMULATOR**: Blob is not uploaded. Error:  'int' object has no attribute 'strip'
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: walk_blobs args:  ['0', 1, '459']
+**AZURE**: Blobs walk successful.
+**EMULATOR**: Blobs walk successful.
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: create_container args:  ['0']
+**AZURE** : Container creation failed with name:  0  and error:  The specified resource name length is not within the permissible limits.
+RequestId:b3c4c2b7-001e-0066-6651-ac87bf000000
+Time:2023-07-01T19:24:22.3502685Z
+ErrorCode:OutOfRangeInput
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>OutOfRangeInput</Code><Message>The specified resource name length is not within the permissible limits.
+RequestId:b3c4c2b7-001e-0066-6651-ac87bf000000
+Time:2023-07-01T19:24:22.3502685Z</Message></Error>
+**EMULATOR** : Container creation failed with name:  0  and error:  The specified resource name length is not within the permissible limits.
+RequestId:2a676775-9e97-4371-b9ba-de6251dd28ce
+Time:2023-07-01T19:24:22.369Z
+ErrorCode:OutOfRangeInput
+Content: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>OutOfRangeInput</Code>
+  <Message>The specified resource name length is not within the permissible limits.
+RequestId:2a676775-9e97-4371-b9ba-de6251dd28ce
+Time:2023-07-01T19:24:22.369Z</Message>
+</Error>
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: delete_container args:  ['-1']
+**AZURE** : Container deletion failed with name:  -1  and error:  The specified resource name length is not within the permissible limits.
+RequestId:f30a63b2-e01e-007e-5c51-ac58d8000000
+Time:2023-07-01T19:24:22.7241712Z
+ErrorCode:OutOfRangeInput
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>OutOfRangeInput</Code><Message>The specified resource name length is not within the permissible limits.
+RequestId:f30a63b2-e01e-007e-5c51-ac58d8000000
+Time:2023-07-01T19:24:22.7241712Z</Message></Error>
+**EMULATOR** : Container deletion failed with name:  -1  and error:  The specified resource name length is not within the permissible limits.
+RequestId:71bb2db9-1c43-4049-aa4d-8bb26bc7b9ba
+Time:2023-07-01T19:24:22.732Z
+ErrorCode:OutOfRangeInput
+Content: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>OutOfRangeInput</Code>
+  <Message>The specified resource name length is not within the permissible limits.
+RequestId:71bb2db9-1c43-4049-aa4d-8bb26bc7b9ba
+Time:2023-07-01T19:24:22.732Z</Message>
+</Error>
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: find_blobs_by_tags args:  ['0']
+**AZURE** : Blobs found with filter expression:  0
+**EMULATOR** : Blobs found with filter expression:  0
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: get_account_info args:  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25]
+**AZURE** : Account info retrieved
+**EMULATOR** : Account info retrieved
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: get_blob_client args:  ['0']
+**AZURE** : Blob client retrieved with name:  0
+**EMULATOR** : Blob client retrieved with name:  0
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: get_container_client args:  ['0']
+**AZURE** : Container client retrieved with name:  0
+**EMULATOR** : Container client retrieved with name:  0
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: get_service_properties args:  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
+**AZURE** : Service properties retrieved
+**EMULATOR** : Service properties retrieved
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: get_service_stats args:  [0, 1, 2, 3, 4, 5]
+**AZURE** : Service stats retrieval failed, error:  <urllib3.connection.HTTPSConnection object at 0x7fc7d261b670>: Failed to establish a new connection: [Errno -2] Name or service not known
+**EMULATOR** : Service stats retrieval failed, error:  <urllib3.connection.HTTPSConnection object at 0x7fc7d1d842e0>: Failed to establish a new connection: [Errno -2] Name or service not known
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: list_containers args:  [0, 1, 2, 3, 4]
+**AZURE** : Container list retrieved
+**EMULATOR** : Container list retrieved
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: undelete_container args:  ['0', '0']
+**AZURE** : Container undeletion failed with name:  0  and error:  The specified resource name length is not within the permissible limits.
+RequestId:e1db5fec-201e-0003-7352-ac29fb000000
+Time:2023-07-01T19:27:15.8273471Z
+ErrorCode:OutOfRangeInput
+Content: <?xml version="1.0" encoding="utf-8"?>
+<Error><Code>OutOfRangeInput</Code><Message>The specified resource name length is not within the permissible limits.
+RequestId:e1db5fec-201e-0003-7352-ac29fb000000
+Time:2023-07-01T19:27:15.8273471Z</Message></Error>
+**EMULATOR** : Container undeletion failed with name:  0  and error:  The specified resource name length is not within the permissible limits.
+RequestId:06d8927a-e14b-46d7-a98d-26af2bd7c7a2
+Time:2023-07-01T19:27:15.852Z
+ErrorCode:OutOfRangeInput
+Content: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>OutOfRangeInput</Code>
+  <Message>The specified resource name length is not within the permissible limits.
+RequestId:06d8927a-e14b-46d7-a98d-26af2bd7c7a2
+Time:2023-07-01T19:27:15.852Z</Message>
+</Error>
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: acquire_lease args:  [0]
+**AZURE**: Blob lease is not acquired. Error:  The value for one of the HTTP headers is not in the correct format.
+RequestId:18eef7db-901e-0016-7552-ac3e48000000
+Time:2023-07-01T19:27:16.2748904Z
+ErrorCode:InvalidHeaderValue
+headername:x-ms-lease-duration
+headervalue:0
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>InvalidHeaderValue</Code><Message>The value for one of the HTTP headers is not in the correct format.
+RequestId:18eef7db-901e-0016-7552-ac3e48000000
+Time:2023-07-01T19:27:16.2748904Z</Message><HeaderName>x-ms-lease-duration</HeaderName><HeaderValue>0</HeaderValue></Error>
+**EMULATOR**: Blob lease is not acquired. Error:  The value for one of the HTTP headers is not in the correct format.
+RequestId:1ec54c27-f384-4bd2-8f32-ee8491275718
+Time:2023-07-01T19:27:16.293Z
+ErrorCode:InvalidHeaderValue
+Content: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>InvalidHeaderValue</Code>
+  <Message>The value for one of the HTTP headers is not in the correct format.
+RequestId:1ec54c27-f384-4bd2-8f32-ee8491275718
+Time:2023-07-01T19:27:16.293Z</Message>
+</Error>
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: break_lease args:  [0]
+**AZURE**: Blob lease is broken.
+**EMULATOR**: Blob lease is broken.
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: change_lease args:  ['0']
+**AZURE**: Blob lease is not changed. Error:  The value for one of the HTTP headers is not in the correct format.
+RequestId:14a0ce6b-401e-0058-2352-ac10c0000000
+Time:2023-07-01T19:27:17.3269369Z
+ErrorCode:InvalidHeaderValue
+headername:x-ms-proposed-lease-id
+headervalue:0
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>InvalidHeaderValue</Code><Message>The value for one of the HTTP headers is not in the correct format.
+RequestId:14a0ce6b-401e-0058-2352-ac10c0000000
+Time:2023-07-01T19:27:17.3269369Z</Message><HeaderName>x-ms-proposed-lease-id</HeaderName><HeaderValue>0</HeaderValue></Error>
+**EMULATOR**: Blob lease is changed.
+Container is not deleted. Error:  There is currently a lease on the container and no lease ID was specified in the request.
+RequestId:14a0cec3-401e-0058-7252-ac10c0000000
+Time:2023-07-01T19:27:17.4318773Z
+ErrorCode:LeaseIdMissing
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>LeaseIdMissing</Code><Message>There is currently a lease on the container and no lease ID was specified in the request.
+RequestId:14a0cec3-401e-0058-7252-ac10c0000000
+Time:2023-07-01T19:27:17.4318773Z</Message></Error>
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: release_lease args:  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+**AZURE**: Blob lease is released.
+**EMULATOR**: Blob lease is released.
+Container is deleted.
+Container is not deleted. Error:  There is currently a lease on the container and no lease ID was specified in the request.
+RequestId:83302ee6-501e-007b-8052-ac8a03000000
+Time:2023-07-01T19:27:18.0452152Z
+ErrorCode:LeaseIdMissing
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>LeaseIdMissing</Code><Message>There is currently a lease on the container and no lease ID was specified in the request.
+RequestId:83302ee6-501e-007b-8052-ac8a03000000
+Time:2023-07-01T19:27:18.0452152Z</Message></Error>
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: renew_lease args:  [0, 1, 2, 3, 4, 5]
+**AZURE**: Blob lease is renewed.
+**EMULATOR**: Blob lease is renewed.
+Container is not deleted. Error:  There is currently a lease on the container and no lease ID was specified in the request.
+RequestId:d3e566bc-101e-0018-4652-ac17f8000000
+Time:2023-07-01T19:27:18.8822907Z
+ErrorCode:LeaseIdMissing
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>LeaseIdMissing</Code><Message>There is currently a lease on the container and no lease ID was specified in the request.
+RequestId:d3e566bc-101e-0018-4652-ac17f8000000
+Time:2023-07-01T19:27:18.8822907Z</Message></Error>
+Container is deleted.
+Container is deleted.
+****************************************************************************
+****************************************************************************
+method: table_create_entity args:  [{'message': 'Hello, World!'}]
+**AZURE** : Entity creation failed; error:  PartitionKey must be present in an entity
+**EMULATOR** : Entity creation failed; error:  Operation returned an invalid status 'Internal Server Error'
+Table deleted:  table108294372
+Table deleted:  table699374872
+****************************************************************************
+****************************************************************************
+method: table_delete_entity args:  ['5956', '0']
+**AZURE** : Entity deleted
+**AZURE** : Entity created
+**EMULATOR** : Entity deleted
+**EMULATOR** : Entity created
+Table deleted:  table691731262
+Table deleted:  table22677410
+****************************************************************************
+****************************************************************************
+method: table_delete_table args:  ['-4']
+**AZURE** : Table deleted with name:  -4
+**EMULATOR** : Table deleted with name:  -4
+Table deleted:  table371327591
+Table deleted:  table795989425
+****************************************************************************
+****************************************************************************
+method: table_get_entity args:  ['-3', '3']
+**AZURE** : Entity retrieval failed; error:  The specified resource does not exist.
+RequestId:e310ce18-1002-006a-3452-ac10b7000000
+Time:2023-07-01T19:27:26.3503493Z
+ErrorCode:ResourceNotFound
+Content: {"odata.error":{"code":"ResourceNotFound","message":{"lang":"en-US","value":"The specified resource does not exist.\nRequestId:e310ce18-1002-006a-3452-ac10b7000000\nTime:2023-07-01T19:27:26.3503493Z"}}}
+**EMULATOR** : Entity retrieval failed; error:  The specified resource does not exist.
+RequestId:d19ddfc5-7d65-4646-9470-425838c526e9
+Time:2023-07-01T19:27:26.377Z
+ErrorCode:ResourceNotFound
+Content: {"odata.error":{"code":"ResourceNotFound","message":{"lang":"en-US","value":"The specified resource does not exist.\nRequestId:d19ddfc5-7d65-4646-9470-425838c526e9\nTime:2023-07-01T19:27:26.377Z"}}}
+Table deleted:  table3191063
+Table deleted:  table738910148
+****************************************************************************
+****************************************************************************
+method: table_get_table_access_policy args:  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41]
+**AZURE** : Table access policy retrieved
+**EMULATOR** : Table access policy retrieved
+Table deleted:  table365353111
+Table deleted:  table599458457
+Table deleted:  table431693410
+Table deleted:  table96471004
+****************************************************************************
+****************************************************************************
+method: table_list_entities args:  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+**AZURE** : Entities listed
+**EMULATOR** : Entities listed
+Table deleted:  table489165084
+Table deleted:  table669121588
+****************************************************************************
+****************************************************************************
+method: table_query_entities args:  ['0']
+**AZURE** : Entities queried
+**EMULATOR** : Entities queried
+Table deleted:  table419119815
+Table deleted:  table614239088
+****************************************************************************
+****************************************************************************
+method: table_set_table_access_policy args:  [{'name': 'Apple', 'price': 100}]
+**AZURE** : Table access policy set failed; error:  'str' object has no attribute 'start'
+**EMULATOR** : Table access policy set failed; error:  'str' object has no attribute 'start'
+Table deleted:  table58865777
+Table deleted:  table893114491
+****************************************************************************
+****************************************************************************
+method: table_submit_transaction args:  [{'name': 'Jane Doe', 'age': 25, 'address': '456 Elm Street, Anytown, USA'}]
+**AZURE** : Entity created
+**AZURE** : Transaction submission failed; error:  Unrecognized operation: name
+**EMULATOR** : Entity created
+**EMULATOR** : Transaction submission failed; error:  Unrecognized operation: name
+Table deleted:  table562426713
+Table deleted:  table73046234
+****************************************************************************
+****************************************************************************
+method: table_update_entity args:  [{'name': 'Jane Doe', 'age': 25, 'address': '456 Elm Street, Anytown, USA'}, '0']
+**AZURE** : Entity created
+**AZURE** : Entity update failed; error:  'PartitionKey'
+**EMULATOR** : Entity created
+**EMULATOR** : Entity update failed; error:  'PartitionKey'
+Table deleted:  table470071837
+Table deleted:  table314305542
+****************************************************************************
+****************************************************************************
+method: table_upsert_entity args:  [{'name': 'John Doe', 'age': 30, 'address': '123 Main Street, Anytown, USA'}, '4']
+**AZURE** : Entity upsert failed; error:  'PartitionKey'
+**EMULATOR** : Entity upsert failed; error:  'PartitionKey'
+Table deleted:  table88339542
+Table deleted:  table834168515
+****************************************************************************
+****************************************************************************
+method: table_create args:  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34]
+**AZURE** : Table created
+**EMULATOR** : Table created
+Table deleted:  table989576268
+Table deleted:  table301813973
+****************************************************************************
+****************************************************************************
+method: table_delete args:  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54]
+**AZURE** : Table deleted
+**EMULATOR** : Table deleted
+Table deleted:  table343073892
+Table deleted:  table68485855
+****************************************************************************
+****************************************************************************
+method: table_get_service_properties args:  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33]
+**AZURE** : Service properties retrieved
+**EMULATOR** : Service properties retrieved
+Table deleted:  table635185876
+Table deleted:  table878634770
+****************************************************************************
+****************************************************************************
+method: table_get_service_stats args:  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+**AZURE** : Service stats retrieval failed; error:  <urllib3.connection.HTTPSConnection object at 0x7fc7d2f741f0>: Failed to establish a new connection: [Errno -2] Name or service not known
+**EMULATOR** : Service stats retrieval failed; error:  Atom format is not supported.
+RequestId:90361530-b15a-4294-a599-a0c4a2a816b3
+Time:2023-07-01T19:27:36.990Z
+ErrorCode:AtomFormatNotSupported
+Error:
+  
+Content: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>AtomFormatNotSupported</Code>
+  <Message>Atom format is not supported.
+RequestId:90361530-b15a-4294-a599-a0c4a2a816b3
+Time:2023-07-01T19:27:36.990Z</Message>
+</Error>
+Table deleted:  table803816124
+Table deleted:  table84992429
+****************************************************************************
+****************************************************************************
+method: table_get_table_client args:  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+**AZURE** : Table client retrieved
+**EMULATOR** : Table client retrieved
+Table deleted:  table404040631
+Table deleted:  table755619546
+****************************************************************************
+****************************************************************************
+method: table_list_tables args:  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32]
+**AZURE** : Tables listed
+**EMULATOR** : Tables listed
+Table deleted:  table516979984
+Table deleted:  table771783334
+****************************************************************************
+****************************************************************************
+method: table_query_tables args:  ['0']
+**AZURE** : Tables queried
+**EMULATOR** : Tables queried
+Table deleted:  table976599347
+Table deleted:  table234871559
+****************************************************************************
+****************************************************************************
+method: table_set_service_properties args:  [{'message': 'Hello, World!'}, {'name': 'Apple', 'price': 100}, {'name': 'John Doe', 'age': 30, 'address': '123 Main Street, Anytown, USA'}, {'name': 'Apple', 'price': 100}]
+**AZURE** : Service properties set failed; error:  'str' object has no attribute '_to_generated'
+**EMULATOR** : Service properties set failed; error:  'str' object has no attribute '_to_generated'
+Table deleted:  table577885470
+Table deleted:  table179907374
+****************************************************************************
+****************************************************************************
+method: queue_clear_messages args:  [0, 1, 2, 3, 4, 5, 6, 7]
+**AZURE** : Success -- Queue cleared
+**EMULATOR** : Success -- Queue cleared
+Success -- Queue deleted
+Success -- Queue deleted
+****************************************************************************
+****************************************************************************
+method: queue_create args:  ['-2']
+**AZURE** : Failed -- Queue creation failed; error:  The specified resource name length is not within the permissible limits.
+RequestId:0cc7c6dd-5003-006b-1552-ac4f6b000000
+Time:2023-07-01T19:27:39.0054437Z
+ErrorCode:OutOfRangeInput
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>OutOfRangeInput</Code><Message>The specified resource name length is not within the permissible limits.
+RequestId:0cc7c6dd-5003-006b-1552-ac4f6b000000
+Time:2023-07-01T19:27:39.0054437Z</Message></Error>
+**EMULATOR** : Failed -- Queue creation failed; error:  The specified resource name length is not within the permissible limits.
+RequestId:bf0386bd-8afd-48a1-b513-a9c108f8603f
+Time:2023-07-01T19:27:39.042Z
+ErrorCode:OutOfRangeInput
+Content: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>OutOfRangeInput</Code>
+  <Message>The specified resource name length is not within the permissible limits.
+RequestId:bf0386bd-8afd-48a1-b513-a9c108f8603f
+Time:2023-07-01T19:27:39.042Z</Message>
+</Error>
+Success -- Queue deleted
+Success -- Queue deleted
+****************************************************************************
+****************************************************************************
+method: queue_delete args:  ['0']
+**AZURE** : Success -- Queue deleted
+**AZURE** : Success -- Queue created
+**EMULATOR** : Success -- Queue deleted
+**EMULATOR** : Success -- Queue created
+Success -- Queue deleted
+Success -- Queue deleted
+****************************************************************************
+****************************************************************************
+method: queue_delete_message args:  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+**AZURE** : Success -- Message sent
+**AZURE** : Success -- Message deleted
+**EMULATOR** : Success -- Message sent
+**EMULATOR** : Success -- Message deleted
+Success -- Queue deleted
+Success -- Queue deleted
+****************************************************************************
+****************************************************************************
+method: queue_get_access_policy args:  [0, 1, 2, 3, 4, 5]
+**AZURE** : Success -- Queue access policy retrieved
+**EMULATOR** : Success -- Queue access policy retrieved
+Success -- Queue deleted
+Success -- Queue deleted
+****************************************************************************
+****************************************************************************
+method: queue_get_properties args:  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+**AZURE** : Success -- Queue properties retrieved
+**EMULATOR** : Success -- Queue properties retrieved
+Success -- Queue deleted
+Success -- Queue deleted
+****************************************************************************
+****************************************************************************
+method: queue_peek_messages args:  [0]
+**AZURE** : Failed -- Queue messages peek failed; error:  One of the query parameters specified in the request URI is outside the permissible range.
+RequestId:439121f9-d003-0075-7752-aca3b3000000
+Time:2023-07-01T19:27:41.1692659Z
+ErrorCode:OutOfRangeQueryParameterValue
+queryparametername:numofmessages
+queryparametervalue:0
+minimumallowed:1
+maximumallowed:32
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>OutOfRangeQueryParameterValue</Code><Message>One of the query parameters specified in the request URI is outside the permissible range.
+RequestId:439121f9-d003-0075-7752-aca3b3000000
+Time:2023-07-01T19:27:41.1692659Z</Message><QueryParameterName>numofmessages</QueryParameterName><QueryParameterValue>0</QueryParameterValue><MinimumAllowed>1</MinimumAllowed><MaximumAllowed>32</MaximumAllowed></Error>
+**EMULATOR** : Failed -- Queue messages peek failed; error:  Bad Request
+ErrorCode:None
+Success -- Queue deleted
+Success -- Queue deleted
+****************************************************************************
+****************************************************************************
+method: queue_receive_message args:  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32]
+**AZURE** : Success -- Queue messages received
+**EMULATOR** : Success -- Queue messages received
+Success -- Queue deleted
+Success -- Queue deleted
+****************************************************************************
+****************************************************************************
+method: queue_receive_messages args:  [0]
+**AZURE** : Success -- Queue messages received
+**EMULATOR** : Success -- Queue messages received
+Success -- Queue deleted
+Success -- Queue deleted
+****************************************************************************
+****************************************************************************
+method: queue_send_message args:  ['-3']
+**AZURE** : Success -- Message sent
+**EMULATOR** : Success -- Message sent
+Success -- Queue deleted
+Success -- Queue deleted
+****************************************************************************
+****************************************************************************
+method: queue_set_access_policy args:  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
+**AZURE** : Success -- Queue access policy retrieved
+**AZURE** : Success -- Queue access policy set
+**EMULATOR** : Success -- Queue access policy retrieved
+**EMULATOR** : Success -- Queue access policy set
+Success -- Queue deleted
+Success -- Queue deleted
+****************************************************************************
+****************************************************************************
+method: queue_set_metadata args:  [{'name': 'Orange', 'price': 50}]
+**AZURE** : Failed -- Queue metadata set failed; error:  'int' object has no attribute 'strip'
+**EMULATOR** : Failed -- Queue metadata set failed; error:  'int' object has no attribute 'strip'
+Success -- Queue deleted
+Success -- Queue deleted
+****************************************************************************
+****************************************************************************
+method: queue_update_message args:  ['8', '0']
+**AZURE** : Success -- Message sent
+**AZURE** : Success -- Message updated
+**EMULATOR** : Success -- Message sent
+**EMULATOR** : Success -- Message updated
+Success -- Queue deleted
+Success -- Queue deleted
+****************************************************************************
+****************************************************************************
+method: queue_create args:  ['4843']
+**AZURE** : Success -- Queue created
+**EMULATOR** : Success -- Queue created
+Success -- Queue deleted
+Success -- Queue deleted
+Success -- Queue deleted
+Success -- Queue deleted
+****************************************************************************
+****************************************************************************
+method: queue_delete args:  ['0']
+**AZURE** : Failed -- Queue deletion failed; error:  The specified resource name length is not within the permissible limits.
+RequestId:89c2e706-0003-002b-4152-ac4853000000
+Time:2023-07-01T19:27:46.4009138Z
+ErrorCode:OutOfRangeInput
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>OutOfRangeInput</Code><Message>The specified resource name length is not within the permissible limits.
+RequestId:89c2e706-0003-002b-4152-ac4853000000
+Time:2023-07-01T19:27:46.4009138Z</Message></Error>
+**EMULATOR** : Failed -- Queue deletion failed; error:  The specified resource name length is not within the permissible limits.
+RequestId:323c4900-6b5b-4f2c-bfda-7ca567cbe7af
+Time:2023-07-01T19:27:46.420Z
+ErrorCode:OutOfRangeInput
+Content: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>OutOfRangeInput</Code>
+  <Message>The specified resource name length is not within the permissible limits.
+RequestId:323c4900-6b5b-4f2c-bfda-7ca567cbe7af
+Time:2023-07-01T19:27:46.420Z</Message>
+</Error>
+Success -- Queue deleted
+Success -- Queue deleted
+****************************************************************************
+****************************************************************************
+method: queue_get_client args:  ['0']
+**AZURE** : Success -- Queue client retrieved
+**EMULATOR** : Success -- Queue client retrieved
+Success -- Queue deleted
+Success -- Queue deleted
+****************************************************************************
+****************************************************************************
+method: queue_get_service_properties args:  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
+**AZURE** : Success -- Service properties retrieved
+**EMULATOR** : Success -- Service properties retrieved
+Success -- Queue deleted
+Success -- Queue deleted
+****************************************************************************
+****************************************************************************
+method: queue_get_service_stats args:  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22]
+**AZURE** : Failed -- Service stats retrieval failed; error:  <urllib3.connection.HTTPSConnection object at 0x7fc7d1dc5520>: Failed to establish a new connection: [Errno -2] Name or service not known
+**EMULATOR** : Failed -- Service stats retrieval failed; error:  Invalid URL 'https:///devstoreaccount1/?restype=service&comp=stats': No host supplied
+Success -- Queue deleted
+Success -- Queue deleted
+****************************************************************************
+****************************************************************************
+method: queue_list args:  [0, 1, 2, 3, 4]
+**AZURE** : Success -- Queues listed
+**EMULATOR** : Success -- Queues listed
+Success -- Queue deleted
+Success -- Queue deleted
+****************************************************************************
+****************************************************************************
+method: queue_set_service_properties args:  [0, 1]
+**AZURE** : Success -- Service properties set
+**EMULATOR** : Success -- Service properties set
+Success -- Queue deleted
+Success -- Queue deleted
