@@ -43,31 +43,31 @@ class MyBlobClient:
         try:
             self.blob_service_client = BlobServiceClient.from_connection_string(self.connection_string, credential=credential)
         except Exception as e:
-            print(self.service + ": Blob service client is not received. Error: ", e)
+            print(self.service + ": Fail -- Blob service client is not received. Error: ", e)
             
         # create container client
         try:
             self.container_client = self.blob_service_client.get_container_client(self.container_name)
         except Exception as e:
-            print(self.service + ": Container client is not received. Error: ", e)
+            print(self.service + ": Fail -- Container client is not received. Error: ", e)
         
         # create container
         try:
             self.container_client.create_container()
         except Exception as e:
-            print(self.service + ": Container is not created. Error: ", e)
+            print(self.service + ": Fail -- Container is not created. Error: ", e)
 
         # upload blob
         try:
             self.container_client.upload_blob(data=b'First one', name=self.blob_name, blob_type='BlockBlob', length=len('First one'), metadata={'hello': 'world', 'number': '42'})
         except Exception as e:
-            print(self.service + ": Blob is not created. Error: ", e)
+            print(self.service + ": Fail -- Blob is not created. Error: ", e)
 
         # create blob client
         try:
             self.blob_client = self.container_client.get_blob_client(self.blob_name)
         except Exception as e:
-            print(self.service + ": Blob client is not received. Error: ", e)
+            print(self.service + ": Fail -- Blob client is not received. Error: ", e)
 
 
     # abort copy with parameters default none and try except block
@@ -87,10 +87,10 @@ class MyBlobClient:
     
 
             res = self.blob_client.abort_copy(resp['copy_id'])
-            print(self.service + ": Copy is aborted -- successful.")
+            print(self.service + ": Success -- Copy is aborted -- successful.")
             return True, res
         except Exception as e:
-            print(self.service + ": Copy is not aborted -- unsuccessful. Error: ", e)
+            print(self.service + ": Fail -- Copy is not aborted -- unsuccessful. Error: ", e)
             return False, e
 
 
@@ -106,7 +106,7 @@ class MyBlobClient:
 
         try:
             res = self.blob_client.acquire_lease(args[0], args[1])
-            print(self.service + ": Lease is acquired.")
+            print(self.service + ": Success -- Lease is acquired.")
 
             # break lease for garbage collection
             blob_lease_client = BlobLeaseClient(self.blob_client)
@@ -114,7 +114,7 @@ class MyBlobClient:
 
             return True, res
         except Exception as e:
-            print(self.service + ": Lease is not acquired. Error: ", e)
+            print(self.service + ": Fail -- Lease is not acquired. Error: ", e)
             return False, e
 
     # append blob with try except block
@@ -134,10 +134,10 @@ class MyBlobClient:
 
             blobclient = self.container_client.get_blob_client(random_blob_name)
             res = blobclient.append_block(args[0], length=args[1])
-            print(self.service + ": Blob is appended.")
+            print(self.service + ": Success -- Blob is appended.")
             return True, res
         except Exception as e:
-            print(self.service + ": Blob is not appended. Error: ", e)
+            print(self.service + ": Fail -- Blob is not appended. Error: ", e)
             return False, e
         
 
@@ -163,10 +163,10 @@ class MyBlobClient:
         try:
             cc = self.container_client.get_blob_client(args[0])
             res = cc.append_block_from_url(copy_source_url=args[1], source_offset=args[2], source_length=args[3])
-            print(self.service + ": Block is appended from url.")
+            print(self.service + ": Success -- Block is appended from url.")
             return True, res
         except Exception as e:
-            print(self.service + ": Block is not appended from url. Error: ", e)
+            print(self.service + ": Fail -- Block is not appended from url. Error: ", e)
             return False, e
         
 
@@ -189,12 +189,12 @@ class MyBlobClient:
                 self.container_client.upload_blob(data=data, name=random_blob_name, blob_type='PageBlob')
             blobclient = self.container_client.get_blob_client(random_blob_name)
             res = blobclient.clear_page(args[0], args[1])
-            print(self.service + ": Page is cleared.")
+            print(self.service + ": Success -- Page is cleared.")
             return True, res
                 
             
         except Exception as e:
-            print(self.service + ": Page is not cleared. Error: ", e)
+            print(self.service + ": Fail -- Page is not cleared. Error: ", e)
             return False, e
         
     
@@ -219,10 +219,10 @@ class MyBlobClient:
             blobclient = self.container_client.get_blob_client(random_blob_name)
 
             res = blobclient.commit_block_list(args[0], content_settings=content_setting, metadata=args[1])
-            print(self.service + ": Block list is committed.")
+            print(self.service + ": Success -- Block list is committed.")
             return True, res
         except Exception as e:
-            print(self.service + ": Block list is not committed. Error: ", e)
+            print(self.service + ": Fail -- Block list is not committed. Error: ", e)
             return False, e
         
 
@@ -245,10 +245,10 @@ class MyBlobClient:
             blobclient = self.container_client.get_blob_client(random_blob_name)
 
             res = blobclient.create_append_blob(content_setting, args[0])
-            print(self.service + ": Append blob is created.")
+            print(self.service + ": Success -- Append blob is created.")
             return True, res
         except Exception as e:
-            print(self.service + ": Append blob is not created. Error: ", e)
+            print(self.service + ": Fail -- Append blob is not created. Error: ", e)
             return False, e
     
 
@@ -276,10 +276,10 @@ class MyBlobClient:
             blobclient = self.container_client.get_blob_client(random_blob_name)
 
             res = blobclient.create_page_blob(args[0], content_setting, args[1])
-            print(self.service + ": Page blob is created.")
+            print(self.service + ": Success -- Page blob is created.")
             return True, res
         except Exception as e:
-            print(self.service + ": Page blob is not created. Error: ", e)
+            print(self.service + ": Fail -- Page blob is not created. Error: ", e)
             return False, e
     
 
@@ -293,10 +293,10 @@ class MyBlobClient:
 
         try:
             res = self.blob_client.create_snapshot(args[0])
-            print(self.service + ": Snapshot is created.")
+            print(self.service + ": Success -- Snapshot is created.")
             return True, res
         except Exception as e:
-            print(self.service + ": Snapshot is not created. Error: ", e)
+            print(self.service + ": Fail -- Snapshot is not created. Error: ", e)
             return False, e
         
 
@@ -309,14 +309,14 @@ class MyBlobClient:
 
         try:
             res = self.blob_client.delete_blob(args[0])
-            print(self.service + ": Blob is deleted.")
+            print(self.service + ": Success -- Blob is deleted.")
             # create another blob in its place
             self.blob_name = f'blob{random.randint(1, 1000000000)}'
             self.container_client.upload_blob(data=b'Second one', name=self.blob_name, blob_type='BlockBlob', length=len('First one'), metadata={'hello': 'world', 'number': '42'})
             self.blob_client = self.container_client.get_blob_client(self.blob_name)
             return True, res
         except Exception as e:
-            print(self.service + ": Blob is not deleted. Error: ", e)
+            print(self.service + ": Fail -- Blob is not deleted. Error: ", e)
             return False, e
         
     
@@ -325,10 +325,10 @@ class MyBlobClient:
         args = list(args)
         try:
             res = self.blob_client.delete_immutability_policy()
-            print(self.service + ": Immutability policy is deleted.")
+            print(self.service + ": Success -- Immutability policy is deleted.")
             return True, res
         except Exception as e:
-            print(self.service + ": Immutability policy is not deleted. Error: ", e)
+            print(self.service + ": Fail -- Immutability policy is not deleted. Error: ", e)
             return False, e
         
 
@@ -345,10 +345,10 @@ class MyBlobClient:
 
         try:
             res = self.blob_client.download_blob(args[0], args[1])
-            print(self.service + ": Blob is downloaded.")
+            print(self.service + ": Success -- Blob is downloaded.")
             return True, res
         except Exception as e:
-            print(self.service + ": Blob is not downloaded. Error: ", e)
+            print(self.service + ": Fail -- Blob is not downloaded. Error: ", e)
             return False, e
         
 
@@ -358,10 +358,10 @@ class MyBlobClient:
 
         try:
             res = self.blob_client.exists()
-            print(self.service + ": Blob exists succeeded -- ", res)
+            print(self.service + ": Success -- Blob exists succeeded -- ", res)
             return True, res
         except Exception as e:
-            print(self.service + ": Blob exists failed. Error: ", e)
+            print(self.service + ": Fail -- Blob exists failed. Error: ", e)
             return False, e
         
 
@@ -370,10 +370,10 @@ class MyBlobClient:
         args = list(args)
         try:
             res = self.blob_client.get_account_information()
-            print(self.service + ": Account information is retrieved.")
+            print(self.service + ": Success -- Account information is retrieved.")
             return True, res
         except Exception as e:
-            print(self.service + ": Account information is not retrieved. Error: ", e)
+            print(self.service + ": Fail -- Account information is not retrieved. Error: ", e)
             return False, e
         
 
@@ -383,10 +383,10 @@ class MyBlobClient:
 
         try:
             res = self.blob_client.get_blob_properties()
-            print(self.service + ": Blob properties are retrieved.")
+            print(self.service + ": Success -- Blob properties are retrieved.")
             return True, res
         except Exception as e:
-            print(self.service + ": Blob properties are not retrieved. Error: ", e)
+            print(self.service + ": Fail -- Blob properties are not retrieved. Error: ", e)
             return False, e
         
 
@@ -397,10 +397,10 @@ class MyBlobClient:
 
         try:
             res = self.blob_client.get_blob_tags()
-            print(self.service + ": Blob tags are retrieved.")
+            print(self.service + ": Success -- Blob tags are retrieved.")
             return True, res
         except Exception as e:
-            print(self.service + ": Blob tags are not retrieved. Error: ", e)
+            print(self.service + ": Fail -- Blob tags are not retrieved. Error: ", e)
             return False, e
         
 
@@ -413,10 +413,10 @@ class MyBlobClient:
 
         try:
             res = self.blob_client.get_block_list(args[0])
-            print(self.service + ": Block list is retrieved.")
+            print(self.service + ": Success -- Block list is retrieved.")
             return True, res
         except Exception as e:
-            print(self.service + ": Block list is not retrieved. Error: ", e)
+            print(self.service + ": Fail -- Block list is not retrieved. Error: ", e)
             return False, e
         
         
@@ -438,11 +438,11 @@ class MyBlobClient:
                 self.container_client.upload_blob(data=data, name=random_blob_name, blob_type='PageBlob')
             blobclient = self.container_client.get_blob_client(random_blob_name)
             res = blobclient.get_page_ranges(offset=args[0], length=args[1])
-            print(self.service + ": Page ranges are retrieved.")
+            print(self.service + ": Success -- Page ranges are retrieved.")
             return True, res
             
         except Exception as e:
-            print(self.service + ": Page ranges are not retrieved. Error: ", e)
+            print(self.service + ": Fail -- Page ranges are not retrieved. Error: ", e)
             return False, e
             
 
@@ -461,10 +461,10 @@ class MyBlobClient:
 
         try:
             res = self.blob_client.list_page_ranges(previous_snapshot=args[0], offset=args[1], length=args[2])
-            print(self.service + ": Page ranges diff is retrieved.")
+            print(self.service + ": Success -- Page ranges diff is retrieved.")
             return True, res
         except Exception as e:
-            print(self.service + ": Page ranges diff is not retrieved. Error: ", e)
+            print(self.service + ": Fail -- Page ranges diff is not retrieved. Error: ", e)
             return False, e
         
 
@@ -477,10 +477,10 @@ class MyBlobClient:
 
         try:
             res = self.blob_client.query_blob(args[0])
-            print(self.service + ": Blob contents are queried.")
+            print(self.service + ": Success -- Blob contents are queried.")
             return True, res
         except Exception as e:
-            print(self.service + ": Blob contents are not queried. Error: ", e)
+            print(self.service + ": Fail -- Blob contents are not queried. Error: ", e)
             return False, e
         
 
@@ -496,10 +496,10 @@ class MyBlobClient:
 
         try:
             res = self.blob_client.set_blob_metadata(args[0])
-            print(self.service + ": Blob metadata is set.")
+            print(self.service + ": Success -- Blob metadata is set.")
             return True, res
         except Exception as e:
-            print(self.service + ": Blob metadata is not set. Error: ", e)
+            print(self.service + ": Fail -- Blob metadata is not set. Error: ", e)
             return False, e
         
 
@@ -513,10 +513,10 @@ class MyBlobClient:
 
         try:
             res = self.blob_client.set_blob_tags(args[0])
-            print(self.service + ": Blob tags are set.")
+            print(self.service + ": Success -- Blob tags are set.")
             return True, res
         except Exception as e:
-            print(self.service + ": Blob tags are not set. Error: ", e)
+            print(self.service + ": Fail -- Blob tags are not set. Error: ", e)
             return False, e
         
 
@@ -529,10 +529,10 @@ class MyBlobClient:
 
         try:
             res = self.blob_client.set_http_headers(content_setting)
-            print(self.service + ": HTTP headers are set.")
+            print(self.service + ": Success -- HTTP headers are set.")
             return True, res
         except Exception as e:
-            print(self.service + ": HTTP headers are not set. Error: ", e)
+            print(self.service + ": Fail -- HTTP headers are not set. Error: ", e)
             return False, e
         
 
@@ -545,10 +545,10 @@ class MyBlobClient:
 
         try:
             res = self.blob_client.set_immutability_policy(policy)
-            print(self.service + ": Immutability policy is set.")
+            print(self.service + ": Success -- Immutability policy is set.")
             return True, res
         except Exception as e:
-            print(self.service + ": Immutability policy is not set. Error: ", e)
+            print(self.service + ": Fail -- Immutability policy is not set. Error: ", e)
             return False, e
         
 
@@ -561,10 +561,10 @@ class MyBlobClient:
 
         try:
             res = self.blob_client.set_legal_hold(args[0])
-            print(self.service + ": Legal hold is set.")
+            print(self.service + ": Success -- Legal hold is set.")
             return True, res
         except Exception as e:
-            print(self.service + ": Legal hold is not set. Error: ", e)
+            print(self.service + ": Fail -- Legal hold is not set. Error: ", e)
             return False, e
         
     
@@ -581,10 +581,10 @@ class MyBlobClient:
 
         try:
             res = self.blob_client.set_standard_blob_tier(args[0])
-            print(self.service + ": Blob tier is set.")
+            print(self.service + ": Success -- Blob tier is set.")
             return True, res
         except Exception as e:
-            print(self.service + ": Blob tier is not set. Error: ", e)
+            print(self.service + ": Fail -- Blob tier is not set. Error: ", e)
             return False, e
 
 
@@ -603,10 +603,10 @@ class MyBlobClient:
 
         try:
             res = self.blob_client.stage_block(args[0], args[1], length=args[2])
-            print(self.service + ": Block is staged.")
+            print(self.service + ": Success -- Block is staged.")
             return True, res
         except Exception as e:
-            print(self.service + ": Block is not staged. Error: ", e)
+            print(self.service + ": Fail -- Block is not staged. Error: ", e)
             return False, e    
 
     # Not implemented in the emulator
@@ -620,9 +620,9 @@ class MyBlobClient:
             #upload blob from file page
             with open('page', 'rb') as data:
                 self.container_client.upload_blob(random_blob, data, blob_type='BlockBlob')
-            print(self.service + ": Blob is uploaded.")
+            print(self.service + ": Success -- Blob is uploaded.")
         except Exception as e:
-            print(self.service + ": Blob is not uploaded. Error: ", e)
+            print(self.service + ": Fail -- Blob is not uploaded. Error: ", e)
             return False, e
  
         # block id
@@ -644,10 +644,10 @@ class MyBlobClient:
 
         try:
             res = self.blob_client.stage_block_from_url(block_id=args[0], source_url=args[1], source_offset=args[2], source_length=args[3], source_content_md5=args[4])
-            print(self.service + ": Block is staged from url.")
+            print(self.service + ": Success -- Block is staged from url.")
             return True, res
         except Exception as e:
-            print(self.service + ": Block is not staged from url. Error: ", e)
+            print(self.service + ": Fail -- Block is not staged from url. Error: ", e)
             return False, e
         
         
@@ -674,10 +674,10 @@ class MyBlobClient:
             with open('page', 'rb') as data1:
                 self.container_client.upload_blob(data=data1, name=args[0], blob_type='BlockBlob')
             res = self.blob_client.start_copy_from_url(url, metadata=args[1])
-            print(self.service + ": Copy from url started.")
+            print(self.service + ": Success -- Copy from url started.")
             return True, res
         except Exception as e:
-            print(self.service + ": Copy from url not started. Error: ", e)
+            print(self.service + ": Fail -- Copy from url not started. Error: ", e)
             return False, e
         
 
@@ -688,10 +688,10 @@ class MyBlobClient:
             
         try:
             res = self.blob_client.undelete_blob()
-            print(self.service + ": Blob is undeleted.")
+            print(self.service + ": Success -- Blob is undeleted.")
             return True, res
         except Exception as e:
-            print(self.service + ": Blob is not undeleted. Error: ", e)
+            print(self.service + ": Fail -- Blob is not undeleted. Error: ", e)
             return False, e
         
 
@@ -714,10 +714,10 @@ class MyBlobClient:
         try:
             blob_client = self.container_client.get_blob_client(f'blob{random.randint(0, 1000000)}')
             res = blob_client.upload_blob(data=args[0], blob_type=args[1], length=args[2], metadata=args[3])
-            print(self.service + ": Blob is uploaded from bytes.")
+            print(self.service + ": Success -- Blob is uploaded from bytes.")
             return True, res
         except Exception as e:
-            print(self.service + ": Blob is not uploaded from bytes. Error: ", e)
+            print(self.service + ": Fail -- Blob is not uploaded from bytes. Error: ", e)
             return False, e
         
 
@@ -735,10 +735,10 @@ class MyBlobClient:
         try:
             blob_client = self.container_client.get_blob_client(random_blob_name)    
             res = blob_client.upload_blob_from_url(args[0])
-            print(self.service + ": Blob is uploaded from url.")
+            print(self.service + ": Success -- Blob is uploaded from url.")
             return True, res
         except Exception as e:
-            print(self.service + ": Blob is not uploaded from url. Error: ", e)
+            print(self.service + ": Fail -- Blob is not uploaded from url. Error: ", e)
             return False, e
 
 
@@ -761,10 +761,10 @@ class MyBlobClient:
 
             blob_client = self.container_client.get_blob_client(blob)
             res = blob_client.upload_page(args[0], args[1], length=len(args[0]))
-            print(self.service + ": Page is uploaded.")
+            print(self.service + ": Success -- Page is uploaded.")
             return True, res
         except Exception as e:
-            print(self.service + ": Page is not uploaded. Error: ", e)
+            print(self.service + ": Fail -- Page is not uploaded. Error: ", e)
             return False, e
     
     # Not implemented in the emulator
@@ -778,7 +778,7 @@ class MyBlobClient:
             with open('page', 'rb') as data:
                 self.container_client.upload_blob(data=data, name=random_blob, blob_type='PageBlob')
         except Exception as e:
-            print(self.service + ": Page is not uploaded. Error: ", e)
+            print(self.service + ": Fail -- Page is not uploaded. Error: ", e)
             return False, e
 
         # source url
@@ -796,10 +796,10 @@ class MyBlobClient:
         try:
             cc = self.container_client.get_blob_client(random_blob)
             res = cc.upload_pages_from_url(args[0], args[1], args[2], args[3])
-            print(self.service + ": Pages are uploaded from url.")
+            print(self.service + ": Success -- Pages are uploaded from url.")
             return True, res
         except Exception as e:
-            print(self.service + ": Pages are not uploaded from url. Error: ", e)
+            print(self.service + ": Fail -- Pages are not uploaded from url. Error: ", e)
             return False, e
 
     # garbage collection

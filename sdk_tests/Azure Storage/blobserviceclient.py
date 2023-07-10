@@ -66,10 +66,10 @@ class MyBlobServiceClient:
 
         try:
             res = self.blob_service_client.create_container(args[0])
-            print(self.service, ': Container created with name: ', args[0])
+            print(self.service, ': Success -- Container created with name: ', args[0])
             return True, res
         except Exception as e:
-            print(self.service, ': Container creation failed with name: ', args[0], ' and error: ', e)
+            print(self.service, ': Fail -- Container creation failed with name: ', args[0], ' and error: ', e)
             return False, e
         
 
@@ -81,7 +81,7 @@ class MyBlobServiceClient:
 
         try:
             res = self.blob_service_client.delete_container(args[0])
-            print(self.service, ': Container deleted with name: ', args[0])
+            print(self.service, ': Success -- Container deleted with name: ', args[0])
 
             # create container again for sequences run
             self.container_name = f'container{random.randint(1, 1000000000)}'
@@ -90,7 +90,7 @@ class MyBlobServiceClient:
 
             return True, res
         except Exception as e:
-            print(self.service, ': Container deletion failed with name: ', args[0], ' and error: ', e)
+            print(self.service, ': Fail -- Container deletion failed with name: ', args[0], ' and error: ', e)
             return False, e
         
 
@@ -103,10 +103,10 @@ class MyBlobServiceClient:
         
         try:
             res = self.blob_service_client.find_blobs_by_tags(args[0])
-            print(self.service, ': Blobs found with filter expression: ', args[0])
+            print(self.service, ': Success -- Blobs found with filter expression: ', args[0])
             return True, res
         except Exception as e:
-            print(self.service, ': Blob search failed, error: ', e)
+            print(self.service, ': Fail -- Blob search failed, error: ', e)
             return False, e
 
 
@@ -115,10 +115,10 @@ class MyBlobServiceClient:
         args = list(args)
         try:
             res = self.blob_service_client.get_account_information()
-            print(self.service, ': Account info retrieved')
+            print(self.service, ': Success -- Account info retrieved')
             return True, res
         except Exception as e:
-            print(self.service, ': Account info retrieval failed, error: ', e)
+            print(self.service, ': Fail -- Account info retrieval failed, error: ', e)
             return False, e
         
 
@@ -130,10 +130,10 @@ class MyBlobServiceClient:
 
         try:
             res = self.container_client.get_blob_client(args[0])
-            print(self.service, ': Blob client retrieved with name: ', args[0])
+            print(self.service, ': Success -- Blob client retrieved with name: ', args[0])
             return True, res
         except Exception as e:
-            print(self.service, ': Blob client retrieval failed with name: ', args[0], ' and error: ', e)
+            print(self.service, ': Fail -- Blob client retrieval failed with name: ', args[0], ' and error: ', e)
             return False, e
         
 
@@ -145,10 +145,10 @@ class MyBlobServiceClient:
 
         try:
             res = self.blob_service_client.get_container_client(args[0])
-            print(self.service, ': Container client retrieved with name: ', args[0])
+            print(self.service, ': Success -- Container client retrieved with name: ', args[0])
             return True, res
         except Exception as e:
-            print(self.service, ': Container client retrieval failed with name: ', args[0], ' and error: ', e)
+            print(self.service, ': Fail -- Container client retrieval failed with name: ', args[0], ' and error: ', e)
             return False, e
         
 
@@ -157,10 +157,10 @@ class MyBlobServiceClient:
         args = list(args)
         try:
             res = self.blob_service_client.get_service_properties()
-            print(self.service, ': Service properties retrieved')
+            print(self.service, ': Success -- Service properties retrieved')
             return True, res
         except Exception as e:
-            print(self.service, ': Service properties retrieval failed, error: ', e)
+            print(self.service, ': Fail -- Service properties retrieval failed, error: ', e)
             return False, e
         
     # will get "Failed to establish a connection" error if geo replication is disabled in cloud
@@ -169,10 +169,10 @@ class MyBlobServiceClient:
         args = list(args)
         try:
             res = self.blob_service_client.get_service_stats()
-            print(self.service, ': Service stats retrieved')
+            print(self.service, ': Success -- Service stats retrieved')
             return True, res
         except Exception as e:
-            print(self.service, ': Service stats retrieval failed, error: ', e)
+            print(self.service, ': Fail -- Service stats retrieval failed, error: ', e)
             return False, e
         
 
@@ -181,10 +181,10 @@ class MyBlobServiceClient:
         args = list(args)
         try:
             res = self.blob_service_client.list_containers()
-            print(self.service, ': Container list retrieved')
+            print(self.service, ': Success -- Container list retrieved')
             return True, res
         except Exception as e:
-            print(self.service, ': Container list retrieval failed, error: ', e)
+            print(self.service, ': Fail -- Container list retrieval failed, error: ', e)
             return False, e
         
 
@@ -215,10 +215,10 @@ class MyBlobServiceClient:
                         time.sleep(30)
 
             res = self.blob_service_client.undelete_container(deleted_container_name=args[0], deleted_container_version=args[1])
-            print(self.service, ': Container undeleted with name: ', args[0])
+            print(self.service, ': Success -- Container undeleted with name: ', args[0])
             return True, res
         except Exception as e:
-            print(self.service, ': Container undeletion failed with name: ', args[0], ' and error: ', e)
+            print(self.service, ': Fail -- Container undeletion failed with name: ', args[0], ' and error: ', e)
             return False, e
     
     # garbage collection

@@ -59,7 +59,7 @@ class MyQueueClient:
             print(self.service, ': Success -- Queue cleared')
             return True, res
         except Exception as e:
-            print(self.service, ': Failed -- Queue clear failed; error: ', e)
+            print(self.service, ': Fail -- Queue clear failed; error: ', e)
             return False, e
 
 
@@ -75,7 +75,7 @@ class MyQueueClient:
             print(self.service, ': Success -- Queue created')
             return True, res
         except Exception as e:
-            print(self.service, ': Failed -- Queue creation failed; error: ', e)
+            print(self.service, ': Fail -- Queue creation failed; error: ', e)
             return False, e
 
 
@@ -96,7 +96,7 @@ class MyQueueClient:
             print(self.service, ': Success -- Message deleted')
             return True, res
         except Exception as e:
-            print(self.service, ': Failed -- Message deletion failed; error: ', e)
+            print(self.service, ': Fail -- Message deletion failed; error: ', e)
             return False, e
         
 
@@ -112,7 +112,7 @@ class MyQueueClient:
             self.queue_create([])
             return True, res
         except Exception as e:
-            print(self.service, ': Failed -- Queue deletion failed; error: ', e)
+            print(self.service, ': Fail -- Queue deletion failed; error: ', e)
             return False, e
         
 
@@ -126,7 +126,7 @@ class MyQueueClient:
             print(self.service, ': Success -- Queue access policy retrieved')
             return True, res
         except Exception as e:
-            print(self.service, ': FAILED : Queue access policy retrieval failed; error: ', e)
+            print(self.service, ': FAIL : Queue access policy retrieval failed; error: ', e)
             return False, e
         
 
@@ -139,7 +139,7 @@ class MyQueueClient:
             print(self.service, ': Success -- Queue properties retrieved')
             return True, res
         except Exception as e:
-            print(self.service, ': Failed -- Queue properties retrieval failed; error: ', e)
+            print(self.service, ': Fail -- Queue properties retrieval failed; error: ', e)
             return False, e
         
     # peek messages with arguments as none try except
@@ -154,7 +154,7 @@ class MyQueueClient:
             print(self.service, ': Success -- Queue messages peeked')
             return True, res
         except Exception as e:
-            print(self.service, ': Failed -- Queue messages peek failed; error: ', e)
+            print(self.service, ': Fail -- Queue messages peek failed; error: ', e)
             return False, e
         
     # receive message with arguments as none try except
@@ -165,7 +165,7 @@ class MyQueueClient:
             print(self.service, ': Success -- Queue messages received')
             return True, res
         except Exception as e:
-            print(self.service, ': Queue messages receive failed; error: ', e)
+            print(self.service, ': Fail -- Queue messages receive failed; error: ', e)
             return False, e
         
 
@@ -181,7 +181,7 @@ class MyQueueClient:
             print(self.service, ': Success -- Queue messages received')
             return True, res
         except Exception as e:
-            print(self.service, ': Failed -- Queue messages receive failed; error: ', e)
+            print(self.service, ': Fail -- Queue messages receive failed; error: ', e)
             return False, e
     
 
@@ -197,7 +197,7 @@ class MyQueueClient:
             print(self.service, ': Success -- Message sent')
             return True, res
         except Exception as e:
-            print(self.service, ': Failed -- Message send failed; error: ', e)
+            print(self.service, ': Fail -- Message send failed; error: ', e)
             return False, e
         
 
@@ -214,7 +214,7 @@ class MyQueueClient:
             print(self.service, ': Success -- Queue access policy set')
             return True, res
         except Exception as e:
-            print(self.service, ': Failed -- Queue access policy set failed; error: ', e)
+            print(self.service, ': Fail -- Queue access policy set failed; error: ', e)
             return False, e
 
 
@@ -228,7 +228,7 @@ class MyQueueClient:
             print(self.service, ': Success -- Queue metadata set')
             return True, res
         except Exception as e:
-            print(self.service, ': Failed -- Queue metadata set failed; error: ', e)
+            print(self.service, ': Fail -- Queue metadata set failed; error: ', e)
             return False, e
         
 
@@ -251,7 +251,7 @@ class MyQueueClient:
             print(self.service, ': Success -- Message updated')
             return True, res
         except Exception as e:
-            print(self.service, ': Failed -- Message update failed; error: ', e)
+            print(self.service, ': Fail -- Message update failed; error: ', e)
             return False, e
         
     # garbage collection
@@ -266,10 +266,10 @@ class MyQueueClient:
                     self.queue_service_client.delete_queue(queue.name)
                     print('Success -- Queue deleted')
                 except:
-                    print('Failed -- Queue deletion failed')
+                    print('Fail -- Queue deletion failed')
 
         except:
-            print('Failed -- Queue list failed')
+            print('Fail -- Queue list failed')
 
         
 

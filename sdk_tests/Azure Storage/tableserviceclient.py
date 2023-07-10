@@ -52,10 +52,10 @@ class MyTableServiceClient():
         args = list(args)
         try:
             res = self.table_service_client.create_table_if_not_exists(self.table_name)
-            print(self.service, ': Table created')
+            print(self.service, ': Success -- Table created')
             return True, res
         except Exception as e:
-            print(self.service, ': Table creation failed; error: ', e)
+            print(self.service, ': Fail -- Table creation failed; error: ', e)
             return False, e
         
 
@@ -64,13 +64,13 @@ class MyTableServiceClient():
         args = list(args)
         try:
             res = self.table_service_client.delete_table(self.table_name)
-            print(self.service, ': Table deleted')
+            print(self.service, ': Success -- Table deleted')
             # create table again
             self.table_name = f'table{random.randint(1, 1000000000)}'
             self.table_service_client.create_table_if_not_exists(self.table_name)
             return True, res
         except Exception as e:
-            print(self.service, ': Table deletion failed; error: ', e)
+            print(self.service, ': Fail -- Table deletion failed; error: ', e)
             return False, e
         
 
@@ -79,10 +79,10 @@ class MyTableServiceClient():
         args = list(args)
         try:
             res = self.table_service_client.get_service_properties()
-            print(self.service, ': Service properties retrieved')
+            print(self.service, ': Success -- Service properties retrieved')
             return True, res
         except Exception as e:
-            print(self.service, ': Service properties retrieval failed; error: ', e)
+            print(self.service, ': Fail -- Service properties retrieval failed; error: ', e)
             return False, e
         
     # will fail on cloud without geo-replication
@@ -91,10 +91,10 @@ class MyTableServiceClient():
         args = list(args)
         try:
             res = self.table_service_client.get_service_stats()
-            print(self.service, ': Service stats retrieved')
+            print(self.service, ': Success -- Service stats retrieved')
             return True, res
         except Exception as e:
-            print(self.service, ': Service stats retrieval failed; error: ', e)
+            print(self.service, ': Fail -- Service stats retrieval failed; error: ', e)
             return False, e
         
 
@@ -103,10 +103,10 @@ class MyTableServiceClient():
         args = list(args)
         try:
             res = self.table_service_client.get_table_client(self.table_name)
-            print(self.service, ': Table client retrieved')
+            print(self.service, ': Success -- Table client retrieved')
             return True, res
         except Exception as e:
-            print(self.service, ': Table client retrieval failed; error: ', e)
+            print(self.service, ': Fail -- Table client retrieval failed; error: ', e)
             return False, e
         
     # list tables with try except
@@ -114,10 +114,10 @@ class MyTableServiceClient():
         args = list(args)
         try:
             res = self.table_service_client.list_tables()
-            print(self.service, ': Tables listed')
+            print(self.service, ': Success -- Tables listed')
             return True, res
         except Exception as e:
-            print(self.service, ': Tables listing failed; error: ', e)
+            print(self.service, ': Fail -- Tables listing failed; error: ', e)
             return False, e
         
 
@@ -128,10 +128,10 @@ class MyTableServiceClient():
             args.append("TableName eq 'table1'")
         try:
             res = self.table_service_client.query_tables(args[0])
-            print(self.service, ': Tables queried')
+            print(self.service, ': Success -- Tables queried')
             return True, res
         except Exception as e:
-            print(self.service, ': Tables query failed; error: ', e)
+            print(self.service, ': Fail -- Tables query failed; error: ', e)
             return False, e
         
     # 500 Internal Server Error
@@ -152,10 +152,10 @@ class MyTableServiceClient():
             
         try:
             res = self.table_service_client.set_service_properties(analytics_logging=args[0], hour_metrics=args[1], minute_metrics=args[2], cors=args[3])
-            print(self.service, ': Service properties set')
+            print(self.service, ': Success -- Service properties set')
             return True, res
         except Exception as e:
-            print(self.service, ': Service properties set failed; error: ', e)
+            print(self.service, ': Fail -- Service properties set failed; error: ', e)
             return False, e
         
 

@@ -50,25 +50,25 @@ class MyBlobLeaseClient:
         try:
             self.container_client = self.blob_service_client.get_container_client(self.container_name)
         except Exception as e:
-            print(self.service + ": Container client is not received. Error: ", e)
+            print(self.service + ": Fail -- Container client is not received. Error: ", e)
         
         # create container
         try:
             self.container_client.create_container()
         except Exception as e:
-            print(self.service + ": Container is not created. Error: ", e)
+            print(self.service + ": Fail -- Container is not created. Error: ", e)
 
         # upload blob
         try:
             self.container_client.upload_blob(data=b'First one', name=self.blob_name, blob_type='BlockBlob', length=len('First one'), metadata={'hello': 'world', 'number': '42'})
         except Exception as e:
-            print(self.service + ": Blob is not created. Error: ", e)
+            print(self.service + ": Fail -- Blob is not created. Error: ", e)
 
         # get blob lease client
         try:
             self.blob_lease_client = BlobLeaseClient(self.container_client)
         except Exception as e:
-            print(self.service + ": Blob lease client is not received. Error: ", e)
+            print(self.service + ": Fail -- Blob lease client is not received. Error: ", e)
 
 
     def acquire_lease(self, args):
@@ -79,13 +79,13 @@ class MyBlobLeaseClient:
 
         try:
             res = self.blob_lease_client.acquire(args[0])
-            print(self.service + ": Blob lease is acquired.")
+            print(self.service + ": Success -- Blob lease is acquired.")
 
             # break lease for sequences run
             self.blob_lease_client.break_lease(0)
             return True, res
         except Exception as e:
-            print(self.service + ": Blob lease is not acquired. Error: ", e)
+            print(self.service + ": Fail -- Blob lease is not acquired. Error: ", e)
             return False, e
 
 
@@ -101,10 +101,10 @@ class MyBlobLeaseClient:
 
             # break lease
             res = self.blob_lease_client.break_lease(args[0])
-            print(self.service + ": Blob lease is broken.")
+            print(self.service + ": Success -- Blob lease is broken.")
             return True, res
         except Exception as e:
-            print(self.service + ": Blob lease is not broken. Error: ", e)
+            print(self.service + ": Fail -- Blob lease is not broken. Error: ", e)
             return False, e
 
     def change_lease(self, args):
@@ -119,13 +119,13 @@ class MyBlobLeaseClient:
 
             # change lease
             res = self.blob_lease_client.change(args[0])
-            print(self.service + ": Blob lease is changed.")
+            print(self.service + ": Success -- Blob lease is changed.")
 
             # break lease for sequences run
             self.blob_lease_client.break_lease(0)
             return True, res
         except Exception as e:
-            print(self.service + ": Blob lease is not changed. Error: ", e)
+            print(self.service + ": Fail -- Blob lease is not changed. Error: ", e)
             return False, e
 
 
@@ -138,10 +138,10 @@ class MyBlobLeaseClient:
 
             # release lease
             res = self.blob_lease_client.release()
-            print(self.service + ": Blob lease is released.")
+            print(self.service + ": Success -- Blob lease is released.")
             return True, res
         except Exception as e:
-            print(self.service + ": Blob lease is not released. Error: ", e)
+            print(self.service + ": Fail -- Blob lease is not released. Error: ", e)
             return False, e
 
 
@@ -154,13 +154,13 @@ class MyBlobLeaseClient:
 
             # renew lease
             res = self.blob_lease_client.renew()
-            print(self.service + ": Blob lease is renewed.")
+            print(self.service + ": Success -- Blob lease is renewed.")
 
             # break lease for sequences run
             self.blob_lease_client.break_lease(0)
             return True, res
         except Exception as e:
-            print(self.service + ": Blob lease is not renewed. Error: ", e)
+            print(self.service + ": Fail -- Blob lease is not renewed. Error: ", e)
             return False, e
 
 

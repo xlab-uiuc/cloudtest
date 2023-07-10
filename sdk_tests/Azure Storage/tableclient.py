@@ -71,10 +71,10 @@ class MyTableClient():
 
         try:
             res = self.table_client.create_entity(args[0])
-            print(self.service, ': Entity created')
+            print(self.service, ': Success -- Entity created')
             return True, res
         except Exception as e:
-            print(self.service, ': Entity creation failed; error: ', e)
+            print(self.service, ': Fail -- Entity creation failed; error: ', e)
             return False, e
         
     # delete entity with default entity none with try except
@@ -102,12 +102,12 @@ class MyTableClient():
 
         try:
             res = self.table_client.delete_entity(row_key=args[0], partition_key=args[1])
-            print(self.service, ': Entity deleted')
+            print(self.service, ': Success -- Entity deleted')
             # create entity again
             self.table_create_entity([])
             return True, res
         except Exception as e:
-            print(self.service, ': Entity deletion failed; error: ', e)
+            print(self.service, ': Fail -- Entity deletion failed; error: ', e)
             return False, e
         
 
@@ -119,14 +119,14 @@ class MyTableClient():
 
         try:
             res = self.table_client.delete_table()
-            print(self.service, ': Table deleted with name: ', args[0])
+            print(self.service, ': Success -- Table deleted with name: ', args[0])
             # create table again
             self.table_name = f'table{random.randint(1, 1000000000)}'
             self.table_client = TableClient.from_connection_string(self.connection_string, self.table_name)
             self.table_client.create_table()
             return True, res
         except Exception as e:
-            print(self.service, ': Table deletion failed with name: ', args[0], ' and error: ', e)
+            print(self.service, ': Fail -- Table deletion failed with name: ', args[0], ' and error: ', e)
             return False, e
         
 
@@ -155,10 +155,10 @@ class MyTableClient():
 
         try:
             res = self.table_client.get_entity(row_key=args[0], partition_key=args[1])
-            print(self.service, ': Entity retrieved')
+            print(self.service, ': Success -- Entity retrieved')
             return True, res
         except Exception as e:
-            print(self.service, ': Entity retrieval failed; error: ', e)
+            print(self.service, ': Fail -- Entity retrieval failed; error: ', e)
             return False, e
         
 
@@ -170,10 +170,10 @@ class MyTableClient():
         table_client.create_table()
         try:
             res = table_client.get_table_access_policy()
-            print(self.service, ': Table access policy retrieved')
+            print(self.service, ': Success -- Table access policy retrieved')
             return True, res
         except Exception as e:
-            print(self.service, ': Table access policy retrieval failed; error: ', e)
+            print(self.service, ': Fail -- Table access policy retrieval failed; error: ', e)
             return False, e
         
 
@@ -182,10 +182,10 @@ class MyTableClient():
         args = list(args)
         try:
             res = self.table_client.list_entities()
-            print(self.service, ': Entities listed')
+            print(self.service, ': Success -- Entities listed')
             return True, res
         except Exception as e:
-            print(self.service, ': Entities listing failed; error: ', e)
+            print(self.service, ': Fail -- Entities listing failed; error: ', e)
             return False, e
         
 
@@ -197,10 +197,10 @@ class MyTableClient():
 
         try:
             res = self.table_client.query_entities(args[0])
-            print(self.service, ': Entities queried')
+            print(self.service, ': Success -- Entities queried')
             return True, res
         except Exception as e:
-            print(self.service, ': Entities query failed; error: ', e)
+            print(self.service, ': Fail -- Entities query failed; error: ', e)
             return False, e
         
 
@@ -211,10 +211,10 @@ class MyTableClient():
             args.append({})
         try:
             res = self.table_client.set_table_access_policy(signed_identifiers=args[0])
-            print(self.service, ': Table access policy set')
+            print(self.service, ': Success -- Table access policy set')
             return True, res
         except Exception as e:
-            print(self.service, ': Table access policy set failed; error: ', e)
+            print(self.service, ': Fail -- Table access policy set failed; error: ', e)
             return False, e
         
 
@@ -232,10 +232,10 @@ class MyTableClient():
             self.table_create_entity([])
 
             res = self.table_client.submit_transaction(args[0])
-            print(self.service, ': Transaction submitted')
+            print(self.service, ': Success -- Transaction submitted')
             return True, res
         except Exception as e:
-            print(self.service, ': Transaction submission failed; error: ', e)
+            print(self.service, ': Fail -- Transaction submission failed; error: ', e)
             return False, e
         
 
@@ -262,10 +262,10 @@ class MyTableClient():
             self.table_create_entity([])
 
             res = self.table_client.update_entity(entity=args[0], mode=args[1])
-            print(self.service, ': Entity updated')
+            print(self.service, ': Success -- Entity updated')
             return True, res
         except Exception as e:
-            print(self.service, ': Entity update failed; error: ', e)
+            print(self.service, ': Fail -- Entity update failed; error: ', e)
             return False, e
         
 
@@ -288,10 +288,10 @@ class MyTableClient():
             args.append(UpdateMode.MERGE)
         try:
             res = self.table_client.upsert_entity(entity=args[0], mode=args[1])
-            print(self.service, ': Entity upserted')
+            print(self.service, ': Success -- Entity upserted')
             return True, res
         except Exception as e:
-            print(self.service, ': Entity upsert failed; error: ', e)
+            print(self.service, ': Fail -- Entity upsert failed; error: ', e)
             return False, e
         
         

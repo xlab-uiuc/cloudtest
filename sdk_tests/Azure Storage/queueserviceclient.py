@@ -58,7 +58,7 @@ class MyQueueServiceClient:
             print(self.service, ': Success -- Queue created')
             return True, res
         except Exception as e:
-            print(self.service, ': Failed -- Queue creation failed; error: ', e)
+            print(self.service, ': Fail -- Queue creation failed; error: ', e)
             return False, e
         
 
@@ -77,7 +77,7 @@ class MyQueueServiceClient:
             print(self.service, ': Success -- Queue created')
             return True, res
         except Exception as e:
-            print(self.service, ': Failed -- Queue deletion failed; error: ', e)
+            print(self.service, ': Fail -- Queue deletion failed; error: ', e)
             return False, e
         
 
@@ -93,7 +93,7 @@ class MyQueueServiceClient:
             print(self.service, ': Success -- Queue client retrieved')
             return True, res
         except Exception as e:
-            print(self.service, ': Failed -- Queue client retrieval failed; error: ', e)
+            print(self.service, ': Fail -- Queue client retrieval failed; error: ', e)
             return False, e
         
 
@@ -105,7 +105,7 @@ class MyQueueServiceClient:
             print(self.service, ': Success -- Service properties retrieved')
             return True, res
         except Exception as e:
-            print(self.service, ': Failed -- Service properties retrieval failed; error: ', e)
+            print(self.service, ': Fail -- Service properties retrieval failed; error: ', e)
             return False, e
         
 
@@ -117,7 +117,7 @@ class MyQueueServiceClient:
             print(self.service, ': Success -- Service stats retrieved')
             return True, res
         except Exception as e:
-            print(self.service, ': Failed -- Service stats retrieval failed; error: ', e)
+            print(self.service, ': Fail -- Service stats retrieval failed; error: ', e)
             return False, e
         
 
@@ -129,7 +129,7 @@ class MyQueueServiceClient:
             print(self.service, ': Success -- Queues listed')
             return True, res
         except Exception as e:
-            print(self.service, ': Failed -- Queue listing failed; error: ', e)
+            print(self.service, ': Fail -- Queue listing failed; error: ', e)
             return False, e
         
 
@@ -146,7 +146,7 @@ class MyQueueServiceClient:
             print(self.service, ': Success -- Service properties set')
             return True, res
         except Exception as e:
-            print(self.service, ': Failed -- Service properties setting failed; error: ', e)
+            print(self.service, ': Fail -- Service properties setting failed; error: ', e)
             return False, e
 
     # garbage collection
@@ -161,10 +161,10 @@ class MyQueueServiceClient:
                     self.queue_service_client.delete_queue(queue.name)
                     print('Success -- Queue deleted')
                 except:
-                    print('Failed -- Queue deletion failed')
+                    print('Fail -- Queue deletion failed')
 
         except:
-            print('Failed -- Queue list failed')
+            print('Fail -- Queue list failed')
 
 
     
