@@ -1,0 +1,409 @@
+METHOD: dynamo_batch_execute_statement --- ARGS: 
+AWS : Success -- Batch execute statement succeeded
+EMULATOR : Success -- Batch execute statement succeeded
+AWS : Success -- Table deleted
+AWS : Success -- Table deleted
+AWS : Success -- Table deleted
+AWS : Success -- Table deleted
+AWS : Success -- Table deleted
+AWS : Success -- Table deleted
+AWS : Success -- Table deleted
+AWS : Success -- Table deleted
+AWS : Success -- Table deleted
+AWS : Success -- Table deleted
+AWS : Success -- Table deleted
+AWS : Success -- Table deleted
+AWS : Success -- Table deleted
+AWS : Success -- Table deleted
+AWS : Success -- Table deleted
+AWS : Success -- Table deleted
+AWS : Success -- Table deleted
+AWS : Success -- Table deleted
+AWS : Success -- Table deleted
+AWS : Success -- Table deleted
+AWS : Success -- Table deleted
+AWS : Success -- Table deleted
+AWS : Success -- Table deleted
+AWS : Success -- Table deleted
+AWS : Success -- Table deleted
+AWS : Success -- Table deleted
+AWS : Success -- Table deleted
+AWS : Success -- Table deleted
+AWS : Success -- Table deleted
+AWS : Success -- Table deleted
+AWS : Success -- Table deleted
+AWS : Success -- Table deleted
+AWS : Success -- Table deleted
+AWS : Success -- Table deleted
+AWS : Success -- Table deleted
+AWS : Success -- Table deleted
+AWS : Success -- Table deleted
+AWS : Success -- Table deleted
+AWS : Success -- Table deleted
+AWS : Success -- Table deleted
+AWS : Fail -- Table delete failed; error:  An error occurred (ResourceInUseException) when calling the DeleteTable operation: Attempt to change a resource which is still in use: Table is being created: table855281481
+EMULATOR : Success -- Table deleted
+METHOD: dynamo_batch_get_item --- ARGS: 
+AWS : Fail -- Batch get item failed; error:  An error occurred (ResourceNotFoundException) when calling the BatchGetItem operation: Requested resource not found
+EMULATOR : Success -- Batch get item succeeded
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (ResourceNotFoundException) when calling the BatchGetItem operation: Requested resource not found 
+EMULATOR: SUCCESS -- Response: 
+AWS : Fail -- Table delete failed; error:  An error occurred (ResourceInUseException) when calling the DeleteTable operation: Attempt to change a resource which is still in use: Table is being deleted: table219872429
+EMULATOR : Success -- Table deleted
+METHOD: dynamo_batch_write_item --- ARGS: 
+AWS : Fail -- Batch write item failed; error:  An error occurred (ResourceNotFoundException) when calling the BatchWriteItem operation: Requested resource not found
+EMULATOR : Success -- Batch write item succeeded
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (ResourceNotFoundException) when calling the BatchWriteItem operation: Requested resource not found 
+EMULATOR: SUCCESS -- Response: 
+AWS : Fail -- Table delete failed; error:  An error occurred (ResourceInUseException) when calling the DeleteTable operation: Attempt to change a resource which is still in use: Table is being deleted: table466702844
+EMULATOR : Success -- Table deleted
+METHOD: dynamo_can_paginate --- ARGS: 
+AWS : Success -- Can paginate succeeded
+EMULATOR : Success -- Can paginate succeeded
+AWS : Fail -- Table delete failed; error:  An error occurred (ResourceInUseException) when calling the DeleteTable operation: Attempt to change a resource which is still in use: Table is being created: table326122386
+EMULATOR : Success -- Table deleted
+METHOD: dynamo_create_backup --- ARGS: 
+AWS : Fail -- Create backup failed; error:  An error occurred (TableNotFoundException) when calling the CreateBackup operation: Table not found: table488954449
+EMULATOR : Fail -- Create backup failed; error:  An error occurred (UnknownOperationException) when calling the CreateBackup operation: An unknown operation was requested.
+AWS : Fail -- Table delete failed; error:  An error occurred (ResourceInUseException) when calling the DeleteTable operation: Attempt to change a resource which is still in use: Table is being created: table326122386
+EMULATOR : Success -- Table deleted
+METHOD: dynamo_create_global_table --- ARGS: 
+AWS : Fail -- Create global table failed; error:  An error occurred (TableNotFoundException) when calling the CreateGlobalTable operation: Table not found: Table: 'table555595923' not found in region: 'us-east-1'.
+EMULATOR : Success -- Create global table succeeded
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (TableNotFoundException) when calling the CreateGlobalTable operation: Table not found: Table: 'table555595923' not found in region: 'us-east-1'. 
+EMULATOR: SUCCESS -- Response: 
+AWS : Fail -- Table delete failed; error:  An error occurred (ResourceInUseException) when calling the DeleteTable operation: Attempt to change a resource which is still in use: Table is being created: table326122386
+EMULATOR : Success -- Table deleted
+METHOD: dynamo_create_table --- ARGS: 
+AWS : Success -- Table created
+EMULATOR : Success -- Table created
+AWS : Fail -- Table delete failed; error:  An error occurred (ResourceInUseException) when calling the DeleteTable operation: Attempt to change a resource which is still in use: Table is being created: table326122386
+EMULATOR : Success -- Table deleted
+EMULATOR : Success -- Table deleted
+METHOD: dynamo_delete_backup --- ARGS: 
+AWS : Fail -- Delete backup failed; error:  An error occurred (ValidationException) when calling the DeleteBackup operation: Invalid Request: BackupArn is not valid
+EMULATOR : Fail -- Delete backup failed; error:  An error occurred (UnknownOperationException) when calling the DeleteBackup operation: An unknown operation was requested.
+AWS : Fail -- Table delete failed; error:  An error occurred (ResourceInUseException) when calling the DeleteTable operation: Attempt to change a resource which is still in use: Table is being created: table326122386
+EMULATOR : Success -- Table deleted
+METHOD: dynamo_delete_item --- ARGS: 
+AWS : Fail -- Delete item failed; error:  An error occurred (ResourceNotFoundException) when calling the DeleteItem operation: Requested resource not found
+EMULATOR : Success -- Delete item succeeded
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (ResourceNotFoundException) when calling the DeleteItem operation: Requested resource not found 
+EMULATOR: SUCCESS -- Response: 
+AWS : Fail -- Table delete failed; error:  An error occurred (ResourceInUseException) when calling the DeleteTable operation: Attempt to change a resource which is still in use: Table is being created: table326122386
+EMULATOR : Success -- Table deleted
+METHOD: dynamo_delete_table --- ARGS: 
+AWS : Fail -- Delete table failed; error:  An error occurred (ResourceInUseException) when calling the DeleteTable operation: Attempt to change a resource which is still in use: Table is being created: table353602573
+EMULATOR : Success -- Delete table succeeded
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (ResourceInUseException) when calling the DeleteTable operation: Attempt to change a resource which is still in use: Table is being created: table353602573 
+EMULATOR: SUCCESS -- Response: 
+AWS : Fail -- Table delete failed; error:  An error occurred (ResourceInUseException) when calling the DeleteTable operation: Attempt to change a resource which is still in use: Table is being created: table326122386
+METHOD: dynamo_describe_backup --- ARGS: 
+AWS : Fail -- Describe backup failed; error:  An error occurred (ValidationException) when calling the DescribeBackup operation: Invalid Request: BackupArn is not valid
+EMULATOR : Fail -- Describe backup failed; error:  An error occurred (UnknownOperationException) when calling the DescribeBackup operation: An unknown operation was requested.
+AWS : Fail -- Table delete failed; error:  An error occurred (ResourceInUseException) when calling the DeleteTable operation: Attempt to change a resource which is still in use: Table is being created: table161889669
+EMULATOR : Success -- Table deleted
+METHOD: dynamo_describe_continuous_backups --- ARGS: 
+AWS : Fail -- Describe continuous backups failed; error:  An error occurred (TableNotFoundException) when calling the DescribeContinuousBackups operation: Table not found: table229403699
+EMULATOR : Success -- Describe continuous backups succeeded
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (TableNotFoundException) when calling the DescribeContinuousBackups operation: Table not found: table229403699 
+EMULATOR: SUCCESS -- Response: 
+AWS : Fail -- Table delete failed; error:  An error occurred (ResourceInUseException) when calling the DeleteTable operation: Attempt to change a resource which is still in use: Table is being created: table161889669
+EMULATOR : Success -- Table deleted
+METHOD: dynamo_describe_global_table --- ARGS: 
+AWS : Fail -- Describe global table failed; error:  An error occurred (GlobalTableNotFoundException) when calling the DescribeGlobalTable operation: Global table not found: Global table with name: 'table541537522' does not exist.
+EMULATOR : Fail -- Describe global table failed; error:  An error occurred (GlobalTableNotFoundException) when calling the DescribeGlobalTable operation: Global table with this name does not exist
+AWS : Fail -- Table delete failed; error:  An error occurred (ResourceInUseException) when calling the DeleteTable operation: Attempt to change a resource which is still in use: Table is being created: table161889669
+EMULATOR : Success -- Table deleted
+METHOD: dynamo_describe_global_table_settings --- ARGS: 
+AWS : Fail -- Describe global table settings failed; error:  An error occurred (GlobalTableNotFoundException) when calling the DescribeGlobalTableSettings operation: Global table with name: 'table998023414' does not exist.
+EMULATOR : Fail -- Describe global table settings failed; error:  An error occurred (UnknownOperationException) when calling the DescribeGlobalTableSettings operation: An unknown operation was requested.
+AWS : Fail -- Table delete failed; error:  An error occurred (ResourceInUseException) when calling the DeleteTable operation: Attempt to change a resource which is still in use: Table is being created: table161889669
+EMULATOR : Success -- Table deleted
+METHOD: dynamo_describe_import --- ARGS: 
+AWS : Fail -- Describe import failed; error:  An error occurred (ValidationException) when calling the DescribeImport operation: Invalid Import ARN
+EMULATOR : Fail -- Describe import failed; error:  An error occurred (UnknownOperationException) when calling the DescribeImport operation: An unknown operation was requested.
+AWS : Fail -- Table delete failed; error:  An error occurred (ResourceInUseException) when calling the DeleteTable operation: Attempt to change a resource which is still in use: Table is being created: table161889669
+EMULATOR : Success -- Table deleted
+METHOD: dynamo_describe_kinesis_streaming_destination --- ARGS: 
+AWS : Fail -- Describe kinesis streaming destination failed; error:  An error occurred (ResourceNotFoundException) when calling the DescribeKinesisStreamingDestination operation: Requested resource not found: Table: table441197285 not found
+EMULATOR : Success -- Describe kinesis streaming destination succeeded
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (ResourceNotFoundException) when calling the DescribeKinesisStreamingDestination operation: Requested resource not found: Table: table441197285 not found 
+EMULATOR: SUCCESS -- Response: 
+AWS : Fail -- Table delete failed; error:  An error occurred (ResourceInUseException) when calling the DeleteTable operation: Attempt to change a resource which is still in use: Table is being created: table161889669
+EMULATOR : Success -- Table deleted
+METHOD: dynamo_describe_limits --- ARGS: 
+AWS : Success -- Describe limits succeeded
+EMULATOR : Success -- Describe limits succeeded
+AWS : Fail -- Table delete failed; error:  An error occurred (ResourceInUseException) when calling the DeleteTable operation: Attempt to change a resource which is still in use: Table is being created: table161889669
+EMULATOR : Success -- Table deleted
+METHOD: dynamo_describe_table --- ARGS: 
+AWS : Success -- Describe table succeeded
+EMULATOR : Success -- Describe table succeeded
+AWS : Fail -- Table delete failed; error:  An error occurred (ResourceInUseException) when calling the DeleteTable operation: Attempt to change a resource which is still in use: Table is being created: table161889669
+EMULATOR : Success -- Table deleted
+METHOD: dynamo_describe_table_replication_auto_scaling --- ARGS: 
+AWS : Fail -- Describe table replication auto scaling failed; error:  An error occurred (ResourceNotFoundException) when calling the DescribeTableReplicaAutoScaling operation: Global table with name: 'table938215336' does not exist.
+EMULATOR : Fail -- Describe table replication auto scaling failed; error:  An error occurred (UnknownOperationException) when calling the DescribeTableReplicaAutoScaling operation: An unknown operation was requested.
+AWS : Fail -- Table delete failed; error:  An error occurred (ResourceInUseException) when calling the DeleteTable operation: Attempt to change a resource which is still in use: Table is being created: table161889669
+EMULATOR : Success -- Table deleted
+METHOD: dynamo_describe_time_to_live --- ARGS: 
+AWS : Fail -- Describe time to live failed; error:  An error occurred (ValidationException) when calling the DescribeTimeToLive operation: Cannot describe time to live while table is in CREATING state: Current table state is CREATING
+EMULATOR : Success -- Describe time to live succeeded
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (ValidationException) when calling the DescribeTimeToLive operation: Cannot describe time to live while table is in CREATING state: Current table state is CREATING 
+EMULATOR: SUCCESS -- Response: 
+AWS : Fail -- Table delete failed; error:  An error occurred (ResourceInUseException) when calling the DeleteTable operation: Attempt to change a resource which is still in use: Table is being created: table142198866
+EMULATOR : Success -- Table deleted
+METHOD: dynamo_execute_statement --- ARGS: 
+AWS : Fail -- Execute statement failed; error:  An error occurred (ResourceNotFoundException) when calling the ExecuteStatement operation: Requested resource not found
+EMULATOR : Success -- Execute statement succeeded
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (ResourceNotFoundException) when calling the ExecuteStatement operation: Requested resource not found 
+EMULATOR: SUCCESS -- Response: 
+AWS : Fail -- Table delete failed; error:  An error occurred (ResourceInUseException) when calling the DeleteTable operation: Attempt to change a resource which is still in use: Table is being created: table142198866
+EMULATOR : Success -- Table deleted
+METHOD: dynamo_execute_transaction --- ARGS: 
+AWS : Fail -- Execute transaction failed; error:  An error occurred (ValidationException) when calling the ExecuteTransaction operation: Supplied AttributeValue has more than one datatypes set, must contain exactly one of the supported datatypes
+EMULATOR : Fail -- Execute transaction failed; error:  An error occurred (ValidationException) when calling the ExecuteTransaction operation: Supplied AttributeValue has more than one datatypes set, must contain exactly one of the supported datatypes
+AWS : Fail -- Table delete failed; error:  An error occurred (ResourceInUseException) when calling the DeleteTable operation: Attempt to change a resource which is still in use: Table is being created: table142198866
+EMULATOR : Success -- Table deleted
+METHOD: dynamo_export_table_to_point_in_time --- ARGS: 
+AWS : Fail -- Export table to point in time failed; error:  An error occurred (ValidationException) when calling the ExportTableToPointInTime operation: One or more parameter values were invalid: tableArn is not a valid ARN
+EMULATOR : Fail -- Export table to point in time failed; error:  An error occurred (UnknownOperationException) when calling the ExportTableToPointInTime operation: An unknown operation was requested.
+AWS : Fail -- Table delete failed; error:  An error occurred (ResourceInUseException) when calling the DeleteTable operation: Attempt to change a resource which is still in use: Table is being created: table142198866
+EMULATOR : Success -- Table deleted
+METHOD: dynamo_get_item --- ARGS: 
+AWS : Fail -- Get item failed; error:  An error occurred (ResourceNotFoundException) when calling the GetItem operation: Requested resource not found
+EMULATOR : Success -- Get item succeeded
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (ResourceNotFoundException) when calling the GetItem operation: Requested resource not found 
+EMULATOR: SUCCESS -- Response: 
+AWS : Fail -- Table delete failed; error:  An error occurred (ResourceInUseException) when calling the DeleteTable operation: Attempt to change a resource which is still in use: Table is being created: table142198866
+EMULATOR : Success -- Table deleted
+METHOD: dynamo_get_paginator --- ARGS: 
+AWS : Fail -- Get paginator failed; error:  'ListTables'
+EMULATOR : Fail -- Get paginator failed; error:  'ListTables'
+AWS : Fail -- Table delete failed; error:  An error occurred (ResourceInUseException) when calling the DeleteTable operation: Attempt to change a resource which is still in use: Table is being created: table142198866
+EMULATOR : Success -- Table deleted
+METHOD: dynamo_get_waiter --- ARGS: 
+AWS : Fail -- Get waiter failed; error:  Waiter does not exist: TableExists
+EMULATOR : Fail -- Get waiter failed; error:  Waiter does not exist: TableExists
+AWS : Fail -- Table delete failed; error:  An error occurred (ResourceInUseException) when calling the DeleteTable operation: Attempt to change a resource which is still in use: Table is being created: table142198866
+EMULATOR : Success -- Table deleted
+METHOD: dynamo_import_table --- ARGS: 
+AWS : Fail -- Import table failed; error:  An error occurred (ValidationException) when calling the ImportTable operation: One or more parameter values were invalid: ReadCapacityUnits and WriteCapacityUnits must both be specified when BillingMode is PROVISIONED
+EMULATOR : Fail -- Import table failed; error:  An error occurred (UnknownOperationException) when calling the ImportTable operation: An unknown operation was requested.
+AWS : Fail -- Table delete failed; error:  An error occurred (ResourceInUseException) when calling the DeleteTable operation: Attempt to change a resource which is still in use: Table is being created: table142198866
+EMULATOR : Success -- Table deleted
+METHOD: dynamo_list_backups --- ARGS: 
+AWS : Success -- List backups succeeded
+EMULATOR : Fail -- List backups failed; error:  An error occurred (UnknownOperationException) when calling the ListBackups operation: An unknown operation was requested.
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: SUCCESS -- Response:  
+EMULATOR: FAILURE -- Response: An error occurred (UnknownOperationException) when calling the ListBackups operation: An unknown operation was requested.
+AWS : Fail -- Table delete failed; error:  An error occurred (ResourceInUseException) when calling the DeleteTable operation: Attempt to change a resource which is still in use: Table is being created: table142198866
+EMULATOR : Success -- Table deleted
+METHOD: dynamo_list_contributor_insights --- ARGS: 
+AWS : Fail -- List contributor insights failed; error:  An error occurred (ResourceNotFoundException) when calling the ListContributorInsights operation: Requested resource not found: Table: table282989942 not found
+EMULATOR : Fail -- List contributor insights failed; error:  An error occurred (UnknownOperationException) when calling the ListContributorInsights operation: An unknown operation was requested.
+AWS : Fail -- Table delete failed; error:  An error occurred (ResourceInUseException) when calling the DeleteTable operation: Attempt to change a resource which is still in use: Table is being created: table142198866
+EMULATOR : Success -- Table deleted
+METHOD: dynamo_list_exports --- ARGS: 
+AWS : Fail -- List exports failed; error:  An error occurred (ValidationException) when calling the ListExports operation: One or more parameter values were invalid: tableArn is not a valid ARN
+EMULATOR : Fail -- List exports failed; error:  An error occurred (UnknownOperationException) when calling the ListExports operation: An unknown operation was requested.
+AWS : Fail -- Table delete failed; error:  An error occurred (ResourceInUseException) when calling the DeleteTable operation: Attempt to change a resource which is still in use: Table is being created: table142198866
+EMULATOR : Success -- Table deleted
+METHOD: dynamo_list_global_tables --- ARGS: 
+AWS : Success -- List global tables succeeded
+EMULATOR : Success -- List global tables succeeded
+AWS : Fail -- Table delete failed; error:  An error occurred (ResourceInUseException) when calling the DeleteTable operation: Attempt to change a resource which is still in use: Table is being created: table142198866
+EMULATOR : Success -- Table deleted
+METHOD: dynamo_list_imports --- ARGS: 
+AWS : Success -- List imports succeeded
+EMULATOR : Fail -- List imports failed; error:  An error occurred (UnknownOperationException) when calling the ListImports operation: An unknown operation was requested.
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: SUCCESS -- Response:  
+EMULATOR: FAILURE -- Response: An error occurred (UnknownOperationException) when calling the ListImports operation: An unknown operation was requested.
+AWS : Success -- Table deleted
+AWS : Success -- Table deleted
+AWS : Fail -- Table delete failed; error:  An error occurred (ResourceInUseException) when calling the DeleteTable operation: Attempt to change a resource which is still in use: Table is being created: table172924466
+EMULATOR : Success -- Table deleted
+METHOD: dynamo_list_tables --- ARGS: 
+AWS : Success -- List tables succeeded
+EMULATOR : Success -- List tables succeeded
+AWS : Fail -- Table delete failed; error:  An error occurred (ResourceInUseException) when calling the DeleteTable operation: Attempt to change a resource which is still in use: Table is being deleted: table142198866
+EMULATOR : Success -- Table deleted
+METHOD: dynamo_list_tags_of_resource --- ARGS: 
+AWS : Fail -- List tags of resource failed; error:  An error occurred (ValidationException) when calling the ListTagsOfResource operation: Invalid TableArn: Invalid ResourceArn provided as input arn:aws:dynamodb:us-east-1:123456789012:table/table114156355
+EMULATOR : Success -- List tags of resource succeeded
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (ValidationException) when calling the ListTagsOfResource operation: Invalid TableArn: Invalid ResourceArn provided as input arn:aws:dynamodb:us-east-1:123456789012:table/table114156355 
+EMULATOR: SUCCESS -- Response: 
+AWS : Fail -- Table delete failed; error:  An error occurred (ResourceInUseException) when calling the DeleteTable operation: Attempt to change a resource which is still in use: Table is being created: table114156355
+EMULATOR : Success -- Table deleted
+METHOD: dynamo_put_item --- ARGS: 
+AWS : Fail -- Item put failed; error:  An error occurred (ValidationException) when calling the PutItem operation: Supplied AttributeValue is empty, must contain exactly one of the supported datatypes
+EMULATOR : Fail -- Item put failed; error:  An error occurred (ValidationException) when calling the PutItem operation: Supplied AttributeValue is empty, must contain exactly one of the supported datatypes
+AWS : Fail -- Table delete failed; error:  An error occurred (ResourceInUseException) when calling the DeleteTable operation: Attempt to change a resource which is still in use: Table is being created: table114156355
+EMULATOR : Success -- Table deleted
+METHOD: dynamo_restore_table_from_backup --- ARGS: 
+AWS : Fail -- Restore table from backup failed; error:  An error occurred (ValidationException) when calling the RestoreTableFromBackup operation: Invalid Backup ARN
+EMULATOR : Fail -- Restore table from backup failed; error:  An error occurred (UnknownOperationException) when calling the RestoreTableFromBackup operation: An unknown operation was requested.
+AWS : Fail -- Table delete failed; error:  An error occurred (ResourceInUseException) when calling the DeleteTable operation: Attempt to change a resource which is still in use: Table is being created: table114156355
+EMULATOR : Success -- Table deleted
+METHOD: dynamo_restore_table_to_point_in_time --- ARGS: 
+AWS : Fail -- Restore table to point in time failed; error:  An error occurred (ValidationException) when calling the RestoreTableToPointInTime operation: Invalid Request: Both RestoreDateTime and UseLatestRestorableTime cannot be set for point-in-time restore request. Please specify either RestoreDateTime time or UseLatestRestorableTime
+EMULATOR : Fail -- Restore table to point in time failed; error:  An error occurred (UnknownOperationException) when calling the RestoreTableToPointInTime operation: An unknown operation was requested.
+AWS : Fail -- Table delete failed; error:  An error occurred (ResourceInUseException) when calling the DeleteTable operation: Attempt to change a resource which is still in use: Table is being created: table114156355
+EMULATOR : Success -- Table deleted
+METHOD: dynamo_scan --- ARGS: 
+AWS : Fail -- Scan failed; error:  An error occurred (ValidationException) when calling the Scan operation: ExpressionAttributeValues contains invalid value: Supplied AttributeValue is empty, must contain exactly one of the supported datatypes for key :val
+EMULATOR : Fail -- Scan failed; error:  An error occurred (ValidationException) when calling the Scan operation: ExpressionAttributeValues contains invalid value: Supplied AttributeValue is empty, must contain exactly one of the supported datatypes for key :val
+AWS : Fail -- Table delete failed; error:  An error occurred (ResourceInUseException) when calling the DeleteTable operation: Attempt to change a resource which is still in use: Table is being created: table114156355
+EMULATOR : Success -- Table deleted
+METHOD: dynamo_tag_resource --- ARGS: 
+AWS : Fail -- Tag resource failed; error:  An error occurred (ValidationException) when calling the TagResource operation: Invalid TableArn: Invalid ResourceArn provided as input arn:aws:dynamodb:us-east-1:123456789012:table/table321742021
+EMULATOR : Success -- Tag resource succeeded
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (ValidationException) when calling the TagResource operation: Invalid TableArn: Invalid ResourceArn provided as input arn:aws:dynamodb:us-east-1:123456789012:table/table321742021 
+EMULATOR: SUCCESS -- Response: 
+AWS : Fail -- Table delete failed; error:  An error occurred (ResourceInUseException) when calling the DeleteTable operation: Attempt to change a resource which is still in use: Table is being created: table114156355
+EMULATOR : Success -- Table deleted
+METHOD: dynamo_transact_get_items --- ARGS: 
+AWS : Fail -- Transact get items failed; error:  An error occurred (ValidationException) when calling the TransactGetItems operation: ExpressionAttributeNames contains invalid key: Syntax error; key: "string"
+EMULATOR : Fail -- Transact get items failed; error:  An error occurred (ValidationException) when calling the TransactGetItems operation: ExpressionAttributeNames contains invalid key: Syntax error; key: "string"
+AWS : Fail -- Table delete failed; error:  An error occurred (ResourceInUseException) when calling the DeleteTable operation: Attempt to change a resource which is still in use: Table is being created: table114156355
+EMULATOR : Success -- Table deleted
+METHOD: dynamo_transact_write_items --- ARGS: 
+AWS : Fail -- Transact write items failed; error:  An error occurred (ValidationException) when calling the TransactWriteItems operation: ExpressionAttributeNames contains invalid key: Syntax error; key: "string"
+EMULATOR : Fail -- Transact write items failed; error:  An error occurred (ValidationException) when calling the TransactWriteItems operation: The provided key element does not match the schema
+AWS : Fail -- Table delete failed; error:  An error occurred (ResourceInUseException) when calling the DeleteTable operation: Attempt to change a resource which is still in use: Table is being created: table114156355
+EMULATOR : Success -- Table deleted
+METHOD: dynamo_untag_resource --- ARGS: 
+AWS : Fail -- Untag resource failed; error:  An error occurred (ValidationException) when calling the UntagResource operation: Invalid TableArn: Invalid ResourceArn provided as input arn:aws:dynamodb:us-east-1:123456789012:table/table489865478
+EMULATOR : Success -- Untag resource succeeded
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (ValidationException) when calling the UntagResource operation: Invalid TableArn: Invalid ResourceArn provided as input arn:aws:dynamodb:us-east-1:123456789012:table/table489865478 
+EMULATOR: SUCCESS -- Response: 
+AWS : Fail -- Table delete failed; error:  An error occurred (ResourceInUseException) when calling the DeleteTable operation: Attempt to change a resource which is still in use: Table is being created: table114156355
+EMULATOR : Success -- Table deleted
+METHOD: dynamo_update_continuous_backups --- ARGS: 
+AWS : Fail -- Update continuous backups failed; error:  An error occurred (TableNotFoundException) when calling the UpdateContinuousBackups operation: Table not found: table215169763
+EMULATOR : Success -- Update continuous backups succeeded
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (TableNotFoundException) when calling the UpdateContinuousBackups operation: Table not found: table215169763 
+EMULATOR: SUCCESS -- Response: 
+AWS : Fail -- Table delete failed; error:  An error occurred (ResourceInUseException) when calling the DeleteTable operation: Attempt to change a resource which is still in use: Table is being created: table114156355
+EMULATOR : Success -- Table deleted
+METHOD: dynamo_update_contributor_insights --- ARGS: 
+AWS : Fail -- Update contributor insights failed; error:  An error occurred (ResourceNotFoundException) when calling the UpdateContributorInsights operation: Requested resource not found: Table: table473023878 not found
+EMULATOR : Fail -- Update contributor insights failed; error:  An error occurred (UnknownOperationException) when calling the UpdateContributorInsights operation: An unknown operation was requested.
+AWS : Success -- Table deleted
+AWS : Fail -- Table delete failed; error:  An error occurred (ResourceInUseException) when calling the DeleteTable operation: Attempt to change a resource which is still in use: Table is being created: table145575978
+EMULATOR : Success -- Table deleted
+METHOD: dynamo_update_global_table --- ARGS: 
+AWS : Fail -- Update global table failed; error:  An error occurred (GlobalTableNotFoundException) when calling the UpdateGlobalTable operation: Global table not found: Global table with name: 'table718625793' does not exist.
+EMULATOR : Fail -- Update global table failed; error:  An error occurred (GlobalTableNotFoundException) when calling the UpdateGlobalTable operation: Global table with this name does not exist
+AWS : Fail -- Table delete failed; error:  An error occurred (ResourceInUseException) when calling the DeleteTable operation: Attempt to change a resource which is still in use: Table is being deleted: table114156355
+EMULATOR : Success -- Table deleted
+METHOD: dynamo_update_global_table_settings --- ARGS: 
+AWS : Fail -- Update global table settings failed; error:  An error occurred (ValidationException) when calling the UpdateGlobalTableSettings operation: One or more parameter values were invalid: Failed to update settings for global table with name ‘table460157551’: Parameters 'MaximumUnits', 'ScalingPolicyUpdate', 'MinimumUnits' must be left blank when disabling auto scaling.
+EMULATOR : Fail -- Update global table settings failed; error:  An error occurred (UnknownOperationException) when calling the UpdateGlobalTableSettings operation: An unknown operation was requested.
+AWS : Fail -- Table delete failed; error:  An error occurred (ResourceInUseException) when calling the DeleteTable operation: Attempt to change a resource which is still in use: Table is being deleted: table114156355
+EMULATOR : Success -- Table deleted
+METHOD: dynamo_update_item --- ARGS: 
+AWS : Fail -- Item update failed; error:  An error occurred (ResourceNotFoundException) when calling the UpdateItem operation: Requested resource not found
+EMULATOR : Success -- Item updated
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (ResourceNotFoundException) when calling the UpdateItem operation: Requested resource not found 
+EMULATOR: SUCCESS -- Response: 
+AWS : Fail -- Table delete failed; error:  An error occurred (ResourceInUseException) when calling the DeleteTable operation: Attempt to change a resource which is still in use: Table is being deleted: table114156355
+EMULATOR : Success -- Table deleted
+METHOD: dynamo_update_replica_autoscaling --- ARGS: 
+AWS : Fail -- Replica autoscaling update failed; error:  An error occurred (ValidationException) when calling the UpdateTableReplicaAutoScaling operation: Failed to update settings for global table with name: ‘table73705641’: Parameters 'MaximumUnits', 'MinimumUnits' are required unless auto scaling is being disabled.
+EMULATOR : Fail -- Replica autoscaling update failed; error:  An error occurred (UnknownOperationException) when calling the UpdateTableReplicaAutoScaling operation: An unknown operation was requested.
+AWS : Success -- Table deleted
+AWS : Success -- Table deleted
+AWS : Fail -- Table delete failed; error:  An error occurred (ResourceInUseException) when calling the DeleteTable operation: Attempt to change a resource which is still in use: Table is being created: table215169763
+EMULATOR : Success -- Table deleted
+METHOD: dynamo_update_table --- ARGS: 
+AWS : Fail -- Table update failed; error:  An error occurred (ResourceInUseException) when calling the UpdateTable operation: Attempt to change a resource which is still in use: Table is being created: table365303848
+EMULATOR : Success -- Table updated
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (ResourceInUseException) when calling the UpdateTable operation: Attempt to change a resource which is still in use: Table is being created: table365303848 
+EMULATOR: SUCCESS -- Response: 
+AWS : Fail -- Table delete failed; error:  An error occurred (ResourceInUseException) when calling the DeleteTable operation: Attempt to change a resource which is still in use: Table is being deleted: table145575978
+EMULATOR : Success -- Table deleted
+METHOD: dynamo_update_ttl --- ARGS: 
+AWS : Fail -- TTL update failed; error:  An error occurred (ResourceNotFoundException) when calling the UpdateTimeToLive operation: Requested resource not found: Table: table310989150 not found
+EMULATOR : Success -- TTL updated
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (ResourceNotFoundException) when calling the UpdateTimeToLive operation: Requested resource not found: Table: table310989150 not found 
+EMULATOR: SUCCESS -- Response: 
+AWS : Fail -- Table delete failed; error:  An error occurred (ResourceInUseException) when calling the DeleteTable operation: Attempt to change a resource which is still in use: Table is being deleted: table145575978
+EMULATOR : Success -- Table deleted
