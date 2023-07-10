@@ -1855,34 +1855,34 @@ class S3Client:
                    
                     # delete the bucket
                     self.client.delete_bucket(Bucket=bucket['Name'])
-                    print(self.service, ': ' + f'Success -- Bucket {bucket["Name"]} deleted in {self.service} S3')
+                    print(f'Success -- Bucket {bucket["Name"]} deleted in {self.service} S3')
                 except Exception as e:
-                    print(self.service, ': ' + f'Fail -- Error deleting bucket {bucket["Name"]} in {self.service} S3: {e}')
+                    print(f'Fail -- Error deleting bucket {bucket["Name"]} in {self.service} S3: {e}')
 
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error listing buckets in {self.service} S3: {e}')
+            print(f'Fail -- Error listing buckets in {self.service} S3: {e}')
 
             
-        print(self.service, ': ' + f'Cleaned all buckets in {self.service} S3')
+        print(f'Cleaned all buckets in {self.service} S3')
 
 
 
 
 
-if __name__ == '__main__':
+# if __name__ == '__main__':
 
-    # create blob client
-    table_client = S3Client(emulator=False)
-    # logging.basicConfig(level=logging.DEBUG)
+#     # create blob client
+#     table_client = S3Client(emulator=False)
+#     # logging.basicConfig(level=logging.DEBUG)
 
-    # table_client.s3_list_buckets()
+#     # table_client.s3_list_buckets()
 
-    # get all methods and run them
-    methods = [getattr(S3Client, attr) for attr in dir(S3Client) if callable(getattr(S3Client, attr)) and not attr.startswith("__")]
+#     # get all methods and run them
+#     methods = [getattr(S3Client, attr) for attr in dir(S3Client) if callable(getattr(S3Client, attr)) and not attr.startswith("__")]
 
-    # print(len(methods))
-    # for i in methods:
-    #     print(i.__name__)
-    #     i(table_client)
+#     # print(len(methods))
+#     # for i in methods:
+#     #     print(i.__name__)
+#     #     i(table_client)
 
-    table_client.__clean__()
+#     table_client.__clean__()
