@@ -1,0 +1,419 @@
+
+DISCREPANT METHOD: dynamo_batch_get_item --- ARGS: []
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (ResourceNotFoundException) when calling the BatchGetItem operation: Requested resource not found 
+EMULATOR: SUCCESS -- Response: 
+
+
+
+
+count: 1   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_batch_write_item --- ARGS: []
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (ResourceNotFoundException) when calling the BatchWriteItem operation: Requested resource not found 
+EMULATOR: SUCCESS -- Response: 
+
+
+
+
+count: 2   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_create_backup --- ARGS: []
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: Table not found: table720724559 -- Error Code: TableNotFoundException
+EMULATOR: FAILURE -- Error Message: An unknown operation was requested. -- Error Code: UnknownOperationException
+
+
+
+
+count: 3   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_create_global_table --- ARGS: []
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (TableNotFoundException) when calling the CreateGlobalTable operation: Table not found: Table: 'table704465447' not found in region: 'us-east-1'. 
+EMULATOR: SUCCESS -- Response: 
+
+
+
+
+count: 4   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_delete_backup --- ARGS: []
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: Invalid Request: BackupArn is not valid -- Error Code: ValidationException
+EMULATOR: FAILURE -- Error Message: An unknown operation was requested. -- Error Code: UnknownOperationException
+
+
+
+
+count: 5   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_delete_item --- ARGS: []
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (ResourceNotFoundException) when calling the DeleteItem operation: Requested resource not found 
+EMULATOR: SUCCESS -- Response: 
+
+
+
+
+count: 6   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_delete_table --- ARGS: []
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (ResourceInUseException) when calling the DeleteTable operation: Attempt to change a resource which is still in use: Table is being created: table270294511 
+EMULATOR: SUCCESS -- Response: 
+
+
+
+
+count: 7   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_describe_backup --- ARGS: []
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: Invalid Request: BackupArn is not valid -- Error Code: ValidationException
+EMULATOR: FAILURE -- Error Message: An unknown operation was requested. -- Error Code: UnknownOperationException
+
+
+
+
+count: 8   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_describe_continuous_backups --- ARGS: []
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (TableNotFoundException) when calling the DescribeContinuousBackups operation: Table not found: table721716302 
+EMULATOR: SUCCESS -- Response: 
+
+
+
+
+count: 9   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_describe_global_table --- ARGS: []
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: Global table not found: Global table with name: 'table925766842' does not exist. -- Error Code: GlobalTableNotFoundException
+EMULATOR: FAILURE -- Error Message: Global table with this name does not exist -- Error Code: GlobalTableNotFoundException
+
+
+
+
+count: 10   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_describe_global_table_settings --- ARGS: []
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: Global table with name: 'table586322193' does not exist. -- Error Code: GlobalTableNotFoundException
+EMULATOR: FAILURE -- Error Message: An unknown operation was requested. -- Error Code: UnknownOperationException
+
+
+
+
+count: 11   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_describe_import --- ARGS: []
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: Invalid Import ARN -- Error Code: ValidationException
+EMULATOR: FAILURE -- Error Message: An unknown operation was requested. -- Error Code: UnknownOperationException
+
+
+
+
+count: 12   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_describe_kinesis_streaming_destination --- ARGS: []
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (ResourceNotFoundException) when calling the DescribeKinesisStreamingDestination operation: Requested resource not found: Table: table357222825 not found 
+EMULATOR: SUCCESS -- Response: 
+
+
+
+
+count: 13   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_describe_table_replication_auto_scaling --- ARGS: []
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: Global table with name: 'table28382122' does not exist. -- Error Code: ResourceNotFoundException
+EMULATOR: FAILURE -- Error Message: An unknown operation was requested. -- Error Code: UnknownOperationException
+
+
+
+
+count: 14   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_describe_time_to_live --- ARGS: []
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (ValidationException) when calling the DescribeTimeToLive operation: Cannot describe time to live while table is in CREATING state: Current table state is CREATING 
+EMULATOR: SUCCESS -- Response: 
+
+
+
+
+count: 15   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_execute_statement --- ARGS: []
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (ResourceNotFoundException) when calling the ExecuteStatement operation: Requested resource not found 
+EMULATOR: SUCCESS -- Response: 
+
+
+
+
+count: 16   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_export_table_to_point_in_time --- ARGS: []
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: One or more parameter values were invalid: tableArn is not a valid ARN -- Error Code: ValidationException
+EMULATOR: FAILURE -- Error Message: An unknown operation was requested. -- Error Code: UnknownOperationException
+
+
+
+
+count: 17   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_get_item --- ARGS: []
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (ResourceNotFoundException) when calling the GetItem operation: Requested resource not found 
+EMULATOR: SUCCESS -- Response: 
+
+
+
+
+count: 18   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_import_table --- ARGS: []
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: One or more parameter values were invalid: ReadCapacityUnits and WriteCapacityUnits must both be specified when BillingMode is PROVISIONED -- Error Code: ValidationException
+EMULATOR: FAILURE -- Error Message: An unknown operation was requested. -- Error Code: UnknownOperationException
+
+
+
+
+count: 19   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_list_backups --- ARGS: []
+--Behavior mismatch--
+CLOUD: SUCCESS -- Response:  
+EMULATOR: FAILURE -- Response: An error occurred (UnknownOperationException) when calling the ListBackups operation: An unknown operation was requested.
+
+
+
+
+count: 20   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_list_contributor_insights --- ARGS: []
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: Requested resource not found: Table: table851528683 not found -- Error Code: ResourceNotFoundException
+EMULATOR: FAILURE -- Error Message: An unknown operation was requested. -- Error Code: UnknownOperationException
+
+
+
+
+count: 21   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_list_exports --- ARGS: []
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: One or more parameter values were invalid: tableArn is not a valid ARN -- Error Code: ValidationException
+EMULATOR: FAILURE -- Error Message: An unknown operation was requested. -- Error Code: UnknownOperationException
+
+
+
+
+count: 22   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_list_imports --- ARGS: []
+--Behavior mismatch--
+CLOUD: SUCCESS -- Response:  
+EMULATOR: FAILURE -- Response: An error occurred (UnknownOperationException) when calling the ListImports operation: An unknown operation was requested.
+
+
+
+
+count: 23   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_list_tags_of_resource --- ARGS: []
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (ValidationException) when calling the ListTagsOfResource operation: Invalid TableArn: Invalid ResourceArn provided as input arn:aws:dynamodb:us-east-1:123456789012:table/table549668007 
+EMULATOR: SUCCESS -- Response: 
+
+
+
+
+count: 24   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_restore_table_from_backup --- ARGS: []
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: Invalid Backup ARN -- Error Code: ValidationException
+EMULATOR: FAILURE -- Error Message: An unknown operation was requested. -- Error Code: UnknownOperationException
+
+
+
+
+count: 25   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_restore_table_to_point_in_time --- ARGS: []
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: Invalid Request: Both RestoreDateTime and UseLatestRestorableTime cannot be set for point-in-time restore request. Please specify either RestoreDateTime time or UseLatestRestorableTime -- Error Code: ValidationException
+EMULATOR: FAILURE -- Error Message: An unknown operation was requested. -- Error Code: UnknownOperationException
+
+
+
+
+count: 26   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_tag_resource --- ARGS: []
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (ValidationException) when calling the TagResource operation: Invalid TableArn: Invalid ResourceArn provided as input arn:aws:dynamodb:us-east-1:123456789012:table/table613706445 
+EMULATOR: SUCCESS -- Response: 
+
+
+
+
+count: 27   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_transact_write_items --- ARGS: []
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: ExpressionAttributeNames contains invalid key: Syntax error; key: "string" -- Error Code: ValidationException
+EMULATOR: FAILURE -- Error Message: The provided key element does not match the schema -- Error Code: ValidationException
+
+
+
+
+count: 28   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_untag_resource --- ARGS: []
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (ValidationException) when calling the UntagResource operation: Invalid TableArn: Invalid ResourceArn provided as input arn:aws:dynamodb:us-east-1:123456789012:table/table346647684 
+EMULATOR: SUCCESS -- Response: 
+
+
+
+
+count: 29   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_update_continuous_backups --- ARGS: []
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (TableNotFoundException) when calling the UpdateContinuousBackups operation: Table not found: table984189666 
+EMULATOR: SUCCESS -- Response: 
+
+
+
+
+count: 30   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_update_contributor_insights --- ARGS: []
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: Requested resource not found: Table: table681424693 not found -- Error Code: ResourceNotFoundException
+EMULATOR: FAILURE -- Error Message: An unknown operation was requested. -- Error Code: UnknownOperationException
+
+
+
+
+count: 31   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_update_global_table --- ARGS: []
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: Global table not found: Global table with name: 'table974677673' does not exist. -- Error Code: GlobalTableNotFoundException
+EMULATOR: FAILURE -- Error Message: Global table with this name does not exist -- Error Code: GlobalTableNotFoundException
+
+
+
+
+count: 32   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_update_global_table_settings --- ARGS: []
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: One or more parameter values were invalid: Failed to update settings for global table with name ‘table643094398’: Parameters 'MaximumUnits', 'ScalingPolicyUpdate', 'MinimumUnits' must be left blank when disabling auto scaling. -- Error Code: ValidationException
+EMULATOR: FAILURE -- Error Message: An unknown operation was requested. -- Error Code: UnknownOperationException
+
+
+
+
+count: 33   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_update_item --- ARGS: []
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (ResourceNotFoundException) when calling the UpdateItem operation: Requested resource not found 
+EMULATOR: SUCCESS -- Response: 
+
+
+
+
+count: 34   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_update_replica_autoscaling --- ARGS: []
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: Failed to update settings for global table with name: ‘table348909248’: Parameters 'MaximumUnits', 'MinimumUnits' are required unless auto scaling is being disabled. -- Error Code: ValidationException
+EMULATOR: FAILURE -- Error Message: An unknown operation was requested. -- Error Code: UnknownOperationException
+
+
+
+
+count: 35   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_update_table --- ARGS: []
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (ResourceInUseException) when calling the UpdateTable operation: Attempt to change a resource which is still in use: Table is being created: table821797905 
+EMULATOR: SUCCESS -- Response: 
+
+
+
+
+count: 36   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_update_ttl --- ARGS: []
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (ResourceNotFoundException) when calling the UpdateTimeToLive operation: Requested resource not found: Table: table102057891 not found 
+EMULATOR: SUCCESS -- Response: 
+
+
+
+
+count: 37   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+***  Round Summary  ***
+
+Behavior mismatch count: 19
+Status code mismatch count: 0
+Error message mismatch count: 18
+Total discrepancy count: 37/50
+
+
+Round ended   ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
