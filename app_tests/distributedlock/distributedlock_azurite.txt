@@ -1,0 +1,562 @@
+******** Run-1 Azurite ********
+
+PS C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Tests> dotnet test
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  DistributedLock.Core -> C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Core\bin\Debug\netstandard2.1\Di
+  stributedLock.Core.dll
+  DistributedLock.FileSystem -> C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.FileSystem\bin\Debug\netst
+  andard2.1\DistributedLock.FileSystem.dll
+  DistributedLock.Oracle -> C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Oracle\bin\Debug\netstandard2.
+  1\DistributedLock.Oracle.dll
+  DistributedLock.WaitHandles -> C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.WaitHandles\bin\Debug\net
+  standard2.1\DistributedLock.WaitHandles.dll
+  DistributedLock.Redis -> C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Redis\bin\Debug\netstandard2.1\
+  DistributedLock.Redis.dll
+  DistributedLock.Postgres -> C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Postgres\bin\Debug\netstanda
+  rd2.1\DistributedLock.Postgres.dll
+  DistributedLock.ZooKeeper -> C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.ZooKeeper\bin\Debug\netstan
+  dard2.1\DistributedLock.ZooKeeper.dll
+  DistributedLock.SqlServer -> C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.SqlServer\bin\Debug\netstan
+  dard2.1\DistributedLock.SqlServer.dll
+  DistributedLock.Azure -> C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Azure\bin\Debug\netstandard2.1\
+  DistributedLock.Azure.dll
+  DistributedLock.MySql -> C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.MySql\bin\Debug\netstandard2.1\
+  DistributedLock.MySql.dll
+  DistributedLock -> C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock\bin\Debug\netstandard2.1\DistributedL
+  ock.dll
+  DistributedLock.Tests -> C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Tests\bin\Debug\netcoreapp3.1\D
+  istributedLock.Tests.dll
+Test run for C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Tests\bin\Debug\netcoreapp3.1\DistributedLock.Tests.dll (.NETCoreApp,Version=v3.1)
+Microsoft (R) Test Execution Command Line Tool Version 17.6.0 (x64)
+Copyright (c) Microsoft Corporation.  All rights reserved.
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+  Failed TestUploadToWrongBlobType("block") [162 ms]
+  Error Message:
+     Expected: <Azure.RequestFailedException>
+  But was:  null
+
+  Stack Trace:
+     at Medallion.Threading.Tests.Azure.AzureBehaviorTest.TestUploadToWrongBlobType(String actualType) in C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Tests\Tests\Azure\AzureBehaviorTest.cs:line 70
+
+  Failed TestUploadToWrongBlobType("page") [21 ms]
+  Error Message:
+     Expected: <Azure.RequestFailedException>
+  But was:  null
+
+  Stack Trace:
+     at Medallion.Threading.Tests.Azure.AzureBehaviorTest.TestUploadToWrongBlobType(String actualType) in C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Tests\Tests\Azure\AzureBehaviorTest.cs:line 70
+
+  Failed TestUploadToWrongBlobType("append") [19 ms]
+  Error Message:
+     Expected: <Azure.RequestFailedException>
+  But was:  null
+
+  Stack Trace:
+     at Medallion.Threading.Tests.Azure.AzureBehaviorTest.TestUploadToWrongBlobType(String actualType) in C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Tests\Tests\Azure\AzureBehaviorTest.cs:line 47
+
+  Failed TestLockOnDifferentBlobClientTypes(Append,True) [21 ms]
+  Error Message:
+     Expected: <Azure.RequestFailedException>
+  But was:  null
+
+  Stack Trace:
+     at Medallion.Threading.Tests.Azure.AzureBlobLeaseDistributedLockTest.<>c__DisplayClass1_0.<<TestLockOnDifferentBlobClientTypes>g__TestAsync|1>d.MoveNext() in C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Tests\Tests\Azure\AzureBlobLeaseDistributedLockTest.cs:line 65
+--- End of stack trace from previous location where exception was thrown ---
+   at Medallion.Threading.Tests.Azure.AzureBlobLeaseDistributedLockTest.TestLockOnDifferentBlobClientTypes(BlobClientType type, 
+Boolean isAsync) in C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Tests\Tests\Azure\AzureBlobLeaseDistributedLockTest.cs:line 50
+   at NUnit.Framework.Internal.TaskAwaitAdapter.GenericAdapter`1.GetResult()
+   at NUnit.Framework.Internal.AsyncToSyncAdapter.Await(Func`1 invoke)
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.RunTestMethod(TestExecutionContext context)
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.Execute(TestExecutionContext context)
+   at NUnit.Framework.Internal.Execution.SimpleWorkItem.PerformWork()
+
+  Failed TestLockOnDifferentBlobClientTypes(Append,False) [12 ms]
+  Error Message:
+     Expected: <Azure.RequestFailedException>
+  But was:  null
+
+  Stack Trace:
+     at Medallion.Threading.Tests.Azure.AzureBlobLeaseDistributedLockTest.<>c__DisplayClass1_0.<<TestLockOnDifferentBlobClientTypes>g__TestAsync|1>d.MoveNext() in C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Tests\Tests\Azure\AzureBlobLeaseDistributedLockTest.cs:line 65
+--- End of stack trace from previous location where exception was thrown ---
+   at Medallion.Threading.Internal.SyncViaAsync.<>c__3`1.<<Run>b__3_0>d.MoveNext() in C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Core\Internal\SyncViaAsync.cs:line 35
+--- End of stack trace from previous location where exception was thrown ---
+   at Medallion.Threading.Internal.SyncViaAsync.Run[TState,TResult](Func`2 action, TState state) in C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Core\Internal\SyncViaAsync.cs:line 65
+   at Medallion.Threading.Internal.SyncViaAsync.Run[TState](Func`2 action, TState state) in C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Core\Internal\SyncViaAsync.cs:line 32
+   at Medallion.Threading.Tests.Azure.AzureBlobLeaseDistributedLockTest.TestLockOnDifferentBlobClientTypes(BlobClientType type, 
+Boolean isAsync) in C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Tests\Tests\Azure\AzureBlobLeaseDistributedLockTest.cs:line 54
+   at NUnit.Framework.Internal.TaskAwaitAdapter.GenericAdapter`1.GetResult()
+   at NUnit.Framework.Internal.AsyncToSyncAdapter.Await(Func`1 invoke)
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.RunTestMethod(TestExecutionContext context)
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.Execute(TestExecutionContext context)
+   at NUnit.Framework.Internal.Execution.SimpleWorkItem.PerformWork()
+
+  Failed TestWrapperCreateIfNotExists(Append) [15 ms]
+  Error Message:
+     Expected: <Azure.RequestFailedException>
+  But was:  null
+
+  Stack Trace:
+     at Medallion.Threading.Tests.Azure.AzureBlobLeaseDistributedLockTest.TestWrapperCreateIfNotExists(BlobClientType type) in C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Tests\Tests\Azure\AzureBlobLeaseDistributedLockTest.cs:line 
+97
+   at NUnit.Framework.Internal.TaskAwaitAdapter.GenericAdapter`1.GetResult()
+   at NUnit.Framework.Internal.AsyncToSyncAdapter.Await(Func`1 invoke)
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.RunTestMethod(TestExecutionContext context)
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.Execute(TestExecutionContext context)
+   at NUnit.Framework.Internal.Execution.SimpleWorkItem.PerformWork()
+
+Error: Unable to start the storage emulator.
+  Failed TestTriggersHandleLostIfLeaseExpiresNaturally [45 s]
+  Error Message:
+     Expected string length 9 but was 32. Strings differ at index 5.
+  Expected: "LeaseLost"
+  But was:  "LeaseNotPresentWithBlobOperation"
+  ----------------^
+
+  Stack Trace:
+     at Medallion.Threading.Tests.TestHelper.ShouldEqual[T](T this, T that, String message) in C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Tests\Infrastructure\TestHelper.cs:line 19
+   at Medallion.Threading.Tests.Azure.AzureBlobLeaseDistributedLockTest.TestTriggersHandleLostIfLeaseExpiresNaturally() in C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Tests\Tests\Azure\AzureBlobLeaseDistributedLockTest.cs:line 205 
+
+TearDown failed for test fixture Medallion.Threading.Tests.Azure.AzureSetUpFixture
+One or more child tests had errors
+TearDown : System.InvalidOperationException : AzureStorageEmulator exited unexpectedly with error code -3
+--TearDown
+   at Medallion.Threading.Tests.Azure.AzureSetUpFixture.OneTimeTearDown() in C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Tests\Infrastructure\Azure\AzureSetUpFixture.cs:line 57
+  Failed VerifyAllTestsAreCreated [65 ms]
+  Error Message:
+   Updated C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Tests\Tests\CombinatorialTests.cs**** EXPECTED ****
+using Medallion.Threading.Tests.Data;
+using NUnit.Framework;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Medallion.Threading.Tests.Azure
+{
+    public class Core_AzureBlobLease_AzureBlobLeaseSynchronizationStrategyTest : DistributedLockCoreTestCases<TestingAzureBlobLeaseDistributedLockProvider, TestingAzureBlobLeaseSynchronizationStrategy> { }
+}
+ **** FOUND **** // using Medallion.Threading.Tests.Data;
+using NUnit.Framework;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Medallion.Threading.Tests.Azure
+{
+    public class Core_AzureBlobLease_AzureBlobLeaseSynchronizationStrategyTest : DistributedLockCoreTestCases<TestingAzureBlobLeaseDistributedLockProvider, TestingAzureBlobLeaseSynchronizationStrategy> { }
+}
+  Stack Trace:
+     at Medallion.Threading.Tests.TestSetupTest.VerifyAllTestsAreCreated() in C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Tests\Tests\TestSetupTest.cs:line 57
+
+
+Failed!  - Failed:     8, Passed:    72, Skipped:     0, Total:    80, Duration: 1 m 32 s - DistributedLock.Tests.dll (netcoreapp3.1)
+
+
+******* Run-2 Azurite ********** 
+
+PS C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Tests> dotnet test
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  DistributedLock.Core -> C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Core\bin\Debug\netstandard2.1\Di
+  stributedLock.Core.dll
+  DistributedLock.Postgres -> C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Postgres\bin\Debug\netstanda
+  rd2.1\DistributedLock.Postgres.dll
+  DistributedLock.WaitHandles -> C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.WaitHandles\bin\Debug\net
+  standard2.1\DistributedLock.WaitHandles.dll
+  DistributedLock.MySql -> C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.MySql\bin\Debug\netstandard2.1\
+  DistributedLock.MySql.dll
+  DistributedLock.SqlServer -> C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.SqlServer\bin\Debug\netstan
+  dard2.1\DistributedLock.SqlServer.dll
+  DistributedLock.ZooKeeper -> C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.ZooKeeper\bin\Debug\netstan
+  dard2.1\DistributedLock.ZooKeeper.dll
+  DistributedLock.Redis -> C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Redis\bin\Debug\netstandard2.1\
+  DistributedLock.Redis.dll
+  DistributedLock.Oracle -> C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Oracle\bin\Debug\netstandard2.
+  1\DistributedLock.Oracle.dll
+  DistributedLock.Azure -> C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Azure\bin\Debug\netstandard2.1\
+  DistributedLock.Azure.dll
+  DistributedLock.FileSystem -> C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.FileSystem\bin\Debug\netst
+  andard2.1\DistributedLock.FileSystem.dll
+  DistributedLock -> C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock\bin\Debug\netstandard2.1\DistributedL
+  ock.dll
+  DistributedLock.Tests -> C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Tests\bin\Debug\netcoreapp3.1\D
+  istributedLock.Tests.dll
+Test run for C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Tests\bin\Debug\netcoreapp3.1\DistributedLock.Tests.dll (.NETCoreApp,Version=v3.1)
+Microsoft (R) Test Execution Command Line Tool Version 17.6.0 (x64)
+Copyright (c) Microsoft Corporation.  All rights reserved.
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+  Failed TestUploadToWrongBlobType("block") [258 ms]
+  Error Message:
+     Expected: <Azure.RequestFailedException>
+  But was:  null
+
+  Stack Trace:
+     at Medallion.Threading.Tests.Azure.AzureBehaviorTest.TestUploadToWrongBlobType(String actualType) in C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Tests\Tests\Azure\AzureBehaviorTest.cs:line 70
+
+  Failed TestUploadToWrongBlobType("page") [72 ms]
+  Error Message:
+     Expected: <Azure.RequestFailedException>
+  But was:  null
+
+  Stack Trace:
+     at Medallion.Threading.Tests.Azure.AzureBehaviorTest.TestUploadToWrongBlobType(String actualType) in C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Tests\Tests\Azure\AzureBehaviorTest.cs:line 70
+
+  Failed TestUploadToWrongBlobType("append") [46 ms]
+  Error Message:
+     Expected: <Azure.RequestFailedException>
+  But was:  null
+
+  Stack Trace:
+     at Medallion.Threading.Tests.Azure.AzureBehaviorTest.TestUploadToWrongBlobType(String actualType) in C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Tests\Tests\Azure\AzureBehaviorTest.cs:line 47
+
+Error: Unable to start the storage emulator.
+  Failed TestLockOnDifferentBlobClientTypes(Append,True) [18 ms]
+  Error Message:
+     Expected: <Azure.RequestFailedException>
+  But was:  null
+
+  Stack Trace:
+     at Medallion.Threading.Tests.Azure.AzureBlobLeaseDistributedLockTest.<>c__DisplayClass1_0.<<TestLockOnDifferentBlobClientTypes>g__TestAsync|1>d.MoveNext() in C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Tests\Tests\Azure\AzureBlobLeaseDistributedLockTest.cs:line 65
+--- End of stack trace from previous location where exception was thrown ---
+   at Medallion.Threading.Tests.Azure.AzureBlobLeaseDistributedLockTest.TestLockOnDifferentBlobClientTypes(BlobClientType type, 
+Boolean isAsync) in C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Tests\Tests\Azure\AzureBlobLeaseDistributedLockTest.cs:line 50
+   at NUnit.Framework.Internal.TaskAwaitAdapter.GenericAdapter`1.GetResult()
+   at NUnit.Framework.Internal.AsyncToSyncAdapter.Await(Func`1 invoke)
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.RunTestMethod(TestExecutionContext context)
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.Execute(TestExecutionContext context)
+   at NUnit.Framework.Internal.Execution.SimpleWorkItem.PerformWork()
+
+  Failed TestLockOnDifferentBlobClientTypes(Append,False) [14 ms]
+  Error Message:
+     Expected: <Azure.RequestFailedException>
+  But was:  null
+
+  Stack Trace:
+     at Medallion.Threading.Tests.Azure.AzureBlobLeaseDistributedLockTest.<>c__DisplayClass1_0.<<TestLockOnDifferentBlobClientTypes>g__TestAsync|1>d.MoveNext() in C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Tests\Tests\Azure\AzureBlobLeaseDistributedLockTest.cs:line 65
+--- End of stack trace from previous location where exception was thrown ---
+   at Medallion.Threading.Internal.SyncViaAsync.<>c__3`1.<<Run>b__3_0>d.MoveNext() in C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Core\Internal\SyncViaAsync.cs:line 35
+--- End of stack trace from previous location where exception was thrown ---
+   at Medallion.Threading.Internal.SyncViaAsync.Run[TState,TResult](Func`2 action, TState state) in C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Core\Internal\SyncViaAsync.cs:line 65
+   at Medallion.Threading.Internal.SyncViaAsync.Run[TState](Func`2 action, TState state) in C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Core\Internal\SyncViaAsync.cs:line 32
+   at Medallion.Threading.Tests.Azure.AzureBlobLeaseDistributedLockTest.TestLockOnDifferentBlobClientTypes(BlobClientType type, 
+Boolean isAsync) in C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Tests\Tests\Azure\AzureBlobLeaseDistributedLockTest.cs:line 54
+   at NUnit.Framework.Internal.TaskAwaitAdapter.GenericAdapter`1.GetResult()
+   at NUnit.Framework.Internal.AsyncToSyncAdapter.Await(Func`1 invoke)
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.RunTestMethod(TestExecutionContext context)
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.Execute(TestExecutionContext context)
+   at NUnit.Framework.Internal.Execution.SimpleWorkItem.PerformWork()
+
+  Failed TestLockOnDifferentBlobClientTypes(Base,True) [33 ms]
+  Error Message:
+   Azure.RequestFailedException : The specified blob already exists.
+RequestId:b73705d5-f007-4082-b30f-fe4e830f44f8
+Time:2023-07-07T08:36:28.115Z
+Status: 409 (The specified blob already exists.)
+ErrorCode: BlobAlreadyExists
+
+Headers:
+Server: Azurite-Blob/3.24.0
+x-ms-error-code: BlobAlreadyExists
+x-ms-request-id: b73705d5-f007-4082-b30f-fe4e830f44f8
+Date: Fri, 07 Jul 2023 08:36:28 GMT
+Connection: keep-alive
+Keep-Alive: REDACTED
+Transfer-Encoding: chunked
+Content-Type: application/xml
+
+  Stack Trace:
+     at Azure.Storage.Blobs.BlobRestClient.BlockBlob.UploadAsync_CreateResponse(ClientDiagnostics clientDiagnostics, Response response)
+   at Azure.Storage.Blobs.BlobRestClient.BlockBlob.UploadAsync(ClientDiagnostics clientDiagnostics, HttpPipeline pipeline, Uri resourceUri, Stream body, Int64 contentLength, String version, Nullable`1 timeout, Byte[] transactionalContentHash, String blobContentType, String blobContentEncoding, String blobContentLanguage, Byte[] blobContentHash, String blobCacheControl, IDictionary`2 metadata, String leaseId, String blobContentDisposition, String encryptionKey, String encryptionKeySha256, Nullable`1 encryptionAlgorithm, String encryptionScope, Nullable`1 tier, Nullable`1 ifModifiedSince, Nullable`1 ifUnmodifiedSince, Nullable`1 ifMatch, Nullable`1 ifNoneMatch, String ifTags, String requestId, String blobTagsString, Boolean async, String operationName, CancellationToken cancellationToken)
+   at Azure.Storage.Blobs.Specialized.BlockBlobClient.UploadInternal(Stream content, BlobHttpHeaders blobHttpHeaders, IDictionary`2 metadata, IDictionary`2 tags, BlobRequestConditions conditions, Nullable`1 accessTier, IProgress`1 progressHandler, String operationName, Boolean async, CancellationToken cancellationToken)
+   at Azure.Storage.Blobs.Specialized.BlockBlobClient.<>c__DisplayClass48_0.<<GetPartitionedUploaderBehaviors>b__0>d.MoveNext() 
+--- End of stack trace from previous location where exception was thrown ---
+   at Azure.Storage.PartitionedUploader`2.UploadInternal(Stream content, TServiceSpecificArgs args, IProgress`1 progressHandler, Boolean async, CancellationToken cancellationToken)
+   at Azure.Storage.Blobs.BlobClient.StagedUploadInternal(Stream content, BlobUploadOptions options, Boolean async, CancellationToken cancellationToken)
+   at Azure.Core.Pipeline.TaskExtensions.EnsureCompleted[T](Task`1 task)
+   at Azure.Storage.Blobs.BlobClient.Upload(Stream content, BlobHttpHeaders httpHeaders, IDictionary`2 metadata, BlobRequestConditions conditions, IProgress`1 progressHandler, Nullable`1 accessTier, StorageTransferOptions transferOptions, CancellationToken cancellationToken)
+   at Azure.Storage.Blobs.BlobClient.Upload(Stream content, Boolean overwrite, CancellationToken cancellationToken)
+   at Azure.Storage.Blobs.BlobClient.Upload(Stream content, CancellationToken cancellationToken)
+   at Azure.Storage.Blobs.BlobClient.Upload(Stream content)
+   at Medallion.Threading.Tests.Azure.AzureBlobLeaseDistributedLockTest.<>c__DisplayClass1_0.<<TestLockOnDifferentBlobClientTypes>g__TestAsync|1>d.MoveNext() in C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Tests\Tests\Azure\AzureBlobLeaseDistributedLockTest.cs:line 74
+--- End of stack trace from previous location where exception was thrown ---
+   at Medallion.Threading.Tests.Azure.AzureBlobLeaseDistributedLockTest.TestLockOnDifferentBlobClientTypes(BlobClientType type, 
+Boolean isAsync) in C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Tests\Tests\Azure\AzureBlobLeaseDistributedLockTest.cs:line 50
+   at NUnit.Framework.Internal.TaskAwaitAdapter.GenericAdapter`1.GetResult()
+   at NUnit.Framework.Internal.AsyncToSyncAdapter.Await(Func`1 invoke)
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.RunTestMethod(TestExecutionContext context)
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.Execute(TestExecutionContext context)
+   at NUnit.Framework.Internal.Execution.SimpleWorkItem.PerformWork()
+  Failed TestLockOnDifferentBlobClientTypes(Base,False) [15 ms]
+  Error Message:
+   Azure.RequestFailedException : The specified blob already exists.
+RequestId:943bc375-44e8-456c-8977-13853df15c71
+Time:2023-07-07T08:36:28.156Z
+Status: 409 (The specified blob already exists.)
+ErrorCode: BlobAlreadyExists
+
+Headers:
+Server: Azurite-Blob/3.24.0
+x-ms-error-code: BlobAlreadyExists
+x-ms-request-id: 943bc375-44e8-456c-8977-13853df15c71
+Date: Fri, 07 Jul 2023 08:36:28 GMT
+Connection: keep-alive
+Keep-Alive: REDACTED
+Transfer-Encoding: chunked
+Content-Type: application/xml
+
+  Stack Trace:
+     at Azure.Storage.Blobs.BlobRestClient.BlockBlob.UploadAsync_CreateResponse(ClientDiagnostics clientDiagnostics, Response response)
+   at Azure.Storage.Blobs.BlobRestClient.BlockBlob.UploadAsync(ClientDiagnostics clientDiagnostics, HttpPipeline pipeline, Uri resourceUri, Stream body, Int64 contentLength, String version, Nullable`1 timeout, Byte[] transactionalContentHash, String blobContentType, String blobContentEncoding, String blobContentLanguage, Byte[] blobContentHash, String blobCacheControl, IDictionary`2 metadata, String leaseId, String blobContentDisposition, String encryptionKey, String encryptionKeySha256, Nullable`1 encryptionAlgorithm, String encryptionScope, Nullable`1 tier, Nullable`1 ifModifiedSince, Nullable`1 ifUnmodifiedSince, Nullable`1 ifMatch, Nullable`1 ifNoneMatch, String ifTags, String requestId, String blobTagsString, Boolean async, String operationName, CancellationToken cancellationToken)
+   at Azure.Storage.Blobs.Specialized.BlockBlobClient.UploadInternal(Stream content, BlobHttpHeaders blobHttpHeaders, IDictionary`2 metadata, IDictionary`2 tags, BlobRequestConditions conditions, Nullable`1 accessTier, IProgress`1 progressHandler, String operationName, Boolean async, CancellationToken cancellationToken)
+   at Azure.Storage.Blobs.Specialized.BlockBlobClient.<>c__DisplayClass48_0.<<GetPartitionedUploaderBehaviors>b__0>d.MoveNext() 
+--- End of stack trace from previous location where exception was thrown ---
+   at Azure.Storage.PartitionedUploader`2.UploadInternal(Stream content, TServiceSpecificArgs args, IProgress`1 progressHandler, Boolean async, CancellationToken cancellationToken)
+   at Azure.Storage.Blobs.BlobClient.StagedUploadInternal(Stream content, BlobUploadOptions options, Boolean async, CancellationToken cancellationToken)
+   at Azure.Core.Pipeline.TaskExtensions.EnsureCompleted[T](Task`1 task)
+   at Azure.Storage.Blobs.BlobClient.Upload(Stream content, BlobHttpHeaders httpHeaders, IDictionary`2 metadata, BlobRequestConditions conditions, IProgress`1 progressHandler, Nullable`1 accessTier, StorageTransferOptions transferOptions, CancellationToken cancellationToken)
+   at Azure.Storage.Blobs.BlobClient.Upload(Stream content, Boolean overwrite, CancellationToken cancellationToken)
+   at Azure.Storage.Blobs.BlobClient.Upload(Stream content, CancellationToken cancellationToken)
+   at Azure.Storage.Blobs.BlobClient.Upload(Stream content)
+   at Medallion.Threading.Tests.Azure.AzureBlobLeaseDistributedLockTest.<>c__DisplayClass1_0.<<TestLockOnDifferentBlobClientTypes>g__TestAsync|1>d.MoveNext() in C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Tests\Tests\Azure\AzureBlobLeaseDistributedLockTest.cs:line 74
+--- End of stack trace from previous location where exception was thrown ---
+   at Medallion.Threading.Internal.SyncViaAsync.<>c__3`1.<<Run>b__3_0>d.MoveNext() in C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Core\Internal\SyncViaAsync.cs:line 35
+--- End of stack trace from previous location where exception was thrown ---
+   at Medallion.Threading.Internal.SyncViaAsync.Run[TState,TResult](Func`2 action, TState state) in C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Core\Internal\SyncViaAsync.cs:line 65
+   at Medallion.Threading.Internal.SyncViaAsync.Run[TState](Func`2 action, TState state) in C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Core\Internal\SyncViaAsync.cs:line 32
+   at Medallion.Threading.Tests.Azure.AzureBlobLeaseDistributedLockTest.TestLockOnDifferentBlobClientTypes(BlobClientType type, 
+Boolean isAsync) in C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Tests\Tests\Azure\AzureBlobLeaseDistributedLockTest.cs:line 54
+   at NUnit.Framework.Internal.TaskAwaitAdapter.GenericAdapter`1.GetResult()
+   at NUnit.Framework.Internal.AsyncToSyncAdapter.Await(Func`1 invoke)
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.RunTestMethod(TestExecutionContext context)
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.Execute(TestExecutionContext context)
+   at NUnit.Framework.Internal.Execution.SimpleWorkItem.PerformWork()
+  Failed TestWrapperCreateIfNotExists(Append) [16 ms]
+  Error Message:
+     Expected: <Azure.RequestFailedException>
+  But was:  null
+
+  Stack Trace:
+     at Medallion.Threading.Tests.Azure.AzureBlobLeaseDistributedLockTest.TestWrapperCreateIfNotExists(BlobClientType type) in C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Tests\Tests\Azure\AzureBlobLeaseDistributedLockTest.cs:line 
+97
+   at NUnit.Framework.Internal.TaskAwaitAdapter.GenericAdapter`1.GetResult()
+   at NUnit.Framework.Internal.AsyncToSyncAdapter.Await(Func`1 invoke)
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.RunTestMethod(TestExecutionContext context)
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.Execute(TestExecutionContext context)
+   at NUnit.Framework.Internal.Execution.SimpleWorkItem.PerformWork()
+
+  Failed TestTriggersHandleLostIfLeaseExpiresNaturally [45 s]
+  Error Message:
+     Expected string length 9 but was 32. Strings differ at index 5.
+  Expected: "LeaseLost"
+  But was:  "LeaseNotPresentWithBlobOperation"
+  ----------------^
+
+  Stack Trace:
+     at Medallion.Threading.Tests.TestHelper.ShouldEqual[T](T this, T that, String message) in C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Tests\Infrastructure\TestHelper.cs:line 19
+   at Medallion.Threading.Tests.Azure.AzureBlobLeaseDistributedLockTest.TestTriggersHandleLostIfLeaseExpiresNaturally() in C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Tests\Tests\Azure\AzureBlobLeaseDistributedLockTest.cs:line 205 
+
+TearDown failed for test fixture Medallion.Threading.Tests.Azure.AzureSetUpFixture
+One or more child tests had errors
+TearDown : System.InvalidOperationException : AzureStorageEmulator exited unexpectedly with error code -3
+--TearDown
+   at Medallion.Threading.Tests.Azure.AzureSetUpFixture.OneTimeTearDown() in C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Tests\Infrastructure\Azure\AzureSetUpFixture.cs:line 57
+  Failed VerifyAllTestsAreCreated [57 ms]
+  Error Message:
+   Updated C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Tests\Tests\CombinatorialTests.cs**** EXPECTED ****
+using Medallion.Threading.Tests.Data;
+using NUnit.Framework;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Medallion.Threading.Tests.Azure
+{
+    public class Core_AzureBlobLease_AzureBlobLeaseSynchronizationStrategyTest : DistributedLockCoreTestCases<TestingAzureBlobLeaseDistributedLockProvider, TestingAzureBlobLeaseSynchronizationStrategy> { }
+}
+ **** FOUND **** // using Medallion.Threading.Tests.Data;
+using NUnit.Framework;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Medallion.Threading.Tests.Azure
+{
+    public class Core_AzureBlobLease_AzureBlobLeaseSynchronizationStrategyTest : DistributedLockCoreTestCases<TestingAzureBlobLeaseDistributedLockProvider, TestingAzureBlobLeaseSynchronizationStrategy> { }
+}
+  Stack Trace:
+     at Medallion.Threading.Tests.TestSetupTest.VerifyAllTestsAreCreated() in C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Tests\Tests\TestSetupTest.cs:line 57
+
+
+Failed!  - Failed:    10, Passed:    70, Skipped:     0, Total:    80, Duration: 1 m 31 s - DistributedLock.Tests.dll (netcoreapp3.1)
+
+******* Run-3 Azurite ******** 
+
+PS C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Tests> dotnet test 
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  DistributedLock.Core -> C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Core\bin\Debug\netstandard2.1\Di
+  stributedLock.Core.dll
+  DistributedLock.MySql -> C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.MySql\bin\Debug\netstandard2.1\
+  DistributedLock.MySql.dll
+  DistributedLock.ZooKeeper -> C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.ZooKeeper\bin\Debug\netstan
+  dard2.1\DistributedLock.ZooKeeper.dll
+  DistributedLock.FileSystem -> C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.FileSystem\bin\Debug\netst
+  andard2.1\DistributedLock.FileSystem.dll
+  DistributedLock.WaitHandles -> C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.WaitHandles\bin\Debug\net
+  standard2.1\DistributedLock.WaitHandles.dll
+  DistributedLock.Oracle -> C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Oracle\bin\Debug\netstandard2.
+  1\DistributedLock.Oracle.dll
+  DistributedLock.SqlServer -> C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.SqlServer\bin\Debug\netstan
+  dard2.1\DistributedLock.SqlServer.dll
+  DistributedLock.Redis -> C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Redis\bin\Debug\netstandard2.1\
+  DistributedLock.Redis.dll
+  DistributedLock.Azure -> C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Azure\bin\Debug\netstandard2.1\
+  DistributedLock.Azure.dll
+  DistributedLock.Postgres -> C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Postgres\bin\Debug\netstanda
+  rd2.1\DistributedLock.Postgres.dll
+  DistributedLock -> C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock\bin\Debug\netstandard2.1\DistributedL
+  ock.dll
+  DistributedLock.Tests -> C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Tests\bin\Debug\netcoreapp3.1\D
+  istributedLock.Tests.dll
+Test run for C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Tests\bin\Debug\netcoreapp3.1\DistributedLock.Tests.dll (.NETCoreApp,Version=v3.1)
+Microsoft (R) Test Execution Command Line Tool Version 17.6.0 (x64)
+Copyright (c) Microsoft Corporation.  All rights reserved.
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+  Failed TestUploadToWrongBlobType("block") [119 ms]
+  Error Message:
+     Expected: <Azure.RequestFailedException>
+  But was:  null
+
+  Stack Trace:
+     at Medallion.Threading.Tests.Azure.AzureBehaviorTest.TestUploadToWrongBlobType(String actualType) in C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Tests\Tests\Azure\AzureBehaviorTest.cs:line 70
+
+  Failed TestUploadToWrongBlobType("page") [27 ms]
+  Error Message:
+     Expected: <Azure.RequestFailedException>
+  But was:  null
+
+  Stack Trace:
+     at Medallion.Threading.Tests.Azure.AzureBehaviorTest.TestUploadToWrongBlobType(String actualType) in C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Tests\Tests\Azure\AzureBehaviorTest.cs:line 70
+
+  Failed TestUploadToWrongBlobType("append") [26 ms]
+  Error Message:
+     Expected: <Azure.RequestFailedException>
+  But was:  null
+
+  Stack Trace:
+     at Medallion.Threading.Tests.Azure.AzureBehaviorTest.TestUploadToWrongBlobType(String actualType) in C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Tests\Tests\Azure\AzureBehaviorTest.cs:line 47
+
+Error: Unable to start the storage emulator.
+  Failed TestLockOnDifferentBlobClientTypes(Append,True) [19 ms]
+  Error Message:
+     Expected: <Azure.RequestFailedException>
+  But was:  null
+
+  Stack Trace:
+     at Medallion.Threading.Tests.Azure.AzureBlobLeaseDistributedLockTest.<>c__DisplayClass1_0.<<TestLockOnDifferentBlobClientTypes>g__TestAsync|1>d.MoveNext() in C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Tests\Tests\Azure\AzureBlobLeaseDistributedLockTest.cs:line 65
+--- End of stack trace from previous location where exception was thrown ---
+   at Medallion.Threading.Tests.Azure.AzureBlobLeaseDistributedLockTest.TestLockOnDifferentBlobClientTypes(BlobClientType type, 
+Boolean isAsync) in C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Tests\Tests\Azure\AzureBlobLeaseDistributedLockTest.cs:line 50
+   at NUnit.Framework.Internal.TaskAwaitAdapter.GenericAdapter`1.GetResult()
+   at NUnit.Framework.Internal.AsyncToSyncAdapter.Await(Func`1 invoke)
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.RunTestMethod(TestExecutionContext context)
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.Execute(TestExecutionContext context)
+   at NUnit.Framework.Internal.Execution.SimpleWorkItem.PerformWork()
+
+  Failed TestLockOnDifferentBlobClientTypes(Append,False) [15 ms]
+  Error Message:
+     Expected: <Azure.RequestFailedException>
+  But was:  null
+
+  Stack Trace:
+     at Medallion.Threading.Tests.Azure.AzureBlobLeaseDistributedLockTest.<>c__DisplayClass1_0.<<TestLockOnDifferentBlobClientTypes>g__TestAsync|1>d.MoveNext() in C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Tests\Tests\Azure\AzureBlobLeaseDistributedLockTest.cs:line 65
+--- End of stack trace from previous location where exception was thrown ---
+   at Medallion.Threading.Internal.SyncViaAsync.<>c__3`1.<<Run>b__3_0>d.MoveNext() in C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Core\Internal\SyncViaAsync.cs:line 35
+--- End of stack trace from previous location where exception was thrown ---
+   at Medallion.Threading.Internal.SyncViaAsync.Run[TState,TResult](Func`2 action, TState state) in C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Core\Internal\SyncViaAsync.cs:line 65
+   at Medallion.Threading.Internal.SyncViaAsync.Run[TState](Func`2 action, TState state) in C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Core\Internal\SyncViaAsync.cs:line 32
+   at Medallion.Threading.Tests.Azure.AzureBlobLeaseDistributedLockTest.TestLockOnDifferentBlobClientTypes(BlobClientType type, 
+Boolean isAsync) in C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Tests\Tests\Azure\AzureBlobLeaseDistributedLockTest.cs:line 54
+   at NUnit.Framework.Internal.TaskAwaitAdapter.GenericAdapter`1.GetResult()
+   at NUnit.Framework.Internal.AsyncToSyncAdapter.Await(Func`1 invoke)
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.RunTestMethod(TestExecutionContext context)
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.Execute(TestExecutionContext context)
+   at NUnit.Framework.Internal.Execution.SimpleWorkItem.PerformWork()
+
+  Failed TestWrapperCreateIfNotExists(Append) [12 ms]
+  Error Message:
+     Expected: <Azure.RequestFailedException>
+  But was:  null
+
+  Stack Trace:
+     at Medallion.Threading.Tests.Azure.AzureBlobLeaseDistributedLockTest.TestWrapperCreateIfNotExists(BlobClientType type) in C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Tests\Tests\Azure\AzureBlobLeaseDistributedLockTest.cs:line 
+97
+   at NUnit.Framework.Internal.TaskAwaitAdapter.GenericAdapter`1.GetResult()
+   at NUnit.Framework.Internal.AsyncToSyncAdapter.Await(Func`1 invoke)
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.RunTestMethod(TestExecutionContext context)
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.Execute(TestExecutionContext context)
+   at NUnit.Framework.Internal.Execution.SimpleWorkItem.PerformWork()
+
+  Failed TestTriggersHandleLostIfLeaseExpiresNaturally [45 s]
+  Error Message:
+     Expected string length 9 but was 32. Strings differ at index 5.
+  Expected: "LeaseLost"
+  But was:  "LeaseNotPresentWithBlobOperation"
+  ----------------^
+
+  Stack Trace:
+     at Medallion.Threading.Tests.TestHelper.ShouldEqual[T](T this, T that, String message) in C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Tests\Infrastructure\TestHelper.cs:line 19
+   at Medallion.Threading.Tests.Azure.AzureBlobLeaseDistributedLockTest.TestTriggersHandleLostIfLeaseExpiresNaturally() in C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Tests\Tests\Azure\AzureBlobLeaseDistributedLockTest.cs:line 205 
+
+TearDown failed for test fixture Medallion.Threading.Tests.Azure.AzureSetUpFixture
+One or more child tests had errors
+TearDown : System.InvalidOperationException : AzureStorageEmulator exited unexpectedly with error code -3
+--TearDown
+   at Medallion.Threading.Tests.Azure.AzureSetUpFixture.OneTimeTearDown() in C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Tests\Infrastructure\Azure\AzureSetUpFixture.cs:line 57
+  Failed VerifyAllTestsAreCreated [39 ms]
+  Error Message:
+   Updated C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Tests\Tests\CombinatorialTests.cs**** EXPECTED ****
+using Medallion.Threading.Tests.Data;
+using NUnit.Framework;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Medallion.Threading.Tests.Azure
+{
+    public class Core_AzureBlobLease_AzureBlobLeaseSynchronizationStrategyTest : DistributedLockCoreTestCases<TestingAzureBlobLeaseDistributedLockProvider, TestingAzureBlobLeaseSynchronizationStrategy> { }
+}
+ **** FOUND **** // using Medallion.Threading.Tests.Data;
+using NUnit.Framework;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Medallion.Threading.Tests.Azure
+{
+    public class Core_AzureBlobLease_AzureBlobLeaseSynchronizationStrategyTest : DistributedLockCoreTestCases<TestingAzureBlobLeaseDistributedLockProvider, TestingAzureBlobLeaseSynchronizationStrategy> { }
+}
+  Stack Trace:
+     at Medallion.Threading.Tests.TestSetupTest.VerifyAllTestsAreCreated() in C:\Users\Saad Sher Alam\Desktop\UIUC\DistributedLock\DistributedLock.Tests\Tests\TestSetupTest.cs:line 57
+
+
+Failed!  - Failed:     8, Passed:    72, Skipped:     0, Total:    80, Duration: 1 m 28 s - DistributedLock.Tests.dll (netcoreapp3.1)
+
