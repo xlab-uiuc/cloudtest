@@ -1238,25 +1238,28 @@ class DynamoDBClient:
             tables = self.client.list_tables()
             # delete tables
             for table in tables['TableNames']:
-                self.client.delete_table(TableName=table)
-                print(self.service, ': Success -- Table deleted')
+                try:
+                    self.client.delete_table(TableName=table)
+                    print('Success -- Table deleted: ', table)
+                except Exception as e:
+                    print('Fail -- Table delete failed; error: ', e)
         except Exception as e:
-            print(self.service, ': Fail -- Table delete failed; error: ', e)
+            print('Fail -- Tables listing for deletion failed; error: ', e)
         
 
 
 
-if __name__ == '__main__':
+# if __name__ == '__main__':
 
 
-    # create blob client
-    table_client = DynamoDBClient(False)
-    # get all methods
-    methods = [getattr(DynamoDBClient, attr) for attr in dir(DynamoDBClient) if callable(getattr(DynamoDBClient, attr)) and not attr.startswith("__")]
+#     # create blob client
+#     table_client = DynamoDBClient(False)
+#     # get all methods
+#     methods = [getattr(DynamoDBClient, attr) for attr in dir(DynamoDBClient) if callable(getattr(DynamoDBClient, attr)) and not attr.startswith("__")]
 
-    for i in methods:
-        print(i.__name__)
-        i(table_client)
+#     for i in methods:
+#         print(i.__name__)
+#         i(table_client)
 
-    # clean up
-    table_client.__clean__()
+#     # clean up
+#     table_client.__cleanup__()
