@@ -4,7 +4,7 @@ TO-DO: Organize all the logs and this read me
 
 Each folder name is standardized as follows:
 
-{Run_type}_{Total_rounds}
+{Run_type}-{Total_rounds}
 
 - Run_type:
 
@@ -18,7 +18,7 @@ Each folder name is standardized as follows:
 
 New standard
 
-{Run_type}_{Sequence_or_Single_Op}__{Oracles_no}_{Rounds}
+{Run_type}-{Sequence_or_Single_Op}-{Oracles_no}-{Rounds}
 
 - Run_type:
 
