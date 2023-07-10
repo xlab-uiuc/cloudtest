@@ -11,6 +11,9 @@ from azure.core.exceptions import HttpResponseError
 import io, random, os
 import itertools
 
+BEHAVIOR_MISMATCH_COUNT = 0
+ERROR_MISMATCH_COUNT = 0
+STATUS_CODE_MISMATCH_COUNT = 0
 
 '''
 Total operations
@@ -65,31 +68,40 @@ def outcome(flag):
 def oracles(res_cloud, res_em):
     log = ''
     flag =  False
-    httpException = False
+    global BEHAVIOR_MISMATCH_COUNT
+    global ERROR_MISMATCH_COUNT
+    global STATUS_CODE_MISMATCH_COUNT
 
-    # check exception nature for 2nd and 3rd oracle
-    # https://learn.microsoft.com/en-us/python/api/azure-core/azure.core.exceptions?view=azure-python
-    if not res_cloud[0] and isinstance(res_cloud[1], HttpResponseError):
-        if not res_em[0] and isinstance(res_em[1], HttpResponseError):
-            httpException = True
+    # # check exception nature for 2nd and 3rd oracle
+    # # https://learn.microsoft.com/en-us/python/api/azure-core/azure.core.exceptions?view=azure-python
+    # if not res_cloud[0] and isinstance(res_cloud[1], HttpResponseError):
+    #     if not res_em[0] and isinstance(res_em[1], HttpResponseError):
+    #         httpException = True
 
     if res_cloud[0] != res_em[0]:
         flag = True
         log += (f'--Behavior mismatch--\n')
         log += (f'CLOUD: {outcome(res_cloud[0])} -- Response: {res_cloud[1]} \n')
-        log += (f'EMULATOR: {outcome(res_em[0])} -- Response: {res_em[1]}')
+        log += (f'EMULATOR: {outcome(res_em[0])} -- Response: {res_em[1]}\n\n ')
+        BEHAVIOR_MISMATCH_COUNT += 1
+        return flag, log
 
-    elif httpException and res_cloud[1].response.status_code != res_em[1].response.status_code:
+    cloud_code = res_cloud[1].response.status_code
+    em_code = res_em[1].response.status_code
+    cloud_msg = res_cloud[1].response.reason
+    em_msg = res_em[1].response.reason
+
+    if cloud_code != em_code:
         flag = True
         log += (f'--Status code mismatch--\n')
-        log += (f'CLOUD: {outcome(res_cloud[0])} -- Error Code: {res_cloud[1].response.status_code} -- Error Message: {res_cloud[1].response.reason}\n')
-        log += (f'EMULATOR: {outcome(res_em[0])} -- Error Code: {res_em[1].response.status_code} -- Error Message: {res_em[1].response.reason}')
+        log += (f'CLOUD: {outcome(res_cloud[0])} -- Error Code: {cloud_code} -- Error Message: {cloud_msg}\n')
+        log += (f'EMULATOR: {outcome(res_em[0])} -- Error Code: {em_code} -- Error Message: {em_msg}\n\n ')
 
-    elif httpException and res_cloud[1].response.reason != res_em[1].response.reason:
+    elif cloud_msg != em_msg:
         flag = True
         log += (f'--Error message mismatch--\n')
-        log += (f'CLOUD: {outcome(res_cloud[0])}  -- Error Message: {res_cloud[1].response.reason}\n')
-        log += (f'EMULATOR: {outcome(res_em[0])} -- Error Message: {res_em[1].response.reason}')
+        log += (f'CLOUD: {outcome(res_cloud[0])}  -- Error Message: {cloud_msg}\n')
+        log += (f'EMULATOR: {outcome(res_em[0])} -- Error Message: {em_msg}\n\n ')
 
     return flag, log
         
@@ -186,7 +198,7 @@ def simple_test_run(flag):
             test_qsc.__cleanup__()
 
 
-def run_ops(arg, methods, client, count, buf, discrepant_methods):
+def run_ops(arg, methods, client, count, discrepant_methods):
 
     t_count = -1
     for method in methods:
@@ -317,6 +329,10 @@ def run_sequences_permuation(arg, type):
 
 def run1v1(arg, methods_blobClient, methods_containerClient, methods_blobServiceClient, methods_blobLeaseClient, methods_tableClient, methods_tableServiceClient, methods_queueClient, methods_queueServiceClient, t_count):
 
+    global BEHAVIOR_MISMATCH_COUNT
+    global ERROR_MISMATCH_COUNT
+    global STATUS_CODE_MISMATCH_COUNT
+
     # do not run discrepant methods again
     f = open("../sdk_tests/Azure Storage/discrepant_methods.txt", "r")
     discrepant_methods = f.read().split('\n')
@@ -346,9 +362,16 @@ def run1v1(arg, methods_blobClient, methods_containerClient, methods_blobService
         d_count = run_ops(arg["8"], methods_queueServiceClient, "qsc", d_count, discrepant_methods)
         output = buf.getvalue().strip()
 
+
     with open('../sdk_tests/Azure Storage/discrepancy.txt', 'a') as f:
-        f.write(f'{d_count}/{t_count}   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n')
-        f.write('Round ended\n\n')
+        f.write('***  Round Summary  ***\n\n')
+        f.write(f'Behavior mismatch count: {BEHAVIOR_MISMATCH_COUNT}\n')
+        f.write(f'Status code mismatch count: {STATUS_CODE_MISMATCH_COUNT}\n')
+        f.write(f'Error message mismatch count: {ERROR_MISMATCH_COUNT}\n')
+        f.write(f'Total discrepancy count: {d_count}/{t_count}\n\n\n')
+
+    with open('../sdk_tests/Azure Storage/discrepancy.txt', 'a') as f:
+        f.write(f'Round ended   ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n\n\n')
 
     # store methods names in order to skip in the next run
     with open('../sdk_tests/Azure Storage/discrepant_methods.txt', 'w') as f:
