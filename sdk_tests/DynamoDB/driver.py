@@ -2,6 +2,11 @@ from contextlib import redirect_stdout
 import io
 from dynamodbclient import DynamoDBClient
 
+
+BEHAVIOR_MISMATCH_COUNT = 0
+ERROR_MISMATCH_COUNT = 0
+STATUS_CODE_MISMATCH_COUNT = 0
+
 def outcome(flag):
     if flag:
         return 'SUCCESS'
@@ -12,6 +17,18 @@ def outcome(flag):
 def oracles(res_cloud, res_em):
     log = ''
     flag =  False
+    global BEHAVIOR_MISMATCH_COUNT
+    global ERROR_MISMATCH_COUNT
+    global STATUS_CODE_MISMATCH_COUNT
+
+    if res_cloud[0] != res_em[0]:
+        flag = True
+        log += (f'--Behavior mismatch--\n')
+        log += (f'CLOUD: {outcome(res_cloud[0])} -- Response: {res_cloud[1]} \n')
+        log += (f'EMULATOR: {outcome(res_em[0])} -- Response: {res_em[1]}\n\n')
+        BEHAVIOR_MISMATCH_COUNT += 1
+
+        return flag, log
 
     cloud_code = res_cloud[1].response['Error']['Code']
     em_code = res_em[1].response['Error']['Code']
@@ -19,24 +36,20 @@ def oracles(res_cloud, res_em):
     em_msg = res_em[1].response['Error']['Message']
     cloud_http = res_cloud[1].response['ResponseMetadata']['HTTPStatusCode']
     em_http = res_em[1].response['ResponseMetadata']['HTTPStatusCode']
-
-    if res_cloud[0] != res_em[0]:
-        flag = True
-        log += (f'--Behavior mismatch--\n')
-        log += (f'CLOUD: {outcome(res_cloud[0])} -- Response: {res_cloud[1]} \n')
-        log += (f'EMULATOR: {outcome(res_em[0])} -- Response: {res_em[1]}\n\n')
-
-    elif cloud_http != em_http:
+    
+    if cloud_http != em_http:
         flag = True
         log += (f'--Status code mismatch--\n')
         log += (f'CLOUD: {outcome(res_cloud[0])} -- HTTP Status code: {cloud_http} -- Error Code: {cloud_code} -- Error Message: {cloud_msg}\n')
         log += (f'EMULATOR: {outcome(res_em[0])} -- HTTP Status code: {em_http} -- Error Code: {em_code} -- Error Message: {em_msg}\n\n')
+        STATUS_CODE_MISMATCH_COUNT += 1
 
     elif cloud_msg != em_msg:
         flag = True
         log += (f'--Error message mismatch--\n')
         log += (f'CLOUD: {outcome(res_cloud[0])}  -- Error Message: {cloud_msg} -- Error Code: {cloud_code}\n')
         log += (f'EMULATOR: {outcome(res_em[0])} -- Error Message: {em_msg} -- Error Code: {em_code}\n\n')
+        ERROR_MISMATCH_COUNT += 1
 
     return flag, log
 
@@ -109,11 +122,16 @@ def run_ops(arg, methods, count, discrepant_methods):
 
 def run1v1(arg, methods_dd, t_count):
 
+    global BEHAVIOR_MISMATCH_COUNT
+    global ERROR_MISMATCH_COUNT
+    global STATUS_CODE_MISMATCH_COUNT
+
     # do not run discrepant methods again
     # f = open("../sdk_tests/DynamoDB/discrepant_methods.txt", "r")
     # f = open("discrepant_methods.txt", "r")
     # discrepant_methods = f.read().split('\n')
     # f.close()
+    
     discrepant_methods = []
 
     d_count = 0
@@ -127,10 +145,19 @@ def run1v1(arg, methods_dd, t_count):
         
         output = buf.getvalue().strip()
 
+    # with open('../sdk_tests/DynamoDB/log_all.txt', 'a') as f:
+    with open('discrepancy.txt', 'a') as f:
+        f.write('***  Round Summary  ***\n\n')
+        f.write(f'Behavior mismatch count: {BEHAVIOR_MISMATCH_COUNT}\n')
+        f.write(f'Status code mismatch count: {STATUS_CODE_MISMATCH_COUNT}\n')
+        f.write(f'Error message mismatch count: {ERROR_MISMATCH_COUNT}\n')
+        f.write(f'Total discrepancy count: {d_count}/{t_count}\n\n\n')
+
+
+
     # with open('../sdk_tests/DynamoDB/discrepancy.txt', 'a') as f:
     with open('discrepancy.txt', 'a') as f:
-        f.write(f'{d_count}/{t_count}   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n')
-        f.write('Round ended\n\n')
+        f.write(f'Round ended   ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n\n\n')
 
     # store methods names in order to skip in the next run
     # with open('../sdk_tests/DynamoDB/discrepant_methods.txt', 'w') as f:
