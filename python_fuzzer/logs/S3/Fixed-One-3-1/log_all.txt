@@ -1,0 +1,1105 @@
+METHOD: s3_abort_multipart_upload --- ARGS: 
+AWS : Fail -- Error aborting multipart upload for 706969 in AWS S3 bucket bucket445489647: An error occurred (NoSuchUpload) when calling the AbortMultipartUpload operation: The specified upload does not exist. The upload ID may be invalid, or the upload may have been aborted or completed.
+EMULATOR : Fail -- Error aborting multipart upload for 444626 in EMULATOR S3 bucket bucket644430366: An error occurred (NoSuchUpload) when calling the AbortMultipartUpload operation: The specified upload does not exist. The upload ID may be invalid, or the upload may have been aborted or completed.
+Success -- Bucket bucket445489647 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket644430366 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_can_paginate --- ARGS: 
+AWS : Success -- Operation list_buckets can be paginated
+EMULATOR : Success -- Operation list_buckets can be paginated
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket626668034 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket181437386 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_complete_multipart_upload --- ARGS: 
+AWS : Success -- Multipart upload created for 518719 in AWS S3 bucket bucket187497503
+AWS : Success -- Part uploaded for 518719 in AWS S3 bucket bucket187497503
+AWS : Fail -- Error completing multipart upload for 518719 in AWS S3 bucket bucket187497503: An error occurred (NoSuchUpload) when calling the CompleteMultipartUpload operation: The specified upload does not exist. The upload ID may be invalid, or the upload may have been aborted or completed.
+EMULATOR : Success -- Multipart upload created for 998534 in EMULATOR S3 bucket bucket311912182
+EMULATOR : Success -- Part uploaded for 998534 in EMULATOR S3 bucket bucket311912182
+EMULATOR : Fail -- Error completing multipart upload for 998534 in EMULATOR S3 bucket bucket311912182: An error occurred (InternalError) when calling the CompleteMultipartUpload operation (reached max retries: 4): exception while calling s3.CompleteMultipartUpload: ''
+
+DISCREPANCY FOUND!
+
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchUpload -- Error Message: The specified upload does not exist. The upload ID may be invalid, or the upload may have been aborted or completed.
+EMULATOR: FAILURE -- HTTP Status code: 500 -- Error Code: InternalError -- Error Message: exception while calling s3.CompleteMultipartUpload: ''
+
+
+Success -- Bucket bucket187497503 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket311912182 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_copy --- ARGS: 
+AWS : Success -- Put object 517491 in AWS S3 bucket bucket601948423
+AWS : Success -- Created bucket test788194613 in AWS S3
+AWS : Success -- Copied {'Bucket': 'bucket601948423', 'Key': '517491'} to 517491 in AWS S3 bucket test788194613
+EMULATOR : Success -- Put object 618894 in EMULATOR S3 bucket bucket774736540
+EMULATOR : Success -- Created bucket test198609373 in EMULATOR S3
+EMULATOR : Success -- Copied {'Bucket': 'bucket774736540', 'Key': '618894'} to 618894 in EMULATOR S3 bucket test198609373
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket601948423 deleted in AWS S3
+Success -- Bucket test788194613 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket774736540 deleted in EMULATOR S3
+Success -- Bucket test198609373 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_create_bucket --- ARGS: 
+AWS : Success -- Created bucket bucket503947827 in AWS S3
+EMULATOR : Success -- Created bucket bucket972668657 in EMULATOR S3
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket503947827 deleted in AWS S3
+Success -- Bucket bucket705406181 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket561973641 deleted in EMULATOR S3
+Success -- Bucket bucket972668657 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_create_multipart_upload --- ARGS: 
+AWS : Success -- Multipart upload created for 477852 in AWS S3 bucket bucket145374417
+EMULATOR : Success -- Multipart upload created for 732596 in EMULATOR S3 bucket bucket362055999
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket145374417 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket362055999 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_delete_bucket --- ARGS: 
+AWS : Fail -- Error deleting bucket test102433442: An error occurred (NoSuchBucket) when calling the DeleteBucket operation: The specified bucket does not exist
+EMULATOR : Fail -- Error deleting bucket test185289521: An error occurred (NoSuchBucket) when calling the DeleteBucket operation: The specified bucket does not exist
+Success -- Bucket bucket934071895 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket2150523 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_delete_bucket_analytics_configuration --- ARGS: 
+AWS : Success -- Bucket analytics configuration test219396225 created for bucket bucket198508364
+AWS : Success -- Bucket analytics configuration test219396225 deleted from bucket bucket198508364
+EMULATOR : Fail -- Error creating bucket analytics configuration test335093237 for bucket bucket153262079: An error occurred (IllegalLocationConstraintException) when calling the PutBucketAnalyticsConfiguration operation: The unspecified location constraint is incompatible for the region specific endpoint this request was sent to.
+EMULATOR : Success -- Bucket analytics configuration test335093237 deleted from bucket bucket153262079
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket198508364 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_delete_bucket_cors --- ARGS: 
+AWS : Success -- Bucket cors created for bucket bucket372338040
+AWS : Success -- Bucket cors deleted from bucket bucket372338040
+EMULATOR : Success -- Bucket cors created for bucket bucket350350548
+EMULATOR : Success -- Bucket cors deleted from bucket bucket350350548
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket372338040 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket350350548 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_delete_bucket_encryption --- ARGS: 
+AWS : Success -- Bucket encryption created for bucket bucket677885779
+AWS : Success -- Bucket encryption deleted from bucket bucket677885779
+EMULATOR : Success -- Bucket encryption created for bucket bucket605182293
+EMULATOR : Success -- Bucket encryption deleted from bucket bucket605182293
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket677885779 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket605182293 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_delete_bucket_intelligent_tiering_configuration --- ARGS: 
+AWS : Success -- Bucket intelligent tiering configuration test16433281 created for bucket bucket638801662
+AWS : Success -- Bucket intelligent tiering configuration test16433281 deleted from bucket bucket638801662
+EMULATOR : Fail -- Error creating bucket intelligent tiering configuration test99544621 for bucket bucket952414957: An error occurred (IllegalLocationConstraintException) when calling the PutBucketIntelligentTieringConfiguration operation: The unspecified location constraint is incompatible for the region specific endpoint this request was sent to.
+EMULATOR : Success -- Bucket intelligent tiering configuration test99544621 deleted from bucket bucket952414957
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket638801662 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_delete_bucket_inventory_configuration --- ARGS: 
+AWS : Fail -- Error deleting bucket inventory configuration test324511039 from bucket bucket782637026: An error occurred (NoSuchConfiguration) when calling the DeleteBucketInventoryConfiguration operation: The specified configuration does not exist.
+EMULATOR : Success -- Bucket inventory configuration test827944777 deleted from bucket bucket600562496
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (NoSuchConfiguration) when calling the DeleteBucketInventoryConfiguration operation: The specified configuration does not exist. 
+EMULATOR: SUCCESS -- Response: 
+
+
+Success -- Bucket bucket782637026 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_delete_bucket_lifecycle --- ARGS: 
+AWS : Success -- Bucket lifecycle configuration created for bucket bucket233493920
+AWS : Success -- Bucket lifecycle deleted from bucket bucket233493920
+EMULATOR : Success -- Bucket lifecycle configuration created for bucket bucket863953215
+EMULATOR : Success -- Bucket lifecycle deleted from bucket bucket863953215
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket233493920 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket863953215 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_delete_bucket_metrics_configuration --- ARGS: 
+AWS : Success -- Bucket metrics configuration test684206677 created for bucket bucket349746867
+AWS : Success -- Bucket metrics configuration test684206677 deleted from bucket bucket349746867
+EMULATOR : Fail -- Error creating bucket metrics configuration test938180937 for bucket bucket926263937: An error occurred (IllegalLocationConstraintException) when calling the PutBucketMetricsConfiguration operation: The unspecified location constraint is incompatible for the region specific endpoint this request was sent to.
+EMULATOR : Success -- Bucket metrics configuration test938180937 deleted from bucket bucket926263937
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket349746867 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_delete_bucket_ownership_controls --- ARGS: 
+AWS : Success -- Bucket ownership controls created for bucket bucket209073221
+AWS : Success -- Bucket ownership controls deleted from bucket bucket209073221
+EMULATOR : Success -- Bucket ownership controls created for bucket bucket130694271
+EMULATOR : Success -- Bucket ownership controls deleted from bucket bucket130694271
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket209073221 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket130694271 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_delete_bucket_policy --- ARGS: 
+AWS : Fail -- Error creating bucket policy for bucket bucket81527533: An error occurred (AccessDenied) when calling the PutBucketPolicy operation: Access Denied
+AWS : Success -- Bucket policy deleted from bucket bucket81527533
+EMULATOR : Success -- Bucket policy created for bucket bucket737461268
+EMULATOR : Success -- Bucket policy deleted from bucket bucket737461268
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket81527533 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket737461268 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_delete_bucket_replication --- ARGS: 
+AWS : Success -- Bucket versioning configuration created for bucket bucket913001255
+AWS : Success -- Created bucket test402336967 in AWS S3
+AWS : Success -- Bucket versioning configuration created for bucket test402336967
+AWS : Fail -- Error creating bucket replication configuration for bucket test402336967: An error occurred (AccessDenied) when calling the PutBucketReplication operation: Access Denied
+AWS : Success -- Bucket replication deleted from bucket bucket913001255
+EMULATOR : Success -- Bucket versioning configuration created for bucket bucket83857592
+EMULATOR : Success -- Created bucket test824556853 in EMULATOR S3
+EMULATOR : Success -- Bucket versioning configuration created for bucket test824556853
+EMULATOR : Success -- Bucket replication configuration created for bucket test824556853
+EMULATOR : Success -- Bucket replication deleted from bucket bucket83857592
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket913001255 deleted in AWS S3
+Success -- Bucket test402336967 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket83857592 deleted in EMULATOR S3
+Success -- Bucket test824556853 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_delete_bucket_tagging --- ARGS: 
+AWS : Success -- Bucket tagging created for bucket bucket260880711
+AWS : Success -- Bucket tagging deleted from bucket bucket260880711
+EMULATOR : Success -- Bucket tagging created for bucket bucket625939216
+EMULATOR : Success -- Bucket tagging deleted from bucket bucket625939216
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket260880711 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket625939216 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_delete_bucket_website --- ARGS: 
+AWS : Success -- Bucket website configuration created for bucket bucket504044713
+AWS : Success -- Bucket website deleted from bucket bucket504044713
+EMULATOR : Success -- Bucket website configuration created for bucket bucket559456684
+EMULATOR : Success -- Bucket website deleted from bucket bucket559456684
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket504044713 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket559456684 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_delete_object --- ARGS: 
+AWS : Success -- Put object 113053 in AWS S3 bucket bucket134534249
+AWS : Success -- Object 969305 deleted from bucket bucket134534249
+EMULATOR : Success -- Put object 338834 in EMULATOR S3 bucket bucket997199767
+EMULATOR : Success -- Object 158153 deleted from bucket bucket997199767
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket134534249 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket997199767 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_delete_object_tagging --- ARGS: 
+AWS : Success -- Put object 176516 in AWS S3 bucket bucket17714994
+AWS : Success -- Object tagging created for object 176516
+AWS : Fail -- Error deleting object tagging from object 176516 in bucket bucket17714994: Parameter validation failed:
+Unknown parameter in input: "BypassGovernanceRetention", must be one of: Bucket, Key, VersionId, ExpectedBucketOwner
+EMULATOR : Success -- Put object 868953 in EMULATOR S3 bucket bucket927961108
+EMULATOR : Success -- Object tagging created for object 868953
+EMULATOR : Fail -- Error deleting object tagging from object 868953 in bucket bucket927961108: Parameter validation failed:
+Unknown parameter in input: "BypassGovernanceRetention", must be one of: Bucket, Key, VersionId, ExpectedBucketOwner
+Exception:  'ParamValidationError' object has no attribute 'response'
+Success -- Bucket bucket17714994 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket927961108 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_delete_objects --- ARGS: 
+AWS : Success -- Put object 225898 in AWS S3 bucket bucket262295662
+AWS : Success -- Put object 293232 in AWS S3 bucket bucket262295662
+AWS : Success -- Objects deleted from bucket bucket262295662
+EMULATOR : Success -- Put object 702156 in EMULATOR S3 bucket bucket943477759
+EMULATOR : Success -- Put object 254828 in EMULATOR S3 bucket bucket943477759
+EMULATOR : Success -- Objects deleted from bucket bucket943477759
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket262295662 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket943477759 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_delete_public_access_block --- ARGS: 
+AWS : Success -- Public access block created for bucket bucket383917805
+AWS : Success -- Public access block deleted from bucket bucket383917805
+EMULATOR : Success -- Public access block created for bucket bucket331182976
+EMULATOR : Success -- Public access block deleted from bucket bucket331182976
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket383917805 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket331182976 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_download_file --- ARGS: 
+AWS : Success -- Put object 305134 in AWS S3 bucket bucket914539188
+AWS : Success -- File 751229 downloaded from bucket bucket914539188
+EMULATOR : Success -- Put object 289120 in EMULATOR S3 bucket bucket977213985
+EMULATOR : Success -- File 444609 downloaded from bucket bucket977213985
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket914539188 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket977213985 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_download_fileobj --- ARGS: 
+AWS : Success -- Put object 146547 in AWS S3 bucket bucket421841484
+AWS : Success -- Fileobj None downloaded from bucket bucket421841484
+EMULATOR : Success -- Put object 733111 in EMULATOR S3 bucket bucket962845901
+EMULATOR : Success -- Fileobj None downloaded from bucket bucket962845901
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket421841484 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket962845901 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_generate_presigned_post --- ARGS: 
+AWS : Success -- Presigned post generated for bucket bucket412432879
+EMULATOR : Success -- Presigned post generated for bucket bucket816374834
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket412432879 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket816374834 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_generate_presigned_url --- ARGS: 
+AWS : Success -- Presigned url generated for bucket bucket241636697
+EMULATOR : Success -- Presigned url generated for bucket bucket707193517
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket241636697 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket707193517 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_get_bucket_accelerate_configuration --- ARGS: 
+AWS : Success -- Accelerate configuration retrieved from bucket bucket698367256
+EMULATOR : Success -- Accelerate configuration retrieved from bucket bucket620597041
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket698367256 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket620597041 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_get_bucket_acl --- ARGS: 
+AWS : Success -- ACL retrieved from bucket bucket230656900
+EMULATOR : Success -- ACL retrieved from bucket bucket869235908
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket230656900 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket869235908 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_get_bucket_analytics_configuration --- ARGS: 
+AWS : Fail -- Error retrieving analytics configuration from bucket bucket310619530: An error occurred (NoSuchConfiguration) when calling the GetBucketAnalyticsConfiguration operation: The specified configuration does not exist.
+EMULATOR : Success -- Analytics configuration retrieved from bucket bucket388450264
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (NoSuchConfiguration) when calling the GetBucketAnalyticsConfiguration operation: The specified configuration does not exist. 
+EMULATOR: SUCCESS -- Response: 
+
+
+Success -- Bucket bucket310619530 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket388450264 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_get_bucket_cors --- ARGS: 
+AWS : Success -- Bucket cors created for bucket bucket798921125
+AWS : Success -- CORS retrieved from bucket bucket798921125
+EMULATOR : Success -- Bucket cors created for bucket bucket550295137
+EMULATOR : Success -- CORS retrieved from bucket bucket550295137
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket798921125 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket550295137 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_get_bucket_encryption --- ARGS: 
+AWS : Success -- Bucket encryption created for bucket bucket889586138
+AWS : Success -- Encryption retrieved from bucket bucket889586138
+EMULATOR : Success -- Bucket encryption created for bucket bucket830573441
+EMULATOR : Success -- Encryption retrieved from bucket bucket830573441
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket889586138 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket830573441 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_get_bucket_intelligent_tiering_configuration --- ARGS: 
+AWS : Fail -- Error retrieving intelligent tiering configuration from bucket bucket660038658: An error occurred (NoSuchConfiguration) when calling the GetBucketIntelligentTieringConfiguration operation: The specified configuration does not exist.
+EMULATOR : Success -- Intelligent tiering configuration retrieved from bucket bucket806966261
+{'ResponseMetadata': {'RequestId': 'UZJVACZIQFOIIY3L8YQPDL41UM2DB8QPFUQDBNQ0BNF729RJYJEF', 'HostId': 'MzRISOwyjmnupUZJVACZIQFOIIY3L8YQPDL41UM2DB8QPFUQDBNQ0BNF729RJYJEF7/JypPGXLh0OVFGcJaaO3KW/hRAqKOpIEEp', 'HTTPStatusCode': 200, 'HTTPHeaders': {'content-type': 'application/xml', 'content-length': '74', 'x-amz-request-id': 'UZJVACZIQFOIIY3L8YQPDL41UM2DB8QPFUQDBNQ0BNF729RJYJEF', 'x-amz-id-2': 'MzRISOwyjmnupUZJVACZIQFOIIY3L8YQPDL41UM2DB8QPFUQDBNQ0BNF729RJYJEF7/JypPGXLh0OVFGcJaaO3KW/hRAqKOpIEEp', 'connection': 'close', 'date': 'Mon, 10 Jul 2023 21:56:28 GMT', 'server': 'hypercorn-h11'}, 'RetryAttempts': 0}, 'IntelligentTieringConfiguration': {}}
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (NoSuchConfiguration) when calling the GetBucketIntelligentTieringConfiguration operation: The specified configuration does not exist. 
+EMULATOR: SUCCESS -- Response: 
+
+
+Success -- Bucket bucket660038658 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket806966261 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_get_bucket_inventory_configuration --- ARGS: 
+AWS : Fail -- Error retrieving inventory configuration from bucket bucket269010823: An error occurred (NoSuchConfiguration) when calling the GetBucketInventoryConfiguration operation: The specified configuration does not exist.
+EMULATOR : Success -- Inventory configuration retrieved from bucket bucket952884797
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (NoSuchConfiguration) when calling the GetBucketInventoryConfiguration operation: The specified configuration does not exist. 
+EMULATOR: SUCCESS -- Response: 
+
+
+Success -- Bucket bucket269010823 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket952884797 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_get_bucket_lifecycle --- ARGS: 
+AWS : Success -- Bucket lifecycle configuration created for bucket bucket884480966
+AWS : Success -- Lifecycle retrieved from bucket bucket884480966
+EMULATOR : Success -- Bucket lifecycle configuration created for bucket bucket693690727
+EMULATOR : Success -- Lifecycle retrieved from bucket bucket693690727
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket884480966 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket693690727 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_get_bucket_lifecycle_configuration --- ARGS: 
+AWS : Success -- Bucket lifecycle configuration created for bucket bucket325872809
+AWS : Success -- Lifecycle configuration retrieved from bucket bucket325872809
+EMULATOR : Success -- Bucket lifecycle configuration created for bucket bucket35049199
+EMULATOR : Success -- Lifecycle configuration retrieved from bucket bucket35049199
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket325872809 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket35049199 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_get_bucket_location --- ARGS: 
+AWS : Success -- Location retrieved from bucket bucket766485025
+EMULATOR : Success -- Location retrieved from bucket bucket642333818
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket766485025 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket642333818 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_get_bucket_logging --- ARGS: 
+AWS : Success -- Logging retrieved from bucket bucket294491165
+EMULATOR : Success -- Logging retrieved from bucket bucket367761269
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket294491165 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket367761269 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_get_bucket_metrics_configuration --- ARGS: 
+AWS : Fail -- Error retrieving metrics configuration from bucket bucket584746543: An error occurred (NoSuchConfiguration) when calling the GetBucketMetricsConfiguration operation: The specified configuration does not exist.
+EMULATOR : Success -- Metrics configuration retrieved from bucket bucket667414399
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (NoSuchConfiguration) when calling the GetBucketMetricsConfiguration operation: The specified configuration does not exist. 
+EMULATOR: SUCCESS -- Response: 
+
+
+Success -- Bucket bucket584746543 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket667414399 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_get_bucket_notification --- ARGS: 
+AWS : Success -- Notification retrieved from bucket bucket411466700
+EMULATOR : Success -- Notification retrieved from bucket bucket383604967
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket411466700 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket383604967 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_get_bucket_notification_configuration --- ARGS: 
+AWS : Success -- Notification configuration retrieved from bucket bucket312567382
+EMULATOR : Success -- Notification configuration retrieved from bucket bucket84952370
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket312567382 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket84952370 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_get_bucket_ownership_controls --- ARGS: 
+AWS : Success -- Bucket ownership controls created for bucket bucket76122230
+AWS : Success -- Ownership controls retrieved from bucket bucket76122230
+EMULATOR : Success -- Bucket ownership controls created for bucket bucket307737326
+EMULATOR : Success -- Ownership controls retrieved from bucket bucket307737326
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket76122230 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket307737326 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_get_bucket_policy --- ARGS: 
+AWS : Fail -- Error creating bucket policy for bucket bucket706362321: An error occurred (AccessDenied) when calling the PutBucketPolicy operation: Access Denied
+AWS : Fail -- Error retrieving policy from bucket bucket706362321: An error occurred (NoSuchBucketPolicy) when calling the GetBucketPolicy operation: The bucket policy does not exist
+EMULATOR : Success -- Bucket policy created for bucket bucket888409623
+EMULATOR : Success -- Policy retrieved from bucket bucket888409623
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (NoSuchBucketPolicy) when calling the GetBucketPolicy operation: The bucket policy does not exist 
+EMULATOR: SUCCESS -- Response: 
+
+
+Success -- Bucket bucket706362321 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket888409623 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_get_bucket_policy_status --- ARGS: 
+AWS : Fail -- Error retrieving policy status from bucket bucket82299686: An error occurred (NoSuchBucketPolicy) when calling the GetBucketPolicyStatus operation: The bucket policy does not exist
+EMULATOR : Success -- Policy status retrieved from bucket bucket569434088
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (NoSuchBucketPolicy) when calling the GetBucketPolicyStatus operation: The bucket policy does not exist 
+EMULATOR: SUCCESS -- Response: 
+
+
+Success -- Bucket bucket82299686 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket569434088 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_get_bucket_replication --- ARGS: 
+AWS : Success -- Bucket versioning configuration created for bucket bucket803615435
+AWS : Success -- Created bucket test696578097 in AWS S3
+AWS : Success -- Bucket versioning configuration created for bucket test696578097
+AWS : Fail -- Error creating bucket replication configuration for bucket test696578097: An error occurred (AccessDenied) when calling the PutBucketReplication operation: Access Denied
+AWS : Fail -- Error retrieving replication from bucket bucket803615435: An error occurred (ReplicationConfigurationNotFoundError) when calling the GetBucketReplication operation: The replication configuration was not found
+EMULATOR : Success -- Bucket versioning configuration created for bucket bucket141758719
+EMULATOR : Success -- Created bucket test686454712 in EMULATOR S3
+EMULATOR : Success -- Bucket versioning configuration created for bucket test686454712
+EMULATOR : Success -- Bucket replication configuration created for bucket test686454712
+EMULATOR : Success -- Replication retrieved from bucket bucket141758719
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (ReplicationConfigurationNotFoundError) when calling the GetBucketReplication operation: The replication configuration was not found 
+EMULATOR: SUCCESS -- Response: 
+
+
+Success -- Bucket bucket803615435 deleted in AWS S3
+Success -- Bucket test696578097 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket141758719 deleted in EMULATOR S3
+Success -- Bucket test686454712 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_get_bucket_request_payment --- ARGS: 
+AWS : Success -- Request payment retrieved from bucket bucket806135207
+EMULATOR : Success -- Request payment retrieved from bucket bucket652529690
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket806135207 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket652529690 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_get_bucket_tagging --- ARGS: 
+AWS : Success -- Bucket tagging created for bucket bucket338831077
+AWS : Success -- Tagging retrieved from bucket bucket338831077
+EMULATOR : Success -- Bucket tagging created for bucket bucket321536780
+EMULATOR : Success -- Tagging retrieved from bucket bucket321536780
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket338831077 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket321536780 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_get_bucket_versioning --- ARGS: 
+AWS : Success -- Versioning retrieved from bucket bucket578213331
+EMULATOR : Success -- Versioning retrieved from bucket bucket641825429
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket578213331 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket641825429 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_get_bucket_website --- ARGS: 
+AWS : Success -- Bucket website configuration created for bucket bucket123018351
+AWS : Success -- Website retrieved from bucket bucket123018351
+EMULATOR : Success -- Bucket website configuration created for bucket bucket696974205
+EMULATOR : Success -- Website retrieved from bucket bucket696974205
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket123018351 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket696974205 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_get_object --- ARGS: 
+AWS : Success -- Put object 578551 in AWS S3 bucket bucket424659526
+AWS : Success -- Object 578551 retrieved from bucket bucket424659526
+EMULATOR : Success -- Put object 312069 in EMULATOR S3 bucket bucket618810451
+EMULATOR : Success -- Object 312069 retrieved from bucket bucket618810451
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket424659526 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket618810451 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_get_object_acl --- ARGS: 
+AWS : Success -- Put object 402343 in AWS S3 bucket bucket239774382
+AWS : Success -- Object ACL 402343 retrieved from bucket bucket239774382
+EMULATOR : Success -- Put object 29202 in EMULATOR S3 bucket bucket85383700
+EMULATOR : Success -- Object ACL 29202 retrieved from bucket bucket85383700
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket239774382 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket85383700 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_get_object_attributes --- ARGS: 
+AWS : Success -- Put object 164046 in AWS S3 bucket bucket414990575
+AWS : Success -- Object attributes 164046 retrieved from bucket bucket414990575
+EMULATOR : Success -- Put object 824394 in EMULATOR S3 bucket bucket448798789
+EMULATOR : Success -- Object attributes 824394 retrieved from bucket bucket448798789
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket414990575 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket448798789 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_get_object_legal_hold --- ARGS: 
+AWS : Success -- Created bucket 558346 in AWS S3
+AWS : Success -- Object lock configuration created for bucket 558346
+AWS : Success -- Put object 457854 in AWS S3 bucket bucket963719853
+AWS : Success -- Object legal hold created for object 457854
+AWS : Success -- Object legal hold 457854 retrieved from bucket 558346
+EMULATOR : Success -- Created bucket 903035 in EMULATOR S3
+EMULATOR : Success -- Object lock configuration created for bucket 903035
+EMULATOR : Success -- Put object 852948 in EMULATOR S3 bucket bucket817254997
+EMULATOR : Success -- Object legal hold created for object 852948
+EMULATOR : Success -- Object legal hold 852948 retrieved from bucket 903035
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket 558346 deleted in AWS S3
+Success -- Bucket bucket963719853 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket817254997 deleted in EMULATOR S3
+Success -- Bucket 903035 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_get_object_lock_configuration --- ARGS: 
+AWS : Success -- Created bucket 452192 in AWS S3
+AWS : Success -- Object lock configuration created for bucket 452192
+AWS : Success -- Object lock configuration retrieved from bucket 452192
+EMULATOR : Success -- Created bucket 280847 in EMULATOR S3
+EMULATOR : Success -- Object lock configuration created for bucket 280847
+EMULATOR : Success -- Object lock configuration retrieved from bucket 280847
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket 452192 deleted in AWS S3
+Success -- Bucket bucket203930792 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket821685670 deleted in EMULATOR S3
+Success -- Bucket 280847 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_get_object_retention --- ARGS: 
+AWS : Success -- Created bucket 95701 in AWS S3
+AWS : Success -- Object lock configuration created for bucket 95701
+AWS : Success -- Put object 517254 in AWS S3 bucket bucket829079483
+AWS : Success -- Object legal hold created for object 517254
+AWS : Success -- Object retention 517254 retrieved from bucket 95701
+EMULATOR : Success -- Created bucket 891087 in EMULATOR S3
+EMULATOR : Success -- Object lock configuration created for bucket 891087
+EMULATOR : Success -- Put object 81125 in EMULATOR S3 bucket bucket292446252
+EMULATOR : Success -- Object legal hold created for object 81125
+EMULATOR : Fail -- Error retrieving object retention 81125 from bucket 891087: An error occurred (InternalError) when calling the GetObjectRetention operation (reached max retries: 4): exception while calling s3.GetObjectRetention: Unable to parse response (syntax error: line 1, column 0), invalid XML received. Further retries may succeed:
+b'test'
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: SUCCESS -- Response:  
+EMULATOR: FAILURE -- Response: An error occurred (InternalError) when calling the GetObjectRetention operation (reached max retries: 4): exception while calling s3.GetObjectRetention: Unable to parse response (syntax error: line 1, column 0), invalid XML received. Further retries may succeed:
+b'test'
+
+
+Success -- Bucket 95701 deleted in AWS S3
+Success -- Bucket bucket829079483 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket292446252 deleted in EMULATOR S3
+Success -- Bucket 891087 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_get_object_tagging --- ARGS: 
+AWS : Success -- Put object 119303 in AWS S3 bucket bucket745163924
+AWS : Success -- Object tagging 119303 retrieved from bucket bucket745163924
+EMULATOR : Success -- Put object 131774 in EMULATOR S3 bucket bucket550222059
+EMULATOR : Success -- Object tagging 131774 retrieved from bucket bucket550222059
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket745163924 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket550222059 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_get_object_torrent --- ARGS: 
+AWS : Success -- Put object 999213 in AWS S3 bucket bucket238311659
+AWS : Fail -- Error retrieving object torrent 999213 from bucket bucket238311659: An error occurred (MethodNotAllowed) when calling the GetObjectTorrent operation: The specified method is not allowed against this resource.
+EMULATOR : Success -- Put object 213557 in EMULATOR S3 bucket bucket265706499
+EMULATOR : Success -- Object torrent 213557 retrieved from bucket bucket265706499
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (MethodNotAllowed) when calling the GetObjectTorrent operation: The specified method is not allowed against this resource. 
+EMULATOR: SUCCESS -- Response: 
+
+
+Success -- Bucket bucket238311659 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket265706499 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_get_paginator --- ARGS: 
+Exception:  name 'bucket_name' is not defined
+Success -- Bucket bucket628557913 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket266037271 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_get_public_access_block --- ARGS: 
+AWS : Success -- Public access block created for bucket bucket964750371
+AWS : Success -- Public access block retrieved from bucket bucket964750371
+EMULATOR : Success -- Public access block created for bucket bucket132370679
+EMULATOR : Success -- Public access block retrieved from bucket bucket132370679
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket964750371 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket132370679 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_head_bucket --- ARGS: 
+AWS : Success -- Bucket bucket457669574 head
+EMULATOR : Success -- Bucket bucket830860713 head
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket457669574 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket830860713 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_head_object --- ARGS: 
+AWS : Success -- Put object 853803 in AWS S3 bucket bucket158932930
+AWS : Success -- Object 853803 head from bucket bucket158932930
+EMULATOR : Success -- Put object 213556 in EMULATOR S3 bucket bucket115222170
+EMULATOR : Success -- Object 213556 head from bucket bucket115222170
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket158932930 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket115222170 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_list_bucket_analytics_configurations --- ARGS: 
+AWS : Success -- Bucket analytics configurations listed from bucket bucket715807479
+EMULATOR : Success -- Bucket analytics configurations listed from bucket bucket652048955
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket715807479 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket652048955 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_list_bucket_intelligent_tiering_configurations --- ARGS: 
+AWS : Success -- Bucket intelligent tiering configurations listed from bucket bucket968545418
+EMULATOR : Success -- Bucket intelligent tiering configurations listed from bucket bucket926053738
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket968545418 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket926053738 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_list_bucket_inventory_configurations --- ARGS: 
+AWS : Success -- Bucket inventory configurations listed from bucket bucket899589656
+EMULATOR : Success -- Bucket inventory configurations listed from bucket bucket155014258
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket899589656 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket155014258 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_list_bucket_metrics_configurations --- ARGS: 
+AWS : Success -- Bucket metrics configurations listed from bucket bucket480875378
+EMULATOR : Success -- Bucket metrics configurations listed from bucket bucket984981666
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket480875378 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket984981666 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_list_buckets --- ARGS: 
+AWS : Success -- Buckets listed
+EMULATOR : Success -- Buckets listed
+Exception:  'dict' object has no attribute 'response'
+Success -- Bucket bucket716985127 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket504915194 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_list_multipart_uploads --- ARGS: 
+AWS : Success -- Multipart uploads listed from bucket bucket779952866
+EMULATOR : Success -- Multipart uploads listed from bucket bucket172058325
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket779952866 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket172058325 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_list_object_versions --- ARGS: 
+AWS : Success -- Object versions listed from bucket bucket835219062
+EMULATOR : Success -- Object versions listed from bucket bucket864923661
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket835219062 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket864923661 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_list_objects --- ARGS: 
+AWS : Success -- Objects listed from bucket bucket805711749
+EMULATOR : Success -- Objects listed from bucket bucket419618210
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket805711749 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket419618210 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_list_objects_v2 --- ARGS: 
+AWS : Success -- Objects v2 listed from bucket bucket655781047
+EMULATOR : Success -- Objects v2 listed from bucket bucket642586820
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket655781047 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket642586820 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_put_bucket_accelerate_configuration --- ARGS: 
+AWS : Success -- Bucket accelerate configuration added to bucket bucket543420608
+EMULATOR : Success -- Bucket accelerate configuration added to bucket bucket913388833
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket543420608 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket913388833 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_put_bucket_acl --- ARGS: 
+AWS : Fail -- Error adding bucket ACL to bucket bucket673690344: An error occurred (AccessDenied) when calling the PutBucketAcl operation: Access Denied
+EMULATOR : Success -- Bucket ACL added to bucket bucket434200227
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (AccessDenied) when calling the PutBucketAcl operation: Access Denied 
+EMULATOR: SUCCESS -- Response: 
+
+
+Success -- Bucket bucket673690344 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket434200227 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_put_bucket_analytics_configuration --- ARGS: 
+AWS : Success -- Bucket analytics configuration test974449228 created for bucket bucket753145263
+EMULATOR : Fail -- Error creating bucket analytics configuration test503603870 for bucket bucket166156976: An error occurred (IllegalLocationConstraintException) when calling the PutBucketAnalyticsConfiguration operation: The unspecified location constraint is incompatible for the region specific endpoint this request was sent to.
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: SUCCESS -- Response:  
+EMULATOR: FAILURE -- Response: An error occurred (IllegalLocationConstraintException) when calling the PutBucketAnalyticsConfiguration operation: The unspecified location constraint is incompatible for the region specific endpoint this request was sent to.
+
+
+Success -- Bucket bucket753145263 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket166156976 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_put_bucket_cors --- ARGS: 
+AWS : Success -- Bucket cors created for bucket bucket513037096
+EMULATOR : Success -- Bucket cors created for bucket bucket379106191
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket513037096 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket379106191 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_put_bucket_encryption --- ARGS: 
+AWS : Success -- Bucket encryption created for bucket bucket728734631
+EMULATOR : Success -- Bucket encryption created for bucket bucket273791926
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket728734631 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket273791926 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_put_bucket_intelligent_tiering_configuration --- ARGS: 
+AWS : Success -- Bucket intelligent tiering configuration test402194317 created for bucket bucket52348482
+EMULATOR : Fail -- Error creating bucket intelligent tiering configuration test656097886 for bucket bucket587606474: An error occurred (IllegalLocationConstraintException) when calling the PutBucketIntelligentTieringConfiguration operation: The unspecified location constraint is incompatible for the region specific endpoint this request was sent to.
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: SUCCESS -- Response:  
+EMULATOR: FAILURE -- Response: An error occurred (IllegalLocationConstraintException) when calling the PutBucketIntelligentTieringConfiguration operation: The unspecified location constraint is incompatible for the region specific endpoint this request was sent to.
+
+
+Success -- Bucket bucket52348482 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket587606474 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_put_bucket_inventory_configuration --- ARGS: 
+AWS : Success -- Bucket inventory configuration test781005769 created for bucket bucket756461382
+EMULATOR : Fail -- Error creating bucket inventory configuration test684571711 for bucket bucket546077212: An error occurred (IllegalLocationConstraintException) when calling the PutBucketInventoryConfiguration operation: The unspecified location constraint is incompatible for the region specific endpoint this request was sent to.
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: SUCCESS -- Response:  
+EMULATOR: FAILURE -- Response: An error occurred (IllegalLocationConstraintException) when calling the PutBucketInventoryConfiguration operation: The unspecified location constraint is incompatible for the region specific endpoint this request was sent to.
+
+
+Success -- Bucket bucket756461382 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket546077212 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_put_bucket_lifecycle --- ARGS: 
+AWS : Success -- Bucket lifecycle configuration created for bucket bucket688611689
+EMULATOR : Success -- Bucket lifecycle configuration created for bucket bucket880856336
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket688611689 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket880856336 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_put_bucket_logging --- ARGS: 
+AWS : Success -- Bucket logging configuration created for bucket bucket352520331
+{'ResponseMetadata': {'RequestId': '6BE2GANEQDXAPPNB', 'HostId': '+RBXmS5NXUZMyz686jd0HbTO+vanBIrkFioeBtBV+JwjNMAwg3/1zBa6QMm47In/NwWcN+ZDLUg=', 'HTTPStatusCode': 200, 'HTTPHeaders': {'x-amz-id-2': '+RBXmS5NXUZMyz686jd0HbTO+vanBIrkFioeBtBV+JwjNMAwg3/1zBa6QMm47In/NwWcN+ZDLUg=', 'x-amz-request-id': '6BE2GANEQDXAPPNB', 'date': 'Mon, 10 Jul 2023 21:57:37 GMT', 'server': 'AmazonS3', 'content-length': '0'}, 'RetryAttempts': 0}}
+EMULATOR : Fail -- Error creating bucket logging configuration for bucket bucket480184409: An error occurred (InvalidTargetBucketForLogging) when calling the PutBucketLogging operation: You must give the log-delivery group WRITE and READ_ACP permissions to the target bucket
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: SUCCESS -- Response:  
+EMULATOR: FAILURE -- Response: An error occurred (InvalidTargetBucketForLogging) when calling the PutBucketLogging operation: You must give the log-delivery group WRITE and READ_ACP permissions to the target bucket
+
+
+Success -- Bucket bucket352520331 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket480184409 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_put_bucket_metrics_configuration --- ARGS: 
+AWS : Success -- Bucket metrics configuration test410681633 created for bucket bucket423625261
+EMULATOR : Fail -- Error creating bucket metrics configuration test89455154 for bucket bucket677312623: An error occurred (IllegalLocationConstraintException) when calling the PutBucketMetricsConfiguration operation: The unspecified location constraint is incompatible for the region specific endpoint this request was sent to.
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: SUCCESS -- Response:  
+EMULATOR: FAILURE -- Response: An error occurred (IllegalLocationConstraintException) when calling the PutBucketMetricsConfiguration operation: The unspecified location constraint is incompatible for the region specific endpoint this request was sent to.
+
+
+Success -- Bucket bucket423625261 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket677312623 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_put_bucket_ownership_controls --- ARGS: 
+AWS : Success -- Bucket ownership controls created for bucket bucket301695497
+EMULATOR : Success -- Bucket ownership controls created for bucket bucket808116722
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket301695497 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket808116722 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_put_bucket_policy --- ARGS: 
+AWS : Fail -- Error creating bucket policy for bucket bucket52080624: An error occurred (AccessDenied) when calling the PutBucketPolicy operation: Access Denied
+EMULATOR : Success -- Bucket policy created for bucket bucket646509418
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (AccessDenied) when calling the PutBucketPolicy operation: Access Denied 
+EMULATOR: SUCCESS -- Response: 
+
+
+Success -- Bucket bucket52080624 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket646509418 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_put_bucket_replication --- ARGS: 
+AWS : Success -- Bucket versioning configuration created for bucket bucket710152736
+AWS : Success -- Created bucket test990609345 in AWS S3
+AWS : Success -- Bucket versioning configuration created for bucket test990609345
+AWS : Fail -- Error creating bucket replication configuration for bucket test990609345: An error occurred (AccessDenied) when calling the PutBucketReplication operation: Access Denied
+EMULATOR : Success -- Bucket versioning configuration created for bucket bucket690754303
+EMULATOR : Success -- Created bucket test932975545 in EMULATOR S3
+EMULATOR : Success -- Bucket versioning configuration created for bucket test932975545
+EMULATOR : Success -- Bucket replication configuration created for bucket test932975545
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (AccessDenied) when calling the PutBucketReplication operation: Access Denied 
+EMULATOR: SUCCESS -- Response: 
+
+
+Success -- Bucket bucket710152736 deleted in AWS S3
+Success -- Bucket test990609345 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket690754303 deleted in EMULATOR S3
+Success -- Bucket test932975545 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_put_bucket_tagging --- ARGS: 
+AWS : Success -- Bucket tagging created for bucket bucket455193858
+EMULATOR : Success -- Bucket tagging created for bucket bucket272327748
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket455193858 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket272327748 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_put_bucket_versioning --- ARGS: 
+AWS : Success -- Bucket versioning configuration created for bucket bucket552438547
+EMULATOR : Success -- Bucket versioning configuration created for bucket bucket862038864
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket552438547 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket862038864 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_put_bucket_website --- ARGS: 
+AWS : Success -- Bucket website configuration created for bucket bucket3538688
+EMULATOR : Success -- Bucket website configuration created for bucket bucket852262943
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket3538688 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket852262943 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_put_object --- ARGS: 
+AWS : Success -- Put object 125749 in AWS S3 bucket bucket556722888
+EMULATOR : Success -- Put object 923961 in EMULATOR S3 bucket bucket280624946
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket556722888 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket280624946 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_put_object_acl --- ARGS: 
+AWS : Success -- Put object 553929 in AWS S3 bucket bucket418300762
+AWS : Fail -- Error creating object ACL for object 553929: An error occurred (AccessDenied) when calling the PutObjectAcl operation: Access Denied
+EMULATOR : Success -- Put object 344129 in EMULATOR S3 bucket bucket6809178
+EMULATOR : Success -- Object ACL created for object 344129
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (AccessDenied) when calling the PutObjectAcl operation: Access Denied 
+EMULATOR: SUCCESS -- Response: 
+
+
+Success -- Bucket bucket418300762 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket6809178 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_put_object_legal_hold --- ARGS: 
+AWS : Success -- Created bucket bucket606222 in AWS S3
+AWS : Success -- Object lock configuration created for bucket bucket606222
+AWS : Success -- Put object 945793 in AWS S3 bucket bucket929570251
+AWS : Success -- Object legal hold created for object 945793
+EMULATOR : Success -- Created bucket bucket540595 in EMULATOR S3
+EMULATOR : Success -- Object lock configuration created for bucket bucket540595
+EMULATOR : Success -- Put object 411985 in EMULATOR S3 bucket bucket322098803
+EMULATOR : Success -- Object legal hold created for object 411985
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket606222 deleted in AWS S3
+Success -- Bucket bucket929570251 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket322098803 deleted in EMULATOR S3
+Success -- Bucket bucket540595 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_put_object_lock_configuration --- ARGS: 
+AWS : Success -- Created bucket bucket734090 in AWS S3
+AWS : Success -- Object lock configuration created for bucket bucket734090
+EMULATOR : Success -- Created bucket bucket882341 in EMULATOR S3
+EMULATOR : Success -- Object lock configuration created for bucket bucket882341
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket349321588 deleted in AWS S3
+Success -- Bucket bucket734090 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket635249116 deleted in EMULATOR S3
+Success -- Bucket bucket882341 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_put_object_retention --- ARGS: 
+AWS : Success -- Created bucket bucket564253 in AWS S3
+AWS : Success -- Object lock configuration created for bucket bucket564253
+AWS : Success -- Put object 587125 in AWS S3 bucket bucket693503275
+AWS : Fail -- Error creating object retention for object 587125: An error occurred (AccessDenied) when calling the PutObjectRetention operation: Access Denied
+EMULATOR : Success -- Created bucket bucket554882 in EMULATOR S3
+EMULATOR : Success -- Object lock configuration created for bucket bucket554882
+EMULATOR : Success -- Put object 974265 in EMULATOR S3 bucket bucket15293161
+EMULATOR : Success -- Object retention created for object 974265
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (AccessDenied) when calling the PutObjectRetention operation: Access Denied 
+EMULATOR: SUCCESS -- Response: 
+
+
+Success -- Bucket bucket564253 deleted in AWS S3
+Success -- Bucket bucket693503275 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket15293161 deleted in EMULATOR S3
+Success -- Bucket bucket554882 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_put_object_tagging --- ARGS: 
+AWS : Success -- Put object 822829 in AWS S3 bucket bucket244806259
+AWS : Success -- Object tagging created for object 822829
+EMULATOR : Success -- Put object 852001 in EMULATOR S3 bucket bucket718420867
+EMULATOR : Success -- Object tagging created for object 852001
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket244806259 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket718420867 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_put_public_access_block --- ARGS: 
+AWS : Success -- Public access block created for bucket bucket406665662
+EMULATOR : Success -- Public access block created for bucket bucket272848679
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket406665662 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket272848679 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_restore_object --- ARGS: 
+AWS : Success -- Put object 692701 in AWS S3 bucket bucket553609678
+AWS : Fail -- Error restoring object for object 260128: An error occurred (NoSuchKey) when calling the RestoreObject operation: The specified key does not exist.
+EMULATOR : Success -- Put object 411871 in EMULATOR S3 bucket bucket811586110
+EMULATOR : Fail -- Error restoring object for object 138969: An error occurred (InternalError) when calling the RestoreObject operation (reached max retries: 4): exception while calling s3.RestoreObject: 'NoneType' object has no attribute 'storage_class'
+
+DISCREPANCY FOUND!
+
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchKey -- Error Message: The specified key does not exist.
+EMULATOR: FAILURE -- HTTP Status code: 500 -- Error Code: InternalError -- Error Message: exception while calling s3.RestoreObject: 'NoneType' object has no attribute 'storage_class'
+
+
+Success -- Bucket bucket553609678 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket811586110 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_select_object_content --- ARGS: 
+AWS : Success -- Put object 807844 in AWS S3 bucket bucket122650048
+AWS : Success -- Object content selected for object 807844
+EMULATOR : Success -- Put object 432750 in EMULATOR S3 bucket bucket92948310
+EMULATOR : Fail -- Error selecting object content for object 432750: An error occurred (InternalError) when calling the SelectObjectContent operation (reached max retries: 4): exception while calling s3.SelectObjectContent: 'Variable' object is not iterable
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: SUCCESS -- Response:  
+EMULATOR: FAILURE -- Response: An error occurred (InternalError) when calling the SelectObjectContent operation (reached max retries: 4): exception while calling s3.SelectObjectContent: 'Variable' object is not iterable
+
+
+Success -- Bucket bucket122650048 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket92948310 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_upload_file --- ARGS: 
+AWS : Success -- File uploaded to object 36006
+EMULATOR : Success -- File uploaded to object 684906
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket570131301 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket283420365 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_upload_fileobj --- ARGS: 
+AWS : Success -- File object uploaded to object 878896
+EMULATOR : Success -- File object uploaded to object 302803
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket243649328 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket836872566 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
+METHOD: s3_upload_part --- ARGS: 
+AWS : Success -- Multipart upload created for 596858 in AWS S3 bucket bucket302456555
+AWS : Success -- Part uploaded for 596858 in AWS S3 bucket bucket302456555
+EMULATOR : Success -- Multipart upload created for 978181 in EMULATOR S3 bucket bucket857015436
+EMULATOR : Success -- Part uploaded for 978181 in EMULATOR S3 bucket bucket857015436
+Exception:  'str' object has no attribute 'response'
+Success -- Bucket bucket302456555 deleted in AWS S3
+Cleaned all buckets in AWS S3
+Success -- Bucket bucket857015436 deleted in EMULATOR S3
+Cleaned all buckets in EMULATOR S3
