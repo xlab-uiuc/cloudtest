@@ -14,11 +14,11 @@ class DynamoDBClient:
 
         # connection string
         if not emulator:
-            self.service = 'AWS'
+            self.service = '**AWS**'
             AWS_PROFILE = 'aws'
             url = 'https://dynamodb.us-east-2.amazonaws.com'
         else:
-            self.service = 'EMULATOR'
+            self.service = '**EMULATOR**'
             AWS_PROFILE = 'localstack'
             url = 'http://localhost:4566'
 

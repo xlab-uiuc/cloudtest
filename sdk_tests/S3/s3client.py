@@ -15,12 +15,12 @@ class S3Client:
 
         # connection string
         if not emulator:
-            self.service = 'AWS'
+            self.service = '**AWS**'
             self.region = 'us-east-2'
             AWS_PROFILE = 'aws'
             url = 'https://s3.us-east-2.amazonaws.com'
         else:
-            self.service = 'EMULATOR'
+            self.service = '**EMULATOR**'
             self.region = 'us-west-1'
             AWS_PROFILE = 'localstack'
             url = 'http://localhost:4566'
@@ -32,22 +32,6 @@ class S3Client:
         # create bucket
         self.client.create_bucket(Bucket=self.bucket_name, CreateBucketConfiguration={'LocationConstraint': self.region})
 
-
-    # create bucket with try accept and args as none
-    def s3_create_bucket(self, bucket_name=None, lock=False):
-        if bucket_name is None:
-            bucket_name = f'bucket{random.randint(1, 1000000000)}'
-
-        try:
-            if lock:
-                self.client.create_bucket(Bucket=bucket_name, CreateBucketConfiguration={'LocationConstraint': self.region}, ObjectLockEnabledForBucket=True)
-            else:
-                self.client.create_bucket(Bucket=bucket_name, CreateBucketConfiguration={'LocationConstraint': self.region})
-            print(self.service, ': ' + f'Success -- Created bucket {bucket_name} in {self.service} S3')
-            return True, ""
-        except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error creating bucket {bucket_name} in {self.service} S3: {e}')
-            return False, e
     
 
     # abort multipart upload with try accept and args as none
@@ -128,6 +112,23 @@ class S3Client:
             return True, ""
         except Exception as e:
             print(self.service, ': ' + f'Fail -- Error copying {copy_source} to {key} in {self.service} S3 bucket {new_buc}: {e}')
+            return False, e
+        
+
+    # create bucket with try accept and args as none
+    def s3_create_bucket(self, bucket_name=None, lock=False):
+        if bucket_name is None:
+            bucket_name = f'bucket{random.randint(1, 1000000000)}'
+
+        try:
+            if lock:
+                self.client.create_bucket(Bucket=bucket_name, CreateBucketConfiguration={'LocationConstraint': self.region}, ObjectLockEnabledForBucket=True)
+            else:
+                self.client.create_bucket(Bucket=bucket_name, CreateBucketConfiguration={'LocationConstraint': self.region})
+            print(self.service, ': ' + f'Success -- Created bucket {bucket_name} in {self.service} S3')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error creating bucket {bucket_name} in {self.service} S3: {e}')
             return False, e
 
 
@@ -950,10 +951,10 @@ class S3Client:
 
         try:
             self.client.get_paginator('list_object_versions')
-            print(self.service, ': ' + f'Success -- Paginator retrieved from bucket {bucket_name}')
+            print(self.service, ': ' + f'Success -- Paginator retrieved')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error retrieving paginator from bucket {bucket_name}: {e}')
+            print(self.service, ': ' + f'Fail -- Error retrieving paginator: {e}')
             return False, e
         
 
