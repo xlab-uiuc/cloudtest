@@ -1,6 +1,6 @@
 import datetime
 from azure.identity import DefaultAzureCredential
-from azure.storage.blob import BlobServiceClient, ContentSettings, ImmutabilityPolicy, BlobLeaseClient
+from azure.storage.blob import BlobServiceClient, ContentSettings, ImmutabilityPolicy, BlobLeaseClient, BlobBlock
 import random
 import os
 
@@ -70,22 +70,27 @@ class MyBlobClient:
             print(self.service + ": Fail -- Blob client is not received. Error: ", e)
 
 
-    # abort copy with parameters default none and try except block
     def abort_copy(self, args):
         args = list(args)
 
+        random_blob_name = f'blob{random.randint(1, 1000000000)}'
+
+        if not len(args) > 0:
+            if self.service == '**AZURE**':
+                args.append(f'https://{self.account_name}.blob.core.windows.net/{self.container_name}/{random_blob_name}')
+            else:
+                args.append(f'https://127.0.0.1:10000/devstoreaccount1/{self.container_name}/{random_blob_name}')
+
         try:
             # create blob
-            random_blob_name = f'blob{random.randint(1, 1000000000)}'
             with open('page', 'rb') as data1:
                 self.container_client.upload_blob(data=data1, name=random_blob_name, blob_type='BlockBlob')
             
-            if self.service == '**AZURE**':
-                resp = self.blob_client.start_copy_from_url(f'https://{self.account_name}.blob.core.windows.net/{self.container_name}/{random_blob_name}')
-            else:
-                resp = self.blob_client.start_copy_from_url(f'https://127.0.0.1:10000/devstoreaccount1/{self.container_name}/{random_blob_name}')
-    
-
+            try:
+                resp = self.blob_client.start_copy_from_url(args[0])
+            except Exception as e:
+                print(self.service + ": Fail -- Copy is not started. Error: ", e)
+            
             res = self.blob_client.abort_copy(resp['copy_id'])
             print(self.service + ": Success -- Copy is aborted -- successful.")
             return True, res
@@ -203,7 +208,7 @@ class MyBlobClient:
         args = list(args)
         # block list
         if not len(args) > 0:
-            args.append([])
+            args.append([BlobBlock(block_id='1'), BlobBlock(block_id='2'), BlobBlock(block_id='3')])
             
         # metadata
         if not len(args) > 1:
@@ -217,6 +222,9 @@ class MyBlobClient:
 
             self.container_client.upload_blob(data=b'First one', name=random_blob_name, blob_type='BlockBlob', length=len('First one'), metadata={'hello': 'world', 'number': '42'})
             blobclient = self.container_client.get_blob_client(random_blob_name)
+            blobclient.stage_block('1', b'AAA')
+            blobclient.stage_block('2', b'BBB')
+            blobclient.stage_block('3', b'CCC')
 
             res = blobclient.commit_block_list(args[0], content_settings=content_setting, metadata=args[1])
             print(self.service + ": Success -- Block list is committed.")
@@ -262,8 +270,8 @@ class MyBlobClient:
         if not len(args) > 1:
             args.append({'category': 'test', 'created': '2020-01-01', 'author': 'test', 'description': 'test', 'tags': 'test', 'title': 'test', 'version': '1.0', 'filename': 'test'})
         # premium page blob tier
-        if not len(args) > 2:
-            args.append('P4')
+        # if not len(args) > 2:
+        #     args.append('P4')
 
         content_setting = ContentSettings(content_type='text/plain', content_encoding='utf-8', cache_control='None', content_language='en-US', content_disposition='inline')
 
@@ -333,8 +341,8 @@ class MyBlobClient:
         
 
 
-    # download blob with try except block
-    def download_blob(self, args):
+    # download Block blob with try except block
+    def download_block_blob(self, args):
         args = list(args)
         # offset
         if not len(args) > 0:
@@ -345,12 +353,59 @@ class MyBlobClient:
 
         try:
             res = self.blob_client.download_blob(args[0], args[1])
-            print(self.service + ": Success -- Blob is downloaded.")
+            print(self.service + ": Success -- Block Blob is downloaded.")
             return True, res
         except Exception as e:
-            print(self.service + ": Fail -- Blob is not downloaded. Error: ", e)
+            print(self.service + ": Fail -- Block Blob is not downloaded. Error: ", e)
             return False, e
         
+    # download Append blob with try except block
+    def download_append_blob(self, args):
+        args = list(args)
+        # offset
+        if not len(args) > 0:
+            args.append(0)
+        # length
+        if not len(args) > 1:
+            args.append(512)
+
+        try:
+            # upload append blob
+            self.blob_name = f'blob{random.randint(1, 1000000000)}'
+            self.container_client.upload_blob(data=b'First one', name=self.blob_name, blob_type='AppendBlob', length=len('First one'), metadata={'hello': 'world', 'number': '42'})
+            blob_client = self.container_client.get_blob_client(self.blob_name)
+            # download append blob
+            res = blob_client.download_blob(args[0], args[1])
+            print(self.service + ": Success -- Append Blob is downloaded.")
+            return True, res
+        except Exception as e:
+            print(self.service + ": Fail -- Append Blob is not downloaded. Error: ", e)
+            return False, e
+        
+    # download Page blob with try except block
+    def download_page_blob(self, args):
+        args = list(args)
+        # offset
+        if not len(args) > 0:
+            args.append(0)
+        # length
+        if not len(args) > 1:
+            args.append(512)
+
+        try:
+            # upload page blob
+            self.blob_name = f'blob{random.randint(1, 1000000000)}'
+            with open('page', 'rb') as data:
+                self.container_client.upload_blob(data=data, name=self.blob_name, blob_type='PageBlob')
+            blob_client = self.container_client.get_blob_client(self.blob_name)
+            # download page blob
+            res = blob_client.download_blob(args[0], args[1])
+            print(self.service + ": Success -- Page Blob is downloaded.")
+            return True, res
+        except Exception as e:
+            print(self.service + ": Fail -- Page Blob is not downloaded. Error: ", e)
+            return False, e
+
 
     # check if blob exists with try except block
     def exists(self, args):
@@ -364,6 +419,25 @@ class MyBlobClient:
             print(self.service + ": Fail -- Blob exists failed. Error: ", e)
             return False, e
         
+    # create blob client from blob url with try except block
+    def from_blob_url(self, args):
+        args = list(args)
+
+        if not len(args) > 0:
+            if self.service == '**AZURE**':
+                args.append(f'https://{self.account_name}.blob.core.windows.net/{self.container_name}/{self.blob_name}')
+            else:
+                args.append(f'https://127.0.0.1:10000/devstoreaccount1/{self.container_name}/{self.blob_name}')
+                
+        try: 
+            res = self.blob_client.from_blob_url(args[0])
+            print(self.service + ": Success -- Blob client is created from blob url.")
+            return True, res
+        except Exception as e:
+            print(self.service + ": Fail -- Blob client is not created from blob url. Error: ", e)
+            return False, e
+        
+    # skip --> from_connection_string (covered in the constructor)
 
     # get account information with try except block
     def get_account_information(self, args):
@@ -419,6 +493,9 @@ class MyBlobClient:
             print(self.service + ": Fail -- Block list is not retrieved. Error: ", e)
             return False, e
         
+
+    # skip -> get_page_range_diff_for_managed_disk (This operation is only available for managed disk accounts)
+
         
     # get page ranges with try except block
     def get_page_ranges(self, args):
@@ -484,7 +561,45 @@ class MyBlobClient:
             return False, e
         
 
+    # resize blob with try except block
+    def resize_blob(self, args):
+        args = list(args)
+        # size
+        if not len(args) > 0:
+            args.append(1024)
+
+        try:
+            # create page blob
+            random_blob_name = f'blob{random.randint(1, 1000000000)}'
+            with open('page', 'rb') as data:
+                self.container_client.upload_blob(data=data, name=random_blob_name, blob_type='PageBlob')
+
+            blobclient = self.container_client.get_blob_client(random_blob_name)
+            res = blobclient.resize_blob(args[0])
+            
+            print(self.service + ": Success -- Blob is resized.")
+            return True, res
+        except Exception as e:
+            print(self.service + ": Fail -- Blob is not resized. Error: ", e)
+            return False, e
         
+    # seal append blob by first creating it with try except block
+    def seal_append_blob(self, args):
+        args = list(args)
+
+        try:
+            # create append blob
+            random_blob_name = f'blob{random.randint(1, 1000000000)}'
+            self.container_client.upload_blob(data=b'Hello World', name=random_blob_name, blob_type='AppendBlob')
+            blobclient = self.container_client.get_blob_client(random_blob_name)
+            res = blobclient.seal_append_blob()
+            print(self.service + ": Success -- Append blob is sealed.")
+            return True, res
+        except Exception as e:
+            print(self.service + ": Fail -- Append blob is not sealed. Error: ", e)
+            return False, e
+        
+    
 
     # set blob metadata with try except block
     def set_blob_metadata(self, args):
@@ -570,6 +685,31 @@ class MyBlobClient:
     
     # skip premium page blob tier (with premium acc)
 
+    # set sequence number with try except block
+    def set_sequence_number(self, args):
+        args = list(args)
+        # sequence number action
+        if not len(args) > 0:
+            args.append("UPDATE")
+
+        # sequence number
+        if not len(args) > 1:
+            args.append(6)
+
+        try:
+            # create page blob
+            random_blob_name = f'blob{random.randint(1, 1000000000)}'
+            with open('page', 'rb') as data:
+                self.container_client.upload_blob(data=data, name=random_blob_name, blob_type='PageBlob')
+            blob_client = self.container_client.get_blob_client(random_blob_name)
+
+            res = blob_client.set_sequence_number(args[0], args[1])
+            print(self.service + ": Success -- Sequence number is set.")
+            return True, res
+        except Exception as e:
+            print(self.service + ": Fail -- Sequence number is not set. Error: ", e)
+            return False, e
+
 
     # set tier with try except block
     def set_standard_blob_tier(self, args):
@@ -577,7 +717,7 @@ class MyBlobClient:
       
         # standard blob tier
         if not len(args) > 0:
-            args.append(random.choice(['Hot']))
+            args.append(['Hot'])
 
         try:
             res = self.blob_client.set_standard_blob_tier(args[0])
@@ -660,20 +800,22 @@ class MyBlobClient:
         if not len(args) > 0:
             args.append(f'blob{random.randint(1, 10000000)}')
 
-        if self.service == '**AZURE**':
-            url = f'https://{self.account_name}.blob.core.windows.net/{self.container_name}/{args[0]}'
-        else:
-            url = f'https://127.0.0.1:10000/devstoreaccount1/{self.container_name}/{args[0]}'
-    
-       
         # metadata
         if not len(args) > 1:
             args.append({'hello': 'world'})
 
+        # source url
+        if not len(args) > 2:
+            if self.service == '**AZURE**':
+                args.append(f'https://{self.account_name}.blob.core.windows.net/{self.container_name}/{args[0]}')
+            else:
+                args.append(f'https://127.0.0.1:10000/devstoreaccount1/{self.container_name}/{args[0]}')
+
         try:
             with open('page', 'rb') as data1:
                 self.container_client.upload_blob(data=data1, name=args[0], blob_type='BlockBlob')
-            res = self.blob_client.start_copy_from_url(url, metadata=args[1])
+
+            res = self.blob_client.start_copy_from_url(args[2], metadata=args[1])
             print(self.service + ": Success -- Copy from url started.")
             return True, res
         except Exception as e:
