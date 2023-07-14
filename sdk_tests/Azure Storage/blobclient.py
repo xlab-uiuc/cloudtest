@@ -902,7 +902,8 @@ class MyBlobClient:
                 self.container_client.upload_blob(data=data, name=blob, blob_type='PageBlob')
 
             blob_client = self.container_client.get_blob_client(blob)
-            res = blob_client.upload_page(args[0], args[1], length=len(args[0]))
+            res = blob_client.upload_page(args[0], 0, length=512)
+            res = blob_client.upload_page(args[0], 512+args[1], length=len(args[0])-512)
             print(self.service + ": Success -- Page is uploaded.")
             return True, res
         except Exception as e:

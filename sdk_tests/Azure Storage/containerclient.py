@@ -197,6 +197,8 @@ class ContainerClient:
             return False, e
 
 
+    # skip --> from_connection_string (covered in constructor)
+
     # get account information with try except block
     def get_account_information(self, args):
         args = list(args)
@@ -309,7 +311,7 @@ class ContainerClient:
             return False, e
 
     '''Applied to premium acounts only'''
-    # set premium page blob tier with try except block
+    # set premium page blob tier with try except block (batch operation)
     def set_premium_page_blob_tier(self, args):
         args = list(args)
         # blob name
@@ -332,7 +334,7 @@ class ContainerClient:
             return False, e
 
 
-    # set standard page blob tier with try except block
+    # set standard page blob tier with try except block (batch operation)
     def set_standard_page_blob_tier(self, args):
         args = list(args)
         # blob name
