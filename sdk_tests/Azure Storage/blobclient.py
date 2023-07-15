@@ -1,6 +1,6 @@
 import datetime
 from azure.identity import DefaultAzureCredential
-from azure.storage.blob import BlobServiceClient, ContentSettings, ImmutabilityPolicy, BlobLeaseClient, BlobBlock
+from azure.storage.blob import BlobServiceClient, ContentSettings, ImmutabilityPolicy, BlobLeaseClient, BlobBlock, DelimitedJsonDialect, DelimitedTextDialect
 import random
 import os
 
@@ -153,7 +153,6 @@ class MyBlobClient:
         # copy blob name
         if not len(args) > 0:
             args.append(f'blob{random.randint(1, 1000000000)}')
-        self.container_client.upload_blob(data=b'For append blob', name=args[0], blob_type='AppendBlob')
         # source url
         if not len(args) > 1:
             args.append(f'https://{self.account_name}.blob.core.windows.net/{self.container_name}/{self.blob_name}')
@@ -166,6 +165,7 @@ class MyBlobClient:
         
 
         try:
+            self.container_client.upload_blob(data=b'For append blob', name=args[0], blob_type='AppendBlob')
             cc = self.container_client.get_blob_client(args[0])
             res = cc.append_block_from_url(copy_source_url=args[1], source_offset=args[2], source_length=args[3])
             print(self.service + ": Success -- Block is appended from url.")
@@ -318,10 +318,7 @@ class MyBlobClient:
         try:
             res = self.blob_client.delete_blob(args[0])
             print(self.service + ": Success -- Blob is deleted.")
-            # create another blob in its place
-            self.blob_name = f'blob{random.randint(1, 1000000000)}'
-            self.container_client.upload_blob(data=b'Second one', name=self.blob_name, blob_type='BlockBlob', length=len('First one'), metadata={'hello': 'world', 'number': '42'})
-            self.blob_client = self.container_client.get_blob_client(self.blob_name)
+
             return True, res
         except Exception as e:
             print(self.service + ": Fail -- Blob is not deleted. Error: ", e)
@@ -551,9 +548,15 @@ class MyBlobClient:
         # query expression
         if not len(args) > 0:
             args.append('SELECT _2 from BlobStorage')
+        # input format
+        if not len(args) > 1:
+            args.append(DelimitedTextDialect(delimiter=',', quotechar='"', lineterminator='\n', escapechar="", has_header=False))
+        # output format
+        if not len(args) > 2:
+            args.append(DelimitedJsonDialect(delimiter='\n'))
 
         try:
-            res = self.blob_client.query_blob(args[0])
+            res = self.blob_client.query_blob(args[0], blob_format=args[1], output_format=args[2])
             print(self.service + ": Success -- Blob contents are queried.")
             return True, res
         except Exception as e:
@@ -827,8 +830,18 @@ class MyBlobClient:
     # undelete blob with try except block
     def undelete_blob(self, args):
         args = list(args)
+
+        # delete blob or not
+        if not len(args) > 0:
+            args.append(True)
             
         try:
+            if args[0]:
+                try:
+                    self.blob_client.delete_blob()
+                    print(self.service + ": Success -- Blob is deleted before undeletion.")
+                except Exception as e:
+                    print(self.service + ": Fail -- Blob is not deleted before undeletion. Error: ", e)
             res = self.blob_client.undelete_blob()
             print(self.service + ": Success -- Blob is undeleted.")
             return True, res
