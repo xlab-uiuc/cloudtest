@@ -1,5 +1,5 @@
 import datetime
-from azure.data.tables import TableClient, TableServiceClient, UpdateMode
+from azure.data.tables import TableClient, TableServiceClient, UpdateMode, TableAccessPolicy, TableSasPermissions
 from uuid import uuid4
 from azure.identity import DefaultAzureCredential
 import random, os
@@ -120,10 +120,7 @@ class MyTableClient():
         try:
             res = self.table_client.delete_table()
             print(self.service, ': Success -- Table deleted with name: ', args[0])
-            # create table again
-            self.table_name = f'table{random.randint(1, 1000000000)}'
-            self.table_client = TableClient.from_connection_string(self.connection_string, self.table_name)
-            self.table_client.create_table()
+
             return True, res
         except Exception as e:
             print(self.service, ': Fail -- Table deletion failed with name: ', args[0], ' and error: ', e)
@@ -208,7 +205,12 @@ class MyTableClient():
     def table_set_table_access_policy(self, args):
         args = list(args)
         if not len(args) > 0:
-            args.append({})
+            access_policy = TableAccessPolicy()
+            access_policy.start = datetime(2011, 10, 11)
+            access_policy.expiry = datetime(2025, 10, 12)
+            access_policy.permission = TableSasPermissions(read=True)
+            identifiers = {'testid': access_policy}
+            args.append(identifiers)
         try:
             res = self.table_client.set_table_access_policy(signed_identifiers=args[0])
             print(self.service, ': Success -- Table access policy set')
@@ -224,8 +226,7 @@ class MyTableClient():
         if not len(args) > 0:
             args.append([
             ('upsert', {'PartitionKey': 'color3', 'RowKey': 'brand3'}, {'mode': UpdateMode.REPLACE}),
-            ]
-            )
+            ])
 
         try:
             # create entity and then update it
