@@ -104,8 +104,7 @@ class ContainerClient:
         try:
             res = self.container_client.delete_blob(args[0])
             print(self.service + ": Success -- Blob is deleted")
-            # create blob again
-            self.container_client.upload_blob(data=b'Second one', name=self.blob_name, blob_type='BlockBlob', length=len('First one'), metadata={'hello': 'world', 'number': '42'})
+
             return True, res
         except Exception as e:
             print(self.service + ": Fail -- Blob is not deleted. Error: ", e)
@@ -129,8 +128,6 @@ class ContainerClient:
             res = self.container_client.delete_blobs(args[0])
             print(self.service + ": Success -- Blobs are deleted successfully.")
 
-            # # create blob again in order to perform other operations in sequences
-            # self.container_client.upload_blob(data=b'First one', name=self.blob_name, blob_type='BlockBlob', length=len('First one'), metadata={'hello': 'world', 'number': '42'})
             return True, res
         except Exception as e:
             print(self.service + ": Fail -- Blobs are not deleted. Error: ", e)
@@ -143,10 +140,7 @@ class ContainerClient:
         try:
             res = self.container_client.delete_container()
             print(self.service + ": Success -- Container deleted successfully.")
-            # create container again
-            random_name = f'container{random.randint(1, 1000000000)}'
-            self.container_client = self.blob_service_client.get_container_client(random_name)
-            self.container_client.create_container()
+
             return True, res
         except Exception as e:
             print(self.service + ": Fail -- Container is not deleted. Error: ", e)
@@ -252,10 +246,14 @@ class ContainerClient:
 
     # list blob names with try except block
     def list_blob_names(self, args):
+        # starts with
+        if not len(args) > 0:
+            args.append("blob")
+
         args = list(args)
         try:
             print(self.service + ": Success -- Listing blob names...")
-            res = self.container_client.list_blob_names()
+            res = self.container_client.list_blob_names(name_starts_with=args[0])
             print(self.service + ": Success -- Blob names listed successfully")
             return True, res
         except Exception as e:
@@ -267,9 +265,14 @@ class ContainerClient:
     # list blobs with try except block
     def list_blobs(self, args):
         args = list(args)
+        if not len(args) > 0:
+            args.append('blob')
+
+        if not len(args) > 1:
+            args.append(['snapshots', 'metadata', 'uncommittedblobs', 'copy', 'deleted', 'deletedwithversions', 'tags', 'versions', 'immutabilitypolicy', 'legalhold'])
         try:
             print(self.service + ": Success -- Listing blobs...")
-            res = self.container_client.list_blobs()
+            res = self.container_client.list_blobs(name_starts_with=args[0], include=args[1])
             print(self.service + ": Success -- Blob listed successfully")
             return True, res
         except Exception as e:
@@ -388,7 +391,7 @@ class ContainerClient:
             args.append('blob')
         # include
         if not len(args) > 1:
-            args.append(['metadata'])
+            args.append(['snapshots', 'metadata', 'uncommittedblobs', 'copy', 'deleted', 'deletedwithversions', 'tags', 'versions', 'immutabilitypolicy', 'legalhold'])
         # delimiter
         if not len(args) > 2:
             args.append('/')
