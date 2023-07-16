@@ -72,9 +72,7 @@ class MyQueueServiceClient:
         try:
             res = self.queue_service_client.delete_queue(args[0])
             print(self.service, ': Success -- Queue deleted')
-            # create another queue in its place
-            self.queue_service_client.create_queue(f'queue{random.randint(1, 1000000000)}')
-            print(self.service, ': Success -- Queue created')
+            
             return True, res
         except Exception as e:
             print(self.service, ': Fail -- Queue deletion failed; error: ', e)
