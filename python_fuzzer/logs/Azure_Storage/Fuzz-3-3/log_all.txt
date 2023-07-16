@@ -1,0 +1,1049 @@
+METHOD: abort_copy --- ARGS:  [0]
+**AZURE**: Fail -- Copy is not started. Error:  a bytes-like object is required, not 'str'
+**AZURE**: Fail -- Copy is not aborted -- unsuccessful. Error:  local variable 'resp' referenced before assignment
+**EMULATOR**: Fail -- Copy is not started. Error:  a bytes-like object is required, not 'str'
+**EMULATOR**: Fail -- Copy is not aborted -- unsuccessful. Error:  local variable 'resp' referenced before assignment
+Exception:  'UnboundLocalError' object has no attribute 'response'
+Container is deleted.
+Container is deleted.
+Container is deleted.
+METHOD: acquire_lease --- ARGS:  ['0', 1]
+**AZURE**: Fail -- Lease is not acquired. Error:  The value for one of the HTTP headers is not in the correct format.
+RequestId:46c8eedd-101e-0045-5ba9-b71d7c000000
+Time:2023-07-16T05:51:18.2758299Z
+ErrorCode:InvalidHeaderValue
+headername:x-ms-lease-duration
+headervalue:0
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>InvalidHeaderValue</Code><Message>The value for one of the HTTP headers is not in the correct format.
+RequestId:46c8eedd-101e-0045-5ba9-b71d7c000000
+Time:2023-07-16T05:51:18.2758299Z</Message><HeaderName>x-ms-lease-duration</HeaderName><HeaderValue>0</HeaderValue></Error>
+**EMULATOR**: Fail -- Lease is not acquired. Error:  The value for one of the HTTP headers is not in the correct format.
+RequestId:2b51a839-fbe9-403c-a55b-0a74f4a9f154
+Time:2023-07-16T05:51:18.306Z
+ErrorCode:InvalidHeaderValue
+Content: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>InvalidHeaderValue</Code>
+  <Message>The value for one of the HTTP headers is not in the correct format.
+RequestId:2b51a839-fbe9-403c-a55b-0a74f4a9f154
+Time:2023-07-16T05:51:18.306Z</Message>
+</Error>
+Container is deleted.
+Container is deleted.
+METHOD: append_block --- ARGS:  [0, '0']
+**AZURE**: Fail -- Blob is not appended. Error:  Unexpected type for 'content': '<class 'int'>'. We expect 'content' to either be str, bytes, a open file-like object or an iterable/asynciterable.
+**EMULATOR**: Fail -- Blob is not appended. Error:  Unexpected type for 'content': '<class 'int'>'. We expect 'content' to either be str, bytes, a open file-like object or an iterable/asynciterable.
+Exception:  'TypeError' object has no attribute 'response'
+Container is deleted.
+Container is deleted.
+METHOD: append_block_from_url --- ARGS:  [0, 1, '5', '0']
+**AZURE**: Fail -- Block is not appended from url. Error:  Please specify a container name and blob name.
+**EMULATOR**: Fail -- Block is not appended from url. Error:  Please specify a container name and blob name.
+Exception:  'ValueError' object has no attribute 'response'
+Container is deleted.
+Container is deleted.
+METHOD: clear_page --- ARGS:  ['38', '-15']
+**AZURE**: Fail -- Page is not cleared. Error:  not all arguments converted during string formatting
+**EMULATOR**: Fail -- Page is not cleared. Error:  not all arguments converted during string formatting
+Exception:  'TypeError' object has no attribute 'response'
+Container is deleted.
+Container is deleted.
+METHOD: commit_block_list --- ARGS:  ['0', {'flag': True}]
+**AZURE**: Fail -- Block list is not committed. Error:  'bool' object has no attribute 'strip'
+**EMULATOR**: Fail -- Block list is not committed. Error:  'bool' object has no attribute 'strip'
+Exception:  'AttributeError' object has no attribute 'response'
+Container is deleted.
+Container is deleted.
+METHOD: create_append_blob --- ARGS:  [{}]
+**AZURE**: Success -- Append blob is created.
+**EMULATOR**: Success -- Append blob is created.
+Container is deleted.
+Container is deleted.
+METHOD: create_page_blob --- ARGS:  ['0', {'category': 'test', 'created': '2020-01-01', 'author': 'test', 'description': 'test', 'tags': 'test', 'title': 'test', 'version': '1.0', 'filename': 'test'}, 2]
+**AZURE**: Success -- Page blob is created.
+**EMULATOR**: Success -- Page blob is created.
+Container is deleted.
+Container is deleted.
+METHOD: create_snapshot --- ARGS:  [{'hex': '0x8D', 'message': 'Hello World', 'count': 10}]
+**AZURE**: Fail -- Snapshot is not created. Error:  'int' object has no attribute 'strip'
+**EMULATOR**: Fail -- Snapshot is not created. Error:  'int' object has no attribute 'strip'
+Exception:  'AttributeError' object has no attribute 'response'
+Container is deleted.
+Container is deleted.
+METHOD: delete_blob --- ARGS:  [0]
+**AZURE**: Success -- Blob is deleted.
+**EMULATOR**: Success -- Blob is deleted.
+Container is deleted.
+Container is deleted.
+METHOD: delete_immutability_policy --- ARGS:  ['-2', '0', '20', '0', '-2', '0', '0', '0', '-198', '0', '-5', '-36', '67', '2', '-6', '11', '0', '0', '-29281', '9904']
+**AZURE**: Fail -- Immutability policy is not deleted. Error:  Operation returned an invalid status 'ImmutableStorageWithVersioning: feature is not enabled.'
+Content: <?xml version="1.0" encoding="utf-8"?>
+<Error><Code>ImmutableStorageWithVersioningIsNotEnabled</Code><Message>ImmutableStorageWithVersioning: feature is not enabled.
+RequestId:d71c1b9b-301e-0030-4da9-b77650000000
+Time:2023-07-16T05:51:27.1616178Z</Message></Error>
+**EMULATOR**: Fail -- Immutability policy is not deleted. Error:  Operation returned an invalid status 'Accepted'
+
+DISCREPANCY FOUND!
+
+--Status code mismatch--
+CLOUD: FAILURE -- Error Code: 400 -- Error Message: ImmutableStorageWithVersioning: feature is not enabled.
+EMULATOR: FAILURE -- Error Code: 202 -- Error Message: Accepted
+
+ 
+Container is deleted.
+Container is deleted.
+METHOD: download_append_blob --- ARGS:  ['0', '-6']
+**AZURE**: Fail -- Append Blob is not downloaded. Error:  unsupported operand type(s) for -: 'str' and 'int'
+**EMULATOR**: Fail -- Append Blob is not downloaded. Error:  unsupported operand type(s) for -: 'str' and 'int'
+Exception:  'TypeError' object has no attribute 'response'
+Container is deleted.
+Container is deleted.
+METHOD: download_block_blob --- ARGS:  ['-3', '328']
+**AZURE**: Fail -- Block Blob is not downloaded. Error:  unsupported operand type(s) for -: 'str' and 'int'
+**EMULATOR**: Fail -- Block Blob is not downloaded. Error:  unsupported operand type(s) for -: 'str' and 'int'
+Exception:  'TypeError' object has no attribute 'response'
+Container is deleted.
+Container is deleted.
+METHOD: download_page_blob --- ARGS:  ['-1', '945']
+**AZURE**: Fail -- Page Blob is not downloaded. Error:  unsupported operand type(s) for -: 'str' and 'int'
+**EMULATOR**: Fail -- Page Blob is not downloaded. Error:  unsupported operand type(s) for -: 'str' and 'int'
+Exception:  'TypeError' object has no attribute 'response'
+Container is deleted.
+Container is deleted.
+METHOD: exists --- ARGS:  ['0', '0', '0', '0', '5']
+**AZURE**: Success -- Blob exists succeeded --  True
+**EMULATOR**: Success -- Blob exists succeeded --  True
+Container is deleted.
+Container is deleted.
+METHOD: from_blob_url --- ARGS:  [0]
+**AZURE**: Fail -- Blob client is not created from blob url. Error:  Blob URL must be a string.
+**EMULATOR**: Fail -- Blob client is not created from blob url. Error:  Blob URL must be a string.
+Exception:  'ValueError' object has no attribute 'response'
+Container is deleted.
+Container is deleted.
+METHOD: get_account_information --- ARGS:  ['6', '0', '0', '5512', '7', '0', '-3', '0', '0', '0', '-6', '19', '0', '11', '7082', '7', '8', '-413', '43166', '0', '858', '0']
+**AZURE**: Fail -- Account information is not retrieved. Error:  The specified resource does not exist.
+RequestId:4a2bdfec-901e-0080-27a9-b73799000000
+Time:2023-07-16T05:51:32.5991286Z
+ErrorCode:ResourceNotFound
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>ResourceNotFound</Code><Message>The specified resource does not exist.
+RequestId:4a2bdfec-901e-0080-27a9-b73799000000
+Time:2023-07-16T05:51:32.5991286Z</Message></Error>
+**EMULATOR**: Success -- Account information is retrieved.
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: The specified resource does not exist.
+RequestId:4a2bdfec-901e-0080-27a9-b73799000000
+Time:2023-07-16T05:51:32.5991286Z
+ErrorCode:ResourceNotFound
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>ResourceNotFound</Code><Message>The specified resource does not exist.
+RequestId:4a2bdfec-901e-0080-27a9-b73799000000
+Time:2023-07-16T05:51:32.5991286Z</Message></Error> 
+EMULATOR: SUCCESS -- Response: {'client_request_id': 'd06e0004-239c-11ee-bec3-4da94d0edd97', 'request_id': '9050f27b-c187-47fe-a4bd-f70ae7e8edd8', 'version': '2021-10-04', 'date': datetime.datetime(2023, 7, 16, 5, 51, 32, tzinfo=datetime.timezone.utc), 'sku_name': 'Standard_RAGRS', 'account_kind': 'StorageV2'}
+
+ 
+Container is deleted.
+Container is deleted.
+METHOD: get_blob_properties --- ARGS:  ['-1', '-86', '90', '0', '0', '-1', '27', '0', '-5836', '31', '80', '0', '0', '1', '-3']
+**AZURE**: Success -- Blob properties are retrieved.
+**EMULATOR**: Success -- Blob properties are retrieved.
+Container is deleted.
+Container is deleted.
+METHOD: get_blob_tags --- ARGS:  ['-4', '0', '0', '-708', '-1', '0', '0']
+**AZURE**: Success -- Blob tags are retrieved.
+**EMULATOR**: Fail -- Blob tags are not retrieved. Error:  Cannot deserialize content-type: application/octet-stream
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: SUCCESS -- Response: {} 
+EMULATOR: FAILURE -- Response: Cannot deserialize content-type: application/octet-stream
+
+ 
+Container is deleted.
+Container is deleted.
+METHOD: get_block_list --- ARGS:  [0]
+**AZURE**: Fail -- Block list is not retrieved. Error:  Value for one of the query parameters specified in the request URI is invalid.
+RequestId:4a2beafd-901e-0080-5ea9-b73799000000
+Time:2023-07-16T05:51:35.3024086Z
+ErrorCode:InvalidQueryParameterValue
+queryparametername:blocklisttype
+queryparametervalue:0
+reason:This is not a valid block list type.
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>InvalidQueryParameterValue</Code><Message>Value for one of the query parameters specified in the request URI is invalid.
+RequestId:4a2beafd-901e-0080-5ea9-b73799000000
+Time:2023-07-16T05:51:35.3024086Z</Message><QueryParameterName>blocklisttype</QueryParameterName><QueryParameterValue>0</QueryParameterValue><Reason>This is not a valid block list type.</Reason></Error>
+**EMULATOR**: Fail -- Block list is not retrieved. Error:  Bad Request
+ErrorCode:None
+
+DISCREPANCY FOUND!
+
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: Value for one of the query parameters specified in the request URI is invalid.
+EMULATOR: FAILURE -- Error Message: Bad Request
+
+ 
+Container is deleted.
+Container is deleted.
+METHOD: get_page_ranges --- ARGS:  ['0', '646']
+**AZURE**: Fail -- Page ranges are not retrieved. Error:  unsupported operand type(s) for -: 'str' and 'int'
+**EMULATOR**: Fail -- Page ranges are not retrieved. Error:  unsupported operand type(s) for -: 'str' and 'int'
+Exception:  'TypeError' object has no attribute 'response'
+Container is deleted.
+Container is deleted.
+METHOD: list_page_ranges_diff --- ARGS:  [0, '0', '7']
+**AZURE**: Fail -- Page ranges diff is not retrieved. Error:  unsupported operand type(s) for -: 'str' and 'int'
+**EMULATOR**: Fail -- Page ranges diff is not retrieved. Error:  unsupported operand type(s) for -: 'str' and 'int'
+Exception:  'TypeError' object has no attribute 'response'
+Container is deleted.
+Container is deleted.
+METHOD: query_blob --- ARGS:  [0, 1, 2]
+**AZURE**: Fail -- Blob contents are not queried. Error:  The Type of blob_format can only be DelimitedTextDialect or DelimitedJsonDialect or ParquetDialect
+**EMULATOR**: Fail -- Blob contents are not queried. Error:  The Type of blob_format can only be DelimitedTextDialect or DelimitedJsonDialect or ParquetDialect
+Exception:  'ValueError' object has no attribute 'response'
+Container is deleted.
+Container is deleted.
+METHOD: resize_blob --- ARGS:  ['0']
+**AZURE**: Success -- Blob is resized.
+**EMULATOR**: Success -- Blob is resized.
+Container is deleted.
+Container is deleted.
+METHOD: seal_append_blob --- ARGS:  ['0', '0', '2', '0', '0', '-64', '0', '0', '0', '0', '-8', '0', '0']
+**AZURE**: Success -- Append blob is sealed.
+**EMULATOR**: Fail -- Append blob is not sealed. Error:  Bad Request
+ErrorCode:None
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: SUCCESS -- Response: {'etag': '"0x8DB85C0B9C4F619"', 'last_modified': datetime.datetime(2023, 7, 16, 5, 51, 39, tzinfo=datetime.timezone.utc), 'client_request_id': 'd4fa6659-239c-11ee-bec3-4da94d0edd97', 'request_id': 'fbb82bc1-701e-0031-04a9-b7298c000000', 'version': '2021-12-02', 'date': datetime.datetime(2023, 7, 16, 5, 51, 39, tzinfo=datetime.timezone.utc), 'blob_sealed': True} 
+EMULATOR: FAILURE -- Response: Bad Request
+ErrorCode:None
+
+ 
+Container is deleted.
+Container is deleted.
+METHOD: set_blob_metadata --- ARGS:  [{'name': 'blob293', 'info': {}}]
+**AZURE**: Fail -- Blob metadata is not set. Error:  Header part ({}) from {'x-ms-meta-info': {}} must be of type str or bytes, not <class 'dict'>
+**EMULATOR**: Fail -- Blob metadata is not set. Error:  Header part ({}) from {'x-ms-meta-info': {}} must be of type str or bytes, not <class 'dict'>
+Exception:  'ServiceRequestError' object has no attribute 'response'
+Container is deleted.
+Container is deleted.
+METHOD: set_blob_tags --- ARGS:  [{'name': 'blobname', 'url': 'https://sdkfuzz.blob.core.windows.net/mycontainer/myblob', 'flag': 0, 'size': 512}]
+**AZURE**: Success -- Blob tags are set.
+**EMULATOR**: Fail -- Blob tags are not set. Error:  Bad Request
+ErrorCode:None
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: SUCCESS -- Response: {'client_request_id': '3f1f392f-239d-11ee-bec3-4da94d0edd97', 'request_id': 'b1ebe363-701e-007c-27aa-b7e660000000', 'version': '2021-12-02', 'date': datetime.datetime(2023, 7, 16, 5, 54, 37, tzinfo=datetime.timezone.utc)} 
+EMULATOR: FAILURE -- Response: Bad Request
+ErrorCode:None
+
+ 
+Container is deleted.
+Container is deleted.
+METHOD: set_http_headers --- ARGS:  ['-986', '-9', '-42', '0', '0', '0', '0', '449771082', '-36', '0', '-9', '0', '0', '0', '-1', '0', '43', '8', '-8', '-889669727', '0', '0', '-7', '0']
+**AZURE**: Success -- HTTP headers are set.
+**EMULATOR**: Success -- HTTP headers are set.
+Container is deleted.
+Container is deleted.
+METHOD: set_immutability_policy --- ARGS:  ['3', '71', '47', '0', '2', '-1', '0', '-14', '-180', '0', '-8430', '0', '-911', '0', '-6', '0', '0']
+**AZURE**: Fail -- Immutability policy is not set. Error:  Operation returned an invalid status 'ImmutableStorageWithVersioning: feature is not enabled.'
+Content: <?xml version="1.0" encoding="utf-8"?>
+<Error><Code>ImmutableStorageWithVersioningIsNotEnabled</Code><Message>ImmutableStorageWithVersioning: feature is not enabled.
+RequestId:9713f044-b01e-004c-7faa-b758af000000
+Time:2023-07-16T05:54:39.9006042Z</Message></Error>
+**EMULATOR**: Fail -- Immutability policy is not set. Error:  Operation returned an invalid status 'Bad Request'
+
+DISCREPANCY FOUND!
+
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: ImmutableStorageWithVersioning: feature is not enabled.
+EMULATOR: FAILURE -- Error Message: Bad Request
+
+ 
+Container is deleted.
+Container is deleted.
+METHOD: set_legal_hold --- ARGS:  [0]
+**AZURE**: Fail -- Legal hold is not set. Error:  Operation returned an invalid status 'ImmutableStorageWithVersioning: feature is not enabled.'
+Content: <?xml version="1.0" encoding="utf-8"?>
+<Error><Code>ImmutableStorageWithVersioningIsNotEnabled</Code><Message>ImmutableStorageWithVersioning: feature is not enabled.
+RequestId:551193e9-201e-0061-5aaa-b7ebdc000000
+Time:2023-07-16T05:54:40.7826239Z</Message></Error>
+**EMULATOR**: Fail -- Legal hold is not set. Error:  Operation returned an invalid status 'Bad Request'
+
+DISCREPANCY FOUND!
+
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: ImmutableStorageWithVersioning: feature is not enabled.
+EMULATOR: FAILURE -- Error Message: Bad Request
+
+ 
+Container is deleted.
+Container is deleted.
+METHOD: set_sequence_number --- ARGS:  [0, '-2']
+**AZURE**: Fail -- Sequence number is not set. Error:  The value for one of the HTTP headers is not in the correct format.
+RequestId:df9c0882-301e-001f-4daa-b77b9b000000
+Time:2023-07-16T05:54:41.7141218Z
+ErrorCode:InvalidHeaderValue
+headername:x-ms-blob-sequence-number
+headervalue:-2
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>InvalidHeaderValue</Code><Message>The value for one of the HTTP headers is not in the correct format.
+RequestId:df9c0882-301e-001f-4daa-b77b9b000000
+Time:2023-07-16T05:54:41.7141218Z</Message><HeaderName>x-ms-blob-sequence-number</HeaderName><HeaderValue>-2</HeaderValue></Error>
+**EMULATOR**: Fail -- Sequence number is not set. Error:  Unsupported x-ms-sequence-number-action value.
+RequestId:ce03e171-cc95-4215-b1ab-b9691b0100a1
+Time:2023-07-16T05:54:41.763Z
+ErrorCode:InvalidOperation
+Content: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>InvalidOperation</Code>
+  <Message>Unsupported x-ms-sequence-number-action value.
+RequestId:ce03e171-cc95-4215-b1ab-b9691b0100a1
+Time:2023-07-16T05:54:41.763Z</Message>
+</Error>
+
+DISCREPANCY FOUND!
+
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: The value for one of the HTTP headers is not in the correct format.
+EMULATOR: FAILURE -- Error Message: Unsupported x-ms-sequence-number-action value.
+
+ 
+Container is deleted.
+Container is deleted.
+METHOD: set_standard_blob_tier --- ARGS:  [0]
+**AZURE**: Fail -- Blob tier is not set. Error:  The value for one of the HTTP headers is not in the correct format.
+RequestId:3ec6a974-801e-0068-5aaa-b7ae0f000000
+Time:2023-07-16T05:54:42.6161896Z
+ErrorCode:InvalidHeaderValue
+headername:x-ms-access-tier
+headervalue:0
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>InvalidHeaderValue</Code><Message>The value for one of the HTTP headers is not in the correct format.
+RequestId:3ec6a974-801e-0068-5aaa-b7ae0f000000
+Time:2023-07-16T05:54:42.6161896Z</Message><HeaderName>x-ms-access-tier</HeaderName><HeaderValue>0</HeaderValue></Error>
+**EMULATOR**: Fail -- Blob tier is not set. Error:  The access tier is not supported for this blob type.
+RequestId:94d33b7b-b33f-42e2-9743-25903e1a74a5
+Time:2023-07-16T05:54:42.639Z
+ErrorCode:AccessTierNotSupportedForBlobType
+Content: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>AccessTierNotSupportedForBlobType</Code>
+  <Message>The access tier is not supported for this blob type.
+RequestId:94d33b7b-b33f-42e2-9743-25903e1a74a5
+Time:2023-07-16T05:54:42.639Z</Message>
+</Error>
+
+DISCREPANCY FOUND!
+
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: The value for one of the HTTP headers is not in the correct format.
+EMULATOR: FAILURE -- Error Message: The access tier is not supported for this blob type.
+
+ 
+Container is deleted.
+Container is deleted.
+METHOD: stage_block --- ARGS:  [0, 1, '0']
+**AZURE**: Fail -- Block is not staged. Error:  Unexpected type for 'content': '<class 'int'>'. We expect 'content' to either be str, bytes, a open file-like object or an iterable/asynciterable.
+**EMULATOR**: Fail -- Block is not staged. Error:  Unexpected type for 'content': '<class 'int'>'. We expect 'content' to either be str, bytes, a open file-like object or an iterable/asynciterable.
+Exception:  'TypeError' object has no attribute 'response'
+Container is deleted.
+Container is deleted.
+METHOD: stage_block_from_url --- ARGS:  [0, 1, '7', '0', 4]
+**AZURE**: Success -- Blob is uploaded.
+**AZURE**: Fail -- Block is not staged from url. Error:  'int' object has no attribute 'decode'
+**EMULATOR**: Success -- Blob is uploaded.
+**EMULATOR**: Fail -- Block is not staged from url. Error:  'int' object has no attribute 'decode'
+Exception:  'AttributeError' object has no attribute 'response'
+Container is deleted.
+Container is deleted.
+METHOD: start_copy_from_url --- ARGS:  [0, {'tags': {'tag1': 'value1', 'tag2': 'value2'}}, 2]
+**AZURE**: Fail -- Copy from url not started. Error:  Please specify a container name and blob name.
+**EMULATOR**: Fail -- Copy from url not started. Error:  Please specify a container name and blob name.
+Exception:  'ValueError' object has no attribute 'response'
+Container is deleted.
+Container is deleted.
+METHOD: undelete_blob --- ARGS:  [0]
+**AZURE**: Success -- Blob is undeleted.
+**EMULATOR**: Fail -- Blob is not undeleted. Error:  Current API is not implemented yet. Please vote your wanted features to https://github.com/azure/azurite/issues
+RequestId:09068ab5-7aa0-4aab-9b1e-0ef66d522e7a
+Time:2023-07-16T05:56:07.425Z
+ErrorCode:APINotImplemented
+Content: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>APINotImplemented</Code>
+  <Message>Current API is not implemented yet. Please vote your wanted features to https://github.com/azure/azurite/issues
+RequestId:09068ab5-7aa0-4aab-9b1e-0ef66d522e7a
+Time:2023-07-16T05:56:07.425Z</Message>
+</Error>
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: SUCCESS -- Response: None 
+EMULATOR: FAILURE -- Response: Current API is not implemented yet. Please vote your wanted features to https://github.com/azure/azurite/issues
+RequestId:09068ab5-7aa0-4aab-9b1e-0ef66d522e7a
+Time:2023-07-16T05:56:07.425Z
+ErrorCode:APINotImplemented
+Content: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>APINotImplemented</Code>
+  <Message>Current API is not implemented yet. Please vote your wanted features to https://github.com/azure/azurite/issues
+RequestId:09068ab5-7aa0-4aab-9b1e-0ef66d522e7a
+Time:2023-07-16T05:56:07.425Z</Message>
+</Error>
+
+ 
+Container is deleted.
+Container is deleted.
+METHOD: upload_blob_from_bytes --- ARGS:  [0, 1, '0', {'name': 'Orange', 'price': 50}]
+**AZURE**: Fail -- Blob is not uploaded from bytes. Error:  Unsupported data type: <class 'int'>
+**EMULATOR**: Fail -- Blob is not uploaded from bytes. Error:  Unsupported data type: <class 'int'>
+Exception:  'TypeError' object has no attribute 'response'
+Container is deleted.
+Container is deleted.
+METHOD: upload_blob_from_url --- ARGS:  [0]
+**AZURE**: Fail -- Blob is not uploaded from url. Error:  a bytes-like object is required, not 'str'
+**EMULATOR**: Fail -- Blob is not uploaded from url. Error:  a bytes-like object is required, not 'str'
+Exception:  'TypeError' object has no attribute 'response'
+Container is deleted.
+Container is deleted.
+METHOD: upload_page --- ARGS:  [0, '526']
+**AZURE**: Fail -- Page is not uploaded. Error:  'int' object is not subscriptable
+**EMULATOR**: Fail -- Page is not uploaded. Error:  'int' object is not subscriptable
+Exception:  'TypeError' object has no attribute 'response'
+Container is deleted.
+Container is deleted.
+METHOD: upload_pages_from_url --- ARGS:  [0, '6599', '-5', '0']
+**AZURE**: Fail -- Pages are not uploaded from url. Error:  a bytes-like object is required, not 'str'
+**EMULATOR**: Fail -- Pages are not uploaded from url. Error:  a bytes-like object is required, not 'str'
+Exception:  'TypeError' object has no attribute 'response'
+Container is deleted.
+Container is deleted.
+METHOD: acquire_lease --- ARGS:  [0, '0']
+**AZURE**: Fail -- Lease is not acquired. Error:  The value for one of the HTTP headers is not in the correct format.
+RequestId:6f49172c-901e-0039-67aa-b73383000000
+Time:2023-07-16T05:56:11.6114122Z
+ErrorCode:InvalidHeaderValue
+headername:x-ms-lease-duration
+headervalue:0
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>InvalidHeaderValue</Code><Message>The value for one of the HTTP headers is not in the correct format.
+RequestId:6f49172c-901e-0039-67aa-b73383000000
+Time:2023-07-16T05:56:11.6114122Z</Message><HeaderName>x-ms-lease-duration</HeaderName><HeaderValue>0</HeaderValue></Error>
+**EMULATOR**: Fail -- Lease is not acquired. Error:  The value for one of the HTTP headers is not in the correct format.
+RequestId:9ddb6a18-afa9-4c1c-90de-0324b9c8532f
+Time:2023-07-16T05:56:11.636Z
+ErrorCode:InvalidHeaderValue
+Content: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>InvalidHeaderValue</Code>
+  <Message>The value for one of the HTTP headers is not in the correct format.
+RequestId:9ddb6a18-afa9-4c1c-90de-0324b9c8532f
+Time:2023-07-16T05:56:11.636Z</Message>
+</Error>
+Container is deleted.
+Container is deleted.
+METHOD: create_container --- ARGS:  [0]
+**AZURE**: Fail -- Container is not created. Error:  Please specify a container name.
+**EMULATOR**: Fail -- Container is not created. Error:  Please specify a container name.
+Exception:  'ValueError' object has no attribute 'response'
+Container is deleted.
+Container is deleted.
+METHOD: delete_blob --- ARGS:  [0]
+**AZURE**: Fail -- Blob is not deleted. Error:  Please specify a container name and blob name.
+**EMULATOR**: Fail -- Blob is not deleted. Error:  Please specify a container name and blob name.
+Exception:  'ValueError' object has no attribute 'response'
+Container is deleted.
+Container is deleted.
+METHOD: delete_blobs --- ARGS:  [{'type': 'snapshot', 'flag': 512}]
+**AZURE**: Fail -- Blobs are not deleted. Error:  quote_from_bytes() expected bytes
+**EMULATOR**: Fail -- Blobs are not deleted. Error:  quote_from_bytes() expected bytes
+Exception:  'TypeError' object has no attribute 'response'
+Container is deleted.
+Container is deleted.
+METHOD: delete_container --- ARGS:  ['0', '0', '-29', '-1', '0', '-5', '3', '0', '0', '0', '-7380', '0', '0', '0', '-7', '5709', '-50', '0', '0']
+**AZURE**: Success -- Container deleted successfully.
+**EMULATOR**: Success -- Container deleted successfully.
+METHOD: download_blob --- ARGS:  [0]
+**AZURE**: Fail -- Blob is not downloaded. Error:  Please specify a container name and blob name.
+**EMULATOR**: Fail -- Blob is not downloaded. Error:  Please specify a container name and blob name.
+Exception:  'ValueError' object has no attribute 'response'
+Container is deleted.
+Container is deleted.
+METHOD: exists --- ARGS:  ['7', '-16', '0', '0', '-9', '57', '-9960', '0', '0', '-21', '0', '-37', '0', '-62', '-2', '9592', '6', '0', '0', '0', '0', '0', '-855', '0', '0', '0', '2', '56', '-561', '0', '2', '0', '-6', '0', '0', '0', '0', '9', '-2', '0', '-30', '-65', '0', '0', '0', '0', '0', '0', '-23', '0', '-61', '-10', '6167']
+**AZURE**: Success -- Checking if container exists: 
+**AZURE**: Success -- Container exists: True
+**EMULATOR**: Success -- Checking if container exists: 
+**EMULATOR**: Success -- Container exists: True
+Container is deleted.
+Container is deleted.
+METHOD: find_blobs_by_tags --- ARGS:  [{'metadata': {'metadata1': 'value1', 'metadata2': 'value2'}}]
+**AZURE**: Success -- Blobs are found.
+**EMULATOR**: Success -- Blobs are found.
+Container is deleted.
+Container is deleted.
+METHOD: get_account_information --- ARGS:  ['-440', '3', '0', '22', '0', '5', '-5', '0', '0', '0', '0', '34', '9212', '8', '0', '0', '0', '0', '0', '0', '3', '0', '0', '0', '-6', '0', '51960', '-600', '-7', '0', '0', '0', '4', '0', '0', '0', '1', '2', '0', '0']
+**AZURE**: Success -- Account information found
+**EMULATOR**: Success -- Account information found
+Container is deleted.
+Container is deleted.
+METHOD: get_blob_client --- ARGS:  [0]
+**AZURE**: Fail -- Blob client is not found. Error:  Please specify a container name and blob name.
+**EMULATOR**: Fail -- Blob client is not found. Error:  Please specify a container name and blob name.
+Exception:  'ValueError' object has no attribute 'response'
+Container is deleted.
+Container is deleted.
+METHOD: get_container_access_policy --- ARGS:  ['0', '0', '0', '0', '0', '-10811', '0', '-7', '0', '0', '6', '9', '79', '5', '0', '-5', '0', '46', '6', '0', '490', '65', '-9512047', '0', '130', '0', '1', '0', '-3', '-995', '62672', '0', '9', '44', '-9', '0', '-96', '0']
+**AZURE**: Success -- Container access policy accessed
+**EMULATOR**: Success -- Container access policy accessed
+Container is deleted.
+Container is deleted.
+METHOD: get_container_properties --- ARGS:  ['0', '0', '0', '0', '-6', '0', '0', '2', '47', '0', '0', '0', '0', '661', '30', '5', '-6', '-66', '0', '0', '85619', '0', '9', '903070', '0', '0', '1546', '45', '-62', '0', '0', '9', '7', '0', '0', '0', '89260', '230', '-38', '-3', '0', '0', '0', '6', '0', '0', '0', '0', '0', '0', '0', '1', '-444', '0', '0', '-74', '7', '-25', '-2', '0', '-2', '83', '-33', '0', '0', '0', '0', '0', '-19', '96', '3798', '-55', '0', '0', '-39', '-85', '21', '-7', '0', '0', '9', '555', '8', '0', '0', '0', '0', '-7', '6', '0', '0', '0', '-203', '7403', '0', '0', '15', '0']
+**AZURE**: Success -- Container properties found
+**EMULATOR**: Success -- Container properties found
+Container is deleted.
+Container is deleted.
+METHOD: list_blob_names --- ARGS:  [0]
+**AZURE**: Success -- Listing blob names...
+**AZURE**: Success -- Blob names listed successfully
+**EMULATOR**: Success -- Listing blob names...
+**EMULATOR**: Success -- Blob names listed successfully
+Container is deleted.
+Container is deleted.
+METHOD: list_blobs --- ARGS:  [0, '282']
+**AZURE**: Success -- Listing blobs...
+**AZURE**: Success -- Blob listed successfully
+**EMULATOR**: Success -- Listing blobs...
+**EMULATOR**: Success -- Blob listed successfully
+Container is deleted.
+Container is deleted.
+METHOD: set_container_access_policy --- ARGS:  [{'metadata': ['AAA=', 'BBB=', 'CCC='], 'info': {'category': 'test', 'created': '2020-01-01', 'author': 'test', 'description': 'test', 'tags': 'test', 'title': 'test', 'version': '1.0', 'filename': 'test'}}]
+**AZURE**: Fail -- Container access policy is not set. Error:  'list' object has no attribute 'start'
+**EMULATOR**: Fail -- Container access policy is not set. Error:  'list' object has no attribute 'start'
+Exception:  'AttributeError' object has no attribute 'response'
+Container is deleted.
+Container is deleted.
+METHOD: set_container_metadata --- ARGS:  [{'name': 'John Doe', 'age': 30, 'address': '123 Main Street, Anytown, USA'}]
+**AZURE**: Fail -- Container metadata is not set. Error:  'int' object has no attribute 'strip'
+**EMULATOR**: Fail -- Container metadata is not set. Error:  'int' object has no attribute 'strip'
+Exception:  'AttributeError' object has no attribute 'response'
+Container is deleted.
+Container is deleted.
+METHOD: set_premium_page_blob_tier --- ARGS:  [0, 1]
+**AZURE**: Fail -- premium page blob tier is not set. Error:  Please specify a container name and blob name.
+**EMULATOR**: Fail -- premium page blob tier is not set. Error:  Please specify a container name and blob name.
+Exception:  'ValueError' object has no attribute 'response'
+Container is deleted.
+Container is deleted.
+METHOD: set_standard_page_blob_tier --- ARGS:  [0, 1]
+**AZURE**: Fail -- standard page blob tier is not set. Error:  quote_from_bytes() expected bytes
+**EMULATOR**: Fail -- standard page blob tier is not set. Error:  quote_from_bytes() expected bytes
+Exception:  'TypeError' object has no attribute 'response'
+Container is deleted.
+Container is deleted.
+METHOD: upload_blob --- ARGS:  [0, 1, 2, {'name': 'blob293', 'info': {}}]
+**AZURE**: Success -- Uploading blob:  0
+**AZURE**: Fail -- Blob is not uploaded. Error:  object of type 'int' has no len()
+**EMULATOR**: Success -- Uploading blob:  0
+**EMULATOR**: Fail -- Blob is not uploaded. Error:  object of type 'int' has no len()
+Exception:  'TypeError' object has no attribute 'response'
+Container is deleted.
+Container is deleted.
+METHOD: walk_blobs --- ARGS:  [0, '0', 2]
+**AZURE**: Success -- Blobs walk successful.
+**EMULATOR**: Success -- Blobs walk successful.
+Container is deleted.
+Container is deleted.
+METHOD: create_container --- ARGS:  [0]
+**AZURE** : Fail -- Container creation failed with name:  0  and error:  Please specify a container name.
+**EMULATOR** : Fail -- Container creation failed with name:  0  and error:  Please specify a container name.
+Exception:  'ValueError' object has no attribute 'response'
+Container is deleted.
+Container is deleted.
+METHOD: delete_container --- ARGS:  [0]
+**AZURE** : Fail -- Container deletion failed with name:  0  and error:  Please specify a container name.
+**EMULATOR** : Fail -- Container deletion failed with name:  0  and error:  Please specify a container name.
+Exception:  'ValueError' object has no attribute 'response'
+Container is deleted.
+Container is deleted.
+METHOD: find_blobs_by_tags --- ARGS:  [0]
+**AZURE** : Success -- Blobs found with filter expression:  0
+**EMULATOR** : Success -- Blobs found with filter expression:  0
+Container is deleted.
+Container is deleted.
+METHOD: get_account_info --- ARGS:  ['0', '4', '-1', '-8', '77', '0', '-760', '-233', '3', '34', '0', '9', '0', '1', '0', '0', '0', '755', '0', '0', '0', '3', '-11381', '0', '0', '-97', '0']
+**AZURE** : Success -- Account info retrieved
+**EMULATOR** : Success -- Account info retrieved
+Container is deleted.
+Container is deleted.
+METHOD: get_blob_client --- ARGS:  [0]
+**AZURE** : Fail -- Blob client retrieval failed with name:  0  and error:  Please specify a container name and blob name.
+**EMULATOR** : Fail -- Blob client retrieval failed with name:  0  and error:  Please specify a container name and blob name.
+Exception:  'ValueError' object has no attribute 'response'
+Container is deleted.
+Container is deleted.
+METHOD: get_container_client --- ARGS:  [0]
+**AZURE** : Fail -- Container client retrieval failed with name:  0  and error:  Please specify a container name.
+**EMULATOR** : Fail -- Container client retrieval failed with name:  0  and error:  Please specify a container name.
+Exception:  'ValueError' object has no attribute 'response'
+Container is deleted.
+Container is deleted.
+METHOD: get_service_properties --- ARGS:  ['0', '0', '6', '0', '8', '-8', '8', '1', '-7', '816', '-3', '0', '-7', '-54', '0', '86', '34', '0']
+**AZURE** : Success -- Service properties retrieved
+**EMULATOR** : Success -- Service properties retrieved
+Container is deleted.
+Container is deleted.
+METHOD: get_service_stats --- ARGS:  ['50', '0', '7457', '0', '0', '88322', '0', '0', '4', '-24', '-5', '2770', '-7', '0', '-24', '0', '0', '7', '0']
+**AZURE** : Fail -- Service stats retrieval failed, error:  <urllib3.connection.HTTPSConnection object at 0x7fb1b42b8e80>: Failed to establish a new connection: [Errno -2] Name or service not known
+**EMULATOR** : Fail -- Service stats retrieval failed, error:  <urllib3.connection.HTTPSConnection object at 0x7fb1b41fc310>: Failed to establish a new connection: [Errno -2] Name or service not known
+Exception:  'ServiceRequestError' object has no attribute 'response'
+Container is deleted.
+Container is deleted.
+METHOD: list_containers --- ARGS:  [0, 1, 2]
+**AZURE** : Success -- Container list retrieved
+**EMULATOR** : Success -- Container list retrieved
+Container is deleted.
+Container is deleted.
+METHOD: undelete_container --- ARGS:  [0, 1]
+**AZURE** : Fail -- Container undeletion failed with name:  0  and error:  Please specify a container name.
+**EMULATOR** : Fail -- Container undeletion failed with name:  0  and error:  Please specify a container name.
+Exception:  'ValueError' object has no attribute 'response'
+Container is deleted.
+Container is deleted.
+METHOD: acquire_lease --- ARGS:  ['0']
+**AZURE**: Fail -- Blob lease is not acquired. Error:  The value for one of the HTTP headers is not in the correct format.
+RequestId:d13a6300-f01e-004d-75aa-b70773000000
+Time:2023-07-16T05:59:11.1466961Z
+ErrorCode:InvalidHeaderValue
+headername:x-ms-lease-duration
+headervalue:0
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>InvalidHeaderValue</Code><Message>The value for one of the HTTP headers is not in the correct format.
+RequestId:d13a6300-f01e-004d-75aa-b70773000000
+Time:2023-07-16T05:59:11.1466961Z</Message><HeaderName>x-ms-lease-duration</HeaderName><HeaderValue>0</HeaderValue></Error>
+**EMULATOR**: Fail -- Blob lease is not acquired. Error:  The value for one of the HTTP headers is not in the correct format.
+RequestId:6b91f083-cd39-4570-a966-cf8e3a28eca8
+Time:2023-07-16T05:59:11.177Z
+ErrorCode:InvalidHeaderValue
+Content: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>InvalidHeaderValue</Code>
+  <Message>The value for one of the HTTP headers is not in the correct format.
+RequestId:6b91f083-cd39-4570-a966-cf8e3a28eca8
+Time:2023-07-16T05:59:11.177Z</Message>
+</Error>
+Container is deleted.
+Container is deleted.
+METHOD: break_lease --- ARGS:  ['-44']
+**AZURE**: Fail -- Blob lease is not broken. Error:  The value for one of the HTTP headers is not in the correct format.
+RequestId:ae49de1e-a01e-0050-01aa-b70acf000000
+Time:2023-07-16T05:59:11.6615013Z
+ErrorCode:InvalidHeaderValue
+headername:x-ms-lease-break-period
+headervalue:-44
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>InvalidHeaderValue</Code><Message>The value for one of the HTTP headers is not in the correct format.
+RequestId:ae49de1e-a01e-0050-01aa-b70acf000000
+Time:2023-07-16T05:59:11.6615013Z</Message><HeaderName>x-ms-lease-break-period</HeaderName><HeaderValue>-44</HeaderValue></Error>
+**EMULATOR**: Fail -- Blob lease is not broken. Error:  The value for one of the HTTP headers is not in the correct format.
+RequestId:a5999e5c-2541-4c00-9044-b0b386032926
+Time:2023-07-16T05:59:11.696Z
+ErrorCode:InvalidHeaderValue
+Content: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>InvalidHeaderValue</Code>
+  <Message>The value for one of the HTTP headers is not in the correct format.
+RequestId:a5999e5c-2541-4c00-9044-b0b386032926
+Time:2023-07-16T05:59:11.696Z</Message>
+</Error>
+Container is not deleted. Error:  There is currently a lease on the container and no lease ID was specified in the request.
+RequestId:ae49de59-a01e-0050-37aa-b70acf000000
+Time:2023-07-16T05:59:11.7514499Z
+ErrorCode:LeaseIdMissing
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>LeaseIdMissing</Code><Message>There is currently a lease on the container and no lease ID was specified in the request.
+RequestId:ae49de59-a01e-0050-37aa-b70acf000000
+Time:2023-07-16T05:59:11.7514499Z</Message></Error>
+Container is not deleted. Error:  There is currently a lease on the container and no lease ID was specified in the request.
+RequestId:e5b5bf70-96fd-49a1-86a3-daac4e5fe520
+Time:2023-07-16T05:59:11.786Z
+ErrorCode:LeaseIdMissing
+Content: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>LeaseIdMissing</Code>
+  <Message>There is currently a lease on the container and no lease ID was specified in the request.
+RequestId:e5b5bf70-96fd-49a1-86a3-daac4e5fe520
+Time:2023-07-16T05:59:11.786Z</Message>
+</Error>
+METHOD: change_lease --- ARGS:  [0]
+**AZURE**: Fail -- Blob lease is not changed. Error:  The value for one of the HTTP headers is not in the correct format.
+RequestId:ad73314b-501e-006b-5caa-b74f6b000000
+Time:2023-07-16T05:59:12.0575890Z
+ErrorCode:InvalidHeaderValue
+headername:x-ms-proposed-lease-id
+headervalue:0
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>InvalidHeaderValue</Code><Message>The value for one of the HTTP headers is not in the correct format.
+RequestId:ad73314b-501e-006b-5caa-b74f6b000000
+Time:2023-07-16T05:59:12.0575890Z</Message><HeaderName>x-ms-proposed-lease-id</HeaderName><HeaderValue>0</HeaderValue></Error>
+**EMULATOR**: Success -- Blob lease is changed.
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: The value for one of the HTTP headers is not in the correct format.
+RequestId:ad73314b-501e-006b-5caa-b74f6b000000
+Time:2023-07-16T05:59:12.0575890Z
+ErrorCode:InvalidHeaderValue
+headername:x-ms-proposed-lease-id
+headervalue:0
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>InvalidHeaderValue</Code><Message>The value for one of the HTTP headers is not in the correct format.
+RequestId:ad73314b-501e-006b-5caa-b74f6b000000
+Time:2023-07-16T05:59:12.0575890Z</Message><HeaderName>x-ms-proposed-lease-id</HeaderName><HeaderValue>0</HeaderValue></Error> 
+EMULATOR: SUCCESS -- Response: None
+
+ 
+Container is not deleted. Error:  There is currently a lease on the container and no lease ID was specified in the request.
+RequestId:ad733180-501e-006b-0eaa-b74f6b000000
+Time:2023-07-16T05:59:12.1465378Z
+ErrorCode:LeaseIdMissing
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>LeaseIdMissing</Code><Message>There is currently a lease on the container and no lease ID was specified in the request.
+RequestId:ad733180-501e-006b-0eaa-b74f6b000000
+Time:2023-07-16T05:59:12.1465378Z</Message></Error>
+Container is not deleted. Error:  There is currently a lease on the container and no lease ID was specified in the request.
+RequestId:ad733189-501e-006b-16aa-b74f6b000000
+Time:2023-07-16T05:59:12.1825179Z
+ErrorCode:LeaseIdMissing
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>LeaseIdMissing</Code><Message>There is currently a lease on the container and no lease ID was specified in the request.
+RequestId:ad733189-501e-006b-16aa-b74f6b000000
+Time:2023-07-16T05:59:12.1825179Z</Message></Error>
+Container is deleted.
+Container is not deleted. Error:  There is currently a lease on the container and no lease ID was specified in the request.
+RequestId:ed6fec35-e7ac-4251-b070-00f8aa863476
+Time:2023-07-16T05:59:12.221Z
+ErrorCode:LeaseIdMissing
+Content: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>LeaseIdMissing</Code>
+  <Message>There is currently a lease on the container and no lease ID was specified in the request.
+RequestId:ed6fec35-e7ac-4251-b070-00f8aa863476
+Time:2023-07-16T05:59:12.221Z</Message>
+</Error>
+METHOD: delete_blob --- ARGS:  ['66', '-7', '2', '0', '6', '2876', '-7', '-44', '0', '3', '0', '0', '-9', '0', '0', '0', '0']
+**AZURE**: Success -- Blob is deleted.
+**EMULATOR**: Success -- Blob is deleted.
+Container is not deleted. Error:  There is currently a lease on the container and no lease ID was specified in the request.
+RequestId:d705e19a-e01e-0041-18aa-b7907b000000
+Time:2023-07-16T05:59:12.5940899Z
+ErrorCode:LeaseIdMissing
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>LeaseIdMissing</Code><Message>There is currently a lease on the container and no lease ID was specified in the request.
+RequestId:d705e19a-e01e-0041-18aa-b7907b000000
+Time:2023-07-16T05:59:12.5940899Z</Message></Error>
+Container is deleted.
+Container is not deleted. Error:  There is currently a lease on the container and no lease ID was specified in the request.
+RequestId:d705e1c7-e01e-0041-3faa-b7907b000000
+Time:2023-07-16T05:59:12.6670482Z
+ErrorCode:LeaseIdMissing
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>LeaseIdMissing</Code><Message>There is currently a lease on the container and no lease ID was specified in the request.
+RequestId:d705e1c7-e01e-0041-3faa-b7907b000000
+Time:2023-07-16T05:59:12.6670482Z</Message></Error>
+Container is not deleted. Error:  There is currently a lease on the container and no lease ID was specified in the request.
+RequestId:2cb4493a-381f-4ff9-a9d0-7fe87447a903
+Time:2023-07-16T05:59:12.701Z
+ErrorCode:LeaseIdMissing
+Content: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>LeaseIdMissing</Code>
+  <Message>There is currently a lease on the container and no lease ID was specified in the request.
+RequestId:2cb4493a-381f-4ff9-a9d0-7fe87447a903
+Time:2023-07-16T05:59:12.701Z</Message>
+</Error>
+Container is deleted.
+METHOD: release_lease --- ARGS:  ['-888', '5', '-98', '0', '-4340']
+**AZURE**: Success -- Blob lease is released.
+**EMULATOR**: Success -- Blob lease is released.
+Container is deleted.
+Container is not deleted. Error:  There is currently a lease on the container and no lease ID was specified in the request.
+RequestId:17b91327-401e-0015-33aa-b7df2c000000
+Time:2023-07-16T05:59:13.1048172Z
+ErrorCode:LeaseIdMissing
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>LeaseIdMissing</Code><Message>There is currently a lease on the container and no lease ID was specified in the request.
+RequestId:17b91327-401e-0015-33aa-b7df2c000000
+Time:2023-07-16T05:59:13.1048172Z</Message></Error>
+Container is not deleted. Error:  There is currently a lease on the container and no lease ID was specified in the request.
+RequestId:17b9133d-401e-0015-46aa-b7df2c000000
+Time:2023-07-16T05:59:13.1417970Z
+ErrorCode:LeaseIdMissing
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>LeaseIdMissing</Code><Message>There is currently a lease on the container and no lease ID was specified in the request.
+RequestId:17b9133d-401e-0015-46aa-b7df2c000000
+Time:2023-07-16T05:59:13.1417970Z</Message></Error>
+Container is not deleted. Error:  There is currently a lease on the container and no lease ID was specified in the request.
+RequestId:18b8aa8c-ac98-4006-b3e9-15c8b6a042f8
+Time:2023-07-16T05:59:13.176Z
+ErrorCode:LeaseIdMissing
+Content: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>LeaseIdMissing</Code>
+  <Message>There is currently a lease on the container and no lease ID was specified in the request.
+RequestId:18b8aa8c-ac98-4006-b3e9-15c8b6a042f8
+Time:2023-07-16T05:59:13.176Z</Message>
+</Error>
+Container is deleted.
+METHOD: renew_lease --- ARGS:  ['0', '0', '0', '7', '0', '0', '0', '9', '-9664', '-4', '0', '0', '-4', '1', '0', '0', '-73', '0', '-50', '0', '0', '8', '0', '-70', '5', '0', '5', '0', '0', '4']
+**AZURE**: Success -- Blob lease is renewed.
+**EMULATOR**: Success -- Blob lease is renewed.
+Container is deleted.
+Container is not deleted. Error:  There is currently a lease on the container and no lease ID was specified in the request.
+RequestId:5cb0e6fb-401e-0005-36aa-b71a44000000
+Time:2023-07-16T05:59:13.7079658Z
+ErrorCode:LeaseIdMissing
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>LeaseIdMissing</Code><Message>There is currently a lease on the container and no lease ID was specified in the request.
+RequestId:5cb0e6fb-401e-0005-36aa-b71a44000000
+Time:2023-07-16T05:59:13.7079658Z</Message></Error>
+Container is not deleted. Error:  There is currently a lease on the container and no lease ID was specified in the request.
+RequestId:5cb0e704-401e-0005-3daa-b71a44000000
+Time:2023-07-16T05:59:13.7469433Z
+ErrorCode:LeaseIdMissing
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>LeaseIdMissing</Code><Message>There is currently a lease on the container and no lease ID was specified in the request.
+RequestId:5cb0e704-401e-0005-3daa-b71a44000000
+Time:2023-07-16T05:59:13.7469433Z</Message></Error>
+Container is not deleted. Error:  There is currently a lease on the container and no lease ID was specified in the request.
+RequestId:d9884e35-08b1-400f-b355-195de6a58728
+Time:2023-07-16T05:59:13.781Z
+ErrorCode:LeaseIdMissing
+Content: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>LeaseIdMissing</Code>
+  <Message>There is currently a lease on the container and no lease ID was specified in the request.
+RequestId:d9884e35-08b1-400f-b355-195de6a58728
+Time:2023-07-16T05:59:13.781Z</Message>
+</Error>
+Container is deleted.
+METHOD: table_create_entity --- ARGS:  [{'hex': '0x8D', 'url': 'https://sdkfuzz.blob.core.windows.net/mycontainer/myblob', 'flag': 0, 'size': 512, 'empty': ''}]
+**AZURE** : Fail -- Entity creation failed; error:  PartitionKey must be present in an entity
+**EMULATOR** : Fail -- Entity creation failed; error:  Operation returned an invalid status 'Internal Server Error'
+Exception:  'ValueError' object has no attribute 'response'
+Table deleted:  table313173472
+Table deleted:  table50446976
+METHOD: table_delete_entity --- ARGS:  [0, 1]
+**AZURE** : Fail -- Entity deletion failed; error:  PartitionKey or RowKey must be of type string.
+**EMULATOR** : Fail -- Entity deletion failed; error:  PartitionKey or RowKey must be of type string.
+Exception:  'TypeError' object has no attribute 'response'
+Table deleted:  table427930101
+Table deleted:  table746997527
+METHOD: table_delete_table --- ARGS:  [0]
+**AZURE** : Success -- Table deleted with name:  0
+**EMULATOR** : Success -- Table deleted with name:  0
+METHOD: table_get_entity --- ARGS:  [0, 1]
+**AZURE** : Fail -- Entity retrieval failed; error:  PartitionKey or RowKey must be of type string.
+**EMULATOR** : Fail -- Entity retrieval failed; error:  PartitionKey or RowKey must be of type string.
+Exception:  'TypeError' object has no attribute 'response'
+Table deleted:  table188363629
+Table deleted:  table446156867
+METHOD: table_get_table_access_policy --- ARGS:  ['4', '0', '-6', '9964', '0', '-42', '0', '-42', '0', '-7', '0', '-44', '21', '-52', '-162', '-65', '0', '17', '5', '-15', '-28', '-392', '0', '-10000', '4', '890', '38450', '8225', '0', '5', '3', '-26', '8337', '-162', '0', '0', '0', '-23', '0', '7', '0', '4', '0', '6', '6', '-9', '1', '0', '0', '0', '86', '-52', '0', '0', '0', '0', '-5', '0', '0', '0', '0', '42', '0']
+**AZURE** : Success -- Table access policy retrieved
+**EMULATOR** : Success -- Table access policy retrieved
+Table deleted:  table801706031
+Table deleted:  table974101325
+Table deleted:  table36971804
+Table deleted:  table970767198
+METHOD: table_list_entities --- ARGS:  ['-4', '-54', '0', '0']
+**AZURE** : Success -- Entities listed
+**EMULATOR** : Success -- Entities listed
+Table deleted:  table572746304
+Table deleted:  table650540604
+METHOD: table_query_entities --- ARGS:  [0]
+**AZURE** : Success -- Entities queried
+**EMULATOR** : Success -- Entities queried
+Table deleted:  table485844792
+Table deleted:  table329419266
+METHOD: table_set_table_access_policy --- ARGS:  [{}]
+**AZURE** : Success -- Table access policy set
+**EMULATOR** : Success -- Table access policy set
+Table deleted:  table857370368
+Table deleted:  table759048360
+METHOD: table_submit_transaction --- ARGS:  [{'name': 'Jane Doe', 'age': 25, 'address': '456 Elm Street, Anytown, USA'}]
+**AZURE** : Success -- Entity created
+**AZURE** : Fail -- Transaction submission failed; error:  Unrecognized operation: name
+**EMULATOR** : Success -- Entity created
+**EMULATOR** : Fail -- Transaction submission failed; error:  Unrecognized operation: name
+Exception:  'ValueError' object has no attribute 'response'
+Table deleted:  table61979711
+Table deleted:  table869795689
+METHOD: table_update_entity --- ARGS:  [{'name': 'blobname', 'url': 'https://sdkfuzz.blob.core.windows.net/mycontainer/myblob', 'flag': 0, 'size': 512}, 1]
+**AZURE** : Success -- Entity created
+**AZURE** : Fail -- Entity update failed; error:  'PartitionKey'
+**EMULATOR** : Success -- Entity created
+**EMULATOR** : Fail -- Entity update failed; error:  'PartitionKey'
+Exception:  'KeyError' object has no attribute 'response'
+Table deleted:  table513878750
+Table deleted:  table742241573
+METHOD: table_upsert_entity --- ARGS:  [{'name': 'blobname', 'url': 'https://sdkfuzz.blob.core.windows.net/mycontainer/myblob', 'flag': 0, 'size': 512}, 1]
+**AZURE** : Fail -- Entity upsert failed; error:  'PartitionKey'
+**EMULATOR** : Fail -- Entity upsert failed; error:  'PartitionKey'
+Exception:  'KeyError' object has no attribute 'response'
+Table deleted:  table914383369
+Table deleted:  table484722100
+METHOD: table_create --- ARGS:  ['-4892', '-91', '0', '-1', '0', '0', '9', '0', '0', '5044', '0', '0', '-7', '-5']
+**AZURE** : Success -- Table created
+**EMULATOR** : Success -- Table created
+Table deleted:  table81870677
+Table deleted:  table320703559
+METHOD: table_delete --- ARGS:  ['0', '0', '0', '0', '0', '0', '-3', '6636', '0', '23', '0', '19', '0']
+**AZURE** : Success -- Table deleted
+**EMULATOR** : Success -- Table deleted
+METHOD: table_get_service_properties --- ARGS:  ['7333', '1', '4539', '2', '-5598', '0', '83', '0', '1', '-3', '-51', '0', '-6', '3', '-9', '7', '0', '0', '0', '5']
+**AZURE** : Success -- Service properties retrieved
+**EMULATOR** : Success -- Service properties retrieved
+Table deleted:  table471182143
+Table deleted:  table148538744
+METHOD: table_get_service_stats --- ARGS:  ['0', '-90', '-2312', '-6', '6', '-10', '0', '-5769372', '-875899', '-6', '0']
+**AZURE** : Fail -- Service stats retrieval failed; error:  <urllib3.connection.HTTPSConnection object at 0x7fb1b4b952e0>: Failed to establish a new connection: [Errno -2] Name or service not known
+**EMULATOR** : Fail -- Service stats retrieval failed; error:  Atom format is not supported.
+RequestId:355a32dc-8856-4713-ad96-94e7c5126fc0
+Time:2023-07-16T05:59:30.515Z
+ErrorCode:AtomFormatNotSupported
+Error:
+  
+Content: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+  <Code>AtomFormatNotSupported</Code>
+  <Message>Atom format is not supported.
+RequestId:355a32dc-8856-4713-ad96-94e7c5126fc0
+Time:2023-07-16T05:59:30.515Z</Message>
+</Error>
+Exception:  'ServiceRequestError' object has no attribute 'response'
+Table deleted:  table307563498
+Table deleted:  table292154077
+METHOD: table_get_table_client --- ARGS:  ['5', '0', '0']
+**AZURE** : Success -- Table client retrieved
+**EMULATOR** : Success -- Table client retrieved
+Table deleted:  table311733652
+Table deleted:  table50984710
+METHOD: table_list_tables --- ARGS:  ['4896', '-574', '-87669', '-7', '-39', '0', '0', '-77', '0', '0', '-9552', '0', '-9', '0', '-9', '0']
+**AZURE** : Success -- Tables listed
+**EMULATOR** : Success -- Tables listed
+Table deleted:  table809991324
+Table deleted:  table604813045
+METHOD: table_query_tables --- ARGS:  [0]
+**AZURE** : Success -- Tables queried
+**EMULATOR** : Success -- Tables queried
+Table deleted:  table275373989
+Table deleted:  table57536557
+METHOD: table_set_service_properties --- ARGS:  ['0', '0', '0', '10', '-51', '0', '0', '-4', '722883', '0', '94', '4683', '2335211', '2', '-4', '-81', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '6', '5']
+**AZURE** : Fail -- Service properties set failed; error:  'str' object has no attribute '_to_generated'
+**EMULATOR** : Fail -- Service properties set failed; error:  'str' object has no attribute '_to_generated'
+Exception:  'AttributeError' object has no attribute 'response'
+Table deleted:  table985023215
+Table deleted:  table14592907
+METHOD: queue_clear_messages --- ARGS:  ['733', '0', '0', '0', '0', '0', '-5']
+**AZURE** : Success -- Queue cleared
+**EMULATOR** : Success -- Queue cleared
+Success -- Queue deleted
+Success -- Queue deleted
+METHOD: queue_create --- ARGS:  [0]
+**AZURE** : Fail -- Queue creation failed; error:  Please specify a queue name.
+**EMULATOR** : Fail -- Queue creation failed; error:  Please specify a queue name.
+Exception:  'ValueError' object has no attribute 'response'
+Success -- Queue deleted
+Success -- Queue deleted
+METHOD: queue_delete --- ARGS:  [0]
+**AZURE** : Success -- Queue deleted
+**EMULATOR** : Success -- Queue deleted
+METHOD: queue_delete_message --- ARGS:  ['9', '-60', '-26', '7', '0', '-69', '0', '0', '0', '-54', '0', '-83926', '1']
+**AZURE** : Success -- Message sent
+**AZURE** : Success -- Message deleted
+**EMULATOR** : Success -- Message sent
+**EMULATOR** : Success -- Message deleted
+Success -- Queue deleted
+Success -- Queue deleted
+METHOD: queue_get_access_policy --- ARGS:  ['0', '0', '0', '0', '58', '0', '0', '0', '0', '-531', '0', '0', '-8549', '-8133', '1', '8']
+**AZURE** : Success -- Queue access policy retrieved
+**EMULATOR** : Success -- Queue access policy retrieved
+Success -- Queue deleted
+Success -- Queue deleted
+METHOD: queue_get_properties --- ARGS:  ['-81', '0', '-37', '0', '8', '0', '0', '52', '0', '0', '6', '808', '0', '0']
+**AZURE** : Success -- Queue properties retrieved
+**EMULATOR** : Success -- Queue properties retrieved
+Success -- Queue deleted
+Success -- Queue deleted
+METHOD: queue_peek_messages --- ARGS:  ['0']
+**AZURE** : Fail -- Queue messages peek failed; error:  '<=' not supported between instances of 'int' and 'str'
+**EMULATOR** : Fail -- Queue messages peek failed; error:  '<=' not supported between instances of 'int' and 'str'
+Exception:  'TypeError' object has no attribute 'response'
+Success -- Queue deleted
+Success -- Queue deleted
+METHOD: queue_receive_message --- ARGS:  ['0', '0', '198', '8', '0', '0', '54918']
+**AZURE** : Success -- Queue messages received
+**EMULATOR** : Success -- Queue messages received
+Success -- Queue deleted
+Success -- Queue deleted
+METHOD: queue_receive_messages --- ARGS:  ['0']
+**AZURE** : Success -- Queue messages received
+**EMULATOR** : Success -- Queue messages received
+Success -- Queue deleted
+Success -- Queue deleted
+METHOD: queue_send_message --- ARGS:  [0]
+**AZURE** : Success -- Message sent
+**EMULATOR** : Success -- Message sent
+Success -- Queue deleted
+Success -- Queue deleted
+METHOD: queue_set_access_policy --- ARGS:  ['0', '0', '0', '-572', '0', '0', '0', '0', '31']
+**AZURE** : Success -- Queue access policy retrieved
+**AZURE** : Success -- Queue access policy set
+**EMULATOR** : Success -- Queue access policy retrieved
+**EMULATOR** : Success -- Queue access policy set
+Success -- Queue deleted
+Success -- Queue deleted
+METHOD: queue_set_metadata --- ARGS:  [{'category': 'test', 'created': '2020-01-01', 'author': 'test', 'description': 'test', 'tags': 'test', 'title': 'test', 'version': '1.0', 'filename': 'test'}]
+**AZURE** : Success -- Queue metadata set
+**EMULATOR** : Success -- Queue metadata set
+Success -- Queue deleted
+Success -- Queue deleted
+METHOD: queue_update_message --- ARGS:  [0, 1]
+**AZURE** : Success -- Message sent
+**AZURE** : Success -- Message updated
+**EMULATOR** : Success -- Message sent
+**EMULATOR** : Success -- Message updated
+Success -- Queue deleted
+Success -- Queue deleted
+METHOD: queue_create --- ARGS:  [0]
+**AZURE** : Success -- Queue created
+**EMULATOR** : Success -- Queue created
+Success -- Queue deleted
+Success -- Queue deleted
+Success -- Queue deleted
+Success -- Queue deleted
+METHOD: queue_delete --- ARGS:  [0]
+**AZURE** : Fail -- Queue deletion failed; error:  Please specify a queue name.
+**EMULATOR** : Fail -- Queue deletion failed; error:  Please specify a queue name.
+Exception:  'ValueError' object has no attribute 'response'
+Success -- Queue deleted
+Success -- Queue deleted
+METHOD: queue_get_client --- ARGS:  [0]
+**AZURE** : Fail -- Queue client retrieval failed; error:  Please specify a queue name.
+**EMULATOR** : Fail -- Queue client retrieval failed; error:  Please specify a queue name.
+Exception:  'ValueError' object has no attribute 'response'
+Success -- Queue deleted
+Success -- Queue deleted
+METHOD: queue_get_service_properties --- ARGS:  ['0', '0', '0', '-9', '9']
+**AZURE** : Success -- Service properties retrieved
+**EMULATOR** : Success -- Service properties retrieved
+Success -- Queue deleted
+Success -- Queue deleted
+METHOD: queue_get_service_stats --- ARGS:  ['0', '0', '5', '-890', '0', '0', '-7', '0', '0', '0', '-780', '9808', '-1', '0', '144', '-34', '1', '7', '0', '25', '0', '2', '0', '-6', '0', '0', '-3078', '-27', '0', '-81', '0', '0']
+**AZURE** : Fail -- Service stats retrieval failed; error:  <urllib3.connection.HTTPSConnection object at 0x7fb1b4b974f0>: Failed to establish a new connection: [Errno -2] Name or service not known
+**EMULATOR** : Fail -- Service stats retrieval failed; error:  Invalid URL 'https:///devstoreaccount1/?restype=service&comp=stats': No host supplied
+Exception:  'ServiceRequestError' object has no attribute 'response'
+Success -- Queue deleted
+Success -- Queue deleted
+METHOD: queue_list --- ARGS:  ['-99', '-1', '0', '0', '3', '-1', '0', '88', '-43578', '0', '5', '0', '-3', '3', '0', '5', '0', '0']
+**AZURE** : Success -- Queues listed
+**EMULATOR** : Success -- Queues listed
+Success -- Queue deleted
+Success -- Queue deleted
+METHOD: queue_set_service_properties --- ARGS:  ['0', '0', '0', '0']
+**AZURE** : Success -- Service properties set
+**EMULATOR** : Success -- Service properties set
+Success -- Queue deleted
+Success -- Queue deleted
