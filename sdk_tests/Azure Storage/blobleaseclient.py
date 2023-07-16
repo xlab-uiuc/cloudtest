@@ -9,6 +9,8 @@ os.environ["REQUESTS_CA_BUNDLE"] = "/etc/ssl/certs/ca-certificates.crt"
 
 credential = DefaultAzureCredential()
 
+# Note: One extra method implemented
+
 class MyBlobLeaseClient:
     def __init__(self, emulator=True, container_name=None, blob_name=None):
 
@@ -161,6 +163,19 @@ class MyBlobLeaseClient:
             return True, res
         except Exception as e:
             print(self.service + ": Fail -- Blob lease is not renewed. Error: ", e)
+            return False, e
+
+    # random delete blob for increasing cov in sequences run   
+    def delete_blob(self, args):
+        args = list(args)
+
+        try:
+            # delete blob
+            res = self.container_client.delete_blob(self.blob_name)
+            print(self.service + ": Success -- Blob is deleted.")
+            return True, res
+        except Exception as e:
+            print(self.service + ": Fail -- Blob is not deleted. Error: ", e)
             return False, e
 
 

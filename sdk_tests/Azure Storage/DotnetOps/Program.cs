@@ -34,6 +34,17 @@ namespace DotnetOps
                 Console.WriteLine("Failed to submit batch operation. Error: " + result2.Item2);
             }
 
+            Tuple<bool, object> result3 = containerClient.SetBatchAccessTier();
+
+            if (result3.Item1)
+            {
+                Console.WriteLine("Batch access tier set successfully.");
+            }
+            else
+            {
+                Console.WriteLine("Failed to set batch access tier. Error: " + result3.Item2);
+            }
+
         }
     }
 }

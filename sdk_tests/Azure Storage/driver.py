@@ -110,7 +110,7 @@ def oracles(res_cloud, res_em):
         
 # for testing purposes (Remove later)
 def simple_test_run(flag):
-    flag = False
+    flag = True
 
     # get methods
     methods_bc = [getattr(MyBlobClient, attr) for attr in dir(MyBlobClient) if callable(getattr(MyBlobClient, attr)) and not attr.startswith("__")]
@@ -123,82 +123,68 @@ def simple_test_run(flag):
     methods_qsc = [getattr(MyQueueServiceClient, attr) for attr in dir(MyQueueServiceClient) if callable(getattr(MyQueueServiceClient, attr)) and not attr.startswith("__")]
     
     # run methods
-    for i in methods_bc:
+    # for i in methods_bc:
         
-        # if 'stage_block_from_url' in i.__name__:
-        test_bc = MyBlobClient(flag)
-        try:
-            r = i(test_bc, [])
-        finally:
-            test_bc.__cleanup__()
-        
-    for i in methods_cc:
-        # if 'set_premium_page_blob_tier' in i.__name__:
-        test_cc = ContainerClient(flag)
-        try:
-            res = i(test_cc, [])
-            if not res[0] and isinstance(res[1], HttpResponseError):
-                print(res[1].response.reason)
-        finally:
-            test_cc.__cleanup__()
+    #     # if 'upload_page' in i.__name__:
+    #     test_bc = MyBlobClient(flag)
+    #     try:
+    #         r = i(test_bc, [])
+    #     finally:
+    #         test_bc.__cleanup__()
+            
+    # for i in methods_cc:
+    #     if 'list_blobs' in i.__name__:
+    #         test_cc = ContainerClient(flag)
+    #         try:
+    #             res = i(test_cc, [])
+    #         finally:
+    #             test_cc.__cleanup__()
 
-    for i in methods_bsc:
-        # if 'undelete_container' in i.__name__:
-        test_bsc = MyBlobServiceClient(flag)
-        try:
-            res = i(test_bsc, [])
-            if not res[0] and isinstance(res[1], HttpResponseError):
-                print(res[1].response.reason)
-        finally:
-            test_bsc.__cleanup__()
+    # for i in methods_bsc:
+    #     # if 'undelete_container' in i.__name__:
+    #     test_bsc = MyBlobServiceClient(flag)
+    #     try:
+    #         res = i(test_bsc, [])
+    #     finally:
+    #         test_bsc.__cleanup__()
 
-    for i in methods_blc:
-        # if 'acquire_blob_lease' in i.__name__:
-        test_blc = MyBlobLeaseClient(flag)
-        try:
-            res = i(test_blc, [])
-            if not res[0]:
-                print(res[1].response.reason)
-        finally:
-            test_blc.__cleanup__()
+    # for i in methods_blc:
+    #     # if 'acquire_blob_lease' in i.__name__:
+    #     test_blc = MyBlobLeaseClient(flag)
+    #     try:
+    #         res = i(test_blc, [])
+    #     finally:
+    #         test_blc.__cleanup__()
 
-    for i in methods_tc:
-        # if 'table_submit_transaction' in i.__name__:
-        test_tc = MyTableClient(flag)
-        try:
-            res = i(test_tc, [])
-            if not res[0]:
-                print(res[1].response.reason)
-        finally:
-            test_tc.__cleanup__()
+    # for i in methods_tc:
+    #     # if 'table_submit_transaction' in i.__name__:
+    #     test_tc = MyTableClient(flag)
+    #     try:
+    #         res = i(test_tc, [])
+    #     finally:
+    #         test_tc.__cleanup__()
 
-    for i in methods_tsc:
-        # if 'table_set_service_properties' in i.__name__:
-        test_tsc = MyTableServiceClient(flag)
-        try:
-            res = i(test_tsc, [])
-            if not res[0] and isinstance(res[1], HttpResponseError):
-                print(res[1].response.reason)
-        finally:
-            test_tsc.__cleanup__()
+    # for i in methods_tsc:
+    #     # if 'table_set_service_properties' in i.__name__:
+    #     test_tsc = MyTableServiceClient(flag)
+    #     try:
+    #         res = i(test_tsc, [])
+    #     finally:
+    #         test_tsc.__cleanup__()
 
-    for i in methods_qc:
-        test_qc = MyQueueClient(flag)
-        try:
-            res = i(test_qc, [])
-            if not res[0]:
-                print(res[1].response.reason)
-        finally:
-            test_qc.__cleanup__()
+    # for i in methods_qc:
+    #     test_qc = MyQueueClient(flag)
+    #     try:
+    #         res = i(test_qc, [])
+    #     finally:
+    #         test_qc.__cleanup__()
 
-    for i in methods_qsc:
-        test_qsc = MyQueueServiceClient(flag)
-        try:
-            res = i(test_qsc, [])
-            if not res[0]  and isinstance(res[1], HttpResponseError):
-                print(res[1].response.reason)
-        finally:
-            test_qsc.__cleanup__()
+    # for i in methods_qsc:
+    #     test_qsc = MyQueueServiceClient(flag)
+    #     try:
+    #         res = i(test_qsc, [])
+    #     finally:
+    #         test_qsc.__cleanup__()
 
 
 def run_ops(arg, methods, client, count, discrepant_methods):

@@ -49,6 +49,8 @@ class MyContainerClient
         catch (Exception e)
         {
             Console.WriteLine("Container creation failed; error: " + e.Message);
+            // exit
+            Environment.Exit(1);
         }
 
         // create container
@@ -123,6 +125,31 @@ class MyContainerClient
         catch (Exception e)
         {
             Console.WriteLine(service + ": Fail -- Batch operation is not submitted. Error: " + e.Message);
+            return new Tuple<bool, object>(false, e);
+        }
+    }
+
+    // set batch access tiers with try except block
+    public Tuple<bool, object> SetBatchAccessTier()
+    {
+        try
+        {
+            BlobClient foo = containerClient.GetBlobClient("foo1");
+            BlobClient bar = containerClient.GetBlobClient("bar2");
+            BlobClient baz = containerClient.GetBlobClient("baz3");
+            foo.Upload(BinaryData.FromString("Foo!"));
+            bar.Upload(BinaryData.FromString("Bar!"));
+            baz.Upload(BinaryData.FromString("Baz!"));
+
+            // Set the access tier for all three blobs at once
+            BlobBatchClient batch = blobServiceClient.GetBlobBatchClient();
+            var res = batch.SetBlobsAccessTier(new Uri[] { foo.Uri, bar.Uri, baz.Uri }, AccessTier.Cool);
+
+            return new Tuple<bool, object>(true, res);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(service + ": Fail -- Batch access tiers are not set. Error: " + e.Message);
             return new Tuple<bool, object>(false, e);
         }
     }
