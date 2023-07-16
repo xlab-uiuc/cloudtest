@@ -65,9 +65,7 @@ class MyTableServiceClient():
         try:
             res = self.table_service_client.delete_table(self.table_name)
             print(self.service, ': Success -- Table deleted')
-            # create table again
-            self.table_name = f'table{random.randint(1, 1000000000)}'
-            self.table_service_client.create_table_if_not_exists(self.table_name)
+     
             return True, res
         except Exception as e:
             print(self.service, ': Fail -- Table deletion failed; error: ', e)
@@ -125,7 +123,9 @@ class MyTableServiceClient():
     def table_query_tables(self, args):
         args = list(args)
         if not len(args) > 0:
-            args.append("TableName eq 'table1'")
+            table_name = "mytable1"
+            name_filter = "TableName eq '{}'".format(table_name)
+            args.append(name_filter)
         try:
             res = self.table_service_client.query_tables(args[0])
             print(self.service, ': Success -- Tables queried')
