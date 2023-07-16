@@ -83,11 +83,6 @@ class MyBlobServiceClient:
             res = self.blob_service_client.delete_container(args[0])
             print(self.service, ': Success -- Container deleted with name: ', args[0])
 
-            # create container again for sequences run
-            self.container_name = f'container{random.randint(1, 1000000000)}'
-            self.container_client = self.blob_service_client.get_container_client(self.container_name)
-            self.container_client.create_container()
-
             return True, res
         except Exception as e:
             print(self.service, ': Fail -- Container deletion failed with name: ', args[0], ' and error: ', e)
@@ -179,8 +174,17 @@ class MyBlobServiceClient:
     # list containers with try except
     def list_containers(self, args):
         args = list(args)
+        # name_starts_with
+        if not len(args) > 0:
+            args.append('container')
+        # include_metadata
+        if not len(args) > 1:
+            args.append(True)
+        # include_deleted
+        if not len(args) > 2:
+            args.append(True)
         try:
-            res = self.blob_service_client.list_containers()
+            res = self.blob_service_client.list_containers(name_starts_with=args[0], include_metadata=args[1], include_deleted=args[2])
             print(self.service, ': Success -- Container list retrieved')
             return True, res
         except Exception as e:
