@@ -88,17 +88,17 @@
     ],
     
     "5":[
-        [{"PartitionKey":"color","RowKey":"brand","text":"Marker","color":"Purple","price":4.99,"last_updated":"2023-06-08T00:00:00","product_id":"7457a018-3375-4c6c-b3c2-8e61273e56f6","inventory_count":42,"barcode":"MTM1YWVmZzgwb2owbGQ1OA=="}],
-        ["brandtwo","colortwo"],
-        ["table_name"],
-        ["brandthree","colorthree"],
-        [],
-        [],
-        ["PartitionKey eq 'color'"],
         [{}],
-        [{"UpdateEntity":{"PartitionKey":"color","RowKey":"brand","text":"Marker","color":"Purple","price":4.99,"last_updated":"2023-06-08T00:00:00","product_id":"057f5733-71b7-45d6-8e75-4423e1e2f14b","inventory_count":42,"barcode":"MTM1YWVmZzgwb2owbGQ1OA=="}}],
-        [{"PartitionKey":"color","RowKey":"brand","text":"Marker","color":"Purple","price":4.99,"last_updated":"2023-06-08T00:00:00","product_id":"38f1c808-6e68-4c0c-aef7-aa34b2c267a7","inventory_count":42,"barcode":"MTM1YWVmZzgwb2owbGQ1OA=="},"UpdateMode.MERGE"],
-        [{"PartitionKey":"color","RowKey":"brand","text":"Marker","color":"Purple","price":4.99,"last_updated":"2023-06-08T00:00:00","product_id":"c7f7c1be-d6e9-4b25-a7a7-6667411b28fb","inventory_count":42,"barcode":"MTM1YWVmZzgwb2owbGQ1OA=="},"UpdateMode.MERGE"]
+        ["",""],
+        ["table_name"],
+        ["",""],
+        [],
+        [],
+        ["LastName eq @last_name and CustomerSince eq @customer_since"],
+        [{}],
+        [{}],
+        [{},""],
+        [{},""]
     ],
     
     "6":[
@@ -109,29 +109,29 @@
         [],
         [],
         ["TableName eq 'table1'"],
-        [{"analytics_logging":{"version":"1.0","delete":true,"read":true,"write":true,"retention_policy":{"enabled":true,"days":7}}},{"hour_metrics":{"version":"1.0","enabled":true,"include_apis":true,"retention_policy":{"enabled":true,"days":7}}},{"minute_metrics":{"version":"1.0","enabled":true,"include_apis":true,"retention_policy":{"enabled":true,"days":7}}},{"cors":{"cors_rules":[{"allowed_origins":["*"],"allowed_methods":["GET"],"max_age_in_seconds":3600,"exposed_headers":["x-ms-request-id"],"allowed_headers":["*"]}]}}]
+        []
     ],
     
     "7":[
         [],
-        ["queue_name"],
-        ["message content"],
+        [""],
+        [""],
         [],
         [],
         [],
-        [5],
+        [0],
         [],
-        [5],
-        ["Hello World"],
+        [0],
+        [""],
         [],
-        [{"key":"value"}],
-        ["Hello World","Updated Message Content"]
+        [{}],
+        ["",""]
     ],
     
     "8":[
-        ["queue_name"],
-        ["queue_name"],
-        ["queue_name"],
+        [""],
+        [""],
+        [""],
         [],
         [],
         [],
