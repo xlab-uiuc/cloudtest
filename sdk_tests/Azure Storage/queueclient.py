@@ -262,12 +262,12 @@ class MyQueueClient:
                 try: 
                     # delete queue
                     self.queue_service_client.delete_queue(queue.name)
-                    print('Success -- Queue deleted')
+                    print(f'Queue deleted in GC -- {self.service}')
                 except:
-                    print('Fail -- Queue deletion failed')
+                    print(f'Queue deletion failed in GC -- {self.service}')
 
         except:
-            print('Fail -- Queue list failed')
+            print(f'Queue list failed in GC -- {self.service}')
 
         
 

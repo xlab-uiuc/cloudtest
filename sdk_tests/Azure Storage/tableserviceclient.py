@@ -168,11 +168,11 @@ class MyTableServiceClient():
             for table in tables:
                 try:
                     self.table_service_client.delete_table(table.name)
-                    print('Table deleted: ', table.name)
+                    print(f'Table deleted in GC -- {self.service}')
                 except:
-                    print('Table deletion failed: ', table.name)
+                    print(f'Table deletion failed in GC -- {self.service}')
 
         except Exception as e:
 
-            print('Tables could not be listed: ', e)
+            print(f'Tables could not be listed in GC -- {self.service}')
 

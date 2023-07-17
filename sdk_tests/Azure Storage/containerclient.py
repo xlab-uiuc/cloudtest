@@ -412,11 +412,11 @@ class ContainerClient:
             for container in containers:
                 try:
                     self.blob_service_client.delete_container(container.name)
-                    print("Container is deleted.")
+                    print(f"Container is deleted in GC -- {self.service}")
                 except Exception as e:
-                    print("Container is not deleted. Error: ", e)
+                    print(f"Container is not deleted in GC -- {self.service}. Error: ", e)
         except Exception as e:
-            print("Containers could not be listed. Error: ", e)
+            print(f"Containers could not be listed in GC -- {self.service}. Error: ", e)
 
 
     
