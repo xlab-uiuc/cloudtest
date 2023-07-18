@@ -58,6 +58,35 @@ def extract_discrepancy(file):
         f.write('\n\n'.join(li))
 
 
+def initialize_clients():
+    cloud_objects = {}
+    em_objects = {}
+
+    # random blob, container, queue and table name
+    blob_name = f'blob{random.randint(1,100000)}'
+    container_name = f'container{random.randint(1,100000)}'
+    queue_name = f'queue{random.randint(1,100000)}'
+    table_name = f'table{random.randint(1,100000)}'
+
+    cloud_objects['bc'] = MyBlobClient(False, container_name, blob_name)
+    em_objects['bc'] = MyBlobClient(True, container_name, blob_name)
+    cloud_objects['cc'] = ContainerClient(False, container_name, blob_name)
+    em_objects['cc'] = ContainerClient(True, container_name, blob_name)
+    cloud_objects['bsc'] = MyBlobServiceClient(False, container_name, blob_name)
+    em_objects['bsc'] = MyBlobServiceClient(True, container_name, blob_name)
+    cloud_objects['blc'] = MyBlobLeaseClient(False, container_name, blob_name)
+    em_objects['blc'] = MyBlobLeaseClient(True, container_name, blob_name)
+    cloud_objects['tc'] = MyTableClient(False, table_name)
+    em_objects['tc'] = MyTableClient(True, table_name)
+    cloud_objects['tsc'] = MyTableServiceClient(False, table_name)
+    em_objects['tsc'] = MyTableServiceClient(True, table_name)
+    cloud_objects['qc'] = MyQueueClient(False, queue_name)
+    em_objects['qc'] = MyQueueClient(True, queue_name)
+    cloud_objects['qsc'] = MyQueueServiceClient(False, queue_name)
+    em_objects['qsc'] = MyQueueServiceClient(True, queue_name)
+
+    return cloud_objects, em_objects
+
 def outcome(flag):
     if flag:
         return 'SUCCESS'
@@ -226,27 +255,28 @@ def run_ops(arg, methods, client, count, discrepant_methods):
                 test_em = MyQueueServiceClient()
 
             try:
-                print('METHOD: '+ method.__name__, '--- ARGS: ',arg[t_count])
+                print('\nMETHOD: '+ method.__name__, '--- ARGS: ',arg[t_count])
 
-                # run method on cloud and emulator
-                res_cloud = method(test_cloud, arg[t_count])
-                res_em = method(test_em, arg[t_count])
+                if not arg[t_count] == None:
+                    # run method on cloud and emulator
+                    res_cloud = method(test_cloud, arg[t_count])
+                    res_em = method(test_em, arg[t_count])
 
-                # oracles
-                result = oracles(res_cloud, res_em)
-                
-                if result[0]:
-                    count += 1
-                    print('\nDISCREPANCY FOUND!\n')
-                    print(result[1])
+                    # oracles
+                    result = oracles(res_cloud, res_em)
+                    
+                    if result[0]:
+                        count += 1
+                        print('\nDISCREPANCY FOUND!\n')
+                        print(result[1])
 
-                    if method.__name__ not in discrepant_methods:
-                        discrepant_methods.append(method.__name__)
+                        if method.__name__ not in discrepant_methods:
+                            discrepant_methods.append(method.__name__)
 
-                    with open('../sdk_tests/Azure Storage/discrepancy.txt', 'a') as f:
-                        f.write(f'DISCREPANT METHOD: {method.__name__} --- ARGS: {arg[t_count]}\n')
-                        f.write(result[1])
-                        f.write(f'\n\n\ncount: {count}   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n\n\n')
+                        with open('../sdk_tests/Azure Storage/discrepancy.txt', 'a') as f:
+                            f.write(f'DISCREPANT METHOD: {method.__name__} --- ARGS: {arg[t_count]}\n')
+                            f.write(result[1])
+                            f.write(f'\n\n\ncount: {count}   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n\n\n')
             
             except Exception as e:
                 print("Exception: ", e)
@@ -265,35 +295,20 @@ def run_sequences(methods, type, runs):
     global BEHAVIOR_MISMATCH_COUNT
     global ERROR_MISMATCH_COUNT
     global STATUS_CODE_MISMATCH_COUNT
-    
-    cloud_objects = {}
-    em_objects = {}
+
+    BEHAVIOR_MISMATCH_COUNT = 0
+    ERROR_MISMATCH_COUNT = 0
+    STATUS_CODE_MISMATCH_COUNT = 0
+
     d_count = 0
     t_count = runs
 
     with io.StringIO() as buf, redirect_stdout(buf):
 
-        cloud_objects['bc'] = MyBlobClient(False)
-        em_objects['bc'] = MyBlobClient()
-        cloud_objects['cc'] = ContainerClient(False)
-        em_objects['cc'] = ContainerClient()
-        cloud_objects['bsc'] = MyBlobServiceClient(False)
-        em_objects['bsc'] = MyBlobServiceClient()
-        cloud_objects['blc'] = MyBlobLeaseClient(False)
-        em_objects['blc'] = MyBlobLeaseClient()
-        cloud_objects['tc'] = MyTableClient(False)
-        em_objects['tc'] = MyTableClient()
-        cloud_objects['tsc'] = MyTableServiceClient(False)
-        em_objects['tsc'] = MyTableServiceClient()
-        cloud_objects['qc'] = MyQueueClient(False)
-        em_objects['qc'] = MyQueueClient()
-        cloud_objects['qsc'] = MyQueueServiceClient(False)
-        em_objects['qsc'] = MyQueueServiceClient()
-
         if type == 'shuffle':
-            discrepant_seqs, d_count = run_sequences_shuffle(methods, cloud_objects, em_objects, runs)
+            discrepant_seqs, d_count = run_sequences_shuffle(methods, runs)
         elif type == 'permutation':
-            discrepant_seqs, d_count, t_count = run_sequences_permuation(methods, cloud_objects, em_objects)
+            discrepant_seqs, d_count, t_count = run_sequences_permutation(methods)
 
         # store methods names in order to skip in the next run
         with open('../sdk_tests/Azure Storage/discrepant_sequences.txt', 'a') as f:
@@ -313,7 +328,7 @@ def run_sequences(methods, type, runs):
         f.write(f'Total discrepancy count: {d_count}/{t_count}\n\n\n')
 
 
-def run_sequences_permuation(methods, cloud_objects, em_objects):
+def run_sequences_permutation(methods):
 
     d_count = 0
     t_count = 0
@@ -323,6 +338,8 @@ def run_sequences_permuation(methods, cloud_objects, em_objects):
 
     counter = 0
     while counter < len(list_seqs):
+
+        cloud_objects, em_objects = initialize_clients()
         t_count += 1
         print(f'\n\nTEST SEQUENCE: [{", ".join(i.__name__ for i in list_seqs[counter])}]\n')
         
@@ -351,7 +368,7 @@ def run_sequences_permuation(methods, cloud_objects, em_objects):
             if result[0]:    
                 d_count += 1
                 print('\nDISCREPANCY FOUND!\n')
-                print(result[1])
+                print(f'{result[1]}\n\n')
 
                 discrepant_seq.append(f'{d_count}: [{", ".join(i.__name__ for i in sublist)}]')
 
@@ -366,7 +383,7 @@ def run_sequences_permuation(methods, cloud_objects, em_objects):
         counter += 1
 
         with open('../sdk_tests/Azure Storage/discrepancy.txt', 'a') as f:
-            f.write(f'SEQUENCE COMPLETE   ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n\n\n')
+            f.write(f'\nSEQUENCE COMPLETE   ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n\n\n')
 
         # delete all objects
         for key in cloud_objects:
@@ -377,12 +394,13 @@ def run_sequences_permuation(methods, cloud_objects, em_objects):
     return discrepant_seq, d_count, t_count
 
 
-def run_sequences_shuffle(methods, cloud_objects, em_objects, runs):
+def run_sequences_shuffle(methods, runs):
     
     d_count = 0
     discrepant_seq = []
+    discrepant_method = []
 
-    for i in range(runs):
+    for _ in range(runs):
 
          # randomize seed
         seed = random.randint(0, 1000000)
@@ -403,41 +421,45 @@ def run_sequences_shuffle(methods, cloud_objects, em_objects, runs):
 
         methods_list = methods['bc'] + methods['cc'] + methods['bsc'] + methods['blc'] + methods['tc'] + methods['tsc'] + methods['qc'] + methods['qsc']
 
-        print(f'\n\nTEST SEQUENCE: [{", ".join(i.__name__ for i in methods_list)}]\n')
+        cloud_objects, em_objects = initialize_clients()
+
+        print(f'\n\nTEST SEQUENCE: [{", ".join(i.__name__ for i in methods_list[:7])}]\n')
         sublist = []
         
-        for method in methods_list:
+        for method in methods_list[:7]:
             sublist.append(method)
             print('METHOD: '+ method.__name__, '--- ARGS: []')
-            if method in methods['bc']:
-                result = oracles(method(cloud_objects['bc'], []), method(em_objects['bc'], []))
-            elif method in methods['cc']:
-                result = oracles(method(cloud_objects['cc'], []), method(em_objects['cc'], []))
-            elif method in methods['bsc']:
-                result = oracles(method(cloud_objects['bsc'], []), method(em_objects['bsc'], []))
-            elif method in methods['blc']:
-                result = oracles(method(cloud_objects['blc'], []), method(em_objects['blc'], []))
-            elif method in methods['tc']:
-                result = oracles(method(cloud_objects['tc'], []), method(em_objects['tc'], []))
-            elif method in  methods['tsc']:
-                result = oracles(method(cloud_objects['tsc'], []), method(em_objects['tsc'], [])) 
-            elif method in methods['qc']:
-                result = oracles(method(cloud_objects['qc'], []), method(em_objects['qc'], []))
-            elif method in methods['qsc']:
-                result = oracles(method(cloud_objects['qsc'], []), method(em_objects['qsc'], []))
+            if not method.__name__ in discrepant_method:
+                if method in methods['bc']:
+                    result = oracles(method(cloud_objects['bc'], []), method(em_objects['bc'], []))
+                elif method in methods['cc']:
+                    result = oracles(method(cloud_objects['cc'], []), method(em_objects['cc'], []))
+                elif method in methods['bsc']:
+                    result = oracles(method(cloud_objects['bsc'], []), method(em_objects['bsc'], []))
+                elif method in methods['blc']:
+                    result = oracles(method(cloud_objects['blc'], []), method(em_objects['blc'], []))
+                elif method in methods['tc']:
+                    result = oracles(method(cloud_objects['tc'], []), method(em_objects['tc'], []))
+                elif method in  methods['tsc']:
+                    result = oracles(method(cloud_objects['tsc'], []), method(em_objects['tsc'], [])) 
+                elif method in methods['qc']:
+                    result = oracles(method(cloud_objects['qc'], []), method(em_objects['qc'], []))
+                elif method in methods['qsc']:
+                    result = oracles(method(cloud_objects['qsc'], []), method(em_objects['qsc'], []))
 
-            if result[0]:    
-                d_count += 1
-                print('\nDISCREPANCY FOUND!\n')
-                print(result[1])
+                if result[0]:    
+                    d_count += 1
+                    print('\nDISCREPANCY FOUND!\n')
+                    print(f'{result[1]}\n\n')
+                    discrepant_method.append(method.__name__)
 
-                discrepant_seq.append(f'{d_count}: [{", ".join(i.__name__ for i in sublist)}]')
+                    discrepant_seq.append(f'{d_count}: [{", ".join(i.__name__ for i in sublist)}]')
 
-                with open('../sdk_tests/Azure Storage/discrepancy.txt', 'a') as f:
-                    f.write(f'DISCREPANT METHOD: {method.__name__} --- ARGS: []\n')
-                    f.write(result[1])
-                    f.write(f'\n\n\ncount: {d_count}   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n\n\n')
-                break
+                    with open('../sdk_tests/Azure Storage/discrepancy.txt', 'a') as f:
+                        f.write(f'DISCREPANT METHOD: {method.__name__} --- ARGS: []\n')
+                        f.write(result[1])
+                        f.write(f'\n\n\ncount: {d_count}   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n\n\n')
+                    break
 
         with open('../sdk_tests/Azure Storage/discrepancy.txt', 'a') as f:
             f.write(f'SEQUENCE COMPLETE   ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n\n\n')
@@ -555,8 +577,8 @@ def main(arg):
 
     # simple_test_run(True)
     # run1v1(arg, methods, t_count)
-    # done --> to-do: run_sequences() taking `permuation` and `shuffle` as type
-    run_sequences(methods, 'shuffle', 10)
+    # done --> to-do: run_sequences() taking `permutation` and `shuffle` as type
+    run_sequences(methods, 'shuffle', 150)
 
 
 
