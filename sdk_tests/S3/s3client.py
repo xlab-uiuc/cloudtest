@@ -17,1197 +17,1324 @@ class S3Client:
         if not emulator:
             self.service = '**AWS**'
             self.region = 'us-east-2'
-            AWS_PROFILE = 'aws'
+            self.profile = 'aws'
             url = 'https://s3.us-east-2.amazonaws.com'
         else:
             self.service = '**EMULATOR**'
             self.region = 'us-west-1'
-            AWS_PROFILE = 'localstack'
+            self.profile = 'localstack'
             url = 'http://localhost:4566'
 
         # set up session
-        boto3.setup_default_session(profile_name=AWS_PROFILE)
-        self.client = boto3.client('s3', endpoint_url=url, region_name=self.region)
+        boto3.setup_default_session(profile_name=self.profile)
+
+        try:
+            self.client = boto3.client('s3', endpoint_url=url, region_name=self.region)
+        except Exception as e:
+            print('S3 client creation failed; error: ', e)
 
         # create bucket
-        self.client.create_bucket(Bucket=self.bucket_name, CreateBucketConfiguration={'LocationConstraint': self.region})
+        try:
+            self.client.create_bucket(Bucket=self.bucket_name, CreateBucketConfiguration={'LocationConstraint': self.region})
+        except Exception as e:
+            print('Bucket creation failed; error: ', e)
 
     
 
-    # abort multipart upload with try accept and args as none
-    def s3_abort_multipart_upload(self, key=None, upload_id=None):
-        if key is None:
-            key = f'{random.randint(1, 1000000)}'
-        if upload_id is None:
-            upload_id = f'{random.randint(1, 1000000)}'
+    # abort multipart upload 
+    def s3_abort_multipart_upload(self, args):
+
+        if not len(args) > 0:
+            args.append(f'{random.randint(1, 1000000)}')
 
         try:
-            self.client.abort_multipart_upload(Bucket=self.bucket_name, Key=key, UploadId=upload_id)
-            print(self.service, ': ' + f'Success -- Multipart upload aborted for {key} in {self.service} S3 bucket {self.bucket_name}')
+            resp = self.client.create_multipart_upload(Bucket=self.bucket_name, Key=args[0])
+            self.client.abort_multipart_upload(Bucket=self.bucket_name, Key=args[0], UploadId=resp['UploadId'])
+            print(self.service, ': ' + f'Success -- Multipart upload aborted for {args[0]} in {self.service} S3 bucket {self.bucket_name}')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error aborting multipart upload for {key} in {self.service} S3 bucket {self.bucket_name}: {e}')
+            print(self.service, ': ' + f'Fail -- Error aborting multipart upload for {args[0]} in {self.service} S3 bucket {self.bucket_name}: {e}')
             return False, e
         
-    # check if can paginate with try accept and args as none
-    def s3_can_paginate(self, operation_name=None):
-        if operation_name is None:
-            operation_name = "list_buckets"
+    # check if can paginate 
+    def s3_can_paginate(self, args):
+
+        if not len(args) > 0:
+            args.append("list_buckets")
 
         try:
-            self.client.can_paginate(operation_name)
-            print(self.service, ': ' + f'Success -- Operation {operation_name} can be paginated')
+            self.client.can_paginate(args[0])
+            print(self.service, ': ' + f'Success -- Operation {args[0]} can be paginated')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error checking if {self.service} S3 client can paginate {operation_name}: {e}')
+            print(self.service, ': ' + f'Fail -- Error checking if S3 client can paginate {args[0]}: {e}')
             return False, e
         
     
-    # complete multipart upload with try accept and args as none
-    def s3_complete_multipart_upload(self, key=None, upload_id=None, parts=None):
-        if key is None:
-            key = f'{random.randint(1, 1000000)}'
-        if upload_id is None:
-            res = self.s3_create_multipart_upload(key)
-            if res == False:
-                print(self.service, ': ' + f'Fail -- Error creating multipart upload for {key} in {self.service} S3 bucket {self.bucket_name}: {e}')
-                return False, e
-            upload_id = res[1]
-            res = self.s3_upload_part(key, upload_id)
-            if res == False:
-                print(self.service, ': ' + f'Fail -- Error uploading part for {key} in {self.service} S3 bucket {self.bucket_name}: {e}')
-                return False, e
-            part = res[1]
+    # complete multipart upload 
+    def s3_complete_multipart_upload(self, args):
 
-        if parts is None:
-            parts = [
+        if not len(args) > 0:
+            args.append(f'{random.randint(1, 1000000)}')
+
+        if not len(args) > 1:
+            etag = 2837193728
+            try:
+                resp = self.client.create_multipart_upload(Bucket=self.bucket_name, Key=args[0])
+                args.append(resp['UploadId'])
+                res = self.client.upload_part(Bucket=self.bucket_name, Key=args[0], UploadId=resp['UploadId'], PartNumber=1, Body='test'+str(random.randint(1, 1000000000)))
+                etag = res['ETag']
+            except Exception as e:
+                print(self.service, ': ' + f'Error completing multipart upload: ', e)
+
+            args.append([
             {
-                'ETag': f'"{part}"',
+                'ETag': f'"{etag}"',
                 'PartNumber': 1,
-            }]
+            }])
+
 
         try:
-            self.client.complete_multipart_upload(Bucket=self.bucket_name, Key=key, UploadId='', MultipartUpload={'Parts': parts})
-            print(self.service, ': ' + f'Success -- Multipart upload completed for {key} in {self.service} S3 bucket {self.bucket_name}')
+            self.client.complete_multipart_upload(Bucket=self.bucket_name, Key=args[0], UploadId=args[1], MultipartUpload={'Parts': args[2]})
+            print(self.service, ': ' + f'Success -- Multipart upload completed for S3 bucket {self.bucket_name}')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error completing multipart upload for {key} in {self.service} S3 bucket {self.bucket_name}: {e}')
+            print(self.service, ': ' + f'Fail -- Error completing multipart upload for S3 bucket {self.bucket_name}: {e}')
             return False, e
 
 
-    # copy with try accept and args as none
-    def s3_copy(self, key=None, copy_source=None):
-        if key is None:
-            key = f'{random.randint(1, 1000000)}'
-        if copy_source is None:
-            copy_source = {'Bucket': self.bucket_name, 'Key': key}
+    # copy 
+    def s3_copy(self, args):
 
-        self.s3_put_object(key=key, body='test213')
-        new_buc = f'test{random.randint(1, 1000000000)}'
-        self.s3_create_bucket(bucket_name=new_buc)
+        if not len(args) > 0:
+            args.append(f'{random.randint(1, 1000000)}')
+        if not len(args) > 1:
+            args.append({'Bucket': self.bucket_name, 'Key': args[0]})
 
         try:
-            self.client.copy(CopySource=copy_source, Bucket=new_buc, Key=key)
-            print(self.service, ': ' + f'Success -- Copied {copy_source} to {key} in {self.service} S3 bucket {new_buc}')
+            self.client.put_object(Bucket=self.bucket_name, Key=args[0], Body=b'test213')
+
+            new_buc = f'test{random.randint(1, 1000000000)}'
+            self.client.create_bucket(Bucket=new_buc, CreateBucketConfiguration={'LocationConstraint': self.region})
+
+            self.client.copy(CopySource=args[1], Bucket=new_buc, Key=args[0])
+            print(self.service, ': ' + f'Success -- Copy successful for S3 bucket {new_buc}')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error copying {copy_source} to {key} in {self.service} S3 bucket {new_buc}: {e}')
+            print(self.service, ': ' + f'Fail -- Error copying for S3 bucket {new_buc}: {e}')
+            return False, e
+        
+    # copy object 
+    def s3_copy_object(self, args):
+            
+        if not len(args) > 0:
+            args.append(f'{random.randint(1, 1000000)}')
+        if not len(args) > 1:
+            args.append({'Bucket': self.bucket_name, 'Key': args[0]})
+
+        try:
+            self.client.put_object(Bucket=self.bucket_name, Key=args[0], Body=b'test213')
+
+            new_buc = f'test{random.randint(1, 1000000000)}'
+            self.client.create_bucket(Bucket=new_buc, CreateBucketConfiguration={'LocationConstraint': self.region})
+
+            self.client.copy_object(CopySource=args[1], Bucket=new_buc, Key=args[0])
+            print(self.service, ': ' + f'Success -- Copy object successful for S3 bucket {new_buc}')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error copying object for S3 bucket {new_buc}: {e}')
             return False, e
         
 
-    # create bucket with try accept and args as none
-    def s3_create_bucket(self, bucket_name=None, lock=False):
-        if bucket_name is None:
-            bucket_name = f'bucket{random.randint(1, 1000000000)}'
+    # create bucket 
+    def s3_create_bucket(self, args):
+
+        lock = False
+        if not len(args) > 0:
+            args.append(f'bucket{random.randint(1, 1000000000)}')
 
         try:
             if lock:
-                self.client.create_bucket(Bucket=bucket_name, CreateBucketConfiguration={'LocationConstraint': self.region}, ObjectLockEnabledForBucket=True)
+                self.client.create_bucket(Bucket=args[0], CreateBucketConfiguration={'LocationConstraint': self.region}, ObjectLockEnabledForBucket=True)
             else:
-                self.client.create_bucket(Bucket=bucket_name, CreateBucketConfiguration={'LocationConstraint': self.region})
-            print(self.service, ': ' + f'Success -- Created bucket {bucket_name} in {self.service} S3')
+                self.client.create_bucket(Bucket=args[0], CreateBucketConfiguration={'LocationConstraint': self.region})
+            print(self.service, ': ' + f'Success -- Created bucket {args[0]} in {self.service} S3')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error creating bucket {bucket_name} in {self.service} S3: {e}')
+            print(self.service, ': ' + f'Fail -- Error creating bucket {args[0]} in {self.service} S3: {e}')
             return False, e
 
 
-    # create multipart upload with try accept and args as none
-    def s3_create_multipart_upload(self, key=None):
-        if key is None:
-            key = f'{random.randint(1, 1000000)}'
+    # create multipart upload 
+    def s3_create_multipart_upload(self, args):
+
+        if not len(args) > 0:
+            args.append(f'{random.randint(1, 1000000)}')
 
         try:
-            resp = self.client.create_multipart_upload(Bucket=self.bucket_name, Key=key)
-            print(self.service, ': ' + f'Success -- Multipart upload created for {key} in {self.service} S3 bucket {self.bucket_name}')
+            resp = self.client.create_multipart_upload(Bucket=self.bucket_name, Key=args[0])
+            print(self.service, ': ' + f'Success -- Multipart upload created for {args[0]} in {self.service} S3 bucket {self.bucket_name}')
             return True, resp['UploadId']
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error creating multipart upload for {key} in {self.service} S3 bucket {self.bucket_name}: {e}')
+            print(self.service, ': ' + f'Fail -- Error creating multipart upload for {args[0]} in {self.service} S3 bucket {self.bucket_name}: {e}')
             return False, e
 
-    # delete bucket with try accept and args as none
-    def s3_delete_bucket(self, bucket_name=None):
-        if bucket_name is None:
-            bucket_name = f'test{random.randint(1, 1000000000)}'
-            # self.s3_create_bucket(bucket_name=bucket_name)
+    # delete bucket 
+    def s3_delete_bucket(self, args):
 
         try:
-            self.client.delete_bucket(Bucket=bucket_name)
-            print(self.service, ': ' + f'Success -- Bucket {bucket_name} deleted')
+            self.client.delete_bucket(Bucket=self.bucket_name)
+            print(self.service, ': ' + f'Success -- Bucket {self.bucket_name} deleted')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error deleting bucket {bucket_name}: {e}')
+            print(self.service, ': ' + f'Fail -- Error deleting bucket {self.bucket_name}: {e}')
             return False, e
         
-    # delete bucket analytics configuration with try accept and args as none
-    def s3_delete_bucket_analytics_configuration(self, bucket_name=None, id=None):
-        if bucket_name is None:
-            bucket_name = self.bucket_name
-        if id is None:
-            id = f'test{random.randint(1, 1000000000)}'
-            self.s3_put_bucket_analytics_configuration(bucket_name=bucket_name, id=id)
+    # delete bucket analytics configuration 
+    def s3_delete_bucket_analytics_configuration(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+        if not len(args) > 1:
+            args.append(f'test{random.randint(1, 1000000000)}')
 
         try:
-            self.client.delete_bucket_analytics_configuration(Bucket=bucket_name, Id=id)
-            print(self.service, ': ' + f'Success -- Bucket analytics configuration {id} deleted from bucket {bucket_name}')
+            self.client.put_bucket_analytics_configuration(Bucket=args[0], Id=args[1], AnalyticsConfiguration={'Id': args[1], 'StorageClassAnalysis': {'DataExport': {'OutputSchemaVersion': 'V_1', 'Destination': {'S3BucketDestination': {'Format': 'CSV', 'BucketAccountId': '123456789012', 'Bucket': 'arn:aws:s3:::mybucket', 'Prefix': 'test'}}}}})
+            self.client.delete_bucket_analytics_configuration(Bucket=args[0], Id=args[1])
+            print(self.service, ': ' + f'Success -- Bucket analytics configuration {args[1]} deleted from bucket {args[0]}')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error deleting bucket analytics configuration {id} from bucket {bucket_name}: {e}')
+            print(self.service, ': ' + f'Fail -- Error deleting bucket analytics configuration {args[1]} from bucket {args[0]}: {e}')
             return False, e
 
-    # delete bucket cors with try accept and args as none
-    def s3_delete_bucket_cors(self, bucket_name=None):
-        self.s3_put_bucket_cors()
-        if bucket_name is None:
-            bucket_name = self.bucket_name
+    # delete bucket cors 
+    def s3_delete_bucket_cors(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
 
         try:
-            self.client.delete_bucket_cors(Bucket=bucket_name)
-            print(self.service, ': ' + f'Success -- Bucket cors deleted from bucket {bucket_name}')
+            self.client.put_bucket_cors(Bucket=args[0], CORSConfiguration={'CORSRules': [{'AllowedHeaders': ['Authorization'], 'AllowedMethods': ['GET'], 'AllowedOrigins': ['*'], 'ExposeHeaders': ['GET'], 'MaxAgeSeconds': 300}]})
+            self.client.delete_bucket_cors(Bucket=args[0])
+            print(self.service, ': ' + f'Success -- Bucket cors deleted from bucket {args[0]}')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error deleting bucket cors from bucket {bucket_name}: {e}')
+            print(self.service, ': ' + f'Fail -- Error deleting bucket cors from bucket {args[0]}: {e}')
             return False, e
 
-    # delete bucket encryption with try accept and args as none
-    def s3_delete_bucket_encryption(self, bucket_name=None):
-        self.s3_put_bucket_encryption()
-        if bucket_name is None:
-            bucket_name = self.bucket_name
+    # delete bucket encryption 
+    def s3_delete_bucket_encryption(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
 
         try:
-            self.client.delete_bucket_encryption(Bucket=bucket_name)
-            print(self.service, ': ' + f'Success -- Bucket encryption deleted from bucket {bucket_name}')
+            self.client.put_bucket_encryption(Bucket=args[0], ServerSideEncryptionConfiguration={'Rules': [{'ApplyServerSideEncryptionByDefault': {'SSEAlgorithm': 'AES256'}}]})
+            self.client.delete_bucket_encryption(Bucket=args[0])
+            print(self.service, ': ' + f'Success -- Bucket encryption deleted from bucket {args[0]}')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error deleting bucket encryption from bucket {bucket_name}: {e}')
+            print(self.service, ': ' + f'Fail -- Error deleting bucket encryption from bucket {args[0]}: {e}')
             return False, e
 
-    # delete intellegent tiering configuration with try accept and args as none
-    def s3_delete_bucket_intelligent_tiering_configuration(self, bucket_name=None, id=None):
-        if bucket_name is None:
-            bucket_name = self.bucket_name
-        if id is None:
-            id = f'test{random.randint(1, 1000000000)}'
-            self.s3_put_bucket_intelligent_tiering_configuration(bucket_name=bucket_name, id=id)
+    # delete intellegent tiering configuration 
+    def s3_delete_bucket_intelligent_tiering_configuration(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+        if not len(args) > 1:
+            args.append(f'test{random.randint(1, 1000000000)}')
+
+        self.s3_put_bucket_intelligent_tiering_configuration(args)
 
         try:
-            self.client.delete_bucket_intelligent_tiering_configuration(Bucket=bucket_name, Id=id)
-            print(self.service, ': ' + f'Success -- Bucket intelligent tiering configuration {id} deleted from bucket {bucket_name}')
+            # discrepancy -> less than 90 days work for emulator but not for aws
+            # self.client.put_bucket_intelligent_tiering_configuration(Bucket=args[0], Id=args[1], IntelligentTieringConfiguration={'Id': args[1], 'Status': 'Enabled', 'Tierings': [{'Days': 1, 'AccessTier': 'ARCHIVE_ACCESS'}, {'Days': 90, 'AccessTier': 'DEEP_ARCHIVE_ACCESS'}]})
+            self.client.delete_bucket_intelligent_tiering_configuration(Bucket=args[0], Id=args[1])
+            print(self.service, ': ' + f'Success -- Bucket intelligent tiering configuration {args[1]} deleted from bucket {args[0]}')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error deleting bucket intelligent tiering configuration {id} from bucket {bucket_name}: {e}')
+            print(self.service, ': ' + f'Fail -- Error deleting bucket intelligent tiering configuration {args[1]} from bucket {args[0]}: {e}')
             return False, e
 
-    # delete bucket inventory configuration with try accept and args as none
-    def s3_delete_bucket_inventory_configuration(self, bucket_name=None, id=None):
-        if bucket_name is None:
-            bucket_name = self.bucket_name
-        if id is None:
-            id = f'test{random.randint(1, 1000000000)}'
-            # self.s3_put_bucket_inventory_configuration(bucket_name=bucket_name, id=id)
+    # delete bucket inventory configuration 
+    def s3_delete_bucket_inventory_configuration(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+        if not len(args) > 1:
+            args.append(f'test{random.randint(1, 1000000000)}')
+
+        self.s3_put_bucket_inventory_configuration(args)
 
         try:
-            self.client.delete_bucket_inventory_configuration(Bucket=bucket_name, Id=id)
-            print(self.service, ': ' + f'Success -- Bucket inventory configuration {id} deleted from bucket {bucket_name}')
+            self.client.delete_bucket_inventory_configuration(Bucket=args[0], Id=args[1])
+            print(self.service, ': ' + f'Success -- Bucket inventory configuration {args[1]} deleted from bucket {args[0]}')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error deleting bucket inventory configuration {id} from bucket {bucket_name}: {e}')
+            print(self.service, ': ' + f'Fail -- Error deleting bucket inventory configuration {args[1]} from bucket {args[0]}: {e}')
             return False, e
 
-    # delete bucket lifecycle with try accept and args as none
-    def s3_delete_bucket_lifecycle(self, bucket_name=None):
-        self.s3_put_bucket_lifecycle()
-        if bucket_name is None:
-            bucket_name = self.bucket_name
+    # delete bucket lifecycle 
+    def s3_delete_bucket_lifecycle(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+
+        self.s3_put_bucket_lifecycle([])
 
         try:
-            self.client.delete_bucket_lifecycle(Bucket=bucket_name)
-            print(self.service, ': ' + f'Success -- Bucket lifecycle deleted from bucket {bucket_name}')
+            self.client.delete_bucket_lifecycle(Bucket=args[0])
+            print(self.service, ': ' + f'Success -- Bucket lifecycle deleted from bucket {args[0]}')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error deleting bucket lifecycle from bucket {bucket_name}: {e}')
-            return False, e
-        
-
-    # delete bucket metrics configuration with try accept and args as none
-    def s3_delete_bucket_metrics_configuration(self, bucket_name=None, id=None):
-        if bucket_name is None:
-            bucket_name = self.bucket_name
-        if id is None:
-            id = f'test{random.randint(1, 1000000000)}'
-            self.s3_put_bucket_metrics_configuration(bucket_name=bucket_name, id=id)
-
-        try:
-            self.client.delete_bucket_metrics_configuration(Bucket=bucket_name, Id=id)
-            print(self.service, ': ' + f'Success -- Bucket metrics configuration {id} deleted from bucket {bucket_name}')
-            return True, ""
-        except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error deleting bucket metrics configuration {id} from bucket {bucket_name}: {e}')
-            return False, e
-
-    # delete ownership controls with try accept and args as none
-    def s3_delete_bucket_ownership_controls(self, bucket_name=None):
-        self.s3_put_bucket_ownership_controls()
-        if bucket_name is None:
-            bucket_name = self.bucket_name
-
-        try:
-            self.client.delete_bucket_ownership_controls(Bucket=bucket_name)
-            print(self.service, ': ' + f'Success -- Bucket ownership controls deleted from bucket {bucket_name}')
-            return True, ""
-        except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error deleting bucket ownership controls from bucket {bucket_name}: {e}')
-            return False, e
-
-    # delete bucket policy with try accept and args as none
-    def s3_delete_bucket_policy(self, bucket_name=None):
-        self.s3_put_bucket_policy()
-        if bucket_name is None:
-            bucket_name = self.bucket_name
-
-        try:
-            self.client.delete_bucket_policy(Bucket=bucket_name)
-            print(self.service, ': ' + f'Success -- Bucket policy deleted from bucket {bucket_name}')
-            return True, ""
-        except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error deleting bucket policy from bucket {bucket_name}: {e}')
+            print(self.service, ': ' + f'Fail -- Error deleting bucket lifecycle from bucket {args[0]}: {e}')
             return False, e
         
 
-    # delete bucket replication with try accept and args as none
-    def s3_delete_bucket_replication(self, bucket_name=None):
-        self.s3_put_bucket_replication()
-        if bucket_name is None:
-            bucket_name = self.bucket_name
+    # delete bucket metrics configuration 
+    def s3_delete_bucket_metrics_configuration(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+        if not len(args) > 1:
+            args.append(f'test{random.randint(1, 1000000000)}')
 
         try:
-            self.client.delete_bucket_replication(Bucket=bucket_name)
-            print(self.service, ': ' + f'Success -- Bucket replication deleted from bucket {bucket_name}')
+            self.client.put_bucket_metrics_configuration(Bucket=args[0], Id=args[1], MetricsConfiguration={'Id': args[1],'Filter': {'Prefix': 'test'}})
+            self.client.delete_bucket_metrics_configuration(Bucket=args[0], Id=args[1])
+            print(self.service, ': ' + f'Success -- Bucket metrics configuration {args[1]} deleted from bucket {args[0]}')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error deleting bucket replication from bucket {bucket_name}: {e}')
+            print(self.service, ': ' + f'Fail -- Error deleting bucket metrics configuration {args[1]} from bucket {args[0]}: {e}')
+            return False, e
+
+    # delete ownership controls 
+    def s3_delete_bucket_ownership_controls(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+
+        self.s3_put_bucket_ownership_controls([])
+
+        try:
+            self.client.delete_bucket_ownership_controls(Bucket=args[0])
+            print(self.service, ': ' + f'Success -- Bucket ownership controls deleted from bucket {args[0]}')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error deleting bucket ownership controls from bucket {args[0]}: {e}')
+            return False, e
+
+    # delete bucket policy 
+    def s3_delete_bucket_policy(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+
+        self.s3_put_bucket_policy([])
+
+        try:
+            self.client.delete_bucket_policy(Bucket=args[0])
+            print(self.service, ': ' + f'Success -- Bucket policy deleted from bucket {args[0]}')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error deleting bucket policy from bucket {args[0]}: {e}')
             return False, e
         
 
-    # delete bucket tagging with try accept and args as none
-    def s3_delete_bucket_tagging(self, bucket_name=None):
-        self.s3_put_bucket_tagging()
-        if bucket_name is None:
-            bucket_name = self.bucket_name
+    # delete bucket replication 
+    def s3_delete_bucket_replication(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+
+        self.s3_put_bucket_replication([f'test{random.randint(1, 1000000000)}'])
 
         try:
-            self.client.delete_bucket_tagging(Bucket=bucket_name)
-            print(self.service, ': ' + f'Success -- Bucket tagging deleted from bucket {bucket_name}')
+            self.client.delete_bucket_replication(Bucket=args[0])
+            print(self.service, ': ' + f'Success -- Bucket replication deleted from bucket {args[0]}')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error deleting bucket tagging from bucket {bucket_name}: {e}')
+            print(self.service, ': ' + f'Fail -- Error deleting bucket replication from bucket {args[0]}: {e}')
             return False, e
         
 
-    # delete bucket website with try accept and args as none
-    def s3_delete_bucket_website(self, bucket_name=None):
-        self.s3_put_bucket_website()
-        if bucket_name is None:
-            bucket_name = self.bucket_name
+    # delete bucket tagging 
+    def s3_delete_bucket_tagging(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
 
         try:
-            self.client.delete_bucket_website(Bucket=bucket_name)
-            print(self.service, ': ' + f'Success -- Bucket website deleted from bucket {bucket_name}')
+            self.client.put_bucket_tagging(Bucket=args[0], Tagging={'TagSet': [{'Key': 'string', 'Value': 'string'}]})
+            self.client.delete_bucket_tagging(Bucket=args[0])
+            print(self.service, ': ' + f'Success -- Bucket tagging deleted from bucket {args[0]}')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error deleting bucket website from bucket {bucket_name}: {e}')
+            print(self.service, ': ' + f'Fail -- Error deleting bucket tagging from bucket {args[0]}: {e}')
             return False, e
         
 
-    # delete object with try accept and args as none
-    def s3_delete_object(self, bucket_name=None, key=None):
-        # comment this if you want to delete objects for deleting all the objects
-        self.s3_put_object()
-        if bucket_name is None:
-            bucket_name = self.bucket_name
-        if key is None:
-            key = f'{random.randint(1, 1000000)}'
+    # delete bucket website 
+    def s3_delete_bucket_website(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
 
         try:
-            self.client.delete_object(Bucket=bucket_name, Key=key)
-            print(self.service, ': ' + f'Success -- Object {key} deleted from bucket {bucket_name}')
+            self.client.put_bucket_website(Bucket=args[0], WebsiteConfiguration={'RedirectAllRequestsTo': {'HostName': 'string', 'Protocol': 'http'}})
+            self.client.delete_bucket_website(Bucket=args[0])
+            print(self.service, ': ' + f'Success -- Bucket website deleted from bucket {args[0]}')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error deleting object {key} from bucket {bucket_name}: {e}')
+            print(self.service, ': ' + f'Fail -- Error deleting bucket website from bucket {args[0]}: {e}')
             return False, e
         
 
-    # delete object tagging with try accept and args as none
-    def s3_delete_object_tagging(self, bucket_name=None, key=None):
-        
-        if bucket_name is None:
-            bucket_name = self.bucket_name
-        if key is None:
-            key = f'{random.randint(1, 1000000)}'
-        self.s3_put_object_tagging(key=key)
+    # delete object 
+    def s3_delete_object(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+        if not len(args) > 1:
+            args.append(f'{random.randint(1, 1000000)}')
 
         try:
-            self.client.delete_object_tagging(Bucket=bucket_name, Key=key, BypassGovernanceRetention=True)
-            print(self.service, ': ' + f'Success -- Object tagging deleted from object {key} in bucket {bucket_name}')
+            self.client.put_object(Bucket=args[0], Key=args[1], Body='string')
+            self.client.delete_object(Bucket=args[0], Key=args[1])
+            print(self.service, ': ' + f'Success -- Object {args[1]} deleted from bucket {args[0]}')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error deleting object tagging from object {key} in bucket {bucket_name}: {e}')
-            return False, e
-
-    # delete objects with try accept and args as none
-    def s3_delete_objects(self, bucket_name=None, key=None):
-        
-        if bucket_name is None:
-            bucket_name = self.bucket_name
-        if key is None:
-            key1 = f'{random.randint(1, 1000000)}'
-            self.s3_put_object(key=key1)
-            key2 = f'{random.randint(1, 1000000)}'
-            self.s3_put_object(key=key2)
-
-        try:
-            self.client.delete_objects(Bucket=bucket_name, Delete={'Objects': [{'Key': key1}, {'Key': key2}]})
-            print(self.service, ': ' + f'Success -- Objects deleted from bucket {bucket_name}')
-            return True, ""
-        except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error deleting objects from bucket {bucket_name}: {e}')
-            return False, e
-
-    # delete public access block with try accept and args as none
-    def s3_delete_public_access_block(self, bucket_name=None):
-        self.s3_put_public_access_block()
-        if bucket_name is None:
-            bucket_name = self.bucket_name
-
-        try:
-            self.client.delete_public_access_block(Bucket=bucket_name)
-            print(self.service, ': ' + f'Success -- Public access block deleted from bucket {bucket_name}')
-            return True, ""
-        except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error deleting public access block from bucket {bucket_name}: {e}')
+            print(self.service, ': ' + f'Fail -- Error deleting object {args[1]} from bucket {args[0]}: {e}')
             return False, e
         
 
-
-    # download file with try accept and args as none
-    def s3_download_file(self, bucket_name=None, key=None, filename=None):
+    # delete object tagging 
+    def s3_delete_object_tagging(self, args):
         
-        if bucket_name is None:
-            bucket_name = self.bucket_name
-        if key is None:
-            key = f'{random.randint(1, 1000000)}'
-        if filename is None:
-            filename = f'{random.randint(1, 1000000)}'
-
-        self.s3_put_object(key=key)
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+        if not len(args) > 1:
+            args.append(f'{random.randint(1, 1000000)}')
 
         try:
-            self.client.download_file(Bucket=bucket_name, Key=key, Filename=filename)
-            print(self.service, ': ' + f'Success -- File {filename} downloaded from bucket {bucket_name}')
+            self.client.put_object(Bucket=args[0], Key=args[1])
+            self.client.put_object_tagging(Bucket=args[0], Key=args[1], Tagging={'TagSet': [{'Key': 'string', 'Value': 'string'}]})
+            self.client.delete_object_tagging(Bucket=args[0], Key=args[1])
+            print(self.service, ': ' + f'Success -- Object tagging deleted from object {args[1]} in bucket {args[0]}')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error downloading file {filename} from bucket {bucket_name}: {e}')
+            print(self.service, ': ' + f'Fail -- Error deleting object tagging from object {args[1]} in bucket {args[0]}: {e}')
+            return False, e
+
+    # delete objects 
+    def s3_delete_objects(self, args):
+        
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+        if not len(args) > 1:
+            args.append(f'{random.randint(1, 1000000)}')
+        if not len(args) > 2:
+            args.append(f'{random.randint(1, 1000000)}')
+
+        try:
+            self.client.put_object(Bucket=args[0], Key=args[1], Body='string')
+            self.client.put_object(Bucket=args[0], Key=args[2], Body='string')
+            self.client.delete_objects(Bucket=args[0], Delete={'Objects': [{'Key': args[1]}, {'Key': args[2]}]})
+            print(self.service, ': ' + f'Success -- Objects deleted from bucket {args[0]}')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error deleting objects from bucket {args[0]}: {e}')
+            return False, e
+
+    # delete public access block 
+    def s3_delete_public_access_block(self, args):
+     
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+
+        try:
+            self.client.delete_public_access_block(Bucket=args[0])
+            print(self.service, ': ' + f'Success -- Public access block deleted from bucket {args[0]}')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error deleting public access block from bucket {args[0]}: {e}')
             return False, e
         
 
-    # download fileobj with try accept and args as none
-    def s3_download_fileobj(self, bucket_name=None, key=None, fileobj=None):
+
+    # download file 
+    def s3_download_file(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+        if not len(args) > 1:
+            args.append(f'{random.randint(1, 1000000)}')
+        if not len(args) > 2:
+            args.append(f'file{random.randint(1, 1000000)}')
+
+        try:
+            self.client.put_object(Bucket=args[0], Key=args[1])
+            self.client.download_file(Bucket=args[0], Key=args[1], Filename=args[2])
+            print(self.service, ': ' + f'Success -- File {args[2]} downloaded from bucket {args[0]}')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error downloading file {args[2]} from bucket {args[0]}: {e}')
+            return False, e
+        
+
+    # download fileobj 
+    def s3_download_fileobj(self, args):
        
-        if bucket_name is None:
-            bucket_name = self.bucket_name
-        if key is None:
-            key = f'{random.randint(1, 1000000)}'
-
-        self.s3_put_object(key=key)
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+        if not len(args) > 1:
+            args.append(f'{random.randint(1, 1000000)}')
 
         try:
+            self.client.put_object(Bucket=args[0], Key=args[1])
             with open('filename', 'wb') as data:
-                self.client.download_fileobj(Bucket=bucket_name, Key=key, Fileobj=data)
-            print(self.service, ': ' + f'Success -- Fileobj {fileobj} downloaded from bucket {bucket_name}')
+                self.client.download_fileobj(Bucket=args[0], Key=args[1], Fileobj=data)
+            print(self.service, ': ' + f'Success -- Fileobj downloaded from bucket {args[0]}')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error downloading fileobj {fileobj} from bucket {bucket_name}: {e}')
+            print(self.service, ': ' + f'Fail -- Error downloading fileobj from bucket {args[0]}: {e}')
             return False, e
 
 
-    # generate presigned post with try accept and args as none
-    def s3_generate_presigned_post(self, bucket_name=None, key=None, fields=None, conditions=None, expiration=None):
+    # generate presigned post 
+    def s3_generate_presigned_post(self, args):
             
-            if bucket_name is None:
-                bucket_name = self.bucket_name
-            if key is None:
-                key = f'{random.randint(1, 1000000)}'
-            if fields is None:
-                fields = None
-            if conditions is None:
-                conditions = None
-            if expiration is None:
-                expiration = 3600
-    
-            try:
-                self.client.generate_presigned_post(Bucket=bucket_name, Key=key, Fields=fields, Conditions=conditions, ExpiresIn=expiration)
-                print(self.service, ': ' + f'Success -- Presigned post generated for bucket {bucket_name}')
-                return True, ""
-            except Exception as e:
-                print(self.service, ': ' + f'Fail -- Error generating presigned post for bucket {bucket_name}: {e}')
-                return False, e
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+        if not len(args) > 1:
+            args.append(f'{random.randint(1, 1000000)}')
+        if not len(args) > 2:
+            args.append(None)
+        if not len(args) > 3:
+            args.append(None)
+        if not len(args) > 4:
+            args.append(3600)
+
+        try:
+            self.client.generate_presigned_post(Bucket=args[0], Key=args[1], Fields=args[2], Conditions=args[3], ExpiresIn=args[4])
+            print(self.service, ': ' + f'Success -- Presigned post generated for bucket {args[0]}')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error generating presigned post for bucket {args[0]}: {e}')
+            return False, e
             
-    # generate presigned url with try accept and args as none
-    def s3_generate_presigned_url(self, bucket_name=None, key=None, expiration=None, method=None):
+    # generate presigned url 
+    def s3_generate_presigned_url(self, args):
                 
-            if bucket_name is None:
-                bucket_name = self.bucket_name
-            if key is None:
-                key = f'{random.randint(1, 1000000)}'
-            if expiration is None:
-                expiration = 3600
-            if method is None:
-                method = 'get_object'
-    
-            try:
-                self.client.generate_presigned_url(ClientMethod=method, Params={'Bucket': bucket_name, 'Key': key}, ExpiresIn=expiration)
-                print(self.service, ': ' + f'Success -- Presigned url generated for bucket {bucket_name}')
-                return True, ""
-            except Exception as e:
-                print(self.service, ': ' + f'Fail -- Error generating presigned url for bucket {bucket_name}: {e}')
-                return False, e
-
-    # get bucket accelerate configuration with try accept and args as none
-    def s3_get_bucket_accelerate_configuration(self, bucket_name=None):
-        if bucket_name is None:
-            bucket_name = self.bucket_name
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+        if not len(args) > 1:
+            args.append(f'{random.randint(1, 1000000)}')
+        if not len(args) > 2:
+            args.append(3600)
+        if not len(args) > 3:
+            args.append('get_object')
 
         try:
-            self.client.get_bucket_accelerate_configuration(Bucket=bucket_name)
-            print(self.service, ': ' + f'Success -- Accelerate configuration retrieved from bucket {bucket_name}')
+            self.client.generate_presigned_url(ClientMethod=args[3], Params={'Bucket': args[0], 'Key': args[1]}, ExpiresIn=args[2])
+            print(self.service, ': ' + f'Success -- Presigned url generated for bucket {args[0]}')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error retrieving accelerate configuration from bucket {bucket_name}: {e}')
+            print(self.service, ': ' + f'Fail -- Error generating presigned url for bucket {args[0]}: {e}')
+            return False, e
+
+    # get bucket accelerate configuration 
+    def s3_get_bucket_accelerate_configuration(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+
+        try:
+            self.client.get_bucket_accelerate_configuration(Bucket=args[0])
+            print(self.service, ': ' + f'Success -- Accelerate configuration retrieved from bucket {args[0]}')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error retrieving accelerate configuration from bucket {args[0]}: {e}')
             return False, e
         
-    # get bucket acl with try accept and args as none
-    def s3_get_bucket_acl(self, bucket_name=None):
-        if bucket_name is None:
-            bucket_name = self.bucket_name
+    # get bucket acl 
+    def s3_get_bucket_acl(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
 
         try:
-            self.client.get_bucket_acl(Bucket=bucket_name)
-            print(self.service, ': ' + f'Success -- ACL retrieved from bucket {bucket_name}')
+            self.client.get_bucket_acl(Bucket=args[0])
+            print(self.service, ': ' + f'Success -- ACL retrieved from bucket {args[0]}')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error retrieving ACL from bucket {bucket_name}: {e}')
+            print(self.service, ': ' + f'Fail -- Error retrieving ACL from bucket {args[0]}: {e}')
             return False, e
 
-    # get bucket analytics configuration with try accept and args as none
-    def s3_get_bucket_analytics_configuration(self, bucket_name=None, id=None):
-        if bucket_name is None:
-            bucket_name = self.bucket_name
-        if id is None:
-            id = 'test'
+    # get bucket analytics configuration 
+    def s3_get_bucket_analytics_configuration(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+        if not len(args) > 1:
+            args.append('test')
+
+        self.s3_put_bucket_analytics_configuration(args)
 
         try:
-            self.client.get_bucket_analytics_configuration(Bucket=bucket_name, Id=id)
-            print(self.service, ': ' + f'Success -- Analytics configuration retrieved from bucket {bucket_name}')
+            self.client.get_bucket_analytics_configuration(Bucket=args[0], Id=args[1])
+            print(self.service, ': ' + f'Success -- Analytics configuration retrieved from bucket {args[0]}')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error retrieving analytics configuration from bucket {bucket_name}: {e}')
+            print(self.service, ': ' + f'Fail -- Error retrieving analytics configuration from bucket {args[0]}: {e}')
             return False, e
 
-    # get bucket cors with try accept and args as none
-    def s3_get_bucket_cors(self, bucket_name=None):
-        self.s3_put_bucket_cors()
-        if bucket_name is None:
-            bucket_name = self.bucket_name
+    # get bucket cors 
+    def s3_get_bucket_cors(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+
+        self.s3_put_bucket_cors(args)
 
         try:
-            self.client.get_bucket_cors(Bucket=bucket_name)
-            print(self.service, ': ' + f'Success -- CORS retrieved from bucket {bucket_name}')
+            self.client.get_bucket_cors(Bucket=args[0])
+            print(self.service, ': ' + f'Success -- CORS retrieved from bucket {args[0]}')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error retrieving CORS from bucket {bucket_name}: {e}')
+            print(self.service, ': ' + f'Fail -- Error retrieving CORS from bucket {args[0]}: {e}')
             return False, e
 
-    # get bucket encryption with try accept and args as none
-    def s3_get_bucket_encryption(self, bucket_name=None):
-        self.s3_put_bucket_encryption()
-        if bucket_name is None:
-            bucket_name = self.bucket_name
+    # get bucket encryption 
+    def s3_get_bucket_encryption(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
 
         try:
-            self.client.get_bucket_encryption(Bucket=bucket_name)
-            print(self.service, ': ' + f'Success -- Encryption retrieved from bucket {bucket_name}')
+            self.client.get_bucket_encryption(Bucket=args[0])
+            print(self.service, ': ' + f'Success -- Encryption retrieved from bucket {args[0]}')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error retrieving encryption from bucket {bucket_name}: {e}')
+            print(self.service, ': ' + f'Fail -- Error retrieving encryption from bucket {args[0]}: {e}')
             return False, e
         
-    # get intellegent tiering configuration with try accept and args as none
-    def s3_get_bucket_intelligent_tiering_configuration(self, bucket_name=None, id=None):
-        if bucket_name is None:
-            bucket_name = self.bucket_name
-        if id is None:
-            id = 'test'
+    # get intellegent tiering configuration 
+    def s3_get_bucket_intelligent_tiering_configuration(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+        if not len(args) > 1:
+            args.append(f'{random.randint(1, 1000000)}')
+
+        self.s3_put_bucket_intelligent_tiering_configuration(args)
 
         try:
-            resp = self.client.get_bucket_intelligent_tiering_configuration(Bucket=bucket_name, Id=id)
-            print(self.service, ': ' + f'Success -- Intelligent tiering configuration retrieved from bucket {bucket_name}')
+            resp = self.client.get_bucket_intelligent_tiering_configuration(Bucket=args[0], Id=args[1])
+            print(self.service, ': ' + f'Success -- Intelligent tiering configuration retrieved from bucket {args[0]}')
             print(resp)
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error retrieving intelligent tiering configuration from bucket {bucket_name}: {e}')
+            print(self.service, ': ' + f'Fail -- Error retrieving intelligent tiering configuration from bucket {args[0]}: {e}')
             return False, e
 
-    # get bucket inventory configuration with try accept and args as none
-    def s3_get_bucket_inventory_configuration(self, bucket_name=None, id=None):
-        if bucket_name is None:
-            bucket_name = self.bucket_name
-        if id is None:
-            id = 'test'
+    # get bucket inventory configuration 
+    def s3_get_bucket_inventory_configuration(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+        if not len(args) > 1:
+            args.append(f'{random.randint(1, 1000000)}')
+
+        self.s3_put_bucket_inventory_configuration(args)
 
         try:
-            self.client.get_bucket_inventory_configuration(Bucket=bucket_name, Id=id)
-            print(self.service, ': ' + f'Success -- Inventory configuration retrieved from bucket {bucket_name}')
+            self.client.get_bucket_inventory_configuration(Bucket=args[0], Id=args[1])
+            print(self.service, ': ' + f'Success -- Inventory configuration retrieved from bucket {args[0]}')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error retrieving inventory configuration from bucket {bucket_name}: {e}')
-            return False, e
-
-
-    # get bucket lifecycle with try accept and args as none
-    def s3_get_bucket_lifecycle(self, bucket_name=None):
-        self.s3_put_bucket_lifecycle()
-        if bucket_name is None:
-            bucket_name = self.bucket_name
-
-        try:
-            self.client.get_bucket_lifecycle(Bucket=bucket_name)
-            print(self.service, ': ' + f'Success -- Lifecycle retrieved from bucket {bucket_name}')
-            return True, ""
-        except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error retrieving lifecycle from bucket {bucket_name}: {e}')
+            print(self.service, ': ' + f'Fail -- Error retrieving inventory configuration from bucket {args[0]}: {e}')
             return False, e
 
 
-    # get bucket lifecycle configuration with try accept and args as none
-    def s3_get_bucket_lifecycle_configuration(self, bucket_name=None):
-        self.s3_put_bucket_lifecycle()
-        if bucket_name is None:
-            bucket_name = self.bucket_name
+    # get bucket lifecycle 
+    def s3_get_bucket_lifecycle(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+
+        self.s3_put_bucket_lifecycle([])
 
         try:
-            self.client.get_bucket_lifecycle_configuration(Bucket=bucket_name)
-            print(self.service, ': ' + f'Success -- Lifecycle configuration retrieved from bucket {bucket_name}')
+            self.client.get_bucket_lifecycle(Bucket=args[0])
+            print(self.service, ': ' + f'Success -- Lifecycle retrieved from bucket {args[0]}')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error retrieving lifecycle configuration from bucket {bucket_name}: {e}')
-            return False, e
-
-    # get bucket location with try accept and args as none
-    def s3_get_bucket_location(self, bucket_name=None):
-        if bucket_name is None:
-            bucket_name = self.bucket_name
-
-        try:
-            self.client.get_bucket_location(Bucket=bucket_name)
-            print(self.service, ': ' + f'Success -- Location retrieved from bucket {bucket_name}')
-            return True, ""
-        except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error retrieving location from bucket {bucket_name}: {e}')
+            print(self.service, ': ' + f'Fail -- Error retrieving lifecycle from bucket {args[0]}: {e}')
             return False, e
 
 
-    # get bucket logging with try accept and args as none
-    def s3_get_bucket_logging(self, bucket_name=None):
-        if bucket_name is None:
-            bucket_name = self.bucket_name
+    # get bucket lifecycle configuration 
+    def s3_get_bucket_lifecycle_configuration(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+
+        self.s3_put_bucket_lifecycle_configuration([])
 
         try:
-            self.client.get_bucket_logging(Bucket=bucket_name)
-            print(self.service, ': ' + f'Success -- Logging retrieved from bucket {bucket_name}')
+            self.client.get_bucket_lifecycle_configuration(Bucket=args[0])
+            print(self.service, ': ' + f'Success -- Lifecycle configuration retrieved from bucket {args[0]}')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error retrieving logging from bucket {bucket_name}: {e}')
+            print(self.service, ': ' + f'Fail -- Error retrieving lifecycle configuration from bucket {args[0]}: {e}')
             return False, e
 
-    # get bucket metrics configuration with try accept and args as none
-    def s3_get_bucket_metrics_configuration(self, bucket_name=None, id=None):
-        if bucket_name is None:
-            bucket_name = self.bucket_name
-        if id is None:
-            id = 'test'
+    # get bucket location 
+    def s3_get_bucket_location(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
 
         try:
-            self.client.get_bucket_metrics_configuration(Bucket=bucket_name, Id=id)
-            print(self.service, ': ' + f'Success -- Metrics configuration retrieved from bucket {bucket_name}')
+            self.client.get_bucket_location(Bucket=args[0])
+            print(self.service, ': ' + f'Success -- Location retrieved from bucket {args[0]}')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error retrieving metrics configuration from bucket {bucket_name}: {e}')
+            print(self.service, ': ' + f'Fail -- Error retrieving location from bucket {args[0]}: {e}')
             return False, e
 
-    # get bucket notification with try accept and args as none
-    def s3_get_bucket_notification(self, bucket_name=None):
-        if bucket_name is None:
-            bucket_name = self.bucket_name
+
+    # get bucket logging 
+    def s3_get_bucket_logging(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
 
         try:
-            self.client.get_bucket_notification(Bucket=bucket_name)
-            print(self.service, ': ' + f'Success -- Notification retrieved from bucket {bucket_name}')
+            self.client.get_bucket_logging(Bucket=args[0])
+            print(self.service, ': ' + f'Success -- Logging retrieved from bucket {args[0]}')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error retrieving notification from bucket {bucket_name}: {e}')
+            print(self.service, ': ' + f'Fail -- Error retrieving logging from bucket {args[0]}: {e}')
             return False, e
 
-    # get bucket notification configuration with try accept and args as none
-    def s3_get_bucket_notification_configuration(self, bucket_name=None):
-        if bucket_name is None:
-            bucket_name = self.bucket_name
+    # get bucket metrics configuration 
+    def s3_get_bucket_metrics_configuration(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+        if not len(args) > 1:
+            args.append(f'{random.randint(1, 1000000)}')
+
+        self.s3_put_bucket_metrics_configuration(args)
 
         try:
-            self.client.get_bucket_notification_configuration(Bucket=bucket_name)
-            print(self.service, ': ' + f'Success -- Notification configuration retrieved from bucket {bucket_name}')
+            self.client.get_bucket_metrics_configuration(Bucket=args[0], Id=args[1])
+            print(self.service, ': ' + f'Success -- Metrics configuration retrieved from bucket {args[0]}')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error retrieving notification configuration from bucket {bucket_name}: {e}')
-            return False, e
-        
-    # gte ownership controls with try accept and args as none
-    def s3_get_bucket_ownership_controls(self, bucket_name=None):
-        self.s3_put_bucket_ownership_controls()
-        if bucket_name is None:
-            bucket_name = self.bucket_name
-
-        try:
-            self.client.get_bucket_ownership_controls(Bucket=bucket_name)
-            print(self.service, ': ' + f'Success -- Ownership controls retrieved from bucket {bucket_name}')
-            return True, ""
-        except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error retrieving ownership controls from bucket {bucket_name}: {e}')
+            print(self.service, ': ' + f'Fail -- Error retrieving metrics configuration from bucket {args[0]}: {e}')
             return False, e
 
-    # get bucket policy with try accept and args as none
-    def s3_get_bucket_policy(self, bucket_name=None):
-        self.s3_put_bucket_policy()
-        if bucket_name is None:
-            bucket_name = self.bucket_name
+    # get bucket notification 
+    def s3_get_bucket_notification(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
 
         try:
-            self.client.get_bucket_policy(Bucket=bucket_name)
-            print(self.service, ': ' + f'Success -- Policy retrieved from bucket {bucket_name}')
+            self.client.get_bucket_notification(Bucket=args[0])
+            print(self.service, ': ' + f'Success -- Notification retrieved from bucket {args[0]}')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error retrieving policy from bucket {bucket_name}: {e}')
+            print(self.service, ': ' + f'Fail -- Error retrieving notification from bucket {args[0]}: {e}')
+            return False, e
+
+    # get bucket notification configuration 
+    def s3_get_bucket_notification_configuration(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+
+        try:
+            self.client.get_bucket_notification_configuration(Bucket=args[0])
+            print(self.service, ': ' + f'Success -- Notification configuration retrieved from bucket {args[0]}')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error retrieving notification configuration from bucket {args[0]}: {e}')
             return False, e
         
-    # get bucket policy status with try accept and args as none
-    def s3_get_bucket_policy_status(self, bucket_name=None):
-        if bucket_name is None:
-            bucket_name = self.bucket_name
+    # gte ownership controls 
+    def s3_get_bucket_ownership_controls(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+
+        self.s3_put_bucket_ownership_controls([])
 
         try:
-            self.client.get_bucket_policy_status(Bucket=bucket_name)
-            print(self.service, ': ' + f'Success -- Policy status retrieved from bucket {bucket_name}')
+            self.client.get_bucket_ownership_controls(Bucket=args[0])
+            print(self.service, ': ' + f'Success -- Ownership controls retrieved from bucket {args[0]}')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error retrieving policy status from bucket {bucket_name}: {e}')
+            print(self.service, ': ' + f'Fail -- Error retrieving ownership controls from bucket {args[0]}: {e}')
+            return False, e
+
+    # get bucket policy 
+    def s3_get_bucket_policy(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+
+        self.s3_put_bucket_policy([])
+
+        try:
+            self.client.get_bucket_policy(Bucket=args[0])
+            print(self.service, ': ' + f'Success -- Policy retrieved from bucket {args[0]}')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error retrieving policy from bucket {args[0]}: {e}')
             return False, e
         
+    # get bucket policy status 
+    def s3_get_bucket_policy_status(self, args):
 
-    # get bucket replication with try accept and args as none
-    def s3_get_bucket_replication(self, bucket_name=None):
-        self.s3_put_bucket_replication()
-        if bucket_name is None:
-            bucket_name = self.bucket_name
+        if not len(args) > 0:
+            args.append(self.bucket_name)
 
-        try:
-            self.client.get_bucket_replication(Bucket=bucket_name)
-            print(self.service, ': ' + f'Success -- Replication retrieved from bucket {bucket_name}')
-            return True, ""
-        except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error retrieving replication from bucket {bucket_name}: {e}')
-            return False, e
-
-    # get bucket request payment with try accept and args as none
-    def s3_get_bucket_request_payment(self, bucket_name=None):
-        if bucket_name is None:
-            bucket_name = self.bucket_name
+        self.s3_put_bucket_policy([])
 
         try:
-            self.client.get_bucket_request_payment(Bucket=bucket_name)
-            print(self.service, ': ' + f'Success -- Request payment retrieved from bucket {bucket_name}')
+            self.client.get_bucket_policy_status(Bucket=args[0])
+            print(self.service, ': ' + f'Success -- Policy status retrieved from bucket {args[0]}')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error retrieving request payment from bucket {bucket_name}: {e}')
-            return False, e
-
-
-    # get bucket tagging with try accept and args as none
-    def s3_get_bucket_tagging(self, bucket_name=None):
-        self.s3_put_bucket_tagging()
-        if bucket_name is None:
-            bucket_name = self.bucket_name
-
-        try:
-            self.client.get_bucket_tagging(Bucket=bucket_name)
-            print(self.service, ': ' + f'Success -- Tagging retrieved from bucket {bucket_name}')
-            return True, ""
-        except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error retrieving tagging from bucket {bucket_name}: {e}')
+            print(self.service, ': ' + f'Fail -- Error retrieving policy status from bucket {args[0]}: {e}')
             return False, e
         
 
-    # get bucket versioning with try accept and args as none
-    def s3_get_bucket_versioning(self, bucket_name=None):
-        if bucket_name is None:
-            bucket_name = self.bucket_name
+    # get bucket replication 
+    def s3_get_bucket_replication(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+
+        self.s3_put_bucket_replication([])
 
         try:
-            self.client.get_bucket_versioning(Bucket=bucket_name)
-            print(self.service, ': ' + f'Success -- Versioning retrieved from bucket {bucket_name}')
+            self.client.get_bucket_replication(Bucket=args[0])
+            print(self.service, ': ' + f'Success -- Replication retrieved from bucket {args[0]}')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error retrieving versioning from bucket {bucket_name}: {e}')
+            print(self.service, ': ' + f'Fail -- Error retrieving replication from bucket {args[0]}: {e}')
+            return False, e
+
+    # get bucket request payment 
+    def s3_get_bucket_request_payment(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+
+        try:
+            self.client.get_bucket_request_payment(Bucket=args[0])
+            print(self.service, ': ' + f'Success -- Request payment retrieved from bucket {args[0]}')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error retrieving request payment from bucket {args[0]}: {e}')
             return False, e
 
 
-    # get bucket website with try accept and args as none
-    def s3_get_bucket_website(self, bucket_name=None):
-        self.s3_put_bucket_website()
-        if bucket_name is None:
-            bucket_name = self.bucket_name
+    # get bucket tagging 
+    def s3_get_bucket_tagging(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+
+        self.s3_put_bucket_tagging([])
 
         try:
-            self.client.get_bucket_website(Bucket=bucket_name)
-            print(self.service, ': ' + f'Success -- Website retrieved from bucket {bucket_name}')
+            self.client.get_bucket_tagging(Bucket=args[0])
+            print(self.service, ': ' + f'Success -- Tagging retrieved from bucket {args[0]}')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error retrieving website from bucket {bucket_name}: {e}')
-            return False, e
-        
-
-    # get object with try accept and args as none
-    def s3_get_object(self, bucket_name=None, key=None):
-        if bucket_name is None:
-            bucket_name = self.bucket_name
-        if key is None:
-            key = f'{random.randint(1, 1000000)}'
-
-        self.s3_put_object(key=key)
-
-        try:
-            self.client.get_object(Bucket=bucket_name, Key=key)
-            print(self.service, ': ' + f'Success -- Object {key} retrieved from bucket {bucket_name}')
-            return True, ""
-        except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error retrieving object {key} from bucket {bucket_name}: {e}')
-            return False, e
-
-
-    # get object acl with try accept and args as none
-    def s3_get_object_acl(self, bucket_name=None, key=None):
-        if bucket_name is None:
-            bucket_name = self.bucket_name
-        if key is None:
-            key = f'{random.randint(1, 1000000)}'
-
-        self.s3_put_object(key=key)
-
-        try:
-            self.client.get_object_acl(Bucket=bucket_name, Key=key)
-            print(self.service, ': ' + f'Success -- Object ACL {key} retrieved from bucket {bucket_name}')
-            return True, ""
-        except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error retrieving object ACL {key} from bucket {bucket_name}: {e}')
-            return False, e
-
-    # get attributes of object with try accept and args as none
-    def s3_get_object_attributes(self, bucket_name=None, key=None):
-        if bucket_name is None:
-            bucket_name = self.bucket_name
-        if key is None:
-            key = f'{random.randint(1, 1000000)}'
-
-        self.s3_put_object(key=key)
-
-        try:
-            self.client.head_object(Bucket=bucket_name, Key=key)
-            print(self.service, ': ' + f'Success -- Object attributes {key} retrieved from bucket {bucket_name}')
-            return True, ""
-        except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error retrieving object attributes {key} from bucket {bucket_name}: {e}')
-            return False, e
-
-    # get object legal hold with try accept and args as none
-    def s3_get_object_legal_hold(self, bucket_name=None, key=None):
-        if bucket_name is None:
-            bucket_name = f'{random.randint(1, 1000000)}'
-        if key is None:
-            key = f'{random.randint(1, 1000000)}'
-
-        self.s3_put_object_legal_hold(key=key, bucket_name=bucket_name)
-
-        try:
-            self.client.get_object_legal_hold(Bucket=bucket_name, Key=key)
-            print(self.service, ': ' + f'Success -- Object legal hold {key} retrieved from bucket {bucket_name}')
-            return True, ""
-        except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error retrieving object legal hold {key} from bucket {bucket_name}: {e}')
-            return False, e
-        
-    # get object lock configuration with try accept and args as none
-    def s3_get_object_lock_configuration(self, bucket_name=None):
-        
-        if bucket_name is None:
-            bucket_name = f'{random.randint(1, 1000000)}'
-
-        self.s3_put_object_lock_configuration(bucket_name=bucket_name)
-
-        try:
-            self.client.get_object_lock_configuration(Bucket=bucket_name)
-            print(self.service, ': ' + f'Success -- Object lock configuration retrieved from bucket {bucket_name}')
-            return True, ""
-        except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error retrieving object lock configuration from bucket {bucket_name}: {e}')
+            print(self.service, ': ' + f'Fail -- Error retrieving tagging from bucket {args[0]}: {e}')
             return False, e
         
 
-    # get object retention with try accept and args as none
-    def s3_get_object_retention(self, bucket_name=None, key=None):
-        if bucket_name is None:
-            bucket_name = f'{random.randint(1, 1000000)}'
-        if key is None:
-            key = f'{random.randint(1, 1000000)}'
+    # get bucket versioning 
+    def s3_get_bucket_versioning(self, args):
 
-        self.s3_put_object_legal_hold(key=key, bucket_name=bucket_name)
+        if not len(args) > 0:
+            args.append(self.bucket_name)
 
         try:
-            self.client.get_object_retention(Bucket=bucket_name, Key=key)
-            print(self.service, ': ' + f'Success -- Object retention {key} retrieved from bucket {bucket_name}')
+            self.client.get_bucket_versioning(Bucket=args[0])
+            print(self.service, ': ' + f'Success -- Versioning retrieved from bucket {args[0]}')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error retrieving object retention {key} from bucket {bucket_name}: {e}')
+            print(self.service, ': ' + f'Fail -- Error retrieving versioning from bucket {args[0]}: {e}')
+            return False, e
+
+
+    # get bucket website 
+    def s3_get_bucket_website(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+
+        self.s3_put_bucket_website([])
+
+        try:
+            self.client.get_bucket_website(Bucket=args[0])
+            print(self.service, ': ' + f'Success -- Website retrieved from bucket {args[0]}')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error retrieving website from bucket {args[0]}: {e}')
             return False, e
         
 
-    # get object tagging with try accept and args as none
-    def s3_get_object_tagging(self, bucket_name=None, key=None):
-        if bucket_name is None:
-            bucket_name = self.bucket_name
-        if key is None:
-            key = f'{random.randint(1, 1000000)}'
+    # get object 
+    def s3_get_object(self, args):
 
-        self.s3_put_object(key=key)
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+        if not len(args) > 1:
+            args.append(f'{random.randint(1, 1000000)}')
 
         try:
-            self.client.get_object_tagging(Bucket=bucket_name, Key=key)
-            print(self.service, ': ' + f'Success -- Object tagging {key} retrieved from bucket {bucket_name}')
+            self.client.put_object(Bucket=args[0], Key=args[1])
+            self.client.get_object(Bucket=args[0], Key=args[1])
+            print(self.service, ': ' + f'Success -- Object {args[1]} retrieved from bucket {args[0]}')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error retrieving object tagging {key} from bucket {bucket_name}: {e}')
+            print(self.service, ': ' + f'Fail -- Error retrieving object {args[1]} from bucket {args[0]}: {e}')
             return False, e
 
 
-    # get object torrent with try accept and args as none
-    def s3_get_object_torrent(self, bucket_name=None, key=None):
-        if bucket_name is None:
-            bucket_name = self.bucket_name
-        if key is None:
-            key = f'{random.randint(1, 1000000)}'
+    # get object acl 
+    def s3_get_object_acl(self, args):
 
-        self.s3_put_object(key=key)
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+        if not len(args) > 1:
+            args.append(f'{random.randint(1, 1000000)}')
+
 
         try:
-            self.client.get_object_torrent(Bucket=bucket_name, Key=key)
-            print(self.service, ': ' + f'Success -- Object torrent {key} retrieved from bucket {bucket_name}')
+            self.client.put_object(Bucket=args[0], Key=args[1])
+            self.client.get_object_acl(Bucket=args[0], Key=args[1])
+            print(self.service, ': ' + f'Success -- Object ACL {args[1]} retrieved from bucket {args[0]}')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error retrieving object torrent {key} from bucket {bucket_name}: {e}')
+            print(self.service, ': ' + f'Fail -- Error retrieving object ACL {args[1]} from bucket {args[0]}: {e}')
+            return False, e
+
+    # get attributes of object 
+    def s3_get_object_attributes(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+        if not len(args) > 1:
+            args.append(f'{random.randint(1, 1000000)}')
+
+        try:
+            self.client.put_object(Bucket=args[0], Key=args[1])
+            self.client.get_object_attributes(Bucket=args[0], Key=args[1], ObjectAttributes=['ETag','Checksum','ObjectParts','StorageClass','ObjectSize'])
+            print(self.service, ': ' + f'Success -- Object attributes {args[1]} retrieved from bucket {args[0]}')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error retrieving object attributes {args[1]} from bucket {args[0]}: {e}')
+            return False, e
+
+    # get object legal hold 
+    def s3_get_object_legal_hold(self, args):
+
+        if not len(args) > 0:
+            args.append(f'bucket{random.randint(1, 1000000)}')
+        if not len(args) > 1:
+            args.append(f'{random.randint(1, 1000000)}')
+
+        self.s3_put_object_legal_hold(args)
+
+        try:
+            self.client.get_object_legal_hold(Bucket=args[0], Key=args[1])
+            print(self.service, ': ' + f'Success -- Object legal hold {args[1]} retrieved from bucket {args[0]}')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error retrieving object legal hold {args[1]} from bucket {args[0]}: {e}')
+            return False, e
+        
+    # get object lock configuration 
+    def s3_get_object_lock_configuration(self, args):
+        
+        if not len(args) > 0:
+            args.append(f'bucket{random.randint(1, 1000000)}')
+
+        self.s3_put_object_lock_configuration([args[0]])
+
+        try:
+            self.client.get_object_lock_configuration(Bucket=args[0])
+            print(self.service, ': ' + f'Success -- Object lock configuration retrieved from bucket {args[0]}')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error retrieving object lock configuration from bucket {args[0]}: {e}')
+            return False, e
+        
+
+    # get object retention 
+    def s3_get_object_retention(self, args):
+
+        if not len(args) > 0:
+            args.append(f'bucket{random.randint(1, 1000000)}')
+        if not len(args) > 1:
+            args.append(f'{random.randint(1, 1000000)}')
+
+        self.s3_put_object_legal_hold(args)
+
+        try:
+            self.client.get_object_retention(Bucket=args[0], Key=args[1])
+            print(self.service, ': ' + f'Success -- Object retention {args[1]} retrieved from bucket {args[0]}')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error retrieving object retention {args[1]} from bucket {args[0]}: {e}')
+            return False, e
+        
+
+    # get object tagging 
+    def s3_get_object_tagging(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+        if not len(args) > 1:
+            args.append(f'{random.randint(1, 1000000)}')
+
+        try:
+            self.client.put_object(Bucket=args[0], Key=args[1])
+            self.client.get_object_tagging(Bucket=args[0], Key=args[1])
+            print(self.service, ': ' + f'Success -- Object tagging {args[1]} retrieved from bucket {args[0]}')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error retrieving object tagging {args[1]} from bucket {args[0]}: {e}')
+            return False, e
+
+
+    # get object torrent 
+    def s3_get_object_torrent(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+        if not len(args) > 1:
+            args.append(f'{random.randint(1, 1000000)}')
+
+        try:
+            self.client.put_object(Bucket=args[0], Key=args[1])
+            self.client.get_object_torrent(Bucket=args[0], Key=args[1])
+            print(self.service, ': ' + f'Success -- Object torrent {args[1]} retrieved from bucket {args[0]}')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error retrieving object torrent {args[1]} from bucket {args[0]}: {e}')
             return False, e
         
 
     # !!ignore
-    # get paginator with try accept and args as none
-    def s3_get_paginator(self):
+    # get paginator 
+    # def s3_get_paginator(self, args):
 
-        try:
-            self.client.get_paginator('list_object_versions')
-            print(self.service, ': ' + f'Success -- Paginator retrieved')
-            return True, ""
-        except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error retrieving paginator: {e}')
-            return False, e
-        
-
-    # get public access block with try accept and args as none
-    def s3_get_public_access_block(self, bucket_name=None):
-        self.s3_put_public_access_block()
-        if bucket_name is None:
-            bucket_name = self.bucket_name
-
-        try:
-            self.client.get_public_access_block(Bucket=bucket_name)
-            print(self.service, ': ' + f'Success -- Public access block retrieved from bucket {bucket_name}')
-            return True, ""
-        except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error retrieving public access block from bucket {bucket_name}: {e}')
-            return False, e
-
-    # # !!ignore
-    # # get waiters with try accept and args as none
-    # def s3_get_waiter(self, bucket_name=None):
-    #     if bucket_name is None:
-    #         bucket_name = self.bucket_name
+    #     if not len(args) > 0:
+    #         args.append('list_object_versions')
 
     #     try:
-    #         self.client.get_waiter(bucket_name)
-    #         print(self.service, ': ' + f'Success -- Waiter retrieved from bucket {bucket_name}')
+    #         self.client.get_paginator(args[0])
+    #         print(self.service, ': ' + f'Success -- Paginator retrieved')
     #         return True, ""
     #     except Exception as e:
-    #         print(self.service, ': ' + f'Fail -- Error retrieving waiter from bucket {bucket_name}: {e}')
+    #         print(self.service, ': ' + f'Fail -- Error retrieving paginator: {e}')
     #         return False, e
         
 
-    # head bucket with try accept and args as none
-    def s3_head_bucket(self, bucket_name=None):
-        if bucket_name is None:
-            bucket_name = self.bucket_name
+    # get public access block 
+    def s3_get_public_access_block(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+
+        self.s3_put_public_access_block([])
 
         try:
-            self.client.head_bucket(Bucket=bucket_name)
-            print(self.service, ': ' + f'Success -- Bucket {bucket_name} head')
+            self.client.get_public_access_block(Bucket=args[0])
+            print(self.service, ': ' + f'Success -- Public access block retrieved from bucket {args[0]}')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error head bucket {bucket_name}: {e}')
-            return False, e
-        
-    # head object with try accept and args as none
-    def s3_head_object(self, bucket_name=None, key=None):
-        if bucket_name is None:
-            bucket_name = self.bucket_name
-        if key is None:
-            key = f'{random.randint(1, 1000000)}'
-
-        self.s3_put_object(key=key)
-
-        try:
-            self.client.head_object(Bucket=bucket_name, Key=key)
-            print(self.service, ': ' + f'Success -- Object {key} head from bucket {bucket_name}')
-            return True, ""
-        except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error head object {key} from bucket {bucket_name}: {e}')
+            print(self.service, ': ' + f'Fail -- Error retrieving public access block from bucket {args[0]}: {e}')
             return False, e
 
+    # !!ignore
+    # get waiters 
+    # def s3_get_waiter(self, args):
+    #     if not len(args) > 0:
+    #         args.append(self.bucket_name)
 
-    # list bucket analytics configurations with try accept and args as none
-    def s3_list_bucket_analytics_configurations(self, bucket_name=None):
-        if bucket_name is None:
-            bucket_name = self.bucket_name
-
-        try:
-            self.client.list_bucket_analytics_configurations(Bucket=bucket_name)
-            print(self.service, ': ' + f'Success -- Bucket analytics configurations listed from bucket {bucket_name}')
-            return True, ""
-        except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error listing bucket analytics configurations from bucket {bucket_name}: {e}')
-            return False, e
-
-    # list bucket intelligent tiering configuration with try accept and args as none
-    def s3_list_bucket_intelligent_tiering_configurations(self, bucket_name=None):
-        if bucket_name is None:
-            bucket_name = self.bucket_name
-
-        try:
-            self.client.list_bucket_intelligent_tiering_configurations(Bucket=bucket_name)
-            print(self.service, ': ' + f'Success -- Bucket intelligent tiering configurations listed from bucket {bucket_name}')
-            return True, ""
-        except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error listing bucket intelligent tiering configurations from bucket {bucket_name}: {e}')
-            return False, e
-
-    # list bucket inventory configurations with try accept and args as none
-    def s3_list_bucket_inventory_configurations(self, bucket_name=None):
-        if bucket_name is None:
-            bucket_name = self.bucket_name
-
-        try:
-            self.client.list_bucket_inventory_configurations(Bucket=bucket_name)
-            print(self.service, ': ' + f'Success -- Bucket inventory configurations listed from bucket {bucket_name}')
-            return True, ""
-        except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error listing bucket inventory configurations from bucket {bucket_name}: {e}')
-            return False, e
-
-
-    # list bucket metrics configurations with try accept and args as none
-    def s3_list_bucket_metrics_configurations(self, bucket_name=None):
-        if bucket_name is None:
-            bucket_name = self.bucket_name
-
-        try:
-            self.client.list_bucket_metrics_configurations(Bucket=bucket_name)
-            print(self.service, ': ' + f'Success -- Bucket metrics configurations listed from bucket {bucket_name}')
-            return True, ""
-        except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error listing bucket metrics configurations from bucket {bucket_name}: {e}')
-            return False, e
-
-    # list multipart uploads with try accept and args as none
-    def s3_list_multipart_uploads(self, bucket_name=None):
-        if bucket_name is None:
-            bucket_name = self.bucket_name
-
-        try:
-            self.client.list_multipart_uploads(Bucket=bucket_name)
-            print(self.service, ': ' + f'Success -- Multipart uploads listed from bucket {bucket_name}')
-            return True, ""
-        except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error listing multipart uploads from bucket {bucket_name}: {e}')
-            return False, e
-
-    # list object versions with try accept and args as none
-    def s3_list_object_versions(self, bucket_name=None):
-        if bucket_name is None:
-            bucket_name = self.bucket_name
-
-        try:
-            self.client.list_object_versions(Bucket=bucket_name)
-            print(self.service, ': ' + f'Success -- Object versions listed from bucket {bucket_name}')
-            return True, ""
-        except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error listing object versions from bucket {bucket_name}: {e}')
-            return False, e
-        
-    # list objects with try accept and args as none
-    def s3_list_objects(self, bucket_name=None):
-        if bucket_name is None:
-            bucket_name = self.bucket_name
-
-        try:
-            self.client.list_objects(Bucket=bucket_name)
-            print(self.service, ': ' + f'Success -- Objects listed from bucket {bucket_name}')
-            return True, ""
-        except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error listing objects from bucket {bucket_name}: {e}')
-            return False, e
-
-
-    # list objects v2 with try accept and args as none
-    def s3_list_objects_v2(self, bucket_name=None):
-        if bucket_name is None:
-            bucket_name = self.bucket_name
-
-        try:
-            self.client.list_objects_v2(Bucket=bucket_name)
-            print(self.service, ': ' + f'Success -- Objects v2 listed from bucket {bucket_name}')
-            return True, ""
-        except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error listing objects v2 from bucket {bucket_name}: {e}')
-            return False, e
+    #     try:
+    #         self.client.get_waiter(args[0])
+    #         print(self.service, ': ' + f'Success -- Waiter retrieved from bucket {args[0]}')
+    #         return True, ""
+    #     except Exception as e:
+    #         print(self.service, ': ' + f'Fail -- Error retrieving waiter from bucket {args[0]}: {e}')
+    #         return False, e
         
 
+    # head bucket 
+    def s3_head_bucket(self, args):
 
-    # !!try again
-    # list parts with try accept and args as none
+        if not len(args) > 0:
+            args.append(self.bucket_name)
 
-
-    # list buckets with try accept and args as none
-    def s3_list_buckets(self):
         try:
-            res = self.client.list_buckets()
-            print(self.service, ': ' + 'Success -- Buckets listed')
-            return True, res
+            self.client.head_bucket(Bucket=args[0])
+            print(self.service, ': ' + f'Success -- Bucket {args[0]} head')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error head bucket {args[0]}: {e}')
+            return False, e
+        
+    # head object 
+    def s3_head_object(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+        if not len(args) > 1:
+            args.append(f'{random.randint(1, 1000000)}')
+
+        try:
+            self.client.put_object(Bucket=args[0], Key=args[1])
+            self.client.head_object(Bucket=args[0], Key=args[1])
+            print(self.service, ': ' + f'Success -- Object {args[1]} head from bucket {args[0]}')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error head object {args[1]} from bucket {args[0]}: {e}')
+            return False, e
+
+
+    # list bucket analytics configurations 
+    def s3_list_bucket_analytics_configurations(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+
+        try:
+            self.client.list_bucket_analytics_configurations(Bucket=args[0])
+            print(self.service, ': ' + f'Success -- Bucket analytics configurations listed from bucket {args[0]}')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error listing bucket analytics configurations from bucket {args[0]}: {e}')
+            return False, e
+
+    # list bucket intelligent tiering configuration 
+    def s3_list_bucket_intelligent_tiering_configurations(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+
+        try:
+            self.client.list_bucket_intelligent_tiering_configurations(Bucket=args[0])
+            print(self.service, ': ' + f'Success -- Bucket intelligent tiering configurations listed from bucket {args[0]}')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error listing bucket intelligent tiering configurations from bucket {args[0]}: {e}')
+            return False, e
+
+    # list bucket inventory configurations 
+    def s3_list_bucket_inventory_configurations(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+
+        try:
+            self.client.list_bucket_inventory_configurations(Bucket=args[0])
+            print(self.service, ': ' + f'Success -- Bucket inventory configurations listed from bucket {args[0]}')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error listing bucket inventory configurations from bucket {args[0]}: {e}')
+            return False, e
+
+
+    # list bucket metrics configurations 
+    def s3_list_bucket_metrics_configurations(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+
+        try:
+            self.client.list_bucket_metrics_configurations(Bucket=args[0])
+            print(self.service, ': ' + f'Success -- Bucket metrics configurations listed from bucket {args[0]}')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error listing bucket metrics configurations from bucket {args[0]}: {e}')
+            return False, e
+        
+    # list buckets 
+    def s3_list_buckets(self, args):
+            
+        try:
+            self.client.list_buckets()
+            print(self.service, ': ' + f'Success -- Buckets listed')
+            return True, ""
         except Exception as e:
             print(self.service, ': ' + f'Fail -- Error listing buckets: {e}')
             return False, e
 
-    # put bucket acelerate configuration with try accept and args as none
-    def s3_put_bucket_accelerate_configuration(self, bucket_name=None, accelerate_configuration=None):
-        if bucket_name is None:
-            bucket_name = self.bucket_name
-        if accelerate_configuration is None:
-            accelerate_configuration = {'Status': 'Enabled'}
+    # list multipart uploads 
+    def s3_list_multipart_uploads(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
 
         try:
-            self.client.put_bucket_accelerate_configuration(Bucket=bucket_name, AccelerateConfiguration=accelerate_configuration)
-            print(self.service, ': ' + f'Success -- Bucket accelerate configuration added to bucket {bucket_name}')
+            self.client.list_multipart_uploads(Bucket=args[0])
+            print(self.service, ': ' + f'Success -- Multipart uploads listed from bucket {args[0]}')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error adding bucket accelerate configuration to bucket {bucket_name}: {e}')
+            print(self.service, ': ' + f'Fail -- Error listing multipart uploads from bucket {args[0]}: {e}')
             return False, e
 
-    # put bucket acl with try accept and args as none
-    def s3_put_bucket_acl(self, bucket_name=None, acl=None):
-        if bucket_name is None:
-            bucket_name = self.bucket_name
-        if acl is None:
-            acl = 'public-read'
+    # list object versions 
+    def s3_list_object_versions(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
 
         try:
-            self.client.put_bucket_acl(Bucket=bucket_name, ACL=acl)
-            print(self.service, ': ' + f'Success -- Bucket ACL added to bucket {bucket_name}')
+            self.client.list_object_versions(Bucket=args[0])
+            print(self.service, ': ' + f'Success -- Object versions listed from bucket {args[0]}')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error adding bucket ACL to bucket {bucket_name}: {e}')
+            print(self.service, ': ' + f'Fail -- Error listing object versions from bucket {args[0]}: {e}')
+            return False, e
+        
+    # list objects 
+    def s3_list_objects(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+
+        try:
+            self.client.list_objects(Bucket=args[0])
+            print(self.service, ': ' + f'Success -- Objects listed from bucket {args[0]}')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error listing objects from bucket {args[0]}: {e}')
             return False, e
 
 
-    # put analytics configuration with try accept and args as none
-    def s3_put_bucket_analytics_configuration(self, bucket_name=None, id=None, analytics_configuration=None):
-        if bucket_name is None:
-            bucket_name = self.bucket_name
-        if id is None:
-            id = f'test{random.randint(1, 1000000000)}'
-        if analytics_configuration is None:
-            analytics_configuration = {
-                'Id': id,
+    # list objects v2 
+    def s3_list_objects_v2(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+
+        try:
+            self.client.list_objects_v2(Bucket=args[0])
+            print(self.service, ': ' + f'Success -- Objects v2 listed from bucket {args[0]}')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error listing objects v2 from bucket {args[0]}: {e}')
+            return False, e
+        
+
+    # list parts 
+    def s3_list_parts(self, args):
+            
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+        if not len(args) > 1:
+            args.append(f'{random.randint(1, 1000000)}')
+        if not len(args) > 2:
+            resp = self.client.create_multipart_upload(Bucket=args[0], Key=args[1])
+            args.append(resp['UploadId'])
+
+        try:
+            self.client.list_parts(Bucket=args[0], Key=args[1], UploadId=args[2])
+            print(self.service, ': ' + f'Success -- Parts listed from bucket {args[0]}')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error listing parts from bucket {args[0]}: {e}')
+            return False, e
+
+
+    # put bucket acelerate configuration 
+    def s3_put_bucket_accelerate_configuration(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+        if not len(args) > 1:
+            args.append({'Status': 'Enabled'})
+
+        try:
+            self.client.put_bucket_accelerate_configuration(Bucket=args[0], AccelerateConfiguration=args[1])
+            print(self.service, ': ' + f'Success -- Bucket accelerate configuration added to bucket {args[0]}')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error adding bucket accelerate configuration to bucket {args[0]}: {e}')
+            return False, e
+
+    # put bucket acl 
+    def s3_put_bucket_acl(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+        if not len(args) > 1:
+            args.append('public-read')
+
+        try:
+            self.client.put_bucket_acl(Bucket=args[0], ACL=args[1])
+            print(self.service, ': ' + f'Success -- Bucket ACL added to bucket {args[0]}')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error adding bucket ACL to bucket {args[0]}: {e}')
+            return False, e
+
+
+    # put analytics configuration 
+    def s3_put_bucket_analytics_configuration(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+        if not len(args) > 1:
+            args.append(f'{random.randint(1, 1000000)}')
+        if not len(args) > 2:
+            args.append({
+                'Id': args[1],
                 'StorageClassAnalysis': {
                     'DataExport': {
                         'OutputSchemaVersion': 'V_1',
                         'Destination': {
                             'S3BucketDestination': {
-                                'Bucket': f'arn:aws:s3:::{bucket_name}',
+                                'Bucket': f'arn:aws:s3:::{args[0]}',
                                 'Format': 'CSV'
                             }
                         }
                     }
                 }
-            }
+            })
 
         try:
-            self.client.put_bucket_analytics_configuration(Bucket=bucket_name, Id=id, AnalyticsConfiguration=analytics_configuration)
-            print(self.service, ': ' + f'Success -- Bucket analytics configuration {id} created for bucket {bucket_name}')
+            self.client.put_bucket_analytics_configuration(Bucket=args[0], Id=args[1], AnalyticsConfiguration=args[2])
+            print(self.service, ': ' + f'Success -- Bucket analytics configuration {args[1]} created for bucket {args[0]}')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error creating bucket analytics configuration {id} for bucket {bucket_name}: {e}')
+            print(self.service, ': ' + f'Fail -- Error creating bucket analytics configuration {args[1]} for bucket {args[0]}: {e}')
             return False, e
 
 
-    # put bucket cors with try accept and args as none
-    def s3_put_bucket_cors(self, bucket_name=None, cors_configuration=None):
-        if bucket_name is None:
-            bucket_name = self.bucket_name
-        if cors_configuration is None:
-            cors_configuration = {
+    # put bucket cors 
+    def s3_put_bucket_cors(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+        if not len(args) > 1:
+            args.append({
                 'CORSRules': [
                     {
                         'AllowedHeaders': [
@@ -1228,22 +1355,23 @@ class S3Client:
                         'MaxAgeSeconds': 3000
                     },
                 ]
-            }
+            })
 
         try:
-            self.client.put_bucket_cors(Bucket=bucket_name, CORSConfiguration=cors_configuration)
-            print(self.service, ': ' + f'Success -- Bucket cors created for bucket {bucket_name}')
+            self.client.put_bucket_cors(Bucket=args[0], CORSConfiguration=args[1])
+            print(self.service, ': ' + f'Success -- Bucket cors created for bucket {args[0]}')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error creating bucket cors for bucket {bucket_name}: {e}')
+            print(self.service, ': ' + f'Fail -- Error creating bucket cors for bucket {args[0]}: {e}')
             return False, e
 
-    # put bucket encryption with try accept and args as none
-    def s3_put_bucket_encryption(self, bucket_name=None, server_side_encryption_configuration=None):
-        if bucket_name is None:
-            bucket_name = self.bucket_name
-        if server_side_encryption_configuration is None:
-            server_side_encryption_configuration = {
+    # put bucket encryption 
+    def s3_put_bucket_encryption(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+        if not len(args) > 1:
+            args.append({
                 'Rules': [
                     {
                         'ApplyServerSideEncryptionByDefault': {
@@ -1251,26 +1379,27 @@ class S3Client:
                         }
                     },
                 ]
-            }
+            })
 
         try:
-            self.client.put_bucket_encryption(Bucket=bucket_name, ServerSideEncryptionConfiguration=server_side_encryption_configuration)
-            print(self.service, ': ' + f'Success -- Bucket encryption created for bucket {bucket_name}')
+            self.client.put_bucket_encryption(Bucket=args[0], ServerSideEncryptionConfiguration=args[1])
+            print(self.service, ': ' + f'Success -- Bucket encryption created for bucket {args[0]}')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error creating bucket encryption for bucket {bucket_name}: {e}')
+            print(self.service, ': ' + f'Fail -- Error creating bucket encryption for bucket {args[0]}: {e}')
             return False, e
 
 
-    # put intellegent tiering configuration with try accept and args as none
-    def s3_put_bucket_intelligent_tiering_configuration(self, bucket_name=None, id=None, intelligent_tiering_configuration=None):
-        if bucket_name is None:
-            bucket_name = self.bucket_name
-        if id is None:
-            id = f'test{random.randint(1, 1000000000)}'
-        if intelligent_tiering_configuration is None:
-            intelligent_tiering_configuration = {
-                'Id': id,
+    # put intellegent tiering configuration 
+    def s3_put_bucket_intelligent_tiering_configuration(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+        if not len(args) > 1:
+            args.append(f'{random.randint(1, 1000000)}')
+        if not len(args) > 2:
+            args.append({
+                'Id': args[1],
                 'Filter': {
                     'Prefix': 'test'
                 },
@@ -1281,30 +1410,31 @@ class S3Client:
                         'AccessTier': 'ARCHIVE_ACCESS'
                     },
                 ]
-            }
+            })
 
         try:
-            self.client.put_bucket_intelligent_tiering_configuration(Bucket=bucket_name, Id=id, IntelligentTieringConfiguration=intelligent_tiering_configuration)
-            print(self.service, ': ' + f'Success -- Bucket intelligent tiering configuration {id} created for bucket {bucket_name}')
+            self.client.put_bucket_intelligent_tiering_configuration(Bucket=args[0], Id=args[1], IntelligentTieringConfiguration=args[2])
+            print(self.service, ': ' + f'Success -- Bucket intelligent tiering configuration {args[1]} created for bucket {args[0]}')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error creating bucket intelligent tiering configuration {id} for bucket {bucket_name}: {e}')
+            print(self.service, ': ' + f'Fail -- Error creating bucket intelligent tiering configuration {args[1]} for bucket {args[0]}: {e}')
             return False, e
 
 
-    # put bucket inventory configuration with try accept and args as none
-    def s3_put_bucket_inventory_configuration(self, bucket_name=None, id=None, inventory_configuration=None):
-        if bucket_name is None:
-            bucket_name = self.bucket_name
-        if id is None:
-            id = f'test{random.randint(1, 1000000000)}'
-        if inventory_configuration is None:
-            inventory_configuration = {
-                'Id': id,
+    # put bucket inventory configuration 
+    def s3_put_bucket_inventory_configuration(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+        if not len(args) > 1:
+            args.append(f'{random.randint(1, 1000000)}')
+        if not len(args) > 2:
+            args.append({
+                'Id': args[1],
                 'IsEnabled': True,
                 'Destination': {
                     'S3BucketDestination': {
-                        'Bucket': f'arn:aws:s3:::{bucket_name}',
+                        'Bucket': f'arn:aws:s3:::{args[0]}',
                         'Format': 'CSV'
                     }
                 },
@@ -1315,23 +1445,51 @@ class S3Client:
                 'Schedule': {
                     'Frequency': 'Daily'
                 }
-            }
+            })
 
         try:
-            self.client.put_bucket_inventory_configuration(Bucket=bucket_name, Id=id, InventoryConfiguration=inventory_configuration)
-            print(self.service, ': ' + f'Success -- Bucket inventory configuration {id} created for bucket {bucket_name}')
+            self.client.put_bucket_inventory_configuration(Bucket=args[0], Id=args[1], InventoryConfiguration=args[2])
+            print(self.service, ': ' + f'Success -- Bucket inventory configuration {args[1]} created for bucket {args[0]}')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error creating bucket inventory configuration {id} for bucket {bucket_name}: {e}')
+            print(self.service, ': ' + f'Fail -- Error creating bucket inventory configuration {args[1]} for bucket {args[0]}: {e}')
             return False, e
 
+    # put bucket lifecycle 
+    def s3_put_bucket_lifecycle(self, args):
+            
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+        if not len(args) > 1:
+            args.append({
+                'Rules': [
+                    {
+                        'Expiration': {
+                            'Days': 365
+                        },
+                        'Prefix': 'test',
+                        'ID': 'test',
+                        'Status': 'Enabled'
+                    },
+                ]
+            })
 
-    # put bucket lifecycle configuration with try accept and args as none
-    def s3_put_bucket_lifecycle(self, bucket_name=None, lifecycle_configuration=None):
-        if bucket_name is None:
-            bucket_name = self.bucket_name
-        if lifecycle_configuration is None:
-            lifecycle_configuration = {
+        try:
+            self.client.put_bucket_lifecycle(Bucket=args[0], LifecycleConfiguration=args[1])
+            print(self.service, ': ' + f'Success -- Bucket lifecycle created for bucket {args[0]}')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error creating bucket lifecycle for bucket {args[0]}: {e}')
+            return False, e
+            
+
+    # put bucket lifecycle configuration 
+    def s3_put_bucket_lifecycle_configuration(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+        if not len(args) > 1:
+            args.append({
                 'Rules': [
                     {
                         'Expiration': {
@@ -1344,91 +1502,130 @@ class S3Client:
                         'Status': 'Enabled'
                     },
                 ]
-            }
+            })
 
         try:
-            self.client.put_bucket_lifecycle_configuration(Bucket=bucket_name, LifecycleConfiguration=lifecycle_configuration)
-            print(self.service, ': ' + f'Success -- Bucket lifecycle configuration created for bucket {bucket_name}')
+            self.client.put_bucket_lifecycle_configuration(Bucket=args[0], LifecycleConfiguration=args[1])
+            print(self.service, ': ' + f'Success -- Bucket lifecycle configuration created for bucket {args[0]}')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error creating bucket lifecycle configuration for bucket {bucket_name}: {e}')
+            print(self.service, ': ' + f'Fail -- Error creating bucket lifecycle configuration for bucket {args[0]}: {e}')
             return False, e
 
 
-    # put bucket logging with try accept and args as none
-    def s3_put_bucket_logging(self, bucket_name=None, logging_configuration=None):
-        if bucket_name is None:
-            bucket_name = self.bucket_name
-        if logging_configuration is None:
-            logging_configuration = {
+    # put bucket logging 
+    def s3_put_bucket_logging(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+        if not len(args) > 1:
+            args.append({
                 'LoggingEnabled': {
-                    'TargetBucket': bucket_name,
+                    'TargetBucket': args[0],
                     'TargetPrefix': 'test'
                 }
-            }
+            })
 
         try:
-            res = self.client.put_bucket_logging(Bucket=bucket_name, BucketLoggingStatus=logging_configuration)
-            print(self.service, ': ' + f'Success -- Bucket logging configuration created for bucket {bucket_name}')
+            res = self.client.put_bucket_logging(Bucket=args[0], BucketLoggingStatus=args[1])
+            print(self.service, ': ' + f'Success -- Bucket logging configuration created for bucket {args[0]}')
             print(res)
 
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error creating bucket logging configuration for bucket {bucket_name}: {e}')
+            print(self.service, ': ' + f'Fail -- Error creating bucket logging configuration for bucket {args[0]}: {e}')
             return False, e
 
 
 
-    # put bucket metrics configuration with try accept and args as none
-    def s3_put_bucket_metrics_configuration(self, bucket_name=None, id=None, metrics_configuration=None):
-        if bucket_name is None:
-            bucket_name = self.bucket_name
-        if id is None:
-            id = f'test{random.randint(1, 1000000000)}'
-        if metrics_configuration is None:
-            metrics_configuration = {
-                'Id': id,
+    # put bucket metrics configuration 
+    def s3_put_bucket_metrics_configuration(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+        if not len(args) > 1:
+            args.append(f'{random.randint(1, 1000000)}')
+        if not len(args) > 2:
+            args.append({
+                'Id': args[1],
                 'Filter': {
                     'Prefix': 'test'
                 }
-            }
+            })
 
         try:
-            self.client.put_bucket_metrics_configuration(Bucket=bucket_name, Id=id, MetricsConfiguration=metrics_configuration)
-            print(self.service, ': ' + f'Success -- Bucket metrics configuration {id} created for bucket {bucket_name}')
+            self.client.put_bucket_metrics_configuration(Bucket=args[0], Id=args[1], MetricsConfiguration=args[2])
+            print(self.service, ': ' + f'Success -- Bucket metrics configuration {args[2]} created for bucket {args[0]}')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error creating bucket metrics configuration {id} for bucket {bucket_name}: {e}')
+            print(self.service, ': ' + f'Fail -- Error creating bucket metrics configuration {args[2]} for bucket {args[0]}: {e}')
+            return False, e
+        
+        
+
+    # put_bucket_notification
+    # deprecated
+
+
+    # put bucket notification configuration 
+    def s3_put_bucket_notification_configuration(self, args):
+            
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+        if not len(args) > 1:
+            args.append({
+                'TopicConfigurations': [
+                    {
+                        'TopicArn': f'arn:aws:sns:{self.region}:818637742267:MyTopic',
+                        'Events': [
+                            's3:ObjectCreated:*'
+                        ]
+                    },
+                ]
+            })
+
+        try:
+            boto3.setup_default_session(profile_name=self.profile)
+            client = boto3.client('sns')
+            client.create_topic(Name='MyTopic')
+
+            self.client.put_bucket_notification_configuration(Bucket=args[0], NotificationConfiguration=args[1])
+            print(self.service, ': ' + f'Success -- Bucket notification configuration created for bucket {args[0]}')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error creating bucket notification configuration for bucket {args[0]}: {e}')
             return False, e
 
-    # put ownership controls with try accept and args as none
-    def s3_put_bucket_ownership_controls(self, bucket_name=None, ownership_controls=None):
-        if bucket_name is None:
-            bucket_name = self.bucket_name
-        if ownership_controls is None:
-            ownership_controls = {
+    # put ownership controls 
+    def s3_put_bucket_ownership_controls(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+        if not len(args) > 1:
+            args.append({
                 'Rules': [
                     {
                         'ObjectOwnership': 'BucketOwnerPreferred'
                     },
                 ]
-            }
+            })
 
         try:
-            self.client.put_bucket_ownership_controls(Bucket=bucket_name, OwnershipControls=ownership_controls)
-            print(self.service, ': ' + f'Success -- Bucket ownership controls created for bucket {bucket_name}')
+            self.client.put_bucket_ownership_controls(Bucket=args[0], OwnershipControls=args[1])
+            print(self.service, ': ' + f'Success -- Bucket ownership controls created for bucket {args[0]}')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error creating bucket ownership controls for bucket {bucket_name}: {e}')
+            print(self.service, ': ' + f'Fail -- Error creating bucket ownership controls for bucket {args[0]}: {e}')
             return False, e
 
     # !!ignore
-    # put bucket policy with try accept and args as none
-    def s3_put_bucket_policy(self, bucket_name=None, policy=None):
-        if bucket_name is None:
-            bucket_name = self.bucket_name
-        if policy is None:
-            policy = {
+    # put bucket policy 
+    def s3_put_bucket_policy(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+        if not len(args) > 1:
+            args.append({
                 'Version': '2012-10-17',
                 'Statement': [
                     {
@@ -1436,33 +1633,28 @@ class S3Client:
                         'Effect': 'Allow',
                         'Principal': '*',
                         'Action': ['s3:GetObject'],
-                        'Resource': f'arn:aws:s3:::{bucket_name}/*'
+                        'Resource': f'arn:aws:s3:::{args[0]}/*'
                     },
                 ]
-            }
+            })
 
         try:
-            self.client.put_bucket_policy(Bucket=bucket_name, Policy=json.dumps(policy))
-            print(self.service, ': ' + f'Success -- Bucket policy created for bucket {bucket_name}')
+            self.client.put_bucket_policy(Bucket=args[0], Policy=json.dumps(args[1]))
+            print(self.service, ': ' + f'Success -- Bucket policy created for bucket {args[0]}')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error creating bucket policy for bucket {bucket_name}: {e}')
+            print(self.service, ': ' + f'Fail -- Error creating bucket policy for bucket {args[0]}: {e}')
             return False, e
 
 
-    # put bucket replication with try accept and args as none
-    def s3_put_bucket_replication(self, bucket_name=None, replication_configuration=None):
-        
-        # enable bucket versioning
-        self.s3_put_bucket_versioning()
+    # put bucket replication 
+    def s3_put_bucket_replication(self, args):
 
-        if bucket_name is None:
-            bucket_name = f'test{random.randint(1, 1000000000)}'
-            self.s3_create_bucket(bucket_name)
-            self.s3_put_bucket_versioning(bucket_name=bucket_name)
+        if not len(args) > 0:
+            args.append(f'bucket{random.randint(1, 1000000000)}')
 
-        if replication_configuration is None:
-            replication_configuration = {
+        if not len(args) > 1:
+            args.append({
                 'Role': 'arn:aws:iam::123456789012:role/replication-role',
                 'Rules': [
                     {
@@ -1470,158 +1662,164 @@ class S3Client:
                         'Prefix': 'test',
                         'Status': 'Enabled',
                         'Destination': {
-                            'Bucket': f'arn:aws:s3:::{bucket_name}'
+                            'Bucket': f'arn:aws:s3:::{args[0]}'
                         }
                     },
                 ]
-            }
+            })
 
         try:
-            self.client.put_bucket_replication(Bucket=self.bucket_name, ReplicationConfiguration=replication_configuration)
-            print(self.service, ': ' + f'Success -- Bucket replication configuration created for bucket {bucket_name}')
+            self.client.create_bucket(Bucket=args[0], CreateBucketConfiguration={'LocationConstraint': self.region})
+            self.s3_put_bucket_versioning([args[0]])
+            self.client.put_bucket_replication(Bucket=args[0], ReplicationConfiguration=args[1])
+            print(self.service, ': ' + f'Success -- Bucket replication configuration created for bucket {args[0]}')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error creating bucket replication configuration for bucket {bucket_name}: {e}')
+            print(self.service, ': ' + f'Fail -- Error creating bucket replication configuration for bucket {args[0]}: {e}')
             return False, e
         
+    # skip -> put_bucket_request payment
 
-    # put bucket tagging with try accept and args as none
-    def s3_put_bucket_tagging(self, bucket_name=None, tagging=None):
-        if bucket_name is None:
-            bucket_name = self.bucket_name
-        if tagging is None:
-            tagging = {
+    # put bucket tagging 
+    def s3_put_bucket_tagging(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+        if not len(args) > 1:
+            args.append({
                 'TagSet': [
                     {
                         'Key': 'test',
                         'Value': 'test'
                     },
                 ]
-            }
+            })
 
         try:
-            self.client.put_bucket_tagging(Bucket=bucket_name, Tagging=tagging)
-            print(self.service, ': ' + f'Success -- Bucket tagging created for bucket {bucket_name}')
+            self.client.put_bucket_tagging(Bucket=args[0], Tagging=args[1])
+            print(self.service, ': ' + f'Success -- Bucket tagging created for bucket {args[0]}')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error creating bucket tagging for bucket {bucket_name}: {e}')
+            print(self.service, ': ' + f'Fail -- Error creating bucket tagging for bucket {args[0]}: {e}')
             return False, e
 
 
-    # put bucket versioning with try accept and args as none
-    def s3_put_bucket_versioning(self, bucket_name=None, versioning_configuration=None):
-        if bucket_name is None:
-            bucket_name = self.bucket_name
-        if versioning_configuration is None:
-            versioning_configuration = {
+    # put bucket versioning 
+    def s3_put_bucket_versioning(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+        if not len(args) > 1:
+            args.append({
                 'Status': 'Enabled',
                 'MFADelete': 'Disabled',
-            }
+            })
 
         try:
-            self.client.put_bucket_versioning(Bucket=bucket_name, VersioningConfiguration=versioning_configuration)
-            print(self.service, ': ' + f'Success -- Bucket versioning configuration created for bucket {bucket_name}')
+            self.client.put_bucket_versioning(Bucket=args[0], VersioningConfiguration=args[1])
+            print(self.service, ': ' + f'Success -- Bucket versioning configuration created for bucket {args[0]}')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error creating bucket versioning configuration for bucket {bucket_name}: {e}')
+            print(self.service, ': ' + f'Fail -- Error creating bucket versioning configuration for bucket {args[0]}: {e}')
             return False, e
 
 
-    # put bucket website with try accept and args as none
-    def s3_put_bucket_website(self, bucket_name=None, website_configuration=None):
-        if bucket_name is None:
-            bucket_name = self.bucket_name
-        if website_configuration is None:
-            website_configuration = {
+    # put bucket website 
+    def s3_put_bucket_website(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+        if not len(args) > 1:
+            args.append({
                 'ErrorDocument': {
                     'Key': 'error.html'
                 },
                 'IndexDocument': {
                     'Suffix': 'index.html'
                 }
-            }
+            })
 
         try:
-            self.client.put_bucket_website(Bucket=bucket_name, WebsiteConfiguration=website_configuration)
-            print(self.service, ': ' + f'Success -- Bucket website configuration created for bucket {bucket_name}')
+            self.client.put_bucket_website(Bucket=args[0], WebsiteConfiguration=args[1])
+            print(self.service, ': ' + f'Success -- Bucket website configuration created for bucket {args[0]}')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error creating bucket website configuration for bucket {bucket_name}: {e}')
+            print(self.service, ': ' + f'Fail -- Error creating bucket website configuration for bucket {args[0]}: {e}')
             return False, e
         
-    # put object with try accept and args as none
-    def s3_put_object(self, bucket_name=None, key=None, body=None, storage_class=None):
-        if key is None:
-            key = f'{random.randint(1, 1000000)}'
-        if body is None:
-            body = 'test'
-        if bucket_name is None:
-            bucket_name = self.bucket_name
-        if storage_class is None:
-            storage_class = 'STANDARD'
+    # put object 
+    def s3_put_object(self, args):
+        
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+        if not len(args) > 1:
+            args.append(f'{random.randint(1, 1000000)}')
+        if not len(args) > 2:
+            args.append('test')
+        if not len(args) > 3:
+            args.append('STANDARD')
 
         try:
-            self.client.put_object(Bucket=bucket_name, Key=key, Body=body, StorageClass=storage_class)
-            print(self.service, ': ' + f'Success -- Put object {key} in {self.service} S3 bucket {self.bucket_name}')
+            self.client.put_object(Bucket=args[0], Key=args[1], Body=args[2], StorageClass=args[3])
+            print(self.service, ': ' + f'Success -- Put object {args[1]} in {self.service} S3 bucket {self.bucket_name}')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error putting object {key} in {self.service} S3 bucket {self.bucket_name}: {e}')
+            print(self.service, ': ' + f'Fail -- Error putting object {args[1]} in {self.service} S3 bucket {self.bucket_name}: {e}')
             return False, e
 
 
-    # put object acl with try accept and args as none
-    def s3_put_object_acl(self, key=None, acl=None):
-        if key is None:
-            key = f'{random.randint(1, 1000000)}'
-        if acl is None:
-            acl = 'public-read'
-        self.s3_put_object(key=key)
+    # put object acl 
+    def s3_put_object_acl(self, args):
+
+        if not len(args) > 0:
+            args.append(f'{random.randint(1, 1000000)}')
+        if not len(args) > 1:
+            args.append('public-read')
 
         try:
-            self.client.put_object_acl(Bucket=self.bucket_name, Key=key, ACL=acl)
-            print(self.service, ': ' + f'Success -- Object ACL created for object {key}')
+            self.client.put_object(Bucket=self.bucket_name, Key=args[0])
+            self.client.put_object_acl(Bucket=self.bucket_name, Key=args[0], ACL=args[1])
+            print(self.service, ': ' + f'Success -- Object ACL created for object {args[0]}')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error creating object ACL for object {key}: {e}')
+            print(self.service, ': ' + f'Fail -- Error creating object ACL for object {args[0]}: {e}')
             return False, e
 
 
-    # put object legal hold with try accept and args as none
-    def s3_put_object_legal_hold(self, key=None, legal_hold=None, bucket_name=None):
-        if key is None:
-            key = f'{random.randint(1, 1000000)}'
+    # put object legal hold 
+    def s3_put_object_legal_hold(self, args):
 
+        if not len(args) > 0:
+            args.append(f'bucket{random.randint(1, 1000000)}')
 
-        if legal_hold is None:
-            legal_hold = {
+        if not len(args) > 1:
+            args.append(f'{random.randint(1, 1000000)}')
+
+        if not len(args) > 2:
+            args.append({
                     'Status': 'OFF'
-                }
-            
-        if bucket_name is None:
-            bucket_name = f'bucket{random.randint(1, 1000000)}'
+                })
 
         # comment for bult deletion
-        self.s3_put_object_lock_configuration(bucket_name=bucket_name)
-        self.s3_put_object(key=key, bucket_name=bucket_name)
+        self.s3_put_object_lock_configuration([args[0]])
 
         try:
-            self.client.put_object_legal_hold(Bucket=bucket_name, Key=key, LegalHold=legal_hold)
-            print(self.service, ': ' + f'Success -- Object legal hold created for object {key}')
+            self.client.put_object(Bucket=args[0], Key=args[1])
+            self.client.put_object_legal_hold(Bucket=args[0], Key=args[1], LegalHold=args[2])
+            print(self.service, ': ' + f'Success -- Object legal hold created')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error creating object legal hold for object {key}: {e}')
+            print(self.service, ': ' + f'Fail -- Error creating object legal hold: {e}')
             return False, e
 
-    # put object lock configuration with try accept and args as none
-    def s3_put_object_lock_configuration(self, bucket_name=None, object_lock_configuration=None):
+    # put object lock configuration 
+    def s3_put_object_lock_configuration(self, args):
         
-        if bucket_name is None:
-            bucket_name = f'bucket{random.randint(1, 1000000)}'
-        
-        self.s3_create_bucket(bucket_name=bucket_name, lock=True)
+        if not len(args) > 0:
+            args.append(f'bucket{random.randint(1, 1000000)}')
 
-        if object_lock_configuration is None:
-            object_lock_configuration = {
+        if not len(args) > 1:
+            args.append({
                 'ObjectLockEnabled': 'Enabled',
                 'Rule': {
                     'DefaultRetention': {
@@ -1629,200 +1827,237 @@ class S3Client:
                         'Mode': 'GOVERNANCE'
                     }
                 }
-            }
+            })
 
         try:
-            self.client.put_object_lock_configuration(Bucket=bucket_name, ObjectLockConfiguration=object_lock_configuration)
-            print(self.service, ': ' + f'Success -- Object lock configuration created for bucket {bucket_name}')
+            self.client.create_bucket(Bucket=args[0], ObjectLockEnabledForBucket=True, CreateBucketConfiguration={'LocationConstraint': self.region})
+            self.client.put_object_lock_configuration(Bucket=args[0], ObjectLockConfiguration=args[1])
+            print(self.service, ': ' + f'Success -- Object lock configuration created for bucket {args[0]}')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error creating object lock configuration for bucket {bucket_name}: {e}')
+            print(self.service, ': ' + f'Fail -- Error creating object lock configuration for bucket {args[0]}: {e}')
             return False, e
 
 
-    # put object retention with try accept and args as none
-    def s3_put_object_retention(self, key=None, retention=None):
-        if key is None:
-            key = f'{random.randint(1, 1000000)}'
+    # put object retention 
+    def s3_put_object_retention(self, args):
+
+        if not len(args) > 0:
+            args.append(f'{random.randint(1, 1000000)}')
 
 
-        if retention is None:
-            retention = {
+        if not len(args) > 1:
+            args.append({
                     'Mode': 'GOVERNANCE',
                     'RetainUntilDate': datetime.datetime.today() + datetime.timedelta(days=1)
-                }
+                })
         bucket_name = f'bucket{random.randint(1, 1000000)}'
-        self.s3_put_object_lock_configuration(bucket_name=bucket_name)
-        self.s3_put_object(key=key, bucket_name=bucket_name)
-
+        self.s3_put_object_lock_configuration([bucket_name])
 
         try:
-            self.client.put_object_retention(Bucket=bucket_name, Key=key, Retention=retention)
-            print(self.service, ': ' + f'Success -- Object retention created for object {key}')
+            self.client.put_object(Bucket=bucket_name, Key=args[0])
+            self.client.put_object_retention(Bucket=bucket_name, Key=args[0], Retention=args[1])
+            print(self.service, ': ' + f'Success -- Object retention created for object {args[0]}')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error creating object retention for object {key}: {e}')
+            print(self.service, ': ' + f'Fail -- Error creating object retention for object {args[0]}: {e}')
             return False, e
 
-    # put object tagging with try accept and args as none
-    def s3_put_object_tagging(self, key=None, tagging=None):
-        if key is None:
-            key = f'{random.randint(1, 1000000)}'
-        if tagging is None:
-            tagging = {
+    # put object tagging 
+    def s3_put_object_tagging(self, args):
+
+        if not len(args) > 0:
+            args.append(f'{random.randint(1, 1000000)}')
+        if not len(args) > 1:
+            args.append({
                 'TagSet': [
                     {
                         'Key': 'test',
                         'Value': 'test'
                     },
                 ]
-            }
-        self.s3_put_object(key=key)
+            })
 
         try:
-            self.client.put_object_tagging(Bucket=self.bucket_name, Key=key, Tagging=tagging)
-            print(self.service, ': ' + f'Success -- Object tagging created for object {key}')
+            self.client.put_object(Bucket=self.bucket_name, Key=args[0])
+            self.client.put_object_tagging(Bucket=self.bucket_name, Key=args[0], Tagging=args[1])
+            print(self.service, ': ' + f'Success -- Object tagging created for object {args[0]}')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error creating object tagging for object {key}: {e}')
+            print(self.service, ': ' + f'Fail -- Error creating object tagging for object {args[0]}: {e}')
             return False, e
 
-    # put public access block with try accept and args as none
-    def s3_put_public_access_block(self, bucket_name=None, public_access_block_configuration=None):
-        if bucket_name is None:
-            bucket_name = self.bucket_name
-        if public_access_block_configuration is None:
-            public_access_block_configuration = {
+    # put public access block 
+    def s3_put_public_access_block(self, args):
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+        if not len(args) > 1:
+            args.append({
                 'BlockPublicAcls': True,
                 'IgnorePublicAcls': True,
                 'BlockPublicPolicy': True,
                 'RestrictPublicBuckets': True
-            }
+            })
 
         try:
-            self.client.put_public_access_block(Bucket=bucket_name, PublicAccessBlockConfiguration=public_access_block_configuration)
-            print(self.service, ': ' + f'Success -- Public access block created for bucket {bucket_name}')
+            self.client.put_public_access_block(Bucket=args[0], PublicAccessBlockConfiguration=args[1])
+            print(self.service, ': ' + f'Success -- Public access block created for bucket {args[0]}')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error creating public access block for bucket {bucket_name}: {e}')
+            print(self.service, ': ' + f'Fail -- Error creating public access block for bucket {args[0]}: {e}')
             return False, e
 
         
-    # restore object with try accept and args as none
-    def s3_restore_object(self, key=None, restore_request=None):
-        if key is None:
-            key = f'{random.randint(1, 1000000)}'
-        if restore_request is None:
-            restore_request = {
+    # restore object 
+    def s3_restore_object(self, args):
+
+        if not len(args) > 0:
+            args.append(f'{random.randint(1, 1000000)}')
+        if not len(args) > 1:
+            args.append({
                 'Days': 1,
                 'GlacierJobParameters': {
                     'Tier': 'Standard'
                 }
-            }
-        self.s3_put_object( storage_class='GLACIER')
+            })
 
         try:
-            self.client.restore_object(Bucket=self.bucket_name, Key=key, RestoreRequest=restore_request)
-            print(self.service, ': ' + f'Success -- Object restored for object {key}')
+            self.client.put_object(Bucket=self.bucket_name, Key=args[0], StorageClass='GLACIER')
+            self.client.restore_object(Bucket=self.bucket_name, Key=args[0], RestoreRequest=args[1])
+            print(self.service, ': ' + f'Success -- Object restored for object {args[0]}')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error restoring object for object {key}: {e}')
+            print(self.service, ': ' + f'Fail -- Error restoring object for object {args[0]}: {e}')
             return False, e
 
 
-    # select object content with try accept and args as none
-    def s3_select_object_content(self, key=None, expression=None, expression_type=None, input_serialization=None, output_serialization=None):
-        if key is None:
-            key = f'{random.randint(1, 1000000)}'
-        if expression is None:
-            expression = 'select * from s3object'
-        if expression_type is None:
-            expression_type = 'SQL'
-        if input_serialization is None:
-            input_serialization = {
+    # select object content 
+    def s3_select_object_content(self, args):
+
+        if not len(args) > 0:
+            args.append(f'{random.randint(1, 1000000)}')
+        if not len(args) > 1:
+            args.append('select * from s3object')
+        if not len(args) > 2:
+            args.append('SQL')
+        if not len(args) > 3:
+            args.append({
                 'CSV': {
                     'FileHeaderInfo': 'USE',
                     'RecordDelimiter': '\n',
                     'FieldDelimiter': ','
                 }
-            }
-        if output_serialization is None:
-            output_serialization = {
+            })
+        if not len(args) > 4:
+            args.append({
                 'CSV': {}
-            }
-        self.s3_put_object(key=key)
+            })
 
         try:
-            response = self.client.select_object_content(
+            self.client.put_object(Bucket=self.bucket_name, Key=args[0])
+            self.client.select_object_content(
                 Bucket=self.bucket_name,
-                Key=key,
-                Expression=expression,
-                ExpressionType=expression_type,
-                InputSerialization=input_serialization,
-                OutputSerialization=output_serialization
+                Key=args[0],
+                Expression=args[1],
+                ExpressionType=args[2],
+                InputSerialization=args[3],
+                OutputSerialization=args[4]
             )
-            print(self.service, ': ' + f'Success -- Object content selected for object {key}')
+            print(self.service, ': ' + f'Success -- Object content selected for object {args[0]}')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error selecting object content for object {key}: {e}')
+            print(self.service, ': ' + f'Fail -- Error selecting object content for object {args[0]}: {e}')
             return False, e    
 
 
-    # upload file with try accept and args as none
-    def s3_upload_file(self, key=None, file_path=None):
-        if key is None:
-            key = f'{random.randint(1, 1000000)}'
-        if file_path is None:
-            file_path = 'test.txt'
+    # upload file 
+    def s3_upload_file(self, args):
+
+        if not len(args) > 0:
+            args.append(f'{random.randint(1, 1000000)}')
+        if not len(args) > 1:
+            args.append('../sdk_tests/S3/test.txt')
         try:
-            self.client.upload_file(file_path, self.bucket_name, key)
-            print(self.service, ': ' + f'Success -- File uploaded to object {key}')
+            self.client.upload_file(args[1], self.bucket_name, args[0])
+            print(self.service, ': ' + f'Success -- File uploaded to object {args[0]}')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error uploading file to object {key}: {e}')
+            print(self.service, ': ' + f'Fail -- Error uploading file to object {args[0]}: {e}')
             return False, e
 
-    # upload file object with try accept and args as none
-    def s3_upload_fileobj(self, key=None, fileobj=None):
-        if key is None:
-            key = f'{random.randint(1, 1000000)}'
-        if fileobj is None:
-            fileobj = open('test.txt', 'rb')
+    # upload file object 
+    def s3_upload_fileobj(self, args):
+
+        if not len(args) > 0:
+            args.append(f'{random.randint(1, 1000000)}')
+        if not len(args) > 1:
+            args.append(open('../sdk_tests/S3/test.txt', 'rb'))
         try:
-            self.client.upload_fileobj(fileobj, self.bucket_name, key)
-            print(self.service, ': ' + f'Success -- File object uploaded to object {key}')
+            self.client.upload_fileobj(args[1], self.bucket_name, args[0])
+            print(self.service, ': ' + f'Success -- File object uploaded to object {args[0]}')
             return True, ""
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error uploading file object to object {key}: {e}')
+            print(self.service, ': ' + f'Fail -- Error uploading file object to object {args[0]}: {e}')
             return False, e
 
-    # upload part with try accept and args as none
-    def s3_upload_part(self, key=None, upload_id=None, part_number=None, body=None):
-        if key is None:
-            key = f'{random.randint(1, 1000000)}'
-        if upload_id is None:
-            res = self.s3_create_multipart_upload(key)
+    # upload part 
+    def s3_upload_part(self, args):
+
+        if not len(args) > 0:
+            args.append(f'{random.randint(1, 1000000)}')
+        if not len(args) > 1:
+            res = self.s3_create_multipart_upload([args[0]])
             if res == False:
-                print(self.service, ': ' + f'Fail -- Error creating multipart upload for {key} in {self.service} S3 bucket {self.bucket_name}: {e}')
+                print(self.service, ': ' + f'Fail -- Error creating multipart upload for {args[0]} in {self.service} S3 bucket {self.bucket_name}: {e}')
                 return False, e
             upload_id = res[1]
-        if part_number is None:
-            part_number = 1
-        if body is None:
-            body = 'test'+str(random.randint(1, 1000000000))
+            args.append(upload_id)
+        if not len(args) > 2:
+            args.append(1)
+        if not len(args) > 3:
+            args.append('test'+str(random.randint(1, 1000000000)))
 
         try:
-            resp = self.client.upload_part(Bucket=self.bucket_name, Key=key, UploadId=upload_id, PartNumber=part_number, Body=body)
-            print(self.service, ': ' + f'Success -- Part uploaded for {key} in {self.service} S3 bucket {self.bucket_name}')
+            resp = self.client.upload_part(Bucket=self.bucket_name, Key=args[0], UploadId=args[1], PartNumber=args[2], Body=args[3])
+            print(self.service, ': ' + f'Success -- Part uploaded for {args[0]} in {self.service} S3 bucket {self.bucket_name}')
             return True, resp['ETag']
         except Exception as e:
-            print(self.service, ': ' + f'Fail -- Error uploading part for {key} in {self.service} S3 bucket {self.bucket_name}: {e}')
+            print(self.service, ': ' + f'Fail -- Error uploading part for {args[0]} in {self.service} S3 bucket {self.bucket_name}: {e}')
             return False, e
 
 
-    # try again
     # upload part copy 
-    # write get object response body
+    def s3_upload_part_copy(self, args):
+        
+        if not len(args) > 0:
+            args.append(f'{random.randint(1, 1000000)}')
+        if not len(args) > 1:
+            res = self.s3_create_multipart_upload([args[0]])
+            if res == False:
+                print(self.service, ': ' + f'Fail -- Error creating multipart upload for {args[0]} in {self.service} S3 bucket {self.bucket_name}: {e}')
+                return False, e
+            upload_id = res[1]
+            args.append(upload_id)
+        if not len(args) > 2:
+            args.append(1)
+        if not len(args) > 3:
+            key = f'{random.randint(1, 1000000)}'
+            args.append({'Bucket': self.bucket_name, 'Key': key})
+
+        try:
+            self.client.put_object(Bucket=self.bucket_name, Key=args[3]['Key'], Body='test')
+            resp = self.client.upload_part_copy(Bucket=self.bucket_name, Key=args[0], UploadId=args[1], PartNumber=args[2], CopySource=args[3])
+            print(self.service, ': ' + f'Success -- Part copy uploaded for {args[0]} in {self.service} S3 bucket {self.bucket_name}')
+            return True, resp['CopyPartResult']['ETag']
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error uploading part copy for {args[0]} in {self.service} S3 bucket {self.bucket_name}: {e}')
+            return False, e
+            
+
+    # skip --> write get object response
+
+
 
     # garbage collector
     def __cleanup__(self):
@@ -1876,9 +2111,11 @@ class S3Client:
 #     # get all methods and run them
 #     methods = [getattr(S3Client, attr) for attr in dir(S3Client) if callable(getattr(S3Client, attr)) and not attr.startswith("__")]
 
-#     # print(len(methods))
-#     # for i in methods:
-#     #     print(i.__name__)
-#     #     i(table_client)
+#     print(len(methods))
+#     for i in methods:
+#         if i.__name__ == 's3_upload_part_copy':
+#             # break
+#             print(i.__name__)
+#             i(table_client, [])
 
-#     table_client.__clean__()
+#     table_client.__cleanup__()
