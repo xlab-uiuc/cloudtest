@@ -1,0 +1,876 @@
+DISCREPANT METHOD: s3_complete_multipart_upload --- ARGS: ['380059', '2oKgnFZwpQH55iR52owD7zdOVUWRZucWyne3L2aZYzBK0Z3JarAv2cxWhTpW0iA5r88U6KbKYQ2gAtZ6OPJJKN03nqUn_kYh3MebK77SShkf1D8dEYLzj8lCMlGNu4M1', [{'ETag': '""ccd245db6a7f5ed1dc39d419a4697c80""', 'PartNumber': 1}]]
+--Behavior mismatch--
+CLOUD: SUCCESS -- Response:  
+EMULATOR: FAILURE -- Response: An error occurred (InternalError) when calling the CompleteMultipartUpload operation (reached max retries: 4): exception while calling s3.CompleteMultipartUpload: '2oKgnFZwpQH55iR52owD7zdOVUWRZucWyne3L2aZYzBK0Z3JarAv2cxWhTpW0iA5r88U6KbKYQ2gAtZ6OPJJKN03nqUn_kYh3MebK77SShkf1D8dEYLzj8lCMlGNu4M1'
+
+
+
+count: 1   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_copy_object --- ARGS: ['380059', '2oKgnFZwpQH55iR52owD7zdOVUWRZucWyne3L2aZYzBK0Z3JarAv2cxWhTpW0iA5r88U6KbKYQ2gAtZ6OPJJKN03nqUn_kYh3MebK77SShkf1D8dEYLzj8lCMlGNu4M1', [{'ETag': '""ccd245db6a7f5ed1dc39d419a4697c80""', 'PartNumber': 1}]]
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 400 -- Error Code: InvalidArgument -- Error Message: Invalid copy source object key
+EMULATOR: FAILURE -- HTTP Status code: 500 -- Error Code: InternalError -- Error Message: exception while calling s3.CopyObject: not enough values to unpack (expected 2, got 1)
+
+
+
+count: 2   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_delete_bucket_analytics_configuration --- ARGS: ['380059', '2oKgnFZwpQH55iR52owD7zdOVUWRZucWyne3L2aZYzBK0Z3JarAv2cxWhTpW0iA5r88U6KbKYQ2gAtZ6OPJJKN03nqUn_kYh3MebK77SShkf1D8dEYLzj8lCMlGNu4M1', [{'ETag': '""ccd245db6a7f5ed1dc39d419a4697c80""', 'PartNumber': 1}]]
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+EMULATOR: FAILURE -- HTTP Status code: 400 -- Error Code: IllegalLocationConstraintException -- Error Message: The unspecified location constraint is incompatible for the region specific endpoint this request was sent to.
+
+
+
+count: 3   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_delete_bucket_metrics_configuration --- ARGS: ['380059', '2oKgnFZwpQH55iR52owD7zdOVUWRZucWyne3L2aZYzBK0Z3JarAv2cxWhTpW0iA5r88U6KbKYQ2gAtZ6OPJJKN03nqUn_kYh3MebK77SShkf1D8dEYLzj8lCMlGNu4M1', [{'ETag': '""ccd245db6a7f5ed1dc39d419a4697c80""', 'PartNumber': 1}]]
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+EMULATOR: FAILURE -- HTTP Status code: 400 -- Error Code: IllegalLocationConstraintException -- Error Message: The unspecified location constraint is incompatible for the region specific endpoint this request was sent to.
+
+
+
+count: 4   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_get_object_legal_hold --- ARGS: ['380059', '2oKgnFZwpQH55iR52owD7zdOVUWRZucWyne3L2aZYzBK0Z3JarAv2cxWhTpW0iA5r88U6KbKYQ2gAtZ6OPJJKN03nqUn_kYh3MebK77SShkf1D8dEYLzj8lCMlGNu4M1', [{'ETag': '""ccd245db6a7f5ed1dc39d419a4697c80""', 'PartNumber': 1}], None, 3600]
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (NoSuchObjectLockConfiguration) when calling the GetObjectLegalHold operation: The specified object does not have a ObjectLock configuration 
+EMULATOR: SUCCESS -- Response: 
+
+
+
+count: 5   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_put_bucket_acl --- ARGS: ['380059', '2oKgnFZwpQH55iR52owD7zdOVUWRZucWyne3L2aZYzBK0Z3JarAv2cxWhTpW0iA5r88U6KbKYQ2gAtZ6OPJJKN03nqUn_kYh3MebK77SShkf1D8dEYLzj8lCMlGNu4M1', [{'ETag': '""ccd245db6a7f5ed1dc39d419a4697c80""', 'PartNumber': 1}], None, 3600]
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+EMULATOR: FAILURE -- HTTP Status code: 400 -- Error Code: InvalidArgument -- Error Message: None
+
+
+
+count: 6   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Round discrepancies: 6
+***  Overall Summary  ***
+
+Behavior mismatch count: 2
+Status code mismatch count: 4
+Error message mismatch count: 0
+Total discrepancy count: 6/104
+
+
+Round ended   ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_create_bucket --- ARGS: ['abc']
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (BucketAlreadyExists) when calling the CreateBucket operation: The requested bucket name is not available. The bucket namespace is shared by all users of the system. Please select a different name and try again. 
+EMULATOR: SUCCESS -- Response: 
+
+
+
+count: 1   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_delete_bucket_analytics_configuration --- ARGS: ['bucket', 'q1223']
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 400 -- Error Code: IllegalLocationConstraintException -- Error Message: The unspecified location constraint is incompatible for the region specific endpoint this request was sent to.
+
+
+
+count: 2   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_delete_bucket_cors --- ARGS: ['bucket']
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+
+
+
+count: 3   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_delete_bucket_encryption --- ARGS: ['bucket']
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+
+
+
+count: 4   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_delete_bucket_intelligent_tiering_configuration --- ARGS: ['bucket', 'q1223', {'Id': 'q1223', 'Filter': {'Prefix': 'test'}, 'Status': 'Enabled', 'Tierings': [{'Days': 91, 'AccessTier': 'ARCHIVE_ACCESS'}]}]
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+
+
+
+count: 5   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_delete_bucket_inventory_configuration --- ARGS: ['bucket', 'q1223', {'Id': 'q1223', 'IsEnabled': True, 'Destination': {'S3BucketDestination': {'Bucket': 'arn:aws:s3:::bucket', 'Format': 'CSV'}}, 'IncludedObjectVersions': 'All', 'OptionalFields': ['Size'], 'Schedule': {'Frequency': 'Daily'}}]
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+
+
+
+count: 6   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_delete_bucket_lifecycle --- ARGS: ['bucket']
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+
+
+
+count: 7   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_delete_bucket_metrics_configuration --- ARGS: ['bucket', 'q1223']
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 400 -- Error Code: IllegalLocationConstraintException -- Error Message: The unspecified location constraint is incompatible for the region specific endpoint this request was sent to.
+
+
+
+count: 8   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_delete_bucket_ownership_controls --- ARGS: ['bucket']
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+
+
+
+count: 9   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_delete_bucket_policy --- ARGS: ['bucket']
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+
+
+
+count: 10   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_delete_bucket_replication --- ARGS: ['bucket']
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+
+
+
+count: 11   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_delete_bucket_tagging --- ARGS: ['bucket']
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+
+
+
+count: 12   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_delete_bucket_website --- ARGS: ['bucket']
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+
+
+
+count: 13   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_delete_object --- ARGS: ['bucket', 'q1223']
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+
+
+
+count: 14   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_delete_object_tagging --- ARGS: ['bucket', 'q1223']
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+
+
+
+count: 15   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_delete_objects --- ARGS: ['bucket', 'q1223', 'q2132']
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+
+
+
+count: 16   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_delete_public_access_block --- ARGS: ['bucket']
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+
+
+
+count: 17   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_download_file --- ARGS: ['bucket', 'q1223', 'file2132']
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+
+
+
+count: 18   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_download_fileobj --- ARGS: ['bucket', 'q1223']
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+
+
+
+count: 19   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_get_bucket_accelerate_configuration --- ARGS: ['bucket']
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+
+
+
+count: 20   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_get_bucket_acl --- ARGS: ['bucket']
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+
+
+
+count: 21   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_get_bucket_analytics_configuration --- ARGS: ['bucket', 'q1223', {'Id': 'q1223', 'StorageClassAnalysis': {'DataExport': {'OutputSchemaVersion': 'V_1', 'Destination': {'S3BucketDestination': {'Bucket': 'arn:aws:s3:::bucket', 'Format': 'CSV'}}}}}]
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+
+
+
+count: 22   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_get_bucket_cors --- ARGS: ['bucket', {'CORSRules': [{'AllowedHeaders': ['*'], 'AllowedMethods': ['GET', 'PUT'], 'AllowedOrigins': ['*'], 'ExposeHeaders': ['x-amz-server-side-encryption', 'x-amz-request-id', 'x-amz-id-2'], 'MaxAgeSeconds': 3000}]}]
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+
+
+
+count: 23   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_get_bucket_encryption --- ARGS: ['bucket']
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+
+
+
+count: 24   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_get_bucket_intelligent_tiering_configuration --- ARGS: ['bucket', 'q1223', {'Id': 'q1223', 'Filter': {'Prefix': 'test'}, 'Status': 'Enabled', 'Tierings': [{'Days': 91, 'AccessTier': 'ARCHIVE_ACCESS'}]}]
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+
+
+
+count: 25   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_get_bucket_inventory_configuration --- ARGS: ['bucket', 'q1223', {'Id': 'q1223', 'IsEnabled': True, 'Destination': {'S3BucketDestination': {'Bucket': 'arn:aws:s3:::bucket', 'Format': 'CSV'}}, 'IncludedObjectVersions': 'All', 'OptionalFields': ['Size'], 'Schedule': {'Frequency': 'Daily'}}]
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+
+
+
+count: 26   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_get_bucket_lifecycle --- ARGS: ['bucket']
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+
+
+
+count: 27   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_get_bucket_lifecycle_configuration --- ARGS: ['bucket']
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+
+
+
+count: 28   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_get_bucket_location --- ARGS: ['bucket']
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 403 -- Error Code: AccessDenied -- Error Message: Access Denied
+EMULATOR: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+
+
+
+count: 29   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_get_bucket_logging --- ARGS: ['bucket']
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+
+
+
+count: 30   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_get_bucket_metrics_configuration --- ARGS: ['bucket', 'q1223', {'Id': 'q1223', 'Filter': {'Prefix': 'test'}}]
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+
+
+
+count: 31   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_get_bucket_notification --- ARGS: ['bucket']
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+
+
+
+count: 32   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_get_bucket_notification_configuration --- ARGS: ['bucket']
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+
+
+
+count: 33   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_get_bucket_ownership_controls --- ARGS: ['bucket']
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+
+
+
+count: 34   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_get_bucket_policy --- ARGS: ['bucket']
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+
+
+
+count: 35   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_get_bucket_policy_status --- ARGS: ['bucket']
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+
+
+
+count: 36   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_get_bucket_replication --- ARGS: ['bucket']
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+
+
+
+count: 37   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_get_bucket_request_payment --- ARGS: ['bucket']
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+
+
+
+count: 38   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_get_bucket_tagging --- ARGS: ['bucket']
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+
+
+
+count: 39   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_get_bucket_versioning --- ARGS: ['bucket']
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+
+
+
+count: 40   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_get_bucket_website --- ARGS: ['bucket']
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+
+
+
+count: 41   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_get_object --- ARGS: ['bucket', 'q1223']
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+
+
+
+count: 42   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_get_object_acl --- ARGS: ['bucket', 'q1223']
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+
+
+
+count: 43   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_get_object_attributes --- ARGS: ['bucket', 'q1223']
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+
+
+
+count: 44   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_get_object_legal_hold --- ARGS: ['bucket', 'q1223', {'Status': 'OFF'}]
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (PermanentRedirect) when calling the GetObjectLegalHold operation: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint. 
+EMULATOR: SUCCESS -- Response: 
+
+
+
+count: 45   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_get_object_lock_configuration --- ARGS: ['bucket']
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (PermanentRedirect) when calling the GetObjectLockConfiguration operation: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint. 
+EMULATOR: SUCCESS -- Response: 
+
+
+
+count: 46   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_get_object_retention --- ARGS: ['bucket', 'q1223', {'Status': 'OFF'}]
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (PermanentRedirect) when calling the GetObjectRetention operation: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint. 
+EMULATOR: SUCCESS -- Response: 
+
+
+
+count: 47   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_get_object_tagging --- ARGS: ['bucket', 'q1223']
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+
+
+
+count: 48   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_get_object_torrent --- ARGS: ['bucket', 'q1223']
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+
+
+
+count: 49   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_get_public_access_block --- ARGS: ['bucket']
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+
+
+
+count: 50   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_head_bucket --- ARGS: ['bucket']
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: 301 -- Error Message: Moved Permanently
+EMULATOR: FAILURE -- HTTP Status code: 404 -- Error Code: 404 -- Error Message: Not Found
+
+
+
+count: 51   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_head_object --- ARGS: ['bucket', 'q1223']
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+
+
+
+count: 52   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_list_bucket_analytics_configurations --- ARGS: ['bucket']
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+
+
+
+count: 53   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_list_bucket_intelligent_tiering_configurations --- ARGS: ['bucket']
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+
+
+
+count: 54   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_list_bucket_inventory_configurations --- ARGS: ['bucket']
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+
+
+
+count: 55   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_list_bucket_metrics_configurations --- ARGS: ['bucket']
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+
+
+
+count: 56   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_list_multipart_uploads --- ARGS: ['bucket']
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+
+
+
+count: 57   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_list_object_versions --- ARGS: ['bucket']
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+
+
+
+count: 58   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_list_objects --- ARGS: ['bucket']
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+
+
+
+count: 59   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_list_objects_v2 --- ARGS: ['bucket']
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+
+
+
+count: 60   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_list_parts --- ARGS: ['bucket', 'q1223', '123123']
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+
+
+
+count: 61   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_put_bucket_accelerate_configuration --- ARGS: ['bucket', {}]
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 400 -- Error Code: MalformedXML -- Error Message: The XML you provided was not well-formed or did not validate against our published schema
+
+
+
+count: 62   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_put_bucket_acl --- ARGS: ['bucket', 'private']
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+
+
+
+count: 63   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_put_bucket_logging --- ARGS: ['bucket', {}]
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+
+
+
+count: 64   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_put_bucket_notification_configuration --- ARGS: ['bucket', {}]
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 403 -- Error Code: InvalidClientTokenId -- Error Message: The security token included in the request is invalid.
+
+
+
+count: 65   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_put_bucket_policy --- ARGS: ['bucket', {}]
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+
+
+
+count: 66   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_put_bucket_versioning --- ARGS: ['bucket', {}]
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 404 -- Error Code: 404 -- Error Message: Not Found
+
+
+
+count: 67   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_put_bucket_website --- ARGS: ['bucket', {}]
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+
+
+
+count: 68   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_put_object --- ARGS: ['bucket', 'q1223', '', '']
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+
+
+
+count: 69   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_put_object_acl --- ARGS: ['bucket', 'private']
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (AccessControlListNotSupported) when calling the PutObjectAcl operation: The bucket does not allow ACLs 
+EMULATOR: SUCCESS -- Response: 
+
+
+
+count: 70   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_put_object_legal_hold --- ARGS: ['bucket', 'q1223', {}]
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 500 -- Error Code: InternalError -- Error Message: exception while calling s3.PutObjectLegalHold: 'Status'
+
+
+
+count: 71   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_put_object_lock_configuration --- ARGS: ['bucket', {}]
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 409 -- Error Code: BucketAlreadyExists -- Error Message: The requested bucket name is not available. The bucket namespace is shared by all users of the system. Please select a different name and try again.
+EMULATOR: FAILURE -- HTTP Status code: 500 -- Error Code: InternalError -- Error Message: exception while calling s3.PutObjectLockConfiguration: 'ObjectLockEnabled'
+
+
+
+count: 72   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_put_object_retention --- ARGS: ['q1223', {}]
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (AccessDenied) when calling the PutObjectRetention operation: Access Denied 
+EMULATOR: SUCCESS -- Response: 
+
+
+
+count: 73   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_put_public_access_block --- ARGS: ['bucket', {}]
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 301 -- Error Code: PermanentRedirect -- Error Message: The bucket you are attempting to access must be addressed using the specified endpoint. Please send all future requests to this endpoint.
+EMULATOR: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+
+
+
+count: 74   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_restore_object --- ARGS: ['q1223', {}]
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 400 -- Error Code: MalformedXML -- Error Message: The XML you provided was not well-formed or did not validate against our published schema
+EMULATOR: FAILURE -- HTTP Status code: 500 -- Error Code: InternalError -- Error Message: exception while calling s3.RestoreObject: list index out of range
+
+
+
+count: 75   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_select_object_content --- ARGS: ['q1223', '', '', {}, {}]
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 400 -- Error Code: MissingRequiredParameter -- Error Message: ExpressionType is required. Please check the service documentation and try again.
+EMULATOR: FAILURE -- HTTP Status code: 500 -- Error Code: InternalError -- Error Message: exception while calling s3.SelectObjectContent: argument of type 'NoneType' is not iterable
+
+
+
+count: 76   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_upload_part --- ARGS: ['q1223', '1213', 0, '']
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchUpload -- Error Message: The specified upload does not exist. The upload ID may be invalid, or the upload may have been aborted or completed.
+EMULATOR: FAILURE -- HTTP Status code: 500 -- Error Code: InternalError -- Error Message: exception while calling s3.UploadPart: '1213'
+
+
+
+count: 77   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_upload_part_copy --- ARGS: ['q1223', '12313', 0, {'Bucket': '12312', 'Key': '234'}]
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: The specified upload does not exist. The upload ID may be invalid, or the upload may have been aborted or completed. -- Error Code: NoSuchUpload -- HTTP Status code: 404
+EMULATOR: FAILURE -- Error Message: The specified bucket does not exist -- Error Code: NoSuchBucket
+
+ -- HTTP Status code: 404
+
+count: 78   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Round discrepancies: 78
+***  Overall Summary  ***
+
+Behavior mismatch count: 8
+Status code mismatch count: 75
+Error message mismatch count: 1
+Total discrepancy count: 84/104
+
+
+Round ended   ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Round discrepancies: 0
+***  Overall Summary  ***
+
+Behavior mismatch count: 8
+Status code mismatch count: 75
+Error message mismatch count: 1
+Total discrepancy count: 84/104
+
+
+Round ended   ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
