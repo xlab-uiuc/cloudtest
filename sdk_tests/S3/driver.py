@@ -58,7 +58,7 @@ def oracles(res_cloud, res_em):
 
 # for testing purposes (Remove later)
 def simple_test_run(flag):
-    flag = False
+    flag = True
 
     # get methods
     methods_dd = [getattr(S3Client, attr) for attr in dir(S3Client) if callable(getattr(S3Client, attr)) and not attr.startswith("__")]
@@ -92,8 +92,8 @@ def run_ops(arg, methods, count, discrepant_methods):
                 print('METHOD: '+ method.__name__, '--- ARGS: ') #arg[t_count]
 
                 # run method on cloud and emulator
-                res_cloud = method(test_cloud) #arg[t_count]
-                res_em = method(test_em) #arg[t_count]
+                res_cloud = method(test_cloud, arg[t_count])
+                res_em = method(test_em, arg[t_count])
 
                 # oracles
                 result = oracles(res_cloud, res_em)
@@ -106,8 +106,8 @@ def run_ops(arg, methods, count, discrepant_methods):
                     if method.__name__ not in discrepant_methods:
                         discrepant_methods.append(method.__name__)
 
-                    # with open('../sdk_tests/S3/discrepancy.txt', 'a') as f:
-                    with open('discrepancy.txt', 'a') as f:
+                    with open('../sdk_tests/S3/discrepancy.txt', 'a') as f:
+                    # with open('discrepancy.txt', 'a') as f:
                         f.write(f'DISCREPANT METHOD: {method.__name__} --- ARGS: {arg[t_count]}\n')
                         f.write(result[1])
                         f.write(f'\n\ncount: {count}   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n\n\n')
@@ -147,30 +147,31 @@ def run1v1(arg, methods_s3, t_count):
         
         output = buf.getvalue().strip()
 
-    # with open('../sdk_tests/S3/log_all.txt', 'a') as f:
-    with open('discrepancy.txt', 'a') as f:
-        f.write('***  Round Summary  ***\n\n')
+    with open('../sdk_tests/S3/discrepancy.txt', 'a') as f:
+    # with open('discrepancy.txt', 'a') as f:
+        f.write(f"Round discrepancies: {d_count}\n")
+        f.write('***  Overall Summary  ***\n\n')
         f.write(f'Behavior mismatch count: {BEHAVIOR_MISMATCH_COUNT}\n')
         f.write(f'Status code mismatch count: {STATUS_CODE_MISMATCH_COUNT}\n')
         f.write(f'Error message mismatch count: {ERROR_MISMATCH_COUNT}\n')
-        f.write(f'Total discrepancy count: {d_count}/{t_count}\n\n\n')
+        f.write(f'Total discrepancy count: {BEHAVIOR_MISMATCH_COUNT + STATUS_CODE_MISMATCH_COUNT + ERROR_MISMATCH_COUNT}/{t_count}\n\n\n')
 
 
 
-    # with open('../sdk_tests/S3/discrepancy.txt', 'a') as f:
-    with open('discrepancy.txt', 'a') as f:
+    with open('../sdk_tests/S3/discrepancy.txt', 'a') as f:
+    # with open('discrepancy.txt', 'a') as f:
         f.write(f'Round ended   ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n\n\n')
 
     # store methods names in order to skip in the next run
-    # with open('../sdk_tests/S3/discrepant_methods.txt', 'w') as f:
-    with open('discrepant_methods.txt', 'w') as f:
+    with open('../sdk_tests/S3/discrepant_methods.txt', 'a') as f:
+    # with open('discrepant_methods.txt', 'w') as f:
         f.write("\n".join(discrepant_methods))  
 
     # extract_discrepancy('../sdk_tests/S3/discrepancy.txt')
 
     # write buf to a new file
-    # with open('../sdk_tests/S3/log_all.txt', 'w') as f:
-    with open('log_all.txt', 'w') as f:
+    with open('../sdk_tests/S3/log_all.txt', 'w') as f:
+    # with open('log_all.txt', 'w') as f:
         f.write(output)
 
 
@@ -183,9 +184,12 @@ def main(arg):
     if arg == ():
         arg = {}
         arg['1'] = [[]] * len(methods_s3)
+    else:
+        assert len(arg['1']) == len(methods_s3), "Invalid number of methods"
 
     # run methods
     run1v1(arg, methods_s3, t_count)
+    # simple_test_run(False)
 
 
 '''Get fuzz data'''

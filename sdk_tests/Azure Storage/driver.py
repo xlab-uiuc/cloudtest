@@ -514,11 +514,12 @@ def run1v1(arg, methods, t_count):
 
 
     with open('../sdk_tests/Azure Storage/discrepancy.txt', 'a') as f:
-        f.write('***  Round Summary  ***\n\n')
+        f.write(f"Round discrepancies: {d_count}\n")
+        f.write('***  Overall Summary  ***\n\n')
         f.write(f'Behavior mismatch count: {BEHAVIOR_MISMATCH_COUNT}\n')
         f.write(f'Status code mismatch count: {STATUS_CODE_MISMATCH_COUNT}\n')
         f.write(f'Error message mismatch count: {ERROR_MISMATCH_COUNT}\n')
-        f.write(f'Total discrepancy count: {d_count}/{t_count}\n\n\n')
+        f.write(f'Total discrepancy count: {BEHAVIOR_MISMATCH_COUNT + STATUS_CODE_MISMATCH_COUNT + ERROR_MISMATCH_COUNT}/{t_count}\n\n\n')
 
     with open('../sdk_tests/Azure Storage/discrepancy.txt', 'a') as f:
         f.write(f'ROUND ENDED   ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n\n\n')
@@ -578,7 +579,7 @@ def main(arg):
     # simple_test_run(True)
     # run1v1(arg, methods, t_count)
     # done --> to-do: run_sequences() taking `permutation` and `shuffle` as type
-    run_sequences(methods, 'shuffle', 150)
+    # run_sequences(methods, 'shuffle', 150)
 
 
 

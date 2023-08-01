@@ -1040,18 +1040,18 @@ class S3Client:
 
     # !!ignore
     # get paginator 
-    # def s3_get_paginator(self, args):
+    def s3_get_paginator(self, args):
 
-    #     if not len(args) > 0:
-    #         args.append('list_object_versions')
+        if not len(args) > 0:
+            args.append('list_object_versions')
 
-    #     try:
-    #         self.client.get_paginator(args[0])
-    #         print(self.service, ': ' + f'Success -- Paginator retrieved')
-    #         return True, ""
-    #     except Exception as e:
-    #         print(self.service, ': ' + f'Fail -- Error retrieving paginator: {e}')
-    #         return False, e
+        try:
+            self.client.get_paginator(args[0])
+            print(self.service, ': ' + f'Success -- Paginator retrieved')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error retrieving paginator: {e}')
+            return False, e
         
 
     # get public access block 
@@ -1072,17 +1072,17 @@ class S3Client:
 
     # !!ignore
     # get waiters 
-    # def s3_get_waiter(self, args):
-    #     if not len(args) > 0:
-    #         args.append(self.bucket_name)
+    def s3_get_waiter(self, args):
+        if not len(args) > 0:
+            args.append(self.bucket_name)
 
-    #     try:
-    #         self.client.get_waiter(args[0])
-    #         print(self.service, ': ' + f'Success -- Waiter retrieved from bucket {args[0]}')
-    #         return True, ""
-    #     except Exception as e:
-    #         print(self.service, ': ' + f'Fail -- Error retrieving waiter from bucket {args[0]}: {e}')
-    #         return False, e
+        try:
+            self.client.get_waiter(args[0])
+            print(self.service, ': ' + f'Success -- Waiter retrieved from bucket {args[0]}')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error retrieving waiter from bucket {args[0]}: {e}')
+            return False, e
         
 
     # head bucket 
