@@ -58,10 +58,10 @@ class DynamoDBClient:
             print('Table creation failed; error: ', e)
 
 
-    # batch execute statement with try except
-    def dynamo_batch_execute_statement(self, statement=None):
-        if statement is None:
-            statement = [
+    # batch execute statement
+    def dynamo_batch_execute_statement(self, args):
+        if not len(args) > 0:
+            args.append([
                 {
                     'Statement': 'string',
                     'Parameters': [
@@ -90,10 +90,10 @@ class DynamoDBClient:
                     ],
                     'ConsistentRead': True|False
                 },
-        ]
+        ])
         try:
             self.client.batch_execute_statement(
-                Statements=statement
+                Statements=args[0]
             )
             print(self.service, ': Success -- Batch execute statement succeeded')
             return True, ""
@@ -101,10 +101,10 @@ class DynamoDBClient:
             print(self.service, ': Fail -- Batch execute statement failed; error: ', e)
             return False, e
 
-    # batch get item with try except
-    def dynamo_batch_get_item(self, keys=None):
-        if keys is None:
-            keys = [
+    # batch get item
+    def dynamo_batch_get_item(self, args):
+        if not len(args) > 0:
+            args.append([
                 {
                     'username': {
                         'S': 'johndoe'
@@ -113,12 +113,12 @@ class DynamoDBClient:
                         'S': 'doe'
                     }
                 },
-            ]
+            ])
         try:
             self.client.batch_get_item(
                 RequestItems={
                     self.table_name: {
-                        'Keys': keys,
+                        'Keys': args[0],
                         'AttributesToGet': [
                             'string',
                         ],
@@ -132,10 +132,10 @@ class DynamoDBClient:
             print(self.service, ': Fail -- Batch get item failed; error: ', e)
             return False, e
     
-    # batch write item with try except
-    def dynamo_batch_write_item(self, items=None):
-        if items is None:
-            items = [
+    # batch write item
+    def dynamo_batch_write_item(self, args):
+        if not len(args) > 0:
+            args.append([
                 {
                     'PutRequest': {
                         'Item': {
@@ -151,11 +151,11 @@ class DynamoDBClient:
                         }
                     }
                 },
-            ]
+            ])
         try:
             self.client.batch_write_item(
                 RequestItems={
-                    self.table_name: items
+                    self.table_name: args[0]
                 }
             )
             print(self.service, ': Success -- Batch write item succeeded')
@@ -166,30 +166,39 @@ class DynamoDBClient:
 
 
 
-    # can paginate with try except
-    def dynamo_can_paginate(self, operation_name=None):
-        if operation_name is None:
-            operation_name = 'list_tables'
+    # can paginate
+    def dynamo_can_paginate(self, args):
+        if not len(args) > 0:
+            args.append('list_tables')
         try:
-            self.client.can_paginate(operation_name)
+            self.client.can_paginate(args[0])
             print(self.service, ': Success -- Can paginate succeeded')
             return True, ""
         except Exception as e:
             print(self.service, ': Fail -- Can paginate failed; error: ', e)
             return False, e
         
+    # close
+    def dynamo_close(self, args):
+        try:
+            self.client.close()
+            print(self.service, ': Success -- Close succeeded')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': Fail -- Close failed; error: ', e)
+            return False, e
 
     #!! Emulator: Unknown operation
-    # create backup with try except
-    def dynamo_create_backup(self, table_name=None, backup_name=None):
-        if table_name is None:
-            table_name = self.table_name
-        if backup_name is None:
-            backup_name = 'backup'
+    # create backup
+    def dynamo_create_backup(self, args):
+        if not len(args) > 0:
+            args.append(self.table_name)
+        if not len(args) > 1:
+            args.append('backup')
         try:
             self.client.create_backup(
-                TableName=table_name,
-                BackupName=backup_name
+                TableName=args[0],
+                BackupName=args[1]
             )
             print(self.service, ': Success -- Create backup succeeded')
             return True, ""
@@ -198,13 +207,13 @@ class DynamoDBClient:
             return False, e
         
 
-    # create global table with try except
-    def dynamo_create_global_table(self, global_table_name=None):
-        if global_table_name is None:
-            global_table_name = self.table_name
+    # create global table
+    def dynamo_create_global_table(self, args):
+        if not len(args) > 0:
+            args.append(self.table_name)
         try:
             self.client.create_global_table(
-                GlobalTableName=global_table_name,
+                GlobalTableName=args[0],
                 ReplicationGroup=[
                     {
                         'RegionName': 'us-east-1'
@@ -218,12 +227,12 @@ class DynamoDBClient:
             return False, e
     
 
-    # create table with try except
-    def dynamo_create_table(self, table_name=None, key_schema=None):
-        if table_name is None:
-            table_name = f'table{random.randint(1, 10000000)}'
-        if key_schema is None:
-            key_schema = [
+    # create table
+    def dynamo_create_table(self, args):
+        if not len(args) > 0:
+            args.append(f'table{random.randint(1, 10000000)}')
+        if not len(args) > 1:
+            args.append([
                 {
                     'AttributeName': 'username',
                     'KeyType': 'HASH'
@@ -232,11 +241,11 @@ class DynamoDBClient:
                     'AttributeName': 'last_name',
                     'KeyType': 'RANGE'
                 }
-            ]
+            ])
         try:
             self.client.create_table(
-                TableName=table_name,
-                KeySchema=key_schema,
+                TableName=args[0],
+                KeySchema=args[1],
                 AttributeDefinitions=[
                     {
                         'AttributeName': 'username',
@@ -259,13 +268,13 @@ class DynamoDBClient:
             return False, e
 
     #!! Emulator: Unknown operation
-    # delete backup with try except
-    def dynamo_delete_backup(self, backup_arn=None):
-        if backup_arn is None:
-            backup_arn = 'arn:aws:dynamodb:us-east-1:123456789012:table/mytable/backup/01548148148148148148'
+    # delete backup
+    def dynamo_delete_backup(self, args):
+        if not len(args) > 0:
+            args.append('arn:aws:dynamodb:us-east-1:123456789012:table/mytable/backup/01548148148148148148')
         try:
             self.client.delete_backup(
-                BackupArn=backup_arn
+                BackupArn=args[0]
             )
             print(self.service, ': Success -- Delete backup succeeded')
             return True, ""
@@ -274,21 +283,21 @@ class DynamoDBClient:
             return False, e
 
 
-    # delete item with try except
-    def dynamo_delete_item(self, key=None):
-        if key is None:
-            key = {
+    # delete item
+    def dynamo_delete_item(self, args):
+        if not len(args) > 0:
+            args.append({
                 'username': {
                     'S': 'johndoe'
                 },
                 'last_name': {
                     'S': 'doe'
                 }
-            }
+            })
         try:
             self.client.delete_item(
                 TableName=self.table_name,
-                Key=key
+                Key=args[0]
             )
             print(self.service, ': Success -- Delete item succeeded')
             return True, ""
@@ -297,8 +306,8 @@ class DynamoDBClient:
             return False, e
         
 
-    # delete table with try except
-    def dynamo_delete_table(self):
+    # delete table
+    def dynamo_delete_table(self, args):
         try:
             self.client.delete_table(
                 TableName=self.table_name
@@ -312,13 +321,13 @@ class DynamoDBClient:
 
 
     #!! Emulator: Unknown operation
-    # describe backup with try except
-    def dynamo_describe_backup(self, backup_arn=None):
-        if backup_arn is None:
-            backup_arn = 'arn:aws:dynamodb:us-east-1:123456789012:table/mytable/backup/01548148148148148148'
+    # describe backup
+    def dynamo_describe_backup(self, args):
+        if not len(args) > 0:
+            args.append('arn:aws:dynamodb:us-east-1:123456789012:table/mytable/backup/01548148148148148148')
         try:
             self.client.describe_backup(
-                BackupArn=backup_arn
+                BackupArn=args[0]
             )
             print(self.service, ': Success -- Describe backup succeeded')
             return True, ""
@@ -327,13 +336,13 @@ class DynamoDBClient:
             return False, e
         
     
-    # describe continuous backups with try except
-    def dynamo_describe_continuous_backups(self, table_name=None):
-        if table_name is None:
-            table_name = self.table_name
+    # describe continuous backups
+    def dynamo_describe_continuous_backups(self, args):
+        if not len(args) > 0:
+            args.append(self.table_name)
         try:
             self.client.describe_continuous_backups(
-                TableName=table_name
+                TableName=args[0]
             )
             print(self.service, ': Success -- Describe continuous backups succeeded')
             return True, ""
@@ -341,13 +350,52 @@ class DynamoDBClient:
             print(self.service, ': Fail -- Describe continuous backups failed; error: ', e)
             return False, e
         
-    # describe global table with try except
-    def dynamo_describe_global_table(self, global_table_name=None):
-        if global_table_name is None:
-            global_table_name = self.table_name
+
+    # describe contributor insights
+    def dynamo_describe_contributor_insights(self, args):
+        if not len(args) > 0:
+            args.append(self.table_name)
+        try:
+            self.client.describe_contributor_insights(
+                TableName=args[0]
+            )
+            print(self.service, ': Success -- Describe contributor insights succeeded')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': Fail -- Describe contributor insights failed; error: ', e)
+            return False, e
+        
+    # deccribe endpoints
+    def dynamo_describe_endpoints(self, args):
+        try:
+            self.client.describe_endpoints()
+            print(self.service, ': Success -- Describe endpoints succeeded')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': Fail -- Describe endpoints failed; error: ', e)
+            return False, e
+        
+    # describe exports
+    def dynamo_describe_exports(self, args):
+        if not len(args) > 0:
+            args.append('arn:aws:dynamodb:us-east-1:123456789012:table/mytable')
+        try:
+            self.client.describe_exports(
+                TableArn=args[0]
+            )
+            print(self.service, ': Success -- Describe exports succeeded')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': Fail -- Describe exports failed; error: ', e)
+            return False, e
+        
+    # describe global table
+    def dynamo_describe_global_table(self, args):
+        if not len(args) > 0:
+            args.append(self.table_name)
         try:
             self.client.describe_global_table(
-                GlobalTableName=global_table_name
+                GlobalTableName=args[0]
             )
             print(self.service, ': Success -- Describe global table succeeded')
             return True, ""
@@ -357,13 +405,13 @@ class DynamoDBClient:
 
     
     #!! Emulator: Unknown operation   
-    # describe global table settings with try except
-    def dynamo_describe_global_table_settings(self, global_table_name=None):
-        if global_table_name is None:
-            global_table_name = self.table_name
+    # describe global table settings
+    def dynamo_describe_global_table_settings(self, args):
+        if not len(args) > 0:
+            args.append(self.table_name)
         try:
             self.client.describe_global_table_settings(
-                GlobalTableName=global_table_name
+                GlobalTableName=args[0]
             )
             print(self.service, ': Success -- Describe global table settings succeeded')
             return True, ""
@@ -372,13 +420,13 @@ class DynamoDBClient:
             return False, e
 
     #!! Emulator: Unknown operation
-    # describe import with try except
-    def dynamo_describe_import(self, import_task_id=None):
-        if import_task_id is None:
-            import_task_id = 'import-task-id-12121-1-21-21-12-12-12-12-23-23-1-2'
+    # describe import
+    def dynamo_describe_import(self, args):
+        if not len(args) > 0:
+            args.append('import-task-id-12121-1-21-21-12-12-12-12-23-23-1-2')
         try:
             self.client.describe_import(
-                ImportArn=import_task_id
+                ImportArn=args[0]
             )
             print(self.service, ': Success -- Describe import succeeded')
             return True, ""
@@ -386,13 +434,13 @@ class DynamoDBClient:
             print(self.service, ': Fail -- Describe import failed; error: ', e)
             return False, e
         
-    # decribe kinesis streaming destination with try except
-    def dynamo_describe_kinesis_streaming_destination(self, table_name=None):
-        if table_name is None:
-            table_name = self.table_name
+    # decribe kinesis streaming destination
+    def dynamo_describe_kinesis_streaming_destination(self, args):
+        if not len(args) > 0:
+            args.append(self.table_name)
         try:
             self.client.describe_kinesis_streaming_destination(
-                TableName=table_name
+                TableName=args[0]
             )
             print(self.service, ': Success -- Describe kinesis streaming destination succeeded')
             return True, ""
@@ -401,8 +449,8 @@ class DynamoDBClient:
             return False, e
         
 
-    # describe limits with try except
-    def dynamo_describe_limits(self):
+    # describe limits
+    def dynamo_describe_limits(self, args):
         try:
             self.client.describe_limits()
             print(self.service, ': Success -- Describe limits succeeded')
@@ -412,13 +460,13 @@ class DynamoDBClient:
             return False, e
         
     
-    # describe table with try except
-    def dynamo_describe_table(self, table_name=None):
-        if table_name is None:
-            table_name = self.table_name
+    # describe table
+    def dynamo_describe_table(self, args):
+        if not len(args) > 0:
+            args.append(self.table_name)
         try:
             self.client.describe_table(
-                TableName=table_name
+                TableName=args[0]
             )
             print(self.service, ': Success -- Describe table succeeded')
             return True, ""
@@ -429,8 +477,8 @@ class DynamoDBClient:
 
 
     #!! Emulator: Unknown operation
-    # describe table replication auto scaling with try except
-    def dynamo_describe_table_replication_auto_scaling(self):
+    # describe table replication auto scaling
+    def dynamo_describe_table_replication_auto_scaling(self, args):
         try:
             self.client.describe_table_replica_auto_scaling(
                 TableName=self.table_name
@@ -442,13 +490,13 @@ class DynamoDBClient:
             return False, e
         
 
-    # describe time to live with try except
-    def dynamo_describe_time_to_live(self, table_name=None):
-        if table_name is None:
-            table_name = self.table_name
+    # describe time to live
+    def dynamo_describe_time_to_live(self, args):
+        if not len(args) > 0:
+            args.append(self.table_name)
         try:
             self.client.describe_time_to_live(
-                TableName=table_name
+                TableName=args[0]
             )
             print(self.service, ': Success -- Describe time to live succeeded')
             return True, ""
@@ -456,15 +504,48 @@ class DynamoDBClient:
             print(self.service, ': Fail -- Describe time to live failed; error: ', e)
             return False, e
 
+    # disable kinesis streaming destination
+    def dynamo_disable_kinesis_streaming_destination(self, args):
+        if not len(args) > 0:
+            args.append(self.table_name)
+        if not len(args) > 1:
+            args.append('arn:aws:kinesis:us-east-1:123456789012:stream/my_stream')
+        try:
+            self.client.disable_kinesis_streaming_destination(
+                TableName=args[0],
+                StreamArn=args[1]
+            )
+            print(self.service, ': Success -- Disable kinesis streaming destination succeeded')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': Fail -- Disable kinesis streaming destination failed; error: ', e)
+            return False, e
+        
+    # enable kinesis streaming destination
+    def dynamo_enable_kinesis_streaming_destination(self, args):
+        if not len(args) > 0:
+            args.append(self.table_name)
+        if not len(args) > 1:
+            args.append('arn:aws:kinesis:us-east-1:123456789012:stream/my_stream')
+        try:
+            self.client.enable_kinesis_streaming_destination(
+                TableName=args[0],
+                StreamArn=args[1]
+            )
+            print(self.service, ': Success -- Enable kinesis streaming destination succeeded')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': Fail -- Enable kinesis streaming destination failed; error: ', e)
+            return False, e
     
 
-    # execute statement with try except
-    def dynamo_execute_statement(self, statement=None):
-        if statement is None:
-            statement = 'SELECT * FROM ' + self.table_name
+    # execute statement
+    def dynamo_execute_statement(self, args):
+        if not len(args) > 0:
+            args.append('SELECT * FROM ' + self.table_name)
         try:
             self.client.execute_statement(
-                Statement=statement
+                Statement=args[0]
             )
             print(self.service, ': Success -- Execute statement succeeded')
             return True, ""
@@ -473,10 +554,10 @@ class DynamoDBClient:
             return False, e
     
 
-    # # execute transaction with try except
-    def dynamo_execute_transaction(self, transaction_items=None):
-        if transaction_items is None:
-            transaction_items = [ 
+    # # execute transaction
+    def dynamo_execute_transaction(self, args):
+        if not len(args) > 0:
+            args.append([ 
             { 
                 "Parameters": [ 
                     { 
@@ -497,10 +578,10 @@ class DynamoDBClient:
                 ],
                 "Statement": "SELECT * FROM " + self.table_name,
             }
-        ]
+        ])
         try:
             self.client.execute_transaction(
-                TransactStatements=transaction_items,
+                TransactStatements=args[0],
           
             )
             print(self.service, ': Success -- Execute transaction succeeded')
@@ -512,13 +593,13 @@ class DynamoDBClient:
 
 
     #!! Emulator: Unknown operation
-    # export table to point in time with try except
-    def dynamo_export_table_to_point_in_time(self, table_arn=None):
-        if table_arn is None:
-            table_arn = 'arn:aws:dynamodb:us-east-1:123456789012:table/mytable/backup/01548148148148148148'
+    # export table to point in time
+    def dynamo_export_table_to_point_in_time(self, args):
+        if not len(args) > 0:
+            args.append('arn:aws:dynamodb:us-east-1:123456789012:table/mytable/backup/01548148148148148148')
         try:
             self.client.export_table_to_point_in_time(
-                TableArn=table_arn,
+                TableArn=args[0],
                 S3Bucket='string'
             )
             print(self.service, ': Success -- Export table to point in time succeeded')
@@ -529,21 +610,21 @@ class DynamoDBClient:
         
 
 
-    # get item with try except
-    def dynamo_get_item(self, key=None):
-        if key is None:
-            key = {
+    # get item
+    def dynamo_get_item(self, args):
+        if not len(args) > 0:
+            args.append({
                 'username': {
                     'S': 'johndoe'
                 },
                 'last_name': {
                     'S': 'doe'
                 }
-            }
+            })
         try:
             self.client.get_item(
                 TableName=self.table_name,
-                Key=key
+                Key=args[0]
             )
             print(self.service, ': Success -- Get item succeeded')
             return True, ""
@@ -552,13 +633,13 @@ class DynamoDBClient:
             return False, e
         
 
-    # get paginator with try except
-    def dynamo_get_paginator(self, operation_name=None):
-        if operation_name is None:
-            operation_name = 'ListTables'
+    # get paginator
+    def dynamo_get_paginator(self, args):
+        if not len(args) > 0:
+            args.append('ListTables')
         try:
             self.client.get_paginator(
-                operation_name
+                args[0]
             )
             print(self.service, ': Success -- Get paginator succeeded')
             return True, ""
@@ -567,13 +648,13 @@ class DynamoDBClient:
             return False, e
         
 
-    # get waiters with try except
-    def dynamo_get_waiter(self, waiter_name=None):
-        if waiter_name is None:
-            waiter_name = 'TableExists'
+    # get waiters
+    def dynamo_get_waiter(self, args):
+        if not len(args) > 0:
+            args.append('TableExists')
         try:
             self.client.get_waiter(
-                waiter_name
+                args[0]
             )
             print(self.service, ': Success -- Get waiter succeeded')
             return True, ""
@@ -583,10 +664,10 @@ class DynamoDBClient:
         
 
     # !! Emulator: Unknown operation
-    # import table with try except
-    def dynamo_import_table(self, table_name=None, s3_bucket=None, s3_prefix=None, s3_bucket_owner=None, s3_object_version=None):
-        if table_name is None:
-            table_name = self.table_name
+    # import table
+    def dynamo_import_table(self, args):
+        if not len(args) > 0:
+            args.append(self.table_name)
         try:
             self.client.import_table(
                 S3BucketSource={
@@ -594,7 +675,7 @@ class DynamoDBClient:
                 },
                 InputFormat='DYNAMODB_JSON',
                 TableCreationParameters={
-                'TableName': table_name ,
+                'TableName': args[0] ,
                 'AttributeDefinitions':[
                 {
                     'AttributeName': 'username',
@@ -627,13 +708,13 @@ class DynamoDBClient:
         
     
     #!! Emulator: Unknown operation
-    # list backups with try except
-    def dynamo_list_backups(self, table_name=None):
-        if table_name is None:
-            table_name = self.table_name
+    # list backups
+    def dynamo_list_backups(self, args):
+        if not len(args) > 0:
+            args.append(self.table_name)
         try:
             self.client.list_backups(
-                TableName=table_name
+                TableName=args[0]
             )
             print(self.service, ': Success -- List backups succeeded')
             return True, ""
@@ -643,13 +724,13 @@ class DynamoDBClient:
 
 
     #!! Emulator: Unknown operation
-    # list contributor insights with try except
-    def dynamo_list_contributor_insights(self, table_name=None):
-        if table_name is None:
-            table_name = self.table_name
+    # list contributor insights
+    def dynamo_list_contributor_insights(self, args):
+        if not len(args) > 0:
+            args.append(self.table_name)
         try:
             self.client.list_contributor_insights(
-                TableName=table_name
+                TableName=args[0]
             )
             print(self.service, ': Success -- List contributor insights succeeded')
             return True, ""
@@ -659,10 +740,10 @@ class DynamoDBClient:
         
 
     #!! Emulator: Unknown operation
-    # list exports with try except
-    def dynamo_list_exports(self, table_name=None):
-        if table_name is None:
-            table_name = self.table_name
+    # list exports
+    def dynamo_list_exports(self, args):
+        if not len(args) > 0:
+            args.append(self.table_name)
         try:
             self.client.list_exports(
                 TableArn='string'
@@ -674,8 +755,8 @@ class DynamoDBClient:
             return False, e
 
 
-    # list global tables with try except
-    def dynamo_list_global_tables(self):
+    # list global tables
+    def dynamo_list_global_tables(self, args):
         try:
             self.client.list_global_tables()
             print(self.service, ': Success -- List global tables succeeded')
@@ -686,8 +767,8 @@ class DynamoDBClient:
         
     
     #!! Emulator: Unknown operation
-    # list imports with try except
-    def dynamo_list_imports(self):
+    # list imports
+    def dynamo_list_imports(self, args):
         try:
             self.client.list_imports()
             print(self.service, ': Success -- List imports succeeded')
@@ -696,8 +777,8 @@ class DynamoDBClient:
             print(self.service, ': Fail -- List imports failed; error: ', e)
             return False, e
 
-    # list tables with try except
-    def dynamo_list_tables(self):
+    # list tables
+    def dynamo_list_tables(self, args):
         try:
             self.client.list_tables()
             print(self.service, ': Success -- List tables succeeded')
@@ -706,13 +787,13 @@ class DynamoDBClient:
             print(self.service, ': Fail -- List tables failed; error: ', e)
             return False, e
 
-    # list tags of resource with try except
-    def dynamo_list_tags_of_resource(self, table_name=None):
-        if table_name is None:
-            table_name = self.table_name
+    # list tags of resource
+    def dynamo_list_tags_of_resource(self, args):
+        if not len(args) > 0:
+            args.append(self.table_name)
         try:
             self.client.list_tags_of_resource(
-                ResourceArn='arn:aws:dynamodb:us-east-1:123456789012:table/' + table_name
+                ResourceArn='arn:aws:dynamodb:us-east-1:123456789012:table/' + args[0]
             )
             print(self.service, ': Success -- List tags of resource succeeded')
             return True, ""
@@ -721,12 +802,12 @@ class DynamoDBClient:
             return False, e
 
 
-    # put item with try except
-    def dynamo_put_item(self, table_name=None, item=None):
-        if table_name is None:
-            table_name = self.table_name
-        if item is None:
-            item = {
+    # put item
+    def dynamo_put_item(self, args):
+        if not len(args) > 0:
+            args.append(self.table_name)
+        if not len(args) > 1:
+            args.append({
                 'string': {
                     'S': 'string',
                     'N': '1',
@@ -749,11 +830,11 @@ class DynamoDBClient:
                     'NULL': True|False,
                     'BOOL': True|False
                 }
-            }
+            })
         try:
             self.client.put_item(
-                TableName=table_name,
-                Item=item
+                TableName=args[0],
+                Item=args[1]
             )
             print(self.service, ': Success -- Item put succeeded')
             return True, ""
@@ -762,26 +843,35 @@ class DynamoDBClient:
             return False, e
         
 
-    # # query table with try except
-    # def dynamo_query(self, table_name=None, key_condition_expression=None, expression_attribute_values=None):
-    #     if table_name is None:
-    #         table_name = self.table_name
-    #     if key_condition_expression is None:
-    #         key_condition=
+    # query table
+    def dynamo_query(self, args):
+        if not len(args) > 0:
+            args.append(self.table_name)
+        if not len(args) > 1:
+            args.append('string')
+        try:
+            self.client.query(
+                TableName=args[0],
+                KeyConditionExpression=args[1]
+            )
+            print(self.service, ': Success -- Query succeeded')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': Fail -- Query failed; error: ', e)
+            return False, e
 
 
     #!! Emulator: Unknown operation
-    # restore table from backup with try except
-    def dynamo_restore_table_from_backup(self, table_name=None, backup_arn=None):
-        if table_name is None:
-            table_name = self.table_name
-        if backup_arn is None:
-            backup_arn = 'arn:aws:dynamodb:us-east-1:123456789012:table/' + self.table_name
-            table_name + '/backup/0000000000000000'
+    # restore table from backup
+    def dynamo_restore_table_from_backup(self, args):
+        if not len(args) > 0:
+            args.append(self.table_name)
+        if not len(args) > 1:
+            args.append('arn:aws:dynamodb:us-east-1:123456789012:table/' + args[0] + '/backup/0000000000000000')
         try:
             self.client.restore_table_from_backup(
-                TargetTableName=table_name,
-                BackupArn=backup_arn
+                TargetTableName=args[0],
+                BackupArn=args[1]
             )
             print(self.service, ': Success -- Restore table from backup succeeded')
             return True, ""
@@ -790,22 +880,22 @@ class DynamoDBClient:
             return False, e
         
     #!! Emulator: Unknown operation
-    # restore table to point in time with try except
-    def dynamo_restore_table_to_point_in_time(self, table_name=None, target_table_name_prefix=None, use_latest_restorable_time=None, restore_date=None):
-        if table_name is None:
-            table_name = self.table_name
-        if target_table_name_prefix is None:
-            target_table_name_prefix = 'string'
-        if use_latest_restorable_time is None:
-            use_latest_restorable_time = True
-        if restore_date is None:
-            restore_date = datetime.datetime(2015, 1, 1)
+    # restore table to point in time
+    def dynamo_restore_table_to_point_in_time(self, args):
+        if not len(args) > 0:
+            args.append(self.table_name)
+        if not len(args) > 1:
+            args.append('string')
+        if not len(args) > 2:
+            args.append(True)
+        if not len(args) > 3:
+            args.append(datetime(2015, 1, 1))
         try:
             self.client.restore_table_to_point_in_time(
-                SourceTableName=table_name,
-                TargetTableName=target_table_name_prefix,
-                UseLatestRestorableTime=use_latest_restorable_time,
-                RestoreDateTime=restore_date
+                SourceTableName=args[0],
+                TargetTableName=args[1],
+                UseLatestRestorableTime=args[2],
+                RestoreDateTime=args[3]
             )
             print(self.service, ': Success -- Restore table to point in time succeeded')
             return True, ""
@@ -814,14 +904,14 @@ class DynamoDBClient:
             return False, e
     
 
-    # scan table with try except
-    def dynamo_scan(self, table_name=None, filter_expression=None, expression_attribute_values=None):
-        if table_name is None:
-            table_name = self.table_name
-        if filter_expression is None:
-            filter_expression = 'string'
-        if expression_attribute_values is None:
-            expression_attribute_values = {
+    # scan table
+    def dynamo_scan(self, args):
+        if not len(args) > 0:
+            args.append(self.table_name)
+        if not len(args) > 1:
+            args.append('string')
+        if not len(args) > 2:
+            args.append({
                 ':val': {
                     'S': 'string',
                     'N': '1',
@@ -844,12 +934,12 @@ class DynamoDBClient:
                     'NULL': True|False,
                     'BOOL': True|False
                 }
-            }
+            })
         try:
             self.client.scan(
-                TableName=table_name,
-                FilterExpression=filter_expression,
-                ExpressionAttributeValues=expression_attribute_values
+                TableName=args[0],
+                FilterExpression=args[1],
+                ExpressionAttributeValues=args[2]
             )
             print(self.service, ': Success -- Scan succeeded')
             return True, ""
@@ -857,21 +947,21 @@ class DynamoDBClient:
             print(self.service, ': Fail -- Scan failed; error: ', e)
             return False, e
     
-    # tag resource with try except
-    def dynamo_tag_resource(self, resource_arn=None, tags=None):
-        if resource_arn is None:
-            resource_arn = 'arn:aws:dynamodb:us-east-1:123456789012:table/' + self.table_name
-        if tags is None:
-            tags=[
+    # tag resource
+    def dynamo_tag_resource(self, args):
+        if not len(args) > 0:
+            args.append('arn:aws:dynamodb:us-east-1:123456789012:table/' + self.table_name)
+        if not len(args) > 1:
+            args.append([
                 {
                     'Key': 'string',
                     'Value': 'string'
                 },
-            ]
+            ])
         try:
             self.client.tag_resource(
-                ResourceArn=resource_arn,
-                Tags=tags
+                ResourceArn=args[0],
+                Tags=args[1]
             )
             print(self.service, ': Success -- Tag resource succeeded')
             return True, ""
@@ -879,10 +969,10 @@ class DynamoDBClient:
             print(self.service, ': Fail -- Tag resource failed; error: ', e)
             return False, e
         
-    # transact get items with try except
-    def dynamo_transact_get_items(self, transact_items=None):
-        if transact_items is None:
-            transact_items=[
+    # transact get items
+    def dynamo_transact_get_items(self, args):
+        if not len(args) > 0:
+            args.append([
                 {
                     'Get': {
                         'Key': {
@@ -916,10 +1006,10 @@ class DynamoDBClient:
                         }
                     }
                 },
-            ]
+            ])
 
         try:
-            self.client.transact_get_items(TransactItems=transact_items)
+            self.client.transact_get_items(TransactItems=args[0])
             print(self.service, ': Success -- Transact get items succeeded')
             return True, ""
         except Exception as e:
@@ -927,10 +1017,10 @@ class DynamoDBClient:
             return False, e
 
 
-    # transact write items with try except
-    def dynamo_transact_write_items(self, transact_items=None):
-        if transact_items is None:
-            transact_items=[
+    # transact write items
+    def dynamo_transact_write_items(self, args):
+        if not len(args) > 0:
+            args.append([
                 {
                     'Put': {
                         'Item': {
@@ -989,9 +1079,9 @@ class DynamoDBClient:
                         'ReturnValuesOnConditionCheckFailure': 'NONE'
                     }
                 },
-            ]
+            ])
         try:
-            self.client.transact_write_items(TransactItems=transact_items)
+            self.client.transact_write_items(TransactItems=args[0])
             print(self.service, ': Success -- Transact write items succeeded')
             return True, ""
         except Exception as e:
@@ -1000,18 +1090,18 @@ class DynamoDBClient:
 
 
 
-    # untag resource with try except
-    def dynamo_untag_resource(self, resource_arn=None, tag_keys=None):
-        if resource_arn is None:
-            resource_arn = 'arn:aws:dynamodb:us-east-1:123456789012:table/' + self.table_name
-        if tag_keys is None:
-            tag_keys=[
+    # untag resource
+    def dynamo_untag_resource(self, args):
+        if not len(args) > 0:
+            args.append('arn:aws:dynamodb:us-east-1:123456789012:table/' + self.table_name)
+        if not len(args) > 1:
+            args.append([
                 'string',
-            ]
+            ])
         try:
             self.client.untag_resource(
-                ResourceArn=resource_arn,
-                TagKeys=tag_keys
+                ResourceArn=args[0],
+                TagKeys=args[1]
             )
             print(self.service, ': Success -- Untag resource succeeded')
             return True, ""
@@ -1020,16 +1110,16 @@ class DynamoDBClient:
             return False, e
         
 
-    # update continuous backups with try except
-    def dynamo_update_continuous_backups(self, point_in_time_recovery_specification=None):
-        if point_in_time_recovery_specification is None:
-            point_in_time_recovery_specification={
+    # update continuous backups
+    def dynamo_update_continuous_backups(self, args):
+        if not len(args) > 0:
+            args.append({
                 'PointInTimeRecoveryEnabled': True|False
-            }
+            })
         try:
             self.client.update_continuous_backups(
                 TableName=self.table_name,
-                PointInTimeRecoverySpecification=point_in_time_recovery_specification
+                PointInTimeRecoverySpecification=args[0]
             )
             print(self.service, ': Success -- Update continuous backups succeeded')
             return True, ""
@@ -1039,17 +1129,17 @@ class DynamoDBClient:
         
 
     #!! Emulator: Unknown operation
-    # update contributor insights with try except
-    def dynamo_update_contributor_insights(self, index_name=None, contributor_insights_action=None):
-        if index_name is None:
-            index_name = 'index_name'
-        if contributor_insights_action is None:
-            contributor_insights_action= 'ENABLE'
+    # update contributor insights
+    def dynamo_update_contributor_insights(self, args):
+        if not len(args) > 0:
+            args.append('index_name')
+        if not len(args) > 1:
+            args.append('ENABLE')
         try:
             self.client.update_contributor_insights(
                 TableName=self.table_name,
-                IndexName=index_name,
-                ContributorInsightsAction=contributor_insights_action
+                IndexName=args[0],
+                ContributorInsightsAction=args[1]
             )
             print(self.service, ': Success -- Update contributor insights succeeded')
             return True, ""
@@ -1058,22 +1148,22 @@ class DynamoDBClient:
             return False, e
         
 
-    # update global table with try except
-    def dynamo_update_global_table(self, global_table_name=None, replica_updates=None):
-        if global_table_name is None:
-            global_table_name = self.table_name
-        if replica_updates is None:
-            replica_updates=[
+    # update global table
+    def dynamo_update_global_table(self, args):
+        if not len(args) > 0:
+            args.append(self.table_name)
+        if not len(args) > 1:
+            args.append([
                 {
                     'Create': {
                         'RegionName': 'us-east-1'
                     }
                 },
-            ]
+            ])
         try:
             self.client.update_global_table(
-                GlobalTableName=global_table_name,
-                ReplicaUpdates=replica_updates
+                GlobalTableName=args[0],
+                ReplicaUpdates=args[1]
             )
             print(self.service, ': Success -- Update global table succeeded')
             return True, ""
@@ -1082,14 +1172,14 @@ class DynamoDBClient:
             return False, e
         
     #!! Emulator: Unknown operation
-    # update global table settings with try except
-    def dynamo_update_global_table_settings(self, global_table_name=None):
-        if global_table_name is None:
-            global_table_name = self.table_name
+    # update global table settings
+    def dynamo_update_global_table_settings(self, args):
+        if not len(args) > 0:
+            args.append(self.table_name)
         
         try:
             self.client.update_global_table_settings(
-                GlobalTableName=global_table_name,
+                GlobalTableName=args[0],
                 GlobalTableBillingMode='PROVISIONED',
                 GlobalTableProvisionedWriteCapacityUnits=123,
                 GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate={
@@ -1136,8 +1226,8 @@ class DynamoDBClient:
             return False, e
         
 
-    # update item with try except
-    def dynamo_update_item(self):
+    # update item
+    def dynamo_update_item(self, args):
         try:
             self.client.update_item(
                 TableName=self.table_name,
@@ -1163,13 +1253,14 @@ class DynamoDBClient:
             return False, e
         
 
-    # update table with try except
-    def dynamo_update_table(self, table_name=None):
-        if table_name is None:
-            table_name = self.table_name
+    # update table
+    def dynamo_update_table(self, args):
+        if not len(args) > 0:
+            args.append(self.table_name)
+
         try:
             self.client.update_table(
-                TableName=table_name,
+                TableName=args[0],
                 ProvisionedThroughput={
                     'ReadCapacityUnits': 10,
                     'WriteCapacityUnits': 10
@@ -1184,8 +1275,8 @@ class DynamoDBClient:
 
     
     #!! Emulator: Unknown operation    
-    # update table replica autoscaling with try except
-    def dynamo_update_replica_autoscaling(self):
+    # update table replica autoscaling
+    def dynamo_update_replica_autoscaling(self, args):
         try:
             self.client.update_table_replica_auto_scaling(
                 TableName=self.table_name,
@@ -1216,8 +1307,8 @@ class DynamoDBClient:
         
 
 
-    # update time to live with try except
-    def dynamo_update_ttl(self):
+    # update time to live
+    def dynamo_update_ttl(self, args):
         try:
             self.client.update_time_to_live(
                 TableName=self.table_name,
@@ -1232,6 +1323,7 @@ class DynamoDBClient:
             print(self.service, ': Fail -- TTL update failed; error: ', e)
             return False, e
         
+
     def __cleanup__(self):
         try:
             # list tables
@@ -1249,17 +1341,17 @@ class DynamoDBClient:
 
 
 
-# if __name__ == '__main__':
+if __name__ == '__main__':
 
 
-#     # create blob client
-#     table_client = DynamoDBClient(False)
-#     # get all methods
-#     methods = [getattr(DynamoDBClient, attr) for attr in dir(DynamoDBClient) if callable(getattr(DynamoDBClient, attr)) and not attr.startswith("__")]
+    # create blob client
+    table_client = DynamoDBClient(False)
+    # get all methods
+    methods = [getattr(DynamoDBClient, attr) for attr in dir(DynamoDBClient) if callable(getattr(DynamoDBClient, attr)) and not attr.startswith("__")]
 
-#     for i in methods:
-#         print(i.__name__)
-#         i(table_client)
+    for i in methods:
+        print(i.__name__)
+        i(table_client)
 
-#     # clean up
-#     table_client.__cleanup__()
+    # clean up
+    table_client.__cleanup__()
