@@ -42,12 +42,14 @@ if __name__ == '__main__':
     # take service type as argument and exit if no argument
     if len(sys.argv) < 2:
         print('Please specify service type from the following:')
-        print('1. Azure Storage')
-        print('2. S3')
+        print('1: Azure Storage')
+        print('2: S3')
         print('3: DynamoDB')
         sys.exit()
 
-    service_type = sys.argv[1]
+    services = {'1': 'Azure Storage', '2': 'S3', '3': 'DynamoDB'}
+
+    service_type = services[sys.argv[1]]
     sys.path.append(f'../sdk_tests/{service_type}')
     import driver
 
