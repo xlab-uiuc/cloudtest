@@ -1,0 +1,115 @@
+Logs for test: Sleet.Azure.Tests.SubFeedTests.SubFeed_InitMultipleFeedsVerifyDestroyDoesNotModifyOthers
+
+Azurite Blob service is starting at http://127.0.0.1:10000
+Azurite Blob service is successfully listening at http://127.0.0.1:10000
+Azurite Queue service is starting at http://127.0.0.1:10001
+Azurite Queue service is successfully listening at http://127.0.0.1:10001
+Azurite Table service is starting at http://127.0.0.1:10002
+Azurite Table service is successfully listening at http://127.0.0.1:10002
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "PUT /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba?restype=container HTTP/1.1" 201 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "PUT /devstoreaccount1/sleet-test-2f90cb0a-0542-4e3a-b504-1b1337efe9c8?restype=container HTTP/1.1" 201 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "HEAD /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedA/sleet.settings.json HTTP/1.1" 404 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "HEAD /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba?restype=container HTTP/1.1" 200 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "HEAD /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba?restype=container HTTP/1.1" 200 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "HEAD /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedA/index.json HTTP/1.1" 404 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "HEAD /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedA/catalog/index.json HTTP/1.1" 404 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "HEAD /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedA/autocomplete/query HTTP/1.1" 404 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "HEAD /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedA/search/query HTTP/1.1" 404 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "HEAD /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedA/sleet.packageindex.json HTTP/1.1" 404 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "HEAD /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedA/symbols/packages/index.json HTTP/1.1" 404 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "PUT /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedA/sleet.packageindex.json HTTP/1.1" 201 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "PUT /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedA/index.json HTTP/1.1" 201 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "PUT /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedA/symbols/packages/index.json HTTP/1.1" 201 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "PUT /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedA/sleet.settings.json HTTP/1.1" 201 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "PUT /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedA/sleet.packageindex.json?comp=properties HTTP/1.1" 200 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "PUT /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedA/index.json?comp=properties HTTP/1.1" 200 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "PUT /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedA/symbols/packages/index.json?comp=properties HTTP/1.1" 200 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "PUT /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedA/sleet.settings.json?comp=properties HTTP/1.1" 200 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "PUT /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedA/search/query HTTP/1.1" 201 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "PUT /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedA/autocomplete/query HTTP/1.1" 201 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "PUT /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedA/catalog/index.json HTTP/1.1" 201 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "PUT /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedA/search/query?comp=properties HTTP/1.1" 200 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "PUT /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedA/autocomplete/query?comp=properties HTTP/1.1" 200 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "PUT /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedA/catalog/index.json?comp=properties HTTP/1.1" 200 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "HEAD /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedB/sleet.settings.json HTTP/1.1" 404 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "HEAD /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba?restype=container HTTP/1.1" 200 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "HEAD /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba?restype=container HTTP/1.1" 200 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "HEAD /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedB/index.json HTTP/1.1" 404 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "HEAD /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedB/catalog/index.json HTTP/1.1" 404 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "HEAD /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedB/autocomplete/query HTTP/1.1" 404 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "HEAD /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedB/search/query HTTP/1.1" 404 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "HEAD /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedB/sleet.packageindex.json HTTP/1.1" 404 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "HEAD /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedB/symbols/packages/index.json HTTP/1.1" 404 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "PUT /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedB/catalog/index.json HTTP/1.1" 201 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "PUT /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedB/symbols/packages/index.json HTTP/1.1" 201 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "PUT /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedB/autocomplete/query HTTP/1.1" 201 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "PUT /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedB/sleet.packageindex.json HTTP/1.1" 201 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "PUT /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedB/catalog/index.json?comp=properties HTTP/1.1" 200 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "PUT /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedB/symbols/packages/index.json?comp=properties HTTP/1.1" 200 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "PUT /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedB/autocomplete/query?comp=properties HTTP/1.1" 200 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "PUT /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedB/sleet.packageindex.json?comp=properties HTTP/1.1" 200 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "PUT /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedB/search/query HTTP/1.1" 201 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "PUT /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedB/sleet.settings.json HTTP/1.1" 201 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "PUT /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedB/index.json HTTP/1.1" 201 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "PUT /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedB/search/query?comp=properties HTTP/1.1" 200 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "PUT /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedB/sleet.settings.json?comp=properties HTTP/1.1" 200 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "PUT /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedB/index.json?comp=properties HTTP/1.1" 200 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "HEAD /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba?restype=container HTTP/1.1" 200 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "HEAD /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedB/feedlock HTTP/1.1" 404 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "PUT /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedB/feedlock HTTP/1.1" 201 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "PUT /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedB/feedlock?comp=lease HTTP/1.1" 201 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "PUT /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedB/feedlock?comp=lease HTTP/1.1" 200 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "HEAD /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedB/index.json HTTP/1.1" 200 613
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "PUT /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedB/feedlock-message HTTP/1.1" 201 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "GET /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedB/index.json HTTP/1.1" 200 613
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "GET /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba?restype=container&comp=list&include=snapshots%2Cuncommittedblobs%2Cmetadata%2Ccopy%2Cdeleted HTTP/1.1" 200 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "HEAD /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedB/feedlock-message HTTP/1.1" 200 68
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "HEAD /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedB/sleet.packageindex.json HTTP/1.1" 200 51
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "HEAD /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedB/sleet.settings.json HTTP/1.1" 200 437
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "HEAD /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedB/catalog/index.json HTTP/1.1" 200 419
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "HEAD /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedB/index.json HTTP/1.1" 200 613
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "HEAD /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedB/symbols/packages/index.json HTTP/1.1" 200 51
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "HEAD /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedB/autocomplete/query HTTP/1.1" 200 154
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "DELETE /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedB/feedlock-message HTTP/1.1" 202 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "DELETE /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedB/sleet.settings.json HTTP/1.1" 202 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "DELETE /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedB/catalog/index.json HTTP/1.1" 202 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "DELETE /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedB/index.json HTTP/1.1" 202 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "DELETE /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedB/symbols/packages/index.json HTTP/1.1" 202 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "DELETE /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedB/sleet.packageindex.json HTTP/1.1" 202 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "HEAD /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedB/search/query HTTP/1.1" 200 203
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "DELETE /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedB/autocomplete/query HTTP/1.1" 202 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "DELETE /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedB/search/query HTTP/1.1" 202 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "DELETE /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedB/feedlock-message HTTP/1.1" 404 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "PUT /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedB/feedlock?comp=lease HTTP/1.1" 200 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "HEAD /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba?restype=container HTTP/1.1" 200 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "HEAD /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedA/feedlock HTTP/1.1" 404 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "PUT /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedA/feedlock HTTP/1.1" 201 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "PUT /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedA/feedlock?comp=lease HTTP/1.1" 201 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "PUT /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedA/feedlock?comp=lease HTTP/1.1" 200 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "HEAD /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedA/index.json HTTP/1.1" 200 613
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "GET /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedA/index.json HTTP/1.1" 200 613
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "PUT /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedA/feedlock-message HTTP/1.1" 201 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "HEAD /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedA/sleet.settings.json HTTP/1.1" 200 435
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "GET /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedA/sleet.settings.json HTTP/1.1" 200 435
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "HEAD /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedA/sleet.packageindex.json HTTP/1.1" 200 51
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "GET /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedA/sleet.packageindex.json HTTP/1.1" 200 51
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "HEAD /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedA/autocomplete/query HTTP/1.1" 200 154
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "GET /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedA/autocomplete/query HTTP/1.1" 200 154
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "HEAD /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedA/catalog/index.json HTTP/1.1" 200 418
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "GET /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedA/catalog/index.json HTTP/1.1" 200 418
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "HEAD /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedA/search/query HTTP/1.1" 200 202
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "GET /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedA/search/query HTTP/1.1" 200 202
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "HEAD /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedA/symbols/packages/index.json HTTP/1.1" 200 51
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "GET /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedA/symbols/packages/index.json HTTP/1.1" 200 51
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "DELETE /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedA/feedlock-message HTTP/1.1" 202 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "PUT /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba/testSubFeedA/feedlock?comp=lease HTTP/1.1" 200 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "HEAD /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba?restype=container HTTP/1.1" 200 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "DELETE /devstoreaccount1/sleet-test-59613abc-46ee-405a-9e63-bc138489d4ba?restype=container HTTP/1.1" 202 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "HEAD /devstoreaccount1/sleet-test-2f90cb0a-0542-4e3a-b504-1b1337efe9c8?restype=container HTTP/1.1" 200 -
+127.0.0.1 - - [10/Aug/2023:12:22:09 +0000] "DELETE /devstoreaccount1/sleet-test-2f90cb0a-0542-4e3a-b504-1b1337efe9c8?restype=container HTTP/1.1" 202 -
+Azurite Blob service is closing...
+Azurite Queue service is closing...
+Azurite Table service is closing...
+Azurite Table service successfully closed
+Azurite Queue service successfully closed
+Azurite Blob service successfully closed
