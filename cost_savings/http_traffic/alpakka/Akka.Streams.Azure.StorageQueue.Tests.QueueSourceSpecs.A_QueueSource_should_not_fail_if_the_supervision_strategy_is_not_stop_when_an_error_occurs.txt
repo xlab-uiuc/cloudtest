@@ -1,0 +1,27 @@
+Logs for test: Akka.Streams.Azure.StorageQueue.Tests.QueueSourceSpecs.A_QueueSource_should_not_fail_if_the_supervision_strategy_is_not_stop_when_an_error_occurs
+
+Azurite Blob service is starting at http://127.0.0.1:10000
+Azurite Blob service is successfully listening at http://127.0.0.1:10000
+Azurite Queue service is starting at http://127.0.0.1:10001
+Azurite Queue service is successfully listening at http://127.0.0.1:10001
+Azurite Table service is starting at http://127.0.0.1:10002
+Azurite Table service is successfully listening at http://127.0.0.1:10002
+127.0.0.1 - - [12/Aug/2023:12:06:44 +0000] "PUT /devstoreaccount1/testqueue HTTP/1.1" 201 -
+127.0.0.1 - - [12/Aug/2023:12:06:44 +0000] "DELETE /devstoreaccount1/testqueue HTTP/1.1" 204 -
+127.0.0.1 - - [12/Aug/2023:12:06:44 +0000] "GET /devstoreaccount1/testqueue/messages?numofmessages=10 HTTP/1.1" 404 -
+127.0.0.1 - - [12/Aug/2023:12:06:45 +0000] "GET /devstoreaccount1/testqueue/messages?numofmessages=10 HTTP/1.1" 404 -
+127.0.0.1 - - [12/Aug/2023:12:06:46 +0000] "GET /devstoreaccount1/testqueue/messages?numofmessages=10 HTTP/1.1" 404 -
+127.0.0.1 - - [12/Aug/2023:12:06:47 +0000] "PUT /devstoreaccount1/testqueue HTTP/1.1" 201 -
+127.0.0.1 - - [12/Aug/2023:12:06:47 +0000] "POST /devstoreaccount1/testqueue/messages?visibilitytimeout=0 HTTP/1.1" 201 -
+127.0.0.1 - - [12/Aug/2023:12:06:47 +0000] "GET /devstoreaccount1/testqueue/messages?numofmessages=10 HTTP/1.1" 200 -
+127.0.0.1 - - [12/Aug/2023:12:06:47 +0000] "GET /devstoreaccount1/testqueue/messages?numofmessages=10 HTTP/1.1" 200 -
+127.0.0.1 - - [12/Aug/2023:12:06:47 +0000] "POST /devstoreaccount1/testqueue/messages?visibilitytimeout=0 HTTP/1.1" 201 -
+127.0.0.1 - - [12/Aug/2023:12:06:47 +0000] "POST /devstoreaccount1/testqueue/messages?visibilitytimeout=0 HTTP/1.1" 201 -
+127.0.0.1 - - [12/Aug/2023:12:06:48 +0000] "GET /devstoreaccount1/testqueue/messages?numofmessages=10 HTTP/1.1" 200 -
+127.0.0.1 - - [12/Aug/2023:12:06:48 +0000] "DELETE /devstoreaccount1/testqueue HTTP/1.1" 204 -
+Azurite Blob service is closing...
+Azurite Queue service is closing...
+Azurite Table service is closing...
+Azurite Table service successfully closed
+Azurite Blob service successfully closed
+Azurite Queue service successfully closed
