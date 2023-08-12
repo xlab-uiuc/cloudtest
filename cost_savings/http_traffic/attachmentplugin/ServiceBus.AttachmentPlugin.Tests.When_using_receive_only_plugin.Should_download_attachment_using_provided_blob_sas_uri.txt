@@ -1,0 +1,20 @@
+Logs for test: ServiceBus.AttachmentPlugin.Tests.When_using_receive_only_plugin.Should_download_attachment_using_provided_blob_sas_uri
+
+Azurite Blob service is starting at http://127.0.0.1:10000
+Azurite Blob service is successfully listening at http://127.0.0.1:10000
+Azurite Queue service is starting at http://127.0.0.1:10001
+Azurite Queue service is successfully listening at http://127.0.0.1:10001
+Azurite Table service is starting at http://127.0.0.1:10002
+Azurite Table service is successfully listening at http://127.0.0.1:10002
+127.0.0.1 - - [12/Aug/2023:08:27:50 +0000] "HEAD /devstoreaccount1/attachments-sendonly?restype=container HTTP/1.1" 404 -
+127.0.0.1 - - [12/Aug/2023:08:27:51 +0000] "PUT /devstoreaccount1/attachments-sendonly?restype=container HTTP/1.1" 201 -
+127.0.0.1 - - [12/Aug/2023:08:27:51 +0000] "HEAD /devstoreaccount1/attachments-sendonly?restype=container HTTP/1.1" 200 -
+127.0.0.1 - - [12/Aug/2023:08:27:51 +0000] "PUT /devstoreaccount1/attachments-sendonly/2d570a0b-2671-411a-8052-bf11cb9e2789 HTTP/1.1" 201 -
+127.0.0.1 - - [12/Aug/2023:08:27:51 +0000] "HEAD /devstoreaccount1/attachments-sendonly/2d570a0b-2671-411a-8052-bf11cb9e2789?sv=2019-02-02&sr=b&sig=yP10rFf%2FeETmHeTaoD3PeeesfEd9U3CoPGookxb0Y5c%3D&st=2023-08-12T08%3A22%3A51Z&se=2023-08-12T12%3A27%3A51Z&sp=rd&api-version=2019-02-02& HTTP/1.1" 200 7
+127.0.0.1 - - [12/Aug/2023:08:27:51 +0000] "GET /devstoreaccount1/attachments-sendonly/2d570a0b-2671-411a-8052-bf11cb9e2789?sv=2019-02-02&sr=b&sig=yP10rFf%2FeETmHeTaoD3PeeesfEd9U3CoPGookxb0Y5c%3D&st=2023-08-12T08%3A22%3A51Z&se=2023-08-12T12%3A27%3A51Z&sp=rd&api-version=2019-02-02& HTTP/1.1" 200 7
+Azurite Blob service is closing...
+Azurite Queue service is closing...
+Azurite Table service is closing...
+Azurite Table service successfully closed
+Azurite Blob service successfully closed
+Azurite Queue service successfully closed

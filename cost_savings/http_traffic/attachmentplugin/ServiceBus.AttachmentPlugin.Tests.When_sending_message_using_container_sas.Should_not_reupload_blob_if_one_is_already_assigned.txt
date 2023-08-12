@@ -1,0 +1,20 @@
+Logs for test: ServiceBus.AttachmentPlugin.Tests.When_sending_message_using_container_sas.Should_not_reupload_blob_if_one_is_already_assigned
+
+Azurite Blob service is starting at http://127.0.0.1:10000
+Azurite Blob service is successfully listening at http://127.0.0.1:10000
+Azurite Queue service is starting at http://127.0.0.1:10001
+Azurite Queue service is successfully listening at http://127.0.0.1:10001
+Azurite Table service is starting at http://127.0.0.1:10002
+Azurite Table service is successfully listening at http://127.0.0.1:10002
+127.0.0.1 - - [12/Aug/2023:08:25:18 +0000] "HEAD /devstoreaccount1/attachments?restype=container HTTP/1.1" 200 -
+127.0.0.1 - - [12/Aug/2023:08:25:19 +0000] "HEAD /devstoreaccount1/attachments?restype=container HTTP/1.1" 200 -
+127.0.0.1 - - [12/Aug/2023:08:25:19 +0000] "GET /devstoreaccount1/attachments?restype=container&comp=acl HTTP/1.1" 200 -
+127.0.0.1 - - [12/Aug/2023:08:25:19 +0000] "PUT /devstoreaccount1/attachments?restype=container&comp=acl HTTP/1.1" 200 -
+127.0.0.1 - - [12/Aug/2023:08:25:19 +0000] "HEAD /devstoreaccount1/attachments?sv=2019-02-02&sr=c&si=test-policy&sig=mOX%2FLoPwtrgMGUmKQO%2F8JszTXQmShWDVbZXFs6xWMB0%3D&api-version=2019-02-02&restype=container HTTP/1.1" 200 -
+127.0.0.1 - - [12/Aug/2023:08:25:19 +0000] "PUT /devstoreaccount1/attachments/d0434bc6-86f4-4b03-ae6a-73b796f6914e?sv=2019-02-02&sr=c&si=test-policy&sig=mOX%2FLoPwtrgMGUmKQO%2F8JszTXQmShWDVbZXFs6xWMB0%3D&api-version=2019-02-02& HTTP/1.1" 201 -
+Azurite Blob service is closing...
+Azurite Queue service is closing...
+Azurite Table service is closing...
+Azurite Table service successfully closed
+Azurite Blob service successfully closed
+Azurite Queue service successfully closed

@@ -1,0 +1,20 @@
+Logs for test: ServiceBus.AttachmentPlugin.Tests.When_sending_message_using_connection_string.Should_be_able_to_send_if_container_was_not_found
+
+Azurite Blob service is starting at http://127.0.0.1:10000
+Azurite Blob service is successfully listening at http://127.0.0.1:10000
+Azurite Queue service is starting at http://127.0.0.1:10001
+Azurite Queue service is successfully listening at http://127.0.0.1:10001
+Azurite Table service is starting at http://127.0.0.1:10002
+Azurite Table service is successfully listening at http://127.0.0.1:10002
+127.0.0.1 - - [12/Aug/2023:08:24:46 +0000] "HEAD /devstoreaccount1/attachments-that-didnt-exist?restype=container HTTP/1.1" 404 -
+127.0.0.1 - - [12/Aug/2023:08:24:46 +0000] "HEAD /devstoreaccount1/attachments-that-didnt-exist?restype=container HTTP/1.1" 404 -
+127.0.0.1 - - [12/Aug/2023:08:24:46 +0000] "PUT /devstoreaccount1/attachments-that-didnt-exist?restype=container HTTP/1.1" 201 -
+127.0.0.1 - - [12/Aug/2023:08:24:46 +0000] "PUT /devstoreaccount1/attachments-that-didnt-exist/4f9f63fb-6c04-479e-bd97-b8ae761fab7f HTTP/1.1" 201 -
+127.0.0.1 - - [12/Aug/2023:08:24:46 +0000] "HEAD /devstoreaccount1/attachments-that-didnt-exist/4f9f63fb-6c04-479e-bd97-b8ae761fab7f HTTP/1.1" 200 7
+127.0.0.1 - - [12/Aug/2023:08:24:46 +0000] "GET /devstoreaccount1/attachments-that-didnt-exist/4f9f63fb-6c04-479e-bd97-b8ae761fab7f HTTP/1.1" 200 7
+Azurite Blob service is closing...
+Azurite Queue service is closing...
+Azurite Table service is closing...
+Azurite Table service successfully closed
+Azurite Blob service successfully closed
+Azurite Queue service successfully closed

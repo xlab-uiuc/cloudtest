@@ -1,0 +1,22 @@
+Logs for test: ServiceBus.AttachmentPlugin.Tests.When_sending_message_using_connection_string.Should_be_able_to_receive_using_container_sas
+
+Azurite Blob service is starting at http://127.0.0.1:10000
+Azurite Blob service is successfully listening at http://127.0.0.1:10000
+Azurite Queue service is starting at http://127.0.0.1:10001
+Azurite Queue service is successfully listening at http://127.0.0.1:10001
+Azurite Table service is starting at http://127.0.0.1:10002
+Azurite Table service is successfully listening at http://127.0.0.1:10002
+127.0.0.1 - - [12/Aug/2023:08:24:40 +0000] "HEAD /devstoreaccount1/attachments?restype=container HTTP/1.1" 200 -
+127.0.0.1 - - [12/Aug/2023:08:24:40 +0000] "PUT /devstoreaccount1/attachments/9711e493-8954-479e-9f4b-50876bf2359b HTTP/1.1" 201 -
+127.0.0.1 - - [12/Aug/2023:08:24:40 +0000] "HEAD /devstoreaccount1/attachments?restype=container HTTP/1.1" 200 -
+127.0.0.1 - - [12/Aug/2023:08:24:40 +0000] "HEAD /devstoreaccount1/attachments?restype=container HTTP/1.1" 200 -
+127.0.0.1 - - [12/Aug/2023:08:24:40 +0000] "GET /devstoreaccount1/attachments?restype=container&comp=acl HTTP/1.1" 200 -
+127.0.0.1 - - [12/Aug/2023:08:24:40 +0000] "PUT /devstoreaccount1/attachments?restype=container&comp=acl HTTP/1.1" 200 -
+127.0.0.1 - - [12/Aug/2023:08:24:40 +0000] "HEAD /devstoreaccount1/attachments/9711e493-8954-479e-9f4b-50876bf2359b?sv=2019-02-02&sr=c&si=test-policy&sig=mOX%2FLoPwtrgMGUmKQO%2F8JszTXQmShWDVbZXFs6xWMB0%3D&api-version=2019-02-02& HTTP/1.1" 200 7
+127.0.0.1 - - [12/Aug/2023:08:24:40 +0000] "GET /devstoreaccount1/attachments/9711e493-8954-479e-9f4b-50876bf2359b?sv=2019-02-02&sr=c&si=test-policy&sig=mOX%2FLoPwtrgMGUmKQO%2F8JszTXQmShWDVbZXFs6xWMB0%3D&api-version=2019-02-02& HTTP/1.1" 200 7
+Azurite Blob service is closing...
+Azurite Queue service is closing...
+Azurite Table service is closing...
+Azurite Table service successfully closed
+Azurite Blob service successfully closed
+Azurite Queue service successfully closed
