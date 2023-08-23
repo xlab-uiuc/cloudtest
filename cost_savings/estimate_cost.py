@@ -31,7 +31,6 @@ def find_tests_with_methods(methods_json_path, methods_file_path):
     for key, value in json_data.items():
         for method in methods:
             if method in value:
-                print(method)
                 tests_with_methods.append(key)
                 break
 
@@ -74,22 +73,23 @@ if __name__ == "__main__":
 
     total_tests, discrepant_tests = find_tests_with_methods(methods_json_path, methods_file_path)
 
-    # print("Test with discrepant methods:")
-    # for name in discrepant_tests:
-    #     print(name)
-
     # all tests on the cloud
-    total_cost = sum_methods_if_test_exists(traffic_json_path, total_tests)
+    cloud_cost = sum_methods_if_test_exists(traffic_json_path, total_tests)
     print("*CLOUD COST*")
-    for i in total_cost:
-        print(i, total_cost[i])
+    for i in cloud_cost:
+        print(i, cloud_cost[i])
     print()
 
     # a combination of cloud and emulator
-    total_cost = sum_methods_if_test_exists(traffic_json_path, discrepant_tests)
+    cloud_em_cost = sum_methods_if_test_exists(traffic_json_path, discrepant_tests)
     print("*CLOUD & EMULATOR COST*")
-    for i in total_cost:
-        print(i, total_cost[i])
+    for i in cloud_em_cost:
+        print(i, cloud_em_cost[i])
+    print()
+
+    print("*SAVINGS*")
+    for i in range(len(cloud_cost)):
+        print(list(cloud_cost.keys())[i], cloud_cost[list(cloud_cost.keys())[i]] - cloud_em_cost[list(cloud_em_cost.keys())[i]])
     print()
 
     print("Total tests: ", TOTAL_TESTS)
