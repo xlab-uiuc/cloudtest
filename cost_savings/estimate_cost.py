@@ -23,18 +23,24 @@ def find_tests_with_methods(methods_json_path, methods_file_path):
 
     tests = json_data.keys()
 
+    for i in tests:
+        if not json_data[i] == []: # remove tests with no cloud methods
+            TOTAL_TESTS += 1
+
     tests_with_methods = []
     for key, value in json_data.items():
         for method in methods:
             if method in value:
+                print(method)
                 tests_with_methods.append(key)
+                break
 
     DISCREPANT_TESTS = len(tests_with_methods)
-    TOTAL_TESTS = len(tests)
+
     return tests, tests_with_methods
 
 
-def sum_methods_if_test_exists(traffic_json_path, test_names):
+def sum_methods_if_test_exists(traffic_json_path, discrepant_test_names):
   
     with open(traffic_json_path, "r") as f:
         traffic_data = json.load(f)
@@ -49,13 +55,13 @@ def sum_methods_if_test_exists(traffic_json_path, test_names):
         "OTHER": 0
     }
 
-    for key, _ in traffic_data.items():
+    for key, value in traffic_data.items():
         
-        val = key.split(".txt")[0]
         # run on cloud if discrepant test
-        if val in test_names:
+        if key in discrepant_test_names:
             for request in cost:
-                cost[request] += traffic_data[key][request]
+                for key in value.keys():
+                    cost[request] += value[key][request]
 
     return cost
 
@@ -68,19 +74,23 @@ if __name__ == "__main__":
 
     total_tests, discrepant_tests = find_tests_with_methods(methods_json_path, methods_file_path)
 
-    print("Test with discrepant methods:")
-    for name in discrepant_tests:
-        print(name)
+    # print("Test with discrepant methods:")
+    # for name in discrepant_tests:
+    #     print(name)
 
+    # all tests on the cloud
     total_cost = sum_methods_if_test_exists(traffic_json_path, total_tests)
     print("*CLOUD COST*")
     for i in total_cost:
         print(i, total_cost[i])
     print()
+
+    # a combination of cloud and emulator
     total_cost = sum_methods_if_test_exists(traffic_json_path, discrepant_tests)
     print("*CLOUD & EMULATOR COST*")
     for i in total_cost:
         print(i, total_cost[i])
     print()
+
     print("Total tests: ", TOTAL_TESTS)
     print("Potential discrepant tests: ", DISCREPANT_TESTS)
