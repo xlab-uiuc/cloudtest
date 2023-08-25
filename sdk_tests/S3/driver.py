@@ -1,5 +1,6 @@
 from contextlib import redirect_stdout
 import io
+import random
 from s3client import S3Client
 
 
@@ -175,11 +176,67 @@ def run1v1(arg, methods_s3, t_count):
         f.write(output)
 
 
+def run_sequences_shuffle(methods, runs):
+    
+    d_count = 0
+    discrepant_seq = []
+    discrepant_method = []
+
+    for _ in range(runs):
+
+         # randomize seed
+        seed = random.randint(0, 1000000)
+
+        # shuffle args -- we dont fuzz args in sequence fuzzing
+        # for i in arg.items():
+        #     random.Random(seed).shuffle(i[1])
+
+        # shuffle methods
+        random.Random(seed).shuffle(methods)
+
+        cloud_object = S3Client(False)
+        em_object = S3Client()
+
+        print(f'\n\nTEST SEQUENCE: [{", ".join(i.__name__ for i in methods[:7])}]\n')
+        sublist = []
+        
+        for method in methods[:7]:
+            sublist.append(method)
+            print('METHOD: '+ method.__name__, '--- ARGS: []')
+            if not method.__name__ in discrepant_method:
+
+                result = oracles(method(cloud_object, []), method(em_object, []))
+
+                if result[0]:    
+                    d_count += 1
+                    print('\nDISCREPANCY FOUND!\n')
+                    print(f'{result[1]}\n\n')
+                    discrepant_method.append(method.__name__)
+
+                    discrepant_seq.append(f'{d_count}: [{", ".join(i.__name__ for i in sublist)}]')
+
+                    with open('../sdk_tests/S3/discrepancy.txt', 'a') as f:
+                        f.write(f'DISCREPANT METHOD: {method.__name__} --- ARGS: []\n')
+                        f.write(result[1])
+                        f.write(f'\n\n\ncount: {d_count}   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n\n\n')
+                    break
+
+        with open('../sdk_tests/S3/discrepancy.txt', 'a') as f:
+            f.write(f'SEQUENCE COMPLETE   ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n\n\n')
+
+       
+        cloud_object.__cleanup__()
+        em_object.__cleanup__()
+
+    return discrepant_seq, d_count
+
+
 '''test suites'''
 def main(arg):
     # get methods
     methods_s3 = [getattr(S3Client, attr) for attr in dir(S3Client) if callable(getattr(S3Client, attr)) and not attr.startswith("__")]
     t_count = len(methods_s3)
+    print(f'Total methods: {t_count}')
 
     if arg == ():
         arg = {}
@@ -189,6 +246,7 @@ def main(arg):
 
     # run methods
     run1v1(arg, methods_s3, t_count)
+    # run_sequences_shuffle(methods_s3, 100)
     # simple_test_run(False)
 
 

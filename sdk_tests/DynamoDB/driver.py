@@ -1,5 +1,6 @@
 from contextlib import redirect_stdout
 import io
+import random
 from dynamodbclient import DynamoDBClient
 
 
@@ -173,13 +174,66 @@ def run1v1(arg, methods_dd, t_count):
     with open('log_all.txt', 'w') as f:
         f.write(output)
 
+def run_sequences_shuffle(methods, runs):
+    
+    d_count = 0
+    discrepant_seq = []
+    discrepant_method = []
 
+    for _ in range(runs):
+
+         # randomize seed
+        seed = random.randint(0, 1000000)
+
+        # shuffle args -- we dont fuzz args in sequence fuzzing
+        # for i in arg.items():
+        #     random.Random(seed).shuffle(i[1])
+
+        # shuffle methods
+        random.Random(seed).shuffle(methods)
+
+        cloud_object = DynamoDBClient(False)
+        em_object = DynamoDBClient()
+
+        print(f'\n\nTEST SEQUENCE: [{", ".join(i.__name__ for i in methods[:7])}]\n')
+        sublist = []
+        
+        for method in methods[:7]:
+            sublist.append(method)
+            print('METHOD: '+ method.__name__, '--- ARGS: []')
+            if not method.__name__ in discrepant_method:
+
+                result = oracles(method(cloud_object, []), method(em_object, []))
+
+                if result[0]:    
+                    d_count += 1
+                    print('\nDISCREPANCY FOUND!\n')
+                    print(f'{result[1]}\n\n')
+                    discrepant_method.append(method.__name__)
+
+                    discrepant_seq.append(f'{d_count}: [{", ".join(i.__name__ for i in sublist)}]')
+
+                    with open('../sdk_tests/DynamoDB/discrepancy.txt', 'a') as f:
+                        f.write(f'DISCREPANT METHOD: {method.__name__} --- ARGS: []\n')
+                        f.write(result[1])
+                        f.write(f'\n\n\ncount: {d_count}   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n\n\n')
+                    break
+
+        with open('../sdk_tests/DynamoDB/discrepancy.txt', 'a') as f:
+            f.write(f'SEQUENCE COMPLETE   ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n\n\n')
+
+       
+        cloud_object.__cleanup__()
+        em_object.__cleanup__()
+
+    return discrepant_seq, d_count
 
 '''test suites'''
 def main(arg):
     # get methods
     methods_dd = [getattr(DynamoDBClient, attr) for attr in dir(DynamoDBClient) if callable(getattr(DynamoDBClient, attr)) and not attr.startswith("__")]
     t_count = len(methods_dd)
+    print('Total methods: ', t_count)
 
     if arg == ():
         arg = {}
