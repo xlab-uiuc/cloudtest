@@ -25,7 +25,12 @@ class DynamoDBClient:
 
         AWS_REGION = 'us-east-2'
         boto3.setup_default_session(profile_name=AWS_PROFILE)
-        self.client = boto3.client('dynamodb', endpoint_url=url, region_name=AWS_REGION)
+        try:
+            self.client = boto3.client('dynamodb', endpoint_url=url, region_name=AWS_REGION)
+            print('DynamoDB client created')
+        except Exception as e:
+            print('DynamoDB client creation failed; error: ', e)
+            return
         try:
             self.client.create_table(
                 TableName=self.table_name,
@@ -54,12 +59,15 @@ class DynamoDBClient:
                     'WriteCapacityUnits': 5
                 }
             )
+            print(f'Table name {self.table_name} created')
         except Exception as e:
             print('Table creation failed; error: ', e)
 
 
     # batch execute statement
     def dynamo_batch_execute_statement(self, args):
+        args = list(args)
+        
         if not len(args) > 0:
             args.append([
                 {
@@ -103,6 +111,8 @@ class DynamoDBClient:
 
     # batch get item
     def dynamo_batch_get_item(self, args):
+        args = list(args)
+        
         if not len(args) > 0:
             args.append([
                 {
@@ -134,6 +144,8 @@ class DynamoDBClient:
     
     # batch write item
     def dynamo_batch_write_item(self, args):
+        args = list(args)
+        
         if not len(args) > 0:
             args.append([
                 {
@@ -168,6 +180,8 @@ class DynamoDBClient:
 
     # can paginate
     def dynamo_can_paginate(self, args):
+        args = list(args)
+        
         if not len(args) > 0:
             args.append('list_tables')
         try:
@@ -180,6 +194,8 @@ class DynamoDBClient:
         
     # close
     def dynamo_close(self, args):
+        args = list(args)
+        
         try:
             self.client.close()
             print(self.service, ': Success -- Close succeeded')
@@ -191,6 +207,8 @@ class DynamoDBClient:
     #!! Emulator: Unknown operation
     # create backup
     def dynamo_create_backup(self, args):
+        args = list(args)
+        
         if not len(args) > 0:
             args.append(self.table_name)
         if not len(args) > 1:
@@ -209,6 +227,8 @@ class DynamoDBClient:
 
     # create global table
     def dynamo_create_global_table(self, args):
+        args = list(args)
+        
         if not len(args) > 0:
             args.append(self.table_name)
         try:
@@ -229,6 +249,8 @@ class DynamoDBClient:
 
     # create table
     def dynamo_create_table(self, args):
+        args = list(args)
+        
         if not len(args) > 0:
             args.append(f'table{random.randint(1, 10000000)}')
         if not len(args) > 1:
@@ -270,6 +292,8 @@ class DynamoDBClient:
     #!! Emulator: Unknown operation
     # delete backup
     def dynamo_delete_backup(self, args):
+        args = list(args)
+        
         if not len(args) > 0:
             args.append('arn:aws:dynamodb:us-east-1:123456789012:table/mytable/backup/01548148148148148148')
         try:
@@ -285,6 +309,8 @@ class DynamoDBClient:
 
     # delete item
     def dynamo_delete_item(self, args):
+        args = list(args)
+        
         if not len(args) > 0:
             args.append({
                 'username': {
@@ -308,6 +334,8 @@ class DynamoDBClient:
 
     # delete table
     def dynamo_delete_table(self, args):
+        args = list(args)
+        
         try:
             self.client.delete_table(
                 TableName=self.table_name
@@ -323,6 +351,8 @@ class DynamoDBClient:
     #!! Emulator: Unknown operation
     # describe backup
     def dynamo_describe_backup(self, args):
+        args = list(args)
+        
         if not len(args) > 0:
             args.append('arn:aws:dynamodb:us-east-1:123456789012:table/mytable/backup/01548148148148148148')
         try:
@@ -338,6 +368,8 @@ class DynamoDBClient:
     
     # describe continuous backups
     def dynamo_describe_continuous_backups(self, args):
+        args = list(args)
+        
         if not len(args) > 0:
             args.append(self.table_name)
         try:
@@ -353,6 +385,8 @@ class DynamoDBClient:
 
     # describe contributor insights
     def dynamo_describe_contributor_insights(self, args):
+        args = list(args)
+        
         if not len(args) > 0:
             args.append(self.table_name)
         try:
@@ -367,6 +401,8 @@ class DynamoDBClient:
         
     # deccribe endpoints
     def dynamo_describe_endpoints(self, args):
+        args = list(args)
+        
         try:
             self.client.describe_endpoints()
             print(self.service, ': Success -- Describe endpoints succeeded')
@@ -377,6 +413,8 @@ class DynamoDBClient:
         
     # describe exports
     def dynamo_describe_exports(self, args):
+        args = list(args)
+        
         if not len(args) > 0:
             args.append('arn:aws:dynamodb:us-east-1:123456789012:table/mytable')
         try:
@@ -391,6 +429,8 @@ class DynamoDBClient:
         
     # describe global table
     def dynamo_describe_global_table(self, args):
+        args = list(args)
+        
         if not len(args) > 0:
             args.append(self.table_name)
         try:
@@ -407,6 +447,8 @@ class DynamoDBClient:
     #!! Emulator: Unknown operation   
     # describe global table settings
     def dynamo_describe_global_table_settings(self, args):
+        args = list(args)
+        
         if not len(args) > 0:
             args.append(self.table_name)
         try:
@@ -422,6 +464,8 @@ class DynamoDBClient:
     #!! Emulator: Unknown operation
     # describe import
     def dynamo_describe_import(self, args):
+        args = list(args)
+        
         if not len(args) > 0:
             args.append('import-task-id-12121-1-21-21-12-12-12-12-23-23-1-2')
         try:
@@ -436,6 +480,8 @@ class DynamoDBClient:
         
     # decribe kinesis streaming destination
     def dynamo_describe_kinesis_streaming_destination(self, args):
+        args = list(args)
+        
         if not len(args) > 0:
             args.append(self.table_name)
         try:
@@ -451,6 +497,8 @@ class DynamoDBClient:
 
     # describe limits
     def dynamo_describe_limits(self, args):
+        args = list(args)
+        
         try:
             self.client.describe_limits()
             print(self.service, ': Success -- Describe limits succeeded')
@@ -462,6 +510,8 @@ class DynamoDBClient:
     
     # describe table
     def dynamo_describe_table(self, args):
+        args = list(args)
+        
         if not len(args) > 0:
             args.append(self.table_name)
         try:
@@ -479,6 +529,8 @@ class DynamoDBClient:
     #!! Emulator: Unknown operation
     # describe table replication auto scaling
     def dynamo_describe_table_replication_auto_scaling(self, args):
+        args = list(args)
+        
         try:
             self.client.describe_table_replica_auto_scaling(
                 TableName=self.table_name
@@ -492,6 +544,8 @@ class DynamoDBClient:
 
     # describe time to live
     def dynamo_describe_time_to_live(self, args):
+        args = list(args)
+        
         if not len(args) > 0:
             args.append(self.table_name)
         try:
@@ -506,6 +560,8 @@ class DynamoDBClient:
 
     # disable kinesis streaming destination
     def dynamo_disable_kinesis_streaming_destination(self, args):
+        args = list(args)
+        
         if not len(args) > 0:
             args.append(self.table_name)
         if not len(args) > 1:
@@ -523,6 +579,8 @@ class DynamoDBClient:
         
     # enable kinesis streaming destination
     def dynamo_enable_kinesis_streaming_destination(self, args):
+        args = list(args)
+        
         if not len(args) > 0:
             args.append(self.table_name)
         if not len(args) > 1:
@@ -541,6 +599,8 @@ class DynamoDBClient:
 
     # execute statement
     def dynamo_execute_statement(self, args):
+        args = list(args)
+        
         if not len(args) > 0:
             args.append('SELECT * FROM ' + self.table_name)
         try:
@@ -556,6 +616,8 @@ class DynamoDBClient:
 
     # # execute transaction
     def dynamo_execute_transaction(self, args):
+        args = list(args)
+        
         if not len(args) > 0:
             args.append([ 
             { 
@@ -595,6 +657,8 @@ class DynamoDBClient:
     #!! Emulator: Unknown operation
     # export table to point in time
     def dynamo_export_table_to_point_in_time(self, args):
+        args = list(args)
+        
         if not len(args) > 0:
             args.append('arn:aws:dynamodb:us-east-1:123456789012:table/mytable/backup/01548148148148148148')
         try:
@@ -612,6 +676,8 @@ class DynamoDBClient:
 
     # get item
     def dynamo_get_item(self, args):
+        args = list(args)
+        
         if not len(args) > 0:
             args.append({
                 'username': {
@@ -635,6 +701,8 @@ class DynamoDBClient:
 
     # get paginator
     def dynamo_get_paginator(self, args):
+        args = list(args)
+        
         if not len(args) > 0:
             args.append('ListTables')
         try:
@@ -650,6 +718,8 @@ class DynamoDBClient:
 
     # get waiters
     def dynamo_get_waiter(self, args):
+        args = list(args)
+        
         if not len(args) > 0:
             args.append('TableExists')
         try:
@@ -666,6 +736,8 @@ class DynamoDBClient:
     # !! Emulator: Unknown operation
     # import table
     def dynamo_import_table(self, args):
+        args = list(args)
+        
         if not len(args) > 0:
             args.append(self.table_name)
         try:
@@ -710,6 +782,8 @@ class DynamoDBClient:
     #!! Emulator: Unknown operation
     # list backups
     def dynamo_list_backups(self, args):
+        args = list(args)
+        
         if not len(args) > 0:
             args.append(self.table_name)
         try:
@@ -726,6 +800,8 @@ class DynamoDBClient:
     #!! Emulator: Unknown operation
     # list contributor insights
     def dynamo_list_contributor_insights(self, args):
+        args = list(args)
+        
         if not len(args) > 0:
             args.append(self.table_name)
         try:
@@ -742,6 +818,8 @@ class DynamoDBClient:
     #!! Emulator: Unknown operation
     # list exports
     def dynamo_list_exports(self, args):
+        args = list(args)
+        
         if not len(args) > 0:
             args.append(self.table_name)
         try:
@@ -757,6 +835,8 @@ class DynamoDBClient:
 
     # list global tables
     def dynamo_list_global_tables(self, args):
+        args = list(args)
+        
         try:
             self.client.list_global_tables()
             print(self.service, ': Success -- List global tables succeeded')
@@ -769,6 +849,8 @@ class DynamoDBClient:
     #!! Emulator: Unknown operation
     # list imports
     def dynamo_list_imports(self, args):
+        args = list(args)
+        
         try:
             self.client.list_imports()
             print(self.service, ': Success -- List imports succeeded')
@@ -779,6 +861,8 @@ class DynamoDBClient:
 
     # list tables
     def dynamo_list_tables(self, args):
+        args = list(args)
+        
         try:
             self.client.list_tables()
             print(self.service, ': Success -- List tables succeeded')
@@ -789,6 +873,8 @@ class DynamoDBClient:
 
     # list tags of resource
     def dynamo_list_tags_of_resource(self, args):
+        args = list(args)
+        
         if not len(args) > 0:
             args.append(self.table_name)
         try:
@@ -804,6 +890,8 @@ class DynamoDBClient:
 
     # put item
     def dynamo_put_item(self, args):
+        args = list(args)
+        
         if not len(args) > 0:
             args.append(self.table_name)
         if not len(args) > 1:
@@ -845,6 +933,8 @@ class DynamoDBClient:
 
     # query table
     def dynamo_query(self, args):
+        args = list(args)
+        
         if not len(args) > 0:
             args.append(self.table_name)
         if not len(args) > 1:
@@ -864,6 +954,8 @@ class DynamoDBClient:
     #!! Emulator: Unknown operation
     # restore table from backup
     def dynamo_restore_table_from_backup(self, args):
+        args = list(args)
+        
         if not len(args) > 0:
             args.append(self.table_name)
         if not len(args) > 1:
@@ -882,6 +974,8 @@ class DynamoDBClient:
     #!! Emulator: Unknown operation
     # restore table to point in time
     def dynamo_restore_table_to_point_in_time(self, args):
+        args = list(args)
+        
         if not len(args) > 0:
             args.append(self.table_name)
         if not len(args) > 1:
@@ -906,6 +1000,8 @@ class DynamoDBClient:
 
     # scan table
     def dynamo_scan(self, args):
+        args = list(args)
+        
         if not len(args) > 0:
             args.append(self.table_name)
         if not len(args) > 1:
@@ -949,6 +1045,8 @@ class DynamoDBClient:
     
     # tag resource
     def dynamo_tag_resource(self, args):
+        args = list(args)
+        
         if not len(args) > 0:
             args.append('arn:aws:dynamodb:us-east-1:123456789012:table/' + self.table_name)
         if not len(args) > 1:
@@ -971,6 +1069,8 @@ class DynamoDBClient:
         
     # transact get items
     def dynamo_transact_get_items(self, args):
+        args = list(args)
+        
         if not len(args) > 0:
             args.append([
                 {
@@ -1019,6 +1119,8 @@ class DynamoDBClient:
 
     # transact write items
     def dynamo_transact_write_items(self, args):
+        args = list(args)
+        
         if not len(args) > 0:
             args.append([
                 {
@@ -1092,6 +1194,8 @@ class DynamoDBClient:
 
     # untag resource
     def dynamo_untag_resource(self, args):
+        args = list(args)
+        
         if not len(args) > 0:
             args.append('arn:aws:dynamodb:us-east-1:123456789012:table/' + self.table_name)
         if not len(args) > 1:
@@ -1112,6 +1216,8 @@ class DynamoDBClient:
 
     # update continuous backups
     def dynamo_update_continuous_backups(self, args):
+        args = list(args)
+        
         if not len(args) > 0:
             args.append({
                 'PointInTimeRecoveryEnabled': True|False
@@ -1131,6 +1237,8 @@ class DynamoDBClient:
     #!! Emulator: Unknown operation
     # update contributor insights
     def dynamo_update_contributor_insights(self, args):
+        args = list(args)
+        
         if not len(args) > 0:
             args.append('index_name')
         if not len(args) > 1:
@@ -1150,6 +1258,8 @@ class DynamoDBClient:
 
     # update global table
     def dynamo_update_global_table(self, args):
+        args = list(args)
+        
         if not len(args) > 0:
             args.append(self.table_name)
         if not len(args) > 1:
@@ -1174,6 +1284,8 @@ class DynamoDBClient:
     #!! Emulator: Unknown operation
     # update global table settings
     def dynamo_update_global_table_settings(self, args):
+        args = list(args)
+        
         if not len(args) > 0:
             args.append(self.table_name)
         
@@ -1228,6 +1340,8 @@ class DynamoDBClient:
 
     # update item
     def dynamo_update_item(self, args):
+        args = list(args)
+        
         try:
             self.client.update_item(
                 TableName=self.table_name,
@@ -1255,6 +1369,8 @@ class DynamoDBClient:
 
     # update table
     def dynamo_update_table(self, args):
+        args = list(args)
+        
         if not len(args) > 0:
             args.append(self.table_name)
 
@@ -1277,6 +1393,8 @@ class DynamoDBClient:
     #!! Emulator: Unknown operation    
     # update table replica autoscaling
     def dynamo_update_replica_autoscaling(self, args):
+        args = list(args)
+        
         try:
             self.client.update_table_replica_auto_scaling(
                 TableName=self.table_name,
@@ -1309,6 +1427,8 @@ class DynamoDBClient:
 
     # update time to live
     def dynamo_update_ttl(self, args):
+        args = list(args)
+        
         try:
             self.client.update_time_to_live(
                 TableName=self.table_name,

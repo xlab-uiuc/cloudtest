@@ -30,12 +30,14 @@ class S3Client:
 
         try:
             self.client = boto3.client('s3', endpoint_url=url, region_name=self.region)
+            print('S3 client created')
         except Exception as e:
             print('S3 client creation failed; error: ', e)
 
         # create bucket
         try:
             self.client.create_bucket(Bucket=self.bucket_name, CreateBucketConfiguration={'LocationConstraint': self.region})
+            print(f'S3 bucket {self.bucket_name} created')
         except Exception as e:
             print('Bucket creation failed; error: ', e)
 
@@ -43,7 +45,8 @@ class S3Client:
 
     # abort multipart upload 
     def s3_abort_multipart_upload(self, args):
-
+        args = list(args)
+        
         if not len(args) > 0:
             args.append(f'{random.randint(1, 1000000)}')
 
@@ -58,6 +61,7 @@ class S3Client:
         
     # check if can paginate 
     def s3_can_paginate(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append("list_buckets")
@@ -73,6 +77,7 @@ class S3Client:
     
     # complete multipart upload 
     def s3_complete_multipart_upload(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(f'{random.randint(1, 1000000)}')
@@ -105,6 +110,7 @@ class S3Client:
 
     # copy 
     def s3_copy(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(f'{random.randint(1, 1000000)}')
@@ -126,6 +132,7 @@ class S3Client:
         
     # copy object 
     def s3_copy_object(self, args):
+        args = list(args)
             
         if not len(args) > 0:
             args.append(f'{random.randint(1, 1000000)}')
@@ -148,6 +155,7 @@ class S3Client:
 
     # create bucket 
     def s3_create_bucket(self, args):
+        args = list(args)
 
         lock = False
         if not len(args) > 0:
@@ -167,6 +175,7 @@ class S3Client:
 
     # create multipart upload 
     def s3_create_multipart_upload(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(f'{random.randint(1, 1000000)}')
@@ -181,6 +190,7 @@ class S3Client:
 
     # delete bucket 
     def s3_delete_bucket(self, args):
+        args = list(args)
 
         try:
             self.client.delete_bucket(Bucket=self.bucket_name)
@@ -192,6 +202,7 @@ class S3Client:
         
     # delete bucket analytics configuration 
     def s3_delete_bucket_analytics_configuration(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -206,9 +217,28 @@ class S3Client:
         except Exception as e:
             print(self.service, ': ' + f'Fail -- Error deleting bucket analytics configuration {args[1]} from bucket {args[0]}: {e}')
             return False, e
+        
+    # delete bucket analytics configuration 
+    def s3_delete_empty_bucket_analytics_configuration(self, args):
+        args = list(args)
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+        if not len(args) > 1:
+            args.append(f'test{random.randint(1, 1000000000)}')
+
+        try:
+            # self.client.put_bucket_analytics_configuration(Bucket=args[0], Id=args[1], AnalyticsConfiguration={'Id': args[1], 'StorageClassAnalysis': {'DataExport': {'OutputSchemaVersion': 'V_1', 'Destination': {'S3BucketDestination': {'Format': 'CSV', 'BucketAccountId': '123456789012', 'Bucket': 'arn:aws:s3:::mybucket', 'Prefix': 'test'}}}}})
+            self.client.delete_bucket_analytics_configuration(Bucket=args[0], Id=args[1])
+            print(self.service, ': ' + f'Success -- Bucket analytics configuration {args[1]} deleted from bucket {args[0]}')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error deleting bucket analytics configuration {args[1]} from bucket {args[0]}: {e}')
+            return False, e
 
     # delete bucket cors 
     def s3_delete_bucket_cors(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -224,6 +254,7 @@ class S3Client:
 
     # delete bucket encryption 
     def s3_delete_bucket_encryption(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -239,6 +270,7 @@ class S3Client:
 
     # delete intellegent tiering configuration 
     def s3_delete_bucket_intelligent_tiering_configuration(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -256,9 +288,52 @@ class S3Client:
         except Exception as e:
             print(self.service, ': ' + f'Fail -- Error deleting bucket intelligent tiering configuration {args[1]} from bucket {args[0]}: {e}')
             return False, e
+        
+    # delete intellegent tiering configuration 
+    def s3_delete_bucket_intelligent_tiering_configuration_v2(self, args):
+        args = list(args)
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+        if not len(args) > 1:
+            args.append(f'test{random.randint(1, 1000000000)}')
+
+        # self.s3_put_bucket_intelligent_tiering_configuration(args)
+
+        try:
+            # discrepancy -> less than 90 days work for emulator but not for aws
+            self.client.put_bucket_intelligent_tiering_configuration(Bucket=args[0], Id=args[1], IntelligentTieringConfiguration={'Id': args[1], 'Status': 'Enabled', 'Tierings': [{'Days': 1, 'AccessTier': 'ARCHIVE_ACCESS'}, {'Days': 35, 'AccessTier': 'DEEP_ARCHIVE_ACCESS'}]})
+            self.client.delete_bucket_intelligent_tiering_configuration(Bucket=args[0], Id=args[1])
+            print(self.service, ': ' + f'Success -- Bucket intelligent tiering configuration {args[1]} deleted from bucket {args[0]}')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error deleting bucket intelligent tiering configuration {args[1]} from bucket {args[0]}: {e}')
+            return False, e
+        
+    # delete intellegent tiering configuration 
+    def s3_delete_bucket_empty_intelligent_tiering_configuration(self, args):
+        args = list(args)
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+        if not len(args) > 1:
+            args.append(f'test{random.randint(1, 1000000000)}')
+
+        # self.s3_put_bucket_intelligent_tiering_configuration(args)
+
+        try:
+            # discrepancy -> less than 90 days work for emulator but not for aws
+            # self.client.put_bucket_intelligent_tiering_configuration(Bucket=args[0], Id=args[1], IntelligentTieringConfiguration={'Id': args[1], 'Status': 'Enabled', 'Tierings': [{'Days': 1, 'AccessTier': 'ARCHIVE_ACCESS'}, {'Days': 90, 'AccessTier': 'DEEP_ARCHIVE_ACCESS'}]})
+            self.client.delete_bucket_intelligent_tiering_configuration(Bucket=args[0], Id=args[1])
+            print(self.service, ': ' + f'Success -- Bucket intelligent tiering configuration {args[1]} deleted from bucket {args[0]}')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error deleting bucket intelligent tiering configuration {args[1]} from bucket {args[0]}: {e}')
+            return False, e
 
     # delete bucket inventory configuration 
     def s3_delete_bucket_inventory_configuration(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -274,9 +349,30 @@ class S3Client:
         except Exception as e:
             print(self.service, ': ' + f'Fail -- Error deleting bucket inventory configuration {args[1]} from bucket {args[0]}: {e}')
             return False, e
+        
+    # delete bucket inventory configuration 
+    def s3_delete_bucket_empty_inventory_configuration(self, args):
+        args = list(args)
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+        if not len(args) > 1:
+            args.append(f'test{random.randint(1, 1000000000)}')
+
+        # self.s3_put_bucket_inventory_configuration(args)
+
+        try:
+            self.client.delete_bucket_inventory_configuration(Bucket=args[0], Id=args[1])
+            print(self.service, ': ' + f'Success -- Bucket inventory configuration {args[1]} deleted from bucket {args[0]}')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error deleting bucket inventory configuration {args[1]} from bucket {args[0]}: {e}')
+            return False, e
+
 
     # delete bucket lifecycle 
     def s3_delete_bucket_lifecycle(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -291,9 +387,26 @@ class S3Client:
             print(self.service, ': ' + f'Fail -- Error deleting bucket lifecycle from bucket {args[0]}: {e}')
             return False, e
         
+    # delete bucket lifecycle 
+    def s3_delete_bucket_empty_lifecycle(self, args):
+        args = list(args)
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+
+        # self.s3_put_bucket_lifecycle([])
+
+        try:
+            self.client.delete_bucket_lifecycle(Bucket=args[0])
+            print(self.service, ': ' + f'Success -- Bucket lifecycle deleted from bucket {args[0]}')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error deleting bucket lifecycle from bucket {args[0]}: {e}')
+            return False, e
 
     # delete bucket metrics configuration 
     def s3_delete_bucket_metrics_configuration(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -308,9 +421,29 @@ class S3Client:
         except Exception as e:
             print(self.service, ': ' + f'Fail -- Error deleting bucket metrics configuration {args[1]} from bucket {args[0]}: {e}')
             return False, e
+        
+    # delete bucket metrics configuration 
+    def s3_delete_bucket_empty_metrics_configuration(self, args):
+        args = list(args)
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+        if not len(args) > 1:
+            args.append(f'test{random.randint(1, 1000000000)}')
+
+        try:
+            # self.client.put_bucket_metrics_configuration(Bucket=args[0], Id=args[1], MetricsConfiguration={'Id': args[1],'Filter': {'Prefix': 'test'}})
+            self.client.delete_bucket_metrics_configuration(Bucket=args[0], Id=args[1])
+            print(self.service, ': ' + f'Success -- Bucket metrics configuration {args[1]} deleted from bucket {args[0]}')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error deleting bucket metrics configuration {args[1]} from bucket {args[0]}: {e}')
+            return False, e
+        
 
     # delete ownership controls 
     def s3_delete_bucket_ownership_controls(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -324,9 +457,27 @@ class S3Client:
         except Exception as e:
             print(self.service, ': ' + f'Fail -- Error deleting bucket ownership controls from bucket {args[0]}: {e}')
             return False, e
+        
+    # delete ownership controls 
+    def s3_delete_bucket_empty_ownership_controls(self, args):
+        args = list(args)
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+
+        # self.s3_put_bucket_ownership_controls([])
+
+        try:
+            self.client.delete_bucket_ownership_controls(Bucket=args[0])
+            print(self.service, ': ' + f'Success -- Bucket ownership controls deleted from bucket {args[0]}')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error deleting bucket ownership controls from bucket {args[0]}: {e}')
+            return False, e
 
     # delete bucket policy 
     def s3_delete_bucket_policy(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -341,9 +492,27 @@ class S3Client:
             print(self.service, ': ' + f'Fail -- Error deleting bucket policy from bucket {args[0]}: {e}')
             return False, e
         
+    # delete bucket policy 
+    def s3_delete_bucket_empty_policy(self, args):
+        args = list(args)
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+
+        # self.s3_put_bucket_policy([])
+
+        try:
+            self.client.delete_bucket_policy(Bucket=args[0])
+            print(self.service, ': ' + f'Success -- Bucket policy deleted from bucket {args[0]}')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error deleting bucket policy from bucket {args[0]}: {e}')
+            return False, e
+        
 
     # delete bucket replication 
     def s3_delete_bucket_replication(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -358,9 +527,26 @@ class S3Client:
             print(self.service, ': ' + f'Fail -- Error deleting bucket replication from bucket {args[0]}: {e}')
             return False, e
         
+    # delete bucket replication 
+    def s3_delete_bucket_empty_replication(self, args):
+        args = list(args)
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+
+        # self.s3_put_bucket_replication([f'test{random.randint(1, 1000000000)}'])
+
+        try:
+            self.client.delete_bucket_replication(Bucket=args[0])
+            print(self.service, ': ' + f'Success -- Bucket replication deleted from bucket {args[0]}')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error deleting bucket replication from bucket {args[0]}: {e}')
+            return False, e
 
     # delete bucket tagging 
     def s3_delete_bucket_tagging(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -374,9 +560,26 @@ class S3Client:
             print(self.service, ': ' + f'Fail -- Error deleting bucket tagging from bucket {args[0]}: {e}')
             return False, e
         
+    # delete bucket tagging 
+    def s3_delete_bucket_empty_tagging(self, args):
+        args = list(args)
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+
+        try:
+            # self.client.put_bucket_tagging(Bucket=args[0], Tagging={'TagSet': [{'Key': 'string', 'Value': 'string'}]})
+            self.client.delete_bucket_tagging(Bucket=args[0])
+            print(self.service, ': ' + f'Success -- Bucket tagging deleted from bucket {args[0]}')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error deleting bucket tagging from bucket {args[0]}: {e}')
+            return False, e
+        
 
     # delete bucket website 
     def s3_delete_bucket_website(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -390,9 +593,27 @@ class S3Client:
             print(self.service, ': ' + f'Fail -- Error deleting bucket website from bucket {args[0]}: {e}')
             return False, e
         
+    
+    # delete bucket website 
+    def s3_delete_bucket_empty_website(self, args):
+        args = list(args)
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+
+        try:
+            # self.client.put_bucket_website(Bucket=args[0], WebsiteConfiguration={'RedirectAllRequestsTo': {'HostName': 'string', 'Protocol': 'http'}})
+            self.client.delete_bucket_website(Bucket=args[0])
+            print(self.service, ': ' + f'Success -- Bucket website deleted from bucket {args[0]}')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error deleting bucket website from bucket {args[0]}: {e}')
+            return False, e
+        
 
     # delete object 
     def s3_delete_object(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -408,9 +629,28 @@ class S3Client:
             print(self.service, ': ' + f'Fail -- Error deleting object {args[1]} from bucket {args[0]}: {e}')
             return False, e
         
+    # delete object 
+    def s3_delete_empty_object(self, args):
+        args = list(args)
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+        if not len(args) > 1:
+            args.append(f'{random.randint(1, 1000000)}')
+
+        try:
+            # self.client.put_object(Bucket=args[0], Key=args[1], Body='string')
+            self.client.delete_object(Bucket=args[0], Key=args[1])
+            print(self.service, ': ' + f'Success -- Object {args[1]} deleted from bucket {args[0]}')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error deleting object {args[1]} from bucket {args[0]}: {e}')
+            return False, e
+        
 
     # delete object tagging 
     def s3_delete_object_tagging(self, args):
+        args = list(args)
         
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -426,9 +666,29 @@ class S3Client:
         except Exception as e:
             print(self.service, ': ' + f'Fail -- Error deleting object tagging from object {args[1]} in bucket {args[0]}: {e}')
             return False, e
+        
+    # delete object tagging 
+    def s3_delete_object_empty_tagging(self, args):
+        args = list(args)
+        
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+        if not len(args) > 1:
+            args.append(f'{random.randint(1, 1000000)}')
+
+        try:
+            # self.client.put_object(Bucket=args[0], Key=args[1])
+            # self.client.put_object_tagging(Bucket=args[0], Key=args[1], Tagging={'TagSet': [{'Key': 'string', 'Value': 'string'}]})
+            self.client.delete_object_tagging(Bucket=args[0], Key=args[1])
+            print(self.service, ': ' + f'Success -- Object tagging deleted from object {args[1]} in bucket {args[0]}')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error deleting object tagging from object {args[1]} in bucket {args[0]}: {e}')
+            return False, e
 
     # delete objects 
     def s3_delete_objects(self, args):
+        args = list(args)
         
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -449,6 +709,22 @@ class S3Client:
 
     # delete public access block 
     def s3_delete_public_access_block(self, args):
+        args = list(args)
+     
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+
+        try:
+            self.client.delete_public_access_block(Bucket=args[0])
+            print(self.service, ': ' + f'Success -- Public access block deleted from bucket {args[0]}')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error deleting public access block from bucket {args[0]}: {e}')
+            return False, e
+        
+    # delete public access block 
+    def s3_delete_empty_public_access_block(self, args):
+        args = list(args)
      
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -465,6 +741,7 @@ class S3Client:
 
     # download file 
     def s3_download_file(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -485,6 +762,7 @@ class S3Client:
 
     # download fileobj 
     def s3_download_fileobj(self, args):
+        args = list(args)
        
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -504,6 +782,7 @@ class S3Client:
 
     # generate presigned post 
     def s3_generate_presigned_post(self, args):
+        args = list(args)
             
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -526,6 +805,7 @@ class S3Client:
             
     # generate presigned url 
     def s3_generate_presigned_url(self, args):
+        args = list(args)
                 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -546,6 +826,7 @@ class S3Client:
 
     # get bucket accelerate configuration 
     def s3_get_bucket_accelerate_configuration(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -560,6 +841,7 @@ class S3Client:
         
     # get bucket acl 
     def s3_get_bucket_acl(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -574,6 +856,7 @@ class S3Client:
 
     # get bucket analytics configuration 
     def s3_get_bucket_analytics_configuration(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -589,9 +872,29 @@ class S3Client:
         except Exception as e:
             print(self.service, ': ' + f'Fail -- Error retrieving analytics configuration from bucket {args[0]}: {e}')
             return False, e
+        
+    # get bucket analytics configuration 
+    def s3_get_bucket_empty_analytics_configuration(self, args):
+        args = list(args)
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+        if not len(args) > 1:
+            args.append('test')
+
+        # self.s3_put_bucket_analytics_configuration(args)
+
+        try:
+            self.client.get_bucket_analytics_configuration(Bucket=args[0], Id=args[1])
+            print(self.service, ': ' + f'Success -- Analytics configuration retrieved from bucket {args[0]}')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error retrieving analytics configuration from bucket {args[0]}: {e}')
+            return False, e
 
     # get bucket cors 
     def s3_get_bucket_cors(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -605,9 +908,27 @@ class S3Client:
         except Exception as e:
             print(self.service, ': ' + f'Fail -- Error retrieving CORS from bucket {args[0]}: {e}')
             return False, e
+        
+    # get bucket cors 
+    def s3_get_bucket_empty_cors(self, args):
+        args = list(args)
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+
+        # self.s3_put_bucket_cors(args)
+
+        try:
+            self.client.get_bucket_cors(Bucket=args[0])
+            print(self.service, ': ' + f'Success -- CORS retrieved from bucket {args[0]}')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error retrieving CORS from bucket {args[0]}: {e}')
+            return False, e
 
     # get bucket encryption 
     def s3_get_bucket_encryption(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -620,8 +941,10 @@ class S3Client:
             print(self.service, ': ' + f'Fail -- Error retrieving encryption from bucket {args[0]}: {e}')
             return False, e
         
+        
     # get intellegent tiering configuration 
     def s3_get_bucket_intelligent_tiering_configuration(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -639,8 +962,69 @@ class S3Client:
             print(self.service, ': ' + f'Fail -- Error retrieving intelligent tiering configuration from bucket {args[0]}: {e}')
             return False, e
 
+    # get intellegent tiering configuration 
+    def s3_get_bucket_empty_intelligent_tiering_configuration(self, args):
+        args = list(args)
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+        if not len(args) > 1:
+            args.append(f'{random.randint(1, 1000000)}')
+
+        # self.s3_put_bucket_intelligent_tiering_configuration(args)
+
+        try:
+            resp = self.client.get_bucket_intelligent_tiering_configuration(Bucket=args[0], Id=args[1])
+            print(self.service, ': ' + f'Success -- Intelligent tiering configuration retrieved from bucket {args[0]}')
+            print(resp)
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error retrieving intelligent tiering configuration from bucket {args[0]}: {e}')
+            return False, e
+        
+    # get intellegent tiering configuration 
+    def s3_get_bucket_intelligent_tiering_configuration(self, args):
+        args = list(args)
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+        if not len(args) > 1:
+            args.append(f'{random.randint(1, 1000000)}')
+
+        self.s3_put_bucket_intelligent_tiering_configuration(args)
+
+        try:
+            resp = self.client.get_bucket_intelligent_tiering_configuration(Bucket=args[0], Id=args[1])
+            print(self.service, ': ' + f'Success -- Intelligent tiering configuration retrieved from bucket {args[0]}')
+            print(resp)
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error retrieving intelligent tiering configuration from bucket {args[0]}: {e}')
+            return False, e
+        
+    # get intellegent tiering configuration 
+    def s3_get_bucket_empty_intelligent_tiering_configuration(self, args):
+        args = list(args)
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+        if not len(args) > 1:
+            args.append(f'{random.randint(1, 1000000)}')
+
+        # self.s3_put_bucket_intelligent_tiering_configuration(args)
+
+        try:
+            resp = self.client.get_bucket_intelligent_tiering_configuration(Bucket=args[0], Id=args[1])
+            print(self.service, ': ' + f'Success -- Intelligent tiering configuration retrieved from bucket {args[0]}')
+            print(resp)
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error retrieving intelligent tiering configuration from bucket {args[0]}: {e}')
+            return False, e
+
     # get bucket inventory configuration 
     def s3_get_bucket_inventory_configuration(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -656,10 +1040,30 @@ class S3Client:
         except Exception as e:
             print(self.service, ': ' + f'Fail -- Error retrieving inventory configuration from bucket {args[0]}: {e}')
             return False, e
+        
+    # get bucket inventory configuration 
+    def s3_get_bucket_empty_inventory_configuration(self, args):
+        args = list(args)
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+        if not len(args) > 1:
+            args.append(f'{random.randint(1, 1000000)}')
+
+        # self.s3_put_bucket_inventory_configuration(args)
+
+        try:
+            self.client.get_bucket_inventory_configuration(Bucket=args[0], Id=args[1])
+            print(self.service, ': ' + f'Success -- Inventory configuration retrieved from bucket {args[0]}')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error retrieving inventory configuration from bucket {args[0]}: {e}')
+            return False, e
 
 
     # get bucket lifecycle 
     def s3_get_bucket_lifecycle(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -673,10 +1077,28 @@ class S3Client:
         except Exception as e:
             print(self.service, ': ' + f'Fail -- Error retrieving lifecycle from bucket {args[0]}: {e}')
             return False, e
+        
+    # get bucket lifecycle 
+    def s3_get_bucket_empty_lifecycle(self, args):
+        args = list(args)
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+
+        # self.s3_put_bucket_lifecycle([])
+
+        try:
+            self.client.get_bucket_lifecycle(Bucket=args[0])
+            print(self.service, ': ' + f'Success -- Lifecycle retrieved from bucket {args[0]}')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error retrieving lifecycle from bucket {args[0]}: {e}')
+            return False, e
 
 
     # get bucket lifecycle configuration 
     def s3_get_bucket_lifecycle_configuration(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -690,9 +1112,27 @@ class S3Client:
         except Exception as e:
             print(self.service, ': ' + f'Fail -- Error retrieving lifecycle configuration from bucket {args[0]}: {e}')
             return False, e
+        
+    # get bucket lifecycle configuration 
+    def s3_get_bucket_empty_lifecycle_configuration(self, args):
+        args = list(args)
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+
+        # self.s3_put_bucket_lifecycle_configuration([])
+
+        try:
+            self.client.get_bucket_lifecycle_configuration(Bucket=args[0])
+            print(self.service, ': ' + f'Success -- Lifecycle configuration retrieved from bucket {args[0]}')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error retrieving lifecycle configuration from bucket {args[0]}: {e}')
+            return False, e
 
     # get bucket location 
     def s3_get_bucket_location(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -708,6 +1148,7 @@ class S3Client:
 
     # get bucket logging 
     def s3_get_bucket_logging(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -722,6 +1163,7 @@ class S3Client:
 
     # get bucket metrics configuration 
     def s3_get_bucket_metrics_configuration(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -737,9 +1179,31 @@ class S3Client:
         except Exception as e:
             print(self.service, ': ' + f'Fail -- Error retrieving metrics configuration from bucket {args[0]}: {e}')
             return False, e
+        
+
+    # get bucket metrics configuration 
+    def s3_get_bucket_empty_metrics_configuration(self, args):
+        args = list(args)
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+        if not len(args) > 1:
+            args.append(f'{random.randint(1, 1000000)}')
+
+        # self.s3_put_bucket_metrics_configuration(args)
+
+        try:
+            self.client.get_bucket_metrics_configuration(Bucket=args[0], Id=args[1])
+            print(self.service, ': ' + f'Success -- Metrics configuration retrieved from bucket {args[0]}')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error retrieving metrics configuration from bucket {args[0]}: {e}')
+            return False, e
+        
 
     # get bucket notification 
     def s3_get_bucket_notification(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -754,6 +1218,7 @@ class S3Client:
 
     # get bucket notification configuration 
     def s3_get_bucket_notification_configuration(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -768,6 +1233,7 @@ class S3Client:
         
     # gte ownership controls 
     def s3_get_bucket_ownership_controls(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -781,9 +1247,27 @@ class S3Client:
         except Exception as e:
             print(self.service, ': ' + f'Fail -- Error retrieving ownership controls from bucket {args[0]}: {e}')
             return False, e
+        
+    # get ownership controls 
+    def s3_get_bucket_empty_ownership_controls(self, args):
+        args = list(args)
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+
+        # self.s3_put_bucket_ownership_controls([])
+
+        try:
+            self.client.get_bucket_ownership_controls(Bucket=args[0])
+            print(self.service, ': ' + f'Success -- Ownership controls retrieved from bucket {args[0]}')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error retrieving ownership controls from bucket {args[0]}: {e}')
+            return False, e
 
     # get bucket policy 
     def s3_get_bucket_policy(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -798,8 +1282,26 @@ class S3Client:
             print(self.service, ': ' + f'Fail -- Error retrieving policy from bucket {args[0]}: {e}')
             return False, e
         
+    # get bucket policy 
+    def s3_get_bucket_empty_policy(self, args):
+        args = list(args)
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+
+        # self.s3_put_bucket_policy([])
+
+        try:
+            self.client.get_bucket_policy(Bucket=args[0])
+            print(self.service, ': ' + f'Success -- Policy retrieved from bucket {args[0]}')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error retrieving policy from bucket {args[0]}: {e}')
+            return False, e
+        
     # get bucket policy status 
     def s3_get_bucket_policy_status(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -814,9 +1316,27 @@ class S3Client:
             print(self.service, ': ' + f'Fail -- Error retrieving policy status from bucket {args[0]}: {e}')
             return False, e
         
+    # get bucket policy status 
+    def s3_get_bucket_empty_policy_status(self, args):
+        args = list(args)
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+
+        # self.s3_put_bucket_policy([])
+
+        try:
+            self.client.get_bucket_policy_status(Bucket=args[0])
+            print(self.service, ': ' + f'Success -- Policy status retrieved from bucket {args[0]}')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error retrieving policy status from bucket {args[0]}: {e}')
+            return False, e
+        
 
     # get bucket replication 
     def s3_get_bucket_replication(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -830,9 +1350,27 @@ class S3Client:
         except Exception as e:
             print(self.service, ': ' + f'Fail -- Error retrieving replication from bucket {args[0]}: {e}')
             return False, e
+        
+    # get bucket replication 
+    def s3_get_bucket_empty_replication(self, args):
+        args = list(args)
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+
+        # self.s3_put_bucket_replication([])
+
+        try:
+            self.client.get_bucket_replication(Bucket=args[0])
+            print(self.service, ': ' + f'Success -- Replication retrieved from bucket {args[0]}')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error retrieving replication from bucket {args[0]}: {e}')
+            return False, e
 
     # get bucket request payment 
     def s3_get_bucket_request_payment(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -848,6 +1386,7 @@ class S3Client:
 
     # get bucket tagging 
     def s3_get_bucket_tagging(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -862,9 +1401,27 @@ class S3Client:
             print(self.service, ': ' + f'Fail -- Error retrieving tagging from bucket {args[0]}: {e}')
             return False, e
         
+    # get bucket tagging 
+    def s3_get_bucket_empty_tagging(self, args):
+        args = list(args)
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+
+        # self.s3_put_bucket_tagging([])
+
+        try:
+            self.client.get_bucket_tagging(Bucket=args[0])
+            print(self.service, ': ' + f'Success -- Tagging retrieved from bucket {args[0]}')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error retrieving tagging from bucket {args[0]}: {e}')
+            return False, e
+        
 
     # get bucket versioning 
     def s3_get_bucket_versioning(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -880,6 +1437,7 @@ class S3Client:
 
     # get bucket website 
     def s3_get_bucket_website(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -894,9 +1452,28 @@ class S3Client:
             print(self.service, ': ' + f'Fail -- Error retrieving website from bucket {args[0]}: {e}')
             return False, e
         
+    
+    # get bucket website 
+    def s3_get_bucket_empty_website(self, args):
+        args = list(args)
+
+        if not len(args) > 0:
+            args.append(self.bucket_name)
+
+        # self.s3_put_bucket_website([])
+
+        try:
+            self.client.get_bucket_website(Bucket=args[0])
+            print(self.service, ': ' + f'Success -- Website retrieved from bucket {args[0]}')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error retrieving website from bucket {args[0]}: {e}')
+            return False, e
+        
 
     # get object 
     def s3_get_object(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -915,6 +1492,7 @@ class S3Client:
 
     # get object acl 
     def s3_get_object_acl(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -933,6 +1511,7 @@ class S3Client:
 
     # get attributes of object 
     def s3_get_object_attributes(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -950,6 +1529,7 @@ class S3Client:
 
     # get object legal hold 
     def s3_get_object_legal_hold(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(f'bucket{random.randint(1, 1000000)}')
@@ -966,8 +1546,28 @@ class S3Client:
             print(self.service, ': ' + f'Fail -- Error retrieving object legal hold {args[1]} from bucket {args[0]}: {e}')
             return False, e
         
+    # get object legal hold 
+    def s3_get_object_empty_legal_hold(self, args):
+        args = list(args)
+
+        if not len(args) > 0:
+            args.append(f'bucket{random.randint(1, 1000000)}')
+        if not len(args) > 1:
+            args.append(f'{random.randint(1, 1000000)}')
+
+        # self.s3_put_object_legal_hold(args)
+
+        try:
+            self.client.get_object_legal_hold(Bucket=args[0], Key=args[1])
+            print(self.service, ': ' + f'Success -- Object legal hold {args[1]} retrieved from bucket {args[0]}')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error retrieving object legal hold {args[1]} from bucket {args[0]}: {e}')
+            return False, e
+        
     # get object lock configuration 
     def s3_get_object_lock_configuration(self, args):
+        args = list(args)
         
         if not len(args) > 0:
             args.append(f'bucket{random.randint(1, 1000000)}')
@@ -982,9 +1582,27 @@ class S3Client:
             print(self.service, ': ' + f'Fail -- Error retrieving object lock configuration from bucket {args[0]}: {e}')
             return False, e
         
+    # get object lock configuration 
+    def s3_get_object_empty_lock_configuration(self, args):
+        args = list(args)
+        
+        if not len(args) > 0:
+            args.append(f'bucket{random.randint(1, 1000000)}')
+
+        # self.s3_put_object_lock_configuration([args[0]])
+
+        try:
+            self.client.get_object_lock_configuration(Bucket=args[0])
+            print(self.service, ': ' + f'Success -- Object lock configuration retrieved from bucket {args[0]}')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error retrieving object lock configuration from bucket {args[0]}: {e}')
+            return False, e
+        
 
     # get object retention 
     def s3_get_object_retention(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(f'bucket{random.randint(1, 1000000)}')
@@ -1002,8 +1620,29 @@ class S3Client:
             return False, e
         
 
+    # get object retention 
+    def s3_get_object_empty_retention(self, args):
+        args = list(args)
+
+        if not len(args) > 0:
+            args.append(f'bucket{random.randint(1, 1000000)}')
+        if not len(args) > 1:
+            args.append(f'{random.randint(1, 1000000)}')
+
+        # self.s3_put_object_legal_hold(args)
+
+        try:
+            self.client.get_object_retention(Bucket=args[0], Key=args[1])
+            print(self.service, ': ' + f'Success -- Object retention {args[1]} retrieved from bucket {args[0]}')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': ' + f'Fail -- Error retrieving object retention {args[1]} from bucket {args[0]}: {e}')
+            return False, e
+        
+
     # get object tagging 
     def s3_get_object_tagging(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -1022,6 +1661,7 @@ class S3Client:
 
     # get object torrent 
     def s3_get_object_torrent(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -1037,10 +1677,12 @@ class S3Client:
             print(self.service, ': ' + f'Fail -- Error retrieving object torrent {args[1]} from bucket {args[0]}: {e}')
             return False, e
         
+        
 
     # !!ignore
     # get paginator 
     def s3_get_paginator(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append('list_object_versions')
@@ -1056,6 +1698,7 @@ class S3Client:
 
     # get public access block 
     def s3_get_public_access_block(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -1073,6 +1716,7 @@ class S3Client:
     # !!ignore
     # get waiters 
     def s3_get_waiter(self, args):
+        args = list(args)
         if not len(args) > 0:
             args.append(self.bucket_name)
 
@@ -1087,6 +1731,7 @@ class S3Client:
 
     # head bucket 
     def s3_head_bucket(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -1101,6 +1746,7 @@ class S3Client:
         
     # head object 
     def s3_head_object(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -1119,6 +1765,7 @@ class S3Client:
 
     # list bucket analytics configurations 
     def s3_list_bucket_analytics_configurations(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -1133,6 +1780,7 @@ class S3Client:
 
     # list bucket intelligent tiering configuration 
     def s3_list_bucket_intelligent_tiering_configurations(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -1147,6 +1795,7 @@ class S3Client:
 
     # list bucket inventory configurations 
     def s3_list_bucket_inventory_configurations(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -1162,6 +1811,7 @@ class S3Client:
 
     # list bucket metrics configurations 
     def s3_list_bucket_metrics_configurations(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -1176,6 +1826,7 @@ class S3Client:
         
     # list buckets 
     def s3_list_buckets(self, args):
+        args = list(args)
             
         try:
             self.client.list_buckets()
@@ -1187,6 +1838,7 @@ class S3Client:
 
     # list multipart uploads 
     def s3_list_multipart_uploads(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -1201,6 +1853,7 @@ class S3Client:
 
     # list object versions 
     def s3_list_object_versions(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -1215,6 +1868,7 @@ class S3Client:
         
     # list objects 
     def s3_list_objects(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -1230,6 +1884,7 @@ class S3Client:
 
     # list objects v2 
     def s3_list_objects_v2(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -1245,6 +1900,7 @@ class S3Client:
 
     # list parts 
     def s3_list_parts(self, args):
+        args = list(args)
             
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -1265,6 +1921,7 @@ class S3Client:
 
     # put bucket acelerate configuration 
     def s3_put_bucket_accelerate_configuration(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -1281,6 +1938,7 @@ class S3Client:
 
     # put bucket acl 
     def s3_put_bucket_acl(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -1298,6 +1956,7 @@ class S3Client:
 
     # put analytics configuration 
     def s3_put_bucket_analytics_configuration(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -1330,6 +1989,7 @@ class S3Client:
 
     # put bucket cors 
     def s3_put_bucket_cors(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -1367,6 +2027,7 @@ class S3Client:
 
     # put bucket encryption 
     def s3_put_bucket_encryption(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -1392,6 +2053,7 @@ class S3Client:
 
     # put intellegent tiering configuration 
     def s3_put_bucket_intelligent_tiering_configuration(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -1423,6 +2085,7 @@ class S3Client:
 
     # put bucket inventory configuration 
     def s3_put_bucket_inventory_configuration(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -1457,6 +2120,7 @@ class S3Client:
 
     # put bucket lifecycle 
     def s3_put_bucket_lifecycle(self, args):
+        args = list(args)
             
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -1485,6 +2149,7 @@ class S3Client:
 
     # put bucket lifecycle configuration 
     def s3_put_bucket_lifecycle_configuration(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -1515,6 +2180,7 @@ class S3Client:
 
     # put bucket logging 
     def s3_put_bucket_logging(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -1540,6 +2206,7 @@ class S3Client:
 
     # put bucket metrics configuration 
     def s3_put_bucket_metrics_configuration(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -1569,6 +2236,7 @@ class S3Client:
 
     # put bucket notification configuration 
     def s3_put_bucket_notification_configuration(self, args):
+        args = list(args)
             
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -1598,6 +2266,7 @@ class S3Client:
 
     # put ownership controls 
     def s3_put_bucket_ownership_controls(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -1621,6 +2290,7 @@ class S3Client:
     # !!ignore
     # put bucket policy 
     def s3_put_bucket_policy(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -1649,6 +2319,7 @@ class S3Client:
 
     # put bucket replication 
     def s3_put_bucket_replication(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(f'bucket{random.randint(1, 1000000000)}')
@@ -1682,6 +2353,7 @@ class S3Client:
 
     # put bucket tagging 
     def s3_put_bucket_tagging(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -1706,6 +2378,7 @@ class S3Client:
 
     # put bucket versioning 
     def s3_put_bucket_versioning(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -1726,6 +2399,7 @@ class S3Client:
 
     # put bucket website 
     def s3_put_bucket_website(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -1749,6 +2423,7 @@ class S3Client:
         
     # put object 
     def s3_put_object(self, args):
+        args = list(args)
         
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -1770,6 +2445,7 @@ class S3Client:
 
     # put object acl 
     def s3_put_object_acl(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(f'{random.randint(1, 1000000)}')
@@ -1788,6 +2464,7 @@ class S3Client:
 
     # put object legal hold 
     def s3_put_object_legal_hold(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(f'bucket{random.randint(1, 1000000)}')
@@ -1814,6 +2491,7 @@ class S3Client:
 
     # put object lock configuration 
     def s3_put_object_lock_configuration(self, args):
+        args = list(args)
         
         if not len(args) > 0:
             args.append(f'bucket{random.randint(1, 1000000)}')
@@ -1841,6 +2519,7 @@ class S3Client:
 
     # put object retention 
     def s3_put_object_retention(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(f'{random.randint(1, 1000000)}')
@@ -1865,6 +2544,7 @@ class S3Client:
 
     # put object tagging 
     def s3_put_object_tagging(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(f'{random.randint(1, 1000000)}')
@@ -1889,6 +2569,7 @@ class S3Client:
 
     # put public access block 
     def s3_put_public_access_block(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(self.bucket_name)
@@ -1911,6 +2592,7 @@ class S3Client:
         
     # restore object 
     def s3_restore_object(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(f'{random.randint(1, 1000000)}')
@@ -1934,6 +2616,7 @@ class S3Client:
 
     # select object content 
     def s3_select_object_content(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(f'{random.randint(1, 1000000)}')
@@ -1973,6 +2656,7 @@ class S3Client:
 
     # upload file 
     def s3_upload_file(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(f'{random.randint(1, 1000000)}')
@@ -1988,6 +2672,7 @@ class S3Client:
 
     # upload file object 
     def s3_upload_fileobj(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(f'{random.randint(1, 1000000)}')
@@ -2003,6 +2688,7 @@ class S3Client:
 
     # upload part 
     def s3_upload_part(self, args):
+        args = list(args)
 
         if not len(args) > 0:
             args.append(f'{random.randint(1, 1000000)}')
@@ -2029,6 +2715,7 @@ class S3Client:
 
     # upload part copy 
     def s3_upload_part_copy(self, args):
+        args = list(args)
         
         if not len(args) > 0:
             args.append(f'{random.randint(1, 1000000)}')
@@ -2056,7 +2743,6 @@ class S3Client:
             
 
     # skip --> write get object response
-
 
 
     # garbage collector
@@ -2113,9 +2799,9 @@ class S3Client:
 
 #     print(len(methods))
 #     for i in methods:
-#         if i.__name__ == 's3_upload_part_copy':
+#         # if i.__name__ == 's3_upload_part_copy':
 #             # break
-#             print(i.__name__)
-#             i(table_client, [])
+#             # print(i.__name__)
+#         i(table_client, [])
 
 #     table_client.__cleanup__()
