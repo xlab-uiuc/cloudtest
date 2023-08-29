@@ -90,11 +90,11 @@ def run_ops(arg, methods, count, discrepant_methods):
             test_em = DynamoDBClient()
            
             try:
-                print('METHOD: '+ method.__name__, '--- ARGS: ') #arg[t_count]
+                print(f'METHOD: {method.__name__} --- ARGS: {arg[t_count]}')
 
                 # run method on cloud and emulator
-                res_cloud = method(test_cloud) #arg[t_count]
-                res_em = method(test_em) #arg[t_count]
+                res_cloud = method(test_cloud, arg[t_count])
+                res_em = method(test_em, arg[t_count])
 
                 # oracles
                 result = oracles(res_cloud, res_em)
@@ -107,8 +107,7 @@ def run_ops(arg, methods, count, discrepant_methods):
                     if method.__name__ not in discrepant_methods:
                         discrepant_methods.append(method.__name__)
 
-                    # with open('../sdk_tests/DynamoDB/discrepancy.txt', 'a') as f:
-                    with open('discrepancy.txt', 'a') as f:
+                    with open('../sdk_tests/DynamoDB/discrepancy.txt', 'a') as f:
                         f.write(f'DISCREPANT METHOD: {method.__name__} --- ARGS: {arg[t_count]}\n')
                         f.write(result[1])
                         f.write(f'\n\ncount: {count}   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n\n\n')
@@ -148,8 +147,7 @@ def run1v1(arg, methods_dd, t_count):
         
         output = buf.getvalue().strip()
 
-    # with open('../sdk_tests/DynamoDB/log_all.txt', 'a') as f:
-    with open('discrepancy.txt', 'a') as f:
+    with open('../sdk_tests/DynamoDB/log_all.txt', 'a') as f:
         f.write('***  Round Summary  ***\n\n')
         f.write(f'Behavior mismatch count: {BEHAVIOR_MISMATCH_COUNT}\n')
         f.write(f'Status code mismatch count: {STATUS_CODE_MISMATCH_COUNT}\n')
@@ -158,20 +156,17 @@ def run1v1(arg, methods_dd, t_count):
 
 
 
-    # with open('../sdk_tests/DynamoDB/discrepancy.txt', 'a') as f:
-    with open('discrepancy.txt', 'a') as f:
+    with open('../sdk_tests/DynamoDB/discrepancy.txt', 'a') as f:
         f.write(f'Round ended   ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n\n\n')
 
     # store methods names in order to skip in the next run
-    # with open('../sdk_tests/DynamoDB/discrepant_methods.txt', 'w') as f:
-    with open('discrepant_methods.txt', 'w') as f:
+    with open('../sdk_tests/DynamoDB/discrepant_methods.txt', 'w') as f:
         f.write("\n".join(discrepant_methods))  
 
     # extract_discrepancy('../sdk_tests/DynamoDB/discrepancy.txt')
 
     # write buf to a new file
-    # with open('../sdk_tests/DynamoDB/log_all.txt', 'w') as f:
-    with open('log_all.txt', 'w') as f:
+    with open('../sdk_tests/DynamoDB/log_all.txt', 'w') as f:
         f.write(output)
 
 def run_sequences_shuffle(methods, runs):

@@ -92,11 +92,9 @@ class DynamoDBClient:
                             'L': [
                                 {},
                             ],
-                            'NULL': True|False,
-                            'BOOL': True|False
                         },
                     ],
-                    'ConsistentRead': True|False
+                    'ConsistentRead': True
                 },
         ])
         try:
@@ -111,6 +109,40 @@ class DynamoDBClient:
 
     # batch get item
     def dynamo_batch_get_item(self, args):
+        args = list(args)
+        print(self.client.list_tables())
+        self.dynamo_put_item([])
+        if not len(args) > 0:
+            args.append([
+                {
+                    'username': {
+                        'S': 'johndoe'
+                    },
+                    'last_name': {
+                        'S': 'doe'
+                    }
+                },
+            ])
+        try:
+            self.client.batch_get_item(
+                RequestItems={
+                    self.table_name: {
+                        'Keys': args[0],
+                        'AttributesToGet': [
+                            'string',
+                        ],
+                        'ConsistentRead': True
+                    }
+                }
+            )
+            print(self.service, ': Success -- Batch get item succeeded')
+            return True, ""
+        except Exception as e:
+            print(self.service, ': Fail -- Batch get item failed; error: ', e)
+            return False, e
+        
+    # batch get item
+    def dynamo_batch_get_item_v2(self, args):
         args = list(args)
         
         if not len(args) > 0:
@@ -236,7 +268,7 @@ class DynamoDBClient:
                 GlobalTableName=args[0],
                 ReplicationGroup=[
                     {
-                        'RegionName': 'us-east-1'
+                        'RegionName': 'us-east-2'
                     },
                 ]
             )
@@ -295,7 +327,7 @@ class DynamoDBClient:
         args = list(args)
         
         if not len(args) > 0:
-            args.append('arn:aws:dynamodb:us-east-1:123456789012:table/mytable/backup/01548148148148148148')
+            args.append(f'arn:aws:dynamodb:us-east-2:818637742267:table/{self.table_name}/backup/01548148148148148148')
         try:
             self.client.delete_backup(
                 BackupArn=args[0]
@@ -354,7 +386,7 @@ class DynamoDBClient:
         args = list(args)
         
         if not len(args) > 0:
-            args.append('arn:aws:dynamodb:us-east-1:123456789012:table/mytable/backup/01548148148148148148')
+            args.append(f'arn:aws:dynamodb:us-east-2:818637742267:table/{self.table_name}/backup/01548148148148148148')
         try:
             self.client.describe_backup(
                 BackupArn=args[0]
@@ -412,14 +444,14 @@ class DynamoDBClient:
             return False, e
         
     # describe exports
-    def dynamo_describe_exports(self, args):
+    def dynamo_describe_export(self, args):
         args = list(args)
         
         if not len(args) > 0:
-            args.append('arn:aws:dynamodb:us-east-1:123456789012:table/mytable')
+            args.append(f'arn:aws:dynamodb:us-east-2:818637742267:table/{self.table_name}')
         try:
-            self.client.describe_exports(
-                TableArn=args[0]
+            self.client.describe_export(
+                ExportArn=args[0]
             )
             print(self.service, ': Success -- Describe exports succeeded')
             return True, ""
@@ -565,7 +597,7 @@ class DynamoDBClient:
         if not len(args) > 0:
             args.append(self.table_name)
         if not len(args) > 1:
-            args.append('arn:aws:kinesis:us-east-1:123456789012:stream/my_stream')
+            args.append('arn:aws:kinesis:us-east-2:818637742267:stream/my_stream')
         try:
             self.client.disable_kinesis_streaming_destination(
                 TableName=args[0],
@@ -584,7 +616,7 @@ class DynamoDBClient:
         if not len(args) > 0:
             args.append(self.table_name)
         if not len(args) > 1:
-            args.append('arn:aws:kinesis:us-east-1:123456789012:stream/my_stream')
+            args.append('arn:aws:kinesis:us-east-2:818637742267:stream/my_stream')
         try:
             self.client.enable_kinesis_streaming_destination(
                 TableName=args[0],
@@ -633,7 +665,6 @@ class DynamoDBClient:
                        },
                     "N": "8",
                     "NS": [ "10" ],
-                    "NULL": True,
                     "S": "string",
                     "SS": [ "string" ]
                     }
@@ -660,7 +691,7 @@ class DynamoDBClient:
         args = list(args)
         
         if not len(args) > 0:
-            args.append('arn:aws:dynamodb:us-east-1:123456789012:table/mytable/backup/01548148148148148148')
+            args.append(f'arn:aws:dynamodb:us-east-2:818637742267:table/{self.table_name}/backup/01548148148148148148')
         try:
             self.client.export_table_to_point_in_time(
                 TableArn=args[0],
@@ -704,7 +735,7 @@ class DynamoDBClient:
         args = list(args)
         
         if not len(args) > 0:
-            args.append('ListTables')
+            args.append('list_tables')
         try:
             self.client.get_paginator(
                 args[0]
@@ -721,7 +752,7 @@ class DynamoDBClient:
         args = list(args)
         
         if not len(args) > 0:
-            args.append('TableExists')
+            args.append('table_exists')
         try:
             self.client.get_waiter(
                 args[0]
@@ -768,7 +799,12 @@ class DynamoDBClient:
                     'AttributeName': 'last_name',
                     'KeyType': 'RANGE'
                 }
-                ]
+                ],
+
+                'ProvisionedThroughput': {
+                    'ReadCapacityUnits': 123,
+                    'WriteCapacityUnits': 123
+                },
 
                 }
             )
@@ -879,7 +915,7 @@ class DynamoDBClient:
             args.append(self.table_name)
         try:
             self.client.list_tags_of_resource(
-                ResourceArn='arn:aws:dynamodb:us-east-1:123456789012:table/' + args[0]
+                ResourceArn='arn:aws:dynamodb:us-east-2:818637742267:table/' + args[0]
             )
             print(self.service, ': Success -- List tags of resource succeeded')
             return True, ""
@@ -896,29 +932,13 @@ class DynamoDBClient:
             args.append(self.table_name)
         if not len(args) > 1:
             args.append({
-                'string': {
-                    'S': 'string',
-                    'N': '1',
-                    'B': b'bytes',
-                    'SS': [
-                        'string',
-                    ],
-                    'NS': [
-                        '1',
-                    ],
-                    'BS': [
-                        b'bytes',
-                    ],
-                    'M': {
-                        'string': {}
+                    'username': {
+                        'S': 'johndoe'
                     },
-                    'L': [
-                        {},
-                    ],
-                    'NULL': True|False,
-                    'BOOL': True|False
-                }
-            })
+                    'last_name': {
+                        'S': 'doe'
+                    }
+                })
         try:
             self.client.put_item(
                 TableName=args[0],
@@ -938,7 +958,7 @@ class DynamoDBClient:
         if not len(args) > 0:
             args.append(self.table_name)
         if not len(args) > 1:
-            args.append('string')
+            args.append('last_name = :v1')
         try:
             self.client.query(
                 TableName=args[0],
@@ -959,7 +979,7 @@ class DynamoDBClient:
         if not len(args) > 0:
             args.append(self.table_name)
         if not len(args) > 1:
-            args.append('arn:aws:dynamodb:us-east-1:123456789012:table/' + args[0] + '/backup/0000000000000000')
+            args.append('arn:aws:dynamodb:us-east-2:818637742267:table/' + args[0] + '/backup/0000000000000000')
         try:
             self.client.restore_table_from_backup(
                 TargetTableName=args[0],
@@ -983,13 +1003,12 @@ class DynamoDBClient:
         if not len(args) > 2:
             args.append(True)
         if not len(args) > 3:
-            args.append(datetime(2015, 1, 1))
+            args.append(datetime.datetime(2015, 1, 1))
         try:
             self.client.restore_table_to_point_in_time(
                 SourceTableName=args[0],
                 TargetTableName=args[1],
-                UseLatestRestorableTime=args[2],
-                RestoreDateTime=args[3]
+                UseLatestRestorableTime=args[2]
             )
             print(self.service, ': Success -- Restore table to point in time succeeded')
             return True, ""
@@ -1027,8 +1046,6 @@ class DynamoDBClient:
                     'L': [
                         {},
                     ],
-                    'NULL': True|False,
-                    'BOOL': True|False
                 }
             })
         try:
@@ -1048,7 +1065,7 @@ class DynamoDBClient:
         args = list(args)
         
         if not len(args) > 0:
-            args.append('arn:aws:dynamodb:us-east-1:123456789012:table/' + self.table_name)
+            args.append('arn:aws:dynamodb:us-east-2:818637742267:table/' + self.table_name)
         if not len(args) > 1:
             args.append([
                 {
@@ -1095,12 +1112,10 @@ class DynamoDBClient:
                                 'L': [
                                     {},
                                 ],
-                                'NULL': True|False,
-                                'BOOL': True|False
                             }
                         },
                         'TableName': self.table_name,
-                        'ProjectionExpression': 'string',
+                        'ProjectionExpression': 'last_name',
                         'ExpressionAttributeNames': {
                             'string': 'string'
                         }
@@ -1150,7 +1165,7 @@ class DynamoDBClient:
                             }
                         },
                         'TableName': self.table_name,
-                        'ConditionExpression': 'string',
+                        'ConditionExpression': 'last_name = :v1',
                         'ExpressionAttributeNames': {
                             'string': 'string'
                         },
@@ -1197,7 +1212,7 @@ class DynamoDBClient:
         args = list(args)
         
         if not len(args) > 0:
-            args.append('arn:aws:dynamodb:us-east-1:123456789012:table/' + self.table_name)
+            args.append('arn:aws:dynamodb:us-east-2:818637742267:table/' + self.table_name)
         if not len(args) > 1:
             args.append([
                 'string',
@@ -1240,7 +1255,7 @@ class DynamoDBClient:
         args = list(args)
         
         if not len(args) > 0:
-            args.append('index_name')
+            args.append('last_name')
         if not len(args) > 1:
             args.append('ENABLE')
         try:
@@ -1266,7 +1281,7 @@ class DynamoDBClient:
             args.append([
                 {
                     'Create': {
-                        'RegionName': 'us-east-1'
+                        'RegionName': 'us-east-2'
                     }
                 },
             ])
@@ -1297,7 +1312,6 @@ class DynamoDBClient:
                 GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate={
                     'MinimumUnits': 123,
                     'MaximumUnits': 123,
-                    'AutoScalingDisabled': True,
                     'AutoScalingRoleArn': 'string',
                     'ScalingPolicyUpdate': {
                         'PolicyName': 'string',
@@ -1402,8 +1416,10 @@ class DynamoDBClient:
                     {
                             'IndexName': 'index1',
                             'ProvisionedWriteCapacityAutoScalingUpdate': {
+                                'MinimumUnits': 123,
+                                'MaximumUnits': 123,
                                 'AutoScalingDisabled': False,
-                                'AutoScalingRoleArn': 'arn:aws:iam::123456789012:role/DynamoDBAutoscaleRole',
+                                'AutoScalingRoleArn': 'arn:aws:iam::818637742267:role/DynamoDBAutoscaleRole',
                                 'ScalingPolicyUpdate': {
                                     'PolicyName': 'WriteCapacityUnitsScalingPolicy',
                                     'TargetTrackingScalingPolicyConfiguration': {
@@ -1461,17 +1477,18 @@ class DynamoDBClient:
 
 
 
-if __name__ == '__main__':
+# if __name__ == '__main__':
 
 
-    # create blob client
-    table_client = DynamoDBClient(False)
-    # get all methods
-    methods = [getattr(DynamoDBClient, attr) for attr in dir(DynamoDBClient) if callable(getattr(DynamoDBClient, attr)) and not attr.startswith("__")]
+#     # create blob client
+#     table_client = DynamoDBClient(False, 'table638172153')
+#     # get all methods
+#     methods = [getattr(DynamoDBClient, attr) for attr in dir(DynamoDBClient) if callable(getattr(DynamoDBClient, attr)) and not attr.startswith("__")]
 
-    for i in methods:
-        print(i.__name__)
-        i(table_client)
+#     for i in methods:
+#         print(i.__name__)
+#         # if i.__name__ == 'dynamo_batch_get_item':
+#         i(table_client, [])
 
-    # clean up
-    table_client.__cleanup__()
+#     # clean up
+#     # table_client.__cleanup__()
