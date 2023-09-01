@@ -16,20 +16,20 @@ class DynamoDBClient:
         if not emulator:
             self.service = '**AWS**'
             AWS_PROFILE = 'aws'
-            url = 'https://dynamodb.us-east-2.amazonaws.com'
+            self.url = 'https://dynamodb.us-east-2.amazonaws.com'
         else:
             self.service = '**EMULATOR**'
             AWS_PROFILE = 'localstack'
-            url = 'http://localhost:4566'
+            self.url = 'http://localhost:4566'
 
 
-        AWS_REGION = 'us-east-2'
+        self.region = 'us-east-2'
         boto3.setup_default_session(profile_name=AWS_PROFILE)
         try:
-            self.client = boto3.client('dynamodb', endpoint_url=url, region_name=AWS_REGION)
-            print('DynamoDB client created')
+            self.client = boto3.client('dynamodb', endpoint_url=self.url, region_name=self.region)
+            print(self.service, ': DynamoDB client created')
         except Exception as e:
-            print('DynamoDB client creation failed; error: ', e)
+            print(self.service, ': DynamoDB client creation failed; error: ', e)
             return
         try:
             self.client.create_table(
@@ -59,9 +59,9 @@ class DynamoDBClient:
                     'WriteCapacityUnits': 5
                 }
             )
-            print(f'Table name {self.table_name} created')
+            print(f'{self.service}: Table name {self.table_name} created')
         except Exception as e:
-            print('Table creation failed; error: ', e)
+            print(self.service, ': Table creation failed; error: ', e)
 
 
     # batch execute statement
@@ -110,40 +110,6 @@ class DynamoDBClient:
     # batch get item
     def dynamo_batch_get_item(self, args):
         args = list(args)
-        print(self.client.list_tables())
-        self.dynamo_put_item([])
-        if not len(args) > 0:
-            args.append([
-                {
-                    'username': {
-                        'S': 'johndoe'
-                    },
-                    'last_name': {
-                        'S': 'doe'
-                    }
-                },
-            ])
-        try:
-            self.client.batch_get_item(
-                RequestItems={
-                    self.table_name: {
-                        'Keys': args[0],
-                        'AttributesToGet': [
-                            'string',
-                        ],
-                        'ConsistentRead': True
-                    }
-                }
-            )
-            print(self.service, ': Success -- Batch get item succeeded')
-            return True, ""
-        except Exception as e:
-            print(self.service, ': Fail -- Batch get item failed; error: ', e)
-            return False, e
-        
-    # batch get item
-    def dynamo_batch_get_item_v2(self, args):
-        args = list(args)
         
         if not len(args) > 0:
             args.append([
@@ -173,6 +139,7 @@ class DynamoDBClient:
         except Exception as e:
             print(self.service, ': Fail -- Batch get item failed; error: ', e)
             return False, e
+        
     
     # batch write item
     def dynamo_batch_write_item(self, args):
