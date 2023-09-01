@@ -2,20 +2,9 @@ import os
 import json 
 import chardet 
 
-def applicationData(applicationName): 
-    current_dir = os.getcwd() 
-    traffic_path = os.path.join(current_dir, applicationName) 
-    file_names = os.listdir(traffic_path) 
-
-    application_json_object = {} 
+def getRequestTypes(traffic_path, file_names):  
+    application_req_types = {} 
     for file_name in file_names: 
-        total_head = 0 
-        total_patch = 0 
-        total_puts = 0 
-        total_gets = 0 
-        total_post = 0 
-        total_delete = 0 
-        total_other = 0 
         unit_test_data = {} 
 
         with open(os.path.join(traffic_path, file_name), "r", encoding='UTF-8') as file: 
@@ -23,35 +12,54 @@ def applicationData(applicationName):
                 single_line = line.strip()
                 components = single_line.split()
 
-                if len(components) > 0: 
-                    if components[0] == '127.0.0.1': 
-                        req_type = components[5][1:]
-                        match req_type: 
-                            case "PUT": 
-                                total_puts += 1 
-                            case "GET":
-                                total_gets += 1
-                            case "POST": 
-                                total_post += 1 
-                            case "DELETE": 
-                                total_delete += 1
-                            case "PATCH": 
-                                total_patch += 1 
-                            case "HEAD": 
-                                total_head += 1 
-                            case _: 
-                                total_other += 1  
+                if len(components) > 6: 
+                    if components[6].find('RequestHeaders') != -1 and components[6].find('user-agent') != -1: 
+                        user_agent_index = components[6].index('user-agent')
+                        user_agent = components[6][user_agent_index+13:].split()[0]
+                        # print(user_agent)
 
-            unit_test_data['PUT'] = total_puts 
-            unit_test_data['GET'] = total_gets 
-            unit_test_data['POST'] = total_post 
-            unit_test_data['DELETE'] = total_delete 
-            unit_test_data['PATCH'] = total_patch 
-            unit_test_data['HEAD'] = total_head
-            unit_test_data['OTHER'] = total_other 
+                        if user_agent not in unit_test_data.keys(): 
+                            unit_test_data[user_agent] = {'PUT':0, 'GET':0, 'POST':0, 'DELETE':0, 'HEAD':0, 'PATCH':0, 'OTHER': 0}
 
-        application_json_object[file_name] = unit_test_data 
-    return application_json_object  
+                        if components[4].find('RequestMethod') != 1: 
+                            req_type = components[4][len('RequestMethod='):]
+                            # print(req_type)
+                            match req_type: 
+                                case "PUT": 
+                                    unit_test_data[user_agent]['PUT'] += 1
+                                case "GET":
+                                    unit_test_data[user_agent]['GET'] += 1
+                                case "POST":
+                                    unit_test_data[user_agent]['POST'] += 1 
+                                case "DELETE": 
+                                    unit_test_data[user_agent]['DELETE'] += 1
+                                case "PATCH": 
+                                    unit_test_data[user_agent]['PATCH'] += 1
+                                case "HEAD": 
+                                    unit_test_data[user_agent]['HEAD'] += 1
+                                case _: 
+                                    unit_test_data[user_agent]['OTHER'] += 1
+        application_req_types[file_name] = unit_test_data 
+    return application_req_types  
+
+def getAPICalls(traffic_path, file_names):
+    application_api_calls = {} 
+    for file_name in file_names: 
+        unit_test_api_calls = [] 
+        with open(os.path.join(traffic_path, file_name), "r", encoding='UTF-8') as file: 
+            for line in file:
+                single_line = line.strip()  
+                components = single_line.split() 
+
+                if len(components) > 3: 
+                    if components[3] == 'DispatchMiddleware:': 
+                        if components[4].find('Operation=') != -1: 
+                            api_call = components[4][len('Operation='):]
+                            if api_call not in unit_test_api_calls: 
+                                unit_test_api_calls.append(api_call)
+        application_api_calls[file_name] = unit_test_api_calls
+    return application_api_calls
+
 
 def saveJSONObject(applicationName, applicationData):
     current_dir = os.getcwd() 
@@ -61,13 +69,16 @@ def saveJSONObject(applicationName, applicationData):
         json.dump(applicationData, json_file, indent=4) 
 
 def main(): 
+    applicationName = 'attachmentplugin'
     current_dir = os.getcwd() 
-    applications = [application for application in os.listdir(current_dir) if os.path.isdir(os.path.join(current_dir, application))]
+    traffic_path = os.path.join(current_dir, applicationName) 
+    file_names = os.listdir(traffic_path)
 
-    for application in applications: 
-        app_data = applicationData(application)
-        saveJSONObject(application, app_data) 
+    app_data = getRequestTypes(traffic_path, file_names)
+    saveJSONObject('../application_req_types/attachmentplugin', app_data)
 
+    api_calls = getAPICalls(traffic_path, file_names)
+    saveJSONObject('../sdk_methods/attachmentplugin', api_calls)
 
 
 main()
