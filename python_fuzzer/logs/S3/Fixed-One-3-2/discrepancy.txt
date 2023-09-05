@@ -1,0 +1,82 @@
+DISCREPANT METHOD: s3_complete_multipart_upload --- ARGS: ['380059', 'nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_', [{'ETag': '""ccd245db6a7f5ed1dc39d419a4697c80""', 'PartNumber': 1}]]
+--Behavior mismatch--
+CLOUD: SUCCESS -- Response:  
+EMULATOR: FAILURE -- Response: An error occurred (InternalError) when calling the CompleteMultipartUpload operation (reached max retries: 4): exception while calling s3.CompleteMultipartUpload: 'nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_'
+
+
+
+count: 1   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_copy_object --- ARGS: ['380059', 'nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_', [{'ETag': '""ccd245db6a7f5ed1dc39d419a4697c80""', 'PartNumber': 1}]]
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 400 -- Error Code: InvalidArgument -- Error Message: Invalid copy source object key
+EMULATOR: FAILURE -- HTTP Status code: 500 -- Error Code: InternalError -- Error Message: exception while calling s3.CopyObject: not enough values to unpack (expected 2, got 1)
+
+
+
+count: 2   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_delete_bucket_analytics_configuration --- ARGS: ['380059', 'nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_', [{'ETag': '""ccd245db6a7f5ed1dc39d419a4697c80""', 'PartNumber': 1}]]
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+EMULATOR: FAILURE -- HTTP Status code: 400 -- Error Code: IllegalLocationConstraintException -- Error Message: The unspecified location constraint is incompatible for the region specific endpoint this request was sent to.
+
+
+
+count: 3   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_delete_bucket_intelligent_tiering_configuration_v2 --- ARGS: ['380059', 'nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_', [{'ETag': '""ccd245db6a7f5ed1dc39d419a4697c80""', 'PartNumber': 1}]]
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+EMULATOR: FAILURE -- HTTP Status code: 400 -- Error Code: IllegalLocationConstraintException -- Error Message: The unspecified location constraint is incompatible for the region specific endpoint this request was sent to.
+
+
+
+count: 4   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_delete_bucket_metrics_configuration --- ARGS: ['380059', 'nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_', [{'ETag': '""ccd245db6a7f5ed1dc39d419a4697c80""', 'PartNumber': 1}]]
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+EMULATOR: FAILURE -- HTTP Status code: 400 -- Error Code: IllegalLocationConstraintException -- Error Message: The unspecified location constraint is incompatible for the region specific endpoint this request was sent to.
+
+
+
+count: 5   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_get_object_legal_hold --- ARGS: ['380059', 'nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_', [{'ETag': '""ccd245db6a7f5ed1dc39d419a4697c80""', 'PartNumber': 1}], None, 3600]
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (NoSuchObjectLockConfiguration) when calling the GetObjectLegalHold operation: The specified object does not have a ObjectLock configuration 
+EMULATOR: SUCCESS -- Response: 
+
+
+
+count: 6   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: s3_put_bucket_acl --- ARGS: ['380059', 'nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_', [{'ETag': '""ccd245db6a7f5ed1dc39d419a4697c80""', 'PartNumber': 1}], None, 3600]
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+EMULATOR: FAILURE -- HTTP Status code: 400 -- Error Code: InvalidArgument -- Error Message: None
+
+
+
+count: 7   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Round discrepancies: 7
+***  Overall Summary  ***
+
+Behavior mismatch count: 2
+Status code mismatch count: 5
+Error message mismatch count: 0
+Total discrepancy count: 7/134
+
+
+Round ended   ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+

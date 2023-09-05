@@ -1,0 +1,411 @@
+DISCREPANT METHOD: dynamo_batch_get_item --- ARGS: []
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (ResourceNotFoundException) when calling the BatchGetItem operation: Requested resource not found 
+EMULATOR: SUCCESS -- Response: 
+
+
+
+count: 1   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_batch_write_item --- ARGS: []
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (ResourceNotFoundException) when calling the BatchWriteItem operation: Requested resource not found 
+EMULATOR: SUCCESS -- Response: 
+
+
+
+count: 2   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_create_backup --- ARGS: []
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: Table not found: table46012581 -- Error Code: TableNotFoundException -- HTTP Status code: 400
+EMULATOR: FAILURE -- Error Message: An unknown operation was requested. -- Error Code: UnknownOperationException-- HTTP Status code: 400
+
+
+
+count: 3   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_create_global_table --- ARGS: []
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (TableNotFoundException) when calling the CreateGlobalTable operation: Table not found: Table: 'table800511216' not found in region: 'us-east-1'. 
+EMULATOR: SUCCESS -- Response: 
+
+
+
+count: 4   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_delete_backup --- ARGS: []
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: Invalid Request: BackupArn is not valid -- Error Code: ValidationException -- HTTP Status code: 400
+EMULATOR: FAILURE -- Error Message: An unknown operation was requested. -- Error Code: UnknownOperationException-- HTTP Status code: 400
+
+
+
+count: 5   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_delete_item --- ARGS: []
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (ResourceNotFoundException) when calling the DeleteItem operation: Requested resource not found 
+EMULATOR: SUCCESS -- Response: 
+
+
+
+count: 6   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_delete_table --- ARGS: []
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (ResourceInUseException) when calling the DeleteTable operation: Attempt to change a resource which is still in use: Table is being created: table464470766 
+EMULATOR: SUCCESS -- Response: 
+
+
+
+count: 7   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_describe_backup --- ARGS: []
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: Invalid Request: BackupArn is not valid -- Error Code: ValidationException -- HTTP Status code: 400
+EMULATOR: FAILURE -- Error Message: An unknown operation was requested. -- Error Code: UnknownOperationException-- HTTP Status code: 400
+
+
+
+count: 8   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_describe_continuous_backups --- ARGS: []
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (TableNotFoundException) when calling the DescribeContinuousBackups operation: Table not found: table184048054 
+EMULATOR: SUCCESS -- Response: 
+
+
+
+count: 9   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_describe_contributor_insights --- ARGS: []
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: Requested resource not found: Table: table516917143 not found -- Error Code: ResourceNotFoundException -- HTTP Status code: 400
+EMULATOR: FAILURE -- Error Message: An unknown operation was requested. -- Error Code: UnknownOperationException-- HTTP Status code: 400
+
+
+
+count: 10   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_describe_endpoints --- ARGS: []
+--Behavior mismatch--
+CLOUD: SUCCESS -- Response:  
+EMULATOR: FAILURE -- Response: An error occurred (UnknownOperationException) when calling the DescribeEndpoints operation: An unknown operation was requested.
+
+
+
+count: 11   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_describe_global_table --- ARGS: []
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: Global table not found: Global table with name: 'table447488277' does not exist. -- Error Code: GlobalTableNotFoundException -- HTTP Status code: 400
+EMULATOR: FAILURE -- Error Message: Global table with this name does not exist -- Error Code: GlobalTableNotFoundException-- HTTP Status code: 400
+
+
+
+count: 12   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_describe_global_table_settings --- ARGS: []
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: Global table with name: 'table174004806' does not exist. -- Error Code: GlobalTableNotFoundException -- HTTP Status code: 400
+EMULATOR: FAILURE -- Error Message: An unknown operation was requested. -- Error Code: UnknownOperationException-- HTTP Status code: 400
+
+
+
+count: 13   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_describe_import --- ARGS: []
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: Invalid Import ARN -- Error Code: ValidationException -- HTTP Status code: 400
+EMULATOR: FAILURE -- Error Message: An unknown operation was requested. -- Error Code: UnknownOperationException-- HTTP Status code: 400
+
+
+
+count: 14   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_describe_kinesis_streaming_destination --- ARGS: []
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (ResourceNotFoundException) when calling the DescribeKinesisStreamingDestination operation: Requested resource not found: Table: table704872961 not found 
+EMULATOR: SUCCESS -- Response: 
+
+
+
+count: 15   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_describe_table_replication_auto_scaling --- ARGS: []
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: Global table with name: 'table720296173' does not exist. -- Error Code: ResourceNotFoundException -- HTTP Status code: 400
+EMULATOR: FAILURE -- Error Message: An unknown operation was requested. -- Error Code: UnknownOperationException-- HTTP Status code: 400
+
+
+
+count: 16   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_describe_time_to_live --- ARGS: []
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (ValidationException) when calling the DescribeTimeToLive operation: Cannot describe time to live while table is in CREATING state: Current table state is CREATING 
+EMULATOR: SUCCESS -- Response: 
+
+
+
+count: 17   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_disable_kinesis_streaming_destination --- ARGS: []
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: Requested resource not found: Table: table952693776 not found -- Error Code: ResourceNotFoundException -- HTTP Status code: 400
+EMULATOR: FAILURE -- Error Message: User does not have a permission to use kinesis stream -- Error Code: ValidationException-- HTTP Status code: 400
+
+
+
+count: 18   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_enable_kinesis_streaming_destination --- ARGS: []
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: Requested resource not found: Table: table265055282 not found -- Error Code: ResourceNotFoundException -- HTTP Status code: 400
+EMULATOR: FAILURE -- Error Message: User does not have a permission to use kinesis stream -- Error Code: ValidationException-- HTTP Status code: 400
+
+
+
+count: 19   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_execute_statement --- ARGS: []
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (ResourceNotFoundException) when calling the ExecuteStatement operation: Requested resource not found 
+EMULATOR: SUCCESS -- Response: 
+
+
+
+count: 20   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_export_table_to_point_in_time --- ARGS: []
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: One or more parameter values were invalid: tableArn is not a valid ARN -- Error Code: ValidationException -- HTTP Status code: 400
+EMULATOR: FAILURE -- Error Message: An unknown operation was requested. -- Error Code: UnknownOperationException-- HTTP Status code: 400
+
+
+
+count: 21   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_get_item --- ARGS: []
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (ResourceNotFoundException) when calling the GetItem operation: Requested resource not found 
+EMULATOR: SUCCESS -- Response: 
+
+
+
+count: 22   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_import_table --- ARGS: []
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: One or more parameter values were invalid: ReadCapacityUnits and WriteCapacityUnits must both be specified when BillingMode is PROVISIONED -- Error Code: ValidationException -- HTTP Status code: 400
+EMULATOR: FAILURE -- Error Message: An unknown operation was requested. -- Error Code: UnknownOperationException-- HTTP Status code: 400
+
+
+
+count: 23   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_list_backups --- ARGS: []
+--Behavior mismatch--
+CLOUD: SUCCESS -- Response:  
+EMULATOR: FAILURE -- Response: An error occurred (UnknownOperationException) when calling the ListBackups operation: An unknown operation was requested.
+
+
+
+count: 24   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_list_contributor_insights --- ARGS: []
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: Requested resource not found: Table: table25898694 not found -- Error Code: ResourceNotFoundException -- HTTP Status code: 400
+EMULATOR: FAILURE -- Error Message: An unknown operation was requested. -- Error Code: UnknownOperationException-- HTTP Status code: 400
+
+
+
+count: 25   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_list_exports --- ARGS: []
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: One or more parameter values were invalid: tableArn is not a valid ARN -- Error Code: ValidationException -- HTTP Status code: 400
+EMULATOR: FAILURE -- Error Message: An unknown operation was requested. -- Error Code: UnknownOperationException-- HTTP Status code: 400
+
+
+
+count: 26   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_list_imports --- ARGS: []
+--Behavior mismatch--
+CLOUD: SUCCESS -- Response:  
+EMULATOR: FAILURE -- Response: An error occurred (UnknownOperationException) when calling the ListImports operation: An unknown operation was requested.
+
+
+
+count: 27   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_list_tags_of_resource --- ARGS: []
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (ValidationException) when calling the ListTagsOfResource operation: Invalid TableArn: Invalid ResourceArn provided as input arn:aws:dynamodb:us-east-1:123456789012:table/table651674880 
+EMULATOR: SUCCESS -- Response: 
+
+
+
+count: 28   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_restore_table_from_backup --- ARGS: []
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: Invalid Request: sseSpecificationOverride must be provided for cross-region restores -- Error Code: ValidationException -- HTTP Status code: 400
+EMULATOR: FAILURE -- Error Message: An unknown operation was requested. -- Error Code: UnknownOperationException-- HTTP Status code: 400
+
+
+
+count: 29   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_tag_resource --- ARGS: []
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (ValidationException) when calling the TagResource operation: Invalid TableArn: Invalid ResourceArn provided as input arn:aws:dynamodb:us-east-1:123456789012:table/table812123247 
+EMULATOR: SUCCESS -- Response: 
+
+
+
+count: 30   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_transact_write_items --- ARGS: []
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: ExpressionAttributeNames contains invalid key: Syntax error; key: "string" -- Error Code: ValidationException -- HTTP Status code: 400
+EMULATOR: FAILURE -- Error Message: The provided key element does not match the schema -- Error Code: ValidationException-- HTTP Status code: 400
+
+
+
+count: 31   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_untag_resource --- ARGS: []
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (ValidationException) when calling the UntagResource operation: Invalid TableArn: Invalid ResourceArn provided as input arn:aws:dynamodb:us-east-1:123456789012:table/table858126693 
+EMULATOR: SUCCESS -- Response: 
+
+
+
+count: 32   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_update_continuous_backups --- ARGS: []
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (TableNotFoundException) when calling the UpdateContinuousBackups operation: Table not found: table387667858 
+EMULATOR: SUCCESS -- Response: 
+
+
+
+count: 33   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_update_contributor_insights --- ARGS: []
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: Requested resource not found: Table: table819752192 not found -- Error Code: ResourceNotFoundException -- HTTP Status code: 400
+EMULATOR: FAILURE -- Error Message: An unknown operation was requested. -- Error Code: UnknownOperationException-- HTTP Status code: 400
+
+
+
+count: 34   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_update_global_table --- ARGS: []
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: Global table not found: Global table with name: 'table87776406' does not exist. -- Error Code: GlobalTableNotFoundException -- HTTP Status code: 400
+EMULATOR: FAILURE -- Error Message: Global table with this name does not exist -- Error Code: GlobalTableNotFoundException-- HTTP Status code: 400
+
+
+
+count: 35   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_update_global_table_settings --- ARGS: []
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: One or more parameter values were invalid: Failed to update settings for global table with name ‘table953135675’: Parameters 'MaximumUnits', 'ScalingPolicyUpdate', 'MinimumUnits' must be left blank when disabling auto scaling. -- Error Code: ValidationException -- HTTP Status code: 400
+EMULATOR: FAILURE -- Error Message: An unknown operation was requested. -- Error Code: UnknownOperationException-- HTTP Status code: 400
+
+
+
+count: 36   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_update_item --- ARGS: []
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (ResourceNotFoundException) when calling the UpdateItem operation: Requested resource not found 
+EMULATOR: SUCCESS -- Response: 
+
+
+
+count: 37   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_update_replica_autoscaling --- ARGS: []
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: Failed to update settings for global table with name: ‘table91023259’: Parameters 'MaximumUnits', 'MinimumUnits' are required unless auto scaling is being disabled. -- Error Code: ValidationException -- HTTP Status code: 400
+EMULATOR: FAILURE -- Error Message: An unknown operation was requested. -- Error Code: UnknownOperationException-- HTTP Status code: 400
+
+
+
+count: 38   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_update_table --- ARGS: []
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (ResourceInUseException) when calling the UpdateTable operation: Attempt to change a resource which is still in use: Table is being created: table720347714 
+EMULATOR: SUCCESS -- Response: 
+
+
+
+count: 39   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+DISCREPANT METHOD: dynamo_update_ttl --- ARGS: []
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (ResourceNotFoundException) when calling the UpdateTimeToLive operation: Requested resource not found: Table: table214061542 not found 
+EMULATOR: SUCCESS -- Response: 
+
+
+
+count: 40   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+***  Round Summary  ***
+
+Behavior mismatch count: 20
+Status code mismatch count: 0
+Error message mismatch count: 20
+Total discrepancy count: 40/57
+
+
+Round ended   ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+

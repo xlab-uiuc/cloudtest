@@ -1,0 +1,1799 @@
+S3 client created
+S3 bucket bucket629676317 created
+S3 client created
+S3 bucket bucket23267595 created
+METHOD: s3_abort_multipart_upload --- ARGS: []
+**AWS** : Success -- Multipart upload aborted for 380059 in **AWS** S3 bucket bucket629676317
+**EMULATOR** : Success -- Multipart upload aborted for 842545 in **EMULATOR** S3 bucket bucket23267595
+Success -- Bucket bucket629676317 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket23267595 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket56580188 created
+S3 client created
+S3 bucket bucket93133128 created
+METHOD: s3_can_paginate --- ARGS: []
+**AWS** : Success -- Operation list_buckets can be paginated
+**EMULATOR** : Success -- Operation list_buckets can be paginated
+Success -- Bucket bucket56580188 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket93133128 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket699158897 created
+S3 client created
+S3 bucket bucket645832291 created
+METHOD: s3_complete_multipart_upload --- ARGS: []
+**AWS** : Success -- Multipart upload completed for S3 bucket bucket699158897
+**EMULATOR** : Success -- Multipart upload completed for S3 bucket bucket645832291
+Success -- Bucket bucket699158897 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket645832291 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket610860054 created
+S3 client created
+S3 bucket bucket800511216 created
+METHOD: s3_copy --- ARGS: []
+**AWS** : Success -- Copy successful for S3 bucket test673970943
+**EMULATOR** : Success -- Copy successful for S3 bucket test665814167
+Success -- Bucket bucket610860054 deleted in **AWS** S3
+Success -- Bucket test673970943 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket800511216 deleted in **EMULATOR** S3
+Success -- Bucket test665814167 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket61382259 created
+S3 client created
+S3 bucket bucket271595158 created
+METHOD: s3_copy_object --- ARGS: []
+**AWS** : Success -- Copy object successful for S3 bucket test162916657
+**EMULATOR** : Success -- Copy object successful for S3 bucket test689066780
+Success -- Bucket bucket61382259 deleted in **AWS** S3
+Success -- Bucket test162916657 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket271595158 deleted in **EMULATOR** S3
+Success -- Bucket test689066780 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket464470766 created
+S3 client created
+S3 bucket bucket91728480 created
+METHOD: s3_create_bucket --- ARGS: []
+**AWS** : Success -- Created bucket bucket379976325 in **AWS** S3
+**EMULATOR** : Success -- Created bucket bucket997327820 in **EMULATOR** S3
+Success -- Bucket bucket379976325 deleted in **AWS** S3
+Success -- Bucket bucket464470766 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket91728480 deleted in **EMULATOR** S3
+Success -- Bucket bucket997327820 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket184048054 created
+S3 client created
+S3 bucket bucket467876630 created
+METHOD: s3_create_multipart_upload --- ARGS: []
+**AWS** : Success -- Multipart upload created for 504802 in **AWS** S3 bucket bucket184048054
+**EMULATOR** : Success -- Multipart upload created for 693064 in **EMULATOR** S3 bucket bucket467876630
+Success -- Bucket bucket184048054 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket467876630 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket910192112 created
+S3 client created
+S3 bucket bucket379498351 created
+METHOD: s3_delete_bucket --- ARGS: []
+**AWS** : Success -- Bucket bucket910192112 deleted
+**EMULATOR** : Success -- Bucket bucket379498351 deleted
+Cleaned all buckets in **AWS** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket323184513 created
+S3 client created
+S3 bucket bucket403484303 created
+METHOD: s3_delete_bucket_analytics_configuration --- ARGS: []
+**AWS** : Success -- Bucket analytics configuration test447488277 deleted from bucket bucket323184513
+**EMULATOR** : Fail -- Error deleting bucket analytics configuration test992609544 from bucket bucket403484303: An error occurred (IllegalLocationConstraintException) when calling the PutBucketAnalyticsConfiguration operation: The unspecified location constraint is incompatible for the region specific endpoint this request was sent to.
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: SUCCESS -- Response:  
+EMULATOR: FAILURE -- Response: An error occurred (IllegalLocationConstraintException) when calling the PutBucketAnalyticsConfiguration operation: The unspecified location constraint is incompatible for the region specific endpoint this request was sent to.
+
+
+Success -- Bucket bucket323184513 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket403484303 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket174004806 created
+S3 client created
+S3 bucket bucket506349539 created
+METHOD: s3_delete_bucket_cors --- ARGS: []
+**AWS** : Success -- Bucket cors deleted from bucket bucket174004806
+**EMULATOR** : Success -- Bucket cors deleted from bucket bucket506349539
+Success -- Bucket bucket174004806 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket506349539 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket408593852 created
+S3 client created
+S3 bucket bucket272962207 created
+METHOD: s3_delete_bucket_empty_intelligent_tiering_configuration --- ARGS: []
+**AWS** : Fail -- Error deleting bucket intelligent tiering configuration test704872961 from bucket bucket408593852: An error occurred (NoSuchConfiguration) when calling the DeleteBucketIntelligentTieringConfiguration operation: The specified configuration does not exist.
+**EMULATOR** : Success -- Bucket intelligent tiering configuration test761119046 deleted from bucket bucket272962207
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (NoSuchConfiguration) when calling the DeleteBucketIntelligentTieringConfiguration operation: The specified configuration does not exist. 
+EMULATOR: SUCCESS -- Response: 
+
+
+Success -- Bucket bucket408593852 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket42520476 created
+S3 client created
+S3 bucket bucket495582669 created
+METHOD: s3_delete_bucket_empty_inventory_configuration --- ARGS: []
+**AWS** : Fail -- Error deleting bucket inventory configuration test475001848 from bucket bucket42520476: An error occurred (NoSuchConfiguration) when calling the DeleteBucketInventoryConfiguration operation: The specified configuration does not exist.
+**EMULATOR** : Success -- Bucket inventory configuration test267514342 deleted from bucket bucket495582669
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (NoSuchConfiguration) when calling the DeleteBucketInventoryConfiguration operation: The specified configuration does not exist. 
+EMULATOR: SUCCESS -- Response: 
+
+
+Success -- Bucket bucket42520476 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket720296173 created
+S3 client created
+S3 bucket bucket667363637 created
+METHOD: s3_delete_bucket_empty_lifecycle --- ARGS: []
+**AWS** : Success -- Bucket lifecycle deleted from bucket bucket720296173
+**EMULATOR** : Success -- Bucket lifecycle deleted from bucket bucket667363637
+Success -- Bucket bucket720296173 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket667363637 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket509777949 created
+S3 client created
+S3 bucket bucket145945611 created
+METHOD: s3_delete_bucket_empty_metrics_configuration --- ARGS: []
+**AWS** : Fail -- Error deleting bucket metrics configuration test952693776 from bucket bucket509777949: An error occurred (NoSuchConfiguration) when calling the DeleteBucketMetricsConfiguration operation: The specified configuration does not exist.
+**EMULATOR** : Success -- Bucket metrics configuration test851945619 deleted from bucket bucket145945611
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (NoSuchConfiguration) when calling the DeleteBucketMetricsConfiguration operation: The specified configuration does not exist. 
+EMULATOR: SUCCESS -- Response: 
+
+
+Success -- Bucket bucket509777949 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket265055282 created
+S3 client created
+S3 bucket bucket895833176 created
+METHOD: s3_delete_bucket_empty_ownership_controls --- ARGS: []
+**AWS** : Success -- Bucket ownership controls deleted from bucket bucket265055282
+**EMULATOR** : Success -- Bucket ownership controls deleted from bucket bucket895833176
+Success -- Bucket bucket265055282 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket895833176 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket559481144 created
+S3 client created
+S3 bucket bucket175461377 created
+METHOD: s3_delete_bucket_empty_policy --- ARGS: []
+**AWS** : Success -- Bucket policy deleted from bucket bucket559481144
+**EMULATOR** : Success -- Bucket policy deleted from bucket bucket175461377
+Success -- Bucket bucket559481144 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket175461377 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket437587036 created
+S3 client created
+S3 bucket bucket234020207 created
+METHOD: s3_delete_bucket_empty_replication --- ARGS: []
+**AWS** : Success -- Bucket replication deleted from bucket bucket437587036
+**EMULATOR** : Success -- Bucket replication deleted from bucket bucket234020207
+Success -- Bucket bucket437587036 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket234020207 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket147061355 created
+S3 client created
+S3 bucket bucket555793391 created
+METHOD: s3_delete_bucket_empty_tagging --- ARGS: []
+**AWS** : Success -- Bucket tagging deleted from bucket bucket147061355
+**EMULATOR** : Success -- Bucket tagging deleted from bucket bucket555793391
+Success -- Bucket bucket147061355 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket555793391 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket307809681 created
+S3 client created
+S3 bucket bucket586566803 created
+METHOD: s3_delete_bucket_empty_website --- ARGS: []
+**AWS** : Success -- Bucket website deleted from bucket bucket307809681
+**EMULATOR** : Success -- Bucket website deleted from bucket bucket586566803
+Success -- Bucket bucket307809681 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket586566803 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket860204808 created
+S3 client created
+S3 bucket bucket483492676 created
+METHOD: s3_delete_bucket_encryption --- ARGS: []
+**AWS** : Success -- Bucket encryption deleted from bucket bucket860204808
+**EMULATOR** : Success -- Bucket encryption deleted from bucket bucket483492676
+Success -- Bucket bucket860204808 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket483492676 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket706877438 created
+S3 client created
+S3 bucket bucket982949286 created
+METHOD: s3_delete_bucket_intelligent_tiering_configuration --- ARGS: []
+**AWS** : Success -- Bucket intelligent tiering configuration test337502121 created for bucket bucket706877438
+**AWS** : Success -- Bucket intelligent tiering configuration test337502121 deleted from bucket bucket706877438
+**EMULATOR** : Fail -- Error creating bucket intelligent tiering configuration test833510964 for bucket bucket982949286: An error occurred (IllegalLocationConstraintException) when calling the PutBucketIntelligentTieringConfiguration operation: The unspecified location constraint is incompatible for the region specific endpoint this request was sent to.
+**EMULATOR** : Success -- Bucket intelligent tiering configuration test833510964 deleted from bucket bucket982949286
+Success -- Bucket bucket706877438 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket739458240 created
+S3 client created
+S3 bucket bucket2346365 created
+METHOD: s3_delete_bucket_intelligent_tiering_configuration_v2 --- ARGS: []
+**AWS** : Fail -- Error deleting bucket intelligent tiering configuration test25898694 from bucket bucket739458240: An error occurred (InvalidAccessTier) when calling the PutBucketIntelligentTieringConfiguration operation: Days specified in ARCHIVE_ACCESS tier should not be less than 90.
+**EMULATOR** : Fail -- Error deleting bucket intelligent tiering configuration test448736153 from bucket bucket2346365: An error occurred (IllegalLocationConstraintException) when calling the PutBucketIntelligentTieringConfiguration operation: The unspecified location constraint is incompatible for the region specific endpoint this request was sent to.
+
+DISCREPANCY FOUND!
+
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: Days specified in ARCHIVE_ACCESS tier should not be less than 90. -- Error Code: InvalidAccessTier -- HTTP Status code: 400
+EMULATOR: FAILURE -- Error Message: The unspecified location constraint is incompatible for the region specific endpoint this request was sent to. -- Error Code: IllegalLocationConstraintException
+
+ -- HTTP Status code: 400
+Success -- Bucket bucket739458240 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket2346365 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket355028454 created
+S3 client created
+S3 bucket bucket176255664 created
+METHOD: s3_delete_bucket_inventory_configuration --- ARGS: []
+**AWS** : Success -- Bucket inventory configuration test883357978 created for bucket bucket355028454
+**AWS** : Success -- Bucket inventory configuration test883357978 deleted from bucket bucket355028454
+**EMULATOR** : Fail -- Error creating bucket inventory configuration test924913005 for bucket bucket176255664: An error occurred (IllegalLocationConstraintException) when calling the PutBucketInventoryConfiguration operation: The unspecified location constraint is incompatible for the region specific endpoint this request was sent to.
+**EMULATOR** : Success -- Bucket inventory configuration test924913005 deleted from bucket bucket176255664
+Success -- Bucket bucket355028454 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket733524843 created
+S3 client created
+S3 bucket bucket780424139 created
+METHOD: s3_delete_bucket_lifecycle --- ARGS: []
+**AWS** : Success -- Bucket lifecycle created for bucket bucket733524843
+**AWS** : Success -- Bucket lifecycle deleted from bucket bucket733524843
+**EMULATOR** : Success -- Bucket lifecycle created for bucket bucket780424139
+**EMULATOR** : Success -- Bucket lifecycle deleted from bucket bucket780424139
+Success -- Bucket bucket733524843 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket780424139 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket671849278 created
+S3 client created
+S3 bucket bucket384990715 created
+METHOD: s3_delete_bucket_metrics_configuration --- ARGS: []
+**AWS** : Success -- Bucket metrics configuration test651674880 deleted from bucket bucket671849278
+**EMULATOR** : Fail -- Error deleting bucket metrics configuration test402909598 from bucket bucket384990715: An error occurred (IllegalLocationConstraintException) when calling the PutBucketMetricsConfiguration operation: The unspecified location constraint is incompatible for the region specific endpoint this request was sent to.
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: SUCCESS -- Response:  
+EMULATOR: FAILURE -- Response: An error occurred (IllegalLocationConstraintException) when calling the PutBucketMetricsConfiguration operation: The unspecified location constraint is incompatible for the region specific endpoint this request was sent to.
+
+
+Success -- Bucket bucket671849278 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket384990715 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket666209561 created
+S3 client created
+S3 bucket bucket953318103 created
+METHOD: s3_delete_bucket_ownership_controls --- ARGS: []
+**AWS** : Success -- Bucket ownership controls created for bucket bucket666209561
+**AWS** : Success -- Bucket ownership controls deleted from bucket bucket666209561
+**EMULATOR** : Success -- Bucket ownership controls created for bucket bucket953318103
+**EMULATOR** : Success -- Bucket ownership controls deleted from bucket bucket953318103
+Success -- Bucket bucket666209561 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket953318103 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket983120280 created
+S3 client created
+S3 bucket bucket869292378 created
+METHOD: s3_delete_bucket_policy --- ARGS: []
+**AWS** : Fail -- Error creating bucket policy for bucket bucket983120280: An error occurred (AccessDenied) when calling the PutBucketPolicy operation: Access Denied
+**AWS** : Success -- Bucket policy deleted from bucket bucket983120280
+**EMULATOR** : Success -- Bucket policy created for bucket bucket869292378
+**EMULATOR** : Success -- Bucket policy deleted from bucket bucket869292378
+Success -- Bucket bucket983120280 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket869292378 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket574082593 created
+S3 client created
+S3 bucket bucket355751914 created
+METHOD: s3_delete_bucket_replication --- ARGS: []
+**AWS** : Success -- Bucket versioning configuration created for bucket test379219891
+**AWS** : Fail -- Error creating bucket replication configuration for bucket test379219891: An error occurred (InvalidRequest) when calling the PutBucketReplication operation: Destination bucket cannot be the same as the source bucket.
+**AWS** : Success -- Bucket replication deleted from bucket bucket574082593
+**EMULATOR** : Success -- Bucket versioning configuration created for bucket test103393314
+**EMULATOR** : Success -- Bucket replication configuration created for bucket test103393314
+**EMULATOR** : Success -- Bucket replication deleted from bucket bucket355751914
+Success -- Bucket bucket574082593 deleted in **AWS** S3
+Success -- Bucket test379219891 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket355751914 deleted in **EMULATOR** S3
+Success -- Bucket test103393314 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket531786006 created
+S3 client created
+S3 bucket bucket45748590 created
+METHOD: s3_delete_bucket_tagging --- ARGS: []
+**AWS** : Success -- Bucket tagging deleted from bucket bucket531786006
+**EMULATOR** : Success -- Bucket tagging deleted from bucket bucket45748590
+Success -- Bucket bucket531786006 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket45748590 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket812123247 created
+S3 client created
+S3 bucket bucket48182315 created
+METHOD: s3_delete_bucket_website --- ARGS: []
+**AWS** : Success -- Bucket website deleted from bucket bucket812123247
+**EMULATOR** : Success -- Bucket website deleted from bucket bucket48182315
+Success -- Bucket bucket812123247 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket48182315 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket291363127 created
+S3 client created
+S3 bucket bucket301038394 created
+METHOD: s3_delete_empty_bucket_analytics_configuration --- ARGS: []
+**AWS** : Fail -- Error deleting bucket analytics configuration test790876347 from bucket bucket291363127: An error occurred (NoSuchConfiguration) when calling the DeleteBucketAnalyticsConfiguration operation: The specified configuration does not exist.
+**EMULATOR** : Success -- Bucket analytics configuration test574544471 deleted from bucket bucket301038394
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (NoSuchConfiguration) when calling the DeleteBucketAnalyticsConfiguration operation: The specified configuration does not exist. 
+EMULATOR: SUCCESS -- Response: 
+
+
+Success -- Bucket bucket291363127 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket858126693 created
+S3 client created
+S3 bucket bucket486452545 created
+METHOD: s3_delete_empty_object --- ARGS: []
+**AWS** : Success -- Object 378582 deleted from bucket bucket858126693
+**EMULATOR** : Success -- Object 181614 deleted from bucket bucket486452545
+Success -- Bucket bucket858126693 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket486452545 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket819752192 created
+S3 client created
+S3 bucket bucket864630565 created
+METHOD: s3_delete_empty_public_access_block --- ARGS: []
+**AWS** : Success -- Public access block deleted from bucket bucket819752192
+**EMULATOR** : Success -- Public access block deleted from bucket bucket864630565
+Success -- Bucket bucket819752192 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket864630565 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket87776406 created
+S3 client created
+S3 bucket bucket997088336 created
+METHOD: s3_delete_object --- ARGS: []
+**AWS** : Success -- Object 930797 deleted from bucket bucket87776406
+**EMULATOR** : Success -- Object 589545 deleted from bucket bucket997088336
+Success -- Bucket bucket87776406 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket997088336 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket772497438 created
+S3 client created
+S3 bucket bucket480530618 created
+METHOD: s3_delete_object_empty_tagging --- ARGS: []
+**AWS** : Fail -- Error deleting object tagging from object 88890 in bucket bucket772497438: An error occurred (NoSuchKey) when calling the DeleteObjectTagging operation: The specified key does not exist.
+**EMULATOR** : Fail -- Error deleting object tagging from object 389195 in bucket bucket480530618: An error occurred (InternalError) when calling the DeleteObjectTagging operation (reached max retries: 4): exception while calling s3.DeleteObjectTagging: 'NoneType' object has no attribute 'arn'
+
+DISCREPANCY FOUND!
+
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchKey -- Error Message: The specified key does not exist.
+EMULATOR: FAILURE -- HTTP Status code: 500 -- Error Code: InternalError -- Error Message: exception while calling s3.DeleteObjectTagging: 'NoneType' object has no attribute 'arn'
+
+
+Success -- Bucket bucket772497438 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket480530618 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket781799211 created
+S3 client created
+S3 bucket bucket201025493 created
+METHOD: s3_delete_object_tagging --- ARGS: []
+**AWS** : Success -- Object tagging deleted from object 897274 in bucket bucket781799211
+**EMULATOR** : Success -- Object tagging deleted from object 100301 in bucket bucket201025493
+Success -- Bucket bucket781799211 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket201025493 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket214527819 created
+S3 client created
+S3 bucket bucket211252549 created
+METHOD: s3_delete_objects --- ARGS: []
+**AWS** : Success -- Objects deleted from bucket bucket214527819
+**EMULATOR** : Success -- Objects deleted from bucket bucket211252549
+Success -- Bucket bucket214527819 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket211252549 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket813030446 created
+S3 client created
+S3 bucket bucket877273422 created
+METHOD: s3_delete_public_access_block --- ARGS: []
+**AWS** : Success -- Public access block deleted from bucket bucket813030446
+**EMULATOR** : Success -- Public access block deleted from bucket bucket877273422
+Success -- Bucket bucket813030446 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket877273422 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket213148653 created
+S3 client created
+S3 bucket bucket543919360 created
+METHOD: s3_download_file --- ARGS: []
+**AWS** : Success -- File file47076 downloaded from bucket bucket213148653
+**EMULATOR** : Success -- File file460420 downloaded from bucket bucket543919360
+Success -- Bucket bucket213148653 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket543919360 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket449564683 created
+S3 client created
+S3 bucket bucket957114550 created
+METHOD: s3_download_fileobj --- ARGS: []
+**AWS** : Success -- Fileobj downloaded from bucket bucket449564683
+**EMULATOR** : Success -- Fileobj downloaded from bucket bucket957114550
+Success -- Bucket bucket449564683 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket957114550 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket914228125 created
+S3 client created
+S3 bucket bucket812527595 created
+METHOD: s3_generate_presigned_post --- ARGS: []
+**AWS** : Success -- Presigned post generated for bucket bucket914228125
+**EMULATOR** : Success -- Presigned post generated for bucket bucket812527595
+Success -- Bucket bucket914228125 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket812527595 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket596241683 created
+S3 client created
+S3 bucket bucket141696382 created
+METHOD: s3_generate_presigned_url --- ARGS: []
+**AWS** : Success -- Presigned url generated for bucket bucket596241683
+**EMULATOR** : Success -- Presigned url generated for bucket bucket141696382
+Success -- Bucket bucket596241683 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket141696382 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket958971676 created
+S3 client created
+S3 bucket bucket267213213 created
+METHOD: s3_get_bucket_accelerate_configuration --- ARGS: []
+**AWS** : Success -- Accelerate configuration retrieved from bucket bucket958971676
+**EMULATOR** : Success -- Accelerate configuration retrieved from bucket bucket267213213
+Success -- Bucket bucket958971676 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket267213213 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket716300310 created
+S3 client created
+S3 bucket bucket979915661 created
+METHOD: s3_get_bucket_acl --- ARGS: []
+**AWS** : Success -- ACL retrieved from bucket bucket716300310
+**EMULATOR** : Success -- ACL retrieved from bucket bucket979915661
+Success -- Bucket bucket716300310 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket979915661 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket968549028 created
+S3 client created
+S3 bucket bucket68195630 created
+METHOD: s3_get_bucket_analytics_configuration --- ARGS: []
+**AWS** : Success -- Bucket analytics configuration test created for bucket bucket968549028
+**AWS** : Success -- Analytics configuration retrieved from bucket bucket968549028
+**EMULATOR** : Fail -- Error creating bucket analytics configuration test for bucket bucket68195630: An error occurred (IllegalLocationConstraintException) when calling the PutBucketAnalyticsConfiguration operation: The unspecified location constraint is incompatible for the region specific endpoint this request was sent to.
+**EMULATOR** : Success -- Analytics configuration retrieved from bucket bucket68195630
+Success -- Bucket bucket968549028 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket68195630 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket568737705 created
+S3 client created
+S3 bucket bucket81913609 created
+METHOD: s3_get_bucket_cors --- ARGS: []
+**AWS** : Success -- Bucket cors created for bucket bucket568737705
+**AWS** : Success -- CORS retrieved from bucket bucket568737705
+**EMULATOR** : Success -- Bucket cors created for bucket bucket81913609
+**EMULATOR** : Success -- CORS retrieved from bucket bucket81913609
+Success -- Bucket bucket568737705 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket81913609 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket232933615 created
+S3 client created
+S3 bucket bucket258452193 created
+METHOD: s3_get_bucket_empty_analytics_configuration --- ARGS: []
+**AWS** : Fail -- Error retrieving analytics configuration from bucket bucket232933615: An error occurred (NoSuchConfiguration) when calling the GetBucketAnalyticsConfiguration operation: The specified configuration does not exist.
+**EMULATOR** : Success -- Analytics configuration retrieved from bucket bucket258452193
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (NoSuchConfiguration) when calling the GetBucketAnalyticsConfiguration operation: The specified configuration does not exist. 
+EMULATOR: SUCCESS -- Response: 
+
+
+Success -- Bucket bucket232933615 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket258452193 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket816753784 created
+S3 client created
+S3 bucket bucket948697280 created
+METHOD: s3_get_bucket_empty_cors --- ARGS: []
+**AWS** : Fail -- Error retrieving CORS from bucket bucket816753784: An error occurred (NoSuchCORSConfiguration) when calling the GetBucketCors operation: The CORS configuration does not exist
+**EMULATOR** : Fail -- Error retrieving CORS from bucket bucket948697280: An error occurred (NoSuchCORSConfiguration) when calling the GetBucketCors operation: The CORS configuration does not exist
+Success -- Bucket bucket816753784 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket948697280 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket223571658 created
+S3 client created
+S3 bucket bucket508059918 created
+METHOD: s3_get_bucket_empty_intelligent_tiering_configuration --- ARGS: []
+**AWS** : Fail -- Error retrieving intelligent tiering configuration from bucket bucket223571658: An error occurred (NoSuchConfiguration) when calling the GetBucketIntelligentTieringConfiguration operation: The specified configuration does not exist.
+**EMULATOR** : Success -- Intelligent tiering configuration retrieved from bucket bucket508059918
+{'ResponseMetadata': {'RequestId': 'JASEXOLEKW5W466Q8C68G6BDE4POQZ3XM0ATZO3MX7W2YYBVH6BZ', 'HostId': 'MzRISOwyjmnupJASEXOLEKW5W466Q8C68G6BDE4POQZ3XM0ATZO3MX7W2YYBVH6BZ7/JypPGXLh0OVFGcJaaO3KW/hRAqKOpIEEp', 'HTTPStatusCode': 200, 'HTTPHeaders': {'content-type': 'application/xml', 'content-length': '74', 'x-amz-request-id': 'JASEXOLEKW5W466Q8C68G6BDE4POQZ3XM0ATZO3MX7W2YYBVH6BZ', 'x-amz-id-2': 'MzRISOwyjmnupJASEXOLEKW5W466Q8C68G6BDE4POQZ3XM0ATZO3MX7W2YYBVH6BZ7/JypPGXLh0OVFGcJaaO3KW/hRAqKOpIEEp', 'connection': 'close', 'date': 'Sun, 27 Aug 2023 04:00:01 GMT', 'server': 'hypercorn-h11'}, 'RetryAttempts': 0}, 'IntelligentTieringConfiguration': {}}
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (NoSuchConfiguration) when calling the GetBucketIntelligentTieringConfiguration operation: The specified configuration does not exist. 
+EMULATOR: SUCCESS -- Response: 
+
+
+Success -- Bucket bucket223571658 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket508059918 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket239043304 created
+S3 client created
+S3 bucket bucket492589210 created
+METHOD: s3_get_bucket_empty_inventory_configuration --- ARGS: []
+**AWS** : Fail -- Error retrieving inventory configuration from bucket bucket239043304: An error occurred (NoSuchConfiguration) when calling the GetBucketInventoryConfiguration operation: The specified configuration does not exist.
+**EMULATOR** : Success -- Inventory configuration retrieved from bucket bucket492589210
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (NoSuchConfiguration) when calling the GetBucketInventoryConfiguration operation: The specified configuration does not exist. 
+EMULATOR: SUCCESS -- Response: 
+
+
+Success -- Bucket bucket239043304 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket492589210 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket244476510 created
+S3 client created
+S3 bucket bucket91506744 created
+METHOD: s3_get_bucket_empty_lifecycle --- ARGS: []
+**AWS** : Fail -- Error retrieving lifecycle from bucket bucket244476510: An error occurred (NoSuchLifecycleConfiguration) when calling the GetBucketLifecycle operation: The lifecycle configuration does not exist
+**EMULATOR** : Fail -- Error retrieving lifecycle from bucket bucket91506744: An error occurred (NoSuchLifecycleConfiguration) when calling the GetBucketLifecycle operation: The lifecycle configuration does not exist
+Success -- Bucket bucket244476510 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket91506744 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket849988977 created
+S3 client created
+S3 bucket bucket598204259 created
+METHOD: s3_get_bucket_empty_lifecycle_configuration --- ARGS: []
+**AWS** : Fail -- Error retrieving lifecycle configuration from bucket bucket849988977: An error occurred (NoSuchLifecycleConfiguration) when calling the GetBucketLifecycleConfiguration operation: The lifecycle configuration does not exist
+**EMULATOR** : Fail -- Error retrieving lifecycle configuration from bucket bucket598204259: An error occurred (NoSuchLifecycleConfiguration) when calling the GetBucketLifecycleConfiguration operation: The lifecycle configuration does not exist
+Success -- Bucket bucket849988977 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket598204259 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket29202211 created
+S3 client created
+S3 bucket bucket871095278 created
+METHOD: s3_get_bucket_empty_metrics_configuration --- ARGS: []
+**AWS** : Fail -- Error retrieving metrics configuration from bucket bucket29202211: An error occurred (NoSuchConfiguration) when calling the GetBucketMetricsConfiguration operation: The specified configuration does not exist.
+**EMULATOR** : Success -- Metrics configuration retrieved from bucket bucket871095278
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (NoSuchConfiguration) when calling the GetBucketMetricsConfiguration operation: The specified configuration does not exist. 
+EMULATOR: SUCCESS -- Response: 
+
+
+Success -- Bucket bucket29202211 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket871095278 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket355471903 created
+S3 client created
+S3 bucket bucket958203709 created
+METHOD: s3_get_bucket_empty_ownership_controls --- ARGS: []
+**AWS** : Success -- Ownership controls retrieved from bucket bucket355471903
+**EMULATOR** : Fail -- Error retrieving ownership controls from bucket bucket958203709: An error occurred (OwnershipControlsNotFoundError) when calling the GetBucketOwnershipControls operation: The bucket ownership controls were not found
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: SUCCESS -- Response:  
+EMULATOR: FAILURE -- Response: An error occurred (OwnershipControlsNotFoundError) when calling the GetBucketOwnershipControls operation: The bucket ownership controls were not found
+
+
+Success -- Bucket bucket355471903 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket958203709 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket283105690 created
+S3 client created
+S3 bucket bucket944678625 created
+METHOD: s3_get_bucket_empty_policy --- ARGS: []
+**AWS** : Fail -- Error retrieving policy from bucket bucket283105690: An error occurred (NoSuchBucketPolicy) when calling the GetBucketPolicy operation: The bucket policy does not exist
+**EMULATOR** : Fail -- Error retrieving policy from bucket bucket944678625: An error occurred (NoSuchBucketPolicy) when calling the GetBucketPolicy operation: The bucket policy does not exist
+Success -- Bucket bucket283105690 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket944678625 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket60990594 created
+S3 client created
+S3 bucket bucket386447311 created
+METHOD: s3_get_bucket_empty_policy_status --- ARGS: []
+**AWS** : Fail -- Error retrieving policy status from bucket bucket60990594: An error occurred (NoSuchBucketPolicy) when calling the GetBucketPolicyStatus operation: The bucket policy does not exist
+**EMULATOR** : Success -- Policy status retrieved from bucket bucket386447311
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (NoSuchBucketPolicy) when calling the GetBucketPolicyStatus operation: The bucket policy does not exist 
+EMULATOR: SUCCESS -- Response: 
+
+
+Success -- Bucket bucket60990594 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket386447311 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket667577079 created
+S3 client created
+S3 bucket bucket183746934 created
+METHOD: s3_get_bucket_empty_replication --- ARGS: []
+**AWS** : Fail -- Error retrieving replication from bucket bucket667577079: An error occurred (ReplicationConfigurationNotFoundError) when calling the GetBucketReplication operation: The replication configuration was not found
+**EMULATOR** : Fail -- Error retrieving replication from bucket bucket183746934: An error occurred (ReplicationConfigurationNotFoundError) when calling the GetBucketReplication operation: The replication configuration was not found
+Success -- Bucket bucket667577079 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket183746934 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket415386567 created
+S3 client created
+S3 bucket bucket491489817 created
+METHOD: s3_get_bucket_empty_tagging --- ARGS: []
+**AWS** : Fail -- Error retrieving tagging from bucket bucket415386567: An error occurred (NoSuchTagSet) when calling the GetBucketTagging operation: The TagSet does not exist
+**EMULATOR** : Fail -- Error retrieving tagging from bucket bucket491489817: An error occurred (NoSuchTagSet) when calling the GetBucketTagging operation: The TagSet does not exist
+Success -- Bucket bucket415386567 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket491489817 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket75813572 created
+S3 client created
+S3 bucket bucket795775358 created
+METHOD: s3_get_bucket_empty_website --- ARGS: []
+**AWS** : Fail -- Error retrieving website from bucket bucket75813572: An error occurred (NoSuchWebsiteConfiguration) when calling the GetBucketWebsite operation: The specified bucket does not have a website configuration
+**EMULATOR** : Fail -- Error retrieving website from bucket bucket795775358: An error occurred (NoSuchWebsiteConfiguration) when calling the GetBucketWebsite operation: The specified bucket does not have a website configuration
+Success -- Bucket bucket75813572 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket795775358 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket115268839 created
+S3 client created
+S3 bucket bucket117161604 created
+METHOD: s3_get_bucket_encryption --- ARGS: []
+**AWS** : Success -- Encryption retrieved from bucket bucket115268839
+**EMULATOR** : Fail -- Error retrieving encryption from bucket bucket117161604: An error occurred (ServerSideEncryptionConfigurationNotFoundError) when calling the GetBucketEncryption operation: The server side encryption configuration was not found
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: SUCCESS -- Response:  
+EMULATOR: FAILURE -- Response: An error occurred (ServerSideEncryptionConfigurationNotFoundError) when calling the GetBucketEncryption operation: The server side encryption configuration was not found
+
+
+Success -- Bucket bucket115268839 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket117161604 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket500945938 created
+S3 client created
+S3 bucket bucket784553533 created
+METHOD: s3_get_bucket_intelligent_tiering_configuration --- ARGS: []
+**AWS** : Success -- Bucket intelligent tiering configuration 885748 created for bucket bucket500945938
+**AWS** : Success -- Intelligent tiering configuration retrieved from bucket bucket500945938
+{'ResponseMetadata': {'RequestId': 'KSABCZ51AXRDC59V', 'HostId': 'BUviv4yFqfNK58vwW+6Sh8KlSqR2PSlvz3YIFwUEK0jxSz0u1PCdbNtxxviWN2cGyEj6qR7DMF8=', 'HTTPStatusCode': 200, 'HTTPHeaders': {'x-amz-id-2': 'BUviv4yFqfNK58vwW+6Sh8KlSqR2PSlvz3YIFwUEK0jxSz0u1PCdbNtxxviWN2cGyEj6qR7DMF8=', 'x-amz-request-id': 'KSABCZ51AXRDC59V', 'date': 'Sun, 27 Aug 2023 04:00:16 GMT', 'server': 'AmazonS3', 'content-length': '265'}, 'RetryAttempts': 0}, 'IntelligentTieringConfiguration': {'Id': '885748', 'Filter': {'Prefix': 'test'}, 'Status': 'Enabled', 'Tierings': [{'Days': 91, 'AccessTier': 'ARCHIVE_ACCESS'}]}}
+**EMULATOR** : Fail -- Error creating bucket intelligent tiering configuration 75366 for bucket bucket784553533: An error occurred (IllegalLocationConstraintException) when calling the PutBucketIntelligentTieringConfiguration operation: The unspecified location constraint is incompatible for the region specific endpoint this request was sent to.
+**EMULATOR** : Success -- Intelligent tiering configuration retrieved from bucket bucket784553533
+{'ResponseMetadata': {'RequestId': '0VFP6QTOUMYI9YPBSSGY43FJBK7B329KFL3OGPWZZIM7WKW6KSPC', 'HostId': 'MzRISOwyjmnup0VFP6QTOUMYI9YPBSSGY43FJBK7B329KFL3OGPWZZIM7WKW6KSPC7/JypPGXLh0OVFGcJaaO3KW/hRAqKOpIEEp', 'HTTPStatusCode': 200, 'HTTPHeaders': {'content-type': 'application/xml', 'content-length': '74', 'x-amz-request-id': '0VFP6QTOUMYI9YPBSSGY43FJBK7B329KFL3OGPWZZIM7WKW6KSPC', 'x-amz-id-2': 'MzRISOwyjmnup0VFP6QTOUMYI9YPBSSGY43FJBK7B329KFL3OGPWZZIM7WKW6KSPC7/JypPGXLh0OVFGcJaaO3KW/hRAqKOpIEEp', 'connection': 'close', 'date': 'Sun, 27 Aug 2023 04:00:15 GMT', 'server': 'hypercorn-h11'}, 'RetryAttempts': 0}, 'IntelligentTieringConfiguration': {}}
+Success -- Bucket bucket500945938 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket784553533 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket434814244 created
+S3 client created
+S3 bucket bucket570478317 created
+METHOD: s3_get_bucket_inventory_configuration --- ARGS: []
+**AWS** : Success -- Bucket inventory configuration 709390 created for bucket bucket434814244
+**AWS** : Success -- Inventory configuration retrieved from bucket bucket434814244
+**EMULATOR** : Fail -- Error creating bucket inventory configuration 29311 for bucket bucket570478317: An error occurred (IllegalLocationConstraintException) when calling the PutBucketInventoryConfiguration operation: The unspecified location constraint is incompatible for the region specific endpoint this request was sent to.
+**EMULATOR** : Success -- Inventory configuration retrieved from bucket bucket570478317
+Success -- Bucket bucket434814244 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket570478317 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket651308725 created
+S3 client created
+S3 bucket bucket85435738 created
+METHOD: s3_get_bucket_lifecycle --- ARGS: []
+**AWS** : Success -- Bucket lifecycle created for bucket bucket651308725
+**AWS** : Success -- Lifecycle retrieved from bucket bucket651308725
+**EMULATOR** : Success -- Bucket lifecycle created for bucket bucket85435738
+**EMULATOR** : Success -- Lifecycle retrieved from bucket bucket85435738
+Success -- Bucket bucket651308725 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket85435738 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket369462662 created
+S3 client created
+S3 bucket bucket929166978 created
+METHOD: s3_get_bucket_lifecycle_configuration --- ARGS: []
+**AWS** : Success -- Bucket lifecycle configuration created for bucket bucket369462662
+**AWS** : Success -- Lifecycle configuration retrieved from bucket bucket369462662
+**EMULATOR** : Success -- Bucket lifecycle configuration created for bucket bucket929166978
+**EMULATOR** : Success -- Lifecycle configuration retrieved from bucket bucket929166978
+Success -- Bucket bucket369462662 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket929166978 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket138107670 created
+S3 client created
+S3 bucket bucket806686660 created
+METHOD: s3_get_bucket_location --- ARGS: []
+**AWS** : Success -- Location retrieved from bucket bucket138107670
+**EMULATOR** : Success -- Location retrieved from bucket bucket806686660
+Success -- Bucket bucket138107670 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket806686660 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket616554726 created
+S3 client created
+S3 bucket bucket336600739 created
+METHOD: s3_get_bucket_logging --- ARGS: []
+**AWS** : Success -- Logging retrieved from bucket bucket616554726
+**EMULATOR** : Success -- Logging retrieved from bucket bucket336600739
+Success -- Bucket bucket616554726 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket336600739 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket612115406 created
+S3 client created
+S3 bucket bucket945486369 created
+METHOD: s3_get_bucket_metrics_configuration --- ARGS: []
+**AWS** : Success -- Bucket metrics configuration {'Id': '484315', 'Filter': {'Prefix': 'test'}} created for bucket bucket612115406
+**AWS** : Success -- Metrics configuration retrieved from bucket bucket612115406
+**EMULATOR** : Fail -- Error creating bucket metrics configuration {'Id': '905621', 'Filter': {'Prefix': 'test'}} for bucket bucket945486369: An error occurred (IllegalLocationConstraintException) when calling the PutBucketMetricsConfiguration operation: The unspecified location constraint is incompatible for the region specific endpoint this request was sent to.
+**EMULATOR** : Success -- Metrics configuration retrieved from bucket bucket945486369
+Success -- Bucket bucket612115406 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket945486369 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket915251409 created
+S3 client created
+S3 bucket bucket891452327 created
+METHOD: s3_get_bucket_notification --- ARGS: []
+**AWS** : Success -- Notification retrieved from bucket bucket915251409
+**EMULATOR** : Success -- Notification retrieved from bucket bucket891452327
+Success -- Bucket bucket915251409 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket891452327 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket110909630 created
+S3 client created
+S3 bucket bucket860579330 created
+METHOD: s3_get_bucket_notification_configuration --- ARGS: []
+**AWS** : Success -- Notification configuration retrieved from bucket bucket110909630
+**EMULATOR** : Success -- Notification configuration retrieved from bucket bucket860579330
+Success -- Bucket bucket110909630 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket860579330 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket378106020 created
+S3 client created
+S3 bucket bucket763094989 created
+METHOD: s3_get_bucket_ownership_controls --- ARGS: []
+**AWS** : Success -- Bucket ownership controls created for bucket bucket378106020
+**AWS** : Success -- Ownership controls retrieved from bucket bucket378106020
+**EMULATOR** : Success -- Bucket ownership controls created for bucket bucket763094989
+**EMULATOR** : Success -- Ownership controls retrieved from bucket bucket763094989
+Success -- Bucket bucket378106020 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket763094989 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket429781182 created
+S3 client created
+S3 bucket bucket847089409 created
+METHOD: s3_get_bucket_policy --- ARGS: []
+**AWS** : Fail -- Error creating bucket policy for bucket bucket429781182: An error occurred (AccessDenied) when calling the PutBucketPolicy operation: Access Denied
+**AWS** : Fail -- Error retrieving policy from bucket bucket429781182: An error occurred (NoSuchBucketPolicy) when calling the GetBucketPolicy operation: The bucket policy does not exist
+**EMULATOR** : Success -- Bucket policy created for bucket bucket847089409
+**EMULATOR** : Success -- Policy retrieved from bucket bucket847089409
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (NoSuchBucketPolicy) when calling the GetBucketPolicy operation: The bucket policy does not exist 
+EMULATOR: SUCCESS -- Response: 
+
+
+Success -- Bucket bucket429781182 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket847089409 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket120562020 created
+S3 client created
+S3 bucket bucket450880781 created
+METHOD: s3_get_bucket_policy_status --- ARGS: []
+**AWS** : Fail -- Error creating bucket policy for bucket bucket120562020: An error occurred (AccessDenied) when calling the PutBucketPolicy operation: Access Denied
+**AWS** : Fail -- Error retrieving policy status from bucket bucket120562020: An error occurred (NoSuchBucketPolicy) when calling the GetBucketPolicyStatus operation: The bucket policy does not exist
+**EMULATOR** : Success -- Bucket policy created for bucket bucket450880781
+**EMULATOR** : Success -- Policy status retrieved from bucket bucket450880781
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (NoSuchBucketPolicy) when calling the GetBucketPolicyStatus operation: The bucket policy does not exist 
+EMULATOR: SUCCESS -- Response: 
+
+
+Success -- Bucket bucket120562020 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket450880781 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket118287157 created
+S3 client created
+S3 bucket bucket472523345 created
+METHOD: s3_get_bucket_replication --- ARGS: []
+**AWS** : Success -- Bucket versioning configuration created for bucket bucket786193265
+**AWS** : Fail -- Error creating bucket replication configuration for bucket bucket786193265: An error occurred (InvalidRequest) when calling the PutBucketReplication operation: Destination bucket cannot be the same as the source bucket.
+**AWS** : Fail -- Error retrieving replication from bucket bucket118287157: An error occurred (ReplicationConfigurationNotFoundError) when calling the GetBucketReplication operation: The replication configuration was not found
+**EMULATOR** : Success -- Bucket versioning configuration created for bucket bucket593729664
+**EMULATOR** : Success -- Bucket replication configuration created for bucket bucket593729664
+**EMULATOR** : Fail -- Error retrieving replication from bucket bucket472523345: An error occurred (ReplicationConfigurationNotFoundError) when calling the GetBucketReplication operation: The replication configuration was not found
+Success -- Bucket bucket118287157 deleted in **AWS** S3
+Success -- Bucket bucket786193265 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket472523345 deleted in **EMULATOR** S3
+Success -- Bucket bucket593729664 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket332553199 created
+S3 client created
+S3 bucket bucket197016316 created
+METHOD: s3_get_bucket_request_payment --- ARGS: []
+**AWS** : Success -- Request payment retrieved from bucket bucket332553199
+**EMULATOR** : Success -- Request payment retrieved from bucket bucket197016316
+Success -- Bucket bucket332553199 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket197016316 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket927644115 created
+S3 client created
+S3 bucket bucket546344188 created
+METHOD: s3_get_bucket_tagging --- ARGS: []
+**AWS** : Success -- Bucket tagging created for bucket bucket927644115
+**AWS** : Success -- Tagging retrieved from bucket bucket927644115
+**EMULATOR** : Success -- Bucket tagging created for bucket bucket546344188
+**EMULATOR** : Success -- Tagging retrieved from bucket bucket546344188
+Success -- Bucket bucket927644115 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket546344188 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket982359828 created
+S3 client created
+S3 bucket bucket284663986 created
+METHOD: s3_get_bucket_versioning --- ARGS: []
+**AWS** : Success -- Versioning retrieved from bucket bucket982359828
+**EMULATOR** : Success -- Versioning retrieved from bucket bucket284663986
+Success -- Bucket bucket982359828 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket284663986 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket225849068 created
+S3 client created
+S3 bucket bucket329349753 created
+METHOD: s3_get_bucket_website --- ARGS: []
+**AWS** : Success -- Bucket website configuration created for bucket bucket225849068
+**AWS** : Success -- Website retrieved from bucket bucket225849068
+**EMULATOR** : Success -- Bucket website configuration created for bucket bucket329349753
+**EMULATOR** : Success -- Website retrieved from bucket bucket329349753
+Success -- Bucket bucket225849068 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket329349753 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket240440123 created
+S3 client created
+S3 bucket bucket558133534 created
+METHOD: s3_get_object --- ARGS: []
+**AWS** : Success -- Object 304260 retrieved from bucket bucket240440123
+**EMULATOR** : Success -- Object 785701 retrieved from bucket bucket558133534
+Success -- Bucket bucket240440123 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket558133534 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket349770051 created
+S3 client created
+S3 bucket bucket66088854 created
+METHOD: s3_get_object_acl --- ARGS: []
+**AWS** : Success -- Object ACL 390463 retrieved from bucket bucket349770051
+**EMULATOR** : Success -- Object ACL 795473 retrieved from bucket bucket66088854
+Success -- Bucket bucket349770051 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket66088854 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket590731175 created
+S3 client created
+S3 bucket bucket656118226 created
+METHOD: s3_get_object_attributes --- ARGS: []
+**AWS** : Success -- Object attributes 491418 retrieved from bucket bucket590731175
+**EMULATOR** : Success -- Object attributes 22924 retrieved from bucket bucket656118226
+Success -- Bucket bucket590731175 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket656118226 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket812215218 created
+S3 client created
+S3 bucket bucket107167265 created
+METHOD: s3_get_object_empty_legal_hold --- ARGS: []
+**AWS** : Fail -- Error retrieving object legal hold 368676 from bucket bucket870511: An error occurred (NoSuchBucket) when calling the GetObjectLegalHold operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error retrieving object legal hold 721877 from bucket bucket928552: An error occurred (NoSuchBucket) when calling the GetObjectLegalHold operation: The specified bucket does not exist
+Success -- Bucket bucket812215218 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket107167265 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket764444334 created
+S3 client created
+S3 bucket bucket269067663 created
+METHOD: s3_get_object_empty_lock_configuration --- ARGS: []
+**AWS** : Fail -- Error retrieving object lock configuration from bucket bucket612133: An error occurred (NoSuchBucket) when calling the GetObjectLockConfiguration operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error retrieving object lock configuration from bucket bucket579825: An error occurred (NoSuchBucket) when calling the GetObjectLockConfiguration operation: The specified bucket does not exist
+Success -- Bucket bucket764444334 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket269067663 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket712128815 created
+S3 client created
+S3 bucket bucket968398018 created
+METHOD: s3_get_object_empty_retention --- ARGS: []
+**AWS** : Fail -- Error retrieving object retention 648590 from bucket bucket779783: An error occurred (NoSuchBucket) when calling the GetObjectRetention operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error retrieving object retention 768333 from bucket bucket890190: An error occurred (NoSuchBucket) when calling the GetObjectRetention operation: The specified bucket does not exist
+Success -- Bucket bucket712128815 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket968398018 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket613350683 created
+S3 client created
+S3 bucket bucket165549895 created
+METHOD: s3_get_object_legal_hold --- ARGS: []
+**AWS** : Success -- Object lock configuration created for bucket bucket298706
+**AWS** : Success -- Object legal hold created
+**AWS** : Success -- Object legal hold 254417 retrieved from bucket bucket298706
+**EMULATOR** : Success -- Object lock configuration created for bucket bucket191292
+**EMULATOR** : Success -- Object legal hold created
+**EMULATOR** : Success -- Object legal hold 42686 retrieved from bucket bucket191292
+Success -- Bucket bucket298706 deleted in **AWS** S3
+Success -- Bucket bucket613350683 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket165549895 deleted in **EMULATOR** S3
+Success -- Bucket bucket191292 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket455292255 created
+S3 client created
+S3 bucket bucket196371001 created
+METHOD: s3_get_object_lock_configuration --- ARGS: []
+**AWS** : Success -- Object lock configuration created for bucket bucket465521
+**AWS** : Success -- Object lock configuration retrieved from bucket bucket465521
+**EMULATOR** : Success -- Object lock configuration created for bucket bucket558944
+**EMULATOR** : Success -- Object lock configuration retrieved from bucket bucket558944
+Success -- Bucket bucket455292255 deleted in **AWS** S3
+Success -- Bucket bucket465521 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket196371001 deleted in **EMULATOR** S3
+Success -- Bucket bucket558944 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket711409104 created
+S3 client created
+S3 bucket bucket881411557 created
+METHOD: s3_get_object_retention --- ARGS: []
+**AWS** : Success -- Object lock configuration created for bucket bucket391874
+**AWS** : Success -- Object legal hold created
+**AWS** : Success -- Object retention 186040 retrieved from bucket bucket391874
+**EMULATOR** : Success -- Object lock configuration created for bucket bucket284656
+**EMULATOR** : Success -- Object legal hold created
+**EMULATOR** : Success -- Object retention 609559 retrieved from bucket bucket284656
+Success -- Bucket bucket391874 deleted in **AWS** S3
+Success -- Bucket bucket711409104 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket881411557 deleted in **EMULATOR** S3
+Success -- Bucket bucket284656 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket943803047 created
+S3 client created
+S3 bucket bucket484082693 created
+METHOD: s3_get_object_tagging --- ARGS: []
+**AWS** : Success -- Object tagging 306252 retrieved from bucket bucket943803047
+**EMULATOR** : Success -- Object tagging 533083 retrieved from bucket bucket484082693
+Success -- Bucket bucket943803047 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket484082693 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket25482107 created
+S3 client created
+S3 bucket bucket350028041 created
+METHOD: s3_get_object_torrent --- ARGS: []
+**AWS** : Fail -- Error retrieving object torrent 625953 from bucket bucket25482107: An error occurred (MethodNotAllowed) when calling the GetObjectTorrent operation: The specified method is not allowed against this resource.
+**EMULATOR** : Success -- Object torrent 870671 retrieved from bucket bucket350028041
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (MethodNotAllowed) when calling the GetObjectTorrent operation: The specified method is not allowed against this resource. 
+EMULATOR: SUCCESS -- Response: 
+
+
+Success -- Bucket bucket25482107 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket350028041 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket78888928 created
+S3 client created
+S3 bucket bucket793186709 created
+METHOD: s3_get_paginator --- ARGS: []
+**AWS** : Success -- Paginator retrieved
+**EMULATOR** : Success -- Paginator retrieved
+Success -- Bucket bucket78888928 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket793186709 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket518295439 created
+S3 client created
+S3 bucket bucket420154759 created
+METHOD: s3_get_public_access_block --- ARGS: []
+**AWS** : Success -- Public access block created for bucket bucket518295439
+**AWS** : Success -- Public access block retrieved from bucket bucket518295439
+**EMULATOR** : Success -- Public access block created for bucket bucket420154759
+**EMULATOR** : Success -- Public access block retrieved from bucket bucket420154759
+Success -- Bucket bucket518295439 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket420154759 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket315640858 created
+S3 client created
+S3 bucket bucket539283521 created
+METHOD: s3_get_waiter --- ARGS: []
+**AWS** : Fail -- Error retrieving waiter from bucket bucket315640858: Waiter does not exist: bucket315640858
+**EMULATOR** : Fail -- Error retrieving waiter from bucket bucket539283521: Waiter does not exist: bucket539283521
+Exception:  'ValueError' object has no attribute 'response'
+Success -- Bucket bucket315640858 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket539283521 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket609234378 created
+S3 client created
+S3 bucket bucket199363720 created
+METHOD: s3_head_bucket --- ARGS: []
+**AWS** : Success -- Bucket bucket609234378 head
+**EMULATOR** : Success -- Bucket bucket199363720 head
+Success -- Bucket bucket609234378 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket199363720 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket612287012 created
+S3 client created
+S3 bucket bucket828096946 created
+METHOD: s3_head_object --- ARGS: []
+**AWS** : Success -- Object 74004 head from bucket bucket612287012
+**EMULATOR** : Success -- Object 288053 head from bucket bucket828096946
+Success -- Bucket bucket612287012 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket828096946 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket873770177 created
+S3 client created
+S3 bucket bucket609331447 created
+METHOD: s3_list_bucket_analytics_configurations --- ARGS: []
+**AWS** : Success -- Bucket analytics configurations listed from bucket bucket873770177
+**EMULATOR** : Success -- Bucket analytics configurations listed from bucket bucket609331447
+Success -- Bucket bucket873770177 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket609331447 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket472886144 created
+S3 client created
+S3 bucket bucket138340600 created
+METHOD: s3_list_bucket_intelligent_tiering_configurations --- ARGS: []
+**AWS** : Success -- Bucket intelligent tiering configurations listed from bucket bucket472886144
+**EMULATOR** : Success -- Bucket intelligent tiering configurations listed from bucket bucket138340600
+Success -- Bucket bucket472886144 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket138340600 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket804470290 created
+S3 client created
+S3 bucket bucket330428365 created
+METHOD: s3_list_bucket_inventory_configurations --- ARGS: []
+**AWS** : Success -- Bucket inventory configurations listed from bucket bucket804470290
+**EMULATOR** : Success -- Bucket inventory configurations listed from bucket bucket330428365
+Success -- Bucket bucket804470290 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket330428365 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket85483189 created
+S3 client created
+S3 bucket bucket648814087 created
+METHOD: s3_list_bucket_metrics_configurations --- ARGS: []
+**AWS** : Success -- Bucket metrics configurations listed from bucket bucket85483189
+**EMULATOR** : Success -- Bucket metrics configurations listed from bucket bucket648814087
+Success -- Bucket bucket85483189 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket648814087 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket813487588 created
+S3 client created
+S3 bucket bucket100837742 created
+METHOD: s3_list_buckets --- ARGS: []
+**AWS** : Success -- Buckets listed
+**EMULATOR** : Success -- Buckets listed
+Success -- Bucket bucket813487588 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket100837742 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket841457895 created
+S3 client created
+S3 bucket bucket771949045 created
+METHOD: s3_list_multipart_uploads --- ARGS: []
+**AWS** : Success -- Multipart uploads listed from bucket bucket841457895
+**EMULATOR** : Success -- Multipart uploads listed from bucket bucket771949045
+Success -- Bucket bucket841457895 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket771949045 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket842752498 created
+S3 client created
+S3 bucket bucket860146555 created
+METHOD: s3_list_object_versions --- ARGS: []
+**AWS** : Success -- Object versions listed from bucket bucket842752498
+**EMULATOR** : Success -- Object versions listed from bucket bucket860146555
+Success -- Bucket bucket842752498 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket860146555 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket897758436 created
+S3 client created
+S3 bucket bucket696589974 created
+METHOD: s3_list_objects --- ARGS: []
+**AWS** : Success -- Objects listed from bucket bucket897758436
+**EMULATOR** : Success -- Objects listed from bucket bucket696589974
+Success -- Bucket bucket897758436 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket696589974 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket666119646 created
+S3 client created
+S3 bucket bucket964030789 created
+METHOD: s3_list_objects_v2 --- ARGS: []
+**AWS** : Success -- Objects v2 listed from bucket bucket666119646
+**EMULATOR** : Success -- Objects v2 listed from bucket bucket964030789
+Success -- Bucket bucket666119646 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket964030789 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket700226443 created
+S3 client created
+S3 bucket bucket922798386 created
+METHOD: s3_list_parts --- ARGS: []
+**AWS** : Success -- Parts listed from bucket bucket700226443
+**EMULATOR** : Success -- Parts listed from bucket bucket922798386
+Success -- Bucket bucket700226443 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket922798386 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket958049389 created
+S3 client created
+S3 bucket bucket123520168 created
+METHOD: s3_put_bucket_accelerate_configuration --- ARGS: []
+**AWS** : Success -- Bucket accelerate configuration added to bucket bucket958049389
+**EMULATOR** : Success -- Bucket accelerate configuration added to bucket bucket123520168
+Success -- Bucket bucket958049389 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket123520168 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket854913654 created
+S3 client created
+S3 bucket bucket883900251 created
+METHOD: s3_put_bucket_acl --- ARGS: []
+**AWS** : Fail -- Error adding bucket ACL to bucket bucket854913654: An error occurred (AccessDenied) when calling the PutBucketAcl operation: Access Denied
+**EMULATOR** : Success -- Bucket ACL added to bucket bucket883900251
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (AccessDenied) when calling the PutBucketAcl operation: Access Denied 
+EMULATOR: SUCCESS -- Response: 
+
+
+Success -- Bucket bucket854913654 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket883900251 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket647276343 created
+S3 client created
+S3 bucket bucket798963369 created
+METHOD: s3_put_bucket_analytics_configuration --- ARGS: []
+**AWS** : Success -- Bucket analytics configuration 701949 created for bucket bucket647276343
+**EMULATOR** : Fail -- Error creating bucket analytics configuration 124370 for bucket bucket798963369: An error occurred (IllegalLocationConstraintException) when calling the PutBucketAnalyticsConfiguration operation: The unspecified location constraint is incompatible for the region specific endpoint this request was sent to.
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: SUCCESS -- Response:  
+EMULATOR: FAILURE -- Response: An error occurred (IllegalLocationConstraintException) when calling the PutBucketAnalyticsConfiguration operation: The unspecified location constraint is incompatible for the region specific endpoint this request was sent to.
+
+
+Success -- Bucket bucket647276343 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket798963369 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket503666617 created
+S3 client created
+S3 bucket bucket568488830 created
+METHOD: s3_put_bucket_cors --- ARGS: []
+**AWS** : Success -- Bucket cors created for bucket bucket503666617
+**EMULATOR** : Success -- Bucket cors created for bucket bucket568488830
+Success -- Bucket bucket503666617 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket568488830 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket64197093 created
+S3 client created
+S3 bucket bucket979285890 created
+METHOD: s3_put_bucket_encryption --- ARGS: []
+**AWS** : Success -- Bucket encryption created for bucket bucket64197093
+**EMULATOR** : Success -- Bucket encryption created for bucket bucket979285890
+Success -- Bucket bucket64197093 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket979285890 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket310604226 created
+S3 client created
+S3 bucket bucket677811889 created
+METHOD: s3_put_bucket_intelligent_tiering_configuration --- ARGS: []
+**AWS** : Success -- Bucket intelligent tiering configuration 533265 created for bucket bucket310604226
+**EMULATOR** : Fail -- Error creating bucket intelligent tiering configuration 400485 for bucket bucket677811889: An error occurred (IllegalLocationConstraintException) when calling the PutBucketIntelligentTieringConfiguration operation: The unspecified location constraint is incompatible for the region specific endpoint this request was sent to.
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: SUCCESS -- Response:  
+EMULATOR: FAILURE -- Response: An error occurred (IllegalLocationConstraintException) when calling the PutBucketIntelligentTieringConfiguration operation: The unspecified location constraint is incompatible for the region specific endpoint this request was sent to.
+
+
+Success -- Bucket bucket310604226 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket677811889 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket875114656 created
+S3 client created
+S3 bucket bucket615421038 created
+METHOD: s3_put_bucket_inventory_configuration --- ARGS: []
+**AWS** : Success -- Bucket inventory configuration 134484 created for bucket bucket875114656
+**EMULATOR** : Fail -- Error creating bucket inventory configuration 72578 for bucket bucket615421038: An error occurred (IllegalLocationConstraintException) when calling the PutBucketInventoryConfiguration operation: The unspecified location constraint is incompatible for the region specific endpoint this request was sent to.
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: SUCCESS -- Response:  
+EMULATOR: FAILURE -- Response: An error occurred (IllegalLocationConstraintException) when calling the PutBucketInventoryConfiguration operation: The unspecified location constraint is incompatible for the region specific endpoint this request was sent to.
+
+
+Success -- Bucket bucket875114656 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket615421038 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket654781852 created
+S3 client created
+S3 bucket bucket960112404 created
+METHOD: s3_put_bucket_lifecycle --- ARGS: []
+**AWS** : Success -- Bucket lifecycle created for bucket bucket654781852
+**EMULATOR** : Success -- Bucket lifecycle created for bucket bucket960112404
+Success -- Bucket bucket654781852 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket960112404 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket769598294 created
+S3 client created
+S3 bucket bucket335433764 created
+METHOD: s3_put_bucket_lifecycle_configuration --- ARGS: []
+**AWS** : Success -- Bucket lifecycle configuration created for bucket bucket769598294
+**EMULATOR** : Success -- Bucket lifecycle configuration created for bucket bucket335433764
+Success -- Bucket bucket769598294 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket335433764 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket707718207 created
+S3 client created
+S3 bucket bucket824677211 created
+METHOD: s3_put_bucket_logging --- ARGS: []
+**AWS** : Success -- Bucket logging configuration created for bucket bucket707718207
+{'ResponseMetadata': {'RequestId': 'Q4NCNQCQRBNJ8AQ5', 'HostId': 'H54VKbdMvLi/WAFmgjWLZL/zNRidgabBM2nj/9u22efTSdw1Hg1VvNIIOZbCzP8C2fSeW/cVJNQ=', 'HTTPStatusCode': 200, 'HTTPHeaders': {'x-amz-id-2': 'H54VKbdMvLi/WAFmgjWLZL/zNRidgabBM2nj/9u22efTSdw1Hg1VvNIIOZbCzP8C2fSeW/cVJNQ=', 'x-amz-request-id': 'Q4NCNQCQRBNJ8AQ5', 'date': 'Sun, 27 Aug 2023 04:01:20 GMT', 'server': 'AmazonS3', 'content-length': '0'}, 'RetryAttempts': 0}}
+**EMULATOR** : Fail -- Error creating bucket logging configuration for bucket bucket824677211: An error occurred (InvalidTargetBucketForLogging) when calling the PutBucketLogging operation: You must give the log-delivery group WRITE and READ_ACP permissions to the target bucket
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: SUCCESS -- Response:  
+EMULATOR: FAILURE -- Response: An error occurred (InvalidTargetBucketForLogging) when calling the PutBucketLogging operation: You must give the log-delivery group WRITE and READ_ACP permissions to the target bucket
+
+
+Success -- Bucket bucket707718207 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket824677211 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket392291833 created
+S3 client created
+S3 bucket bucket723090681 created
+METHOD: s3_put_bucket_metrics_configuration --- ARGS: []
+**AWS** : Success -- Bucket metrics configuration {'Id': '35582', 'Filter': {'Prefix': 'test'}} created for bucket bucket392291833
+**EMULATOR** : Fail -- Error creating bucket metrics configuration {'Id': '277309', 'Filter': {'Prefix': 'test'}} for bucket bucket723090681: An error occurred (IllegalLocationConstraintException) when calling the PutBucketMetricsConfiguration operation: The unspecified location constraint is incompatible for the region specific endpoint this request was sent to.
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: SUCCESS -- Response:  
+EMULATOR: FAILURE -- Response: An error occurred (IllegalLocationConstraintException) when calling the PutBucketMetricsConfiguration operation: The unspecified location constraint is incompatible for the region specific endpoint this request was sent to.
+
+
+Success -- Bucket bucket392291833 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket723090681 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket801751159 created
+S3 client created
+S3 bucket bucket865655641 created
+METHOD: s3_put_bucket_notification_configuration --- ARGS: []
+**AWS** : Fail -- Error creating bucket notification configuration for bucket bucket801751159: An error occurred (InvalidArgument) when calling the PutBucketNotificationConfiguration operation: Unable to validate the following destination configurations
+**EMULATOR** : Fail -- Error creating bucket notification configuration for bucket bucket865655641: An error occurred (InvalidClientTokenId) when calling the CreateTopic operation: The security token included in the request is invalid.
+
+DISCREPANCY FOUND!
+
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 400 -- Error Code: InvalidArgument -- Error Message: Unable to validate the following destination configurations
+EMULATOR: FAILURE -- HTTP Status code: 403 -- Error Code: InvalidClientTokenId -- Error Message: The security token included in the request is invalid.
+
+
+Success -- Bucket bucket801751159 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket865655641 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket181962166 created
+S3 client created
+S3 bucket bucket416297738 created
+METHOD: s3_put_bucket_ownership_controls --- ARGS: []
+**AWS** : Success -- Bucket ownership controls created for bucket bucket181962166
+**EMULATOR** : Success -- Bucket ownership controls created for bucket bucket416297738
+Success -- Bucket bucket181962166 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket416297738 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket970226800 created
+S3 client created
+S3 bucket bucket539384769 created
+METHOD: s3_put_bucket_policy --- ARGS: []
+**AWS** : Fail -- Error creating bucket policy for bucket bucket970226800: An error occurred (AccessDenied) when calling the PutBucketPolicy operation: Access Denied
+**EMULATOR** : Success -- Bucket policy created for bucket bucket539384769
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (AccessDenied) when calling the PutBucketPolicy operation: Access Denied 
+EMULATOR: SUCCESS -- Response: 
+
+
+Success -- Bucket bucket970226800 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket539384769 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket992816447 created
+S3 client created
+S3 bucket bucket279749040 created
+METHOD: s3_put_bucket_replication --- ARGS: []
+**AWS** : Success -- Bucket versioning configuration created for bucket bucket26207759
+**AWS** : Fail -- Error creating bucket replication configuration for bucket bucket26207759: An error occurred (InvalidRequest) when calling the PutBucketReplication operation: Destination bucket cannot be the same as the source bucket.
+**EMULATOR** : Success -- Bucket versioning configuration created for bucket bucket56077660
+**EMULATOR** : Success -- Bucket replication configuration created for bucket bucket56077660
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (InvalidRequest) when calling the PutBucketReplication operation: Destination bucket cannot be the same as the source bucket. 
+EMULATOR: SUCCESS -- Response: 
+
+
+Success -- Bucket bucket26207759 deleted in **AWS** S3
+Success -- Bucket bucket992816447 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket279749040 deleted in **EMULATOR** S3
+Success -- Bucket bucket56077660 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket132517204 created
+S3 client created
+S3 bucket bucket455556872 created
+METHOD: s3_put_bucket_tagging --- ARGS: []
+**AWS** : Success -- Bucket tagging created for bucket bucket132517204
+**EMULATOR** : Success -- Bucket tagging created for bucket bucket455556872
+Success -- Bucket bucket132517204 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket455556872 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket285787206 created
+S3 client created
+S3 bucket bucket917854168 created
+METHOD: s3_put_bucket_versioning --- ARGS: []
+**AWS** : Success -- Bucket versioning configuration created for bucket bucket285787206
+**EMULATOR** : Success -- Bucket versioning configuration created for bucket bucket917854168
+Success -- Bucket bucket285787206 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket917854168 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket258445786 created
+S3 client created
+S3 bucket bucket538050897 created
+METHOD: s3_put_bucket_website --- ARGS: []
+**AWS** : Success -- Bucket website configuration created for bucket bucket258445786
+**EMULATOR** : Success -- Bucket website configuration created for bucket bucket538050897
+Success -- Bucket bucket258445786 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket538050897 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket308363 created
+S3 client created
+S3 bucket bucket223678720 created
+METHOD: s3_put_object --- ARGS: []
+**AWS** : Success -- Put object 611845 in **AWS** S3 bucket bucket308363
+**EMULATOR** : Success -- Put object 690165 in **EMULATOR** S3 bucket bucket223678720
+Success -- Bucket bucket308363 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket223678720 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket384486910 created
+S3 client created
+S3 bucket bucket826345488 created
+METHOD: s3_put_object_acl --- ARGS: []
+**AWS** : Fail -- Error creating object ACL for object 771836: An error occurred (AccessDenied) when calling the PutObjectAcl operation: Access Denied
+**EMULATOR** : Success -- Object ACL created for object 752383
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (AccessDenied) when calling the PutObjectAcl operation: Access Denied 
+EMULATOR: SUCCESS -- Response: 
+
+
+Success -- Bucket bucket384486910 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket826345488 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket787730032 created
+S3 client created
+S3 bucket bucket793528223 created
+METHOD: s3_put_object_legal_hold --- ARGS: []
+**AWS** : Success -- Object lock configuration created for bucket bucket929297
+**AWS** : Success -- Object legal hold created
+**EMULATOR** : Success -- Object lock configuration created for bucket bucket483686
+**EMULATOR** : Success -- Object legal hold created
+Success -- Bucket bucket787730032 deleted in **AWS** S3
+Success -- Bucket bucket929297 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket793528223 deleted in **EMULATOR** S3
+Success -- Bucket bucket483686 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket452073036 created
+S3 client created
+S3 bucket bucket404919245 created
+METHOD: s3_put_object_lock_configuration --- ARGS: []
+**AWS** : Success -- Object lock configuration created for bucket bucket266293
+**EMULATOR** : Success -- Object lock configuration created for bucket bucket450300
+Success -- Bucket bucket266293 deleted in **AWS** S3
+Success -- Bucket bucket452073036 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket404919245 deleted in **EMULATOR** S3
+Success -- Bucket bucket450300 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket17271622 created
+S3 client created
+S3 bucket bucket127501053 created
+METHOD: s3_put_object_retention --- ARGS: []
+**AWS** : Success -- Object lock configuration created for bucket bucket12083
+**AWS** : Fail -- Error creating object retention for object 93166: An error occurred (AccessDenied) when calling the PutObjectRetention operation: Access Denied
+**EMULATOR** : Success -- Object lock configuration created for bucket bucket315013
+**EMULATOR** : Success -- Object retention created for object 538367
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (AccessDenied) when calling the PutObjectRetention operation: Access Denied 
+EMULATOR: SUCCESS -- Response: 
+
+
+Success -- Bucket bucket12083 deleted in **AWS** S3
+Success -- Bucket bucket17271622 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket127501053 deleted in **EMULATOR** S3
+Success -- Bucket bucket315013 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket109173629 created
+S3 client created
+S3 bucket bucket844078493 created
+METHOD: s3_put_object_tagging --- ARGS: []
+**AWS** : Success -- Object tagging created for object 883221
+**EMULATOR** : Success -- Object tagging created for object 918642
+Success -- Bucket bucket109173629 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket844078493 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket68160648 created
+S3 client created
+S3 bucket bucket453216586 created
+METHOD: s3_put_public_access_block --- ARGS: []
+**AWS** : Success -- Public access block created for bucket bucket68160648
+**EMULATOR** : Success -- Public access block created for bucket bucket453216586
+Success -- Bucket bucket68160648 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket453216586 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket858043005 created
+S3 client created
+S3 bucket bucket173765381 created
+METHOD: s3_restore_object --- ARGS: []
+**AWS** : Success -- Object restored for object 928752
+**EMULATOR** : Success -- Object restored for object 308733
+Success -- Bucket bucket858043005 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket173765381 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket397328183 created
+S3 client created
+S3 bucket bucket760101830 created
+METHOD: s3_select_object_content --- ARGS: []
+**AWS** : Success -- Object content selected for object 903795
+**EMULATOR** : Fail -- Error selecting object content for object 88930: An error occurred (InternalError) when calling the SelectObjectContent operation (reached max retries: 4): exception while calling s3.SelectObjectContent: 'Variable' object is not iterable
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: SUCCESS -- Response:  
+EMULATOR: FAILURE -- Response: An error occurred (InternalError) when calling the SelectObjectContent operation (reached max retries: 4): exception while calling s3.SelectObjectContent: 'Variable' object is not iterable
+
+
+Success -- Bucket bucket397328183 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket760101830 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket151890206 created
+S3 client created
+S3 bucket bucket269585316 created
+METHOD: s3_upload_file --- ARGS: []
+**AWS** : Success -- File uploaded to object 139207
+**EMULATOR** : Success -- File uploaded to object 937078
+Success -- Bucket bucket151890206 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket269585316 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket533067835 created
+S3 client created
+S3 bucket bucket761548488 created
+METHOD: s3_upload_fileobj --- ARGS: []
+**AWS** : Success -- File object uploaded to object 982448
+**EMULATOR** : Success -- File object uploaded to object 720418
+Success -- Bucket bucket533067835 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket761548488 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket838706449 created
+S3 client created
+S3 bucket bucket207635069 created
+METHOD: s3_upload_part --- ARGS: []
+**AWS** : Success -- Multipart upload created for 217325 in **AWS** S3 bucket bucket838706449
+**AWS** : Success -- Part uploaded for 217325 in **AWS** S3 bucket bucket838706449
+**EMULATOR** : Success -- Multipart upload created for 500884 in **EMULATOR** S3 bucket bucket207635069
+**EMULATOR** : Success -- Part uploaded for 500884 in **EMULATOR** S3 bucket bucket207635069
+Success -- Bucket bucket838706449 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket207635069 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+S3 client created
+S3 bucket bucket789635098 created
+S3 client created
+S3 bucket bucket490341685 created
+METHOD: s3_upload_part_copy --- ARGS: []
+**AWS** : Success -- Multipart upload created for 959615 in **AWS** S3 bucket bucket789635098
+**AWS** : Success -- Part copy uploaded for 959615 in **AWS** S3 bucket bucket789635098
+**EMULATOR** : Success -- Multipart upload created for 553925 in **EMULATOR** S3 bucket bucket490341685
+**EMULATOR** : Success -- Part copy uploaded for 553925 in **EMULATOR** S3 bucket bucket490341685
+Success -- Bucket bucket789635098 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket490341685 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3

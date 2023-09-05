@@ -1,0 +1,1188 @@
+METHOD: s3_abort_multipart_upload --- ARGS: 
+**AWS** : Success -- Multipart upload aborted for 380059 in **AWS** S3 bucket bucket629676317
+**EMULATOR** : Success -- Multipart upload aborted for 380059 in **EMULATOR** S3 bucket bucket23267595
+Success -- Bucket bucket629676317 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket23267595 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_can_paginate --- ARGS: 
+**AWS** : Fail -- Error checking if S3 client can paginate 380059: '380059'
+**EMULATOR** : Fail -- Error checking if S3 client can paginate 380059: '380059'
+Exception:  'KeyError' object has no attribute 'response'
+Success -- Bucket bucket862765506 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket56580188 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_complete_multipart_upload --- ARGS: 
+**AWS** : Success -- Multipart upload completed for S3 bucket bucket93133128
+**EMULATOR** : Fail -- Error completing multipart upload for S3 bucket bucket699158897: An error occurred (InternalError) when calling the CompleteMultipartUpload operation (reached max retries: 4): exception while calling s3.CompleteMultipartUpload: 'nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_'
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: SUCCESS -- Response:  
+EMULATOR: FAILURE -- Response: An error occurred (InternalError) when calling the CompleteMultipartUpload operation (reached max retries: 4): exception while calling s3.CompleteMultipartUpload: 'nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_'
+
+
+Success -- Bucket bucket93133128 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket699158897 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_copy --- ARGS: 
+**AWS** : Fail -- Error copying for S3 bucket test665814167: Expecting dictionary formatted: {"Bucket": bucket_name, "Key": key} but got nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ or type <class 'str'>.
+**EMULATOR** : Fail -- Error copying for S3 bucket test61382259: Expecting dictionary formatted: {"Bucket": bucket_name, "Key": key} but got nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ or type <class 'str'>.
+Exception:  'TypeError' object has no attribute 'response'
+Success -- Bucket bucket673970943 deleted in **AWS** S3
+Success -- Bucket test665814167 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket182858538 deleted in **EMULATOR** S3
+Success -- Bucket test61382259 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_copy_object --- ARGS: 
+**AWS** : Fail -- Error copying object for S3 bucket test162916657: An error occurred (InvalidArgument) when calling the CopyObject operation: Invalid copy source object key
+**EMULATOR** : Fail -- Error copying object for S3 bucket test68468757: An error occurred (InternalError) when calling the CopyObject operation (reached max retries: 4): exception while calling s3.CopyObject: not enough values to unpack (expected 2, got 1)
+
+DISCREPANCY FOUND!
+
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 400 -- Error Code: InvalidArgument -- Error Message: Invalid copy source object key
+EMULATOR: FAILURE -- HTTP Status code: 500 -- Error Code: InternalError -- Error Message: exception while calling s3.CopyObject: not enough values to unpack (expected 2, got 1)
+
+
+Success -- Bucket bucket271595158 deleted in **AWS** S3
+Success -- Bucket test162916657 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket497152592 deleted in **EMULATOR** S3
+Success -- Bucket test68468757 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_create_bucket --- ARGS: 
+**AWS** : Success -- Created bucket 380059 in **AWS** S3
+**EMULATOR** : Success -- Created bucket 380059 in **EMULATOR** S3
+Success -- Bucket 380059 deleted in **AWS** S3
+Success -- Bucket bucket709696741 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket910192112 deleted in **EMULATOR** S3
+Success -- Bucket 380059 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_create_multipart_upload --- ARGS: 
+**AWS** : Success -- Multipart upload created for 380059 in **AWS** S3 bucket bucket379498351
+**EMULATOR** : Success -- Multipart upload created for 380059 in **EMULATOR** S3 bucket bucket323184513
+Success -- Bucket bucket379498351 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket323184513 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_delete_bucket --- ARGS: 
+**AWS** : Success -- Bucket bucket403484303 deleted
+**EMULATOR** : Success -- Bucket bucket447488277 deleted
+Cleaned all buckets in **AWS** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_delete_bucket_analytics_configuration --- ARGS: 
+**AWS** : Fail -- Error deleting bucket analytics configuration nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ from bucket 380059: An error occurred (NoSuchBucket) when calling the PutBucketAnalyticsConfiguration operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error deleting bucket analytics configuration nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ from bucket 380059: An error occurred (IllegalLocationConstraintException) when calling the PutBucketAnalyticsConfiguration operation: The unspecified location constraint is incompatible for the region specific endpoint this request was sent to.
+
+DISCREPANCY FOUND!
+
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+EMULATOR: FAILURE -- HTTP Status code: 400 -- Error Code: IllegalLocationConstraintException -- Error Message: The unspecified location constraint is incompatible for the region specific endpoint this request was sent to.
+
+
+Success -- Bucket bucket992609544 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket174004806 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_delete_bucket_cors --- ARGS: 
+**AWS** : Fail -- Error deleting bucket cors from bucket 380059: An error occurred (NoSuchBucket) when calling the PutBucketCors operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error deleting bucket cors from bucket 380059: An error occurred (NoSuchBucket) when calling the PutBucketCors operation: The specified bucket does not exist
+Success -- Bucket bucket506349539 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket408593852 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_delete_bucket_empty_intelligent_tiering_configuration --- ARGS: 
+**AWS** : Fail -- Error deleting bucket intelligent tiering configuration nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ from bucket 380059: An error occurred (NoSuchBucket) when calling the DeleteBucketIntelligentTieringConfiguration operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error deleting bucket intelligent tiering configuration nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ from bucket 380059: An error occurred (NoSuchBucket) when calling the DeleteBucketIntelligentTieringConfiguration operation: The specified bucket does not exist
+Success -- Bucket bucket272962207 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket704872961 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_delete_bucket_empty_inventory_configuration --- ARGS: 
+**AWS** : Fail -- Error deleting bucket inventory configuration nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ from bucket 380059: An error occurred (NoSuchBucket) when calling the DeleteBucketInventoryConfiguration operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error deleting bucket inventory configuration nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ from bucket 380059: An error occurred (NoSuchBucket) when calling the DeleteBucketInventoryConfiguration operation: The specified bucket does not exist
+Success -- Bucket bucket761119046 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket42520476 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_delete_bucket_empty_lifecycle --- ARGS: 
+**AWS** : Fail -- Error deleting bucket lifecycle from bucket 380059: An error occurred (NoSuchBucket) when calling the DeleteBucketLifecycle operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error deleting bucket lifecycle from bucket 380059: An error occurred (NoSuchBucket) when calling the DeleteBucketLifecycle operation: The specified bucket does not exist
+Success -- Bucket bucket495582669 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket475001848 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_delete_bucket_empty_metrics_configuration --- ARGS: 
+**AWS** : Fail -- Error deleting bucket metrics configuration nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ from bucket 380059: An error occurred (NoSuchBucket) when calling the DeleteBucketMetricsConfiguration operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error deleting bucket metrics configuration nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ from bucket 380059: An error occurred (NoSuchBucket) when calling the DeleteBucketMetricsConfiguration operation: The specified bucket does not exist
+Success -- Bucket bucket267514342 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket720296173 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_delete_bucket_empty_ownership_controls --- ARGS: 
+**AWS** : Fail -- Error deleting bucket ownership controls from bucket 380059: An error occurred (NoSuchBucket) when calling the DeleteBucketOwnershipControls operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error deleting bucket ownership controls from bucket 380059: An error occurred (NoSuchBucket) when calling the DeleteBucketOwnershipControls operation: The specified bucket does not exist
+Success -- Bucket bucket667363637 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket509777949 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_delete_bucket_empty_policy --- ARGS: 
+**AWS** : Fail -- Error deleting bucket policy from bucket 380059: An error occurred (NoSuchBucket) when calling the DeleteBucketPolicy operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error deleting bucket policy from bucket 380059: An error occurred (NoSuchBucket) when calling the DeleteBucketPolicy operation: The specified bucket does not exist
+Success -- Bucket bucket145945611 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket952693776 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_delete_bucket_empty_replication --- ARGS: 
+**AWS** : Fail -- Error deleting bucket replication from bucket 380059: An error occurred (NoSuchBucket) when calling the DeleteBucketReplication operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error deleting bucket replication from bucket 380059: An error occurred (NoSuchBucket) when calling the DeleteBucketReplication operation: The specified bucket does not exist
+Success -- Bucket bucket851945619 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket265055282 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_delete_bucket_empty_tagging --- ARGS: 
+**AWS** : Fail -- Error deleting bucket tagging from bucket 380059: An error occurred (NoSuchBucket) when calling the DeleteBucketTagging operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error deleting bucket tagging from bucket 380059: An error occurred (NoSuchBucket) when calling the DeleteBucketTagging operation: The specified bucket does not exist
+Success -- Bucket bucket895833176 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket559481144 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_delete_bucket_empty_website --- ARGS: 
+**AWS** : Fail -- Error deleting bucket website from bucket 380059: An error occurred (NoSuchBucket) when calling the DeleteBucketWebsite operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error deleting bucket website from bucket 380059: An error occurred (NoSuchBucket) when calling the DeleteBucketWebsite operation: The specified bucket does not exist
+Success -- Bucket bucket175461377 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket437587036 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_delete_bucket_encryption --- ARGS: 
+**AWS** : Fail -- Error deleting bucket encryption from bucket 380059: An error occurred (NoSuchBucket) when calling the PutBucketEncryption operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error deleting bucket encryption from bucket 380059: An error occurred (NoSuchBucket) when calling the PutBucketEncryption operation: The specified bucket does not exist
+Success -- Bucket bucket234020207 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket147061355 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_delete_bucket_intelligent_tiering_configuration --- ARGS: 
+**AWS** : Fail -- Error creating bucket intelligent tiering configuration nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ for bucket 380059: Parameter validation failed:
+Invalid type for parameter IntelligentTieringConfiguration, value: [{'ETag': '""ccd245db6a7f5ed1dc39d419a4697c80""', 'PartNumber': 1}], type: <class 'list'>, valid types: <class 'dict'>
+**AWS** : Fail -- Error deleting bucket intelligent tiering configuration nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ from bucket 380059: An error occurred (NoSuchBucket) when calling the DeleteBucketIntelligentTieringConfiguration operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error creating bucket intelligent tiering configuration nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ for bucket 380059: Parameter validation failed:
+Invalid type for parameter IntelligentTieringConfiguration, value: [{'ETag': '""ccd245db6a7f5ed1dc39d419a4697c80""', 'PartNumber': 1}], type: <class 'list'>, valid types: <class 'dict'>
+**EMULATOR** : Fail -- Error deleting bucket intelligent tiering configuration nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ from bucket 380059: An error occurred (NoSuchBucket) when calling the DeleteBucketIntelligentTieringConfiguration operation: The specified bucket does not exist
+Success -- Bucket bucket555793391 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket307809681 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_delete_bucket_intelligent_tiering_configuration_v2 --- ARGS: 
+**AWS** : Fail -- Error deleting bucket intelligent tiering configuration nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ from bucket 380059: An error occurred (NoSuchBucket) when calling the PutBucketIntelligentTieringConfiguration operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error deleting bucket intelligent tiering configuration nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ from bucket 380059: An error occurred (IllegalLocationConstraintException) when calling the PutBucketIntelligentTieringConfiguration operation: The unspecified location constraint is incompatible for the region specific endpoint this request was sent to.
+
+DISCREPANCY FOUND!
+
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+EMULATOR: FAILURE -- HTTP Status code: 400 -- Error Code: IllegalLocationConstraintException -- Error Message: The unspecified location constraint is incompatible for the region specific endpoint this request was sent to.
+
+
+Success -- Bucket bucket586566803 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket860204808 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_delete_bucket_inventory_configuration --- ARGS: 
+**AWS** : Fail -- Error creating bucket inventory configuration nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ for bucket 380059: Parameter validation failed:
+Invalid type for parameter InventoryConfiguration, value: [{'ETag': '""ccd245db6a7f5ed1dc39d419a4697c80""', 'PartNumber': 1}], type: <class 'list'>, valid types: <class 'dict'>
+**AWS** : Fail -- Error deleting bucket inventory configuration nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ from bucket 380059: An error occurred (NoSuchBucket) when calling the DeleteBucketInventoryConfiguration operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error creating bucket inventory configuration nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ for bucket 380059: Parameter validation failed:
+Invalid type for parameter InventoryConfiguration, value: [{'ETag': '""ccd245db6a7f5ed1dc39d419a4697c80""', 'PartNumber': 1}], type: <class 'list'>, valid types: <class 'dict'>
+**EMULATOR** : Fail -- Error deleting bucket inventory configuration nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ from bucket 380059: An error occurred (NoSuchBucket) when calling the DeleteBucketInventoryConfiguration operation: The specified bucket does not exist
+Success -- Bucket bucket483492676 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket706877438 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_delete_bucket_lifecycle --- ARGS: 
+**AWS** : Success -- Bucket lifecycle created for bucket bucket982949286
+**AWS** : Fail -- Error deleting bucket lifecycle from bucket 380059: An error occurred (NoSuchBucket) when calling the DeleteBucketLifecycle operation: The specified bucket does not exist
+**EMULATOR** : Success -- Bucket lifecycle created for bucket bucket337502121
+**EMULATOR** : Fail -- Error deleting bucket lifecycle from bucket 380059: An error occurred (NoSuchBucket) when calling the DeleteBucketLifecycle operation: The specified bucket does not exist
+Success -- Bucket bucket982949286 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket337502121 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_delete_bucket_metrics_configuration --- ARGS: 
+**AWS** : Fail -- Error deleting bucket metrics configuration nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ from bucket 380059: An error occurred (NoSuchBucket) when calling the PutBucketMetricsConfiguration operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error deleting bucket metrics configuration nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ from bucket 380059: An error occurred (IllegalLocationConstraintException) when calling the PutBucketMetricsConfiguration operation: The unspecified location constraint is incompatible for the region specific endpoint this request was sent to.
+
+DISCREPANCY FOUND!
+
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+EMULATOR: FAILURE -- HTTP Status code: 400 -- Error Code: IllegalLocationConstraintException -- Error Message: The unspecified location constraint is incompatible for the region specific endpoint this request was sent to.
+
+
+Success -- Bucket bucket833510964 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket739458240 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_delete_bucket_ownership_controls --- ARGS: 
+**AWS** : Success -- Bucket ownership controls created for bucket bucket2346365
+**AWS** : Fail -- Error deleting bucket ownership controls from bucket 380059: An error occurred (NoSuchBucket) when calling the DeleteBucketOwnershipControls operation: The specified bucket does not exist
+**EMULATOR** : Success -- Bucket ownership controls created for bucket bucket25898694
+**EMULATOR** : Fail -- Error deleting bucket ownership controls from bucket 380059: An error occurred (NoSuchBucket) when calling the DeleteBucketOwnershipControls operation: The specified bucket does not exist
+Success -- Bucket bucket2346365 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket25898694 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_delete_bucket_policy --- ARGS: 
+**AWS** : Fail -- Error creating bucket policy for bucket bucket448736153: An error occurred (AccessDenied) when calling the PutBucketPolicy operation: Access Denied
+**AWS** : Fail -- Error deleting bucket policy from bucket 380059: An error occurred (NoSuchBucket) when calling the DeleteBucketPolicy operation: The specified bucket does not exist
+**EMULATOR** : Success -- Bucket policy created for bucket bucket355028454
+**EMULATOR** : Fail -- Error deleting bucket policy from bucket 380059: An error occurred (NoSuchBucket) when calling the DeleteBucketPolicy operation: The specified bucket does not exist
+Success -- Bucket bucket448736153 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket355028454 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_delete_bucket_replication --- ARGS: 
+**AWS** : Success -- Bucket versioning configuration created for bucket test924913005
+**AWS** : Fail -- Error creating bucket replication configuration for bucket test924913005: An error occurred (InvalidRequest) when calling the PutBucketReplication operation: Destination bucket cannot be the same as the source bucket.
+**AWS** : Fail -- Error deleting bucket replication from bucket 380059: An error occurred (NoSuchBucket) when calling the DeleteBucketReplication operation: The specified bucket does not exist
+**EMULATOR** : Success -- Bucket versioning configuration created for bucket test733524843
+**EMULATOR** : Success -- Bucket replication configuration created for bucket test733524843
+**EMULATOR** : Fail -- Error deleting bucket replication from bucket 380059: An error occurred (NoSuchBucket) when calling the DeleteBucketReplication operation: The specified bucket does not exist
+Success -- Bucket bucket176255664 deleted in **AWS** S3
+Success -- Bucket test924913005 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket883357978 deleted in **EMULATOR** S3
+Success -- Bucket test733524843 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_delete_bucket_tagging --- ARGS: 
+**AWS** : Fail -- Error deleting bucket tagging from bucket 380059: An error occurred (NoSuchBucket) when calling the PutBucketTagging operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error deleting bucket tagging from bucket 380059: An error occurred (NoSuchBucket) when calling the PutBucketTagging operation: The specified bucket does not exist
+Success -- Bucket bucket780424139 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket671849278 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_delete_bucket_website --- ARGS: 
+**AWS** : Fail -- Error deleting bucket website from bucket 380059: An error occurred (NoSuchBucket) when calling the PutBucketWebsite operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error deleting bucket website from bucket 380059: An error occurred (NoSuchBucket) when calling the PutBucketWebsite operation: The specified bucket does not exist
+Success -- Bucket bucket384990715 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket651674880 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_delete_empty_bucket_analytics_configuration --- ARGS: 
+**AWS** : Fail -- Error deleting bucket analytics configuration nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ from bucket 380059: An error occurred (NoSuchBucket) when calling the DeleteBucketAnalyticsConfiguration operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error deleting bucket analytics configuration nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ from bucket 380059: An error occurred (NoSuchBucket) when calling the DeleteBucketAnalyticsConfiguration operation: The specified bucket does not exist
+Success -- Bucket bucket402909598 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket666209561 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_delete_empty_object --- ARGS: 
+**AWS** : Fail -- Error deleting object nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ from bucket 380059: An error occurred (NoSuchBucket) when calling the DeleteObject operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error deleting object nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ from bucket 380059: An error occurred (NoSuchBucket) when calling the DeleteObject operation: The specified bucket does not exist
+Success -- Bucket bucket953318103 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket983120280 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_delete_empty_public_access_block --- ARGS: 
+**AWS** : Fail -- Error deleting public access block from bucket 380059: An error occurred (NoSuchBucket) when calling the DeletePublicAccessBlock operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error deleting public access block from bucket 380059: An error occurred (NoSuchBucket) when calling the DeletePublicAccessBlock operation: The specified bucket does not exist
+Success -- Bucket bucket869292378 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket574082593 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_delete_object --- ARGS: 
+**AWS** : Fail -- Error deleting object nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ from bucket 380059: An error occurred (NoSuchBucket) when calling the PutObject operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error deleting object nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ from bucket 380059: An error occurred (NoSuchBucket) when calling the PutObject operation: The specified bucket does not exist
+Success -- Bucket bucket355751914 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket379219891 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_delete_object_empty_tagging --- ARGS: 
+**AWS** : Fail -- Error deleting object tagging from object nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ in bucket 380059: An error occurred (NoSuchBucket) when calling the DeleteObjectTagging operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error deleting object tagging from object nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ in bucket 380059: An error occurred (NoSuchBucket) when calling the DeleteObjectTagging operation: The specified bucket does not exist
+Success -- Bucket bucket103393314 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket531786006 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_delete_object_tagging --- ARGS: 
+**AWS** : Fail -- Error deleting object tagging from object nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ in bucket 380059: An error occurred (NoSuchBucket) when calling the PutObject operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error deleting object tagging from object nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ in bucket 380059: An error occurred (NoSuchBucket) when calling the PutObject operation: The specified bucket does not exist
+Success -- Bucket bucket45748590 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket812123247 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_delete_objects --- ARGS: 
+**AWS** : Fail -- Error deleting objects from bucket 380059: An error occurred (NoSuchBucket) when calling the PutObject operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error deleting objects from bucket 380059: An error occurred (NoSuchBucket) when calling the PutObject operation: The specified bucket does not exist
+Success -- Bucket bucket48182315 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket291363127 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_delete_public_access_block --- ARGS: 
+**AWS** : Fail -- Error deleting public access block from bucket 380059: An error occurred (NoSuchBucket) when calling the DeletePublicAccessBlock operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error deleting public access block from bucket 380059: An error occurred (NoSuchBucket) when calling the DeletePublicAccessBlock operation: The specified bucket does not exist
+Success -- Bucket bucket301038394 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket790876347 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_download_file --- ARGS: 
+**AWS** : Fail -- Error downloading file [{'ETag': '""ccd245db6a7f5ed1dc39d419a4697c80""', 'PartNumber': 1}] from bucket 380059: An error occurred (NoSuchBucket) when calling the PutObject operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error downloading file [{'ETag': '""ccd245db6a7f5ed1dc39d419a4697c80""', 'PartNumber': 1}] from bucket 380059: An error occurred (NoSuchBucket) when calling the PutObject operation: The specified bucket does not exist
+Success -- Bucket bucket574544471 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket858126693 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_download_fileobj --- ARGS: 
+**AWS** : Fail -- Error downloading fileobj from bucket 380059: An error occurred (NoSuchBucket) when calling the PutObject operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error downloading fileobj from bucket 380059: An error occurred (NoSuchBucket) when calling the PutObject operation: The specified bucket does not exist
+Success -- Bucket bucket486452545 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket387667858 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_generate_presigned_post --- ARGS: 
+**AWS** : Fail -- Error generating presigned post for bucket 380059: list indices must be integers or slices, not str
+**EMULATOR** : Fail -- Error generating presigned post for bucket 380059: list indices must be integers or slices, not str
+Exception:  'TypeError' object has no attribute 'response'
+Success -- Bucket bucket185972671 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket819752192 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_generate_presigned_url --- ARGS: 
+**AWS** : Fail -- Error generating presigned url for bucket 380059: Client does not have method: None
+**EMULATOR** : Fail -- Error generating presigned url for bucket 380059: Client does not have method: None
+Exception:  'UnknownClientMethodError' object has no attribute 'response'
+Success -- Bucket bucket864630565 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket87776406 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_get_bucket_accelerate_configuration --- ARGS: 
+**AWS** : Fail -- Error retrieving accelerate configuration from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketAccelerateConfiguration operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error retrieving accelerate configuration from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketAccelerateConfiguration operation: The specified bucket does not exist
+Success -- Bucket bucket997088336 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket953135675 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_get_bucket_acl --- ARGS: 
+**AWS** : Fail -- Error retrieving ACL from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketAcl operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error retrieving ACL from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketAcl operation: The specified bucket does not exist
+Success -- Bucket bucket603693709 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket772497438 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_get_bucket_analytics_configuration --- ARGS: 
+**AWS** : Fail -- Error creating bucket analytics configuration nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ for bucket 380059: Parameter validation failed:
+Invalid type for parameter AnalyticsConfiguration, value: [{'ETag': '""ccd245db6a7f5ed1dc39d419a4697c80""', 'PartNumber': 1}], type: <class 'list'>, valid types: <class 'dict'>
+**AWS** : Fail -- Error retrieving analytics configuration from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketAnalyticsConfiguration operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error creating bucket analytics configuration nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ for bucket 380059: Parameter validation failed:
+Invalid type for parameter AnalyticsConfiguration, value: [{'ETag': '""ccd245db6a7f5ed1dc39d419a4697c80""', 'PartNumber': 1}], type: <class 'list'>, valid types: <class 'dict'>
+**EMULATOR** : Fail -- Error retrieving analytics configuration from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketAnalyticsConfiguration operation: The specified bucket does not exist
+Success -- Bucket bucket480530618 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket91023259 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_get_bucket_cors --- ARGS: 
+**AWS** : Fail -- Error creating bucket cors for bucket 380059: Parameter validation failed:
+Invalid type for parameter CORSConfiguration, value: nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_, type: <class 'str'>, valid types: <class 'dict'>
+**AWS** : Fail -- Error retrieving CORS from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketCors operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error creating bucket cors for bucket 380059: Parameter validation failed:
+Invalid type for parameter CORSConfiguration, value: nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_, type: <class 'str'>, valid types: <class 'dict'>
+**EMULATOR** : Fail -- Error retrieving CORS from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketCors operation: The specified bucket does not exist
+Success -- Bucket bucket398534925 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket720347714 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_get_bucket_empty_analytics_configuration --- ARGS: 
+**AWS** : Fail -- Error retrieving analytics configuration from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketAnalyticsConfiguration operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error retrieving analytics configuration from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketAnalyticsConfiguration operation: The specified bucket does not exist
+Success -- Bucket bucket886242903 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket214061542 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_get_bucket_empty_cors --- ARGS: 
+**AWS** : Fail -- Error retrieving CORS from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketCors operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error retrieving CORS from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketCors operation: The specified bucket does not exist
+Success -- Bucket bucket347648150 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket241276583 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_get_bucket_empty_intelligent_tiering_configuration --- ARGS: 
+**AWS** : Fail -- Error retrieving intelligent tiering configuration from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketIntelligentTieringConfiguration operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error retrieving intelligent tiering configuration from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketIntelligentTieringConfiguration operation: The specified bucket does not exist
+Success -- Bucket bucket407764370 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket214530560 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_get_bucket_empty_inventory_configuration --- ARGS: 
+**AWS** : Fail -- Error retrieving inventory configuration from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketInventoryConfiguration operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error retrieving inventory configuration from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketInventoryConfiguration operation: The specified bucket does not exist
+Success -- Bucket bucket174387864 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket781799211 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_get_bucket_empty_lifecycle --- ARGS: 
+**AWS** : Fail -- Error retrieving lifecycle from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketLifecycle operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error retrieving lifecycle from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketLifecycle operation: The specified bucket does not exist
+Success -- Bucket bucket201025493 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket918807850 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_get_bucket_empty_lifecycle_configuration --- ARGS: 
+**AWS** : Fail -- Error retrieving lifecycle configuration from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketLifecycleConfiguration operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error retrieving lifecycle configuration from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketLifecycleConfiguration operation: The specified bucket does not exist
+Success -- Bucket bucket102707256 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket214527819 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_get_bucket_empty_metrics_configuration --- ARGS: 
+**AWS** : Fail -- Error retrieving metrics configuration from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketMetricsConfiguration operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error retrieving metrics configuration from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketMetricsConfiguration operation: The specified bucket does not exist
+Success -- Bucket bucket211252549 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket613819445 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_get_bucket_empty_ownership_controls --- ARGS: 
+**AWS** : Fail -- Error retrieving ownership controls from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketOwnershipControls operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error retrieving ownership controls from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketOwnershipControls operation: The specified bucket does not exist
+Success -- Bucket bucket725772564 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket557259415 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_get_bucket_empty_policy --- ARGS: 
+**AWS** : Fail -- Error retrieving policy from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketPolicy operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error retrieving policy from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketPolicy operation: The specified bucket does not exist
+Success -- Bucket bucket69377697 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket813030446 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_get_bucket_empty_policy_status --- ARGS: 
+**AWS** : Fail -- Error retrieving policy status from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketPolicyStatus operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error retrieving policy status from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketPolicyStatus operation: The specified bucket does not exist
+Success -- Bucket bucket877273422 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket213148653 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_get_bucket_empty_replication --- ARGS: 
+**AWS** : Fail -- Error retrieving replication from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketReplication operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error retrieving replication from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketReplication operation: The specified bucket does not exist
+Success -- Bucket bucket543919360 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket245104849 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_get_bucket_empty_tagging --- ARGS: 
+**AWS** : Fail -- Error retrieving tagging from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketTagging operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error retrieving tagging from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketTagging operation: The specified bucket does not exist
+Success -- Bucket bucket48204880 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket842332559 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_get_bucket_empty_website --- ARGS: 
+**AWS** : Fail -- Error retrieving website from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketWebsite operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error retrieving website from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketWebsite operation: The specified bucket does not exist
+Success -- Bucket bucket864225409 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket970670802 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_get_bucket_encryption --- ARGS: 
+**AWS** : Fail -- Error retrieving encryption from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketEncryption operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error retrieving encryption from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketEncryption operation: The specified bucket does not exist
+Success -- Bucket bucket957674099 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket625188296 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_get_bucket_intelligent_tiering_configuration --- ARGS: 
+**AWS** : Fail -- Error creating bucket intelligent tiering configuration nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ for bucket 380059: Parameter validation failed:
+Invalid type for parameter IntelligentTieringConfiguration, value: [{'ETag': '""ccd245db6a7f5ed1dc39d419a4697c80""', 'PartNumber': 1}], type: <class 'list'>, valid types: <class 'dict'>
+**AWS** : Fail -- Error retrieving intelligent tiering configuration from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketIntelligentTieringConfiguration operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error creating bucket intelligent tiering configuration nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ for bucket 380059: Parameter validation failed:
+Invalid type for parameter IntelligentTieringConfiguration, value: [{'ETag': '""ccd245db6a7f5ed1dc39d419a4697c80""', 'PartNumber': 1}], type: <class 'list'>, valid types: <class 'dict'>
+**EMULATOR** : Fail -- Error retrieving intelligent tiering configuration from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketIntelligentTieringConfiguration operation: The specified bucket does not exist
+Success -- Bucket bucket357403294 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket626185707 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_get_bucket_inventory_configuration --- ARGS: 
+**AWS** : Fail -- Error creating bucket inventory configuration nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ for bucket 380059: Parameter validation failed:
+Invalid type for parameter InventoryConfiguration, value: [{'ETag': '""ccd245db6a7f5ed1dc39d419a4697c80""', 'PartNumber': 1}], type: <class 'list'>, valid types: <class 'dict'>
+**AWS** : Fail -- Error retrieving inventory configuration from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketInventoryConfiguration operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error creating bucket inventory configuration nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ for bucket 380059: Parameter validation failed:
+Invalid type for parameter InventoryConfiguration, value: [{'ETag': '""ccd245db6a7f5ed1dc39d419a4697c80""', 'PartNumber': 1}], type: <class 'list'>, valid types: <class 'dict'>
+**EMULATOR** : Fail -- Error retrieving inventory configuration from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketInventoryConfiguration operation: The specified bucket does not exist
+Success -- Bucket bucket84366397 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket478748203 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_get_bucket_lifecycle --- ARGS: 
+**AWS** : Success -- Bucket lifecycle created for bucket bucket88803646
+**AWS** : Fail -- Error retrieving lifecycle from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketLifecycle operation: The specified bucket does not exist
+**EMULATOR** : Success -- Bucket lifecycle created for bucket bucket577926165
+**EMULATOR** : Fail -- Error retrieving lifecycle from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketLifecycle operation: The specified bucket does not exist
+Success -- Bucket bucket88803646 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket577926165 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_get_bucket_lifecycle_configuration --- ARGS: 
+**AWS** : Success -- Bucket lifecycle configuration created for bucket bucket793313386
+**AWS** : Fail -- Error retrieving lifecycle configuration from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketLifecycleConfiguration operation: The specified bucket does not exist
+**EMULATOR** : Success -- Bucket lifecycle configuration created for bucket bucket400367630
+**EMULATOR** : Fail -- Error retrieving lifecycle configuration from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketLifecycleConfiguration operation: The specified bucket does not exist
+Success -- Bucket bucket793313386 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket400367630 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_get_bucket_location --- ARGS: 
+**AWS** : Fail -- Error retrieving location from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketLocation operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error retrieving location from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketLocation operation: The specified bucket does not exist
+Success -- Bucket bucket375579592 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket471469592 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_get_bucket_logging --- ARGS: 
+**AWS** : Fail -- Error retrieving logging from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketLogging operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error retrieving logging from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketLogging operation: The specified bucket does not exist
+Success -- Bucket bucket635816661 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket902287451 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_get_bucket_metrics_configuration --- ARGS: 
+**AWS** : Fail -- Error creating bucket metrics configuration [{'ETag': '""ccd245db6a7f5ed1dc39d419a4697c80""', 'PartNumber': 1}] for bucket 380059: Parameter validation failed:
+Invalid type for parameter MetricsConfiguration, value: [{'ETag': '""ccd245db6a7f5ed1dc39d419a4697c80""', 'PartNumber': 1}], type: <class 'list'>, valid types: <class 'dict'>
+**AWS** : Fail -- Error retrieving metrics configuration from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketMetricsConfiguration operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error creating bucket metrics configuration [{'ETag': '""ccd245db6a7f5ed1dc39d419a4697c80""', 'PartNumber': 1}] for bucket 380059: Parameter validation failed:
+Invalid type for parameter MetricsConfiguration, value: [{'ETag': '""ccd245db6a7f5ed1dc39d419a4697c80""', 'PartNumber': 1}], type: <class 'list'>, valid types: <class 'dict'>
+**EMULATOR** : Fail -- Error retrieving metrics configuration from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketMetricsConfiguration operation: The specified bucket does not exist
+Success -- Bucket bucket16641812 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket227905855 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_get_bucket_notification --- ARGS: 
+**AWS** : Fail -- Error retrieving notification from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketNotification operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error retrieving notification from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketNotification operation: The specified bucket does not exist
+Success -- Bucket bucket933593793 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket352387619 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_get_bucket_notification_configuration --- ARGS: 
+**AWS** : Fail -- Error retrieving notification configuration from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketNotificationConfiguration operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error retrieving notification configuration from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketNotificationConfiguration operation: The specified bucket does not exist
+Success -- Bucket bucket731541265 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket923272645 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_get_bucket_ownership_controls --- ARGS: 
+**AWS** : Success -- Bucket ownership controls created for bucket bucket14562579
+**AWS** : Fail -- Error retrieving ownership controls from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketOwnershipControls operation: The specified bucket does not exist
+**EMULATOR** : Success -- Bucket ownership controls created for bucket bucket620656780
+**EMULATOR** : Fail -- Error retrieving ownership controls from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketOwnershipControls operation: The specified bucket does not exist
+Success -- Bucket bucket14562579 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket620656780 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_get_bucket_policy --- ARGS: 
+**AWS** : Fail -- Error creating bucket policy for bucket bucket864411508: An error occurred (AccessDenied) when calling the PutBucketPolicy operation: Access Denied
+**AWS** : Fail -- Error retrieving policy from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketPolicy operation: The specified bucket does not exist
+**EMULATOR** : Success -- Bucket policy created for bucket bucket396739204
+**EMULATOR** : Fail -- Error retrieving policy from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketPolicy operation: The specified bucket does not exist
+Success -- Bucket bucket864411508 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket396739204 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_get_bucket_policy_status --- ARGS: 
+**AWS** : Fail -- Error creating bucket policy for bucket bucket449564683: An error occurred (AccessDenied) when calling the PutBucketPolicy operation: Access Denied
+**AWS** : Fail -- Error retrieving policy status from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketPolicyStatus operation: The specified bucket does not exist
+**EMULATOR** : Success -- Bucket policy created for bucket bucket957114550
+**EMULATOR** : Fail -- Error retrieving policy status from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketPolicyStatus operation: The specified bucket does not exist
+Success -- Bucket bucket449564683 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket957114550 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_get_bucket_replication --- ARGS: 
+**AWS** : Success -- Bucket versioning configuration created for bucket bucket914228125
+**AWS** : Fail -- Error creating bucket replication configuration for bucket bucket914228125: An error occurred (InvalidRequest) when calling the PutBucketReplication operation: Destination bucket cannot be the same as the source bucket.
+**AWS** : Fail -- Error retrieving replication from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketReplication operation: The specified bucket does not exist
+**EMULATOR** : Success -- Bucket versioning configuration created for bucket bucket812527595
+**EMULATOR** : Success -- Bucket replication configuration created for bucket bucket812527595
+**EMULATOR** : Fail -- Error retrieving replication from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketReplication operation: The specified bucket does not exist
+Success -- Bucket bucket204641625 deleted in **AWS** S3
+Success -- Bucket bucket914228125 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket519458920 deleted in **EMULATOR** S3
+Success -- Bucket bucket812527595 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_get_bucket_request_payment --- ARGS: 
+**AWS** : Fail -- Error retrieving request payment from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketRequestPayment operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error retrieving request payment from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketRequestPayment operation: The specified bucket does not exist
+Success -- Bucket bucket607283092 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket685210865 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_get_bucket_tagging --- ARGS: 
+**AWS** : Success -- Bucket tagging created for bucket bucket596241683
+**AWS** : Fail -- Error retrieving tagging from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketTagging operation: The specified bucket does not exist
+**EMULATOR** : Success -- Bucket tagging created for bucket bucket141696382
+**EMULATOR** : Fail -- Error retrieving tagging from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketTagging operation: The specified bucket does not exist
+Success -- Bucket bucket596241683 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket141696382 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_get_bucket_versioning --- ARGS: 
+**AWS** : Fail -- Error retrieving versioning from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketVersioning operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error retrieving versioning from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketVersioning operation: The specified bucket does not exist
+Success -- Bucket bucket857727906 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket139051640 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_get_bucket_website --- ARGS: 
+**AWS** : Success -- Bucket website configuration created for bucket bucket958971676
+**AWS** : Fail -- Error retrieving website from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketWebsite operation: The specified bucket does not exist
+**EMULATOR** : Success -- Bucket website configuration created for bucket bucket267213213
+**EMULATOR** : Fail -- Error retrieving website from bucket 380059: An error occurred (NoSuchBucket) when calling the GetBucketWebsite operation: The specified bucket does not exist
+Success -- Bucket bucket958971676 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket267213213 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_get_object --- ARGS: 
+**AWS** : Fail -- Error retrieving object nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ from bucket 380059: An error occurred (NoSuchBucket) when calling the PutObject operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error retrieving object nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ from bucket 380059: An error occurred (NoSuchBucket) when calling the PutObject operation: The specified bucket does not exist
+Success -- Bucket bucket716300310 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket979915661 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_get_object_acl --- ARGS: 
+**AWS** : Fail -- Error retrieving object ACL nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ from bucket 380059: An error occurred (NoSuchBucket) when calling the PutObject operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error retrieving object ACL nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ from bucket 380059: An error occurred (NoSuchBucket) when calling the PutObject operation: The specified bucket does not exist
+Success -- Bucket bucket968549028 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket68195630 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_get_object_attributes --- ARGS: 
+**AWS** : Fail -- Error retrieving object attributes nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ from bucket 380059: An error occurred (NoSuchBucket) when calling the PutObject operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error retrieving object attributes nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ from bucket 380059: An error occurred (NoSuchBucket) when calling the PutObject operation: The specified bucket does not exist
+Success -- Bucket bucket568737705 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket81913609 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_get_object_empty_legal_hold --- ARGS: 
+**AWS** : Fail -- Error retrieving object legal hold nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ from bucket 380059: An error occurred (NoSuchBucket) when calling the GetObjectLegalHold operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error retrieving object legal hold nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ from bucket 380059: An error occurred (NoSuchBucket) when calling the GetObjectLegalHold operation: The specified bucket does not exist
+Success -- Bucket bucket232933615 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket258452193 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_get_object_empty_lock_configuration --- ARGS: 
+**AWS** : Fail -- Error retrieving object lock configuration from bucket 380059: An error occurred (NoSuchBucket) when calling the GetObjectLockConfiguration operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error retrieving object lock configuration from bucket 380059: An error occurred (NoSuchBucket) when calling the GetObjectLockConfiguration operation: The specified bucket does not exist
+Success -- Bucket bucket816753784 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket948697280 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_get_object_empty_retention --- ARGS: 
+**AWS** : Fail -- Error retrieving object retention nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ from bucket 380059: An error occurred (NoSuchBucket) when calling the GetObjectRetention operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error retrieving object retention nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ from bucket 380059: An error occurred (NoSuchBucket) when calling the GetObjectRetention operation: The specified bucket does not exist
+Success -- Bucket bucket223571658 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket508059918 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_get_object_legal_hold --- ARGS: 
+**AWS** : Success -- Object lock configuration created for bucket 380059
+**AWS** : Fail -- Error creating object legal hold: Parameter validation failed:
+Invalid type for parameter LegalHold, value: [{'ETag': '""ccd245db6a7f5ed1dc39d419a4697c80""', 'PartNumber': 1}], type: <class 'list'>, valid types: <class 'dict'>
+**AWS** : Fail -- Error retrieving object legal hold nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ from bucket 380059: An error occurred (NoSuchObjectLockConfiguration) when calling the GetObjectLegalHold operation: The specified object does not have a ObjectLock configuration
+**EMULATOR** : Success -- Object lock configuration created for bucket 380059
+**EMULATOR** : Fail -- Error creating object legal hold: Parameter validation failed:
+Invalid type for parameter LegalHold, value: [{'ETag': '""ccd245db6a7f5ed1dc39d419a4697c80""', 'PartNumber': 1}], type: <class 'list'>, valid types: <class 'dict'>
+**EMULATOR** : Success -- Object legal hold nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ retrieved from bucket 380059
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (NoSuchObjectLockConfiguration) when calling the GetObjectLegalHold operation: The specified object does not have a ObjectLock configuration 
+EMULATOR: SUCCESS -- Response: 
+
+
+Success -- Bucket 380059 deleted in **AWS** S3
+Success -- Bucket bucket248324088 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket459203422 deleted in **EMULATOR** S3
+Success -- Bucket 380059 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_get_object_lock_configuration --- ARGS: 
+**AWS** : Success -- Object lock configuration created for bucket 380059
+**AWS** : Success -- Object lock configuration retrieved from bucket 380059
+**EMULATOR** : Success -- Object lock configuration created for bucket 380059
+**EMULATOR** : Success -- Object lock configuration retrieved from bucket 380059
+Success -- Bucket 380059 deleted in **AWS** S3
+Success -- Bucket bucket239043304 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket492589210 deleted in **EMULATOR** S3
+Success -- Bucket 380059 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_get_object_retention --- ARGS: 
+**AWS** : Success -- Object lock configuration created for bucket 380059
+**AWS** : Fail -- Error creating object legal hold: Parameter validation failed:
+Invalid type for parameter LegalHold, value: [{'ETag': '""ccd245db6a7f5ed1dc39d419a4697c80""', 'PartNumber': 1}], type: <class 'list'>, valid types: <class 'dict'>
+**AWS** : Success -- Object retention nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ retrieved from bucket 380059
+**EMULATOR** : Success -- Object lock configuration created for bucket 380059
+**EMULATOR** : Fail -- Error creating object legal hold: Parameter validation failed:
+Invalid type for parameter LegalHold, value: [{'ETag': '""ccd245db6a7f5ed1dc39d419a4697c80""', 'PartNumber': 1}], type: <class 'list'>, valid types: <class 'dict'>
+**EMULATOR** : Success -- Object retention nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ retrieved from bucket 380059
+Success -- Bucket 380059 deleted in **AWS** S3
+Success -- Bucket bucket454452638 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket150336278 deleted in **EMULATOR** S3
+Success -- Bucket 380059 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_get_object_tagging --- ARGS: 
+**AWS** : Fail -- Error retrieving object tagging nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ from bucket 380059: An error occurred (NoSuchBucket) when calling the PutObject operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error retrieving object tagging nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ from bucket 380059: An error occurred (NoSuchBucket) when calling the PutObject operation: The specified bucket does not exist
+Success -- Bucket bucket244476510 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket91506744 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_get_object_torrent --- ARGS: 
+**AWS** : Fail -- Error retrieving object torrent nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ from bucket 380059: An error occurred (NoSuchBucket) when calling the PutObject operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error retrieving object torrent nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ from bucket 380059: An error occurred (NoSuchBucket) when calling the PutObject operation: The specified bucket does not exist
+Success -- Bucket bucket849988977 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket598204259 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_get_paginator --- ARGS: 
+**AWS** : Fail -- Error retrieving paginator: '380059'
+**EMULATOR** : Fail -- Error retrieving paginator: '380059'
+Exception:  'KeyError' object has no attribute 'response'
+Success -- Bucket bucket29202211 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket871095278 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_get_public_access_block --- ARGS: 
+**AWS** : Success -- Public access block created for bucket bucket902093740
+**AWS** : Fail -- Error retrieving public access block from bucket 380059: An error occurred (NoSuchBucket) when calling the GetPublicAccessBlock operation: The specified bucket does not exist
+**EMULATOR** : Success -- Public access block created for bucket bucket447162875
+**EMULATOR** : Fail -- Error retrieving public access block from bucket 380059: An error occurred (NoSuchBucket) when calling the GetPublicAccessBlock operation: The specified bucket does not exist
+Success -- Bucket bucket902093740 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket447162875 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_get_waiter --- ARGS: 
+**AWS** : Fail -- Error retrieving waiter from bucket 380059: Waiter does not exist: 380059
+**EMULATOR** : Fail -- Error retrieving waiter from bucket 380059: Waiter does not exist: 380059
+Exception:  'ValueError' object has no attribute 'response'
+Success -- Bucket bucket355471903 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket958203709 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_head_bucket --- ARGS: 
+**AWS** : Fail -- Error head bucket 380059: An error occurred (404) when calling the HeadBucket operation: Not Found
+**EMULATOR** : Fail -- Error head bucket 380059: An error occurred (404) when calling the HeadBucket operation: Not Found
+Success -- Bucket bucket283105690 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket944678625 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_head_object --- ARGS: 
+**AWS** : Fail -- Error head object nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ from bucket 380059: An error occurred (NoSuchBucket) when calling the PutObject operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error head object nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ from bucket 380059: An error occurred (NoSuchBucket) when calling the PutObject operation: The specified bucket does not exist
+Success -- Bucket bucket60990594 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket386447311 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_list_bucket_analytics_configurations --- ARGS: 
+**AWS** : Fail -- Error listing bucket analytics configurations from bucket 380059: An error occurred (NoSuchBucket) when calling the ListBucketAnalyticsConfigurations operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error listing bucket analytics configurations from bucket 380059: An error occurred (NoSuchBucket) when calling the ListBucketAnalyticsConfigurations operation: The specified bucket does not exist
+Success -- Bucket bucket667577079 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket183746934 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_list_bucket_intelligent_tiering_configurations --- ARGS: 
+**AWS** : Fail -- Error listing bucket intelligent tiering configurations from bucket 380059: An error occurred (NoSuchBucket) when calling the ListBucketIntelligentTieringConfigurations operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error listing bucket intelligent tiering configurations from bucket 380059: An error occurred (NoSuchBucket) when calling the ListBucketIntelligentTieringConfigurations operation: The specified bucket does not exist
+Success -- Bucket bucket415386567 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket491489817 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_list_bucket_inventory_configurations --- ARGS: 
+**AWS** : Fail -- Error listing bucket inventory configurations from bucket 380059: An error occurred (NoSuchBucket) when calling the ListBucketInventoryConfigurations operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error listing bucket inventory configurations from bucket 380059: An error occurred (NoSuchBucket) when calling the ListBucketInventoryConfigurations operation: The specified bucket does not exist
+Success -- Bucket bucket75813572 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket795775358 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_list_bucket_metrics_configurations --- ARGS: 
+**AWS** : Fail -- Error listing bucket metrics configurations from bucket 380059: An error occurred (NoSuchBucket) when calling the ListBucketMetricsConfigurations operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error listing bucket metrics configurations from bucket 380059: An error occurred (NoSuchBucket) when calling the ListBucketMetricsConfigurations operation: The specified bucket does not exist
+Success -- Bucket bucket115268839 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket117161604 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_list_buckets --- ARGS: 
+**AWS** : Success -- Buckets listed
+**EMULATOR** : Success -- Buckets listed
+Success -- Bucket bucket500945938 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket784553533 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_list_multipart_uploads --- ARGS: 
+**AWS** : Fail -- Error listing multipart uploads from bucket 380059: An error occurred (NoSuchBucket) when calling the ListMultipartUploads operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error listing multipart uploads from bucket 380059: An error occurred (NoSuchBucket) when calling the ListMultipartUploads operation: The specified bucket does not exist
+Success -- Bucket bucket907005228 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket77174036 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_list_object_versions --- ARGS: 
+**AWS** : Fail -- Error listing object versions from bucket 380059: An error occurred (NoSuchBucket) when calling the ListObjectVersions operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error listing object versions from bucket 380059: An error occurred (NoSuchBucket) when calling the ListObjectVersions operation: The specified bucket does not exist
+Success -- Bucket bucket434814244 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket570478317 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_list_objects --- ARGS: 
+**AWS** : Fail -- Error listing objects from bucket 380059: An error occurred (NoSuchBucket) when calling the ListObjects operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error listing objects from bucket 380059: An error occurred (NoSuchBucket) when calling the ListObjects operation: The specified bucket does not exist
+Success -- Bucket bucket726415154 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket30014406 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_list_objects_v2 --- ARGS: 
+**AWS** : Fail -- Error listing objects v2 from bucket 380059: An error occurred (NoSuchBucket) when calling the ListObjectsV2 operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error listing objects v2 from bucket 380059: An error occurred (NoSuchBucket) when calling the ListObjectsV2 operation: The specified bucket does not exist
+Success -- Bucket bucket651308725 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket85435738 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_list_parts --- ARGS: 
+**AWS** : Fail -- Error listing parts from bucket 380059: Parameter validation failed:
+Invalid type for parameter UploadId, value: [{'ETag': '""ccd245db6a7f5ed1dc39d419a4697c80""', 'PartNumber': 1}], type: <class 'list'>, valid types: <class 'str'>
+**EMULATOR** : Fail -- Error listing parts from bucket 380059: Parameter validation failed:
+Invalid type for parameter UploadId, value: [{'ETag': '""ccd245db6a7f5ed1dc39d419a4697c80""', 'PartNumber': 1}], type: <class 'list'>, valid types: <class 'str'>
+Exception:  'ParamValidationError' object has no attribute 'response'
+Success -- Bucket bucket369462662 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket929166978 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_put_bucket_accelerate_configuration --- ARGS: 
+**AWS** : Fail -- Error adding bucket accelerate configuration to bucket 380059: Parameter validation failed:
+Invalid type for parameter AccelerateConfiguration, value: nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_, type: <class 'str'>, valid types: <class 'dict'>
+**EMULATOR** : Fail -- Error adding bucket accelerate configuration to bucket 380059: Parameter validation failed:
+Invalid type for parameter AccelerateConfiguration, value: nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_, type: <class 'str'>, valid types: <class 'dict'>
+Exception:  'ParamValidationError' object has no attribute 'response'
+Success -- Bucket bucket138107670 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket806686660 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_put_bucket_acl --- ARGS: 
+**AWS** : Fail -- Error adding bucket ACL to bucket 380059: An error occurred (NoSuchBucket) when calling the PutBucketAcl operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error adding bucket ACL to bucket 380059: An error occurred (InvalidArgument) when calling the PutBucketAcl operation: None
+
+DISCREPANCY FOUND!
+
+--Status code mismatch--
+CLOUD: FAILURE -- HTTP Status code: 404 -- Error Code: NoSuchBucket -- Error Message: The specified bucket does not exist
+EMULATOR: FAILURE -- HTTP Status code: 400 -- Error Code: InvalidArgument -- Error Message: None
+
+
+Success -- Bucket bucket616554726 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket336600739 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_put_bucket_analytics_configuration --- ARGS: 
+**AWS** : Fail -- Error creating bucket analytics configuration nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ for bucket 380059: Parameter validation failed:
+Invalid type for parameter AnalyticsConfiguration, value: [{'ETag': '""ccd245db6a7f5ed1dc39d419a4697c80""', 'PartNumber': 1}], type: <class 'list'>, valid types: <class 'dict'>
+**EMULATOR** : Fail -- Error creating bucket analytics configuration nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ for bucket 380059: Parameter validation failed:
+Invalid type for parameter AnalyticsConfiguration, value: [{'ETag': '""ccd245db6a7f5ed1dc39d419a4697c80""', 'PartNumber': 1}], type: <class 'list'>, valid types: <class 'dict'>
+Exception:  'ParamValidationError' object has no attribute 'response'
+Success -- Bucket bucket612115406 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket945486369 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_put_bucket_cors --- ARGS: 
+**AWS** : Fail -- Error creating bucket cors for bucket 380059: Parameter validation failed:
+Invalid type for parameter CORSConfiguration, value: nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_, type: <class 'str'>, valid types: <class 'dict'>
+**EMULATOR** : Fail -- Error creating bucket cors for bucket 380059: Parameter validation failed:
+Invalid type for parameter CORSConfiguration, value: nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_, type: <class 'str'>, valid types: <class 'dict'>
+Exception:  'ParamValidationError' object has no attribute 'response'
+Success -- Bucket bucket495938351 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket927355626 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_put_bucket_encryption --- ARGS: 
+**AWS** : Fail -- Error creating bucket encryption for bucket 380059: Parameter validation failed:
+Invalid type for parameter ServerSideEncryptionConfiguration, value: nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_, type: <class 'str'>, valid types: <class 'dict'>
+**EMULATOR** : Fail -- Error creating bucket encryption for bucket 380059: Parameter validation failed:
+Invalid type for parameter ServerSideEncryptionConfiguration, value: nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_, type: <class 'str'>, valid types: <class 'dict'>
+Exception:  'ParamValidationError' object has no attribute 'response'
+Success -- Bucket bucket915251409 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket891452327 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_put_bucket_intelligent_tiering_configuration --- ARGS: 
+**AWS** : Fail -- Error creating bucket intelligent tiering configuration nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ for bucket 380059: Parameter validation failed:
+Invalid type for parameter IntelligentTieringConfiguration, value: [{'ETag': '""ccd245db6a7f5ed1dc39d419a4697c80""', 'PartNumber': 1}], type: <class 'list'>, valid types: <class 'dict'>
+**EMULATOR** : Fail -- Error creating bucket intelligent tiering configuration nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ for bucket 380059: Parameter validation failed:
+Invalid type for parameter IntelligentTieringConfiguration, value: [{'ETag': '""ccd245db6a7f5ed1dc39d419a4697c80""', 'PartNumber': 1}], type: <class 'list'>, valid types: <class 'dict'>
+Exception:  'ParamValidationError' object has no attribute 'response'
+Success -- Bucket bucket110909630 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket860579330 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_put_bucket_inventory_configuration --- ARGS: 
+**AWS** : Fail -- Error creating bucket inventory configuration nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ for bucket 380059: Parameter validation failed:
+Invalid type for parameter InventoryConfiguration, value: [{'ETag': '""ccd245db6a7f5ed1dc39d419a4697c80""', 'PartNumber': 1}], type: <class 'list'>, valid types: <class 'dict'>
+**EMULATOR** : Fail -- Error creating bucket inventory configuration nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ for bucket 380059: Parameter validation failed:
+Invalid type for parameter InventoryConfiguration, value: [{'ETag': '""ccd245db6a7f5ed1dc39d419a4697c80""', 'PartNumber': 1}], type: <class 'list'>, valid types: <class 'dict'>
+Exception:  'ParamValidationError' object has no attribute 'response'
+Success -- Bucket bucket378106020 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket763094989 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_put_bucket_lifecycle --- ARGS: 
+**AWS** : Fail -- Error creating bucket lifecycle for bucket 380059: Parameter validation failed:
+Invalid type for parameter LifecycleConfiguration, value: nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_, type: <class 'str'>, valid types: <class 'dict'>
+**EMULATOR** : Fail -- Error creating bucket lifecycle for bucket 380059: Parameter validation failed:
+Invalid type for parameter LifecycleConfiguration, value: nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_, type: <class 'str'>, valid types: <class 'dict'>
+Exception:  'ParamValidationError' object has no attribute 'response'
+Success -- Bucket bucket429781182 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket847089409 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_put_bucket_lifecycle_configuration --- ARGS: 
+**AWS** : Fail -- Error creating bucket lifecycle configuration for bucket 380059: Parameter validation failed:
+Invalid type for parameter LifecycleConfiguration, value: nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_, type: <class 'str'>, valid types: <class 'dict'>
+**EMULATOR** : Fail -- Error creating bucket lifecycle configuration for bucket 380059: Parameter validation failed:
+Invalid type for parameter LifecycleConfiguration, value: nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_, type: <class 'str'>, valid types: <class 'dict'>
+Exception:  'ParamValidationError' object has no attribute 'response'
+Success -- Bucket bucket120562020 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket450880781 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_put_bucket_logging --- ARGS: 
+**AWS** : Fail -- Error creating bucket logging configuration for bucket 380059: Parameter validation failed:
+Invalid type for parameter BucketLoggingStatus, value: nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_, type: <class 'str'>, valid types: <class 'dict'>
+**EMULATOR** : Fail -- Error creating bucket logging configuration for bucket 380059: Parameter validation failed:
+Invalid type for parameter BucketLoggingStatus, value: nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_, type: <class 'str'>, valid types: <class 'dict'>
+Exception:  'ParamValidationError' object has no attribute 'response'
+Success -- Bucket bucket118287157 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket472523345 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_put_bucket_metrics_configuration --- ARGS: 
+**AWS** : Fail -- Error creating bucket metrics configuration [{'ETag': '""ccd245db6a7f5ed1dc39d419a4697c80""', 'PartNumber': 1}] for bucket 380059: Parameter validation failed:
+Invalid type for parameter MetricsConfiguration, value: [{'ETag': '""ccd245db6a7f5ed1dc39d419a4697c80""', 'PartNumber': 1}], type: <class 'list'>, valid types: <class 'dict'>
+**EMULATOR** : Fail -- Error creating bucket metrics configuration [{'ETag': '""ccd245db6a7f5ed1dc39d419a4697c80""', 'PartNumber': 1}] for bucket 380059: Parameter validation failed:
+Invalid type for parameter MetricsConfiguration, value: [{'ETag': '""ccd245db6a7f5ed1dc39d419a4697c80""', 'PartNumber': 1}], type: <class 'list'>, valid types: <class 'dict'>
+Exception:  'ParamValidationError' object has no attribute 'response'
+Success -- Bucket bucket786193265 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket593729664 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_put_bucket_notification_configuration --- ARGS: 
+**AWS** : Fail -- Error creating bucket notification configuration for bucket 380059: Parameter validation failed:
+Invalid type for parameter NotificationConfiguration, value: nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_, type: <class 'str'>, valid types: <class 'dict'>
+**EMULATOR** : Fail -- Error creating bucket notification configuration for bucket 380059: An error occurred (InvalidClientTokenId) when calling the CreateTopic operation: The security token included in the request is invalid.
+Exception:  'ParamValidationError' object has no attribute 'response'
+Success -- Bucket bucket332553199 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket197016316 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_put_bucket_ownership_controls --- ARGS: 
+**AWS** : Fail -- Error creating bucket ownership controls for bucket 380059: Parameter validation failed:
+Invalid type for parameter OwnershipControls, value: nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_, type: <class 'str'>, valid types: <class 'dict'>
+**EMULATOR** : Fail -- Error creating bucket ownership controls for bucket 380059: Parameter validation failed:
+Invalid type for parameter OwnershipControls, value: nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_, type: <class 'str'>, valid types: <class 'dict'>
+Exception:  'ParamValidationError' object has no attribute 'response'
+Success -- Bucket bucket927644115 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket546344188 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_put_bucket_policy --- ARGS: 
+**AWS** : Fail -- Error creating bucket policy for bucket 380059: An error occurred (NoSuchBucket) when calling the PutBucketPolicy operation: The specified bucket does not exist
+**EMULATOR** : Fail -- Error creating bucket policy for bucket 380059: An error occurred (NoSuchBucket) when calling the PutBucketPolicy operation: The specified bucket does not exist
+Success -- Bucket bucket982359828 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket284663986 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_put_bucket_replication --- ARGS: 
+**AWS** : Success -- Bucket versioning configuration created for bucket 380059
+**AWS** : Fail -- Error creating bucket replication configuration for bucket 380059: Parameter validation failed:
+Invalid type for parameter ReplicationConfiguration, value: nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_, type: <class 'str'>, valid types: <class 'dict'>
+**EMULATOR** : Success -- Bucket versioning configuration created for bucket 380059
+**EMULATOR** : Fail -- Error creating bucket replication configuration for bucket 380059: Parameter validation failed:
+Invalid type for parameter ReplicationConfiguration, value: nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_, type: <class 'str'>, valid types: <class 'dict'>
+Exception:  'ParamValidationError' object has no attribute 'response'
+Success -- Bucket 380059 deleted in **AWS** S3
+Success -- Bucket bucket225849068 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket329349753 deleted in **EMULATOR** S3
+Success -- Bucket 380059 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_put_bucket_tagging --- ARGS: 
+**AWS** : Fail -- Error creating bucket tagging for bucket 380059: Parameter validation failed:
+Invalid type for parameter Tagging, value: nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_, type: <class 'str'>, valid types: <class 'dict'>
+**EMULATOR** : Fail -- Error creating bucket tagging for bucket 380059: Parameter validation failed:
+Invalid type for parameter Tagging, value: nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_, type: <class 'str'>, valid types: <class 'dict'>
+Exception:  'ParamValidationError' object has no attribute 'response'
+Success -- Bucket bucket240440123 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket558133534 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_put_bucket_versioning --- ARGS: 
+**AWS** : Fail -- Error creating bucket versioning configuration for bucket 380059: Parameter validation failed:
+Invalid type for parameter VersioningConfiguration, value: nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_, type: <class 'str'>, valid types: <class 'dict'>
+**EMULATOR** : Fail -- Error creating bucket versioning configuration for bucket 380059: Parameter validation failed:
+Invalid type for parameter VersioningConfiguration, value: nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_, type: <class 'str'>, valid types: <class 'dict'>
+Exception:  'ParamValidationError' object has no attribute 'response'
+Success -- Bucket bucket311561243 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket804557455 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_put_bucket_website --- ARGS: 
+**AWS** : Fail -- Error creating bucket website configuration for bucket 380059: Parameter validation failed:
+Invalid type for parameter WebsiteConfiguration, value: nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_, type: <class 'str'>, valid types: <class 'dict'>
+**EMULATOR** : Fail -- Error creating bucket website configuration for bucket 380059: Parameter validation failed:
+Invalid type for parameter WebsiteConfiguration, value: nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_, type: <class 'str'>, valid types: <class 'dict'>
+Exception:  'ParamValidationError' object has no attribute 'response'
+Success -- Bucket bucket349770051 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket66088854 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_put_object --- ARGS: 
+**AWS** : Fail -- Error putting object nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ in **AWS** S3 bucket bucket399833564: Parameter validation failed:
+Invalid type for parameter Body, value: [{'ETag': '""ccd245db6a7f5ed1dc39d419a4697c80""', 'PartNumber': 1}], type: <class 'list'>, valid types: <class 'bytes'>, <class 'bytearray'>, file-like object
+Invalid type for parameter StorageClass, value: None, type: <class 'NoneType'>, valid types: <class 'str'>
+**EMULATOR** : Fail -- Error putting object nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_ in **EMULATOR** S3 bucket bucket814563579: Parameter validation failed:
+Invalid type for parameter Body, value: [{'ETag': '""ccd245db6a7f5ed1dc39d419a4697c80""', 'PartNumber': 1}], type: <class 'list'>, valid types: <class 'bytes'>, <class 'bytearray'>, file-like object
+Invalid type for parameter StorageClass, value: None, type: <class 'NoneType'>, valid types: <class 'str'>
+Exception:  'ParamValidationError' object has no attribute 'response'
+Success -- Bucket bucket399833564 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket814563579 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_put_object_acl --- ARGS: 
+**AWS** : Fail -- Error creating object ACL for object 380059: An error occurred (InvalidArgument) when calling the PutObjectAcl operation: None
+**EMULATOR** : Fail -- Error creating object ACL for object 380059: An error occurred (InvalidArgument) when calling the PutObjectAcl operation: None
+Success -- Bucket bucket590731175 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket656118226 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_put_object_legal_hold --- ARGS: 
+**AWS** : Success -- Object lock configuration created for bucket 380059
+**AWS** : Fail -- Error creating object legal hold: Parameter validation failed:
+Invalid type for parameter LegalHold, value: [{'ETag': '""ccd245db6a7f5ed1dc39d419a4697c80""', 'PartNumber': 1}], type: <class 'list'>, valid types: <class 'dict'>
+**EMULATOR** : Success -- Object lock configuration created for bucket 380059
+**EMULATOR** : Fail -- Error creating object legal hold: Parameter validation failed:
+Invalid type for parameter LegalHold, value: [{'ETag': '""ccd245db6a7f5ed1dc39d419a4697c80""', 'PartNumber': 1}], type: <class 'list'>, valid types: <class 'dict'>
+Exception:  'ParamValidationError' object has no attribute 'response'
+Success -- Bucket 380059 deleted in **AWS** S3
+Success -- Bucket bucket503211086 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket23473244 deleted in **EMULATOR** S3
+Success -- Bucket 380059 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_put_object_lock_configuration --- ARGS: 
+**AWS** : Fail -- Error creating object lock configuration for bucket 380059: Parameter validation failed:
+Invalid type for parameter ObjectLockConfiguration, value: nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_, type: <class 'str'>, valid types: <class 'dict'>
+**EMULATOR** : Fail -- Error creating object lock configuration for bucket 380059: Parameter validation failed:
+Invalid type for parameter ObjectLockConfiguration, value: nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_, type: <class 'str'>, valid types: <class 'dict'>
+Exception:  'ParamValidationError' object has no attribute 'response'
+Success -- Bucket 380059 deleted in **AWS** S3
+Success -- Bucket bucket812215218 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket107167265 deleted in **EMULATOR** S3
+Success -- Bucket 380059 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_put_object_retention --- ARGS: 
+**AWS** : Success -- Object lock configuration created for bucket bucket928552
+**AWS** : Fail -- Error creating object retention for object 380059: Parameter validation failed:
+Invalid type for parameter Retention, value: nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_, type: <class 'str'>, valid types: <class 'dict'>
+**EMULATOR** : Success -- Object lock configuration created for bucket bucket721877
+**EMULATOR** : Fail -- Error creating object retention for object 380059: Parameter validation failed:
+Invalid type for parameter Retention, value: nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_, type: <class 'str'>, valid types: <class 'dict'>
+Exception:  'ParamValidationError' object has no attribute 'response'
+Success -- Bucket bucket891402438 deleted in **AWS** S3
+Success -- Bucket bucket928552 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket377523974 deleted in **EMULATOR** S3
+Success -- Bucket bucket721877 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_put_object_tagging --- ARGS: 
+**AWS** : Fail -- Error creating object tagging for object 380059: Parameter validation failed:
+Invalid type for parameter Tagging, value: nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_, type: <class 'str'>, valid types: <class 'dict'>
+**EMULATOR** : Fail -- Error creating object tagging for object 380059: Parameter validation failed:
+Invalid type for parameter Tagging, value: nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_, type: <class 'str'>, valid types: <class 'dict'>
+Exception:  'ParamValidationError' object has no attribute 'response'
+Success -- Bucket bucket764444334 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket269067663 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_put_public_access_block --- ARGS: 
+**AWS** : Fail -- Error creating public access block for bucket 380059: Parameter validation failed:
+Invalid type for parameter PublicAccessBlockConfiguration, value: nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_, type: <class 'str'>, valid types: <class 'dict'>
+**EMULATOR** : Fail -- Error creating public access block for bucket 380059: Parameter validation failed:
+Invalid type for parameter PublicAccessBlockConfiguration, value: nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_, type: <class 'str'>, valid types: <class 'dict'>
+Exception:  'ParamValidationError' object has no attribute 'response'
+Success -- Bucket bucket626823740 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket593740254 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_restore_object --- ARGS: 
+**AWS** : Fail -- Error restoring object for object 380059: Parameter validation failed:
+Invalid type for parameter RestoreRequest, value: nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_, type: <class 'str'>, valid types: <class 'dict'>
+**EMULATOR** : Fail -- Error restoring object for object 380059: Parameter validation failed:
+Invalid type for parameter RestoreRequest, value: nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_, type: <class 'str'>, valid types: <class 'dict'>
+Exception:  'ParamValidationError' object has no attribute 'response'
+Success -- Bucket bucket712128815 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket968398018 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_select_object_content --- ARGS: 
+**AWS** : Fail -- Error selecting object content for object 380059: Parameter validation failed:
+Invalid type for parameter ExpressionType, value: [{'ETag': '""ccd245db6a7f5ed1dc39d419a4697c80""', 'PartNumber': 1}], type: <class 'list'>, valid types: <class 'str'>
+Invalid type for parameter InputSerialization, value: None, type: <class 'NoneType'>, valid types: <class 'dict'>
+Invalid type for parameter OutputSerialization, value: 3600, type: <class 'int'>, valid types: <class 'dict'>
+**EMULATOR** : Fail -- Error selecting object content for object 380059: Parameter validation failed:
+Invalid type for parameter ExpressionType, value: [{'ETag': '""ccd245db6a7f5ed1dc39d419a4697c80""', 'PartNumber': 1}], type: <class 'list'>, valid types: <class 'str'>
+Invalid type for parameter InputSerialization, value: None, type: <class 'NoneType'>, valid types: <class 'dict'>
+Invalid type for parameter OutputSerialization, value: 3600, type: <class 'int'>, valid types: <class 'dict'>
+Exception:  'ParamValidationError' object has no attribute 'response'
+Success -- Bucket bucket798497221 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket664155879 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_upload_file --- ARGS: 
+**AWS** : Fail -- Error uploading file to object 380059: [Errno 2] No such file or directory: 'nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_'
+**EMULATOR** : Fail -- Error uploading file to object 380059: [Errno 2] No such file or directory: 'nBx.mNp0WGFbxuDi8b87y4gl_t.RdrJHaCeJg2_7Qvtw3Ck5eqYJfhidJ8o2WqWruEwoPtgxn1qoMmmSTHFURfUuWqejGEhPL_yVQ9kppq0BMhigOPdQvXO6AdRASc3_'
+Exception:  'FileNotFoundError' object has no attribute 'response'
+Success -- Bucket bucket911554557 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket786772655 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_upload_fileobj --- ARGS: 
+**AWS** : Fail -- Error uploading file object to object 380059: Fileobj must implement read
+**EMULATOR** : Fail -- Error uploading file object to object 380059: Fileobj must implement read
+Exception:  'ValueError' object has no attribute 'response'
+Success -- Bucket bucket613350683 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket165549895 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_upload_part --- ARGS: 
+**AWS** : Fail -- Error uploading part for 380059 in **AWS** S3 bucket bucket305874547: Parameter validation failed:
+Invalid type for parameter PartNumber, value: [{'ETag': '""ccd245db6a7f5ed1dc39d419a4697c80""', 'PartNumber': 1}], type: <class 'list'>, valid types: <class 'int'>
+Invalid type for parameter Body, value: None, type: <class 'NoneType'>, valid types: <class 'bytes'>, <class 'bytearray'>, file-like object
+**EMULATOR** : Fail -- Error uploading part for 380059 in **EMULATOR** S3 bucket bucket260522447: Parameter validation failed:
+Invalid type for parameter PartNumber, value: [{'ETag': '""ccd245db6a7f5ed1dc39d419a4697c80""', 'PartNumber': 1}], type: <class 'list'>, valid types: <class 'int'>
+Invalid type for parameter Body, value: None, type: <class 'NoneType'>, valid types: <class 'bytes'>, <class 'bytearray'>, file-like object
+Exception:  'ParamValidationError' object has no attribute 'response'
+Success -- Bucket bucket305874547 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket260522447 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3
+METHOD: s3_upload_part_copy --- ARGS: 
+**AWS** : Fail -- Error uploading part copy for 380059 in **AWS** S3 bucket bucket195882110: 'NoneType' object is not subscriptable
+**EMULATOR** : Fail -- Error uploading part copy for 380059 in **EMULATOR** S3 bucket bucket43710178: 'NoneType' object is not subscriptable
+Exception:  'TypeError' object has no attribute 'response'
+Success -- Bucket bucket195882110 deleted in **AWS** S3
+Cleaned all buckets in **AWS** S3
+Success -- Bucket bucket43710178 deleted in **EMULATOR** S3
+Cleaned all buckets in **EMULATOR** S3

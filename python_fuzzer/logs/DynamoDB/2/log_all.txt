@@ -1,0 +1,716 @@
+DynamoDB client created
+Table creation failed; error:  An error occurred (ResourceInUseException) when calling the CreateTable operation: Table already exists: table638172153
+DynamoDB client created
+Table name table629676317 created
+METHOD: dynamo_batch_execute_statement --- ARGS: []
+**AWS** : Success -- Batch execute statement succeeded
+**EMULATOR** : Success -- Batch execute statement succeeded
+Success -- Table deleted:  table629676317
+DynamoDB client created
+Table creation failed; error:  An error occurred (ResourceInUseException) when calling the CreateTable operation: Table already exists: table638172153
+DynamoDB client created
+Table name table23267595 created
+METHOD: dynamo_batch_get_item --- ARGS: []
+{'TableNames': ['table185972671', 'table347648150', 'table398534925', 'table480530618', 'table603693709', 'table638172153', 'table886242903', 'table9952008', 'table997088336'], 'ResponseMetadata': {'RequestId': 'RTVC34BL8JTKJ73CLIJD2MIIJFVV4KQNSO5AEMVJF66Q9ASUAAJG', 'HTTPStatusCode': 200, 'HTTPHeaders': {'server': 'Server', 'date': 'Tue, 29 Aug 2023 06:48:32 GMT', 'content-type': 'application/x-amz-json-1.0', 'content-length': '167', 'connection': 'keep-alive', 'x-amzn-requestid': 'RTVC34BL8JTKJ73CLIJD2MIIJFVV4KQNSO5AEMVJF66Q9ASUAAJG', 'x-amz-crc32': '464682448'}, 'RetryAttempts': 0}}
+**AWS** : Success -- Item put succeeded
+**AWS** : Success -- Batch get item succeeded
+{'TableNames': ['table23267595'], 'ResponseMetadata': {'RequestId': '3WGYKFEETHU955ZCVY1FQG0RKK7UEZBHS0E650AUWGUP0ZGQC2JQ', 'HTTPStatusCode': 200, 'HTTPHeaders': {'content-type': 'application/x-amz-json-1.0', 'content-length': '33', 'x-amzn-requestid': '3WGYKFEETHU955ZCVY1FQG0RKK7UEZBHS0E650AUWGUP0ZGQC2JQ', 'x-amz-crc32': '2433081763', 'connection': 'close', 'access-control-allow-origin': '*', 'access-control-allow-methods': 'HEAD,GET,PUT,POST,DELETE,OPTIONS,PATCH', 'access-control-allow-headers': 'authorization,cache-control,content-length,content-md5,content-type,etag,location,x-amz-acl,x-amz-content-sha256,x-amz-date,x-amz-request-id,x-amz-security-token,x-amz-tagging,x-amz-target,x-amz-user-agent,x-amz-version-id,x-amzn-requestid,x-localstack-target,amz-sdk-invocation-id,amz-sdk-request', 'access-control-expose-headers': 'etag,x-amz-version-id', 'date': 'Tue, 29 Aug 2023 06:48:32 GMT', 'server': 'hypercorn-h11'}, 'RetryAttempts': 0}}
+**EMULATOR** : Success -- Item put succeeded
+**EMULATOR** : Success -- Batch get item succeeded
+Success -- Table deleted:  table23267595
+DynamoDB client created
+Table creation failed; error:  An error occurred (ResourceInUseException) when calling the CreateTable operation: Table already exists: table638172153
+DynamoDB client created
+Table name table389179505 created
+METHOD: dynamo_batch_get_item_v2 --- ARGS: []
+**AWS** : Success -- Batch get item succeeded
+**EMULATOR** : Success -- Batch get item succeeded
+Success -- Table deleted:  table389179505
+DynamoDB client created
+Table creation failed; error:  An error occurred (ResourceInUseException) when calling the CreateTable operation: Table already exists: table638172153
+DynamoDB client created
+Table name table862765506 created
+METHOD: dynamo_batch_write_item --- ARGS: []
+**AWS** : Success -- Batch write item succeeded
+**EMULATOR** : Success -- Batch write item succeeded
+Success -- Table deleted:  table862765506
+DynamoDB client created
+Table creation failed; error:  An error occurred (ResourceInUseException) when calling the CreateTable operation: Table already exists: table638172153
+DynamoDB client created
+Table name table56580188 created
+METHOD: dynamo_can_paginate --- ARGS: []
+**AWS** : Success -- Can paginate succeeded
+**EMULATOR** : Success -- Can paginate succeeded
+Success -- Table deleted:  table56580188
+DynamoDB client created
+Table creation failed; error:  An error occurred (ResourceInUseException) when calling the CreateTable operation: Table already exists: table638172153
+DynamoDB client created
+Table name table93133128 created
+METHOD: dynamo_close --- ARGS: []
+**AWS** : Success -- Close succeeded
+**EMULATOR** : Success -- Close succeeded
+Success -- Table deleted:  table93133128
+DynamoDB client created
+Table creation failed; error:  An error occurred (ResourceInUseException) when calling the CreateTable operation: Table already exists: table638172153
+DynamoDB client created
+Table name table699158897 created
+METHOD: dynamo_create_backup --- ARGS: []
+**AWS** : Success -- Create backup succeeded
+**EMULATOR** : Fail -- Create backup failed; error:  An error occurred (UnknownOperationException) when calling the CreateBackup operation: An unknown operation was requested.
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: SUCCESS -- Response:  
+EMULATOR: FAILURE -- Response: An error occurred (UnknownOperationException) when calling the CreateBackup operation: An unknown operation was requested.
+
+
+Success -- Table deleted:  table699158897
+DynamoDB client created
+Table creation failed; error:  An error occurred (ResourceInUseException) when calling the CreateTable operation: Table already exists: table638172153
+DynamoDB client created
+Table name table645832291 created
+METHOD: dynamo_create_global_table --- ARGS: []
+**AWS** : Fail -- Create global table failed; error:  An error occurred (ValidationException) when calling the CreateGlobalTable operation: One or more parameter values were invalid: Constraint not met: 'Streams must be enabled' in region(s): [us-east-2]
+**EMULATOR** : Fail -- Create global table failed; error:  An error occurred (GlobalTableAlreadyExistsException) when calling the CreateGlobalTable operation: Global table with this name already exists
+
+DISCREPANCY FOUND!
+
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: One or more parameter values were invalid: Constraint not met: 'Streams must be enabled' in region(s): [us-east-2] -- Error Code: ValidationException -- HTTP Status code: 400
+EMULATOR: FAILURE -- Error Message: Global table with this name already exists -- Error Code: GlobalTableAlreadyExistsException-- HTTP Status code: 400
+
+
+Success -- Table deleted:  table645832291
+DynamoDB client created
+Table creation failed; error:  An error occurred (ResourceInUseException) when calling the CreateTable operation: Table already exists: table638172153
+DynamoDB client created
+Table name table861422651 created
+METHOD: dynamo_create_table --- ARGS: []
+**AWS** : Fail -- Table creation failed; error:  An error occurred (ResourceInUseException) when calling the CreateTable operation: Table already exists: table9952008
+**EMULATOR** : Success -- Table created
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (ResourceInUseException) when calling the CreateTable operation: Table already exists: table9952008 
+EMULATOR: SUCCESS -- Response: 
+
+
+Success -- Table deleted:  table718947
+Success -- Table deleted:  table861422651
+DynamoDB client created
+Table creation failed; error:  An error occurred (ResourceInUseException) when calling the CreateTable operation: Table already exists: table638172153
+DynamoDB client created
+Table name table610860054 created
+METHOD: dynamo_delete_backup --- ARGS: []
+**AWS** : Fail -- Delete backup failed; error:  An error occurred (ValidationException) when calling the DeleteBackup operation: Invalid Request: BackupArn is not valid
+**EMULATOR** : Fail -- Delete backup failed; error:  An error occurred (UnknownOperationException) when calling the DeleteBackup operation: An unknown operation was requested.
+
+DISCREPANCY FOUND!
+
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: Invalid Request: BackupArn is not valid -- Error Code: ValidationException -- HTTP Status code: 400
+EMULATOR: FAILURE -- Error Message: An unknown operation was requested. -- Error Code: UnknownOperationException-- HTTP Status code: 400
+
+
+Success -- Table deleted:  table610860054
+DynamoDB client created
+Table creation failed; error:  An error occurred (ResourceInUseException) when calling the CreateTable operation: Table already exists: table638172153
+DynamoDB client created
+Table name table800511216 created
+METHOD: dynamo_delete_item --- ARGS: []
+**AWS** : Success -- Delete item succeeded
+**EMULATOR** : Success -- Delete item succeeded
+Success -- Table deleted:  table800511216
+DynamoDB client created
+Table creation failed; error:  An error occurred (ResourceInUseException) when calling the CreateTable operation: Table already exists: table638172153
+DynamoDB client created
+Table name table754476455 created
+METHOD: dynamo_delete_table --- ARGS: []
+**AWS** : Success -- Delete table succeeded
+**EMULATOR** : Success -- Delete table succeeded
+DynamoDB client created
+Table creation failed; error:  An error occurred (ResourceInUseException) when calling the CreateTable operation: Table already exists: table638172153
+DynamoDB client created
+Table name table673970943 created
+METHOD: dynamo_describe_backup --- ARGS: []
+**AWS** : Fail -- Describe backup failed; error:  An error occurred (ValidationException) when calling the DescribeBackup operation: Invalid Request: BackupArn is not valid
+**EMULATOR** : Fail -- Describe backup failed; error:  An error occurred (UnknownOperationException) when calling the DescribeBackup operation: An unknown operation was requested.
+
+DISCREPANCY FOUND!
+
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: Invalid Request: BackupArn is not valid -- Error Code: ValidationException -- HTTP Status code: 400
+EMULATOR: FAILURE -- Error Message: An unknown operation was requested. -- Error Code: UnknownOperationException-- HTTP Status code: 400
+
+
+Success -- Table deleted:  table673970943
+DynamoDB client created
+Table creation failed; error:  An error occurred (ResourceInUseException) when calling the CreateTable operation: Table already exists: table638172153
+DynamoDB client created
+Table name table182858538 created
+METHOD: dynamo_describe_continuous_backups --- ARGS: []
+**AWS** : Success -- Describe continuous backups succeeded
+**EMULATOR** : Success -- Describe continuous backups succeeded
+Success -- Table deleted:  table182858538
+DynamoDB client created
+Table creation failed; error:  An error occurred (ResourceInUseException) when calling the CreateTable operation: Table already exists: table638172153
+DynamoDB client created
+Table name table665814167 created
+METHOD: dynamo_describe_contributor_insights --- ARGS: []
+**AWS** : Success -- Describe contributor insights succeeded
+**EMULATOR** : Fail -- Describe contributor insights failed; error:  An error occurred (UnknownOperationException) when calling the DescribeContributorInsights operation: An unknown operation was requested.
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: SUCCESS -- Response:  
+EMULATOR: FAILURE -- Response: An error occurred (UnknownOperationException) when calling the DescribeContributorInsights operation: An unknown operation was requested.
+
+
+Success -- Table deleted:  table665814167
+DynamoDB client created
+Table creation failed; error:  An error occurred (ResourceInUseException) when calling the CreateTable operation: Table already exists: table638172153
+DynamoDB client created
+Table name table61382259 created
+METHOD: dynamo_describe_endpoints --- ARGS: []
+**AWS** : Success -- Describe endpoints succeeded
+**EMULATOR** : Fail -- Describe endpoints failed; error:  An error occurred (UnknownOperationException) when calling the DescribeEndpoints operation: An unknown operation was requested.
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: SUCCESS -- Response:  
+EMULATOR: FAILURE -- Response: An error occurred (UnknownOperationException) when calling the DescribeEndpoints operation: An unknown operation was requested.
+
+
+Success -- Table deleted:  table61382259
+DynamoDB client created
+Table creation failed; error:  An error occurred (ResourceInUseException) when calling the CreateTable operation: Table already exists: table638172153
+DynamoDB client created
+Table name table271595158 created
+METHOD: dynamo_describe_export --- ARGS: []
+**AWS** : Fail -- Describe exports failed; error:  An error occurred (ValidationException) when calling the DescribeExport operation: Invalid Export ARN
+**EMULATOR** : Fail -- Describe exports failed; error:  An error occurred (UnknownOperationException) when calling the DescribeExport operation: An unknown operation was requested.
+
+DISCREPANCY FOUND!
+
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: Invalid Export ARN -- Error Code: ValidationException -- HTTP Status code: 400
+EMULATOR: FAILURE -- Error Message: An unknown operation was requested. -- Error Code: UnknownOperationException-- HTTP Status code: 400
+
+
+Success -- Table deleted:  table271595158
+DynamoDB client created
+Table creation failed; error:  An error occurred (ResourceInUseException) when calling the CreateTable operation: Table already exists: table638172153
+DynamoDB client created
+Table name table497152592 created
+METHOD: dynamo_describe_global_table --- ARGS: []
+**AWS** : Fail -- Describe global table failed; error:  An error occurred (GlobalTableNotFoundException) when calling the DescribeGlobalTable operation: Global table not found: Global table with name: 'table638172153' does not exist.
+**EMULATOR** : Fail -- Describe global table failed; error:  An error occurred (GlobalTableNotFoundException) when calling the DescribeGlobalTable operation: Global table with this name does not exist
+
+DISCREPANCY FOUND!
+
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: Global table not found: Global table with name: 'table638172153' does not exist. -- Error Code: GlobalTableNotFoundException -- HTTP Status code: 400
+EMULATOR: FAILURE -- Error Message: Global table with this name does not exist -- Error Code: GlobalTableNotFoundException-- HTTP Status code: 400
+
+
+Success -- Table deleted:  table497152592
+DynamoDB client created
+Table name table638172153 created
+DynamoDB client created
+Table name table162916657 created
+METHOD: dynamo_describe_global_table_settings --- ARGS: []
+**AWS** : Fail -- Describe global table settings failed; error:  An error occurred (GlobalTableNotFoundException) when calling the DescribeGlobalTableSettings operation: Global table with name: 'table638172153' does not exist.
+**EMULATOR** : Fail -- Describe global table settings failed; error:  An error occurred (UnknownOperationException) when calling the DescribeGlobalTableSettings operation: An unknown operation was requested.
+
+DISCREPANCY FOUND!
+
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: Global table with name: 'table638172153' does not exist. -- Error Code: GlobalTableNotFoundException -- HTTP Status code: 400
+EMULATOR: FAILURE -- Error Message: An unknown operation was requested. -- Error Code: UnknownOperationException-- HTTP Status code: 400
+
+
+Success -- Table deleted:  table162916657
+DynamoDB client created
+Table creation failed; error:  An error occurred (ResourceInUseException) when calling the CreateTable operation: Attempt to change a resource which is still in use: Table is being created: table638172153
+DynamoDB client created
+Table name table68468757 created
+METHOD: dynamo_describe_import --- ARGS: []
+**AWS** : Fail -- Describe import failed; error:  An error occurred (ValidationException) when calling the DescribeImport operation: Invalid Import ARN
+**EMULATOR** : Fail -- Describe import failed; error:  An error occurred (UnknownOperationException) when calling the DescribeImport operation: An unknown operation was requested.
+
+DISCREPANCY FOUND!
+
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: Invalid Import ARN -- Error Code: ValidationException -- HTTP Status code: 400
+EMULATOR: FAILURE -- Error Message: An unknown operation was requested. -- Error Code: UnknownOperationException-- HTTP Status code: 400
+
+
+Success -- Table deleted:  table68468757
+DynamoDB client created
+Table creation failed; error:  An error occurred (ResourceInUseException) when calling the CreateTable operation: Attempt to change a resource which is still in use: Table is being created: table638172153
+DynamoDB client created
+Table name table689066780 created
+METHOD: dynamo_describe_kinesis_streaming_destination --- ARGS: []
+**AWS** : Fail -- Describe kinesis streaming destination failed; error:  An error occurred (ResourceNotFoundException) when calling the DescribeKinesisStreamingDestination operation: Requested resource not found: Table: table638172153 not found
+**EMULATOR** : Success -- Describe kinesis streaming destination succeeded
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (ResourceNotFoundException) when calling the DescribeKinesisStreamingDestination operation: Requested resource not found: Table: table638172153 not found 
+EMULATOR: SUCCESS -- Response: 
+
+
+Success -- Table deleted:  table689066780
+DynamoDB client created
+Table creation failed; error:  An error occurred (ResourceInUseException) when calling the CreateTable operation: Attempt to change a resource which is still in use: Table is being created: table638172153
+DynamoDB client created
+Table name table464470766 created
+METHOD: dynamo_describe_limits --- ARGS: []
+**AWS** : Success -- Describe limits succeeded
+**EMULATOR** : Success -- Describe limits succeeded
+Success -- Table deleted:  table464470766
+DynamoDB client created
+Table creation failed; error:  An error occurred (ResourceInUseException) when calling the CreateTable operation: Attempt to change a resource which is still in use: Table is being created: table638172153
+DynamoDB client created
+Table name table91728480 created
+METHOD: dynamo_describe_table --- ARGS: []
+**AWS** : Success -- Describe table succeeded
+**EMULATOR** : Success -- Describe table succeeded
+Success -- Table deleted:  table91728480
+DynamoDB client created
+Table creation failed; error:  An error occurred (ResourceInUseException) when calling the CreateTable operation: Table already exists: table638172153
+DynamoDB client created
+Table name table379976325 created
+METHOD: dynamo_describe_table_replication_auto_scaling --- ARGS: []
+**AWS** : Fail -- Describe table replication auto scaling failed; error:  An error occurred (ResourceNotFoundException) when calling the DescribeTableReplicaAutoScaling operation: Global table with name: 'table638172153' does not exist.
+**EMULATOR** : Fail -- Describe table replication auto scaling failed; error:  An error occurred (UnknownOperationException) when calling the DescribeTableReplicaAutoScaling operation: An unknown operation was requested.
+
+DISCREPANCY FOUND!
+
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: Global table with name: 'table638172153' does not exist. -- Error Code: ResourceNotFoundException -- HTTP Status code: 400
+EMULATOR: FAILURE -- Error Message: An unknown operation was requested. -- Error Code: UnknownOperationException-- HTTP Status code: 400
+
+
+Success -- Table deleted:  table379976325
+DynamoDB client created
+Table creation failed; error:  An error occurred (ResourceInUseException) when calling the CreateTable operation: Table already exists: table638172153
+DynamoDB client created
+Table name table997327820 created
+METHOD: dynamo_describe_time_to_live --- ARGS: []
+**AWS** : Fail -- Describe time to live failed; error:  An error occurred (ValidationException) when calling the DescribeTimeToLive operation: Cannot describe time to live while table is in CREATING state: Current table state is CREATING
+**EMULATOR** : Success -- Describe time to live succeeded
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (ValidationException) when calling the DescribeTimeToLive operation: Cannot describe time to live while table is in CREATING state: Current table state is CREATING 
+EMULATOR: SUCCESS -- Response: 
+
+
+Success -- Table deleted:  table997327820
+DynamoDB client created
+Table creation failed; error:  An error occurred (ResourceInUseException) when calling the CreateTable operation: Table already exists: table638172153
+DynamoDB client created
+Table name table184048054 created
+METHOD: dynamo_disable_kinesis_streaming_destination --- ARGS: []
+**AWS** : Fail -- Disable kinesis streaming destination failed; error:  An error occurred (ValidationException) when calling the DisableKinesisStreamingDestination operation: Table is not in a valid state to enable Kinesis Streaming Destination: KinesisStreamingDestination must be ACTIVE to perform DISABLE operation.
+**EMULATOR** : Fail -- Disable kinesis streaming destination failed; error:  An error occurred (ValidationException) when calling the DisableKinesisStreamingDestination operation: User does not have a permission to use kinesis stream
+
+DISCREPANCY FOUND!
+
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: Table is not in a valid state to enable Kinesis Streaming Destination: KinesisStreamingDestination must be ACTIVE to perform DISABLE operation. -- Error Code: ValidationException -- HTTP Status code: 400
+EMULATOR: FAILURE -- Error Message: User does not have a permission to use kinesis stream -- Error Code: ValidationException-- HTTP Status code: 400
+
+
+Success -- Table deleted:  table184048054
+DynamoDB client created
+Table creation failed; error:  An error occurred (ResourceInUseException) when calling the CreateTable operation: Table already exists: table638172153
+DynamoDB client created
+Table name table467876630 created
+METHOD: dynamo_enable_kinesis_streaming_destination --- ARGS: []
+**AWS** : Success -- Enable kinesis streaming destination succeeded
+**EMULATOR** : Fail -- Enable kinesis streaming destination failed; error:  An error occurred (ValidationException) when calling the EnableKinesisStreamingDestination operation: User does not have a permission to use kinesis stream
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: SUCCESS -- Response:  
+EMULATOR: FAILURE -- Response: An error occurred (ValidationException) when calling the EnableKinesisStreamingDestination operation: User does not have a permission to use kinesis stream
+
+
+Success -- Table deleted:  table467876630
+DynamoDB client created
+Table creation failed; error:  An error occurred (ResourceInUseException) when calling the CreateTable operation: Table already exists: table638172153
+DynamoDB client created
+Table name table516917143 created
+METHOD: dynamo_execute_statement --- ARGS: []
+**AWS** : Fail -- Execute statement failed; error:  An error occurred (ResourceNotFoundException) when calling the ExecuteStatement operation: Requested resource not found
+**EMULATOR** : Success -- Execute statement succeeded
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (ResourceNotFoundException) when calling the ExecuteStatement operation: Requested resource not found 
+EMULATOR: SUCCESS -- Response: 
+
+
+Success -- Table deleted:  table516917143
+DynamoDB client created
+Table creation failed; error:  An error occurred (ResourceInUseException) when calling the CreateTable operation: Table already exists: table638172153
+DynamoDB client created
+Table name table709696741 created
+METHOD: dynamo_execute_transaction --- ARGS: []
+**AWS** : Fail -- Execute transaction failed; error:  An error occurred (ValidationException) when calling the ExecuteTransaction operation: Supplied AttributeValue has more than one datatypes set, must contain exactly one of the supported datatypes
+**EMULATOR** : Fail -- Execute transaction failed; error:  An error occurred (ValidationException) when calling the ExecuteTransaction operation: Supplied AttributeValue has more than one datatypes set, must contain exactly one of the supported datatypes
+Success -- Table deleted:  table709696741
+DynamoDB client created
+Table creation failed; error:  An error occurred (ResourceInUseException) when calling the CreateTable operation: Table already exists: table638172153
+DynamoDB client created
+Table name table910192112 created
+METHOD: dynamo_export_table_to_point_in_time --- ARGS: []
+**AWS** : Fail -- Export table to point in time failed; error:  An error occurred (ValidationException) when calling the ExportTableToPointInTime operation: One or more parameter values were invalid: tableArn is not a valid ARN
+**EMULATOR** : Fail -- Export table to point in time failed; error:  An error occurred (UnknownOperationException) when calling the ExportTableToPointInTime operation: An unknown operation was requested.
+
+DISCREPANCY FOUND!
+
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: One or more parameter values were invalid: tableArn is not a valid ARN -- Error Code: ValidationException -- HTTP Status code: 400
+EMULATOR: FAILURE -- Error Message: An unknown operation was requested. -- Error Code: UnknownOperationException-- HTTP Status code: 400
+
+
+Success -- Table deleted:  table910192112
+DynamoDB client created
+Table creation failed; error:  An error occurred (ResourceInUseException) when calling the CreateTable operation: Table already exists: table638172153
+DynamoDB client created
+Table name table379498351 created
+METHOD: dynamo_get_item --- ARGS: []
+**AWS** : Fail -- Get item failed; error:  An error occurred (ResourceNotFoundException) when calling the GetItem operation: Requested resource not found
+**EMULATOR** : Success -- Get item succeeded
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: FAILURE -- Response: An error occurred (ResourceNotFoundException) when calling the GetItem operation: Requested resource not found 
+EMULATOR: SUCCESS -- Response: 
+
+
+Success -- Table deleted:  table379498351
+DynamoDB client created
+Table creation failed; error:  An error occurred (ResourceInUseException) when calling the CreateTable operation: Table already exists: table638172153
+DynamoDB client created
+Table name table323184513 created
+METHOD: dynamo_get_paginator --- ARGS: []
+**AWS** : Success -- Get paginator succeeded
+**EMULATOR** : Success -- Get paginator succeeded
+Success -- Table deleted:  table323184513
+DynamoDB client created
+Table creation failed; error:  An error occurred (ResourceInUseException) when calling the CreateTable operation: Table already exists: table638172153
+DynamoDB client created
+Table name table403484303 created
+METHOD: dynamo_get_waiter --- ARGS: []
+**AWS** : Success -- Get waiter succeeded
+**EMULATOR** : Success -- Get waiter succeeded
+Success -- Table deleted:  table403484303
+DynamoDB client created
+Table creation failed; error:  An error occurred (ResourceInUseException) when calling the CreateTable operation: Table already exists: table638172153
+DynamoDB client created
+Table name table447488277 created
+METHOD: dynamo_import_table --- ARGS: []
+**AWS** : Fail -- Import table failed; error:  An error occurred (ResourceInUseException) when calling the ImportTable operation: Table already exists: table638172153
+**EMULATOR** : Fail -- Import table failed; error:  An error occurred (UnknownOperationException) when calling the ImportTable operation: An unknown operation was requested.
+
+DISCREPANCY FOUND!
+
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: Table already exists: table638172153 -- Error Code: ResourceInUseException -- HTTP Status code: 400
+EMULATOR: FAILURE -- Error Message: An unknown operation was requested. -- Error Code: UnknownOperationException-- HTTP Status code: 400
+
+
+Success -- Table deleted:  table447488277
+DynamoDB client created
+Table creation failed; error:  An error occurred (ResourceInUseException) when calling the CreateTable operation: Table already exists: table638172153
+DynamoDB client created
+Table name table992609544 created
+METHOD: dynamo_list_backups --- ARGS: []
+**AWS** : Success -- List backups succeeded
+**EMULATOR** : Fail -- List backups failed; error:  An error occurred (UnknownOperationException) when calling the ListBackups operation: An unknown operation was requested.
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: SUCCESS -- Response:  
+EMULATOR: FAILURE -- Response: An error occurred (UnknownOperationException) when calling the ListBackups operation: An unknown operation was requested.
+
+
+Success -- Table deleted:  table992609544
+DynamoDB client created
+Table creation failed; error:  An error occurred (ResourceInUseException) when calling the CreateTable operation: Table already exists: table638172153
+DynamoDB client created
+Table name table174004806 created
+METHOD: dynamo_list_contributor_insights --- ARGS: []
+**AWS** : Success -- List contributor insights succeeded
+**EMULATOR** : Fail -- List contributor insights failed; error:  An error occurred (UnknownOperationException) when calling the ListContributorInsights operation: An unknown operation was requested.
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: SUCCESS -- Response:  
+EMULATOR: FAILURE -- Response: An error occurred (UnknownOperationException) when calling the ListContributorInsights operation: An unknown operation was requested.
+
+
+Success -- Table deleted:  table174004806
+DynamoDB client created
+Table creation failed; error:  An error occurred (ResourceInUseException) when calling the CreateTable operation: Table already exists: table638172153
+DynamoDB client created
+Table name table506349539 created
+METHOD: dynamo_list_exports --- ARGS: []
+**AWS** : Fail -- List exports failed; error:  An error occurred (ValidationException) when calling the ListExports operation: One or more parameter values were invalid: tableArn is not a valid ARN
+**EMULATOR** : Fail -- List exports failed; error:  An error occurred (UnknownOperationException) when calling the ListExports operation: An unknown operation was requested.
+
+DISCREPANCY FOUND!
+
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: One or more parameter values were invalid: tableArn is not a valid ARN -- Error Code: ValidationException -- HTTP Status code: 400
+EMULATOR: FAILURE -- Error Message: An unknown operation was requested. -- Error Code: UnknownOperationException-- HTTP Status code: 400
+
+
+Success -- Table deleted:  table506349539
+DynamoDB client created
+Table creation failed; error:  An error occurred (ResourceInUseException) when calling the CreateTable operation: Table already exists: table638172153
+DynamoDB client created
+Table name table408593852 created
+METHOD: dynamo_list_global_tables --- ARGS: []
+**AWS** : Success -- List global tables succeeded
+**EMULATOR** : Success -- List global tables succeeded
+Success -- Table deleted:  table408593852
+DynamoDB client created
+Table creation failed; error:  An error occurred (ResourceInUseException) when calling the CreateTable operation: Table already exists: table638172153
+DynamoDB client created
+Table name table272962207 created
+METHOD: dynamo_list_imports --- ARGS: []
+**AWS** : Success -- List imports succeeded
+**EMULATOR** : Fail -- List imports failed; error:  An error occurred (UnknownOperationException) when calling the ListImports operation: An unknown operation was requested.
+
+DISCREPANCY FOUND!
+
+--Behavior mismatch--
+CLOUD: SUCCESS -- Response:  
+EMULATOR: FAILURE -- Response: An error occurred (UnknownOperationException) when calling the ListImports operation: An unknown operation was requested.
+
+
+Success -- Table deleted:  table272962207
+DynamoDB client created
+Table creation failed; error:  An error occurred (ResourceInUseException) when calling the CreateTable operation: Table already exists: table638172153
+DynamoDB client created
+Table name table704872961 created
+METHOD: dynamo_list_tables --- ARGS: []
+**AWS** : Success -- List tables succeeded
+**EMULATOR** : Success -- List tables succeeded
+Success -- Table deleted:  table704872961
+DynamoDB client created
+Table creation failed; error:  An error occurred (ResourceInUseException) when calling the CreateTable operation: Table already exists: table638172153
+DynamoDB client created
+Table name table761119046 created
+METHOD: dynamo_list_tags_of_resource --- ARGS: []
+**AWS** : Success -- List tags of resource succeeded
+**EMULATOR** : Success -- List tags of resource succeeded
+Success -- Table deleted:  table761119046
+DynamoDB client created
+Table creation failed; error:  An error occurred (ResourceInUseException) when calling the CreateTable operation: Table already exists: table638172153
+DynamoDB client created
+Table name table42520476 created
+METHOD: dynamo_put_item --- ARGS: []
+**AWS** : Success -- Item put succeeded
+**EMULATOR** : Success -- Item put succeeded
+Success -- Table deleted:  table42520476
+DynamoDB client created
+Table creation failed; error:  An error occurred (ResourceInUseException) when calling the CreateTable operation: Table already exists: table638172153
+DynamoDB client created
+Table name table495582669 created
+METHOD: dynamo_query --- ARGS: []
+**AWS** : Fail -- Query failed; error:  An error occurred (ValidationException) when calling the Query operation: Invalid KeyConditionExpression: An expression attribute value used in expression is not defined; attribute value: :v1
+**EMULATOR** : Fail -- Query failed; error:  An error occurred (ValidationException) when calling the Query operation: Invalid KeyConditionExpression: An expression attribute value used in expression is not defined; attribute value: :v1
+Success -- Table deleted:  table495582669
+DynamoDB client created
+Table creation failed; error:  An error occurred (ResourceInUseException) when calling the CreateTable operation: Table already exists: table638172153
+DynamoDB client created
+Table name table475001848 created
+METHOD: dynamo_restore_table_from_backup --- ARGS: []
+**AWS** : Fail -- Restore table from backup failed; error:  An error occurred (ValidationException) when calling the RestoreTableFromBackup operation: Invalid Request: BackupArn is not valid
+**EMULATOR** : Fail -- Restore table from backup failed; error:  An error occurred (UnknownOperationException) when calling the RestoreTableFromBackup operation: An unknown operation was requested.
+
+DISCREPANCY FOUND!
+
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: Invalid Request: BackupArn is not valid -- Error Code: ValidationException -- HTTP Status code: 400
+EMULATOR: FAILURE -- Error Message: An unknown operation was requested. -- Error Code: UnknownOperationException-- HTTP Status code: 400
+
+
+Success -- Table deleted:  table475001848
+DynamoDB client created
+Table creation failed; error:  An error occurred (ResourceInUseException) when calling the CreateTable operation: Table already exists: table638172153
+DynamoDB client created
+Table name table267514342 created
+METHOD: dynamo_restore_table_to_point_in_time --- ARGS: []
+**AWS** : Fail -- Restore table to point in time failed; error:  An error occurred (PointInTimeRecoveryUnavailableException) when calling the RestoreTableToPointInTime operation: Point in time recovery is not enabled for table 'table638172153'
+**EMULATOR** : Fail -- Restore table to point in time failed; error:  An error occurred (UnknownOperationException) when calling the RestoreTableToPointInTime operation: An unknown operation was requested.
+
+DISCREPANCY FOUND!
+
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: Point in time recovery is not enabled for table 'table638172153' -- Error Code: PointInTimeRecoveryUnavailableException -- HTTP Status code: 400
+EMULATOR: FAILURE -- Error Message: An unknown operation was requested. -- Error Code: UnknownOperationException-- HTTP Status code: 400
+
+
+Success -- Table deleted:  table267514342
+DynamoDB client created
+Table creation failed; error:  An error occurred (ResourceInUseException) when calling the CreateTable operation: Table already exists: table638172153
+DynamoDB client created
+Table name table720296173 created
+METHOD: dynamo_scan --- ARGS: []
+**AWS** : Fail -- Scan failed; error:  An error occurred (ValidationException) when calling the Scan operation: ExpressionAttributeValues contains invalid value: Supplied AttributeValue is empty, must contain exactly one of the supported datatypes for key :val
+**EMULATOR** : Fail -- Scan failed; error:  An error occurred (ValidationException) when calling the Scan operation: ExpressionAttributeValues contains invalid value: Supplied AttributeValue is empty, must contain exactly one of the supported datatypes for key :val
+Success -- Table deleted:  table720296173
+DynamoDB client created
+Table creation failed; error:  An error occurred (ResourceInUseException) when calling the CreateTable operation: Table already exists: table638172153
+DynamoDB client created
+Table name table667363637 created
+METHOD: dynamo_tag_resource --- ARGS: []
+**AWS** : Success -- Tag resource succeeded
+**EMULATOR** : Success -- Tag resource succeeded
+Success -- Table deleted:  table667363637
+DynamoDB client created
+Table creation failed; error:  An error occurred (ResourceInUseException) when calling the CreateTable operation: Table already exists: table638172153
+DynamoDB client created
+Table name table509777949 created
+METHOD: dynamo_transact_get_items --- ARGS: []
+**AWS** : Fail -- Transact get items failed; error:  An error occurred (ValidationException) when calling the TransactGetItems operation: ExpressionAttributeNames contains invalid key: Syntax error; key: "string"
+**EMULATOR** : Fail -- Transact get items failed; error:  An error occurred (ValidationException) when calling the TransactGetItems operation: ExpressionAttributeNames contains invalid key: Syntax error; key: "string"
+Success -- Table deleted:  table509777949
+DynamoDB client created
+Table creation failed; error:  An error occurred (ResourceInUseException) when calling the CreateTable operation: Table already exists: table638172153
+DynamoDB client created
+Table name table145945611 created
+METHOD: dynamo_transact_write_items --- ARGS: []
+**AWS** : Fail -- Transact write items failed; error:  An error occurred (ValidationException) when calling the TransactWriteItems operation: ExpressionAttributeNames contains invalid key: Syntax error; key: "string"
+**EMULATOR** : Fail -- Transact write items failed; error:  An error occurred (ValidationException) when calling the TransactWriteItems operation: The provided key element does not match the schema
+
+DISCREPANCY FOUND!
+
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: ExpressionAttributeNames contains invalid key: Syntax error; key: "string" -- Error Code: ValidationException -- HTTP Status code: 400
+EMULATOR: FAILURE -- Error Message: The provided key element does not match the schema -- Error Code: ValidationException-- HTTP Status code: 400
+
+
+Success -- Table deleted:  table145945611
+DynamoDB client created
+Table creation failed; error:  An error occurred (ResourceInUseException) when calling the CreateTable operation: Table already exists: table638172153
+DynamoDB client created
+Table name table952693776 created
+METHOD: dynamo_untag_resource --- ARGS: []
+**AWS** : Success -- Untag resource succeeded
+**EMULATOR** : Success -- Untag resource succeeded
+Success -- Table deleted:  table952693776
+DynamoDB client created
+Table creation failed; error:  An error occurred (ResourceInUseException) when calling the CreateTable operation: Table already exists: table638172153
+DynamoDB client created
+Table name table851945619 created
+METHOD: dynamo_update_continuous_backups --- ARGS: []
+**AWS** : Success -- Update continuous backups succeeded
+**EMULATOR** : Success -- Update continuous backups succeeded
+Success -- Table deleted:  table851945619
+DynamoDB client created
+Table creation failed; error:  An error occurred (ResourceInUseException) when calling the CreateTable operation: Table already exists: table638172153
+DynamoDB client created
+Table name table265055282 created
+METHOD: dynamo_update_contributor_insights --- ARGS: []
+**AWS** : Fail -- Update contributor insights failed; error:  An error occurred (ResourceNotFoundException) when calling the UpdateContributorInsights operation: Requested resource not found: Index: last_name not found for table: table638172153
+**EMULATOR** : Fail -- Update contributor insights failed; error:  An error occurred (UnknownOperationException) when calling the UpdateContributorInsights operation: An unknown operation was requested.
+
+DISCREPANCY FOUND!
+
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: Requested resource not found: Index: last_name not found for table: table638172153 -- Error Code: ResourceNotFoundException -- HTTP Status code: 400
+EMULATOR: FAILURE -- Error Message: An unknown operation was requested. -- Error Code: UnknownOperationException-- HTTP Status code: 400
+
+
+Success -- Table deleted:  table265055282
+DynamoDB client created
+Table creation failed; error:  An error occurred (ResourceInUseException) when calling the CreateTable operation: Table already exists: table638172153
+DynamoDB client created
+Table name table895833176 created
+METHOD: dynamo_update_global_table --- ARGS: []
+**AWS** : Fail -- Update global table failed; error:  An error occurred (GlobalTableNotFoundException) when calling the UpdateGlobalTable operation: Global table not found: Global table with name: 'table638172153' does not exist.
+**EMULATOR** : Fail -- Update global table failed; error:  An error occurred (GlobalTableNotFoundException) when calling the UpdateGlobalTable operation: Global table with this name does not exist
+
+DISCREPANCY FOUND!
+
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: Global table not found: Global table with name: 'table638172153' does not exist. -- Error Code: GlobalTableNotFoundException -- HTTP Status code: 400
+EMULATOR: FAILURE -- Error Message: Global table with this name does not exist -- Error Code: GlobalTableNotFoundException-- HTTP Status code: 400
+
+
+Success -- Table deleted:  table895833176
+DynamoDB client created
+Table creation failed; error:  An error occurred (ResourceInUseException) when calling the CreateTable operation: Table already exists: table638172153
+DynamoDB client created
+Table name table559481144 created
+METHOD: dynamo_update_global_table_settings --- ARGS: []
+**AWS** : Fail -- Update global table settings failed; error:  An error occurred (ValidationException) when calling the UpdateGlobalTableSettings operation: One or more parameter values were invalid: Failed to update settings for global table with name ‘table638172153’: Parameters 'MaximumUnits', 'ScalingPolicyUpdate', 'MinimumUnits' must be left blank when disabling auto scaling.
+**EMULATOR** : Fail -- Update global table settings failed; error:  An error occurred (UnknownOperationException) when calling the UpdateGlobalTableSettings operation: An unknown operation was requested.
+
+DISCREPANCY FOUND!
+
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: One or more parameter values were invalid: Failed to update settings for global table with name ‘table638172153’: Parameters 'MaximumUnits', 'ScalingPolicyUpdate', 'MinimumUnits' must be left blank when disabling auto scaling. -- Error Code: ValidationException -- HTTP Status code: 400
+EMULATOR: FAILURE -- Error Message: An unknown operation was requested. -- Error Code: UnknownOperationException-- HTTP Status code: 400
+
+
+Success -- Table deleted:  table559481144
+DynamoDB client created
+Table creation failed; error:  An error occurred (ResourceInUseException) when calling the CreateTable operation: Table already exists: table638172153
+DynamoDB client created
+Table name table175461377 created
+METHOD: dynamo_update_item --- ARGS: []
+**AWS** : Success -- Item updated
+**EMULATOR** : Success -- Item updated
+Success -- Table deleted:  table175461377
+DynamoDB client created
+Table creation failed; error:  An error occurred (ResourceInUseException) when calling the CreateTable operation: Table already exists: table638172153
+DynamoDB client created
+Table name table437587036 created
+METHOD: dynamo_update_replica_autoscaling --- ARGS: []
+**AWS** : Fail -- Replica autoscaling update failed; error:  An error occurred (ResourceNotFoundException) when calling the UpdateTableReplicaAutoScaling operation: Table: 'table638172153' in region: 'us-east-2' does not have replicas.
+**EMULATOR** : Fail -- Replica autoscaling update failed; error:  An error occurred (UnknownOperationException) when calling the UpdateTableReplicaAutoScaling operation: An unknown operation was requested.
+
+DISCREPANCY FOUND!
+
+--Error message mismatch--
+CLOUD: FAILURE  -- Error Message: Table: 'table638172153' in region: 'us-east-2' does not have replicas. -- Error Code: ResourceNotFoundException -- HTTP Status code: 400
+EMULATOR: FAILURE -- Error Message: An unknown operation was requested. -- Error Code: UnknownOperationException-- HTTP Status code: 400
+
+
+Success -- Table deleted:  table437587036
+DynamoDB client created
+Table creation failed; error:  An error occurred (ResourceInUseException) when calling the CreateTable operation: Table already exists: table638172153
+DynamoDB client created
+Table name table234020207 created
+METHOD: dynamo_update_table --- ARGS: []
+**AWS** : Success -- Table updated
+**EMULATOR** : Success -- Table updated
+Success -- Table deleted:  table234020207
+DynamoDB client created
+Table creation failed; error:  An error occurred (ResourceInUseException) when calling the CreateTable operation: Table already exists: table638172153
+DynamoDB client created
+Table name table147061355 created
+METHOD: dynamo_update_ttl --- ARGS: []
+**AWS** : Success -- TTL updated
+**EMULATOR** : Success -- TTL updated
+Success -- Table deleted:  table147061355
