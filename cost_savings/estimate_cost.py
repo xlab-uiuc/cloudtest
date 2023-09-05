@@ -31,6 +31,7 @@ def find_tests_with_methods(methods_json_path, methods_file_path):
     for key, value in json_data.items():
         for method in methods:
             if method in value:
+                print(method)
                 tests_with_methods.append(key)
                 break
 
@@ -67,13 +68,19 @@ def sum_methods_if_test_exists(traffic_json_path, discrepant_test_names):
 
 if __name__ == "__main__":
 
-    methods_json_path = "sdk_methods/Alpakka.json"
-    methods_file_path = "discrepantApisDotNet.txt"
-    traffic_json_path = "application_cost_data/alpakka.json"
+    methods_json_path = "sdk_methods/attachmentplugin.json"
+    methods_file_path = "discrepantApisEmulator.txt"
+    traffic_json_path = "application_req_types/attachmentplugin.json"
 
     total_tests, discrepant_tests = find_tests_with_methods(methods_json_path, methods_file_path)
 
+    # print("Tests with discrepant methods:")
+    # for test in discrepant_tests: 
+    #     print(test)
+    # print()
+
     # all tests on the cloud
+    print()
     cloud_cost = sum_methods_if_test_exists(traffic_json_path, total_tests)
     total = 0
     print("*CLOUD COST*")
