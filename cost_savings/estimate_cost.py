@@ -67,29 +67,39 @@ def sum_methods_if_test_exists(traffic_json_path, discrepant_test_names):
 
 if __name__ == "__main__":
 
-    methods_json_path = "sdk_methods/Orleans.json"
+    methods_json_path = "sdk_methods/Alpakka.json"
     methods_file_path = "discrepantApisDotNet.txt"
-    traffic_json_path = "application_cost_data/orleans.json"
+    traffic_json_path = "application_cost_data/alpakka.json"
 
     total_tests, discrepant_tests = find_tests_with_methods(methods_json_path, methods_file_path)
 
     # all tests on the cloud
     cloud_cost = sum_methods_if_test_exists(traffic_json_path, total_tests)
+    total = 0
     print("*CLOUD COST*")
     for i in cloud_cost:
         print(i, cloud_cost[i])
+        total += cloud_cost[i]
+    print("Total: ", total)
     print()
 
     # a combination of cloud and emulator
+    total = 0
     cloud_em_cost = sum_methods_if_test_exists(traffic_json_path, discrepant_tests)
     print("*CLOUD & EMULATOR COST*")
     for i in cloud_em_cost:
         print(i, cloud_em_cost[i])
+        total += cloud_em_cost[i]
+    print("Total: ", total)
     print()
 
+    total = 0
     print("*SAVINGS*")
     for i in range(len(cloud_cost)):
-        print(list(cloud_cost.keys())[i], cloud_cost[list(cloud_cost.keys())[i]] - cloud_em_cost[list(cloud_em_cost.keys())[i]])
+        saving = cloud_cost[list(cloud_cost.keys())[i]] - cloud_em_cost[list(cloud_em_cost.keys())[i]]
+        print(list(cloud_cost.keys())[i], saving)
+        total += saving
+    print("Total: ", total)
     print()
 
     print("Total tests: ", TOTAL_TESTS)
