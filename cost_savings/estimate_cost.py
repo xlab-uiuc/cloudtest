@@ -28,13 +28,26 @@ def find_tests_with_methods(methods_json_path, methods_file_path):
             TOTAL_TESTS += 1
 
     tests_with_methods = []
+    all_methods_count = {}
+    discrepant_methods = []
     for key, value in json_data.items():
+        for i in value:
+            if i in all_methods_count:
+                all_methods_count[i] += 1
+            else:
+                all_methods_count[i] = 1
         for method in methods:
             if method in value:
-                print(method)
+                # print(method)
+                if not method in discrepant_methods:
+                    discrepant_methods.append(method)
                 tests_with_methods.append(key)
+                # no need to check for other discrepant methods in this test hence break
                 break
-
+    print(json.dumps(all_methods_count, indent=2))
+    print(f'Unique API methods: {len(all_methods_count)}')
+    print(f'Discrepant Unique APIs: {len(discrepant_methods)}')
+    print(f'Discrepant APIs: \n{[(i,all_methods_count[i]) for i in discrepant_methods]}')
     DISCREPANT_TESTS = len(tests_with_methods)
 
     return tests, tests_with_methods
@@ -68,9 +81,9 @@ def sum_methods_if_test_exists(traffic_json_path, discrepant_test_names):
 
 if __name__ == "__main__":
 
-    methods_json_path = "sdk_methods/attachmentplugin.json"
+    methods_json_path = "application_sdk_methods/attachmentplugin.json"
     methods_file_path = "discrepantApisEmulator.txt"
-    traffic_json_path = "application_req_types/attachmentplugin.json"
+    traffic_json_path = "application_request_types/attachmentplugin.json"
 
     total_tests, discrepant_tests = find_tests_with_methods(methods_json_path, methods_file_path)
 
