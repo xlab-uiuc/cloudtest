@@ -1,14 +1,17 @@
 import subprocess, os, time
 
 
-def run_emulator(emulator_command, log_folder):
+def run_emulator(log_folder):
 
     # ***run dotnet list command with os.system in app_path and capture test names in li
     commands = subprocess.check_output("dotnet test --list-tests", shell=True, text=True) 
-    commands = [command.strip() for command in commands.split(":")[1].split("\n") if command.strip()]
+    start_index = commands.find("The following Tests are available:") 
+    commands = commands[start_index+len("The following Tests are available:"):len(commands)-1]
+    commands = [command.strip() for command in commands.split("\n") if command.strip()]
 
     # Create the log folder if it doesn't exist
     os.makedirs(log_folder, exist_ok=True)
+    os.makedirs(os.path.join(os.getcwd(), 'debug_logs'), exist_ok=True)
 
     for i in commands:
 
@@ -19,6 +22,8 @@ def run_emulator(emulator_command, log_folder):
         try:
             # Start the emulator process with stdout and stderr redirected to the log file
             with open(f'./logs/{i}.txt', 'a') as f:
+                logpath = './debug_logs/' + i 
+                emulator_command = ['azurite', '--skipApiVersionCheck', '--debug', logpath]
                 emulator_process = subprocess.Popen(emulator_command, stdout=f, stderr=f)   
             
             print(f"Emulator process started for iteration for test: {i}") 
@@ -42,16 +47,12 @@ def run_emulator(emulator_command, log_folder):
 
 
 def main():
-    
-    # Set the command
-    emulator_command = ["azurite", "--skipApiVersionCheck"]
 
-    # *app is a variable
     # Set the log file path
     log_folder = os.path.join(os.getcwd(), 'logs')
 
     # Run the emulator
-    run_emulator(emulator_command, log_folder)
+    run_emulator(log_folder)
 
 
 if __name__ == '__main__':
