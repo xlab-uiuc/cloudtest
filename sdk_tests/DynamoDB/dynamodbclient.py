@@ -98,11 +98,11 @@ class DynamoDBClient:
                 },
         ])
         try:
-            self.client.batch_execute_statement(
+            res = self.client.batch_execute_statement(
                 Statements=args[0]
             )
             print(self.service, ': Success -- Batch execute statement succeeded')
-            return True, ""
+            return True, res
         except Exception as e:
             print(self.service, ': Fail -- Batch execute statement failed; error: ', e)
             return False, e
@@ -123,7 +123,7 @@ class DynamoDBClient:
                 },
             ])
         try:
-            self.client.batch_get_item(
+            res = self.client.batch_get_item(
                 RequestItems={
                     self.table_name: {
                         'Keys': args[0],
@@ -135,7 +135,7 @@ class DynamoDBClient:
                 }
             )
             print(self.service, ': Success -- Batch get item succeeded')
-            return True, ""
+            return True, res
         except Exception as e:
             print(self.service, ': Fail -- Batch get item failed; error: ', e)
             return False, e
@@ -164,13 +164,13 @@ class DynamoDBClient:
                 },
             ])
         try:
-            self.client.batch_write_item(
+            res = self.client.batch_write_item(
                 RequestItems={
                     self.table_name: args[0]
                 }
             )
             print(self.service, ': Success -- Batch write item succeeded')
-            return True, ""
+            return True, res
         except Exception as e:
             print(self.service, ': Fail -- Batch write item failed; error: ', e)
             return False, e
@@ -184,9 +184,9 @@ class DynamoDBClient:
         if not len(args) > 0:
             args.append('list_tables')
         try:
-            self.client.can_paginate(args[0])
+            res = self.client.can_paginate(args[0])
             print(self.service, ': Success -- Can paginate succeeded')
-            return True, ""
+            return True, res
         except Exception as e:
             print(self.service, ': Fail -- Can paginate failed; error: ', e)
             return False, e
@@ -196,9 +196,9 @@ class DynamoDBClient:
         args = list(args)
         
         try:
-            self.client.close()
+            res = self.client.close()
             print(self.service, ': Success -- Close succeeded')
-            return True, ""
+            return True, res
         except Exception as e:
             print(self.service, ': Fail -- Close failed; error: ', e)
             return False, e
@@ -213,12 +213,12 @@ class DynamoDBClient:
         if not len(args) > 1:
             args.append('backup')
         try:
-            self.client.create_backup(
+            res = self.client.create_backup(
                 TableName=args[0],
                 BackupName=args[1]
             )
             print(self.service, ': Success -- Create backup succeeded')
-            return True, ""
+            return True, res
         except Exception as e:
             print(self.service, ': Fail -- Create backup failed; error: ', e)
             return False, e
@@ -231,7 +231,7 @@ class DynamoDBClient:
         if not len(args) > 0:
             args.append(self.table_name)
         try:
-            self.client.create_global_table(
+            res = self.client.create_global_table(
                 GlobalTableName=args[0],
                 ReplicationGroup=[
                     {
@@ -240,7 +240,66 @@ class DynamoDBClient:
                 ]
             )
             print(self.service, ': Success -- Create global table succeeded')
-            return True, ""
+            return True, res
+        except Exception as e:
+            print(self.service, ': Fail -- Create global table failed; error: ', e)
+            return False, e
+        
+
+    # create global table with streams enabled
+    def dynamo_create_global_table_v2(self, args):
+        args = list(args)
+
+        if not len(args) > 0:
+            args.append(f'table{random.randint(1, 100)}')
+        
+        try:
+            try:
+                self.client.create_table(
+                    TableName=args[0],
+                    KeySchema=[
+                        {
+                            'AttributeName': 'username',
+                            'KeyType': 'HASH'
+                        },
+                        {
+                            'AttributeName': 'last_name',
+                            'KeyType': 'RANGE'
+                        }
+                    ],
+                    AttributeDefinitions=[
+                        {
+                            'AttributeName': 'username',
+                            'AttributeType': 'S'
+                        },
+                        {
+                            'AttributeName': 'last_name',
+                            'AttributeType': 'S'
+                        },
+                    ],
+                    ProvisionedThroughput={
+                        'ReadCapacityUnits': 5,
+                        'WriteCapacityUnits': 5
+                    },
+                    StreamSpecification={
+                        'StreamEnabled': True,
+                        'StreamViewType': 'NEW_AND_OLD_IMAGES'
+                    }
+                )
+                print(f'{self.service}: Table name {args[0]} created for global table')
+            except Exception as e:
+                print(self.service, ': Table creation failed for global table; error: ', e)
+
+            res = self.client.create_global_table(
+                GlobalTableName=args[0],
+                ReplicationGroup=[
+                    {
+                        'RegionName': 'us-east-2'
+                    },
+                ]
+            )
+            print(self.service, ': Success -- Create global table succeeded')
+            return True, res
         except Exception as e:
             print(self.service, ': Fail -- Create global table failed; error: ', e)
             return False, e
@@ -264,7 +323,7 @@ class DynamoDBClient:
                 }
             ])
         try:
-            self.client.create_table(
+            res = self.client.create_table(
                 TableName=args[0],
                 KeySchema=args[1],
                 AttributeDefinitions=[
@@ -283,7 +342,7 @@ class DynamoDBClient:
                 }
             )
             print(self.service, ': Success -- Table created')
-            return True, ""
+            return True, res
         except Exception as e:
             print(self.service, ': Fail -- Table creation failed; error: ', e)
             return False, e
@@ -296,11 +355,11 @@ class DynamoDBClient:
         if not len(args) > 0:
             args.append(f'arn:aws:dynamodb:us-east-2:818637742267:table/{self.table_name}/backup/01548148148148148148')
         try:
-            self.client.delete_backup(
+            res = self.client.delete_backup(
                 BackupArn=args[0]
             )
             print(self.service, ': Success -- Delete backup succeeded')
-            return True, ""
+            return True, res
         except Exception as e:
             print(self.service, ': Fail -- Delete backup failed; error: ', e)
             return False, e
@@ -320,12 +379,12 @@ class DynamoDBClient:
                 }
             })
         try:
-            self.client.delete_item(
+            res = self.client.delete_item(
                 TableName=self.table_name,
                 Key=args[0]
             )
             print(self.service, ': Success -- Delete item succeeded')
-            return True, ""
+            return True, res
         except Exception as e:
             print(self.service, ': Fail -- Delete item failed; error: ', e)
             return False, e
@@ -336,11 +395,11 @@ class DynamoDBClient:
         args = list(args)
         
         try:
-            self.client.delete_table(
+            res = self.client.delete_table(
                 TableName=self.table_name
             )
             print(self.service, ': Success -- Delete table succeeded')
-            return True, ""
+            return True, res
         except Exception as e:
             print(self.service, ': Fail -- Delete table failed; error: ', e)
             return False, e
@@ -355,11 +414,11 @@ class DynamoDBClient:
         if not len(args) > 0:
             args.append(f'arn:aws:dynamodb:us-east-2:818637742267:table/{self.table_name}/backup/01548148148148148148')
         try:
-            self.client.describe_backup(
+            res = self.client.describe_backup(
                 BackupArn=args[0]
             )
             print(self.service, ': Success -- Describe backup succeeded')
-            return True, ""
+            return True, res
         except Exception as e:
             print(self.service, ': Fail -- Describe backup failed; error: ', e)
             return False, e
@@ -372,11 +431,11 @@ class DynamoDBClient:
         if not len(args) > 0:
             args.append(self.table_name)
         try:
-            self.client.describe_continuous_backups(
+            res = self.client.describe_continuous_backups(
                 TableName=args[0]
             )
             print(self.service, ': Success -- Describe continuous backups succeeded')
-            return True, ""
+            return True, res
         except Exception as e:
             print(self.service, ': Fail -- Describe continuous backups failed; error: ', e)
             return False, e
@@ -389,11 +448,11 @@ class DynamoDBClient:
         if not len(args) > 0:
             args.append(self.table_name)
         try:
-            self.client.describe_contributor_insights(
+            res = self.client.describe_contributor_insights(
                 TableName=args[0]
             )
             print(self.service, ': Success -- Describe contributor insights succeeded')
-            return True, ""
+            return True, res
         except Exception as e:
             print(self.service, ': Fail -- Describe contributor insights failed; error: ', e)
             return False, e
@@ -403,9 +462,9 @@ class DynamoDBClient:
         args = list(args)
         
         try:
-            self.client.describe_endpoints()
+            res = self.client.describe_endpoints()
             print(self.service, ': Success -- Describe endpoints succeeded')
-            return True, ""
+            return True, res
         except Exception as e:
             print(self.service, ': Fail -- Describe endpoints failed; error: ', e)
             return False, e
@@ -417,11 +476,11 @@ class DynamoDBClient:
         if not len(args) > 0:
             args.append(f'arn:aws:dynamodb:us-east-2:818637742267:table/{self.table_name}')
         try:
-            self.client.describe_export(
+            res = self.client.describe_export(
                 ExportArn=args[0]
             )
             print(self.service, ': Success -- Describe exports succeeded')
-            return True, ""
+            return True, res
         except Exception as e:
             print(self.service, ': Fail -- Describe exports failed; error: ', e)
             return False, e
@@ -433,16 +492,17 @@ class DynamoDBClient:
         if not len(args) > 0:
             args.append(self.table_name)
         try:
-            self.client.describe_global_table(
+            # self.dynamo_create_global_table_v2(args)
+            res = self.client.describe_global_table(
                 GlobalTableName=args[0]
             )
             print(self.service, ': Success -- Describe global table succeeded')
-            return True, ""
+            return True, res
         except Exception as e:
             print(self.service, ': Fail -- Describe global table failed; error: ', e)
             return False, e
+        
 
-    
     #!! Emulator: Unknown operation   
     # describe global table settings
     def dynamo_describe_global_table_settings(self, args):
@@ -451,11 +511,11 @@ class DynamoDBClient:
         if not len(args) > 0:
             args.append(self.table_name)
         try:
-            self.client.describe_global_table_settings(
+            res = self.client.describe_global_table_settings(
                 GlobalTableName=args[0]
             )
             print(self.service, ': Success -- Describe global table settings succeeded')
-            return True, ""
+            return True, res
         except Exception as e:
             print(self.service, ': Fail -- Describe global table settings failed; error: ', e)
             return False, e
@@ -468,11 +528,11 @@ class DynamoDBClient:
         if not len(args) > 0:
             args.append('import-task-id-12121-1-21-21-12-12-12-12-23-23-1-2')
         try:
-            self.client.describe_import(
+            res = self.client.describe_import(
                 ImportArn=args[0]
             )
             print(self.service, ': Success -- Describe import succeeded')
-            return True, ""
+            return True, res
         except Exception as e:
             print(self.service, ': Fail -- Describe import failed; error: ', e)
             return False, e
@@ -484,11 +544,11 @@ class DynamoDBClient:
         if not len(args) > 0:
             args.append(self.table_name)
         try:
-            self.client.describe_kinesis_streaming_destination(
+            res = self.client.describe_kinesis_streaming_destination(
                 TableName=args[0]
             )
             print(self.service, ': Success -- Describe kinesis streaming destination succeeded')
-            return True, ""
+            return True, res
         except Exception as e:
             print(self.service, ': Fail -- Describe kinesis streaming destination failed; error: ', e)
             return False, e
@@ -499,9 +559,9 @@ class DynamoDBClient:
         args = list(args)
         
         try:
-            self.client.describe_limits()
+            res = self.client.describe_limits()
             print(self.service, ': Success -- Describe limits succeeded')
-            return True, ""
+            return True, res
         except Exception as e:
             print(self.service, ': Fail -- Describe limits failed; error: ', e)
             return False, e
@@ -514,11 +574,11 @@ class DynamoDBClient:
         if not len(args) > 0:
             args.append(self.table_name)
         try:
-            self.client.describe_table(
+            res = self.client.describe_table(
                 TableName=args[0]
             )
             print(self.service, ': Success -- Describe table succeeded')
-            return True, ""
+            return True, res
         except Exception as e:
             print(self.service, ': Fail -- Describe table failed; error: ', e)
             return False, e
@@ -531,11 +591,11 @@ class DynamoDBClient:
         args = list(args)
         
         try:
-            self.client.describe_table_replica_auto_scaling(
+            res = self.client.describe_table_replica_auto_scaling(
                 TableName=self.table_name
             )
             print(self.service, ': Success -- Describe table replication auto scaling succeeded')
-            return True, ""
+            return True, res
         except Exception as e:
             print(self.service, ': Fail -- Describe table replication auto scaling failed; error: ', e)
             return False, e
@@ -548,11 +608,11 @@ class DynamoDBClient:
         if not len(args) > 0:
             args.append(self.table_name)
         try:
-            self.client.describe_time_to_live(
+            res = self.client.describe_time_to_live(
                 TableName=args[0]
             )
             print(self.service, ': Success -- Describe time to live succeeded')
-            return True, ""
+            return True, res
         except Exception as e:
             print(self.service, ': Fail -- Describe time to live failed; error: ', e)
             return False, e
@@ -566,12 +626,12 @@ class DynamoDBClient:
         if not len(args) > 1:
             args.append('arn:aws:kinesis:us-east-2:818637742267:stream/my_stream')
         try:
-            self.client.disable_kinesis_streaming_destination(
+            res = self.client.disable_kinesis_streaming_destination(
                 TableName=args[0],
                 StreamArn=args[1]
             )
             print(self.service, ': Success -- Disable kinesis streaming destination succeeded')
-            return True, ""
+            return True, res
         except Exception as e:
             print(self.service, ': Fail -- Disable kinesis streaming destination failed; error: ', e)
             return False, e
@@ -585,12 +645,12 @@ class DynamoDBClient:
         if not len(args) > 1:
             args.append('arn:aws:kinesis:us-east-2:818637742267:stream/my_stream')
         try:
-            self.client.enable_kinesis_streaming_destination(
+            res = self.client.enable_kinesis_streaming_destination(
                 TableName=args[0],
                 StreamArn=args[1]
             )
             print(self.service, ': Success -- Enable kinesis streaming destination succeeded')
-            return True, ""
+            return True, res
         except Exception as e:
             print(self.service, ': Fail -- Enable kinesis streaming destination failed; error: ', e)
             return False, e
@@ -603,11 +663,11 @@ class DynamoDBClient:
         if not len(args) > 0:
             args.append('SELECT * FROM ' + self.table_name)
         try:
-            self.client.execute_statement(
+            res = self.client.execute_statement(
                 Statement=args[0]
             )
             print(self.service, ': Success -- Execute statement succeeded')
-            return True, ""
+            return True, res
         except Exception as e:
             print(self.service, ': Fail -- Execute statement failed; error: ', e)
             return False, e
@@ -640,12 +700,12 @@ class DynamoDBClient:
             }
         ])
         try:
-            self.client.execute_transaction(
+            res = self.client.execute_transaction(
                 TransactStatements=args[0],
           
             )
             print(self.service, ': Success -- Execute transaction succeeded')
-            return True, ""
+            return True, res
         except Exception as e:
             print(self.service, ': Fail -- Execute transaction failed; error: ', e)
             return False, e
@@ -660,12 +720,12 @@ class DynamoDBClient:
         if not len(args) > 0:
             args.append(f'arn:aws:dynamodb:us-east-2:818637742267:table/{self.table_name}/backup/01548148148148148148')
         try:
-            self.client.export_table_to_point_in_time(
+            res = self.client.export_table_to_point_in_time(
                 TableArn=args[0],
                 S3Bucket='string'
             )
             print(self.service, ': Success -- Export table to point in time succeeded')
-            return True, ""
+            return True, res
         except Exception as e:
             print(self.service, ': Fail -- Export table to point in time failed; error: ', e)
             return False, e
@@ -686,12 +746,12 @@ class DynamoDBClient:
                 }
             })
         try:
-            self.client.get_item(
+            res = self.client.get_item(
                 TableName=self.table_name,
                 Key=args[0]
             )
             print(self.service, ': Success -- Get item succeeded')
-            return True, ""
+            return True, res
         except Exception as e:
             print(self.service, ': Fail -- Get item failed; error: ', e)
             return False, e
@@ -704,11 +764,11 @@ class DynamoDBClient:
         if not len(args) > 0:
             args.append('list_tables')
         try:
-            self.client.get_paginator(
+            res = self.client.get_paginator(
                 args[0]
             )
             print(self.service, ': Success -- Get paginator succeeded')
-            return True, ""
+            return True, res
         except Exception as e:
             print(self.service, ': Fail -- Get paginator failed; error: ', e)
             return False, e
@@ -721,11 +781,11 @@ class DynamoDBClient:
         if not len(args) > 0:
             args.append('table_exists')
         try:
-            self.client.get_waiter(
+            res = self.client.get_waiter(
                 args[0]
             )
             print(self.service, ': Success -- Get waiter succeeded')
-            return True, ""
+            return True, res
         except Exception as e:
             print(self.service, ': Fail -- Get waiter failed; error: ', e)
             return False, e
@@ -739,7 +799,7 @@ class DynamoDBClient:
         if not len(args) > 0:
             args.append(self.table_name)
         try:
-            self.client.import_table(
+            res = self.client.import_table(
                 S3BucketSource={
                 'S3Bucket' : 'string',
                 },
@@ -776,7 +836,7 @@ class DynamoDBClient:
                 }
             )
             print(self.service, ': Success -- Import table succeeded')
-            return True, ""
+            return True, res
         except Exception as e:
             print(self.service, ': Fail -- Import table failed; error: ', e)
             return False, e
@@ -790,11 +850,11 @@ class DynamoDBClient:
         if not len(args) > 0:
             args.append(self.table_name)
         try:
-            self.client.list_backups(
+            res = self.client.list_backups(
                 TableName=args[0]
             )
             print(self.service, ': Success -- List backups succeeded')
-            return True, ""
+            return True, res
         except Exception as e:
             print(self.service, ': Fail -- List backups failed; error: ', e)
             return False, e
@@ -808,11 +868,11 @@ class DynamoDBClient:
         if not len(args) > 0:
             args.append(self.table_name)
         try:
-            self.client.list_contributor_insights(
+            res = self.client.list_contributor_insights(
                 TableName=args[0]
             )
             print(self.service, ': Success -- List contributor insights succeeded')
-            return True, ""
+            return True, res
         except Exception as e:
             print(self.service, ': Fail -- List contributor insights failed; error: ', e)
             return False, e
@@ -826,11 +886,11 @@ class DynamoDBClient:
         if not len(args) > 0:
             args.append(self.table_name)
         try:
-            self.client.list_exports(
+            res = self.client.list_exports(
                 TableArn='string'
             )
             print(self.service, ': Success -- List exports succeeded')
-            return True, ""
+            return True, res
         except Exception as e:
             print(self.service, ': Fail -- List exports failed; error: ', e)
             return False, e
@@ -841,9 +901,10 @@ class DynamoDBClient:
         args = list(args)
         
         try:
-            self.client.list_global_tables()
+            self.dynamo_create_global_table_v2(args)
+            res = self.client.list_global_tables()
             print(self.service, ': Success -- List global tables succeeded')
-            return True, ""
+            return True, res
         except Exception as e:
             print(self.service, ': Fail -- List global tables failed; error: ', e)
             return False, e
@@ -855,9 +916,9 @@ class DynamoDBClient:
         args = list(args)
         
         try:
-            self.client.list_imports()
+            res = self.client.list_imports()
             print(self.service, ': Success -- List imports succeeded')
-            return True, ""
+            return True, res
         except Exception as e:
             print(self.service, ': Fail -- List imports failed; error: ', e)
             return False, e
@@ -867,9 +928,9 @@ class DynamoDBClient:
         args = list(args)
         
         try:
-            self.client.list_tables()
+            res = self.client.list_tables()
             print(self.service, ': Success -- List tables succeeded')
-            return True, ""
+            return True, res
         except Exception as e:
             print(self.service, ': Fail -- List tables failed; error: ', e)
             return False, e
@@ -881,11 +942,11 @@ class DynamoDBClient:
         if not len(args) > 0:
             args.append(self.table_name)
         try:
-            self.client.list_tags_of_resource(
+            res = self.client.list_tags_of_resource(
                 ResourceArn='arn:aws:dynamodb:us-east-2:818637742267:table/' + args[0]
             )
             print(self.service, ': Success -- List tags of resource succeeded')
-            return True, ""
+            return True, res
         except Exception as e:
             print(self.service, ': Fail -- List tags of resource failed; error: ', e)
             return False, e
@@ -907,12 +968,12 @@ class DynamoDBClient:
                     }
                 })
         try:
-            self.client.put_item(
+            res = self.client.put_item(
                 TableName=args[0],
                 Item=args[1]
             )
             print(self.service, ': Success -- Item put succeeded')
-            return True, ""
+            return True, res
         except Exception as e:
             print(self.service, ': Fail -- Item put failed; error: ', e)
             return False, e
@@ -927,12 +988,12 @@ class DynamoDBClient:
         if not len(args) > 1:
             args.append('last_name = :v1')
         try:
-            self.client.query(
+            res = self.client.query(
                 TableName=args[0],
                 KeyConditionExpression=args[1]
             )
             print(self.service, ': Success -- Query succeeded')
-            return True, ""
+            return True, res
         except Exception as e:
             print(self.service, ': Fail -- Query failed; error: ', e)
             return False, e
@@ -948,12 +1009,12 @@ class DynamoDBClient:
         if not len(args) > 1:
             args.append('arn:aws:dynamodb:us-east-2:818637742267:table/' + args[0] + '/backup/0000000000000000')
         try:
-            self.client.restore_table_from_backup(
+            res = self.client.restore_table_from_backup(
                 TargetTableName=args[0],
                 BackupArn=args[1]
             )
             print(self.service, ': Success -- Restore table from backup succeeded')
-            return True, ""
+            return True, res
         except Exception as e:
             print(self.service, ': Fail -- Restore table from backup failed; error: ', e)
             return False, e
@@ -972,13 +1033,13 @@ class DynamoDBClient:
         if not len(args) > 3:
             args.append(datetime.datetime(2015, 1, 1))
         try:
-            self.client.restore_table_to_point_in_time(
+            res = self.client.restore_table_to_point_in_time(
                 SourceTableName=args[0],
                 TargetTableName=args[1],
                 UseLatestRestorableTime=args[2]
             )
             print(self.service, ': Success -- Restore table to point in time succeeded')
-            return True, ""
+            return True, res
         except Exception as e:
             print(self.service, ': Fail -- Restore table to point in time failed; error: ', e)
             return False, e
@@ -1016,13 +1077,13 @@ class DynamoDBClient:
                 }
             })
         try:
-            self.client.scan(
+            res = self.client.scan(
                 TableName=args[0],
                 FilterExpression=args[1],
                 ExpressionAttributeValues=args[2]
             )
             print(self.service, ': Success -- Scan succeeded')
-            return True, ""
+            return True, res
         except Exception as e:
             print(self.service, ': Fail -- Scan failed; error: ', e)
             return False, e
@@ -1041,12 +1102,12 @@ class DynamoDBClient:
                 },
             ])
         try:
-            self.client.tag_resource(
+            res = self.client.tag_resource(
                 ResourceArn=args[0],
                 Tags=args[1]
             )
             print(self.service, ': Success -- Tag resource succeeded')
-            return True, ""
+            return True, res
         except Exception as e:
             print(self.service, ': Fail -- Tag resource failed; error: ', e)
             return False, e
@@ -1091,9 +1152,9 @@ class DynamoDBClient:
             ])
 
         try:
-            self.client.transact_get_items(TransactItems=args[0])
+            res = self.client.transact_get_items(TransactItems=args[0])
             print(self.service, ': Success -- Transact get items succeeded')
-            return True, ""
+            return True, res
         except Exception as e:
             print(self.service, ': Fail -- Transact get items failed; error: ', e)
             return False, e
@@ -1104,70 +1165,25 @@ class DynamoDBClient:
         args = list(args)
         
         if not len(args) > 0:
-            args.append([
-                {
-                    'Put': {
-                        'Item': {
-                            'string': {
-                                'S': 'string',
-                                'N': '1',
-                                'B': b'bytes',
-                                'SS': [
-                                    'string',
-                                ],
-                                'NS': [
-                                    '1',
-                                ],
-                                'BS': [
-                                    b'bytes',
-                                ],
-                                'M': {
-                                    'string': {}
-                                },
-                                'L': [
-                                    {},
-                                ],
-                                'NULL': False,
-                                'BOOL': False
-                            }
-                        },
-                        'TableName': self.table_name,
-                        'ConditionExpression': 'last_name = :v1',
-                        'ExpressionAttributeNames': {
-                            'string': 'string'
-                        },
-                        'ExpressionAttributeValues': {
-                            'string': {
-                                'S': 'string',
-                                'N': '1',
-                                'B': b'bytes',
-                                'SS': [
-                                    'string',
-                                ],
-                                'NS': [
-                                    '1',
-                                ],
-                                'BS': [
-                                    b'bytes',
-                                ],
-                                'M': {
-                                    'string': {}
-                                },
-                                'L': [
-                                    {},
-                                ],
-                                'NULL': False,
-                                'BOOL': False
-                            }
-                        },
-                        'ReturnValuesOnConditionCheckFailure': 'NONE'
-                    }
+            args.append([{
+        'Put': {
+            'TableName': self.table_name,
+            'Item': {
+                'username': {
+                    'S': "item000"
                 },
-            ])
+                'last_name': {
+                    'S': 'someData'
+                }
+            },
+            'ConditionExpression': 'attribute_not_exists(itemId)',
+            'ReturnValuesOnConditionCheckFailure': 'ALL_OLD'
+        }
+    }])
         try:
-            self.client.transact_write_items(TransactItems=args[0])
+            res = self.client.transact_write_items(TransactItems=args[0])
             print(self.service, ': Success -- Transact write items succeeded')
-            return True, ""
+            return True, res
         except Exception as e:
             print(self.service, ': Fail -- Transact write items failed; error: ', e)
             return False, e
@@ -1185,12 +1201,12 @@ class DynamoDBClient:
                 'string',
             ])
         try:
-            self.client.untag_resource(
+            res = self.client.untag_resource(
                 ResourceArn=args[0],
                 TagKeys=args[1]
             )
             print(self.service, ': Success -- Untag resource succeeded')
-            return True, ""
+            return True, res
         except Exception as e:
             print(self.service, ': Fail -- Untag resource failed; error: ', e)
             return False, e
@@ -1202,15 +1218,15 @@ class DynamoDBClient:
         
         if not len(args) > 0:
             args.append({
-                'PointInTimeRecoveryEnabled': True|False
+                'PointInTimeRecoveryEnabled': True
             })
         try:
-            self.client.update_continuous_backups(
+            res = self.client.update_continuous_backups(
                 TableName=self.table_name,
                 PointInTimeRecoverySpecification=args[0]
             )
             print(self.service, ': Success -- Update continuous backups succeeded')
-            return True, ""
+            return True, res
         except Exception as e:
             print(self.service, ': Fail -- Update continuous backups failed; error: ', e)
             return False, e
@@ -1226,13 +1242,13 @@ class DynamoDBClient:
         if not len(args) > 1:
             args.append('ENABLE')
         try:
-            self.client.update_contributor_insights(
+            res = self.client.update_contributor_insights(
                 TableName=self.table_name,
                 IndexName=args[0],
                 ContributorInsightsAction=args[1]
             )
             print(self.service, ': Success -- Update contributor insights succeeded')
-            return True, ""
+            return True, res
         except Exception as e:
             print(self.service, ': Fail -- Update contributor insights failed; error: ', e)
             return False, e
@@ -1241,7 +1257,6 @@ class DynamoDBClient:
     # update global table
     def dynamo_update_global_table(self, args):
         args = list(args)
-        
         if not len(args) > 0:
             args.append(self.table_name)
         if not len(args) > 1:
@@ -1252,13 +1267,16 @@ class DynamoDBClient:
                     }
                 },
             ])
+
+        self.dynamo_create_global_table_v2(args)
+
         try:
-            self.client.update_global_table(
+            res = self.client.update_global_table(
                 GlobalTableName=args[0],
                 ReplicaUpdates=args[1]
             )
             print(self.service, ': Success -- Update global table succeeded')
-            return True, ""
+            return True, res
         except Exception as e:
             print(self.service, ': Fail -- Update global table failed; error: ', e)
             return False, e
@@ -1272,7 +1290,7 @@ class DynamoDBClient:
             args.append(self.table_name)
         
         try:
-            self.client.update_global_table_settings(
+            res =self.client.update_global_table_settings(
                 GlobalTableName=args[0],
                 GlobalTableBillingMode='PROVISIONED',
                 GlobalTableProvisionedWriteCapacityUnits=123,
@@ -1313,7 +1331,7 @@ class DynamoDBClient:
                 ]
             )
             print(self.service, ': Success -- Update global table settings succeeded')
-            return True, ""
+            return True, res
         except Exception as e:
             print(self.service, ': Fail -- Update global table settings failed; error: ', e)
             return False, e
@@ -1324,7 +1342,7 @@ class DynamoDBClient:
         args = list(args)
         
         try:
-            self.client.update_item(
+            res = self.client.update_item(
                 TableName=self.table_name,
                 Key={
                     'username': {
@@ -1342,7 +1360,7 @@ class DynamoDBClient:
                 }
             )
             print(self.service, ': Success -- Item updated')
-            return True, ""
+            return True, res
         except Exception as e:
             print(self.service, ': Fail -- Item update failed; error: ', e)
             return False, e
@@ -1356,7 +1374,7 @@ class DynamoDBClient:
             args.append(self.table_name)
 
         try:
-            self.client.update_table(
+            res = self.client.update_table(
                 TableName=args[0],
                 ProvisionedThroughput={
                     'ReadCapacityUnits': 10,
@@ -1364,7 +1382,7 @@ class DynamoDBClient:
                 }
             )
             print(self.service, ': Success -- Table updated')
-            return True, ""
+            return True, res
         except Exception as e:
             print(self.service, ': Fail -- Table update failed; error: ', e)
             return False, e
@@ -1377,7 +1395,7 @@ class DynamoDBClient:
         args = list(args)
         
         try:
-            self.client.update_table_replica_auto_scaling(
+            res = self.client.update_table_replica_auto_scaling(
                 TableName=self.table_name,
                 GlobalSecondaryIndexUpdates=[
                     {
@@ -1401,7 +1419,7 @@ class DynamoDBClient:
                 ]
             )
             print(self.service, ': Success -- Replica autoscaling updated')
-            return True, ""
+            return True, res
         except Exception as e:
             print(self.service, ': Fail -- Replica autoscaling update failed; error: ', e)
             return False, e
@@ -1413,7 +1431,7 @@ class DynamoDBClient:
         args = list(args)
         
         try:
-            self.client.update_time_to_live(
+            res = self.client.update_time_to_live(
                 TableName=self.table_name,
                 TimeToLiveSpecification={
                     'AttributeName': 'ttl',
@@ -1421,7 +1439,7 @@ class DynamoDBClient:
                 }
             )
             print(self.service, ': Success -- TTL updated')
-            return True, ""
+            return True, res
         except Exception as e:
             print(self.service, ': Fail -- TTL update failed; error: ', e)
             return False, e
