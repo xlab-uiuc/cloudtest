@@ -90,7 +90,7 @@ def run_ops(arg, methods, count, discrepant_methods):
             test_em = S3Client()
            
             try:
-                print('METHOD: '+ method.__name__, '--- ARGS: ') #arg[t_count]
+                print(f'METHOD: {method.__name__} --- ARGS: {arg[t_count]}')
 
                 # run method on cloud and emulator
                 res_cloud = method(test_cloud, arg[t_count])
@@ -243,7 +243,7 @@ def main(arg):
         arg['1'] = [[]] * len(methods_s3)
     else:
         assert len(arg['1']) == len(methods_s3), "Invalid number of methods"
-
+    
     # run methods
     run1v1(arg, methods_s3, t_count)
     # run_sequences_shuffle(methods_s3, 100)

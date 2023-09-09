@@ -59,7 +59,7 @@ def oracles(res_cloud, res_em):
 
 # for testing purposes (Remove later)
 def simple_test_run(flag):
-    flag = False
+    flag = True
 
     # get methods
     methods_dd = [getattr(DynamoDBClient, attr) for attr in dir(DynamoDBClient) if callable(getattr(DynamoDBClient, attr)) and not attr.startswith("__")]
@@ -67,12 +67,15 @@ def simple_test_run(flag):
     # run methods
     for i in methods_dd:
         
-        # if 'stage_block_from_url' in i.__name__:
-        test_bc = DynamoDBClient(flag)
-        try:
-            r = i(test_bc, [])
-        finally:
-            test_bc.__cleanup__()
+        if 'dynamo_describe_global_table' == i.__name__:
+            print(i.__name__)
+            test_bc = DynamoDBClient(flag, 'table629676317')
+            try:
+                r = i(test_bc, ['table6296'])
+                print(r)
+            finally:
+                test_bc.__cleanup__()
+                pass
 
 
 
@@ -223,6 +226,42 @@ def run_sequences_shuffle(methods, runs):
 
     return discrepant_seq, d_count
 
+
+
+def run_sequences(methods, runs):
+
+    global BEHAVIOR_MISMATCH_COUNT
+    global ERROR_MISMATCH_COUNT
+    global STATUS_CODE_MISMATCH_COUNT
+
+    BEHAVIOR_MISMATCH_COUNT = 0
+    ERROR_MISMATCH_COUNT = 0
+    STATUS_CODE_MISMATCH_COUNT = 0
+
+    d_count = 0
+    t_count = runs
+
+    with io.StringIO() as buf, redirect_stdout(buf):
+
+        discrepant_seqs, d_count = run_sequences_shuffle(methods, runs)
+
+        # store methods names in order to skip in the next run
+        with open('../sdk_tests/DynamoDB/discrepant_sequences.txt', 'a') as f:
+            f.write("\n".join(discrepant_seqs))  
+
+        output = buf.getvalue().strip()
+
+    # write buf to a new file
+    with open('../sdk_tests/DynamoDB/log_all.txt', 'a') as f:
+        f.write(output)
+
+    with open('../sdk_tests/DynamoDB/discrepancy.txt', 'a') as f:
+        f.write('***  Sequences Run Summary  ***\n\n')
+        f.write(f'Behavior mismatch count: {BEHAVIOR_MISMATCH_COUNT}\n')
+        f.write(f'Status code mismatch count: {STATUS_CODE_MISMATCH_COUNT}\n')
+        f.write(f'Error message mismatch count: {ERROR_MISMATCH_COUNT}\n')
+        f.write(f'Total discrepancy count: {d_count}/{t_count}\n\n\n')
+
 '''test suites'''
 def main(arg):
     # get methods
@@ -235,7 +274,9 @@ def main(arg):
         arg['1'] = [[]] * len(methods_dd)
 
     # run methods
-    run1v1(arg, methods_dd, t_count)
+    # run1v1(arg, methods_dd, t_count)
+    simple_test_run(False)
+    # run_sequences(methods_dd, 100)
 
 
 '''Get fuzz data'''
