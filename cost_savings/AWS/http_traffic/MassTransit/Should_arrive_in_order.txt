@@ -1,0 +1,87 @@
+Logs for test: Should_arrive_in_order
+
+
+     __                     _______ __             __
+    / /   ____  _________ _/ / ___// /_____ ______/ /__
+   / /   / __ \/ ___/ __ `/ /\__ \/ __/ __ `/ ___/ //_/
+  / /___/ /_/ / /__/ /_/ / /___/ / /_/ /_/ / /__/ ,<
+ /_____/\____/\___/\__,_/_//____/\__/\__,_/\___/_/|_|
+
+ 💻 LocalStack CLI 2.2.0
+
+[02:29:14] starting LocalStack in Docker mode 🐳                                                                                                        localstack.py:409
+───────────────────────────────────────────────────────────── LocalStack Runtime Log (press CTRL-C to quit) ─────────────────────────────────────────────────────────────
+
+LocalStack version: 2.2.1.dev
+LocalStack Docker container id: 51ecc472c2ed
+LocalStack build date: 2023-09-07
+LocalStack build git hash: 5473e686
+
+2023-09-10T21:29:15.885  INFO --- [-functhread3] hypercorn.error            : Running on https://0.0.0.0:4566 (CTRL + C to quit)
+2023-09-10T21:29:15.885  INFO --- [-functhread3] hypercorn.error            : Running on https://0.0.0.0:4566 (CTRL + C to quit)
+Ready.
+2023-09-10T21:29:17.664  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS sqs.GetQueueUrl => 400 (AWS.SimpleQueueService.NonExistentQueue)
+2023-09-10T21:29:17.686  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS sqs.CreateQueue => 200
+2023-09-10T21:29:17.728  INFO --- [   asgi_gw_0] localstack.request.http    : POST /000000000000/in-order.fifo => 200
+2023-09-10T21:29:17.818  INFO --- [   asgi_gw_2] localstack.request.http    : POST /000000000000/in-order.fifo => 200
+2023-09-10T21:29:17.821  INFO --- [   asgi_gw_1] localstack.request.http    : POST /000000000000/in-order.fifo => 200
+2023-09-10T21:29:17.857  INFO --- [   asgi_gw_2] localstack.request.http    : POST /000000000000/in-order.fifo => 200
+2023-09-10T21:29:17.863  INFO --- [   asgi_gw_3] localstack.request.http    : POST /000000000000/in-order.fifo => 200
+2023-09-10T21:29:17.897  INFO --- [   asgi_gw_5] localstack.request.http    : POST /000000000000/in-order.fifo => 200
+2023-09-10T21:29:17.897  INFO --- [   asgi_gw_6] localstack.request.http    : POST /000000000000/in-order.fifo => 200
+2023-09-10T21:29:17.917  INFO --- [   asgi_gw_6] localstack.request.http    : POST /000000000000/in-order.fifo => 200
+2023-09-10T21:29:17.918  INFO --- [   asgi_gw_2] localstack.request.http    : POST /000000000000/in-order.fifo => 200
+2023-09-10T21:29:17.934  INFO --- [   asgi_gw_2] localstack.request.http    : POST /000000000000/in-order.fifo => 200
+2023-09-10T21:29:17.936  INFO --- [   asgi_gw_5] localstack.request.http    : POST /000000000000/in-order.fifo => 200
+2023-09-10T21:29:17.958  INFO --- [   asgi_gw_3] localstack.request.http    : POST /000000000000/in-order.fifo => 200
+2023-09-10T21:29:18.031  INFO --- [   asgi_gw_6] localstack.request.http    : POST /000000000000/in-order.fifo => 200
+2023-09-10T21:29:18.092  INFO --- [   asgi_gw_2] localstack.request.http    : POST /000000000000/in-order.fifo => 200
+2023-09-10T21:29:18.104  INFO --- [   asgi_gw_6] localstack.request.http    : POST /000000000000/in-order.fifo => 200
+2023-09-10T21:29:18.106  INFO --- [   asgi_gw_3] localstack.request.http    : POST /000000000000/in-order.fifo => 200
+2023-09-10T21:29:18.128  INFO --- [   asgi_gw_2] localstack.request.http    : POST /000000000000/in-order.fifo => 200
+2023-09-10T21:29:18.128  INFO --- [   asgi_gw_5] localstack.request.http    : POST /000000000000/in-order.fifo => 200
+2023-09-10T21:29:18.152  INFO --- [   asgi_gw_1] localstack.request.http    : POST /000000000000/in-order.fifo => 200
+2023-09-10T21:29:18.156  INFO --- [   asgi_gw_3] localstack.request.http    : POST /000000000000/in-order.fifo => 200
+2023-09-10T21:29:18.179  INFO --- [   asgi_gw_5] localstack.request.http    : POST /000000000000/in-order.fifo => 200
+2023-09-10T21:29:18.189  INFO --- [   asgi_gw_4] localstack.request.http    : POST /000000000000/in-order.fifo => 200
+2023-09-10T21:29:18.208  INFO --- [   asgi_gw_6] localstack.request.http    : POST /000000000000/in-order.fifo => 200
+2023-09-10T21:29:18.215  INFO --- [   asgi_gw_7] localstack.request.http    : POST /000000000000/in-order.fifo => 200
+2023-09-10T21:29:18.228  INFO --- [   asgi_gw_3] localstack.request.http    : POST /000000000000/in-order.fifo => 200
+2023-09-10T21:29:18.237  INFO --- [   asgi_gw_5] localstack.request.http    : POST /000000000000/in-order.fifo => 200
+2023-09-10T21:29:18.247  INFO --- [   asgi_gw_6] localstack.request.http    : POST /000000000000/in-order.fifo => 200
+2023-09-10T21:29:18.260  INFO --- [   asgi_gw_3] localstack.request.http    : POST /000000000000/in-order.fifo => 200
+2023-09-10T21:29:18.272  INFO --- [   asgi_gw_5] localstack.request.http    : POST /000000000000/in-order.fifo => 200
+2023-09-10T21:29:18.284  INFO --- [   asgi_gw_1] localstack.request.http    : POST /000000000000/in-order.fifo => 200
+2023-09-10T21:29:18.302  INFO --- [   asgi_gw_6] localstack.request.http    : POST /000000000000/in-order.fifo => 200
+2023-09-10T21:29:18.311  INFO --- [   asgi_gw_7] localstack.request.http    : POST /000000000000/in-order.fifo => 200
+2023-09-10T21:29:18.330  INFO --- [   asgi_gw_7] localstack.request.http    : POST /000000000000/in-order.fifo => 200
+2023-09-10T21:29:18.336  INFO --- [   asgi_gw_2] localstack.request.http    : POST /000000000000/in-order.fifo => 200
+2023-09-10T21:29:18.355  INFO --- [   asgi_gw_6] localstack.request.http    : POST /000000000000/in-order.fifo => 200
+2023-09-10T21:29:18.361  INFO --- [   asgi_gw_4] localstack.request.http    : POST /000000000000/in-order.fifo => 200
+2023-09-10T21:29:18.365  INFO --- [   asgi_gw_0] localstack.utils.bootstrap : Execution of "require" took 514.12ms
+2023-09-10T21:29:18.370  INFO --- [   asgi_gw_3] localstack.request.http    : POST /000000000000/in-order.fifo => 200
+2023-09-10T21:29:18.388  INFO --- [   asgi_gw_1] localstack.request.http    : POST /000000000000/in-order.fifo => 200
+2023-09-10T21:29:18.400  INFO --- [   asgi_gw_4] localstack.request.http    : POST /000000000000/in-order.fifo => 200
+2023-09-10T21:29:18.419  INFO --- [   asgi_gw_5] localstack.request.http    : POST /000000000000/in-order.fifo => 200
+2023-09-10T21:29:18.429  INFO --- [   asgi_gw_6] localstack.request.http    : POST /000000000000/in-order.fifo => 200
+2023-09-10T21:29:18.444  INFO --- [   asgi_gw_1] localstack.request.http    : POST /000000000000/in-order.fifo => 200
+2023-09-10T21:29:18.449  INFO --- [   asgi_gw_5] localstack.request.http    : POST /000000000000/in-order.fifo => 200
+2023-09-10T21:29:18.478  INFO --- [   asgi_gw_7] localstack.request.http    : POST /000000000000/in-order.fifo => 200
+2023-09-10T21:29:18.558  INFO --- [   asgi_gw_3] localstack.request.http    : POST /000000000000/in-order.fifo => 200
+2023-09-10T21:29:18.591  INFO --- [   asgi_gw_5] localstack.request.http    : POST /000000000000/in-order.fifo => 200
+2023-09-10T21:29:18.710  INFO --- [   asgi_gw_2] localstack.request.http    : POST /000000000000/in-order.fifo => 200
+2023-09-10T21:29:18.830  INFO --- [   asgi_gw_4] localstack.request.http    : POST /000000000000/in-order.fifo => 200
+2023-09-10T21:29:18.955  INFO --- [   asgi_gw_5] localstack.request.http    : POST /000000000000/in-order.fifo => 200
+2023-09-10T21:29:19.088  INFO --- [   asgi_gw_2] localstack.request.http    : POST /000000000000/in-order.fifo => 200
+2023-09-10T21:29:19.224  INFO --- [   asgi_gw_7] localstack.request.http    : POST /000000000000/in-order.fifo => 200
+2023-09-10T21:29:19.356  INFO --- [   asgi_gw_0] localstack.request.http    : POST /000000000000/in-order.fifo => 200
+2023-09-10T21:29:19.490  INFO --- [   asgi_gw_2] localstack.request.http    : POST /000000000000/in-order.fifo => 200
+2023-09-10T21:29:19.622  INFO --- [   asgi_gw_4] localstack.request.http    : POST /000000000000/in-order.fifo => 200
+2023-09-10T21:29:19.749  INFO --- [   asgi_gw_0] localstack.request.http    : POST /000000000000/in-order.fifo => 200
+2023-09-10T21:29:19.887  INFO --- [   asgi_gw_5] localstack.request.http    : POST /000000000000/in-order.fifo => 200
+2023-09-10T21:29:20.019  INFO --- [   asgi_gw_0] localstack.request.http    : POST /000000000000/in-order.fifo => 200
+2023-09-10T21:29:20.146  INFO --- [   asgi_gw_7] localstack.request.http    : POST /000000000000/in-order.fifo => 200
+2023-09-10T21:29:20.310  INFO --- [   asgi_gw_4] localstack.request.http    : POST /000000000000/in-order.fifo => 200
+2023-09-10T21:29:20.452  INFO --- [   asgi_gw_2] localstack.request.http    : POST /000000000000/in-order.fifo => 200
+2023-09-10T21:29:20.583  INFO --- [   asgi_gw_0] localstack.request.http    : POST /000000000000/in-order.fifo => 200
+2023-09-10T21:29:21.692  INFO --- [   asgi_gw_1] localstack.request.http    : POST /000000000000/in-order.fifo => 200

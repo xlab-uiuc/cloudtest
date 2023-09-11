@@ -1,0 +1,161 @@
+Logs for test: Should_get_the_message
+
+
+     __                     _______ __             __
+    / /   ____  _________ _/ / ___// /_____ ______/ /__
+   / /   / __ \/ ___/ __ `/ /\__ \/ __/ __ `/ ___/ //_/
+  / /___/ /_/ / /__/ /_/ / /___/ / /_/ /_/ / /__/ ,<
+ /_____/\____/\___/\__,_/_//____/\__/\__,_/\___/_/|_|
+
+ 💻 LocalStack CLI 2.2.0
+
+[02:20:37] starting LocalStack in Docker mode 🐳                                                                                                        localstack.py:409
+───────────────────────────────────────────────────────────── LocalStack Runtime Log (press CTRL-C to quit) ─────────────────────────────────────────────────────────────
+
+LocalStack version: 2.2.1.dev
+LocalStack Docker container id: df65ad0d49ef
+LocalStack build date: 2023-09-07
+LocalStack build git hash: 5473e686
+
+2023-09-10T21:20:38.825  INFO --- [-functhread3] hypercorn.error            : Running on https://0.0.0.0:4566 (CTRL + C to quit)
+2023-09-10T21:20:38.825  INFO --- [-functhread3] hypercorn.error            : Running on https://0.0.0.0:4566 (CTRL + C to quit)
+Ready.
+2023-09-10T21:20:40.560  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS sns.ListTopics => 200
+2023-09-10T21:20:40.658  INFO --- [   asgi_gw_2] localstack.request.aws     : AWS sns.CreateTopic => 200
+2023-09-10T21:20:40.659  INFO --- [   asgi_gw_6] localstack.request.aws     : AWS sns.CreateTopic => 200
+2023-09-10T21:20:40.659  INFO --- [   asgi_gw_4] localstack.request.aws     : AWS sns.CreateTopic => 200
+2023-09-10T21:20:40.660  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS sns.CreateTopic => 200
+2023-09-10T21:20:40.660  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS sns.CreateTopic => 200
+2023-09-10T21:20:40.660  INFO --- [   asgi_gw_5] localstack.request.aws     : AWS sns.CreateTopic => 200
+2023-09-10T21:20:40.661  INFO --- [   asgi_gw_3] localstack.request.aws     : AWS sns.CreateTopic => 200
+2023-09-10T21:20:40.662  INFO --- [   asgi_gw_7] localstack.request.aws     : AWS sns.CreateTopic => 200
+2023-09-10T21:20:40.693  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS sns.GetTopicAttributes => 200
+2023-09-10T21:20:40.697  INFO --- [   asgi_gw_5] localstack.request.aws     : AWS sns.GetTopicAttributes => 200
+2023-09-10T21:20:40.699  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS sns.GetTopicAttributes => 200
+2023-09-10T21:20:40.701  INFO --- [   asgi_gw_6] localstack.request.aws     : AWS sns.GetTopicAttributes => 200
+2023-09-10T21:20:40.703  INFO --- [   asgi_gw_3] localstack.request.aws     : AWS sns.GetTopicAttributes => 200
+2023-09-10T21:20:40.705  INFO --- [   asgi_gw_4] localstack.request.aws     : AWS sns.GetTopicAttributes => 200
+2023-09-10T21:20:40.706  INFO --- [   asgi_gw_2] localstack.request.aws     : AWS sns.GetTopicAttributes => 200
+2023-09-10T21:20:40.708  INFO --- [   asgi_gw_7] localstack.request.aws     : AWS sns.GetTopicAttributes => 200
+2023-09-10T21:20:40.816  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS sqs.GetQueueUrl => 400 (AWS.SimpleQueueService.NonExistentQueue)
+2023-09-10T21:20:40.828  INFO --- [   asgi_gw_4] localstack.request.aws     : AWS sqs.CreateQueue => 200
+2023-09-10T21:20:40.872  INFO --- [   asgi_gw_6] localstack.request.http    : POST /000000000000/quartz => 200
+2023-09-10T21:20:40.886  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS sns.Subscribe => 200
+2023-09-10T21:20:40.887  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS sns.Subscribe => 200
+2023-09-10T21:20:40.888  INFO --- [   asgi_gw_5] localstack.request.aws     : AWS sns.Subscribe => 200
+2023-09-10T21:20:40.889  INFO --- [   asgi_gw_4] localstack.request.aws     : AWS sns.Subscribe => 200
+2023-09-10T21:20:40.890  INFO --- [   asgi_gw_2] localstack.request.aws     : AWS sns.Subscribe => 200
+2023-09-10T21:20:40.891  INFO --- [   asgi_gw_3] localstack.request.aws     : AWS sns.Subscribe => 200
+2023-09-10T21:20:40.921  INFO --- [   asgi_gw_0] localstack.request.http    : POST /000000000000/quartz => 200
+2023-09-10T21:20:40.922  INFO --- [   asgi_gw_6] localstack.request.http    : POST /000000000000/quartz => 200
+2023-09-10T21:20:40.924  INFO --- [   asgi_gw_1] localstack.request.http    : POST /000000000000/quartz => 200
+2023-09-10T21:20:40.925  INFO --- [   asgi_gw_4] localstack.request.http    : POST /000000000000/quartz => 200
+2023-09-10T21:20:40.926  INFO --- [   asgi_gw_5] localstack.request.http    : POST /000000000000/quartz => 200
+2023-09-10T21:20:40.929  INFO --- [   asgi_gw_2] localstack.request.http    : POST /000000000000/quartz => 200
+2023-09-10T21:20:41.228  INFO --- [   asgi_gw_7] localstack.utils.bootstrap : Execution of "require" took 505.22ms
+2023-09-10T21:20:41.230  INFO --- [   asgi_gw_7] localstack.request.aws     : AWS sqs.GetQueueUrl => 400 (AWS.SimpleQueueService.NonExistentQueue)
+2023-09-10T21:20:41.242  INFO --- [   asgi_gw_6] localstack.request.aws     : AWS sqs.CreateQueue => 200
+2023-09-10T21:20:41.258  INFO --- [   asgi_gw_9] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:41.265  INFO --- [   asgi_gw_5] localstack.request.aws     : AWS sns.Subscribe => 200
+2023-09-10T21:20:41.267  INFO --- [   asgi_gw_2] localstack.request.aws     : AWS sns.Subscribe => 200
+2023-09-10T21:20:41.293  INFO --- [  asgi_gw_12] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:41.295  INFO --- [   asgi_gw_7] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:41.309  INFO --- [   asgi_gw_1] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:41.319  INFO --- [   asgi_gw_2] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:41.337  INFO --- [  asgi_gw_11] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:41.358  INFO --- [   asgi_gw_0] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:41.383  INFO --- [   asgi_gw_9] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:41.392  INFO --- [   asgi_gw_6] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:41.407  INFO --- [   asgi_gw_7] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:41.409  INFO --- [   asgi_gw_1] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:41.467  INFO --- [   asgi_gw_5] localstack.request.http    : POST /000000000000/quartz => 200
+2023-09-10T21:20:41.470  INFO --- [  asgi_gw_10] localstack.request.http    : POST /000000000000/quartz => 200
+2023-09-10T21:20:41.489  INFO --- [   asgi_gw_7] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:41.509  INFO --- [   asgi_gw_6] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:41.511  INFO --- [   asgi_gw_9] localstack.request.http    : POST /000000000000/quartz => 200
+2023-09-10T21:20:41.524  INFO --- [  asgi_gw_10] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:41.532  INFO --- [   asgi_gw_7] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:41.542  INFO --- [   asgi_gw_0] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:41.553  INFO --- [   asgi_gw_1] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:41.564  INFO --- [   asgi_gw_6] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:41.624  INFO --- [   asgi_gw_3] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:41.636  INFO --- [   asgi_gw_9] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:41.648  INFO --- [  asgi_gw_11] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:41.659  INFO --- [   asgi_gw_4] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:41.670  INFO --- [   asgi_gw_3] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:41.680  INFO --- [   asgi_gw_1] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:41.690  INFO --- [  asgi_gw_11] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:41.700  INFO --- [   asgi_gw_4] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:41.710  INFO --- [   asgi_gw_6] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:41.718  INFO --- [   asgi_gw_7] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:41.728  INFO --- [  asgi_gw_12] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:41.736  INFO --- [   asgi_gw_4] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:41.746  INFO --- [   asgi_gw_6] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:41.754  INFO --- [   asgi_gw_7] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:41.764  INFO --- [   asgi_gw_0] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:41.773  INFO --- [   asgi_gw_4] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:41.782  INFO --- [  asgi_gw_10] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:41.791  INFO --- [  asgi_gw_12] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:41.799  INFO --- [   asgi_gw_0] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:41.809  INFO --- [   asgi_gw_6] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:41.817  INFO --- [  asgi_gw_10] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:41.827  INFO --- [   asgi_gw_9] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:41.835  INFO --- [  asgi_gw_11] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:41.844  INFO --- [   asgi_gw_1] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:41.853  INFO --- [   asgi_gw_4] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:41.862  INFO --- [   asgi_gw_3] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:41.862  INFO --- [   asgi_gw_8] localstack.utils.bootstrap : Execution of "require" took 515.63ms
+2023-09-10T21:20:41.873  INFO --- [  asgi_gw_10] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:41.885  INFO --- [   asgi_gw_1] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:41.907  INFO --- [   asgi_gw_6] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:41.916  INFO --- [   asgi_gw_3] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:41.926  INFO --- [  asgi_gw_12] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:41.935  INFO --- [   asgi_gw_4] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:41.943  INFO --- [   asgi_gw_7] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:41.952  INFO --- [  asgi_gw_11] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:41.960  INFO --- [   asgi_gw_9] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:41.970  INFO --- [   asgi_gw_6] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:41.979  INFO --- [  asgi_gw_11] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:41.987  INFO --- [   asgi_gw_0] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:41.997  INFO --- [  asgi_gw_12] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:42.005  INFO --- [   asgi_gw_4] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:42.014  INFO --- [  asgi_gw_11] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:42.022  INFO --- [  asgi_gw_10] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:42.031  INFO --- [   asgi_gw_7] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:42.040  INFO --- [   asgi_gw_0] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:42.049  INFO --- [   asgi_gw_1] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:42.059  INFO --- [   asgi_gw_6] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:42.070  INFO --- [   asgi_gw_7] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:42.079  INFO --- [   asgi_gw_0] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:42.090  INFO --- [   asgi_gw_9] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:42.097  INFO --- [  asgi_gw_12] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:42.106  INFO --- [   asgi_gw_4] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:42.115  INFO --- [  asgi_gw_10] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:42.125  INFO --- [  asgi_gw_11] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:42.135  INFO --- [   asgi_gw_0] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:42.143  INFO --- [   asgi_gw_9] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:42.153  INFO --- [   asgi_gw_7] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:42.161  INFO --- [   asgi_gw_4] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:42.172  INFO --- [   asgi_gw_3] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:42.180  INFO --- [   asgi_gw_6] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:42.189  INFO --- [   asgi_gw_0] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:42.198  INFO --- [   asgi_gw_9] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:42.207  INFO --- [   asgi_gw_3] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:42.217  INFO --- [   asgi_gw_1] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:42.226  INFO --- [   asgi_gw_8] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:42.235  INFO --- [   asgi_gw_9] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:42.243  INFO --- [   asgi_gw_7] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:42.252  INFO --- [   asgi_gw_1] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:42.263  INFO --- [  asgi_gw_11] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:42.275  INFO --- [   asgi_gw_3] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:42.284  INFO --- [   asgi_gw_1] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:42.293  INFO --- [  asgi_gw_11] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:42.303  INFO --- [   asgi_gw_3] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:42.312  INFO --- [   asgi_gw_4] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:42.320  INFO --- [  asgi_gw_12] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:42.330  INFO --- [  asgi_gw_10] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:42.338  INFO --- [   asgi_gw_3] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:42.348  INFO --- [   asgi_gw_0] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:42.358  INFO --- [   asgi_gw_1] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:42.368  INFO --- [   asgi_gw_6] localstack.request.http    : POST /000000000000/input_queue => 200
+2023-09-10T21:20:42.380  INFO --- [   asgi_gw_7] localstack.request.http    : POST /000000000000/input_queue => 200
