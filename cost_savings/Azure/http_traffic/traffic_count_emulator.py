@@ -75,10 +75,10 @@ def main():
     file_names = os.listdir(traffic_path)
 
     app_data = getRequestTypes(traffic_path, file_names)
-    saveJSONObject('../application_req_types/insight', app_data)
+    saveJSONObject('../application_request_types/insight', app_data)
 
     api_calls = getAPICalls(traffic_path, file_names)
-    saveJSONObject('../sdk_methods/insight', api_calls)
+    saveJSONObject('../application_sdk_methods/insight', api_calls)
 
 
 main()
