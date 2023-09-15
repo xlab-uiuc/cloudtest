@@ -163,39 +163,39 @@ if __name__ == "__main__":
     print("Total tests: ", TOTAL_TESTS)
     print("Potential discrepant tests: ", DISCREPANT_TESTS)
 
-    # sort methods by count
-    METHODS_COUNT = {k: v for k, v in sorted(METHODS_COUNT.items(), key=lambda item: item[1], reverse=True)}
+    # # sort methods by count
+    # METHODS_COUNT = {k: v for k, v in sorted(METHODS_COUNT.items(), key=lambda item: item[1], reverse=True)}
 
-    # print(json.dumps(METHODS_COUNT, indent=2))
-    arr = np.array(list(METHODS_COUNT.values()))
+    # # print(json.dumps(METHODS_COUNT, indent=2))
+    # arr = np.array(list(METHODS_COUNT.values()))
 
-    # x-axis: weighted popularity of methods
-    # ratio = arr/arr.sum() * 100
-    # cumulative_x = np.cumsum(ratio)
-    # x_axis = cumulative_x
-
-
-    # x-axis: all methods used in the tests
-    x_axis = np.arange(1, len(METHODS_COUNT)+1)
+    # # x-axis: weighted popularity of methods
+    # # ratio = arr/arr.sum() * 100
+    # # cumulative_x = np.cumsum(ratio)
+    # # x_axis = cumulative_x
 
 
-    # x-axis: only discrepant methods
-    # x_axis = np.arange(0, len(DISCREPANT_METHODS)+1)
+    # # x-axis: all methods used in the tests
+    # x_axis = np.arange(1, len(METHODS_COUNT)+1)
 
-    y_axis = []
-    # y_axis.append(len([j for j in TEST_METHOD_MAP.keys() if not TEST_METHOD_MAP[j] == []]))
-    for i in METHODS_COUNT.keys():
-        if i in DISCREPANT_METHODS:
-            for j in TEST_METHOD_MAP.keys():
-                if i in TEST_METHOD_MAP[j]:
-                    TEST_METHOD_MAP[j].pop(TEST_METHOD_MAP[j].index(i))
 
-        y_axis.append(len([j for j in TEST_METHOD_MAP.keys() if not TEST_METHOD_MAP[j] == []]))
+    # # x-axis: only discrepant methods
+    # # x_axis = np.arange(0, len(DISCREPANT_METHODS)+1)
+
+    # y_axis = []
+    # # y_axis.append(len([j for j in TEST_METHOD_MAP.keys() if not TEST_METHOD_MAP[j] == []]))
+    # for i in METHODS_COUNT.keys():
+    #     if i in DISCREPANT_METHODS:
+    #         for j in TEST_METHOD_MAP.keys():
+    #             if i in TEST_METHOD_MAP[j]:
+    #                 TEST_METHOD_MAP[j].pop(TEST_METHOD_MAP[j].index(i))
+
+    #     y_axis.append(len([j for j in TEST_METHOD_MAP.keys() if not TEST_METHOD_MAP[j] == []]))
     
-    y_axis = np.array(y_axis)
-    # scale between 0 and 100
-    y_axis = ((y_axis - y_axis.min())/(y_axis.max() - y_axis.min())) * 100
-    create_graph(x_axis, y_axis, "Fixed Discrepant APIs (Descending Order of Popularity)", "Test Discrepancies", "")
+    # y_axis = np.array(y_axis)
+    # # scale between 0 and 100
+    # y_axis = ((y_axis - y_axis.min())/(y_axis.max() - y_axis.min())) * 100
+    # create_graph(x_axis, y_axis, "Fixed Discrepant APIs (Descending Order of Popularity)", "Test Discrepancies", "")
 
     
     
