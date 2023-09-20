@@ -1,0 +1,100 @@
+Logs for test: Can_cache_multiple_items_in_parallel
+
+
+     __                     _______ __             __
+    / /   ____  _________ _/ / ___// /_____ ______/ /__
+   / /   / __ \/ ___/ __ `/ /\__ \/ __/ __ `/ ___/ //_/
+  / /___/ /_/ / /__/ /_/ / /___/ / /_/ /_/ / /__/ ,<
+ /_____/\____/\___/\__,_/_//____/\__/\__,_/\___/_/|_|
+
+ 💻 LocalStack CLI 2.2.0
+
+[20:04:00] starting LocalStack in Docker mode 🐳                                                                                                        localstack.py:409
+───────────────────────────────────────────────────────────── LocalStack Runtime Log (press CTRL-C to quit) ─────────────────────────────────────────────────────────────
+
+LocalStack version: 2.2.1.dev
+LocalStack Docker container id: 9bcc0b2ef9c4
+LocalStack build date: 2023-09-07
+LocalStack build git hash: 5473e686
+
+2023-09-14T15:04:02.375  INFO --- [-functhread3] hypercorn.error            : Running on https://0.0.0.0:4566 (CTRL + C to quit)
+2023-09-14T15:04:02.375  INFO --- [-functhread3] hypercorn.error            : Running on https://0.0.0.0:4566 (CTRL + C to quit)
+Ready.
+2023-09-14T15:04:05.288  INFO --- [   asgi_gw_0] localstack.utils.bootstrap : Execution of "require" took 1396.60ms
+2023-09-14T15:04:05.433  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.DescribeTable => 400 (ResourceNotFoundException)
+2023-09-14T15:04:05.486  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.ListTables => 200
+2023-09-14T15:04:05.574  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.CreateTable => 200
+2023-09-14T15:04:05.597  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.DescribeTable => 200
+2023-09-14T15:04:05.607  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.DescribeTable => 200
+2023-09-14T15:04:05.704  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.DeleteTable => 200
+2023-09-14T15:04:05.718  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.ListTables => 200
+2023-09-14T15:04:05.727  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.ListTables => 200
+2023-09-14T15:04:05.750  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.CreateTable => 200
+2023-09-14T15:04:05.763  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.DescribeTable => 200
+2023-09-14T15:04:05.959  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.PutItem => 200
+2023-09-14T15:04:05.977  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.PutItem => 200
+2023-09-14T15:04:05.993  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.PutItem => 200
+2023-09-14T15:04:06.008  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.PutItem => 200
+2023-09-14T15:04:06.022  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.PutItem => 200
+2023-09-14T15:04:06.037  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.PutItem => 200
+2023-09-14T15:04:06.052  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.PutItem => 200
+2023-09-14T15:04:06.073  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.PutItem => 200
+2023-09-14T15:04:06.086  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.PutItem => 200
+2023-09-14T15:04:06.099  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.PutItem => 200
+2023-09-14T15:04:06.114  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.GetItem => 200
+2023-09-14T15:04:06.141  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.DeleteTable => 200
+2023-09-14T15:04:06.147  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.ListTables => 200
+2023-09-14T15:04:06.154  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.ListTables => 200
+2023-09-14T15:04:06.171  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.CreateTable => 200
+2023-09-14T15:04:06.177  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.DescribeTable => 200
+2023-09-14T15:04:08.975  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.PutItem => 200
+2023-09-14T15:04:08.984  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.PutItem => 200
+2023-09-14T15:04:08.988  INFO --- [   asgi_gw_9] localstack.request.aws     : AWS dynamodb.PutItem => 200
+2023-09-14T15:04:08.991  INFO --- [   asgi_gw_7] localstack.request.aws     : AWS dynamodb.PutItem => 200
+2023-09-14T15:04:08.995  INFO --- [   asgi_gw_3] localstack.request.aws     : AWS dynamodb.PutItem => 200
+2023-09-14T15:04:08.999  INFO --- [   asgi_gw_6] localstack.request.aws     : AWS dynamodb.PutItem => 200
+2023-09-14T15:04:09.002  INFO --- [   asgi_gw_4] localstack.request.aws     : AWS dynamodb.PutItem => 200
+2023-09-14T15:04:09.008  INFO --- [   asgi_gw_8] localstack.request.aws     : AWS dynamodb.PutItem => 200
+2023-09-14T15:04:09.012  INFO --- [   asgi_gw_5] localstack.request.aws     : AWS dynamodb.PutItem => 200
+2023-09-14T15:04:09.016  INFO --- [   asgi_gw_2] localstack.request.aws     : AWS dynamodb.PutItem => 200
+2023-09-14T15:04:09.024  INFO --- [  asgi_gw_11] localstack.request.aws     : AWS dynamodb.GetItem => 200
+2023-09-14T15:04:09.066  INFO --- [  asgi_gw_12] localstack.request.aws     : AWS dynamodb.PutItem => 200
+2023-09-14T15:04:09.069  INFO --- [  asgi_gw_18] localstack.request.aws     : AWS dynamodb.PutItem => 200
+2023-09-14T15:04:09.079  INFO --- [  asgi_gw_14] localstack.request.aws     : AWS dynamodb.PutItem => 200
+2023-09-14T15:04:09.083  INFO --- [  asgi_gw_10] localstack.request.aws     : AWS dynamodb.PutItem => 200
+2023-09-14T15:04:09.094  INFO --- [  asgi_gw_13] localstack.request.aws     : AWS dynamodb.PutItem => 200
+2023-09-14T15:04:09.098  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.PutItem => 200
+2023-09-14T15:04:09.102  INFO --- [  asgi_gw_17] localstack.request.aws     : AWS dynamodb.PutItem => 200
+2023-09-14T15:04:09.107  INFO --- [  asgi_gw_15] localstack.request.aws     : AWS dynamodb.PutItem => 200
+2023-09-14T15:04:09.113  INFO --- [  asgi_gw_19] localstack.request.aws     : AWS dynamodb.PutItem => 200
+2023-09-14T15:04:09.118  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.PutItem => 200
+2023-09-14T15:04:09.125  INFO --- [   asgi_gw_3] localstack.request.aws     : AWS dynamodb.GetItem => 200
+2023-09-14T15:04:09.146  INFO --- [   asgi_gw_7] localstack.request.aws     : AWS dynamodb.DeleteItem => 200
+2023-09-14T15:04:09.192  INFO --- [  asgi_gw_19] localstack.request.aws     : AWS dynamodb.GetItem => 200
+2023-09-14T15:04:09.202  INFO --- [   asgi_gw_2] localstack.request.aws     : AWS dynamodb.PutItem => 200
+2023-09-14T15:04:09.207  INFO --- [   asgi_gw_6] localstack.request.aws     : AWS dynamodb.PutItem => 200
+2023-09-14T15:04:09.212  INFO --- [  asgi_gw_12] localstack.request.aws     : AWS dynamodb.PutItem => 200
+2023-09-14T15:04:09.216  INFO --- [  asgi_gw_14] localstack.request.aws     : AWS dynamodb.PutItem => 200
+2023-09-14T15:04:09.220  INFO --- [  asgi_gw_11] localstack.request.aws     : AWS dynamodb.PutItem => 200
+2023-09-14T15:04:09.226  INFO --- [   asgi_gw_9] localstack.request.aws     : AWS dynamodb.PutItem => 200
+2023-09-14T15:04:09.231  INFO --- [  asgi_gw_13] localstack.request.aws     : AWS dynamodb.PutItem => 200
+2023-09-14T15:04:09.237  INFO --- [  asgi_gw_17] localstack.request.aws     : AWS dynamodb.PutItem => 200
+2023-09-14T15:04:09.242  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.PutItem => 200
+2023-09-14T15:04:09.243 ERROR --- [-functhread3] hypercorn.error            : Error in ASGI Framework
+Traceback (most recent call last):
+File "/opt/code/localstack/.venv/lib/python3.10/site-packages/hypercorn/asyncio/task_group.py", line 23, in _handle
+await app(scope, receive, send, sync_spawn, call_soon)
+File "/opt/code/localstack/.venv/lib/python3.10/site-packages/hypercorn/app_wrappers.py", line 33, in __call__
+await self.app(scope, receive, send)
+File "/opt/code/localstack/localstack/aws/serving/asgi.py", line 70, in __call__
+return await self.adapter(scope, receive, send)
+File "/opt/code/localstack/localstack/http/asgi.py", line 488, in __call__
+return await self.handle_http(scope, receive, send)
+File "/opt/code/localstack/localstack/http/asgi.py", line 559, in handle_http
+await response.close()
+File "/opt/code/localstack/localstack/http/asgi.py", line 311, in close
+await self.send({"type": "http.response.body", "body": b"", "more_body": False})
+File "/opt/code/localstack/.venv/lib/python3.10/site-packages/hypercorn/protocol/http_stream.py", line 188, in app_send
+await self.send(EndBody(stream_id=self.stream_id))
+File "/opt/code/localstack/.venv/lib/python3.10/site-packages/hypercorn/protocol/h11.py", line 138, in stream_send
+await self._send_h11_event(h11.EndOfMessage())

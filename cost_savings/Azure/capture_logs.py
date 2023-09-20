@@ -1,7 +1,7 @@
 import subprocess, os, time
 
 
-def run_emulator(log_folder):
+def run_emulator(log_folder, application_name):
 
     # ***run dotnet list command with os.system in app_path and capture test names in li
     commands = subprocess.check_output("dotnet test --list-tests", shell=True, text=True) 
@@ -22,7 +22,8 @@ def run_emulator(log_folder):
         try:
             # Start the emulator process with stdout and stderr redirected to the log file
             with open(f'./logs/{i}.txt', 'a') as f:
-                logpath = './debug_logs/' + i 
+                # logpath = './debug_logs/' + i 
+                logpath = f'./http_traffic/{application_name}/' + i 
                 emulator_command = ['azurite', '--skipApiVersionCheck', '--debug', logpath]
                 emulator_process = subprocess.Popen(emulator_command, stdout=f, stderr=f)   
             
@@ -52,7 +53,7 @@ def main():
     log_folder = os.path.join(os.getcwd(), 'logs')
 
     # Run the emulator
-    run_emulator(log_folder)
+    run_emulator(log_folder, 'alpakka')
 
 
 if __name__ == '__main__':
