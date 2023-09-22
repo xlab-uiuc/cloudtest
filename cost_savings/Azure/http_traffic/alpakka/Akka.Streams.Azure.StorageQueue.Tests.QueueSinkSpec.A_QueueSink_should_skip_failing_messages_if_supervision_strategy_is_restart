@@ -1,195 +1,191 @@
-2023-08-26T00:39:45.479Z 	 info: Azurite Blob service is starting on 127.0.0.1:10000
-2023-08-26T00:39:45.480Z 	 info: AccountDataStore:init() Refresh accounts from environment variable AZURITE_ACCOUNTS with value undefined
-2023-08-26T00:39:45.480Z 	 info: AccountDataStore:init() Fallback to default emulator account devstoreaccount1.
-2023-08-26T00:39:45.486Z 	 info: BlobGCManager:start() Starting BlobGCManager. Set status to Initializing.
-2023-08-26T00:39:45.487Z 	 info: BlobGCManager:start() Trigger mark and sweep loop. Set status to Running.
-2023-08-26T00:39:45.487Z 	 info: BlobGCManager:markSweepLoop() Start next mark and sweep.
-2023-08-26T00:39:45.487Z 	 info: BlobGCManager:markSweep() Get all extents.
-2023-08-26T00:39:45.487Z 	 info: BlobGCManager:start() BlobGCManager successfully started.
-2023-08-26T00:39:45.489Z 	 info: BlobGCManager:markSweep() Got 0 extents.
-2023-08-26T00:39:45.489Z 	 info: BlobGCManager:markSweep() Get referred extents.
-2023-08-26T00:39:45.489Z 	 info: BlobGCManager:markSweep() Got referred extents, unreferenced extents count is 0.
-2023-08-26T00:39:45.489Z 	 info: BlobGCManager:markSweepLoop() Mark and sweep finished, taken 2ms.
-2023-08-26T00:39:45.489Z 	 info: BlobGCManager:markSweepLoop() Sleep for 600000ms.
-2023-08-26T00:39:45.490Z 	 info: Azurite Blob service successfully listens on http://127.0.0.1:10000
-2023-08-26T00:39:45.490Z 	 info: Azurite Queue service is starting on 127.0.0.1:10001
-2023-08-26T00:39:45.490Z 	 info: AccountDataStore:init() Refresh accounts from environment variable AZURITE_ACCOUNTS with value undefined
-2023-08-26T00:39:45.490Z 	 info: AccountDataStore:init() Fallback to default emulator account devstoreaccount1.
-2023-08-26T00:39:45.494Z 	 info: QueueGCManager:start() Starting QueueGCManager, set status to Initializing
-2023-08-26T00:39:45.494Z 	 info: QueueGCManager:start() Trigger mark and sweep loop, set status to Running.
-2023-08-26T00:39:45.494Z 	 info: QueueGCManager:markSweepLoop() Start new mark and sweep.
-2023-08-26T00:39:45.494Z 	 info: QueueGCManger:markSweep() Get all extents.
-2023-08-26T00:39:45.494Z 	 info: QueueGCManager:start() QueueGCManager successfully started.
-2023-08-26T00:39:45.494Z 	 info: QueueGCManager:marksweep() Get 0 extents.
-2023-08-26T00:39:45.494Z 	 info: QueueGCManager:markSweep() Get referred extents, then remove from allExtents.
-2023-08-26T00:39:45.495Z 	 info: QueueGCManager:markSweep() Got referred extents, unreferenced extents count is 0.
-2023-08-26T00:39:45.495Z 	 info: QueueGCManager:markSweepLoop() Mark and sweep finished, take 1ms.
-2023-08-26T00:39:45.495Z 	 info: QueueGCManager:markSweepLoop() Sleep for 60000
-2023-08-26T00:39:45.495Z 	 info: Azurite Queue service successfully listens on http://127.0.0.1:10001
-2023-08-26T00:39:45.495Z 	 info: Azurite Table service is starting on 127.0.0.1:10002
-2023-08-26T00:39:45.495Z 	 info: AccountDataStore:init() Refresh accounts from environment variable AZURITE_ACCOUNTS with value undefined
-2023-08-26T00:39:45.495Z 	 info: AccountDataStore:init() Fallback to default emulator account devstoreaccount1.
-2023-08-26T00:39:45.497Z 	 info: Azurite Table service successfully listens on http://127.0.0.1:10002
-2023-08-26T00:39:47.944Z 14b5167e-092b-44a9-b76e-9209e75a8e21 info: QueueStorageContextMiddleware: RequestMethod=PUT RequestURL=http://127.0.0.1/devstoreaccount1/testqueue RequestHeaders:{"host":"127.0.0.1:10001","x-ms-version":"2018-11-09","accept":"application/xml","x-ms-client-request-id":"a07aedbf-3453-4d90-bdb2-c56bdf47084e","x-ms-return-client-request-id":"true","user-agent":"azsdk-net-Storage.Queues/12.14.0 (.NET 6.0.0-rtm.21522.10; Darwin 22.5.0 Darwin Kernel Version 22.5.0: Mon Apr 24 20:53:44 PDT 2023; root:xnu-8796.121.2~5/RELEASE_ARM64_T8103)","x-ms-date":"Sat, 26 Aug 2023 00:39:47 GMT","authorization":"SharedKey devstoreaccount1:6LFnE3iVsCQoqc21B/rQjE68/j+ycFVOB3trQoWeJ/U=","content-length":"0"} ClientIP=127.0.0.1 Protocol=http HTTPVersion=1.1
-2023-08-26T00:39:47.944Z 14b5167e-092b-44a9-b76e-9209e75a8e21 info: QueueStorageContextMiddleware: Account=devstoreaccount1 Queue=testqueue Message=undefined MessageId=undefined
-2023-08-26T00:39:47.944Z 14b5167e-092b-44a9-b76e-9209e75a8e21 verbose: DispatchMiddleware: Dispatching request...
-2023-08-26T00:39:47.945Z 14b5167e-092b-44a9-b76e-9209e75a8e21 info: DispatchMiddleware: Operation=Queue_Create
-2023-08-26T00:39:47.945Z 14b5167e-092b-44a9-b76e-9209e75a8e21 verbose: AuthenticationMiddlewareFactory:createAuthenticationMiddleware() Validating authentications.
-2023-08-26T00:39:47.945Z 14b5167e-092b-44a9-b76e-9209e75a8e21 info: QueueSharedKeyAuthenticator:validate() Start validation against account shared key authentication.
-2023-08-26T00:39:47.953Z 14b5167e-092b-44a9-b76e-9209e75a8e21 info: QueueSharedKeyAuthenticator:validate() [STRING TO SIGN]:"PUT\n\n\n\n\n\n\n\n\n\n\n\nx-ms-client-request-id:a07aedbf-3453-4d90-bdb2-c56bdf47084e\nx-ms-date:Sat, 26 Aug 2023 00:39:47 GMT\nx-ms-return-client-request-id:true\nx-ms-version:2018-11-09\n/devstoreaccount1/devstoreaccount1/testqueue"
-2023-08-26T00:39:47.953Z 14b5167e-092b-44a9-b76e-9209e75a8e21 info: QueueSharedKeyAuthenticator:validate() Calculated authentication header based on key1: devstoreaccount1:6LFnE3iVsCQoqc21B/rQjE68/j+ycFVOB3trQoWeJ/U=
-2023-08-26T00:39:47.953Z 14b5167e-092b-44a9-b76e-9209e75a8e21 info: QueueSharedKeyAuthenticator:validate() Signature 1 matched.
-2023-08-26T00:39:47.953Z 14b5167e-092b-44a9-b76e-9209e75a8e21 verbose: DeserializerMiddleware: Start deserializing...
-2023-08-26T00:39:47.954Z 14b5167e-092b-44a9-b76e-9209e75a8e21 info: HandlerMiddleware: DeserializedParameters={"options":{"metadata":{},"requestId":"a07aedbf-3453-4d90-bdb2-c56bdf47084e"},"version":"2018-11-09"}
-2023-08-26T00:39:47.955Z 14b5167e-092b-44a9-b76e-9209e75a8e21 verbose: SerializerMiddleware: Start serializing...
-2023-08-26T00:39:47.955Z 14b5167e-092b-44a9-b76e-9209e75a8e21 info: EndMiddleware: End response. TotalTimeInMS=11 StatusCode=201 StatusMessage=undefined Headers={"server":"Azurite-Queue/3.23.0","x-ms-client-request-id":"a07aedbf-3453-4d90-bdb2-c56bdf47084e","x-ms-request-id":"14b5167e-092b-44a9-b76e-9209e75a8e21","x-ms-version":"2022-11-02","date":"Sat, 26 Aug 2023 00:39:47 GMT"}
-2023-08-26T00:39:47.978Z 74fb9c8c-77d2-46ff-adb3-62e1289ce1d3 info: QueueStorageContextMiddleware: RequestMethod=DELETE RequestURL=http://127.0.0.1/devstoreaccount1/testqueue RequestHeaders:{"host":"127.0.0.1:10001","x-ms-version":"2018-11-09","accept":"application/xml","x-ms-client-request-id":"7b7738ab-a9da-4e6c-9754-bf2334604138","x-ms-return-client-request-id":"true","user-agent":"azsdk-net-Storage.Queues/12.14.0 (.NET 6.0.0-rtm.21522.10; Darwin 22.5.0 Darwin Kernel Version 22.5.0: Mon Apr 24 20:53:44 PDT 2023; root:xnu-8796.121.2~5/RELEASE_ARM64_T8103)","x-ms-date":"Sat, 26 Aug 2023 00:39:47 GMT","authorization":"SharedKey devstoreaccount1:JiGBDx8LqD1j9B5jzS9iVMlhpncXyFHR1Z+FGq0GRag="} ClientIP=127.0.0.1 Protocol=http HTTPVersion=1.1
-2023-08-26T00:39:47.978Z 74fb9c8c-77d2-46ff-adb3-62e1289ce1d3 info: QueueStorageContextMiddleware: Account=devstoreaccount1 Queue=testqueue Message=undefined MessageId=undefined
-2023-08-26T00:39:47.978Z 74fb9c8c-77d2-46ff-adb3-62e1289ce1d3 verbose: DispatchMiddleware: Dispatching request...
-2023-08-26T00:39:47.979Z 74fb9c8c-77d2-46ff-adb3-62e1289ce1d3 info: DispatchMiddleware: Operation=Queue_Delete
-2023-08-26T00:39:47.979Z 74fb9c8c-77d2-46ff-adb3-62e1289ce1d3 verbose: AuthenticationMiddlewareFactory:createAuthenticationMiddleware() Validating authentications.
-2023-08-26T00:39:47.979Z 74fb9c8c-77d2-46ff-adb3-62e1289ce1d3 info: QueueSharedKeyAuthenticator:validate() Start validation against account shared key authentication.
-2023-08-26T00:39:47.979Z 74fb9c8c-77d2-46ff-adb3-62e1289ce1d3 info: QueueSharedKeyAuthenticator:validate() [STRING TO SIGN]:"DELETE\n\n\n\n\n\n\n\n\n\n\n\nx-ms-client-request-id:7b7738ab-a9da-4e6c-9754-bf2334604138\nx-ms-date:Sat, 26 Aug 2023 00:39:47 GMT\nx-ms-return-client-request-id:true\nx-ms-version:2018-11-09\n/devstoreaccount1/devstoreaccount1/testqueue"
-2023-08-26T00:39:47.979Z 74fb9c8c-77d2-46ff-adb3-62e1289ce1d3 info: QueueSharedKeyAuthenticator:validate() Calculated authentication header based on key1: devstoreaccount1:JiGBDx8LqD1j9B5jzS9iVMlhpncXyFHR1Z+FGq0GRag=
-2023-08-26T00:39:47.979Z 74fb9c8c-77d2-46ff-adb3-62e1289ce1d3 info: QueueSharedKeyAuthenticator:validate() Signature 1 matched.
-2023-08-26T00:39:47.979Z 74fb9c8c-77d2-46ff-adb3-62e1289ce1d3 verbose: DeserializerMiddleware: Start deserializing...
-2023-08-26T00:39:47.979Z 74fb9c8c-77d2-46ff-adb3-62e1289ce1d3 info: HandlerMiddleware: DeserializedParameters={"options":{"requestId":"7b7738ab-a9da-4e6c-9754-bf2334604138"},"version":"2018-11-09"}
-2023-08-26T00:39:47.980Z 74fb9c8c-77d2-46ff-adb3-62e1289ce1d3 verbose: SerializerMiddleware: Start serializing...
-2023-08-26T00:39:47.980Z 74fb9c8c-77d2-46ff-adb3-62e1289ce1d3 info: EndMiddleware: End response. TotalTimeInMS=2 StatusCode=204 StatusMessage=undefined Headers={"server":"Azurite-Queue/3.23.0","x-ms-client-request-id":"7b7738ab-a9da-4e6c-9754-bf2334604138","x-ms-request-id":"74fb9c8c-77d2-46ff-adb3-62e1289ce1d3","x-ms-version":"2022-11-02","date":"Sat, 26 Aug 2023 00:39:47 GMT"}
-2023-08-26T00:39:48.062Z b3879dae-349a-4a33-90e2-a902bfbba8d6 info: QueueStorageContextMiddleware: RequestMethod=POST RequestURL=http://127.0.0.1/devstoreaccount1/testqueue/messages RequestHeaders:{"host":"127.0.0.1:10001","x-ms-version":"2018-11-09","accept":"application/xml","x-ms-client-request-id":"7864794f-7d5e-487a-a80d-17f4b293f6ae","x-ms-return-client-request-id":"true","user-agent":"azsdk-net-Storage.Queues/12.14.0 (.NET 6.0.0-rtm.21522.10; Darwin 22.5.0 Darwin Kernel Version 22.5.0: Mon Apr 24 20:53:44 PDT 2023; root:xnu-8796.121.2~5/RELEASE_ARM64_T8103)","x-ms-date":"Sat, 26 Aug 2023 00:39:48 GMT","authorization":"SharedKey devstoreaccount1:ksM+959UjO3tpwBjW3yDUGlw278ytAz8uAeDzJQvAdc=","content-type":"application/xml","content-length":"60"} ClientIP=127.0.0.1 Protocol=http HTTPVersion=1.1
-2023-08-26T00:39:48.063Z b3879dae-349a-4a33-90e2-a902bfbba8d6 info: QueueStorageContextMiddleware: Account=devstoreaccount1 Queue=testqueue Message=messages MessageId=undefined
-2023-08-26T00:39:48.063Z b3879dae-349a-4a33-90e2-a902bfbba8d6 verbose: DispatchMiddleware: Dispatching request...
-2023-08-26T00:39:48.063Z b3879dae-349a-4a33-90e2-a902bfbba8d6 info: DispatchMiddleware: Operation=Messages_Enqueue
-2023-08-26T00:39:48.063Z b3879dae-349a-4a33-90e2-a902bfbba8d6 verbose: AuthenticationMiddlewareFactory:createAuthenticationMiddleware() Validating authentications.
-2023-08-26T00:39:48.063Z b3879dae-349a-4a33-90e2-a902bfbba8d6 info: QueueSharedKeyAuthenticator:validate() Start validation against account shared key authentication.
-2023-08-26T00:39:48.063Z b3879dae-349a-4a33-90e2-a902bfbba8d6 info: QueueSharedKeyAuthenticator:validate() [STRING TO SIGN]:"POST\n\n\n60\n\napplication/xml\n\n\n\n\n\n\nx-ms-client-request-id:7864794f-7d5e-487a-a80d-17f4b293f6ae\nx-ms-date:Sat, 26 Aug 2023 00:39:48 GMT\nx-ms-return-client-request-id:true\nx-ms-version:2018-11-09\n/devstoreaccount1/devstoreaccount1/testqueue/messages"
-2023-08-26T00:39:48.063Z b3879dae-349a-4a33-90e2-a902bfbba8d6 info: QueueSharedKeyAuthenticator:validate() Calculated authentication header based on key1: devstoreaccount1:ksM+959UjO3tpwBjW3yDUGlw278ytAz8uAeDzJQvAdc=
-2023-08-26T00:39:48.063Z b3879dae-349a-4a33-90e2-a902bfbba8d6 info: QueueSharedKeyAuthenticator:validate() Signature 1 matched.
-2023-08-26T00:39:48.063Z b3879dae-349a-4a33-90e2-a902bfbba8d6 verbose: DeserializerMiddleware: Start deserializing...
-2023-08-26T00:39:48.063Z b3879dae-349a-4a33-90e2-a902bfbba8d6 debug: deserialize(): Raw request body string is (removed all empty characters) <QueueMessage><MessageText>1</MessageText></QueueMessage>
-2023-08-26T00:39:48.065Z b3879dae-349a-4a33-90e2-a902bfbba8d6 info: HandlerMiddleware: DeserializedParameters={"options":{"requestId":"7864794f-7d5e-487a-a80d-17f4b293f6ae"},"version":"2018-11-09","queueMessage":{"messageText":"1"},"body":"ReadableStream"}
-2023-08-26T00:39:48.065Z b3879dae-349a-4a33-90e2-a902bfbba8d6 debug: OperationQueue.operate() Schedule incoming job 96e9c378-664c-4727-b704-9aa7c9fff86d
-2023-08-26T00:39:48.065Z b3879dae-349a-4a33-90e2-a902bfbba8d6 debug: OperationQueue:execute() Current runningConcurrency:0 maxConcurrency:1 operations.length:1
-2023-08-26T00:39:48.065Z b3879dae-349a-4a33-90e2-a902bfbba8d6 info: FSExtentStore:appendExtent() Select extent from idle location for extent append operation. LocationId:0 extentId:7ee1bb80-1f93-40b5-ab81-6319e4108dc7 offset:0 MAX_EXTENT_SIZE:67108864 
-2023-08-26T00:39:48.065Z b3879dae-349a-4a33-90e2-a902bfbba8d6 debug: FSExtentStore:appendExtent() Get fd:undefined for extent:7ee1bb80-1f93-40b5-ab81-6319e4108dc7 from cache.
-2023-08-26T00:39:48.066Z b3879dae-349a-4a33-90e2-a902bfbba8d6 debug: FSExtentStore:appendExtent() Open file:/Users/saadsheralam/Desktop/Cost Savings/Alpakka/src/Azure/Akka.Streams.Azure.StorageQueue.Tests/__queuestorage__/7ee1bb80-1f93-40b5-ab81-6319e4108dc7 for extent:7ee1bb80-1f93-40b5-ab81-6319e4108dc7, get new fd:22
-2023-08-26T00:39:48.066Z b3879dae-349a-4a33-90e2-a902bfbba8d6 debug: FSExtentStore:appendExtent() Created write stream for fd:22
-2023-08-26T00:39:48.066Z b3879dae-349a-4a33-90e2-a902bfbba8d6 debug: FSExtentStore:appendExtent() Start writing to extent 7ee1bb80-1f93-40b5-ab81-6319e4108dc7
-2023-08-26T00:39:48.066Z b3879dae-349a-4a33-90e2-a902bfbba8d6 debug: FSExtentStore:streamPipe() Start piping data to write stream
-2023-08-26T00:39:48.066Z b3879dae-349a-4a33-90e2-a902bfbba8d6 debug: FSExtentStore:streamPipe() Readable stream triggers close event, 1 bytes piped
-2023-08-26T00:39:48.066Z b3879dae-349a-4a33-90e2-a902bfbba8d6 debug: FSExtentStore:streamPipe() Invoke write stream end()
-2023-08-26T00:39:48.066Z b3879dae-349a-4a33-90e2-a902bfbba8d6 debug: FSExtentStore:streamPipe() Readable stream triggers close event, 1 bytes piped
-2023-08-26T00:39:48.066Z b3879dae-349a-4a33-90e2-a902bfbba8d6 debug: FSExtentStore:streamPipe() Writable stream triggers finish event, after 1 bytes piped. Flush data to fd:22.
-2023-08-26T00:39:48.074Z b3879dae-349a-4a33-90e2-a902bfbba8d6 debug: FSExtentStore:streamPipe() Flush data to fd:22 successfully. Resolve streamPipe().
-2023-08-26T00:39:48.074Z b3879dae-349a-4a33-90e2-a902bfbba8d6 debug: FSExtentStore:appendExtent() Write finish, start updating extent metadata. extent:{"id":"7ee1bb80-1f93-40b5-ab81-6319e4108dc7","locationId":"Default","path":"7ee1bb80-1f93-40b5-ab81-6319e4108dc7","size":1,"lastModifiedInMS":1693010388074}
-2023-08-26T00:39:48.074Z b3879dae-349a-4a33-90e2-a902bfbba8d6 debug: FSExtentStore:appendExtent() Update extent metadata done. Resolve()
-2023-08-26T00:39:48.074Z b3879dae-349a-4a33-90e2-a902bfbba8d6 debug: OperationQueue.operate() Job 96e9c378-664c-4727-b704-9aa7c9fff86d completes callback, resolve.
-2023-08-26T00:39:48.076Z b3879dae-349a-4a33-90e2-a902bfbba8d6 error: ErrorMiddleware: Received a MiddlewareError, fill error information to HTTP response
-2023-08-26T00:39:48.076Z b3879dae-349a-4a33-90e2-a902bfbba8d6 error: ErrorMiddleware: ErrorName=StorageError ErrorMessage=The specified queue does not exist.  ErrorHTTPStatusCode=404 ErrorHTTPStatusMessage=The specified queue does not exist. ErrorHTTPHeaders={"x-ms-error-code":"QueueNotFound","x-ms-request-id":"DefaultID","x-ms-version":"2022-11-02"} ErrorHTTPBody="<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<Error>\n  <Code>QueueNotFound</Code>\n  <Message>The specified queue does not exist.\nRequestId:DefaultID\nTime:2023-08-26T00:39:48.074Z</Message>\n</Error>" ErrorStack="StorageError: The specified queue does not exist.\n    at StorageErrorFactory.getQueueNotFound (/Users/saadsheralam/Desktop/UIUCProject/Azurite/dist/src/queue/errors/StorageErrorFactory.js:113:16)\n    at LokiQueueMetadataStore.checkQueueExist (/Users/saadsheralam/Desktop/UIUCProject/Azurite/dist/src/queue/persistence/LokiQueueMetadataStore.js:605:49)\n    at LokiQueueMetadataStore.insertMessage (/Users/saadsheralam/Desktop/UIUCProject/Azurite/dist/src/queue/persistence/LokiQueueMetadataStore.js:388:14)\n    at MessagesHandler.enqueue (/Users/saadsheralam/Desktop/UIUCProject/Azurite/dist/src/queue/handlers/MessagesHandler.js:189:34)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"
-2023-08-26T00:39:48.076Z b3879dae-349a-4a33-90e2-a902bfbba8d6 error: ErrorMiddleware: Set HTTP code: 404
-2023-08-26T00:39:48.076Z b3879dae-349a-4a33-90e2-a902bfbba8d6 error: ErrorMiddleware: Set HTTP status message: The specified queue does not exist.
-2023-08-26T00:39:48.076Z b3879dae-349a-4a33-90e2-a902bfbba8d6 error: ErrorMiddleware: Set HTTP Header: x-ms-error-code=QueueNotFound
-2023-08-26T00:39:48.076Z b3879dae-349a-4a33-90e2-a902bfbba8d6 error: ErrorMiddleware: Set HTTP Header: x-ms-request-id=DefaultID
-2023-08-26T00:39:48.076Z b3879dae-349a-4a33-90e2-a902bfbba8d6 error: ErrorMiddleware: Set HTTP Header: x-ms-version=2022-11-02
-2023-08-26T00:39:48.076Z b3879dae-349a-4a33-90e2-a902bfbba8d6 error: ErrorMiddleware: Set content type: application/xml
-2023-08-26T00:39:48.076Z b3879dae-349a-4a33-90e2-a902bfbba8d6 error: ErrorMiddleware: Set HTTP body: "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<Error>\n  <Code>QueueNotFound</Code>\n  <Message>The specified queue does not exist.\nRequestId:DefaultID\nTime:2023-08-26T00:39:48.074Z</Message>\n</Error>"
-2023-08-26T00:39:48.076Z b3879dae-349a-4a33-90e2-a902bfbba8d6 info: EndMiddleware: End response. TotalTimeInMS=14 StatusCode=404 StatusMessage=The specified queue does not exist. Headers={"server":"Azurite-Queue/3.23.0","x-ms-error-code":"QueueNotFound","x-ms-request-id":"DefaultID","x-ms-version":"2022-11-02","content-type":"application/xml"}
-2023-08-26T00:39:48.077Z b3879dae-349a-4a33-90e2-a902bfbba8d6 debug: OperationQueue:execute() Current runningConcurrency:0 maxConcurrency:1 operations.length:0
-2023-08-26T00:39:48.077Z b3879dae-349a-4a33-90e2-a902bfbba8d6 debug: OperationQueue:execute() return. Operation.length === 0
-2023-08-26T00:39:48.558Z 17acb273-f7ca-4c6f-82de-94d62c6d64ab info: QueueStorageContextMiddleware: RequestMethod=PUT RequestURL=http://127.0.0.1/devstoreaccount1/testqueue RequestHeaders:{"host":"127.0.0.1:10001","x-ms-version":"2018-11-09","accept":"application/xml","x-ms-client-request-id":"9a778218-22e1-4664-b2d6-baf18d066a52","x-ms-return-client-request-id":"true","user-agent":"azsdk-net-Storage.Queues/12.14.0 (.NET 6.0.0-rtm.21522.10; Darwin 22.5.0 Darwin Kernel Version 22.5.0: Mon Apr 24 20:53:44 PDT 2023; root:xnu-8796.121.2~5/RELEASE_ARM64_T8103)","x-ms-date":"Sat, 26 Aug 2023 00:39:48 GMT","authorization":"SharedKey devstoreaccount1:Hk0Kfcj7wl/a1b9cvb6hfkATT7Vfw6jSizL+x1PkEk0=","content-length":"0"} ClientIP=127.0.0.1 Protocol=http HTTPVersion=1.1
-2023-08-26T00:39:48.558Z 17acb273-f7ca-4c6f-82de-94d62c6d64ab info: QueueStorageContextMiddleware: Account=devstoreaccount1 Queue=testqueue Message=undefined MessageId=undefined
-2023-08-26T00:39:48.558Z 17acb273-f7ca-4c6f-82de-94d62c6d64ab verbose: DispatchMiddleware: Dispatching request...
-2023-08-26T00:39:48.559Z 17acb273-f7ca-4c6f-82de-94d62c6d64ab info: DispatchMiddleware: Operation=Queue_Create
-2023-08-26T00:39:48.559Z 17acb273-f7ca-4c6f-82de-94d62c6d64ab verbose: AuthenticationMiddlewareFactory:createAuthenticationMiddleware() Validating authentications.
-2023-08-26T00:39:48.559Z 17acb273-f7ca-4c6f-82de-94d62c6d64ab info: QueueSharedKeyAuthenticator:validate() Start validation against account shared key authentication.
-2023-08-26T00:39:48.560Z 17acb273-f7ca-4c6f-82de-94d62c6d64ab info: QueueSharedKeyAuthenticator:validate() [STRING TO SIGN]:"PUT\n\n\n\n\n\n\n\n\n\n\n\nx-ms-client-request-id:9a778218-22e1-4664-b2d6-baf18d066a52\nx-ms-date:Sat, 26 Aug 2023 00:39:48 GMT\nx-ms-return-client-request-id:true\nx-ms-version:2018-11-09\n/devstoreaccount1/devstoreaccount1/testqueue"
-2023-08-26T00:39:48.560Z 17acb273-f7ca-4c6f-82de-94d62c6d64ab info: QueueSharedKeyAuthenticator:validate() Calculated authentication header based on key1: devstoreaccount1:Hk0Kfcj7wl/a1b9cvb6hfkATT7Vfw6jSizL+x1PkEk0=
-2023-08-26T00:39:48.560Z 17acb273-f7ca-4c6f-82de-94d62c6d64ab info: QueueSharedKeyAuthenticator:validate() Signature 1 matched.
-2023-08-26T00:39:48.560Z 17acb273-f7ca-4c6f-82de-94d62c6d64ab verbose: DeserializerMiddleware: Start deserializing...
-2023-08-26T00:39:48.560Z 17acb273-f7ca-4c6f-82de-94d62c6d64ab info: HandlerMiddleware: DeserializedParameters={"options":{"metadata":{},"requestId":"9a778218-22e1-4664-b2d6-baf18d066a52"},"version":"2018-11-09"}
-2023-08-26T00:39:48.560Z 17acb273-f7ca-4c6f-82de-94d62c6d64ab verbose: SerializerMiddleware: Start serializing...
-2023-08-26T00:39:48.561Z 17acb273-f7ca-4c6f-82de-94d62c6d64ab info: EndMiddleware: End response. TotalTimeInMS=3 StatusCode=201 StatusMessage=undefined Headers={"server":"Azurite-Queue/3.23.0","x-ms-client-request-id":"9a778218-22e1-4664-b2d6-baf18d066a52","x-ms-request-id":"17acb273-f7ca-4c6f-82de-94d62c6d64ab","x-ms-version":"2022-11-02","date":"Sat, 26 Aug 2023 00:39:48 GMT"}
-2023-08-26T00:39:48.564Z 752cc523-3c08-469a-8e17-54e2954812f4 info: QueueStorageContextMiddleware: RequestMethod=POST RequestURL=http://127.0.0.1/devstoreaccount1/testqueue/messages RequestHeaders:{"host":"127.0.0.1:10001","x-ms-version":"2018-11-09","accept":"application/xml","x-ms-client-request-id":"3e485ec0-7030-405e-847a-c641ba0851c5","x-ms-return-client-request-id":"true","user-agent":"azsdk-net-Storage.Queues/12.14.0 (.NET 6.0.0-rtm.21522.10; Darwin 22.5.0 Darwin Kernel Version 22.5.0: Mon Apr 24 20:53:44 PDT 2023; root:xnu-8796.121.2~5/RELEASE_ARM64_T8103)","x-ms-date":"Sat, 26 Aug 2023 00:39:48 GMT","authorization":"SharedKey devstoreaccount1:gXtx7RWrj/3uGs/GiPmy1woj5MG+5jWajv+AKQuFLrY=","content-type":"application/xml","content-length":"60"} ClientIP=127.0.0.1 Protocol=http HTTPVersion=1.1
-2023-08-26T00:39:48.564Z 752cc523-3c08-469a-8e17-54e2954812f4 info: QueueStorageContextMiddleware: Account=devstoreaccount1 Queue=testqueue Message=messages MessageId=undefined
-2023-08-26T00:39:48.564Z 752cc523-3c08-469a-8e17-54e2954812f4 verbose: DispatchMiddleware: Dispatching request...
-2023-08-26T00:39:48.564Z 752cc523-3c08-469a-8e17-54e2954812f4 info: DispatchMiddleware: Operation=Messages_Enqueue
-2023-08-26T00:39:48.564Z 752cc523-3c08-469a-8e17-54e2954812f4 verbose: AuthenticationMiddlewareFactory:createAuthenticationMiddleware() Validating authentications.
-2023-08-26T00:39:48.564Z 752cc523-3c08-469a-8e17-54e2954812f4 info: QueueSharedKeyAuthenticator:validate() Start validation against account shared key authentication.
-2023-08-26T00:39:48.565Z 752cc523-3c08-469a-8e17-54e2954812f4 info: QueueSharedKeyAuthenticator:validate() [STRING TO SIGN]:"POST\n\n\n60\n\napplication/xml\n\n\n\n\n\n\nx-ms-client-request-id:3e485ec0-7030-405e-847a-c641ba0851c5\nx-ms-date:Sat, 26 Aug 2023 00:39:48 GMT\nx-ms-return-client-request-id:true\nx-ms-version:2018-11-09\n/devstoreaccount1/devstoreaccount1/testqueue/messages"
-2023-08-26T00:39:48.565Z 752cc523-3c08-469a-8e17-54e2954812f4 info: QueueSharedKeyAuthenticator:validate() Calculated authentication header based on key1: devstoreaccount1:gXtx7RWrj/3uGs/GiPmy1woj5MG+5jWajv+AKQuFLrY=
-2023-08-26T00:39:48.565Z 752cc523-3c08-469a-8e17-54e2954812f4 info: QueueSharedKeyAuthenticator:validate() Signature 1 matched.
-2023-08-26T00:39:48.565Z 752cc523-3c08-469a-8e17-54e2954812f4 verbose: DeserializerMiddleware: Start deserializing...
-2023-08-26T00:39:48.566Z 752cc523-3c08-469a-8e17-54e2954812f4 debug: deserialize(): Raw request body string is (removed all empty characters) <QueueMessage><MessageText>2</MessageText></QueueMessage>
-2023-08-26T00:39:48.567Z 752cc523-3c08-469a-8e17-54e2954812f4 info: HandlerMiddleware: DeserializedParameters={"options":{"requestId":"3e485ec0-7030-405e-847a-c641ba0851c5"},"version":"2018-11-09","queueMessage":{"messageText":"2"},"body":"ReadableStream"}
-2023-08-26T00:39:48.568Z 752cc523-3c08-469a-8e17-54e2954812f4 debug: OperationQueue.operate() Schedule incoming job 16ef2ac7-9825-4fd6-b76f-86b0a99e74ee
-2023-08-26T00:39:48.568Z 752cc523-3c08-469a-8e17-54e2954812f4 debug: OperationQueue:execute() Current runningConcurrency:0 maxConcurrency:1 operations.length:1
-2023-08-26T00:39:48.568Z 752cc523-3c08-469a-8e17-54e2954812f4 info: FSExtentStore:appendExtent() Select extent from idle location for extent append operation. LocationId:0 extentId:7ee1bb80-1f93-40b5-ab81-6319e4108dc7 offset:1 MAX_EXTENT_SIZE:67108864 
-2023-08-26T00:39:48.568Z 752cc523-3c08-469a-8e17-54e2954812f4 debug: FSExtentStore:appendExtent() Get fd:22 for extent:7ee1bb80-1f93-40b5-ab81-6319e4108dc7 from cache.
-2023-08-26T00:39:48.568Z 752cc523-3c08-469a-8e17-54e2954812f4 debug: FSExtentStore:appendExtent() Created write stream for fd:22
-2023-08-26T00:39:48.568Z 752cc523-3c08-469a-8e17-54e2954812f4 debug: FSExtentStore:appendExtent() Start writing to extent 7ee1bb80-1f93-40b5-ab81-6319e4108dc7
-2023-08-26T00:39:48.568Z 752cc523-3c08-469a-8e17-54e2954812f4 debug: FSExtentStore:streamPipe() Start piping data to write stream
-2023-08-26T00:39:48.568Z 752cc523-3c08-469a-8e17-54e2954812f4 debug: FSExtentStore:streamPipe() Readable stream triggers close event, 1 bytes piped
-2023-08-26T00:39:48.568Z 752cc523-3c08-469a-8e17-54e2954812f4 debug: FSExtentStore:streamPipe() Invoke write stream end()
-2023-08-26T00:39:48.568Z 752cc523-3c08-469a-8e17-54e2954812f4 debug: FSExtentStore:streamPipe() Readable stream triggers close event, 1 bytes piped
-2023-08-26T00:39:48.569Z 752cc523-3c08-469a-8e17-54e2954812f4 debug: FSExtentStore:streamPipe() Writable stream triggers finish event, after 1 bytes piped. Flush data to fd:22.
-2023-08-26T00:39:48.573Z 752cc523-3c08-469a-8e17-54e2954812f4 debug: FSExtentStore:streamPipe() Flush data to fd:22 successfully. Resolve streamPipe().
-2023-08-26T00:39:48.573Z 752cc523-3c08-469a-8e17-54e2954812f4 debug: FSExtentStore:appendExtent() Write finish, start updating extent metadata. extent:{"id":"7ee1bb80-1f93-40b5-ab81-6319e4108dc7","locationId":"Default","path":"7ee1bb80-1f93-40b5-ab81-6319e4108dc7","size":2,"lastModifiedInMS":1693010388573}
-2023-08-26T00:39:48.573Z 752cc523-3c08-469a-8e17-54e2954812f4 debug: FSExtentStore:appendExtent() Update extent metadata done. Resolve()
-2023-08-26T00:39:48.573Z 752cc523-3c08-469a-8e17-54e2954812f4 debug: OperationQueue.operate() Job 16ef2ac7-9825-4fd6-b76f-86b0a99e74ee completes callback, resolve.
-2023-08-26T00:39:48.574Z 752cc523-3c08-469a-8e17-54e2954812f4 verbose: SerializerMiddleware: Start serializing...
-2023-08-26T00:39:48.575Z 752cc523-3c08-469a-8e17-54e2954812f4 debug: Serializer: Raw response body string is <?xml version="1.0" encoding="UTF-8" standalone="yes"?><QueueMessagesList><QueueMessage><MessageId>a08776f0-aa92-4b38-9d11-44ba494c8db2</MessageId><InsertionTime>Sat, 26 Aug 2023 00:39:48 GMT</InsertionTime><ExpirationTime>Sat, 02 Sep 2023 00:39:48 GMT</ExpirationTime><PopReceipt>MjZBdWcyMDIzMDA6Mzk6NDhkNmE4</PopReceipt><TimeNextVisible>Sat, 26 Aug 2023 00:39:48 GMT</TimeNextVisible></QueueMessage></QueueMessagesList>
-2023-08-26T00:39:48.575Z 752cc523-3c08-469a-8e17-54e2954812f4 info: Serializer: Start returning stream body.
-2023-08-26T00:39:48.575Z 752cc523-3c08-469a-8e17-54e2954812f4 info: EndMiddleware: End response. TotalTimeInMS=11 StatusCode=201 StatusMessage=Created Headers={"server":"Azurite-Queue/3.23.0","x-ms-client-request-id":"3e485ec0-7030-405e-847a-c641ba0851c5","x-ms-request-id":"752cc523-3c08-469a-8e17-54e2954812f4","x-ms-version":"2022-11-02","date":"Sat, 26 Aug 2023 00:39:48 GMT","content-type":"application/xml"}
-2023-08-26T00:39:48.575Z 752cc523-3c08-469a-8e17-54e2954812f4 debug: OperationQueue:execute() Current runningConcurrency:0 maxConcurrency:1 operations.length:0
-2023-08-26T00:39:48.575Z 752cc523-3c08-469a-8e17-54e2954812f4 debug: OperationQueue:execute() return. Operation.length === 0
-2023-08-26T00:39:48.617Z fb7c669d-2676-4e02-b713-a71c76f95376 info: QueueStorageContextMiddleware: RequestMethod=GET RequestURL=http://127.0.0.1/devstoreaccount1/testqueue/messages RequestHeaders:{"host":"127.0.0.1:10001","x-ms-version":"2018-11-09","accept":"application/xml","x-ms-client-request-id":"47056b4f-8de4-44d6-9dd4-d9c4478508d8","x-ms-return-client-request-id":"true","user-agent":"azsdk-net-Storage.Queues/12.14.0 (.NET 6.0.0-rtm.21522.10; Darwin 22.5.0 Darwin Kernel Version 22.5.0: Mon Apr 24 20:53:44 PDT 2023; root:xnu-8796.121.2~5/RELEASE_ARM64_T8103)","x-ms-date":"Sat, 26 Aug 2023 00:39:48 GMT","authorization":"SharedKey devstoreaccount1:8FXr/6i8naFJjFd3vCu/Oi1dryPlQ7jOICxWpaTdt6E="} ClientIP=127.0.0.1 Protocol=http HTTPVersion=1.1
-2023-08-26T00:39:48.618Z fb7c669d-2676-4e02-b713-a71c76f95376 info: QueueStorageContextMiddleware: Account=devstoreaccount1 Queue=testqueue Message=messages MessageId=undefined
-2023-08-26T00:39:48.618Z fb7c669d-2676-4e02-b713-a71c76f95376 verbose: DispatchMiddleware: Dispatching request...
-2023-08-26T00:39:48.618Z fb7c669d-2676-4e02-b713-a71c76f95376 info: DispatchMiddleware: Operation=Messages_Dequeue
-2023-08-26T00:39:48.618Z fb7c669d-2676-4e02-b713-a71c76f95376 verbose: AuthenticationMiddlewareFactory:createAuthenticationMiddleware() Validating authentications.
-2023-08-26T00:39:48.618Z fb7c669d-2676-4e02-b713-a71c76f95376 info: QueueSharedKeyAuthenticator:validate() Start validation against account shared key authentication.
-2023-08-26T00:39:48.618Z fb7c669d-2676-4e02-b713-a71c76f95376 info: QueueSharedKeyAuthenticator:validate() [STRING TO SIGN]:"GET\n\n\n\n\n\n\n\n\n\n\n\nx-ms-client-request-id:47056b4f-8de4-44d6-9dd4-d9c4478508d8\nx-ms-date:Sat, 26 Aug 2023 00:39:48 GMT\nx-ms-return-client-request-id:true\nx-ms-version:2018-11-09\n/devstoreaccount1/devstoreaccount1/testqueue/messages"
-2023-08-26T00:39:48.618Z fb7c669d-2676-4e02-b713-a71c76f95376 info: QueueSharedKeyAuthenticator:validate() Calculated authentication header based on key1: devstoreaccount1:8FXr/6i8naFJjFd3vCu/Oi1dryPlQ7jOICxWpaTdt6E=
-2023-08-26T00:39:48.618Z fb7c669d-2676-4e02-b713-a71c76f95376 info: QueueSharedKeyAuthenticator:validate() Signature 1 matched.
-2023-08-26T00:39:48.618Z fb7c669d-2676-4e02-b713-a71c76f95376 verbose: DeserializerMiddleware: Start deserializing...
-2023-08-26T00:39:48.618Z fb7c669d-2676-4e02-b713-a71c76f95376 info: HandlerMiddleware: DeserializedParameters={"options":{"requestId":"47056b4f-8de4-44d6-9dd4-d9c4478508d8"},"version":"2018-11-09"}
-2023-08-26T00:39:48.619Z fb7c669d-2676-4e02-b713-a71c76f95376 debug: OperationQueue.operate() Schedule incoming job 7df0d515-66f6-40a6-88b1-e06d283a11de
-2023-08-26T00:39:48.619Z fb7c669d-2676-4e02-b713-a71c76f95376 debug: OperationQueue:execute() Current runningConcurrency:0 maxConcurrency:100 operations.length:1
-2023-08-26T00:39:48.619Z fb7c669d-2676-4e02-b713-a71c76f95376 verbose: FSExtentStore:readExtent() Creating read stream. LocationId:Default extentId:7ee1bb80-1f93-40b5-ab81-6319e4108dc7 path:/Users/saadsheralam/Desktop/Cost Savings/Alpakka/src/Azure/Akka.Streams.Azure.StorageQueue.Tests/__queuestorage__/7ee1bb80-1f93-40b5-ab81-6319e4108dc7 offset:1 count:1 end:1
-2023-08-26T00:39:48.619Z fb7c669d-2676-4e02-b713-a71c76f95376 debug: OperationQueue.operate() Job 7df0d515-66f6-40a6-88b1-e06d283a11de completes callback, resolve.
-2023-08-26T00:39:48.620Z fb7c669d-2676-4e02-b713-a71c76f95376 debug: OperationQueue:execute() Current runningConcurrency:0 maxConcurrency:100 operations.length:0
-2023-08-26T00:39:48.620Z fb7c669d-2676-4e02-b713-a71c76f95376 debug: OperationQueue:execute() return. Operation.length === 0
-2023-08-26T00:39:48.620Z fb7c669d-2676-4e02-b713-a71c76f95376 verbose: SerializerMiddleware: Start serializing...
-2023-08-26T00:39:48.621Z fb7c669d-2676-4e02-b713-a71c76f95376 debug: Serializer: Raw response body string is <?xml version="1.0" encoding="UTF-8" standalone="yes"?><QueueMessagesList><QueueMessage><MessageId>a08776f0-aa92-4b38-9d11-44ba494c8db2</MessageId><InsertionTime>Sat, 26 Aug 2023 00:39:48 GMT</InsertionTime><ExpirationTime>Sat, 02 Sep 2023 00:39:48 GMT</ExpirationTime><PopReceipt>MjZBdWcyMDIzMDA6Mzk6NDgxZGY5</PopReceipt><TimeNextVisible>Sat, 26 Aug 2023 00:40:18 GMT</TimeNextVisible><DequeueCount>1</DequeueCount><MessageText>2</MessageText></QueueMessage></QueueMessagesList>
-2023-08-26T00:39:48.621Z fb7c669d-2676-4e02-b713-a71c76f95376 info: Serializer: Start returning stream body.
-2023-08-26T00:39:48.621Z fb7c669d-2676-4e02-b713-a71c76f95376 info: EndMiddleware: End response. TotalTimeInMS=4 StatusCode=200 StatusMessage=OK Headers={"server":"Azurite-Queue/3.23.0","x-ms-client-request-id":"47056b4f-8de4-44d6-9dd4-d9c4478508d8","x-ms-request-id":"fb7c669d-2676-4e02-b713-a71c76f95376","x-ms-version":"2022-11-02","date":"Sat, 26 Aug 2023 00:39:48 GMT","content-type":"application/xml"}
-2023-08-26T00:39:48.621Z fb7c669d-2676-4e02-b713-a71c76f95376 verbose: FSExtentStore:readExtent() Read stream closed. LocationId:Default extentId:7ee1bb80-1f93-40b5-ab81-6319e4108dc7 path:/Users/saadsheralam/Desktop/Cost Savings/Alpakka/src/Azure/Akka.Streams.Azure.StorageQueue.Tests/__queuestorage__/7ee1bb80-1f93-40b5-ab81-6319e4108dc7 offset:1 count:1 end:1
-2023-08-26T00:39:48.631Z a3b3ddb8-5326-4b4a-b32c-6bdcb0abb576 info: QueueStorageContextMiddleware: RequestMethod=DELETE RequestURL=http://127.0.0.1/devstoreaccount1/testqueue RequestHeaders:{"host":"127.0.0.1:10001","x-ms-version":"2018-11-09","accept":"application/xml","x-ms-client-request-id":"0c9df3e1-049b-4c47-badd-8b53f003a972","x-ms-return-client-request-id":"true","user-agent":"azsdk-net-Storage.Queues/12.14.0 (.NET 6.0.0-rtm.21522.10; Darwin 22.5.0 Darwin Kernel Version 22.5.0: Mon Apr 24 20:53:44 PDT 2023; root:xnu-8796.121.2~5/RELEASE_ARM64_T8103)","x-ms-date":"Sat, 26 Aug 2023 00:39:48 GMT","authorization":"SharedKey devstoreaccount1:Udt9HGE9MHTzm+9tTHLqr5+cVBYjm9ZR7BY8IrHEk0w="} ClientIP=127.0.0.1 Protocol=http HTTPVersion=1.1
-2023-08-26T00:39:48.631Z a3b3ddb8-5326-4b4a-b32c-6bdcb0abb576 info: QueueStorageContextMiddleware: Account=devstoreaccount1 Queue=testqueue Message=undefined MessageId=undefined
-2023-08-26T00:39:48.631Z a3b3ddb8-5326-4b4a-b32c-6bdcb0abb576 verbose: DispatchMiddleware: Dispatching request...
-2023-08-26T00:39:48.631Z a3b3ddb8-5326-4b4a-b32c-6bdcb0abb576 info: DispatchMiddleware: Operation=Queue_Delete
-2023-08-26T00:39:48.631Z a3b3ddb8-5326-4b4a-b32c-6bdcb0abb576 verbose: AuthenticationMiddlewareFactory:createAuthenticationMiddleware() Validating authentications.
-2023-08-26T00:39:48.631Z a3b3ddb8-5326-4b4a-b32c-6bdcb0abb576 info: QueueSharedKeyAuthenticator:validate() Start validation against account shared key authentication.
-2023-08-26T00:39:48.631Z a3b3ddb8-5326-4b4a-b32c-6bdcb0abb576 info: QueueSharedKeyAuthenticator:validate() [STRING TO SIGN]:"DELETE\n\n\n\n\n\n\n\n\n\n\n\nx-ms-client-request-id:0c9df3e1-049b-4c47-badd-8b53f003a972\nx-ms-date:Sat, 26 Aug 2023 00:39:48 GMT\nx-ms-return-client-request-id:true\nx-ms-version:2018-11-09\n/devstoreaccount1/devstoreaccount1/testqueue"
-2023-08-26T00:39:48.631Z a3b3ddb8-5326-4b4a-b32c-6bdcb0abb576 info: QueueSharedKeyAuthenticator:validate() Calculated authentication header based on key1: devstoreaccount1:Udt9HGE9MHTzm+9tTHLqr5+cVBYjm9ZR7BY8IrHEk0w=
-2023-08-26T00:39:48.631Z a3b3ddb8-5326-4b4a-b32c-6bdcb0abb576 info: QueueSharedKeyAuthenticator:validate() Signature 1 matched.
-2023-08-26T00:39:48.631Z a3b3ddb8-5326-4b4a-b32c-6bdcb0abb576 verbose: DeserializerMiddleware: Start deserializing...
-2023-08-26T00:39:48.631Z a3b3ddb8-5326-4b4a-b32c-6bdcb0abb576 info: HandlerMiddleware: DeserializedParameters={"options":{"requestId":"0c9df3e1-049b-4c47-badd-8b53f003a972"},"version":"2018-11-09"}
-2023-08-26T00:39:48.631Z a3b3ddb8-5326-4b4a-b32c-6bdcb0abb576 verbose: SerializerMiddleware: Start serializing...
-2023-08-26T00:39:48.632Z a3b3ddb8-5326-4b4a-b32c-6bdcb0abb576 info: EndMiddleware: End response. TotalTimeInMS=1 StatusCode=204 StatusMessage=undefined Headers={"server":"Azurite-Queue/3.23.0","x-ms-client-request-id":"0c9df3e1-049b-4c47-badd-8b53f003a972","x-ms-request-id":"a3b3ddb8-5326-4b4a-b32c-6bdcb0abb576","x-ms-version":"2022-11-02","date":"Sat, 26 Aug 2023 00:39:48 GMT"}
-2023-08-26T00:39:51.803Z 	 info: Azurite Blob service is closing...
-2023-08-26T00:39:51.803Z 	 info: Azurite Queue service is closing...
-2023-08-26T00:39:51.803Z 	 info: Azurite Table service is closing...
-2023-08-26T00:39:51.804Z 	 info: BlobGCManager:close() Start closing BlobGCManager. Set status to Closing.
-2023-08-26T00:39:51.804Z 	 info: QueueGCManager:close() Start closing QueueGCManager, set status to Closing.
-2023-08-26T00:39:51.805Z 	 info: BlobGCManager:start() Mark and sweep loop is closed.
-2023-08-26T00:39:51.805Z 	 info: BlobGCManager:close() BlobGCManager successfully closed. Set status to Closed.
-2023-08-26T00:39:51.805Z 	 info: QueueGCManager:start() Mark and sweep loop is closed.
-2023-08-26T00:39:51.805Z 	 info: QueueGCManager:close() QueueGCManager successfully closed, set status to Closed.
-2023-08-26T00:39:51.805Z 	 info: Azurite Table service successfully closed
-2023-08-26T00:39:51.806Z 	 info: Azurite Blob service successfully closed
-2023-08-26T00:39:51.806Z 	 info: Azurite Queue service successfully closed
-2023-08-29T14:45:25.358Z 	 info: Azurite Blob service is starting on 127.0.0.1:10000
-2023-08-29T14:45:25.360Z 	 info: AccountDataStore:init() Refresh accounts from environment variable AZURITE_ACCOUNTS with value undefined
-2023-08-29T14:45:25.360Z 	 info: AccountDataStore:init() Fallback to default emulator account devstoreaccount1.
-2023-08-29T14:45:25.370Z 	 info: BlobGCManager:start() Starting BlobGCManager. Set status to Initializing.
+2023-09-22T04:23:40.037Z 	 info: Azurite Blob service is starting on 127.0.0.1:10000
+2023-09-22T04:23:40.038Z 	 info: AccountDataStore:init() Refresh accounts from environment variable AZURITE_ACCOUNTS with value undefined
+2023-09-22T04:23:40.038Z 	 info: AccountDataStore:init() Fallback to default emulator account devstoreaccount1.
+2023-09-22T04:23:40.045Z 	 info: BlobGCManager:start() Starting BlobGCManager. Set status to Initializing.
+2023-09-22T04:23:40.045Z 	 info: BlobGCManager:start() Trigger mark and sweep loop. Set status to Running.
+2023-09-22T04:23:40.046Z 	 info: BlobGCManager:markSweepLoop() Start next mark and sweep.
+2023-09-22T04:23:40.046Z 	 info: BlobGCManager:markSweep() Get all extents.
+2023-09-22T04:23:40.046Z 	 info: BlobGCManager:start() BlobGCManager successfully started.
+2023-09-22T04:23:40.047Z 	 info: BlobGCManager:markSweep() Got 0 extents.
+2023-09-22T04:23:40.048Z 	 info: BlobGCManager:markSweep() Get referred extents.
+2023-09-22T04:23:40.048Z 	 info: BlobGCManager:markSweep() Got referred extents, unreferenced extents count is 0.
+2023-09-22T04:23:40.048Z 	 info: BlobGCManager:markSweepLoop() Mark and sweep finished, taken 2ms.
+2023-09-22T04:23:40.048Z 	 info: BlobGCManager:markSweepLoop() Sleep for 600000ms.
+2023-09-22T04:23:40.049Z 	 info: Azurite Blob service successfully listens on http://127.0.0.1:10000
+2023-09-22T04:23:40.049Z 	 info: Azurite Queue service is starting on 127.0.0.1:10001
+2023-09-22T04:23:40.050Z 	 info: AccountDataStore:init() Refresh accounts from environment variable AZURITE_ACCOUNTS with value undefined
+2023-09-22T04:23:40.050Z 	 info: AccountDataStore:init() Fallback to default emulator account devstoreaccount1.
+2023-09-22T04:23:40.054Z 	 info: QueueGCManager:start() Starting QueueGCManager, set status to Initializing
+2023-09-22T04:23:40.054Z 	 info: QueueGCManager:start() Trigger mark and sweep loop, set status to Running.
+2023-09-22T04:23:40.054Z 	 info: QueueGCManager:markSweepLoop() Start new mark and sweep.
+2023-09-22T04:23:40.054Z 	 info: QueueGCManger:markSweep() Get all extents.
+2023-09-22T04:23:40.054Z 	 info: QueueGCManager:start() QueueGCManager successfully started.
+2023-09-22T04:23:40.054Z 	 info: QueueGCManager:marksweep() Get 0 extents.
+2023-09-22T04:23:40.054Z 	 info: QueueGCManager:markSweep() Get referred extents, then remove from allExtents.
+2023-09-22T04:23:40.054Z 	 info: QueueGCManager:markSweep() Got referred extents, unreferenced extents count is 0.
+2023-09-22T04:23:40.054Z 	 info: QueueGCManager:markSweepLoop() Mark and sweep finished, take 0ms.
+2023-09-22T04:23:40.054Z 	 info: QueueGCManager:markSweepLoop() Sleep for 60000
+2023-09-22T04:23:40.055Z 	 info: Azurite Queue service successfully listens on http://127.0.0.1:10001
+2023-09-22T04:23:40.055Z 	 info: Azurite Table service is starting on 127.0.0.1:10002
+2023-09-22T04:23:40.055Z 	 info: AccountDataStore:init() Refresh accounts from environment variable AZURITE_ACCOUNTS with value undefined
+2023-09-22T04:23:40.055Z 	 info: AccountDataStore:init() Fallback to default emulator account devstoreaccount1.
+2023-09-22T04:23:40.058Z 	 info: Azurite Table service successfully listens on http://127.0.0.1:10002
+2023-09-22T04:23:42.351Z ced87ba1-eee2-45a1-92f2-abd17b080e7a info: QueueStorageContextMiddleware: RequestMethod=PUT RequestURL=http://127.0.0.1/devstoreaccount1/testqueue RequestHeaders:{"host":"127.0.0.1:10001","x-ms-version":"2018-11-09","x-ms-client-request-id":"e4e6f05e-21dd-44f9-8045-a9dc5d3717f1","x-ms-return-client-request-id":"true","user-agent":"azsdk-net-Storage.Queues/12.4.1 (.NET Core 3.1.32; Linux 6.2.0-32-generic #32~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Fri Aug 18 10:40:13 UTC 2)","x-ms-date":"Fri, 22 Sep 2023 04:23:42 GMT","authorization":"SharedKey devstoreaccount1:o26k4x3gXhkEsL855JbNkFXf4nAZ/IwD7inxViPu9dg=","content-length":"0"} ClientIP=127.0.0.1 Protocol=http HTTPVersion=1.1
+2023-09-22T04:23:42.352Z ced87ba1-eee2-45a1-92f2-abd17b080e7a info: QueueStorageContextMiddleware: Account=devstoreaccount1 Queue=testqueue Message=undefined MessageId=undefined
+2023-09-22T04:23:42.352Z ced87ba1-eee2-45a1-92f2-abd17b080e7a verbose: DispatchMiddleware: Dispatching request...
+2023-09-22T04:23:42.353Z ced87ba1-eee2-45a1-92f2-abd17b080e7a info: DispatchMiddleware: Operation=Queue_Create
+2023-09-22T04:23:42.353Z ced87ba1-eee2-45a1-92f2-abd17b080e7a verbose: AuthenticationMiddlewareFactory:createAuthenticationMiddleware() Validating authentications.
+2023-09-22T04:23:42.353Z ced87ba1-eee2-45a1-92f2-abd17b080e7a info: QueueSharedKeyAuthenticator:validate() Start validation against account shared key authentication.
+2023-09-22T04:23:42.359Z ced87ba1-eee2-45a1-92f2-abd17b080e7a info: QueueSharedKeyAuthenticator:validate() [STRING TO SIGN]:"PUT\n\n\n\n\n\n\n\n\n\n\n\nx-ms-client-request-id:e4e6f05e-21dd-44f9-8045-a9dc5d3717f1\nx-ms-date:Fri, 22 Sep 2023 04:23:42 GMT\nx-ms-return-client-request-id:true\nx-ms-version:2018-11-09\n/devstoreaccount1/devstoreaccount1/testqueue"
+2023-09-22T04:23:42.359Z ced87ba1-eee2-45a1-92f2-abd17b080e7a info: QueueSharedKeyAuthenticator:validate() Calculated authentication header based on key1: devstoreaccount1:o26k4x3gXhkEsL855JbNkFXf4nAZ/IwD7inxViPu9dg=
+2023-09-22T04:23:42.359Z ced87ba1-eee2-45a1-92f2-abd17b080e7a info: QueueSharedKeyAuthenticator:validate() Signature 1 matched.
+2023-09-22T04:23:42.359Z ced87ba1-eee2-45a1-92f2-abd17b080e7a verbose: DeserializerMiddleware: Start deserializing...
+2023-09-22T04:23:42.360Z ced87ba1-eee2-45a1-92f2-abd17b080e7a info: HandlerMiddleware: DeserializedParameters={"options":{"metadata":{},"requestId":"e4e6f05e-21dd-44f9-8045-a9dc5d3717f1"},"version":"2018-11-09"}
+2023-09-22T04:23:42.361Z ced87ba1-eee2-45a1-92f2-abd17b080e7a verbose: SerializerMiddleware: Start serializing...
+2023-09-22T04:23:42.361Z ced87ba1-eee2-45a1-92f2-abd17b080e7a info: EndMiddleware: End response. TotalTimeInMS=10 StatusCode=201 StatusMessage=undefined Headers={"server":"Azurite-Queue/3.21.0","x-ms-client-request-id":"e4e6f05e-21dd-44f9-8045-a9dc5d3717f1","x-ms-request-id":"ced87ba1-eee2-45a1-92f2-abd17b080e7a","x-ms-version":"2021-10-04","date":"Fri, 22 Sep 2023 04:23:42 GMT"}
+2023-09-22T04:23:42.375Z 50a71857-9e30-441f-a56b-610897f8a385 info: QueueStorageContextMiddleware: RequestMethod=DELETE RequestURL=http://127.0.0.1/devstoreaccount1/testqueue RequestHeaders:{"host":"127.0.0.1:10001","x-ms-version":"2018-11-09","x-ms-client-request-id":"87dcd8eb-bd44-454f-8706-5dd8f92fdbfa","x-ms-return-client-request-id":"true","user-agent":"azsdk-net-Storage.Queues/12.4.1 (.NET Core 3.1.32; Linux 6.2.0-32-generic #32~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Fri Aug 18 10:40:13 UTC 2)","x-ms-date":"Fri, 22 Sep 2023 04:23:42 GMT","authorization":"SharedKey devstoreaccount1:K0eP+OtOobmbiPdpBT4rA0c5e2cbkAuJCCo5nsziWtY="} ClientIP=127.0.0.1 Protocol=http HTTPVersion=1.1
+2023-09-22T04:23:42.375Z 50a71857-9e30-441f-a56b-610897f8a385 info: QueueStorageContextMiddleware: Account=devstoreaccount1 Queue=testqueue Message=undefined MessageId=undefined
+2023-09-22T04:23:42.375Z 50a71857-9e30-441f-a56b-610897f8a385 verbose: DispatchMiddleware: Dispatching request...
+2023-09-22T04:23:42.376Z 50a71857-9e30-441f-a56b-610897f8a385 info: DispatchMiddleware: Operation=Queue_Delete
+2023-09-22T04:23:42.376Z 50a71857-9e30-441f-a56b-610897f8a385 verbose: AuthenticationMiddlewareFactory:createAuthenticationMiddleware() Validating authentications.
+2023-09-22T04:23:42.376Z 50a71857-9e30-441f-a56b-610897f8a385 info: QueueSharedKeyAuthenticator:validate() Start validation against account shared key authentication.
+2023-09-22T04:23:42.376Z 50a71857-9e30-441f-a56b-610897f8a385 info: QueueSharedKeyAuthenticator:validate() [STRING TO SIGN]:"DELETE\n\n\n\n\n\n\n\n\n\n\n\nx-ms-client-request-id:87dcd8eb-bd44-454f-8706-5dd8f92fdbfa\nx-ms-date:Fri, 22 Sep 2023 04:23:42 GMT\nx-ms-return-client-request-id:true\nx-ms-version:2018-11-09\n/devstoreaccount1/devstoreaccount1/testqueue"
+2023-09-22T04:23:42.376Z 50a71857-9e30-441f-a56b-610897f8a385 info: QueueSharedKeyAuthenticator:validate() Calculated authentication header based on key1: devstoreaccount1:K0eP+OtOobmbiPdpBT4rA0c5e2cbkAuJCCo5nsziWtY=
+2023-09-22T04:23:42.376Z 50a71857-9e30-441f-a56b-610897f8a385 info: QueueSharedKeyAuthenticator:validate() Signature 1 matched.
+2023-09-22T04:23:42.376Z 50a71857-9e30-441f-a56b-610897f8a385 verbose: DeserializerMiddleware: Start deserializing...
+2023-09-22T04:23:42.376Z 50a71857-9e30-441f-a56b-610897f8a385 info: HandlerMiddleware: DeserializedParameters={"options":{"requestId":"87dcd8eb-bd44-454f-8706-5dd8f92fdbfa"},"version":"2018-11-09"}
+2023-09-22T04:23:42.377Z 50a71857-9e30-441f-a56b-610897f8a385 verbose: SerializerMiddleware: Start serializing...
+2023-09-22T04:23:42.377Z 50a71857-9e30-441f-a56b-610897f8a385 info: EndMiddleware: End response. TotalTimeInMS=2 StatusCode=204 StatusMessage=undefined Headers={"server":"Azurite-Queue/3.21.0","x-ms-client-request-id":"87dcd8eb-bd44-454f-8706-5dd8f92fdbfa","x-ms-request-id":"50a71857-9e30-441f-a56b-610897f8a385","x-ms-version":"2021-10-04","date":"Fri, 22 Sep 2023 04:23:42 GMT"}
+2023-09-22T04:23:42.442Z 6271f544-c2fd-4e13-bad5-d6392bffbcf3 info: QueueStorageContextMiddleware: RequestMethod=POST RequestURL=http://127.0.0.1/devstoreaccount1/testqueue/messages RequestHeaders:{"host":"127.0.0.1:10001","x-ms-version":"2018-11-09","x-ms-client-request-id":"4b28bbdb-c1a0-4788-8d90-88286ff99e28","x-ms-return-client-request-id":"true","user-agent":"azsdk-net-Storage.Queues/12.4.1 (.NET Core 3.1.32; Linux 6.2.0-32-generic #32~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Fri Aug 18 10:40:13 UTC 2)","x-ms-date":"Fri, 22 Sep 2023 04:23:42 GMT","authorization":"SharedKey devstoreaccount1:1ACunry48Dr2mcvpqTEGbfS90wnwxAXb4X/I3yz/bJM=","content-type":"application/xml","content-length":"57"} ClientIP=127.0.0.1 Protocol=http HTTPVersion=1.1
+2023-09-22T04:23:42.442Z 6271f544-c2fd-4e13-bad5-d6392bffbcf3 info: QueueStorageContextMiddleware: Account=devstoreaccount1 Queue=testqueue Message=messages MessageId=undefined
+2023-09-22T04:23:42.442Z 6271f544-c2fd-4e13-bad5-d6392bffbcf3 verbose: DispatchMiddleware: Dispatching request...
+2023-09-22T04:23:42.442Z 6271f544-c2fd-4e13-bad5-d6392bffbcf3 info: DispatchMiddleware: Operation=Messages_Enqueue
+2023-09-22T04:23:42.442Z 6271f544-c2fd-4e13-bad5-d6392bffbcf3 verbose: AuthenticationMiddlewareFactory:createAuthenticationMiddleware() Validating authentications.
+2023-09-22T04:23:42.442Z 6271f544-c2fd-4e13-bad5-d6392bffbcf3 info: QueueSharedKeyAuthenticator:validate() Start validation against account shared key authentication.
+2023-09-22T04:23:42.442Z 6271f544-c2fd-4e13-bad5-d6392bffbcf3 info: QueueSharedKeyAuthenticator:validate() [STRING TO SIGN]:"POST\n\n\n57\n\napplication/xml\n\n\n\n\n\n\nx-ms-client-request-id:4b28bbdb-c1a0-4788-8d90-88286ff99e28\nx-ms-date:Fri, 22 Sep 2023 04:23:42 GMT\nx-ms-return-client-request-id:true\nx-ms-version:2018-11-09\n/devstoreaccount1/devstoreaccount1/testqueue/messages"
+2023-09-22T04:23:42.443Z 6271f544-c2fd-4e13-bad5-d6392bffbcf3 info: QueueSharedKeyAuthenticator:validate() Calculated authentication header based on key1: devstoreaccount1:1ACunry48Dr2mcvpqTEGbfS90wnwxAXb4X/I3yz/bJM=
+2023-09-22T04:23:42.443Z 6271f544-c2fd-4e13-bad5-d6392bffbcf3 info: QueueSharedKeyAuthenticator:validate() Signature 1 matched.
+2023-09-22T04:23:42.443Z 6271f544-c2fd-4e13-bad5-d6392bffbcf3 verbose: DeserializerMiddleware: Start deserializing...
+2023-09-22T04:23:42.443Z 6271f544-c2fd-4e13-bad5-d6392bffbcf3 debug: deserialize(): Raw request body string is (removed all empty characters) <QueueMessage><MessageText>1</MessageText></QueueMessage>
+2023-09-22T04:23:42.445Z 6271f544-c2fd-4e13-bad5-d6392bffbcf3 info: HandlerMiddleware: DeserializedParameters={"options":{"requestId":"4b28bbdb-c1a0-4788-8d90-88286ff99e28"},"version":"2018-11-09","queueMessage":{"messageText":"1"},"body":"ReadableStream"}
+2023-09-22T04:23:42.445Z 6271f544-c2fd-4e13-bad5-d6392bffbcf3 debug: OperationQueue.operate() Schedule incoming job e3263a79-d27e-4e5a-b30d-47e9e4a23a34
+2023-09-22T04:23:42.446Z 6271f544-c2fd-4e13-bad5-d6392bffbcf3 debug: OperationQueue:execute() Current runningConcurrency:0 maxConcurrency:1 operations.length:1
+2023-09-22T04:23:42.446Z 6271f544-c2fd-4e13-bad5-d6392bffbcf3 info: FSExtentStore:appendExtent() Select extent from idle location for extent append operation. LocationId:0 extentId:0f671daa-319f-4857-826f-91ef2b40c2eb offset:0 MAX_EXTENT_SIZE:67108864 
+2023-09-22T04:23:42.446Z 6271f544-c2fd-4e13-bad5-d6392bffbcf3 debug: FSExtentStore:appendExtent() Get fd:undefined for extent:0f671daa-319f-4857-826f-91ef2b40c2eb from cache.
+2023-09-22T04:23:42.446Z 6271f544-c2fd-4e13-bad5-d6392bffbcf3 debug: FSExtentStore:appendExtent() Open file:/home/anna/[MS]UIUC-new/Research/apps/Alpakka/src/Azure/Akka.Streams.Azure.StorageQueue.Tests/__queuestorage__/0f671daa-319f-4857-826f-91ef2b40c2eb for extent:0f671daa-319f-4857-826f-91ef2b40c2eb, get new fd:25
+2023-09-22T04:23:42.446Z 6271f544-c2fd-4e13-bad5-d6392bffbcf3 debug: FSExtentStore:appendExtent() Created write stream for fd:25
+2023-09-22T04:23:42.446Z 6271f544-c2fd-4e13-bad5-d6392bffbcf3 debug: FSExtentStore:appendExtent() Start writing to extent 0f671daa-319f-4857-826f-91ef2b40c2eb
+2023-09-22T04:23:42.446Z 6271f544-c2fd-4e13-bad5-d6392bffbcf3 debug: FSExtentStore:streamPipe() Start piping data to write stream
+2023-09-22T04:23:42.447Z 6271f544-c2fd-4e13-bad5-d6392bffbcf3 debug: FSExtentStore:streamPipe() Readable stream triggers close event, 1 bytes piped
+2023-09-22T04:23:42.447Z 6271f544-c2fd-4e13-bad5-d6392bffbcf3 debug: FSExtentStore:streamPipe() Invoke write stream end()
+2023-09-22T04:23:42.447Z 6271f544-c2fd-4e13-bad5-d6392bffbcf3 debug: FSExtentStore:streamPipe() Readable stream triggers close event, 1 bytes piped
+2023-09-22T04:23:42.447Z 6271f544-c2fd-4e13-bad5-d6392bffbcf3 debug: FSExtentStore:streamPipe() Writable stream triggers finish event, after 1 bytes piped. Flush data to fd:25.
+2023-09-22T04:23:42.450Z 6271f544-c2fd-4e13-bad5-d6392bffbcf3 debug: FSExtentStore:streamPipe() Flush data to fd:25 successfully. Resolve streamPipe().
+2023-09-22T04:23:42.450Z 6271f544-c2fd-4e13-bad5-d6392bffbcf3 debug: FSExtentStore:appendExtent() Write finish, start updating extent metadata. extent:{"id":"0f671daa-319f-4857-826f-91ef2b40c2eb","locationId":"Default","path":"0f671daa-319f-4857-826f-91ef2b40c2eb","size":1,"lastModifiedInMS":1695356622450}
+2023-09-22T04:23:42.450Z 6271f544-c2fd-4e13-bad5-d6392bffbcf3 debug: FSExtentStore:appendExtent() Update extent metadata done. Resolve()
+2023-09-22T04:23:42.450Z 6271f544-c2fd-4e13-bad5-d6392bffbcf3 debug: OperationQueue.operate() Job e3263a79-d27e-4e5a-b30d-47e9e4a23a34 completes callback, resolve.
+2023-09-22T04:23:42.453Z 6271f544-c2fd-4e13-bad5-d6392bffbcf3 error: ErrorMiddleware: Received a MiddlewareError, fill error information to HTTP response
+2023-09-22T04:23:42.453Z 6271f544-c2fd-4e13-bad5-d6392bffbcf3 error: ErrorMiddleware: ErrorName=StorageError ErrorMessage=The specified queue does not exist.  ErrorHTTPStatusCode=404 ErrorHTTPStatusMessage=The specified queue does not exist. ErrorHTTPHeaders={"x-ms-error-code":"QueueNotFound","x-ms-request-id":"DefaultID","x-ms-version":"2021-10-04"} ErrorHTTPBody="<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<Error>\n  <Code>QueueNotFound</Code>\n  <Message>The specified queue does not exist.\nRequestId:DefaultID\nTime:2023-09-22T04:23:42.450Z</Message>\n</Error>" ErrorStack="StorageError: The specified queue does not exist.\n    at Function.getQueueNotFound (/usr/local/lib/node_modules/azurite/dist/src/queue/errors/StorageErrorFactory.js:110:16)\n    at LokiQueueMetadataStore.checkQueueExist (/usr/local/lib/node_modules/azurite/dist/src/queue/persistence/LokiQueueMetadataStore.js:605:49)\n    at LokiQueueMetadataStore.insertMessage (/usr/local/lib/node_modules/azurite/dist/src/queue/persistence/LokiQueueMetadataStore.js:388:14)\n    at MessagesHandler.enqueue (/usr/local/lib/node_modules/azurite/dist/src/queue/handlers/MessagesHandler.js:189:34)\n    at processTicksAndRejections (internal/process/task_queues.js:95:5)"
+2023-09-22T04:23:42.453Z 6271f544-c2fd-4e13-bad5-d6392bffbcf3 error: ErrorMiddleware: Set HTTP code: 404
+2023-09-22T04:23:42.453Z 6271f544-c2fd-4e13-bad5-d6392bffbcf3 error: ErrorMiddleware: Set HTTP status message: The specified queue does not exist.
+2023-09-22T04:23:42.453Z 6271f544-c2fd-4e13-bad5-d6392bffbcf3 error: ErrorMiddleware: Set HTTP Header: x-ms-error-code=QueueNotFound
+2023-09-22T04:23:42.453Z 6271f544-c2fd-4e13-bad5-d6392bffbcf3 error: ErrorMiddleware: Set HTTP Header: x-ms-request-id=DefaultID
+2023-09-22T04:23:42.454Z 6271f544-c2fd-4e13-bad5-d6392bffbcf3 error: ErrorMiddleware: Set HTTP Header: x-ms-version=2021-10-04
+2023-09-22T04:23:42.454Z 6271f544-c2fd-4e13-bad5-d6392bffbcf3 error: ErrorMiddleware: Set content type: application/xml
+2023-09-22T04:23:42.454Z 6271f544-c2fd-4e13-bad5-d6392bffbcf3 error: ErrorMiddleware: Set HTTP body: "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<Error>\n  <Code>QueueNotFound</Code>\n  <Message>The specified queue does not exist.\nRequestId:DefaultID\nTime:2023-09-22T04:23:42.450Z</Message>\n</Error>"
+2023-09-22T04:23:42.454Z 6271f544-c2fd-4e13-bad5-d6392bffbcf3 info: EndMiddleware: End response. TotalTimeInMS=12 StatusCode=404 StatusMessage=The specified queue does not exist. Headers={"server":"Azurite-Queue/3.21.0","x-ms-error-code":"QueueNotFound","x-ms-request-id":"DefaultID","x-ms-version":"2021-10-04","content-type":"application/xml"}
+2023-09-22T04:23:42.454Z 6271f544-c2fd-4e13-bad5-d6392bffbcf3 debug: OperationQueue:execute() Current runningConcurrency:0 maxConcurrency:1 operations.length:0
+2023-09-22T04:23:42.454Z 6271f544-c2fd-4e13-bad5-d6392bffbcf3 debug: OperationQueue:execute() return. Operation.length === 0
+2023-09-22T04:23:42.941Z 86869edb-60e7-419c-b3a1-70a498d25cca info: QueueStorageContextMiddleware: RequestMethod=PUT RequestURL=http://127.0.0.1/devstoreaccount1/testqueue RequestHeaders:{"host":"127.0.0.1:10001","x-ms-version":"2018-11-09","x-ms-client-request-id":"47099a8b-68bb-46bc-9936-1e0eb1d3c6cf","x-ms-return-client-request-id":"true","user-agent":"azsdk-net-Storage.Queues/12.4.1 (.NET Core 3.1.32; Linux 6.2.0-32-generic #32~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Fri Aug 18 10:40:13 UTC 2)","x-ms-date":"Fri, 22 Sep 2023 04:23:42 GMT","authorization":"SharedKey devstoreaccount1:rb3S6k+F4XQ2ccaanr9sc3t6nPdz3Yqb/UnXdpPYUq8=","content-length":"0"} ClientIP=127.0.0.1 Protocol=http HTTPVersion=1.1
+2023-09-22T04:23:42.941Z 86869edb-60e7-419c-b3a1-70a498d25cca info: QueueStorageContextMiddleware: Account=devstoreaccount1 Queue=testqueue Message=undefined MessageId=undefined
+2023-09-22T04:23:42.941Z 86869edb-60e7-419c-b3a1-70a498d25cca verbose: DispatchMiddleware: Dispatching request...
+2023-09-22T04:23:42.941Z 86869edb-60e7-419c-b3a1-70a498d25cca info: DispatchMiddleware: Operation=Queue_Create
+2023-09-22T04:23:42.941Z 86869edb-60e7-419c-b3a1-70a498d25cca verbose: AuthenticationMiddlewareFactory:createAuthenticationMiddleware() Validating authentications.
+2023-09-22T04:23:42.941Z 86869edb-60e7-419c-b3a1-70a498d25cca info: QueueSharedKeyAuthenticator:validate() Start validation against account shared key authentication.
+2023-09-22T04:23:42.941Z 86869edb-60e7-419c-b3a1-70a498d25cca info: QueueSharedKeyAuthenticator:validate() [STRING TO SIGN]:"PUT\n\n\n\n\n\n\n\n\n\n\n\nx-ms-client-request-id:47099a8b-68bb-46bc-9936-1e0eb1d3c6cf\nx-ms-date:Fri, 22 Sep 2023 04:23:42 GMT\nx-ms-return-client-request-id:true\nx-ms-version:2018-11-09\n/devstoreaccount1/devstoreaccount1/testqueue"
+2023-09-22T04:23:42.941Z 86869edb-60e7-419c-b3a1-70a498d25cca info: QueueSharedKeyAuthenticator:validate() Calculated authentication header based on key1: devstoreaccount1:rb3S6k+F4XQ2ccaanr9sc3t6nPdz3Yqb/UnXdpPYUq8=
+2023-09-22T04:23:42.941Z 86869edb-60e7-419c-b3a1-70a498d25cca info: QueueSharedKeyAuthenticator:validate() Signature 1 matched.
+2023-09-22T04:23:42.941Z 86869edb-60e7-419c-b3a1-70a498d25cca verbose: DeserializerMiddleware: Start deserializing...
+2023-09-22T04:23:42.941Z 86869edb-60e7-419c-b3a1-70a498d25cca info: HandlerMiddleware: DeserializedParameters={"options":{"metadata":{},"requestId":"47099a8b-68bb-46bc-9936-1e0eb1d3c6cf"},"version":"2018-11-09"}
+2023-09-22T04:23:42.942Z 86869edb-60e7-419c-b3a1-70a498d25cca verbose: SerializerMiddleware: Start serializing...
+2023-09-22T04:23:42.942Z 86869edb-60e7-419c-b3a1-70a498d25cca info: EndMiddleware: End response. TotalTimeInMS=1 StatusCode=201 StatusMessage=undefined Headers={"server":"Azurite-Queue/3.21.0","x-ms-client-request-id":"47099a8b-68bb-46bc-9936-1e0eb1d3c6cf","x-ms-request-id":"86869edb-60e7-419c-b3a1-70a498d25cca","x-ms-version":"2021-10-04","date":"Fri, 22 Sep 2023 04:23:42 GMT"}
+2023-09-22T04:23:42.943Z f58d04a9-0c0e-42d5-82e3-10e679b744b8 info: QueueStorageContextMiddleware: RequestMethod=POST RequestURL=http://127.0.0.1/devstoreaccount1/testqueue/messages RequestHeaders:{"host":"127.0.0.1:10001","x-ms-version":"2018-11-09","x-ms-client-request-id":"d89f8b03-ab79-4595-b2a0-277a0956b3fe","x-ms-return-client-request-id":"true","user-agent":"azsdk-net-Storage.Queues/12.4.1 (.NET Core 3.1.32; Linux 6.2.0-32-generic #32~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Fri Aug 18 10:40:13 UTC 2)","x-ms-date":"Fri, 22 Sep 2023 04:23:42 GMT","authorization":"SharedKey devstoreaccount1:8SN88WlilQqCPqOfc9dHJamdWeqWcKDeZmfRdVI13ng=","content-type":"application/xml","content-length":"57"} ClientIP=127.0.0.1 Protocol=http HTTPVersion=1.1
+2023-09-22T04:23:42.943Z f58d04a9-0c0e-42d5-82e3-10e679b744b8 info: QueueStorageContextMiddleware: Account=devstoreaccount1 Queue=testqueue Message=messages MessageId=undefined
+2023-09-22T04:23:42.943Z f58d04a9-0c0e-42d5-82e3-10e679b744b8 verbose: DispatchMiddleware: Dispatching request...
+2023-09-22T04:23:42.944Z f58d04a9-0c0e-42d5-82e3-10e679b744b8 info: DispatchMiddleware: Operation=Messages_Enqueue
+2023-09-22T04:23:42.944Z f58d04a9-0c0e-42d5-82e3-10e679b744b8 verbose: AuthenticationMiddlewareFactory:createAuthenticationMiddleware() Validating authentications.
+2023-09-22T04:23:42.944Z f58d04a9-0c0e-42d5-82e3-10e679b744b8 info: QueueSharedKeyAuthenticator:validate() Start validation against account shared key authentication.
+2023-09-22T04:23:42.944Z f58d04a9-0c0e-42d5-82e3-10e679b744b8 info: QueueSharedKeyAuthenticator:validate() [STRING TO SIGN]:"POST\n\n\n57\n\napplication/xml\n\n\n\n\n\n\nx-ms-client-request-id:d89f8b03-ab79-4595-b2a0-277a0956b3fe\nx-ms-date:Fri, 22 Sep 2023 04:23:42 GMT\nx-ms-return-client-request-id:true\nx-ms-version:2018-11-09\n/devstoreaccount1/devstoreaccount1/testqueue/messages"
+2023-09-22T04:23:42.944Z f58d04a9-0c0e-42d5-82e3-10e679b744b8 info: QueueSharedKeyAuthenticator:validate() Calculated authentication header based on key1: devstoreaccount1:8SN88WlilQqCPqOfc9dHJamdWeqWcKDeZmfRdVI13ng=
+2023-09-22T04:23:42.944Z f58d04a9-0c0e-42d5-82e3-10e679b744b8 info: QueueSharedKeyAuthenticator:validate() Signature 1 matched.
+2023-09-22T04:23:42.944Z f58d04a9-0c0e-42d5-82e3-10e679b744b8 verbose: DeserializerMiddleware: Start deserializing...
+2023-09-22T04:23:42.944Z f58d04a9-0c0e-42d5-82e3-10e679b744b8 debug: deserialize(): Raw request body string is (removed all empty characters) <QueueMessage><MessageText>2</MessageText></QueueMessage>
+2023-09-22T04:23:42.944Z f58d04a9-0c0e-42d5-82e3-10e679b744b8 info: HandlerMiddleware: DeserializedParameters={"options":{"requestId":"d89f8b03-ab79-4595-b2a0-277a0956b3fe"},"version":"2018-11-09","queueMessage":{"messageText":"2"},"body":"ReadableStream"}
+2023-09-22T04:23:42.945Z f58d04a9-0c0e-42d5-82e3-10e679b744b8 debug: OperationQueue.operate() Schedule incoming job b9221018-e078-480d-ac07-4203bf74ccf3
+2023-09-22T04:23:42.945Z f58d04a9-0c0e-42d5-82e3-10e679b744b8 debug: OperationQueue:execute() Current runningConcurrency:0 maxConcurrency:1 operations.length:1
+2023-09-22T04:23:42.945Z f58d04a9-0c0e-42d5-82e3-10e679b744b8 info: FSExtentStore:appendExtent() Select extent from idle location for extent append operation. LocationId:0 extentId:0f671daa-319f-4857-826f-91ef2b40c2eb offset:1 MAX_EXTENT_SIZE:67108864 
+2023-09-22T04:23:42.945Z f58d04a9-0c0e-42d5-82e3-10e679b744b8 debug: FSExtentStore:appendExtent() Get fd:25 for extent:0f671daa-319f-4857-826f-91ef2b40c2eb from cache.
+2023-09-22T04:23:42.945Z f58d04a9-0c0e-42d5-82e3-10e679b744b8 debug: FSExtentStore:appendExtent() Created write stream for fd:25
+2023-09-22T04:23:42.945Z f58d04a9-0c0e-42d5-82e3-10e679b744b8 debug: FSExtentStore:appendExtent() Start writing to extent 0f671daa-319f-4857-826f-91ef2b40c2eb
+2023-09-22T04:23:42.945Z f58d04a9-0c0e-42d5-82e3-10e679b744b8 debug: FSExtentStore:streamPipe() Start piping data to write stream
+2023-09-22T04:23:42.945Z f58d04a9-0c0e-42d5-82e3-10e679b744b8 debug: FSExtentStore:streamPipe() Readable stream triggers close event, 1 bytes piped
+2023-09-22T04:23:42.946Z f58d04a9-0c0e-42d5-82e3-10e679b744b8 debug: FSExtentStore:streamPipe() Invoke write stream end()
+2023-09-22T04:23:42.946Z f58d04a9-0c0e-42d5-82e3-10e679b744b8 debug: FSExtentStore:streamPipe() Readable stream triggers close event, 1 bytes piped
+2023-09-22T04:23:42.946Z f58d04a9-0c0e-42d5-82e3-10e679b744b8 debug: FSExtentStore:streamPipe() Writable stream triggers finish event, after 1 bytes piped. Flush data to fd:25.
+2023-09-22T04:23:42.949Z f58d04a9-0c0e-42d5-82e3-10e679b744b8 debug: FSExtentStore:streamPipe() Flush data to fd:25 successfully. Resolve streamPipe().
+2023-09-22T04:23:42.949Z f58d04a9-0c0e-42d5-82e3-10e679b744b8 debug: FSExtentStore:appendExtent() Write finish, start updating extent metadata. extent:{"id":"0f671daa-319f-4857-826f-91ef2b40c2eb","locationId":"Default","path":"0f671daa-319f-4857-826f-91ef2b40c2eb","size":2,"lastModifiedInMS":1695356622949}
+2023-09-22T04:23:42.950Z f58d04a9-0c0e-42d5-82e3-10e679b744b8 debug: FSExtentStore:appendExtent() Update extent metadata done. Resolve()
+2023-09-22T04:23:42.950Z f58d04a9-0c0e-42d5-82e3-10e679b744b8 debug: OperationQueue.operate() Job b9221018-e078-480d-ac07-4203bf74ccf3 completes callback, resolve.
+2023-09-22T04:23:42.951Z f58d04a9-0c0e-42d5-82e3-10e679b744b8 verbose: SerializerMiddleware: Start serializing...
+2023-09-22T04:23:42.952Z f58d04a9-0c0e-42d5-82e3-10e679b744b8 debug: Serializer: Raw response body string is <?xml version="1.0" encoding="UTF-8" standalone="yes"?><QueueMessagesList><QueueMessage><MessageId>54c62f1d-2c94-455f-9cae-85aa3da0bf02</MessageId><InsertionTime>Fri, 22 Sep 2023 04:23:42 GMT</InsertionTime><ExpirationTime>Fri, 29 Sep 2023 04:23:42 GMT</ExpirationTime><PopReceipt>MjJTZXAyMDIzMDQ6MjM6NDI2MGMx</PopReceipt><TimeNextVisible>Fri, 22 Sep 2023 04:23:42 GMT</TimeNextVisible></QueueMessage></QueueMessagesList>
+2023-09-22T04:23:42.952Z f58d04a9-0c0e-42d5-82e3-10e679b744b8 info: Serializer: Start returning stream body.
+2023-09-22T04:23:42.952Z f58d04a9-0c0e-42d5-82e3-10e679b744b8 info: EndMiddleware: End response. TotalTimeInMS=9 StatusCode=201 StatusMessage=Created Headers={"server":"Azurite-Queue/3.21.0","x-ms-client-request-id":"d89f8b03-ab79-4595-b2a0-277a0956b3fe","x-ms-request-id":"f58d04a9-0c0e-42d5-82e3-10e679b744b8","x-ms-version":"2021-10-04","date":"Fri, 22 Sep 2023 04:23:42 GMT","content-type":"application/xml"}
+2023-09-22T04:23:42.953Z f58d04a9-0c0e-42d5-82e3-10e679b744b8 debug: OperationQueue:execute() Current runningConcurrency:0 maxConcurrency:1 operations.length:0
+2023-09-22T04:23:42.953Z f58d04a9-0c0e-42d5-82e3-10e679b744b8 debug: OperationQueue:execute() return. Operation.length === 0
+2023-09-22T04:23:42.960Z d3845924-0cd7-4b83-a963-9bfeadb6f015 info: QueueStorageContextMiddleware: RequestMethod=GET RequestURL=http://127.0.0.1/devstoreaccount1/testqueue/messages RequestHeaders:{"host":"127.0.0.1:10001","x-ms-version":"2018-11-09","x-ms-client-request-id":"096ef01c-3837-4ce1-b240-cf2d40dfb269","x-ms-return-client-request-id":"true","user-agent":"azsdk-net-Storage.Queues/12.4.1 (.NET Core 3.1.32; Linux 6.2.0-32-generic #32~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Fri Aug 18 10:40:13 UTC 2)","x-ms-date":"Fri, 22 Sep 2023 04:23:42 GMT","authorization":"SharedKey devstoreaccount1:DxJ3D9OX6+rQIYWQ876PTZBA1IfFZ2Zw/Lwr+Diwh5c="} ClientIP=127.0.0.1 Protocol=http HTTPVersion=1.1
+2023-09-22T04:23:42.961Z d3845924-0cd7-4b83-a963-9bfeadb6f015 info: QueueStorageContextMiddleware: Account=devstoreaccount1 Queue=testqueue Message=messages MessageId=undefined
+2023-09-22T04:23:42.961Z d3845924-0cd7-4b83-a963-9bfeadb6f015 verbose: DispatchMiddleware: Dispatching request...
+2023-09-22T04:23:42.961Z d3845924-0cd7-4b83-a963-9bfeadb6f015 info: DispatchMiddleware: Operation=Messages_Dequeue
+2023-09-22T04:23:42.961Z d3845924-0cd7-4b83-a963-9bfeadb6f015 verbose: AuthenticationMiddlewareFactory:createAuthenticationMiddleware() Validating authentications.
+2023-09-22T04:23:42.961Z d3845924-0cd7-4b83-a963-9bfeadb6f015 info: QueueSharedKeyAuthenticator:validate() Start validation against account shared key authentication.
+2023-09-22T04:23:42.962Z d3845924-0cd7-4b83-a963-9bfeadb6f015 info: QueueSharedKeyAuthenticator:validate() [STRING TO SIGN]:"GET\n\n\n\n\n\n\n\n\n\n\n\nx-ms-client-request-id:096ef01c-3837-4ce1-b240-cf2d40dfb269\nx-ms-date:Fri, 22 Sep 2023 04:23:42 GMT\nx-ms-return-client-request-id:true\nx-ms-version:2018-11-09\n/devstoreaccount1/devstoreaccount1/testqueue/messages"
+2023-09-22T04:23:42.962Z d3845924-0cd7-4b83-a963-9bfeadb6f015 info: QueueSharedKeyAuthenticator:validate() Calculated authentication header based on key1: devstoreaccount1:DxJ3D9OX6+rQIYWQ876PTZBA1IfFZ2Zw/Lwr+Diwh5c=
+2023-09-22T04:23:42.962Z d3845924-0cd7-4b83-a963-9bfeadb6f015 info: QueueSharedKeyAuthenticator:validate() Signature 1 matched.
+2023-09-22T04:23:42.962Z d3845924-0cd7-4b83-a963-9bfeadb6f015 verbose: DeserializerMiddleware: Start deserializing...
+2023-09-22T04:23:42.962Z d3845924-0cd7-4b83-a963-9bfeadb6f015 info: HandlerMiddleware: DeserializedParameters={"options":{"requestId":"096ef01c-3837-4ce1-b240-cf2d40dfb269"},"version":"2018-11-09"}
+2023-09-22T04:23:42.964Z d3845924-0cd7-4b83-a963-9bfeadb6f015 debug: OperationQueue.operate() Schedule incoming job b68e5991-9cac-4855-b85a-b956babd3ed2
+2023-09-22T04:23:42.964Z d3845924-0cd7-4b83-a963-9bfeadb6f015 debug: OperationQueue:execute() Current runningConcurrency:0 maxConcurrency:100 operations.length:1
+2023-09-22T04:23:42.965Z d3845924-0cd7-4b83-a963-9bfeadb6f015 verbose: FSExtentStore:readExtent() Creating read stream. LocationId:Default extentId:0f671daa-319f-4857-826f-91ef2b40c2eb path:/home/anna/[MS]UIUC-new/Research/apps/Alpakka/src/Azure/Akka.Streams.Azure.StorageQueue.Tests/__queuestorage__/0f671daa-319f-4857-826f-91ef2b40c2eb offset:1 count:1 end:1
+2023-09-22T04:23:42.965Z d3845924-0cd7-4b83-a963-9bfeadb6f015 debug: OperationQueue.operate() Job b68e5991-9cac-4855-b85a-b956babd3ed2 completes callback, resolve.
+2023-09-22T04:23:42.965Z d3845924-0cd7-4b83-a963-9bfeadb6f015 debug: OperationQueue:execute() Current runningConcurrency:0 maxConcurrency:100 operations.length:0
+2023-09-22T04:23:42.965Z d3845924-0cd7-4b83-a963-9bfeadb6f015 debug: OperationQueue:execute() return. Operation.length === 0
+2023-09-22T04:23:42.966Z d3845924-0cd7-4b83-a963-9bfeadb6f015 verbose: SerializerMiddleware: Start serializing...
+2023-09-22T04:23:42.967Z d3845924-0cd7-4b83-a963-9bfeadb6f015 debug: Serializer: Raw response body string is <?xml version="1.0" encoding="UTF-8" standalone="yes"?><QueueMessagesList><QueueMessage><MessageId>54c62f1d-2c94-455f-9cae-85aa3da0bf02</MessageId><InsertionTime>Fri, 22 Sep 2023 04:23:42 GMT</InsertionTime><ExpirationTime>Fri, 29 Sep 2023 04:23:42 GMT</ExpirationTime><PopReceipt>MjJTZXAyMDIzMDQ6MjM6NDI5ZGZl</PopReceipt><TimeNextVisible>Fri, 22 Sep 2023 04:24:12 GMT</TimeNextVisible><DequeueCount>1</DequeueCount><MessageText>2</MessageText></QueueMessage></QueueMessagesList>
+2023-09-22T04:23:42.967Z d3845924-0cd7-4b83-a963-9bfeadb6f015 info: Serializer: Start returning stream body.
+2023-09-22T04:23:42.967Z d3845924-0cd7-4b83-a963-9bfeadb6f015 info: EndMiddleware: End response. TotalTimeInMS=7 StatusCode=200 StatusMessage=OK Headers={"server":"Azurite-Queue/3.21.0","x-ms-client-request-id":"096ef01c-3837-4ce1-b240-cf2d40dfb269","x-ms-request-id":"d3845924-0cd7-4b83-a963-9bfeadb6f015","x-ms-version":"2021-10-04","date":"Fri, 22 Sep 2023 04:23:42 GMT","content-type":"application/xml"}
+2023-09-22T04:23:42.968Z d3845924-0cd7-4b83-a963-9bfeadb6f015 verbose: FSExtentStore:readExtent() Read stream closed. LocationId:Default extentId:0f671daa-319f-4857-826f-91ef2b40c2eb path:/home/anna/[MS]UIUC-new/Research/apps/Alpakka/src/Azure/Akka.Streams.Azure.StorageQueue.Tests/__queuestorage__/0f671daa-319f-4857-826f-91ef2b40c2eb offset:1 count:1 end:1
+2023-09-22T04:23:42.976Z a3b2076d-d29a-4286-9e6e-d961314f060c info: QueueStorageContextMiddleware: RequestMethod=DELETE RequestURL=http://127.0.0.1/devstoreaccount1/testqueue RequestHeaders:{"host":"127.0.0.1:10001","x-ms-version":"2018-11-09","x-ms-client-request-id":"b0d2a67f-41e5-4445-be13-217cd2dccc57","x-ms-return-client-request-id":"true","user-agent":"azsdk-net-Storage.Queues/12.4.1 (.NET Core 3.1.32; Linux 6.2.0-32-generic #32~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Fri Aug 18 10:40:13 UTC 2)","x-ms-date":"Fri, 22 Sep 2023 04:23:42 GMT","authorization":"SharedKey devstoreaccount1:tgG1IpiqC5OPWTgGbK5zRG2cDhQgZnpE2W/FEx3NOow="} ClientIP=127.0.0.1 Protocol=http HTTPVersion=1.1
+2023-09-22T04:23:42.977Z a3b2076d-d29a-4286-9e6e-d961314f060c info: QueueStorageContextMiddleware: Account=devstoreaccount1 Queue=testqueue Message=undefined MessageId=undefined
+2023-09-22T04:23:42.977Z a3b2076d-d29a-4286-9e6e-d961314f060c verbose: DispatchMiddleware: Dispatching request...
+2023-09-22T04:23:42.977Z a3b2076d-d29a-4286-9e6e-d961314f060c info: DispatchMiddleware: Operation=Queue_Delete
+2023-09-22T04:23:42.977Z a3b2076d-d29a-4286-9e6e-d961314f060c verbose: AuthenticationMiddlewareFactory:createAuthenticationMiddleware() Validating authentications.
+2023-09-22T04:23:42.977Z a3b2076d-d29a-4286-9e6e-d961314f060c info: QueueSharedKeyAuthenticator:validate() Start validation against account shared key authentication.
+2023-09-22T04:23:42.977Z a3b2076d-d29a-4286-9e6e-d961314f060c info: QueueSharedKeyAuthenticator:validate() [STRING TO SIGN]:"DELETE\n\n\n\n\n\n\n\n\n\n\n\nx-ms-client-request-id:b0d2a67f-41e5-4445-be13-217cd2dccc57\nx-ms-date:Fri, 22 Sep 2023 04:23:42 GMT\nx-ms-return-client-request-id:true\nx-ms-version:2018-11-09\n/devstoreaccount1/devstoreaccount1/testqueue"
+2023-09-22T04:23:42.977Z a3b2076d-d29a-4286-9e6e-d961314f060c info: QueueSharedKeyAuthenticator:validate() Calculated authentication header based on key1: devstoreaccount1:tgG1IpiqC5OPWTgGbK5zRG2cDhQgZnpE2W/FEx3NOow=
+2023-09-22T04:23:42.977Z a3b2076d-d29a-4286-9e6e-d961314f060c info: QueueSharedKeyAuthenticator:validate() Signature 1 matched.
+2023-09-22T04:23:42.977Z a3b2076d-d29a-4286-9e6e-d961314f060c verbose: DeserializerMiddleware: Start deserializing...
+2023-09-22T04:23:42.977Z a3b2076d-d29a-4286-9e6e-d961314f060c info: HandlerMiddleware: DeserializedParameters={"options":{"requestId":"b0d2a67f-41e5-4445-be13-217cd2dccc57"},"version":"2018-11-09"}
+2023-09-22T04:23:42.977Z a3b2076d-d29a-4286-9e6e-d961314f060c verbose: SerializerMiddleware: Start serializing...
+2023-09-22T04:23:42.977Z a3b2076d-d29a-4286-9e6e-d961314f060c info: EndMiddleware: End response. TotalTimeInMS=1 StatusCode=204 StatusMessage=undefined Headers={"server":"Azurite-Queue/3.21.0","x-ms-client-request-id":"b0d2a67f-41e5-4445-be13-217cd2dccc57","x-ms-request-id":"a3b2076d-d29a-4286-9e6e-d961314f060c","x-ms-version":"2021-10-04","date":"Fri, 22 Sep 2023 04:23:42 GMT"}
+2023-09-22T04:23:43.152Z 	 info: Azurite Blob service is closing...
+2023-09-22T04:23:43.152Z 	 info: Azurite Queue service is closing...
+2023-09-22T04:23:43.152Z 	 info: Azurite Table service is closing...
+2023-09-22T04:23:43.153Z 	 info: BlobGCManager:close() Start closing BlobGCManager. Set status to Closing.
+2023-09-22T04:23:43.153Z 	 info: QueueGCManager:close() Start closing QueueGCManager, set status to Closing.
+2023-09-22T04:23:43.153Z 	 info: BlobGCManager:start() Mark and sweep loop is closed.
+2023-09-22T04:23:43.153Z 	 info: BlobGCManager:close() BlobGCManager successfully closed. Set status to Closed.
+2023-09-22T04:23:43.153Z 	 info: QueueGCManager:start() Mark and sweep loop is closed.
+2023-09-22T04:23:43.153Z 	 info: QueueGCManager:close() QueueGCManager successfully closed, set status to Closed.
+2023-09-22T04:23:43.153Z 	 info: Azurite Table service successfully closed
+2023-09-22T04:23:43.154Z 	 info: Azurite Blob service successfully closed
+2023-09-22T04:23:43.157Z 	 info: Azurite Queue service successfully closed
