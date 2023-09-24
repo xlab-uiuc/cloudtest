@@ -69,16 +69,16 @@ def saveJSONObject(applicationName, applicationData):
         json.dump(applicationData, json_file, indent=4) 
 
 def main(): 
-    applicationName = 'insight'
+    applicationName = 'snowmaker'
     current_dir = os.getcwd() 
     traffic_path = os.path.join(current_dir, applicationName) 
     file_names = os.listdir(traffic_path)
 
     app_data = getRequestTypes(traffic_path, file_names)
-    saveJSONObject('../application_request_types/insight', app_data)
+    saveJSONObject('../application_request_types/snowmaker', app_data)
 
     api_calls = getAPICalls(traffic_path, file_names)
-    saveJSONObject('../application_sdk_methods/insight', api_calls)
+    saveJSONObject('../application_sdk_methods/snowmaker', api_calls)
 
 
 main()
