@@ -26,10 +26,11 @@ def run_emulator():
             logpath = f'./debug_logs/' + i 
             emulator_command = ['azurite', '--skipApiVersionCheck', '--debug', logpath]
             emulator_process = subprocess.Popen(emulator_command)   
+            # wait for the emulator to start
+            time.sleep(6)
             
             print(f"Emulator process started for iteration for test: {i}") 
 
-            # ***run dotnet test command with os.system in app path
             os.system(f'dotnet test --filter {i}') 
             
         except Exception as e:
@@ -38,10 +39,10 @@ def run_emulator():
         finally:
             try:
                 # Kill the emulator process
-                time.sleep(3)
                 emulator_process.terminate()
+
+                # Wait for the process to terminate
                 while emulator_process.poll() is None:
-                    # Process is still running
                     print("Process is running...")
                     
                 print(f"Emulator process terminated for test: {i}")
