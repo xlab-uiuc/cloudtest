@@ -1,4 +1,6 @@
 discrepant found: 13 out of 184 cloud tests and 193 emulator test
+
+---discrepant tests---
 PartitionLost_AbandonPrefetchedSession Passed on cloud but Failed on emulator
 TestOneWorkerWithFourPartition Passed on cloud but Failed on emulator
 TestTwoWorkerWithFourPartitions Passed on cloud but Failed on emulator
@@ -12,6 +14,18 @@ TestKillThreeWorker Passed on cloud but Failed on emulator
 TestUnhealthyWorker Passed on cloud but Failed on emulator
 EnsureOwnedQueueExclusive Passed on cloud but Failed on emulator
 EnsureTimeoutHandlerRunsProcessShutdownEventsBeforeProcessKill Passed on cloud but Failed on emulator
+
+---Not found tests---
+MultipleParentScenarioAsync not found in cloud test
+MultipleParentMultiLayerScenarioAsync not found in cloud test
+SuppressTelemetryAsync not found in cloud test
+CorrelationSortAsync not found in cloud test
+CorrelationSortWithTwoChildrenAsync not found in cloud test
+CorrelationSortWithZero not found in cloud test
+TestParseTraceParent not found in cloud test
+TestParseTraceParentThrowsException not found in cloud test
+TestParseTraceParenWithNull not found in cloud test
+
 ---whole results---
 InitialState Passed on both emulator and cloud
 SignalSingleWaiter Passed on both emulator and cloud
