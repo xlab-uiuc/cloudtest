@@ -1,7 +1,7 @@
 import subprocess, os, time
 
 
-def run_emulator(log_folder, application_name):
+def run_emulator():
 
     # ***run dotnet list command with os.system in app_path and capture test names in li
     commands = subprocess.check_output("dotnet test --list-tests", shell=True, text=True) 
@@ -10,22 +10,21 @@ def run_emulator(log_folder, application_name):
     commands = [command.strip() for command in commands.split("\n") if command.strip()]
 
     # Create the log folder if it doesn't exist
-    os.makedirs(log_folder, exist_ok=True)
+    # os.makedirs(log_folder, exist_ok=True)
     os.makedirs(os.path.join(os.getcwd(), 'debug_logs'), exist_ok=True)
 
     for i in commands:
 
         # create test log file
-        with open(f'{log_folder}/{i}.txt', 'w') as f:
-            f.write(f"Logs for test: {i}\n\n")
+        # with open(f'{log_folder}/{i}.txt', 'w') as f:
+        #     f.write(f"Logs for test: {i}\n\n")
             
         try:
             # Start the emulator process with stdout and stderr redirected to the log file
-            with open(f'./logs/{i}.txt', 'a') as f:
-                # logpath = './debug_logs/' + i 
-                logpath = f'./http_traffic/{application_name}/' + i 
-                emulator_command = ['azurite', '--skipApiVersionCheck', '--debug', logpath]
-                emulator_process = subprocess.Popen(emulator_command, stdout=f, stderr=f)   
+            # with open(f'./logs/{i}.txt', 'a') as f:
+            logpath = f'./debug_logs/' + i 
+            emulator_command = ['azurite', '--skipApiVersionCheck', '--debug', logpath]
+            emulator_process = subprocess.Popen(emulator_command)   
             
             print(f"Emulator process started for iteration for test: {i}") 
 
@@ -50,10 +49,10 @@ def run_emulator(log_folder, application_name):
 def main():
 
     # Set the log file path
-    log_folder = os.path.join(os.getcwd(), 'logs')
+    # log_folder = os.path.join(os.getcwd(), 'logs')
 
     # Run the emulator
-    run_emulator(log_folder, 'alpakka')
+    run_emulator()
 
 
 if __name__ == '__main__':
