@@ -1,17 +1,18 @@
-import subprocess, os, time
+import subprocess, os, time, shutil
 
 
 def run_emulator():
 
-    # ***run dotnet list command with os.system in app_path and capture test names in li
     commands = subprocess.check_output("dotnet test --list-tests", shell=True, text=True) 
     start_index = commands.find("The following Tests are available:") 
     commands = commands[start_index+len("The following Tests are available:"):len(commands)-1]
     commands = [command.strip() for command in commands.split("\n") if command.strip()]
 
-    # Create the log folder if it doesn't exist
-    # os.makedirs(log_folder, exist_ok=True)
-    os.makedirs(os.path.join(os.getcwd(), 'debug_logs'), exist_ok=True)
+    # Overwrite the new logs instead of appending to the old ones
+    dir = os.path.join(os.getcwd(), 'debug_logs')
+    if os.path.exists(dir):
+        shutil.rmtree(dir)
+    os.makedirs(dir)
 
     for i in commands:
 
@@ -39,6 +40,10 @@ def run_emulator():
                 # Kill the emulator process
                 time.sleep(3)
                 emulator_process.terminate()
+                while emulator_process.poll() is None:
+                    # Process is still running
+                    print("Process is running...")
+                    
                 print(f"Emulator process terminated for test: {i}")
          
             except Exception as e:
