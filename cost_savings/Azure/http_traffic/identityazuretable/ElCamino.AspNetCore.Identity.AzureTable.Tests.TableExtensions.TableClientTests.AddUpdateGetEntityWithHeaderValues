@@ -1,112 +1,107 @@
-2023-09-23T20:41:03.684Z 	 info: Azurite Blob service is starting on 127.0.0.1:10000
-2023-09-23T20:41:03.686Z 	 info: AccountDataStore:init() Refresh accounts from environment variable AZURITE_ACCOUNTS with value undefined
-2023-09-23T20:41:03.686Z 	 info: AccountDataStore:init() Fallback to default emulator account devstoreaccount1.
-2023-09-23T20:41:03.705Z 	 info: BlobGCManager:start() Starting BlobGCManager. Set status to Initializing.
-2023-09-23T20:41:03.706Z 	 info: BlobGCManager:start() Trigger mark and sweep loop. Set status to Running.
-2023-09-23T20:41:03.706Z 	 info: BlobGCManager:markSweepLoop() Start next mark and sweep.
-2023-09-23T20:41:03.707Z 	 info: BlobGCManager:markSweep() Get all extents.
-2023-09-23T20:41:03.708Z 	 info: BlobGCManager:start() BlobGCManager successfully started.
-2023-09-23T20:41:03.712Z 	 info: BlobGCManager:markSweep() Got 0 extents.
-2023-09-23T20:41:03.712Z 	 info: BlobGCManager:markSweep() Get referred extents.
-2023-09-23T20:41:03.713Z 	 info: BlobGCManager:markSweep() Got referred extents, unreferenced extents count is 0.
-2023-09-23T20:41:03.714Z 	 info: BlobGCManager:markSweepLoop() Mark and sweep finished, taken 8ms.
-2023-09-23T20:41:03.714Z 	 info: BlobGCManager:markSweepLoop() Sleep for 600000ms.
-2023-09-23T20:41:03.715Z 	 info: Azurite Blob service successfully listens on http://127.0.0.1:10000
-2023-09-23T20:41:03.716Z 	 info: Azurite Queue service is starting on 127.0.0.1:10001
-2023-09-23T20:41:03.716Z 	 info: AccountDataStore:init() Refresh accounts from environment variable AZURITE_ACCOUNTS with value undefined
-2023-09-23T20:41:03.716Z 	 info: AccountDataStore:init() Fallback to default emulator account devstoreaccount1.
-2023-09-23T20:41:03.724Z 	 info: QueueGCManager:start() Starting QueueGCManager, set status to Initializing
-2023-09-23T20:41:03.724Z 	 info: QueueGCManager:start() Trigger mark and sweep loop, set status to Running.
-2023-09-23T20:41:03.725Z 	 info: QueueGCManager:markSweepLoop() Start new mark and sweep.
-2023-09-23T20:41:03.725Z 	 info: QueueGCManger:markSweep() Get all extents.
-2023-09-23T20:41:03.725Z 	 info: QueueGCManager:start() QueueGCManager successfully started.
-2023-09-23T20:41:03.725Z 	 info: QueueGCManager:marksweep() Get 0 extents.
-2023-09-23T20:41:03.725Z 	 info: QueueGCManager:markSweep() Get referred extents, then remove from allExtents.
-2023-09-23T20:41:03.726Z 	 info: QueueGCManager:markSweep() Got referred extents, unreferenced extents count is 0.
-2023-09-23T20:41:03.726Z 	 info: QueueGCManager:markSweepLoop() Mark and sweep finished, take 1ms.
-2023-09-23T20:41:03.726Z 	 info: QueueGCManager:markSweepLoop() Sleep for 60000
-2023-09-23T20:41:03.726Z 	 info: Azurite Queue service successfully listens on http://127.0.0.1:10001
-2023-09-23T20:41:03.727Z 	 info: Azurite Table service is starting on 127.0.0.1:10002
-2023-09-23T20:41:03.727Z 	 info: AccountDataStore:init() Refresh accounts from environment variable AZURITE_ACCOUNTS with value undefined
-2023-09-23T20:41:03.727Z 	 info: AccountDataStore:init() Fallback to default emulator account devstoreaccount1.
-2023-09-23T20:41:03.895Z 	 info: Azurite Table service successfully listens on http://127.0.0.1:10002
-2023-09-23T20:41:06.822Z 98e76483-6a1a-4254-aa12-a115afbc418a info: TableStorageContextMiddleware: RequestMethod=POST RequestURL=http://127.0.0.1/devstoreaccount1/Tables?$format=application%2Fjson%3Bodata%3Dminimalmetadata RequestHeaders:{"host":"127.0.0.1:10002","x-ms-version":"2020-12-06","dataserviceversion":"3.0","accept":"application/json;odata=minimalmetadata","x-ms-client-request-id":"a94255df-f964-43d1-8caa-dc6a0be732b3","x-ms-return-client-request-id":"true","user-agent":"azsdk-net-Data.Tables/12.6.1 (.NET 6.0.0-rtm.21522.10; Darwin 22.6.0 Darwin Kernel Version 22.6.0: Wed Jul  5 22:22:52 PDT 2023; root:xnu-8796.141.3~6/RELEASE_ARM64_T8103)","x-ms-date":"Sat, 23 Sep 2023 20:41:06 GMT","authorization":"SharedKeyLite devstoreaccount1:4NxqtuRIisSTEsCco3M4LrUptdFwR9tCMsLZ6rK4lFY=","content-type":"application/json;odata=nometadata","content-length":"28"} ClientIP=127.0.0.1 Protocol=http HTTPVersion=1.1
-2023-09-23T20:41:06.822Z 98e76483-6a1a-4254-aa12-a115afbc418a debug: tableStorageContextMiddleware: Dispatch pattern string: /Tables
-2023-09-23T20:41:06.822Z 98e76483-6a1a-4254-aa12-a115afbc418a info: tableStorageContextMiddleware: Account=devstoreaccount1 tableName=undefined
-2023-09-23T20:41:06.822Z 98e76483-6a1a-4254-aa12-a115afbc418a verbose: DispatchMiddleware: Dispatching request...
-2023-09-23T20:41:06.823Z 98e76483-6a1a-4254-aa12-a115afbc418a info: DispatchMiddleware: Operation=Table_Create
-2023-09-23T20:41:06.823Z 98e76483-6a1a-4254-aa12-a115afbc418a verbose: AuthenticationMiddlewareFactory:createAuthenticationMiddleware() Validating authentications.
-2023-09-23T20:41:06.823Z 98e76483-6a1a-4254-aa12-a115afbc418a info: TableSharedKeyLiteAuthenticator:validate() Start validation against account shared key authentication.
-2023-09-23T20:41:06.823Z 98e76483-6a1a-4254-aa12-a115afbc418a info: TableSharedKeyLiteAuthenticator:validate() [STRING TO SIGN]:"Sat, 23 Sep 2023 20:41:06 GMT\n/devstoreaccount1/devstoreaccount1/Tables"
-2023-09-23T20:41:06.824Z 98e76483-6a1a-4254-aa12-a115afbc418a info: TableSharedKeyLiteAuthenticator:validate() Calculated authentication header based on key1: SharedKeyLite devstoreaccount1:4NxqtuRIisSTEsCco3M4LrUptdFwR9tCMsLZ6rK4lFY=
-2023-09-23T20:41:06.824Z 98e76483-6a1a-4254-aa12-a115afbc418a info: TableSharedKeyLiteAuthenticator:validate() Signature 1 matched.
-2023-09-23T20:41:06.824Z 98e76483-6a1a-4254-aa12-a115afbc418a verbose: DeserializerMiddleware: Start deserializing...
-2023-09-23T20:41:06.825Z 98e76483-6a1a-4254-aa12-a115afbc418a debug: deserialize(): Raw request body string is (removed all empty characters) {"TableName":"aatabletests"}
-2023-09-23T20:41:06.825Z 98e76483-6a1a-4254-aa12-a115afbc418a info: HandlerMiddleware: DeserializedParameters={"options":{"queryOptions":{"format":"application/json;odata=minimalmetadata"},"requestId":"a94255df-f964-43d1-8caa-dc6a0be732b3","dataServiceVersion":"3.0"},"version":"2020-12-06","tableProperties":{"tableName":"aatabletests"},"body":"ReadableStream"}
-2023-09-23T20:41:06.827Z 98e76483-6a1a-4254-aa12-a115afbc418a error: ErrorMiddleware: Received a MiddlewareError, fill error information to HTTP response
-2023-09-23T20:41:06.827Z 98e76483-6a1a-4254-aa12-a115afbc418a error: ErrorMiddleware: ErrorName=StorageError ErrorMessage="The table specified already exists."  ErrorHTTPStatusCode=409 ErrorHTTPStatusMessage=undefined ErrorHTTPHeaders={"x-ms-error-code":"TableAlreadyExists","x-ms-request-id":"98e76483-6a1a-4254-aa12-a115afbc418a","x-ms-version":"2022-11-02"} ErrorHTTPBody="{\"odata.error\":{\"code\":\"TableAlreadyExists\",\"message\":{\"lang\":\"en-US\",\"value\":\"The table specified already exists.\\nRequestId:98e76483-6a1a-4254-aa12-a115afbc418a\\nTime:2023-09-23T20:41:06.826Z\"}}}" ErrorStack="\"StorageError: The table specified already exists.\\n    at StorageErrorFactory.getTableAlreadyExists (/Users/saadsheralam/Desktop/UIUCProject/Azurite/dist/src/table/errors/StorageErrorFactory.js:23:16)\\n    at LokiTableMetadataStore.checkIfTableExists (/Users/saadsheralam/Desktop/UIUCProject/Azurite/dist/src/table/persistence/LokiTableMetadataStore.js:537:49)\\n    at LokiTableMetadataStore.createTable (/Users/saadsheralam/Desktop/UIUCProject/Azurite/dist/src/table/persistence/LokiTableMetadataStore.js:80:14)\\n    at TableHandler.create (/Users/saadsheralam/Desktop/UIUCProject/Azurite/dist/src/table/handlers/TableHandler.js:40:34)\\n    at /Users/saadsheralam/Desktop/UIUCProject/Azurite/dist/src/table/generated/middleware/HandlerMiddlewareFactory.js:58:18\\n    at /Users/saadsheralam/Desktop/UIUCProject/Azurite/dist/src/table/generated/ExpressMiddlewareFactory.js:77:63\\n    at Layer.handle [as handle_request] (/Users/saadsheralam/Desktop/UIUCProject/Azurite/node_modules/express/lib/router/layer.js:95:5)\\n    at trim_prefix (/Users/saadsheralam/Desktop/UIUCProject/Azurite/node_modules/express/lib/router/index.js:328:13)\\n    at /Users/saadsheralam/Desktop/UIUCProject/Azurite/node_modules/express/lib/router/index.js:286:9\\n    at Function.process_params (/Users/saadsheralam/Desktop/UIUCProject/Azurite/node_modules/express/lib/router/index.js:346:12)\""
-2023-09-23T20:41:06.827Z 98e76483-6a1a-4254-aa12-a115afbc418a error: ErrorMiddleware: Set HTTP code: 409
-2023-09-23T20:41:06.827Z 98e76483-6a1a-4254-aa12-a115afbc418a error: ErrorMiddleware: Set HTTP Header: x-ms-error-code=TableAlreadyExists
-2023-09-23T20:41:06.827Z 98e76483-6a1a-4254-aa12-a115afbc418a error: ErrorMiddleware: Set HTTP Header: x-ms-request-id=98e76483-6a1a-4254-aa12-a115afbc418a
-2023-09-23T20:41:06.827Z 98e76483-6a1a-4254-aa12-a115afbc418a error: ErrorMiddleware: Set HTTP Header: x-ms-version=2022-11-02
-2023-09-23T20:41:06.827Z 98e76483-6a1a-4254-aa12-a115afbc418a error: ErrorMiddleware: Set content type: application/json;odata=minimalmetadata;streaming=true;charset=utf-8
-2023-09-23T20:41:06.827Z 98e76483-6a1a-4254-aa12-a115afbc418a error: ErrorMiddleware: Set HTTP body: "{\"odata.error\":{\"code\":\"TableAlreadyExists\",\"message\":{\"lang\":\"en-US\",\"value\":\"The table specified already exists.\\nRequestId:98e76483-6a1a-4254-aa12-a115afbc418a\\nTime:2023-09-23T20:41:06.826Z\"}}}"
-2023-09-23T20:41:06.827Z 98e76483-6a1a-4254-aa12-a115afbc418a info: EndMiddleware: End response. TotalTimeInMS=5 StatusCode=409 StatusMessage=Conflict Headers={"server":"Azurite-Table/3.23.0","x-ms-error-code":"TableAlreadyExists","x-ms-request-id":"98e76483-6a1a-4254-aa12-a115afbc418a","x-ms-version":"2022-11-02","content-type":"application/json;odata=minimalmetadata;streaming=true;charset=utf-8"}
-2023-09-23T20:41:06.868Z 03dcd3ae-3580-4bd9-8d95-553dd77a8a1f info: TableStorageContextMiddleware: RequestMethod=POST RequestURL=http://127.0.0.1/devstoreaccount1/aatabletests?$format=application%2Fjson%3Bodata%3Dminimalmetadata RequestHeaders:{"host":"127.0.0.1:10002","x-ms-version":"2020-12-06","dataserviceversion":"3.0","prefer":"return-no-content","accept":"application/json;odata=minimalmetadata","x-ms-client-request-id":"5431e65f-9910-4f45-96ae-31f3c4a93c70","x-ms-return-client-request-id":"true","user-agent":"azsdk-net-Data.Tables/12.6.1 (.NET 6.0.0-rtm.21522.10; Darwin 22.6.0 Darwin Kernel Version 22.6.0: Wed Jul  5 22:22:52 PDT 2023; root:xnu-8796.141.3~6/RELEASE_ARM64_T8103)","x-ms-date":"Sat, 23 Sep 2023 20:41:06 GMT","authorization":"SharedKeyLite devstoreaccount1:T31XDvAwcz/fS3ppN6kFtXfvZPfYd8eSlpQ6Gvy3LG0=","content-type":"application/json;odata=nometadata","content-length":"99"} ClientIP=127.0.0.1 Protocol=http HTTPVersion=1.1
-2023-09-23T20:41:06.869Z 03dcd3ae-3580-4bd9-8d95-553dd77a8a1f debug: tableStorageContextMiddleware: Dispatch pattern string: /aatabletests
-2023-09-23T20:41:06.869Z 03dcd3ae-3580-4bd9-8d95-553dd77a8a1f info: tableStorageContextMiddleware: Account=devstoreaccount1 tableName=aatabletests
-2023-09-23T20:41:06.869Z 03dcd3ae-3580-4bd9-8d95-553dd77a8a1f verbose: DispatchMiddleware: Dispatching request...
-2023-09-23T20:41:06.869Z 03dcd3ae-3580-4bd9-8d95-553dd77a8a1f info: DispatchMiddleware: Operation=Table_InsertEntity
-2023-09-23T20:41:06.869Z 03dcd3ae-3580-4bd9-8d95-553dd77a8a1f verbose: AuthenticationMiddlewareFactory:createAuthenticationMiddleware() Validating authentications.
-2023-09-23T20:41:06.869Z 03dcd3ae-3580-4bd9-8d95-553dd77a8a1f info: TableSharedKeyLiteAuthenticator:validate() Start validation against account shared key authentication.
-2023-09-23T20:41:06.869Z 03dcd3ae-3580-4bd9-8d95-553dd77a8a1f info: TableSharedKeyLiteAuthenticator:validate() [STRING TO SIGN]:"Sat, 23 Sep 2023 20:41:06 GMT\n/devstoreaccount1/devstoreaccount1/aatabletests"
-2023-09-23T20:41:06.869Z 03dcd3ae-3580-4bd9-8d95-553dd77a8a1f info: TableSharedKeyLiteAuthenticator:validate() Calculated authentication header based on key1: SharedKeyLite devstoreaccount1:T31XDvAwcz/fS3ppN6kFtXfvZPfYd8eSlpQ6Gvy3LG0=
-2023-09-23T20:41:06.869Z 03dcd3ae-3580-4bd9-8d95-553dd77a8a1f info: TableSharedKeyLiteAuthenticator:validate() Signature 1 matched.
-2023-09-23T20:41:06.869Z 03dcd3ae-3580-4bd9-8d95-553dd77a8a1f verbose: DeserializerMiddleware: Start deserializing...
-2023-09-23T20:41:06.869Z 03dcd3ae-3580-4bd9-8d95-553dd77a8a1f debug: deserialize(): Raw request body string is (removed all empty characters) {"PartitionKey":"a-14a14e8c846f47f4927106ae7543f561","RowKey":"a-14a14e8c846f47f4927106ae7543f561"}
-2023-09-23T20:41:06.869Z 03dcd3ae-3580-4bd9-8d95-553dd77a8a1f info: HandlerMiddleware: DeserializedParameters={"options":{"queryOptions":{"format":"application/json;odata=minimalmetadata"},"requestId":"5431e65f-9910-4f45-96ae-31f3c4a93c70","dataServiceVersion":"3.0","responsePreference":"return-no-content","tableEntityProperties":{"PartitionKey":"a-14a14e8c846f47f4927106ae7543f561","RowKey":"a-14a14e8c846f47f4927106ae7543f561"}},"version":"2020-12-06","body":"ReadableStream"}
-2023-09-23T20:41:06.870Z 03dcd3ae-3580-4bd9-8d95-553dd77a8a1f verbose: SerializerMiddleware: Start serializing...
-2023-09-23T20:41:06.871Z 03dcd3ae-3580-4bd9-8d95-553dd77a8a1f info: EndMiddleware: End response. TotalTimeInMS=3 StatusCode=204 StatusMessage=undefined Headers={"server":"Azurite-Table/3.23.0","content-type":"application/json;odata=minimalmetadata","x-ms-client-request-id":"5431e65f-9910-4f45-96ae-31f3c4a93c70","x-ms-request-id":"03dcd3ae-3580-4bd9-8d95-553dd77a8a1f","x-ms-version":"2022-11-02","date":"Sat, 23 Sep 2023 20:41:06 GMT","etag":"W/\"datetime'2023-09-23T20%3A41%3A06.8686706Z'\"","preference-applied":"return-no-content"}
-2023-09-23T20:41:07.894Z adb0e296-73f4-4901-a2b4-c11cdbdc6f4e info: TableStorageContextMiddleware: RequestMethod=PUT RequestURL=http://127.0.0.1/devstoreaccount1/aatabletests(PartitionKey='a-14a14e8c846f47f4927106ae7543f561',RowKey='a-14a14e8c846f47f4927106ae7543f561')?$format=application%2Fjson%3Bodata%3Dminimalmetadata RequestHeaders:{"host":"127.0.0.1:10002","x-ms-version":"2020-12-06","dataserviceversion":"3.0","if-match":"W/\"datetime'2023-09-23T20%3A41%3A06.8686706Z'\"","accept":"application/json","x-ms-client-request-id":"bb3aceff-a7ba-4855-b40a-1ca9dae26884","x-ms-return-client-request-id":"true","user-agent":"azsdk-net-Data.Tables/12.6.1 (.NET 6.0.0-rtm.21522.10; Darwin 22.6.0 Darwin Kernel Version 22.6.0: Wed Jul  5 22:22:52 PDT 2023; root:xnu-8796.141.3~6/RELEASE_ARM64_T8103)","x-ms-date":"Sat, 23 Sep 2023 20:41:07 GMT","authorization":"SharedKeyLite devstoreaccount1:LN2ESo+sokjiPjS2Onw7/8iFoSkq3ekGcnwpRGnjz6o=","content-type":"application/json","content-length":"127"} ClientIP=127.0.0.1 Protocol=http HTTPVersion=1.1
-2023-09-23T20:41:07.894Z adb0e296-73f4-4901-a2b4-c11cdbdc6f4e debug: tableStorageContextMiddleware: Dispatch pattern string: /aatabletests(PartitionKey='PLACEHOLDER',RowKey='PLACEHOLDER')
-2023-09-23T20:41:07.894Z adb0e296-73f4-4901-a2b4-c11cdbdc6f4e info: tableStorageContextMiddleware: Account=devstoreaccount1 tableName=aatabletests
-2023-09-23T20:41:07.894Z adb0e296-73f4-4901-a2b4-c11cdbdc6f4e verbose: DispatchMiddleware: Dispatching request...
-2023-09-23T20:41:07.894Z adb0e296-73f4-4901-a2b4-c11cdbdc6f4e info: DispatchMiddleware: Operation=Table_UpdateEntity
-2023-09-23T20:41:07.894Z adb0e296-73f4-4901-a2b4-c11cdbdc6f4e verbose: AuthenticationMiddlewareFactory:createAuthenticationMiddleware() Validating authentications.
-2023-09-23T20:41:07.894Z adb0e296-73f4-4901-a2b4-c11cdbdc6f4e info: TableSharedKeyLiteAuthenticator:validate() Start validation against account shared key authentication.
-2023-09-23T20:41:07.894Z adb0e296-73f4-4901-a2b4-c11cdbdc6f4e info: TableSharedKeyLiteAuthenticator:validate() [STRING TO SIGN]:"Sat, 23 Sep 2023 20:41:07 GMT\n/devstoreaccount1/devstoreaccount1/aatabletests(PartitionKey='a-14a14e8c846f47f4927106ae7543f561',RowKey='a-14a14e8c846f47f4927106ae7543f561')"
-2023-09-23T20:41:07.894Z adb0e296-73f4-4901-a2b4-c11cdbdc6f4e info: TableSharedKeyLiteAuthenticator:validate() Calculated authentication header based on key1: SharedKeyLite devstoreaccount1:LN2ESo+sokjiPjS2Onw7/8iFoSkq3ekGcnwpRGnjz6o=
-2023-09-23T20:41:07.894Z adb0e296-73f4-4901-a2b4-c11cdbdc6f4e info: TableSharedKeyLiteAuthenticator:validate() Signature 1 matched.
-2023-09-23T20:41:07.894Z adb0e296-73f4-4901-a2b4-c11cdbdc6f4e verbose: DeserializerMiddleware: Start deserializing...
-2023-09-23T20:41:07.895Z adb0e296-73f4-4901-a2b4-c11cdbdc6f4e debug: deserialize(): Raw request body string is (removed all empty characters) {"PartitionKey":"a-14a14e8c846f47f4927106ae7543f561","RowKey":"a-14a14e8c846f47f4927106ae7543f561","newProperty":"newProperty"}
-2023-09-23T20:41:07.895Z adb0e296-73f4-4901-a2b4-c11cdbdc6f4e info: HandlerMiddleware: DeserializedParameters={"options":{"queryOptions":{"format":"application/json;odata=minimalmetadata"},"requestId":"bb3aceff-a7ba-4855-b40a-1ca9dae26884","dataServiceVersion":"3.0","ifMatch":"W/\"datetime'2023-09-23T20%3A41%3A06.8686706Z'\"","tableEntityProperties":{"PartitionKey":"a-14a14e8c846f47f4927106ae7543f561","RowKey":"a-14a14e8c846f47f4927106ae7543f561","newProperty":"newProperty"}},"version":"2020-12-06","body":"ReadableStream"}
-2023-09-23T20:41:07.895Z adb0e296-73f4-4901-a2b4-c11cdbdc6f4e verbose: SerializerMiddleware: Start serializing...
-2023-09-23T20:41:07.896Z adb0e296-73f4-4901-a2b4-c11cdbdc6f4e info: EndMiddleware: End response. TotalTimeInMS=2 StatusCode=204 StatusMessage=undefined Headers={"server":"Azurite-Table/3.23.0","x-ms-client-request-id":"bb3aceff-a7ba-4855-b40a-1ca9dae26884","x-ms-request-id":"adb0e296-73f4-4901-a2b4-c11cdbdc6f4e","x-ms-version":"2022-11-02","date":"Sat, 23 Sep 2023 20:41:07 GMT","etag":"W/\"datetime'2023-09-23T20%3A41%3A07.8946960Z'\""}
-2023-09-23T20:41:07.902Z 7e5148a5-c30a-4eb1-bb9c-e34987013abf info: TableStorageContextMiddleware: RequestMethod=GET RequestURL=http://127.0.0.1/devstoreaccount1/aatabletests()?$format=application%2Fjson%3Bodata%3Dminimalmetadata&$top=1&$filter=%28PartitionKey%20eq%20%27a-14a14e8c846f47f4927106ae7543f561%27%29%20and%20%28RowKey%20eq%20%27a-14a14e8c846f47f4927106ae7543f561%27%29 RequestHeaders:{"host":"127.0.0.1:10002","x-ms-version":"2020-12-06","dataserviceversion":"3.0","accept":"application/json;odata=minimalmetadata","x-ms-client-request-id":"bf23280b-93e7-4cec-85ff-7b71679d2aec","x-ms-return-client-request-id":"true","user-agent":"azsdk-net-Data.Tables/12.6.1 (.NET 6.0.0-rtm.21522.10; Darwin 22.6.0 Darwin Kernel Version 22.6.0: Wed Jul  5 22:22:52 PDT 2023; root:xnu-8796.141.3~6/RELEASE_ARM64_T8103)","x-ms-date":"Sat, 23 Sep 2023 20:41:07 GMT","authorization":"SharedKeyLite devstoreaccount1:gMxCdx/1N0awWqKb7xeRq3YCk1OGjweAXndk0kvDzKM="} ClientIP=127.0.0.1 Protocol=http HTTPVersion=1.1
-2023-09-23T20:41:07.902Z 7e5148a5-c30a-4eb1-bb9c-e34987013abf debug: tableStorageContextMiddleware: Dispatch pattern string: /aatabletests()
-2023-09-23T20:41:07.902Z 7e5148a5-c30a-4eb1-bb9c-e34987013abf info: tableStorageContextMiddleware: Account=devstoreaccount1 tableName=aatabletests
-2023-09-23T20:41:07.902Z 7e5148a5-c30a-4eb1-bb9c-e34987013abf verbose: DispatchMiddleware: Dispatching request...
-2023-09-23T20:41:07.902Z 7e5148a5-c30a-4eb1-bb9c-e34987013abf info: DispatchMiddleware: Operation=Table_QueryEntities
-2023-09-23T20:41:07.902Z 7e5148a5-c30a-4eb1-bb9c-e34987013abf verbose: AuthenticationMiddlewareFactory:createAuthenticationMiddleware() Validating authentications.
-2023-09-23T20:41:07.902Z 7e5148a5-c30a-4eb1-bb9c-e34987013abf info: TableSharedKeyLiteAuthenticator:validate() Start validation against account shared key authentication.
-2023-09-23T20:41:07.902Z 7e5148a5-c30a-4eb1-bb9c-e34987013abf info: TableSharedKeyLiteAuthenticator:validate() [STRING TO SIGN]:"Sat, 23 Sep 2023 20:41:07 GMT\n/devstoreaccount1/devstoreaccount1/aatabletests()"
-2023-09-23T20:41:07.902Z 7e5148a5-c30a-4eb1-bb9c-e34987013abf info: TableSharedKeyLiteAuthenticator:validate() Calculated authentication header based on key1: SharedKeyLite devstoreaccount1:gMxCdx/1N0awWqKb7xeRq3YCk1OGjweAXndk0kvDzKM=
-2023-09-23T20:41:07.902Z 7e5148a5-c30a-4eb1-bb9c-e34987013abf info: TableSharedKeyLiteAuthenticator:validate() Signature 1 matched.
-2023-09-23T20:41:07.902Z 7e5148a5-c30a-4eb1-bb9c-e34987013abf verbose: DeserializerMiddleware: Start deserializing...
-2023-09-23T20:41:07.902Z 7e5148a5-c30a-4eb1-bb9c-e34987013abf info: HandlerMiddleware: DeserializedParameters={"options":{"queryOptions":{"format":"application/json;odata=minimalmetadata","top":1,"filter":"(PartitionKey eq 'a-14a14e8c846f47f4927106ae7543f561') and (RowKey eq 'a-14a14e8c846f47f4927106ae7543f561')"},"requestId":"bf23280b-93e7-4cec-85ff-7b71679d2aec","dataServiceVersion":"3.0"},"version":"2020-12-06"}
-2023-09-23T20:41:07.905Z 7e5148a5-c30a-4eb1-bb9c-e34987013abf debug: TableHandler:queryEntities() Raw response string is "{\"odata.metadata\":\"http://127.0.0.1:10002/devstoreaccount1/$metadata#Tables/@Element\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2023-09-23T20%3A41%3A07.8946960Z'\\\"\",\"PartitionKey\":\"a-14a14e8c846f47f4927106ae7543f561\",\"RowKey\":\"a-14a14e8c846f47f4927106ae7543f561\",\"newProperty\":\"newProperty\",\"Timestamp\":\"2023-09-23T20:41:07.8946960Z\"}]}"
-2023-09-23T20:41:07.905Z 7e5148a5-c30a-4eb1-bb9c-e34987013abf verbose: SerializerMiddleware: Start serializing...
-2023-09-23T20:41:07.905Z 7e5148a5-c30a-4eb1-bb9c-e34987013abf info: Serializer: Start returning stream body.
-2023-09-23T20:41:07.906Z 7e5148a5-c30a-4eb1-bb9c-e34987013abf info: EndMiddleware: End response. TotalTimeInMS=4 StatusCode=200 StatusMessage=OK Headers={"server":"Azurite-Table/3.23.0","content-type":"application/json;odata=minimalmetadata","x-ms-client-request-id":"bf23280b-93e7-4cec-85ff-7b71679d2aec","x-ms-request-id":"7e5148a5-c30a-4eb1-bb9c-e34987013abf","x-ms-version":"2022-11-02","date":"Sat, 23 Sep 2023 20:41:07 GMT"}
-2023-09-23T20:41:11.331Z 	 info: Azurite Blob service is closing...
-2023-09-23T20:41:11.332Z 	 info: Azurite Queue service is closing...
-2023-09-23T20:41:11.332Z 	 info: Azurite Table service is closing...
-2023-09-23T20:41:11.333Z 	 info: BlobGCManager:close() Start closing BlobGCManager. Set status to Closing.
-2023-09-23T20:41:11.334Z 	 info: QueueGCManager:close() Start closing QueueGCManager, set status to Closing.
-2023-09-23T20:41:11.335Z 	 info: BlobGCManager:start() Mark and sweep loop is closed.
-2023-09-23T20:41:11.335Z 	 info: BlobGCManager:close() BlobGCManager successfully closed. Set status to Closed.
-2023-09-23T20:41:11.335Z 	 info: QueueGCManager:start() Mark and sweep loop is closed.
-2023-09-23T20:41:11.335Z 	 info: QueueGCManager:close() QueueGCManager successfully closed, set status to Closed.
-2023-09-23T20:41:11.335Z 	 info: Azurite Table service successfully closed
-2023-09-23T20:41:11.336Z 	 info: Azurite Blob service successfully closed
-2023-09-23T20:41:11.336Z 	 info: Azurite Queue service successfully closed
+2023-09-24T09:11:58.444Z 	 info: Azurite Blob service is starting on 127.0.0.1:10000
+2023-09-24T09:11:58.445Z 	 info: AccountDataStore:init() Refresh accounts from environment variable AZURITE_ACCOUNTS with value undefined
+2023-09-24T09:11:58.445Z 	 info: AccountDataStore:init() Fallback to default emulator account devstoreaccount1.
+2023-09-24T09:11:58.452Z 	 info: BlobGCManager:start() Starting BlobGCManager. Set status to Initializing.
+2023-09-24T09:11:58.452Z 	 info: BlobGCManager:start() Trigger mark and sweep loop. Set status to Running.
+2023-09-24T09:11:58.453Z 	 info: BlobGCManager:markSweepLoop() Start next mark and sweep.
+2023-09-24T09:11:58.453Z 	 info: BlobGCManager:markSweep() Get all extents.
+2023-09-24T09:11:58.453Z 	 info: BlobGCManager:start() BlobGCManager successfully started.
+2023-09-24T09:11:58.454Z 	 info: BlobGCManager:markSweep() Got 0 extents.
+2023-09-24T09:11:58.454Z 	 info: BlobGCManager:markSweep() Get referred extents.
+2023-09-24T09:11:58.455Z 	 info: BlobGCManager:markSweep() Got referred extents, unreferenced extents count is 0.
+2023-09-24T09:11:58.455Z 	 info: BlobGCManager:markSweepLoop() Mark and sweep finished, taken 2ms.
+2023-09-24T09:11:58.455Z 	 info: BlobGCManager:markSweepLoop() Sleep for 600000ms.
+2023-09-24T09:11:58.455Z 	 info: Azurite Blob service successfully listens on http://127.0.0.1:10000
+2023-09-24T09:11:58.456Z 	 info: Azurite Queue service is starting on 127.0.0.1:10001
+2023-09-24T09:11:58.456Z 	 info: AccountDataStore:init() Refresh accounts from environment variable AZURITE_ACCOUNTS with value undefined
+2023-09-24T09:11:58.456Z 	 info: AccountDataStore:init() Fallback to default emulator account devstoreaccount1.
+2023-09-24T09:11:58.460Z 	 info: QueueGCManager:start() Starting QueueGCManager, set status to Initializing
+2023-09-24T09:11:58.460Z 	 info: QueueGCManager:start() Trigger mark and sweep loop, set status to Running.
+2023-09-24T09:11:58.460Z 	 info: QueueGCManager:markSweepLoop() Start new mark and sweep.
+2023-09-24T09:11:58.460Z 	 info: QueueGCManger:markSweep() Get all extents.
+2023-09-24T09:11:58.460Z 	 info: QueueGCManager:start() QueueGCManager successfully started.
+2023-09-24T09:11:58.460Z 	 info: QueueGCManager:marksweep() Get 0 extents.
+2023-09-24T09:11:58.460Z 	 info: QueueGCManager:markSweep() Get referred extents, then remove from allExtents.
+2023-09-24T09:11:58.460Z 	 info: QueueGCManager:markSweep() Got referred extents, unreferenced extents count is 0.
+2023-09-24T09:11:58.460Z 	 info: QueueGCManager:markSweepLoop() Mark and sweep finished, take 0ms.
+2023-09-24T09:11:58.460Z 	 info: QueueGCManager:markSweepLoop() Sleep for 60000
+2023-09-24T09:11:58.460Z 	 info: Azurite Queue service successfully listens on http://127.0.0.1:10001
+2023-09-24T09:11:58.460Z 	 info: Azurite Table service is starting on 127.0.0.1:10002
+2023-09-24T09:11:58.460Z 	 info: AccountDataStore:init() Refresh accounts from environment variable AZURITE_ACCOUNTS with value undefined
+2023-09-24T09:11:58.460Z 	 info: AccountDataStore:init() Fallback to default emulator account devstoreaccount1.
+2023-09-24T09:11:58.491Z 	 info: Azurite Table service successfully listens on http://127.0.0.1:10002
+2023-09-24T09:12:08.921Z 80abf579-bd3a-44f1-a26e-1ea4d3c3088e info: TableStorageContextMiddleware: RequestMethod=POST RequestURL=http://127.0.0.1/devstoreaccount1/Tables?$format=application%2Fjson%3Bodata%3Dminimalmetadata RequestHeaders:{"host":"127.0.0.1:10002","x-ms-version":"2020-12-06","dataserviceversion":"3.0","accept":"application/json;odata=minimalmetadata","x-ms-client-request-id":"ae417a55-6177-4769-9ccd-b4e663f0e0e8","x-ms-return-client-request-id":"true","user-agent":"azsdk-net-Data.Tables/12.6.1 (.NET 6.0.0-rtm.21522.10; Darwin 22.6.0 Darwin Kernel Version 22.6.0: Wed Jul  5 22:22:52 PDT 2023; root:xnu-8796.141.3~6/RELEASE_ARM64_T8103)","x-ms-date":"Sun, 24 Sep 2023 09:12:08 GMT","authorization":"SharedKeyLite devstoreaccount1:Z0iYMLpc2plNj/dlmJiU1EuEoHCfZw8vkYPWN9lj6iE=","content-type":"application/json;odata=nometadata","content-length":"28"} ClientIP=127.0.0.1 Protocol=http HTTPVersion=1.1
+2023-09-24T09:12:08.921Z 80abf579-bd3a-44f1-a26e-1ea4d3c3088e debug: tableStorageContextMiddleware: Dispatch pattern string: /Tables
+2023-09-24T09:12:08.921Z 80abf579-bd3a-44f1-a26e-1ea4d3c3088e info: tableStorageContextMiddleware: Account=devstoreaccount1 tableName=undefined
+2023-09-24T09:12:08.921Z 80abf579-bd3a-44f1-a26e-1ea4d3c3088e verbose: DispatchMiddleware: Dispatching request...
+2023-09-24T09:12:08.922Z 80abf579-bd3a-44f1-a26e-1ea4d3c3088e info: DispatchMiddleware: Operation=Table_Create
+2023-09-24T09:12:08.922Z 80abf579-bd3a-44f1-a26e-1ea4d3c3088e verbose: AuthenticationMiddlewareFactory:createAuthenticationMiddleware() Validating authentications.
+2023-09-24T09:12:08.922Z 80abf579-bd3a-44f1-a26e-1ea4d3c3088e info: TableSharedKeyLiteAuthenticator:validate() Start validation against account shared key authentication.
+2023-09-24T09:12:08.922Z 80abf579-bd3a-44f1-a26e-1ea4d3c3088e info: TableSharedKeyLiteAuthenticator:validate() [STRING TO SIGN]:"Sun, 24 Sep 2023 09:12:08 GMT\n/devstoreaccount1/devstoreaccount1/Tables"
+2023-09-24T09:12:08.923Z 80abf579-bd3a-44f1-a26e-1ea4d3c3088e info: TableSharedKeyLiteAuthenticator:validate() Calculated authentication header based on key1: SharedKeyLite devstoreaccount1:Z0iYMLpc2plNj/dlmJiU1EuEoHCfZw8vkYPWN9lj6iE=
+2023-09-24T09:12:08.923Z 80abf579-bd3a-44f1-a26e-1ea4d3c3088e info: TableSharedKeyLiteAuthenticator:validate() Signature 1 matched.
+2023-09-24T09:12:08.923Z 80abf579-bd3a-44f1-a26e-1ea4d3c3088e verbose: DeserializerMiddleware: Start deserializing...
+2023-09-24T09:12:08.924Z 80abf579-bd3a-44f1-a26e-1ea4d3c3088e debug: deserialize(): Raw request body string is (removed all empty characters) {"TableName":"aatabletests"}
+2023-09-24T09:12:08.924Z 80abf579-bd3a-44f1-a26e-1ea4d3c3088e info: HandlerMiddleware: DeserializedParameters={"options":{"queryOptions":{"format":"application/json;odata=minimalmetadata"},"requestId":"ae417a55-6177-4769-9ccd-b4e663f0e0e8","dataServiceVersion":"3.0"},"version":"2020-12-06","tableProperties":{"tableName":"aatabletests"},"body":"ReadableStream"}
+2023-09-24T09:12:08.925Z 80abf579-bd3a-44f1-a26e-1ea4d3c3088e verbose: SerializerMiddleware: Start serializing...
+2023-09-24T09:12:08.926Z 80abf579-bd3a-44f1-a26e-1ea4d3c3088e debug: Serializer: Raw response body string is {"odata.metadata":"http://127.0.0.1:10002/devstoreaccount1/$metadata#Tables/@Element","TableName":"aatabletests"}
+2023-09-24T09:12:08.926Z 80abf579-bd3a-44f1-a26e-1ea4d3c3088e info: Serializer: Start returning stream body.
+2023-09-24T09:12:08.926Z 80abf579-bd3a-44f1-a26e-1ea4d3c3088e info: EndMiddleware: End response. TotalTimeInMS=5 StatusCode=201 StatusMessage=Created Headers={"server":"Azurite-Table/3.23.0","content-type":"application/json;odata=minimalmetadata","x-ms-client-request-id":"ae417a55-6177-4769-9ccd-b4e663f0e0e8","x-ms-request-id":"80abf579-bd3a-44f1-a26e-1ea4d3c3088e","x-ms-version":"2022-11-02","date":"Sun, 24 Sep 2023 09:12:08 GMT","preference-applied":"return-content"}
+2023-09-24T09:12:08.961Z 71b2f07a-8fb5-4bc0-8a66-142c784f4187 info: TableStorageContextMiddleware: RequestMethod=POST RequestURL=http://127.0.0.1/devstoreaccount1/aatabletests?$format=application%2Fjson%3Bodata%3Dminimalmetadata RequestHeaders:{"host":"127.0.0.1:10002","x-ms-version":"2020-12-06","dataserviceversion":"3.0","prefer":"return-no-content","accept":"application/json;odata=minimalmetadata","x-ms-client-request-id":"0e48b0cf-f4bc-4cf4-9e52-84d9f6db61e8","x-ms-return-client-request-id":"true","user-agent":"azsdk-net-Data.Tables/12.6.1 (.NET 6.0.0-rtm.21522.10; Darwin 22.6.0 Darwin Kernel Version 22.6.0: Wed Jul  5 22:22:52 PDT 2023; root:xnu-8796.141.3~6/RELEASE_ARM64_T8103)","x-ms-date":"Sun, 24 Sep 2023 09:12:08 GMT","authorization":"SharedKeyLite devstoreaccount1:sIj9IK8/OMZiLmRTV5BPM4zpVola0T0HbsPXCY4O63E=","content-type":"application/json;odata=nometadata","content-length":"99"} ClientIP=127.0.0.1 Protocol=http HTTPVersion=1.1
+2023-09-24T09:12:08.962Z 71b2f07a-8fb5-4bc0-8a66-142c784f4187 debug: tableStorageContextMiddleware: Dispatch pattern string: /aatabletests
+2023-09-24T09:12:08.962Z 71b2f07a-8fb5-4bc0-8a66-142c784f4187 info: tableStorageContextMiddleware: Account=devstoreaccount1 tableName=aatabletests
+2023-09-24T09:12:08.962Z 71b2f07a-8fb5-4bc0-8a66-142c784f4187 verbose: DispatchMiddleware: Dispatching request...
+2023-09-24T09:12:08.962Z 71b2f07a-8fb5-4bc0-8a66-142c784f4187 info: DispatchMiddleware: Operation=Table_InsertEntity
+2023-09-24T09:12:08.962Z 71b2f07a-8fb5-4bc0-8a66-142c784f4187 verbose: AuthenticationMiddlewareFactory:createAuthenticationMiddleware() Validating authentications.
+2023-09-24T09:12:08.962Z 71b2f07a-8fb5-4bc0-8a66-142c784f4187 info: TableSharedKeyLiteAuthenticator:validate() Start validation against account shared key authentication.
+2023-09-24T09:12:08.962Z 71b2f07a-8fb5-4bc0-8a66-142c784f4187 info: TableSharedKeyLiteAuthenticator:validate() [STRING TO SIGN]:"Sun, 24 Sep 2023 09:12:08 GMT\n/devstoreaccount1/devstoreaccount1/aatabletests"
+2023-09-24T09:12:08.962Z 71b2f07a-8fb5-4bc0-8a66-142c784f4187 info: TableSharedKeyLiteAuthenticator:validate() Calculated authentication header based on key1: SharedKeyLite devstoreaccount1:sIj9IK8/OMZiLmRTV5BPM4zpVola0T0HbsPXCY4O63E=
+2023-09-24T09:12:08.962Z 71b2f07a-8fb5-4bc0-8a66-142c784f4187 info: TableSharedKeyLiteAuthenticator:validate() Signature 1 matched.
+2023-09-24T09:12:08.962Z 71b2f07a-8fb5-4bc0-8a66-142c784f4187 verbose: DeserializerMiddleware: Start deserializing...
+2023-09-24T09:12:08.962Z 71b2f07a-8fb5-4bc0-8a66-142c784f4187 debug: deserialize(): Raw request body string is (removed all empty characters) {"PartitionKey":"a-7b08638adba14d3fab2052e430d4e7e7","RowKey":"a-7b08638adba14d3fab2052e430d4e7e7"}
+2023-09-24T09:12:08.962Z 71b2f07a-8fb5-4bc0-8a66-142c784f4187 info: HandlerMiddleware: DeserializedParameters={"options":{"queryOptions":{"format":"application/json;odata=minimalmetadata"},"requestId":"0e48b0cf-f4bc-4cf4-9e52-84d9f6db61e8","dataServiceVersion":"3.0","responsePreference":"return-no-content","tableEntityProperties":{"PartitionKey":"a-7b08638adba14d3fab2052e430d4e7e7","RowKey":"a-7b08638adba14d3fab2052e430d4e7e7"}},"version":"2020-12-06","body":"ReadableStream"}
+2023-09-24T09:12:08.963Z 71b2f07a-8fb5-4bc0-8a66-142c784f4187 verbose: SerializerMiddleware: Start serializing...
+2023-09-24T09:12:08.963Z 71b2f07a-8fb5-4bc0-8a66-142c784f4187 info: EndMiddleware: End response. TotalTimeInMS=2 StatusCode=204 StatusMessage=undefined Headers={"server":"Azurite-Table/3.23.0","content-type":"application/json;odata=minimalmetadata","x-ms-client-request-id":"0e48b0cf-f4bc-4cf4-9e52-84d9f6db61e8","x-ms-request-id":"71b2f07a-8fb5-4bc0-8a66-142c784f4187","x-ms-version":"2022-11-02","date":"Sun, 24 Sep 2023 09:12:08 GMT","etag":"W/\"datetime'2023-09-24T09%3A12%3A08.9618702Z'\"","preference-applied":"return-no-content"}
+2023-09-24T09:12:09.988Z f926fef2-b08b-486b-bcf5-36499ff99fe5 info: TableStorageContextMiddleware: RequestMethod=PUT RequestURL=http://127.0.0.1/devstoreaccount1/aatabletests(PartitionKey='a-7b08638adba14d3fab2052e430d4e7e7',RowKey='a-7b08638adba14d3fab2052e430d4e7e7')?$format=application%2Fjson%3Bodata%3Dminimalmetadata RequestHeaders:{"host":"127.0.0.1:10002","x-ms-version":"2020-12-06","dataserviceversion":"3.0","if-match":"W/\"datetime'2023-09-24T09%3A12%3A08.9618702Z'\"","accept":"application/json","x-ms-client-request-id":"ba8ab396-9aac-4365-9737-77091a8e2aed","x-ms-return-client-request-id":"true","user-agent":"azsdk-net-Data.Tables/12.6.1 (.NET 6.0.0-rtm.21522.10; Darwin 22.6.0 Darwin Kernel Version 22.6.0: Wed Jul  5 22:22:52 PDT 2023; root:xnu-8796.141.3~6/RELEASE_ARM64_T8103)","x-ms-date":"Sun, 24 Sep 2023 09:12:09 GMT","authorization":"SharedKeyLite devstoreaccount1:Za97bkrMcCtcDNvuGLWoSjX9/G9GymaERTVtM66Y+Dg=","content-type":"application/json","content-length":"127"} ClientIP=127.0.0.1 Protocol=http HTTPVersion=1.1
+2023-09-24T09:12:09.988Z f926fef2-b08b-486b-bcf5-36499ff99fe5 debug: tableStorageContextMiddleware: Dispatch pattern string: /aatabletests(PartitionKey='PLACEHOLDER',RowKey='PLACEHOLDER')
+2023-09-24T09:12:09.988Z f926fef2-b08b-486b-bcf5-36499ff99fe5 info: tableStorageContextMiddleware: Account=devstoreaccount1 tableName=aatabletests
+2023-09-24T09:12:09.988Z f926fef2-b08b-486b-bcf5-36499ff99fe5 verbose: DispatchMiddleware: Dispatching request...
+2023-09-24T09:12:09.989Z f926fef2-b08b-486b-bcf5-36499ff99fe5 info: DispatchMiddleware: Operation=Table_UpdateEntity
+2023-09-24T09:12:09.989Z f926fef2-b08b-486b-bcf5-36499ff99fe5 verbose: AuthenticationMiddlewareFactory:createAuthenticationMiddleware() Validating authentications.
+2023-09-24T09:12:09.989Z f926fef2-b08b-486b-bcf5-36499ff99fe5 info: TableSharedKeyLiteAuthenticator:validate() Start validation against account shared key authentication.
+2023-09-24T09:12:09.989Z f926fef2-b08b-486b-bcf5-36499ff99fe5 info: TableSharedKeyLiteAuthenticator:validate() [STRING TO SIGN]:"Sun, 24 Sep 2023 09:12:09 GMT\n/devstoreaccount1/devstoreaccount1/aatabletests(PartitionKey='a-7b08638adba14d3fab2052e430d4e7e7',RowKey='a-7b08638adba14d3fab2052e430d4e7e7')"
+2023-09-24T09:12:09.989Z f926fef2-b08b-486b-bcf5-36499ff99fe5 info: TableSharedKeyLiteAuthenticator:validate() Calculated authentication header based on key1: SharedKeyLite devstoreaccount1:Za97bkrMcCtcDNvuGLWoSjX9/G9GymaERTVtM66Y+Dg=
+2023-09-24T09:12:09.989Z f926fef2-b08b-486b-bcf5-36499ff99fe5 info: TableSharedKeyLiteAuthenticator:validate() Signature 1 matched.
+2023-09-24T09:12:09.989Z f926fef2-b08b-486b-bcf5-36499ff99fe5 verbose: DeserializerMiddleware: Start deserializing...
+2023-09-24T09:12:09.990Z f926fef2-b08b-486b-bcf5-36499ff99fe5 debug: deserialize(): Raw request body string is (removed all empty characters) {"PartitionKey":"a-7b08638adba14d3fab2052e430d4e7e7","RowKey":"a-7b08638adba14d3fab2052e430d4e7e7","newProperty":"newProperty"}
+2023-09-24T09:12:09.990Z f926fef2-b08b-486b-bcf5-36499ff99fe5 info: HandlerMiddleware: DeserializedParameters={"options":{"queryOptions":{"format":"application/json;odata=minimalmetadata"},"requestId":"ba8ab396-9aac-4365-9737-77091a8e2aed","dataServiceVersion":"3.0","ifMatch":"W/\"datetime'2023-09-24T09%3A12%3A08.9618702Z'\"","tableEntityProperties":{"PartitionKey":"a-7b08638adba14d3fab2052e430d4e7e7","RowKey":"a-7b08638adba14d3fab2052e430d4e7e7","newProperty":"newProperty"}},"version":"2020-12-06","body":"ReadableStream"}
+2023-09-24T09:12:09.991Z f926fef2-b08b-486b-bcf5-36499ff99fe5 verbose: SerializerMiddleware: Start serializing...
+2023-09-24T09:12:09.991Z f926fef2-b08b-486b-bcf5-36499ff99fe5 info: EndMiddleware: End response. TotalTimeInMS=3 StatusCode=204 StatusMessage=undefined Headers={"server":"Azurite-Table/3.23.0","x-ms-client-request-id":"ba8ab396-9aac-4365-9737-77091a8e2aed","x-ms-request-id":"f926fef2-b08b-486b-bcf5-36499ff99fe5","x-ms-version":"2022-11-02","date":"Sun, 24 Sep 2023 09:12:09 GMT","etag":"W/\"datetime'2023-09-24T09%3A12%3A09.9888980Z'\""}
+2023-09-24T09:12:10.002Z ee91a35b-3528-41e6-ab2b-19625c03e0a3 info: TableStorageContextMiddleware: RequestMethod=GET RequestURL=http://127.0.0.1/devstoreaccount1/aatabletests()?$format=application%2Fjson%3Bodata%3Dminimalmetadata&$top=1&$filter=%28PartitionKey%20eq%20%27a-7b08638adba14d3fab2052e430d4e7e7%27%29%20and%20%28RowKey%20eq%20%27a-7b08638adba14d3fab2052e430d4e7e7%27%29 RequestHeaders:{"host":"127.0.0.1:10002","x-ms-version":"2020-12-06","dataserviceversion":"3.0","accept":"application/json;odata=minimalmetadata","x-ms-client-request-id":"7b192b7f-127e-461c-accc-1a03f6454740","x-ms-return-client-request-id":"true","user-agent":"azsdk-net-Data.Tables/12.6.1 (.NET 6.0.0-rtm.21522.10; Darwin 22.6.0 Darwin Kernel Version 22.6.0: Wed Jul  5 22:22:52 PDT 2023; root:xnu-8796.141.3~6/RELEASE_ARM64_T8103)","x-ms-date":"Sun, 24 Sep 2023 09:12:10 GMT","authorization":"SharedKeyLite devstoreaccount1:uOhrv7ViNiEI8Tc2b+YiuO9qtNRa4O5wGwf4uJ2NtF8="} ClientIP=127.0.0.1 Protocol=http HTTPVersion=1.1
+2023-09-24T09:12:10.002Z ee91a35b-3528-41e6-ab2b-19625c03e0a3 debug: tableStorageContextMiddleware: Dispatch pattern string: /aatabletests()
+2023-09-24T09:12:10.002Z ee91a35b-3528-41e6-ab2b-19625c03e0a3 info: tableStorageContextMiddleware: Account=devstoreaccount1 tableName=aatabletests
+2023-09-24T09:12:10.002Z ee91a35b-3528-41e6-ab2b-19625c03e0a3 verbose: DispatchMiddleware: Dispatching request...
+2023-09-24T09:12:10.003Z ee91a35b-3528-41e6-ab2b-19625c03e0a3 info: DispatchMiddleware: Operation=Table_QueryEntities
+2023-09-24T09:12:10.003Z ee91a35b-3528-41e6-ab2b-19625c03e0a3 verbose: AuthenticationMiddlewareFactory:createAuthenticationMiddleware() Validating authentications.
+2023-09-24T09:12:10.003Z ee91a35b-3528-41e6-ab2b-19625c03e0a3 info: TableSharedKeyLiteAuthenticator:validate() Start validation against account shared key authentication.
+2023-09-24T09:12:10.003Z ee91a35b-3528-41e6-ab2b-19625c03e0a3 info: TableSharedKeyLiteAuthenticator:validate() [STRING TO SIGN]:"Sun, 24 Sep 2023 09:12:10 GMT\n/devstoreaccount1/devstoreaccount1/aatabletests()"
+2023-09-24T09:12:10.003Z ee91a35b-3528-41e6-ab2b-19625c03e0a3 info: TableSharedKeyLiteAuthenticator:validate() Calculated authentication header based on key1: SharedKeyLite devstoreaccount1:uOhrv7ViNiEI8Tc2b+YiuO9qtNRa4O5wGwf4uJ2NtF8=
+2023-09-24T09:12:10.003Z ee91a35b-3528-41e6-ab2b-19625c03e0a3 info: TableSharedKeyLiteAuthenticator:validate() Signature 1 matched.
+2023-09-24T09:12:10.003Z ee91a35b-3528-41e6-ab2b-19625c03e0a3 verbose: DeserializerMiddleware: Start deserializing...
+2023-09-24T09:12:10.003Z ee91a35b-3528-41e6-ab2b-19625c03e0a3 info: HandlerMiddleware: DeserializedParameters={"options":{"queryOptions":{"format":"application/json;odata=minimalmetadata","top":1,"filter":"(PartitionKey eq 'a-7b08638adba14d3fab2052e430d4e7e7') and (RowKey eq 'a-7b08638adba14d3fab2052e430d4e7e7')"},"requestId":"7b192b7f-127e-461c-accc-1a03f6454740","dataServiceVersion":"3.0"},"version":"2020-12-06"}
+2023-09-24T09:12:10.008Z ee91a35b-3528-41e6-ab2b-19625c03e0a3 debug: TableHandler:queryEntities() Raw response string is "{\"odata.metadata\":\"http://127.0.0.1:10002/devstoreaccount1/$metadata#Tables/@Element\",\"value\":[{\"odata.etag\":\"W/\\\"datetime'2023-09-24T09%3A12%3A09.9888980Z'\\\"\",\"PartitionKey\":\"a-7b08638adba14d3fab2052e430d4e7e7\",\"RowKey\":\"a-7b08638adba14d3fab2052e430d4e7e7\",\"newProperty\":\"newProperty\",\"Timestamp\":\"2023-09-24T09:12:09.9888980Z\"}]}"
+2023-09-24T09:12:10.008Z ee91a35b-3528-41e6-ab2b-19625c03e0a3 verbose: SerializerMiddleware: Start serializing...
+2023-09-24T09:12:10.008Z ee91a35b-3528-41e6-ab2b-19625c03e0a3 info: Serializer: Start returning stream body.
+2023-09-24T09:12:10.009Z ee91a35b-3528-41e6-ab2b-19625c03e0a3 info: EndMiddleware: End response. TotalTimeInMS=7 StatusCode=200 StatusMessage=OK Headers={"server":"Azurite-Table/3.23.0","content-type":"application/json;odata=minimalmetadata","x-ms-client-request-id":"7b192b7f-127e-461c-accc-1a03f6454740","x-ms-request-id":"ee91a35b-3528-41e6-ab2b-19625c03e0a3","x-ms-version":"2022-11-02","date":"Sun, 24 Sep 2023 09:12:10 GMT"}
+2023-09-24T09:12:10.401Z 	 info: Azurite Blob service is closing...
+2023-09-24T09:12:10.401Z 	 info: Azurite Queue service is closing...
+2023-09-24T09:12:10.401Z 	 info: Azurite Table service is closing...
+2023-09-24T09:12:10.401Z 	 info: BlobGCManager:close() Start closing BlobGCManager. Set status to Closing.
+2023-09-24T09:12:10.402Z 	 info: QueueGCManager:close() Start closing QueueGCManager, set status to Closing.
+2023-09-24T09:12:10.428Z 	 info: BlobGCManager:start() Mark and sweep loop is closed.
+2023-09-24T09:12:10.428Z 	 info: BlobGCManager:close() BlobGCManager successfully closed. Set status to Closed.
+2023-09-24T09:12:10.428Z 	 info: QueueGCManager:start() Mark and sweep loop is closed.
+2023-09-24T09:12:10.428Z 	 info: QueueGCManager:close() QueueGCManager successfully closed, set status to Closed.
+2023-09-24T09:12:10.428Z 	 info: Azurite Blob service successfully closed
+2023-09-24T09:12:10.428Z 	 info: Azurite Queue service successfully closed
+2023-09-24T09:12:10.443Z 	 info: Azurite Table service successfully closed

@@ -1,70 +1,70 @@
-2023-09-22T04:23:33.253Z 	 info: Azurite Blob service is starting on 127.0.0.1:10000
-2023-09-22T04:23:33.254Z 	 info: AccountDataStore:init() Refresh accounts from environment variable AZURITE_ACCOUNTS with value undefined
-2023-09-22T04:23:33.254Z 	 info: AccountDataStore:init() Fallback to default emulator account devstoreaccount1.
-2023-09-22T04:23:33.262Z 	 info: BlobGCManager:start() Starting BlobGCManager. Set status to Initializing.
-2023-09-22T04:23:33.262Z 	 info: BlobGCManager:start() Trigger mark and sweep loop. Set status to Running.
-2023-09-22T04:23:33.262Z 	 info: BlobGCManager:markSweepLoop() Start next mark and sweep.
-2023-09-22T04:23:33.262Z 	 info: BlobGCManager:markSweep() Get all extents.
-2023-09-22T04:23:33.262Z 	 info: BlobGCManager:start() BlobGCManager successfully started.
-2023-09-22T04:23:33.263Z 	 info: BlobGCManager:markSweep() Got 0 extents.
-2023-09-22T04:23:33.263Z 	 info: BlobGCManager:markSweep() Get referred extents.
-2023-09-22T04:23:33.264Z 	 info: BlobGCManager:markSweep() Got referred extents, unreferenced extents count is 0.
-2023-09-22T04:23:33.264Z 	 info: BlobGCManager:markSweepLoop() Mark and sweep finished, taken 2ms.
-2023-09-22T04:23:33.264Z 	 info: BlobGCManager:markSweepLoop() Sleep for 600000ms.
-2023-09-22T04:23:33.265Z 	 info: Azurite Blob service successfully listens on http://127.0.0.1:10000
-2023-09-22T04:23:33.265Z 	 info: Azurite Queue service is starting on 127.0.0.1:10001
-2023-09-22T04:23:33.265Z 	 info: AccountDataStore:init() Refresh accounts from environment variable AZURITE_ACCOUNTS with value undefined
-2023-09-22T04:23:33.266Z 	 info: AccountDataStore:init() Fallback to default emulator account devstoreaccount1.
-2023-09-22T04:23:33.269Z 	 info: QueueGCManager:start() Starting QueueGCManager, set status to Initializing
-2023-09-22T04:23:33.269Z 	 info: QueueGCManager:start() Trigger mark and sweep loop, set status to Running.
-2023-09-22T04:23:33.269Z 	 info: QueueGCManager:markSweepLoop() Start new mark and sweep.
-2023-09-22T04:23:33.269Z 	 info: QueueGCManger:markSweep() Get all extents.
-2023-09-22T04:23:33.270Z 	 info: QueueGCManager:start() QueueGCManager successfully started.
-2023-09-22T04:23:33.270Z 	 info: QueueGCManager:marksweep() Get 0 extents.
-2023-09-22T04:23:33.270Z 	 info: QueueGCManager:markSweep() Get referred extents, then remove from allExtents.
-2023-09-22T04:23:33.270Z 	 info: QueueGCManager:markSweep() Got referred extents, unreferenced extents count is 0.
-2023-09-22T04:23:33.270Z 	 info: QueueGCManager:markSweepLoop() Mark and sweep finished, take 1ms.
-2023-09-22T04:23:33.270Z 	 info: QueueGCManager:markSweepLoop() Sleep for 60000
-2023-09-22T04:23:33.270Z 	 info: Azurite Queue service successfully listens on http://127.0.0.1:10001
-2023-09-22T04:23:33.270Z 	 info: Azurite Table service is starting on 127.0.0.1:10002
-2023-09-22T04:23:33.271Z 	 info: AccountDataStore:init() Refresh accounts from environment variable AZURITE_ACCOUNTS with value undefined
-2023-09-22T04:23:33.271Z 	 info: AccountDataStore:init() Fallback to default emulator account devstoreaccount1.
-2023-09-22T04:23:33.273Z 	 info: Azurite Table service successfully listens on http://127.0.0.1:10002
-2023-09-22T04:23:35.572Z 3462fd62-0d32-4a42-b4de-698a23f47248 info: QueueStorageContextMiddleware: RequestMethod=PUT RequestURL=http://127.0.0.1/devstoreaccount1/testqueue RequestHeaders:{"host":"127.0.0.1:10001","x-ms-version":"2018-11-09","x-ms-client-request-id":"35fda98c-0e66-4291-9031-59a189ea755d","x-ms-return-client-request-id":"true","user-agent":"azsdk-net-Storage.Queues/12.4.1 (.NET Core 3.1.32; Linux 6.2.0-32-generic #32~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Fri Aug 18 10:40:13 UTC 2)","x-ms-date":"Fri, 22 Sep 2023 04:23:35 GMT","authorization":"SharedKey devstoreaccount1:xvc6Dv15mcic0YyHUUcgpDO+Afy9HOE7DbpkQcvHWrk=","content-length":"0"} ClientIP=127.0.0.1 Protocol=http HTTPVersion=1.1
-2023-09-22T04:23:35.572Z 3462fd62-0d32-4a42-b4de-698a23f47248 info: QueueStorageContextMiddleware: Account=devstoreaccount1 Queue=testqueue Message=undefined MessageId=undefined
-2023-09-22T04:23:35.572Z 3462fd62-0d32-4a42-b4de-698a23f47248 verbose: DispatchMiddleware: Dispatching request...
-2023-09-22T04:23:35.573Z 3462fd62-0d32-4a42-b4de-698a23f47248 info: DispatchMiddleware: Operation=Queue_Create
-2023-09-22T04:23:35.573Z 3462fd62-0d32-4a42-b4de-698a23f47248 verbose: AuthenticationMiddlewareFactory:createAuthenticationMiddleware() Validating authentications.
-2023-09-22T04:23:35.573Z 3462fd62-0d32-4a42-b4de-698a23f47248 info: QueueSharedKeyAuthenticator:validate() Start validation against account shared key authentication.
-2023-09-22T04:23:35.579Z 3462fd62-0d32-4a42-b4de-698a23f47248 info: QueueSharedKeyAuthenticator:validate() [STRING TO SIGN]:"PUT\n\n\n\n\n\n\n\n\n\n\n\nx-ms-client-request-id:35fda98c-0e66-4291-9031-59a189ea755d\nx-ms-date:Fri, 22 Sep 2023 04:23:35 GMT\nx-ms-return-client-request-id:true\nx-ms-version:2018-11-09\n/devstoreaccount1/devstoreaccount1/testqueue"
-2023-09-22T04:23:35.580Z 3462fd62-0d32-4a42-b4de-698a23f47248 info: QueueSharedKeyAuthenticator:validate() Calculated authentication header based on key1: devstoreaccount1:xvc6Dv15mcic0YyHUUcgpDO+Afy9HOE7DbpkQcvHWrk=
-2023-09-22T04:23:35.580Z 3462fd62-0d32-4a42-b4de-698a23f47248 info: QueueSharedKeyAuthenticator:validate() Signature 1 matched.
-2023-09-22T04:23:35.580Z 3462fd62-0d32-4a42-b4de-698a23f47248 verbose: DeserializerMiddleware: Start deserializing...
-2023-09-22T04:23:35.581Z 3462fd62-0d32-4a42-b4de-698a23f47248 info: HandlerMiddleware: DeserializedParameters={"options":{"metadata":{},"requestId":"35fda98c-0e66-4291-9031-59a189ea755d"},"version":"2018-11-09"}
-2023-09-22T04:23:35.582Z 3462fd62-0d32-4a42-b4de-698a23f47248 verbose: SerializerMiddleware: Start serializing...
-2023-09-22T04:23:35.582Z 3462fd62-0d32-4a42-b4de-698a23f47248 info: EndMiddleware: End response. TotalTimeInMS=11 StatusCode=201 StatusMessage=undefined Headers={"server":"Azurite-Queue/3.21.0","x-ms-client-request-id":"35fda98c-0e66-4291-9031-59a189ea755d","x-ms-request-id":"3462fd62-0d32-4a42-b4de-698a23f47248","x-ms-version":"2021-10-04","date":"Fri, 22 Sep 2023 04:23:35 GMT"}
-2023-09-22T04:23:35.660Z 53575e8d-baa5-4dd0-afbf-f5db4d11d072 info: QueueStorageContextMiddleware: RequestMethod=DELETE RequestURL=http://127.0.0.1/devstoreaccount1/testqueue RequestHeaders:{"host":"127.0.0.1:10001","x-ms-version":"2018-11-09","x-ms-client-request-id":"99a882e2-cdba-4823-97e2-5fc324938ee5","x-ms-return-client-request-id":"true","user-agent":"azsdk-net-Storage.Queues/12.4.1 (.NET Core 3.1.32; Linux 6.2.0-32-generic #32~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Fri Aug 18 10:40:13 UTC 2)","x-ms-date":"Fri, 22 Sep 2023 04:23:35 GMT","authorization":"SharedKey devstoreaccount1:jt7m5DW8AcM7ziCTg0ep5feoIiUC6t8uifj8gNQ53I4="} ClientIP=127.0.0.1 Protocol=http HTTPVersion=1.1
-2023-09-22T04:23:35.661Z 53575e8d-baa5-4dd0-afbf-f5db4d11d072 info: QueueStorageContextMiddleware: Account=devstoreaccount1 Queue=testqueue Message=undefined MessageId=undefined
-2023-09-22T04:23:35.661Z 53575e8d-baa5-4dd0-afbf-f5db4d11d072 verbose: DispatchMiddleware: Dispatching request...
-2023-09-22T04:23:35.661Z 53575e8d-baa5-4dd0-afbf-f5db4d11d072 info: DispatchMiddleware: Operation=Queue_Delete
-2023-09-22T04:23:35.661Z 53575e8d-baa5-4dd0-afbf-f5db4d11d072 verbose: AuthenticationMiddlewareFactory:createAuthenticationMiddleware() Validating authentications.
-2023-09-22T04:23:35.661Z 53575e8d-baa5-4dd0-afbf-f5db4d11d072 info: QueueSharedKeyAuthenticator:validate() Start validation against account shared key authentication.
-2023-09-22T04:23:35.661Z 53575e8d-baa5-4dd0-afbf-f5db4d11d072 info: QueueSharedKeyAuthenticator:validate() [STRING TO SIGN]:"DELETE\n\n\n\n\n\n\n\n\n\n\n\nx-ms-client-request-id:99a882e2-cdba-4823-97e2-5fc324938ee5\nx-ms-date:Fri, 22 Sep 2023 04:23:35 GMT\nx-ms-return-client-request-id:true\nx-ms-version:2018-11-09\n/devstoreaccount1/devstoreaccount1/testqueue"
-2023-09-22T04:23:35.661Z 53575e8d-baa5-4dd0-afbf-f5db4d11d072 info: QueueSharedKeyAuthenticator:validate() Calculated authentication header based on key1: devstoreaccount1:jt7m5DW8AcM7ziCTg0ep5feoIiUC6t8uifj8gNQ53I4=
-2023-09-22T04:23:35.661Z 53575e8d-baa5-4dd0-afbf-f5db4d11d072 info: QueueSharedKeyAuthenticator:validate() Signature 1 matched.
-2023-09-22T04:23:35.661Z 53575e8d-baa5-4dd0-afbf-f5db4d11d072 verbose: DeserializerMiddleware: Start deserializing...
-2023-09-22T04:23:35.661Z 53575e8d-baa5-4dd0-afbf-f5db4d11d072 info: HandlerMiddleware: DeserializedParameters={"options":{"requestId":"99a882e2-cdba-4823-97e2-5fc324938ee5"},"version":"2018-11-09"}
-2023-09-22T04:23:35.662Z 53575e8d-baa5-4dd0-afbf-f5db4d11d072 verbose: SerializerMiddleware: Start serializing...
-2023-09-22T04:23:35.663Z 53575e8d-baa5-4dd0-afbf-f5db4d11d072 info: EndMiddleware: End response. TotalTimeInMS=3 StatusCode=204 StatusMessage=undefined Headers={"server":"Azurite-Queue/3.21.0","x-ms-client-request-id":"99a882e2-cdba-4823-97e2-5fc324938ee5","x-ms-request-id":"53575e8d-baa5-4dd0-afbf-f5db4d11d072","x-ms-version":"2021-10-04","date":"Fri, 22 Sep 2023 04:23:35 GMT"}
-2023-09-22T04:23:35.827Z 	 info: Azurite Blob service is closing...
-2023-09-22T04:23:35.827Z 	 info: Azurite Queue service is closing...
-2023-09-22T04:23:35.827Z 	 info: Azurite Table service is closing...
-2023-09-22T04:23:35.827Z 	 info: BlobGCManager:close() Start closing BlobGCManager. Set status to Closing.
-2023-09-22T04:23:35.827Z 	 info: QueueGCManager:close() Start closing QueueGCManager, set status to Closing.
-2023-09-22T04:23:35.828Z 	 info: BlobGCManager:start() Mark and sweep loop is closed.
-2023-09-22T04:23:35.828Z 	 info: BlobGCManager:close() BlobGCManager successfully closed. Set status to Closed.
-2023-09-22T04:23:35.828Z 	 info: QueueGCManager:start() Mark and sweep loop is closed.
-2023-09-22T04:23:35.828Z 	 info: QueueGCManager:close() QueueGCManager successfully closed, set status to Closed.
-2023-09-22T04:23:35.828Z 	 info: Azurite Table service successfully closed
-2023-09-22T04:23:35.828Z 	 info: Azurite Blob service successfully closed
-2023-09-22T04:23:35.830Z 	 info: Azurite Queue service successfully closed
+2023-09-24T08:00:23.247Z 	 info: Azurite Blob service is starting on 127.0.0.1:10000
+2023-09-24T08:00:23.248Z 	 info: AccountDataStore:init() Refresh accounts from environment variable AZURITE_ACCOUNTS with value undefined
+2023-09-24T08:00:23.248Z 	 info: AccountDataStore:init() Fallback to default emulator account devstoreaccount1.
+2023-09-24T08:00:23.256Z 	 info: BlobGCManager:start() Starting BlobGCManager. Set status to Initializing.
+2023-09-24T08:00:23.256Z 	 info: BlobGCManager:start() Trigger mark and sweep loop. Set status to Running.
+2023-09-24T08:00:23.256Z 	 info: BlobGCManager:markSweepLoop() Start next mark and sweep.
+2023-09-24T08:00:23.256Z 	 info: BlobGCManager:markSweep() Get all extents.
+2023-09-24T08:00:23.257Z 	 info: BlobGCManager:start() BlobGCManager successfully started.
+2023-09-24T08:00:23.258Z 	 info: BlobGCManager:markSweep() Got 0 extents.
+2023-09-24T08:00:23.258Z 	 info: BlobGCManager:markSweep() Get referred extents.
+2023-09-24T08:00:23.259Z 	 info: BlobGCManager:markSweep() Got referred extents, unreferenced extents count is 0.
+2023-09-24T08:00:23.259Z 	 info: BlobGCManager:markSweepLoop() Mark and sweep finished, taken 3ms.
+2023-09-24T08:00:23.259Z 	 info: BlobGCManager:markSweepLoop() Sleep for 600000ms.
+2023-09-24T08:00:23.259Z 	 info: Azurite Blob service successfully listens on http://127.0.0.1:10000
+2023-09-24T08:00:23.260Z 	 info: Azurite Queue service is starting on 127.0.0.1:10001
+2023-09-24T08:00:23.260Z 	 info: AccountDataStore:init() Refresh accounts from environment variable AZURITE_ACCOUNTS with value undefined
+2023-09-24T08:00:23.260Z 	 info: AccountDataStore:init() Fallback to default emulator account devstoreaccount1.
+2023-09-24T08:00:23.264Z 	 info: QueueGCManager:start() Starting QueueGCManager, set status to Initializing
+2023-09-24T08:00:23.264Z 	 info: QueueGCManager:start() Trigger mark and sweep loop, set status to Running.
+2023-09-24T08:00:23.264Z 	 info: QueueGCManager:markSweepLoop() Start new mark and sweep.
+2023-09-24T08:00:23.264Z 	 info: QueueGCManger:markSweep() Get all extents.
+2023-09-24T08:00:23.264Z 	 info: QueueGCManager:start() QueueGCManager successfully started.
+2023-09-24T08:00:23.264Z 	 info: QueueGCManager:marksweep() Get 0 extents.
+2023-09-24T08:00:23.264Z 	 info: QueueGCManager:markSweep() Get referred extents, then remove from allExtents.
+2023-09-24T08:00:23.264Z 	 info: QueueGCManager:markSweep() Got referred extents, unreferenced extents count is 0.
+2023-09-24T08:00:23.264Z 	 info: QueueGCManager:markSweepLoop() Mark and sweep finished, take 0ms.
+2023-09-24T08:00:23.264Z 	 info: QueueGCManager:markSweepLoop() Sleep for 60000
+2023-09-24T08:00:23.265Z 	 info: Azurite Queue service successfully listens on http://127.0.0.1:10001
+2023-09-24T08:00:23.265Z 	 info: Azurite Table service is starting on 127.0.0.1:10002
+2023-09-24T08:00:23.265Z 	 info: AccountDataStore:init() Refresh accounts from environment variable AZURITE_ACCOUNTS with value undefined
+2023-09-24T08:00:23.265Z 	 info: AccountDataStore:init() Fallback to default emulator account devstoreaccount1.
+2023-09-24T08:00:23.267Z 	 info: Azurite Table service successfully listens on http://127.0.0.1:10002
+2023-09-24T08:00:31.498Z 5816ad58-7893-4036-9bf2-6b7773e8ba46 info: QueueStorageContextMiddleware: RequestMethod=PUT RequestURL=http://127.0.0.1/devstoreaccount1/testqueue RequestHeaders:{"host":"127.0.0.1:10001","x-ms-version":"2018-11-09","accept":"application/xml","x-ms-client-request-id":"a4de14b4-3072-4427-852e-4fac3f4c9f1a","x-ms-return-client-request-id":"true","user-agent":"azsdk-net-Storage.Queues/12.14.0 (.NET 6.0.0-rtm.21522.10; Darwin 22.6.0 Darwin Kernel Version 22.6.0: Wed Jul  5 22:22:52 PDT 2023; root:xnu-8796.141.3~6/RELEASE_ARM64_T8103)","x-ms-date":"Sun, 24 Sep 2023 08:00:31 GMT","authorization":"SharedKey devstoreaccount1:JXyAe0fEFFTUviqKmDtlWlxn8PZ73R2l/7eMM+xWtg4=","content-length":"0"} ClientIP=127.0.0.1 Protocol=http HTTPVersion=1.1
+2023-09-24T08:00:31.499Z 5816ad58-7893-4036-9bf2-6b7773e8ba46 info: QueueStorageContextMiddleware: Account=devstoreaccount1 Queue=testqueue Message=undefined MessageId=undefined
+2023-09-24T08:00:31.499Z 5816ad58-7893-4036-9bf2-6b7773e8ba46 verbose: DispatchMiddleware: Dispatching request...
+2023-09-24T08:00:31.499Z 5816ad58-7893-4036-9bf2-6b7773e8ba46 info: DispatchMiddleware: Operation=Queue_Create
+2023-09-24T08:00:31.499Z 5816ad58-7893-4036-9bf2-6b7773e8ba46 verbose: AuthenticationMiddlewareFactory:createAuthenticationMiddleware() Validating authentications.
+2023-09-24T08:00:31.500Z 5816ad58-7893-4036-9bf2-6b7773e8ba46 info: QueueSharedKeyAuthenticator:validate() Start validation against account shared key authentication.
+2023-09-24T08:00:31.508Z 5816ad58-7893-4036-9bf2-6b7773e8ba46 info: QueueSharedKeyAuthenticator:validate() [STRING TO SIGN]:"PUT\n\n\n\n\n\n\n\n\n\n\n\nx-ms-client-request-id:a4de14b4-3072-4427-852e-4fac3f4c9f1a\nx-ms-date:Sun, 24 Sep 2023 08:00:31 GMT\nx-ms-return-client-request-id:true\nx-ms-version:2018-11-09\n/devstoreaccount1/devstoreaccount1/testqueue"
+2023-09-24T08:00:31.508Z 5816ad58-7893-4036-9bf2-6b7773e8ba46 info: QueueSharedKeyAuthenticator:validate() Calculated authentication header based on key1: devstoreaccount1:JXyAe0fEFFTUviqKmDtlWlxn8PZ73R2l/7eMM+xWtg4=
+2023-09-24T08:00:31.508Z 5816ad58-7893-4036-9bf2-6b7773e8ba46 info: QueueSharedKeyAuthenticator:validate() Signature 1 matched.
+2023-09-24T08:00:31.508Z 5816ad58-7893-4036-9bf2-6b7773e8ba46 verbose: DeserializerMiddleware: Start deserializing...
+2023-09-24T08:00:31.509Z 5816ad58-7893-4036-9bf2-6b7773e8ba46 info: HandlerMiddleware: DeserializedParameters={"options":{"metadata":{},"requestId":"a4de14b4-3072-4427-852e-4fac3f4c9f1a"},"version":"2018-11-09"}
+2023-09-24T08:00:31.509Z 5816ad58-7893-4036-9bf2-6b7773e8ba46 verbose: SerializerMiddleware: Start serializing...
+2023-09-24T08:00:31.510Z 5816ad58-7893-4036-9bf2-6b7773e8ba46 info: EndMiddleware: End response. TotalTimeInMS=12 StatusCode=201 StatusMessage=undefined Headers={"server":"Azurite-Queue/3.23.0","x-ms-client-request-id":"a4de14b4-3072-4427-852e-4fac3f4c9f1a","x-ms-request-id":"5816ad58-7893-4036-9bf2-6b7773e8ba46","x-ms-version":"2022-11-02","date":"Sun, 24 Sep 2023 08:00:31 GMT"}
+2023-09-24T08:00:31.613Z 4ae1fc71-0564-4ea9-a314-8d99cfe9bdae info: QueueStorageContextMiddleware: RequestMethod=DELETE RequestURL=http://127.0.0.1/devstoreaccount1/testqueue RequestHeaders:{"host":"127.0.0.1:10001","x-ms-version":"2018-11-09","accept":"application/xml","x-ms-client-request-id":"6c58912a-cf01-4d61-9a56-5722440e81c8","x-ms-return-client-request-id":"true","user-agent":"azsdk-net-Storage.Queues/12.14.0 (.NET 6.0.0-rtm.21522.10; Darwin 22.6.0 Darwin Kernel Version 22.6.0: Wed Jul  5 22:22:52 PDT 2023; root:xnu-8796.141.3~6/RELEASE_ARM64_T8103)","x-ms-date":"Sun, 24 Sep 2023 08:00:31 GMT","authorization":"SharedKey devstoreaccount1:Espp4+z3VKa7R1hRSPoA7qZQIUQMjkXrLgq9cdEizN4="} ClientIP=127.0.0.1 Protocol=http HTTPVersion=1.1
+2023-09-24T08:00:31.613Z 4ae1fc71-0564-4ea9-a314-8d99cfe9bdae info: QueueStorageContextMiddleware: Account=devstoreaccount1 Queue=testqueue Message=undefined MessageId=undefined
+2023-09-24T08:00:31.613Z 4ae1fc71-0564-4ea9-a314-8d99cfe9bdae verbose: DispatchMiddleware: Dispatching request...
+2023-09-24T08:00:31.613Z 4ae1fc71-0564-4ea9-a314-8d99cfe9bdae info: DispatchMiddleware: Operation=Queue_Delete
+2023-09-24T08:00:31.613Z 4ae1fc71-0564-4ea9-a314-8d99cfe9bdae verbose: AuthenticationMiddlewareFactory:createAuthenticationMiddleware() Validating authentications.
+2023-09-24T08:00:31.613Z 4ae1fc71-0564-4ea9-a314-8d99cfe9bdae info: QueueSharedKeyAuthenticator:validate() Start validation against account shared key authentication.
+2023-09-24T08:00:31.613Z 4ae1fc71-0564-4ea9-a314-8d99cfe9bdae info: QueueSharedKeyAuthenticator:validate() [STRING TO SIGN]:"DELETE\n\n\n\n\n\n\n\n\n\n\n\nx-ms-client-request-id:6c58912a-cf01-4d61-9a56-5722440e81c8\nx-ms-date:Sun, 24 Sep 2023 08:00:31 GMT\nx-ms-return-client-request-id:true\nx-ms-version:2018-11-09\n/devstoreaccount1/devstoreaccount1/testqueue"
+2023-09-24T08:00:31.613Z 4ae1fc71-0564-4ea9-a314-8d99cfe9bdae info: QueueSharedKeyAuthenticator:validate() Calculated authentication header based on key1: devstoreaccount1:Espp4+z3VKa7R1hRSPoA7qZQIUQMjkXrLgq9cdEizN4=
+2023-09-24T08:00:31.613Z 4ae1fc71-0564-4ea9-a314-8d99cfe9bdae info: QueueSharedKeyAuthenticator:validate() Signature 1 matched.
+2023-09-24T08:00:31.613Z 4ae1fc71-0564-4ea9-a314-8d99cfe9bdae verbose: DeserializerMiddleware: Start deserializing...
+2023-09-24T08:00:31.613Z 4ae1fc71-0564-4ea9-a314-8d99cfe9bdae info: HandlerMiddleware: DeserializedParameters={"options":{"requestId":"6c58912a-cf01-4d61-9a56-5722440e81c8"},"version":"2018-11-09"}
+2023-09-24T08:00:31.614Z 4ae1fc71-0564-4ea9-a314-8d99cfe9bdae verbose: SerializerMiddleware: Start serializing...
+2023-09-24T08:00:31.614Z 4ae1fc71-0564-4ea9-a314-8d99cfe9bdae info: EndMiddleware: End response. TotalTimeInMS=1 StatusCode=204 StatusMessage=undefined Headers={"server":"Azurite-Queue/3.23.0","x-ms-client-request-id":"6c58912a-cf01-4d61-9a56-5722440e81c8","x-ms-request-id":"4ae1fc71-0564-4ea9-a314-8d99cfe9bdae","x-ms-version":"2022-11-02","date":"Sun, 24 Sep 2023 08:00:31 GMT"}
+2023-09-24T08:00:31.791Z 	 info: Azurite Blob service is closing...
+2023-09-24T08:00:31.791Z 	 info: Azurite Queue service is closing...
+2023-09-24T08:00:31.791Z 	 info: Azurite Table service is closing...
+2023-09-24T08:00:31.791Z 	 info: BlobGCManager:close() Start closing BlobGCManager. Set status to Closing.
+2023-09-24T08:00:31.791Z 	 info: QueueGCManager:close() Start closing QueueGCManager, set status to Closing.
+2023-09-24T08:00:31.791Z 	 info: BlobGCManager:start() Mark and sweep loop is closed.
+2023-09-24T08:00:31.791Z 	 info: BlobGCManager:close() BlobGCManager successfully closed. Set status to Closed.
+2023-09-24T08:00:31.792Z 	 info: QueueGCManager:start() Mark and sweep loop is closed.
+2023-09-24T08:00:31.792Z 	 info: QueueGCManager:close() QueueGCManager successfully closed, set status to Closed.
+2023-09-24T08:00:31.792Z 	 info: Azurite Table service successfully closed
+2023-09-24T08:00:31.792Z 	 info: Azurite Blob service successfully closed
+2023-09-24T08:00:31.795Z 	 info: Azurite Queue service successfully closed

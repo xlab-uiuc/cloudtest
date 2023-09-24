@@ -1,103 +1,103 @@
-2023-09-23T20:00:49.463Z 	 info: Azurite Blob service is starting on 127.0.0.1:10000
-2023-09-23T20:00:49.465Z 	 info: AccountDataStore:init() Refresh accounts from environment variable AZURITE_ACCOUNTS with value undefined
-2023-09-23T20:00:49.465Z 	 info: AccountDataStore:init() Fallback to default emulator account devstoreaccount1.
-2023-09-23T20:00:49.471Z 	 info: BlobGCManager:start() Starting BlobGCManager. Set status to Initializing.
-2023-09-23T20:00:49.472Z 	 info: BlobGCManager:start() Trigger mark and sweep loop. Set status to Running.
-2023-09-23T20:00:49.472Z 	 info: BlobGCManager:markSweepLoop() Start next mark and sweep.
-2023-09-23T20:00:49.472Z 	 info: BlobGCManager:markSweep() Get all extents.
-2023-09-23T20:00:49.472Z 	 info: BlobGCManager:start() BlobGCManager successfully started.
-2023-09-23T20:00:49.473Z 	 info: BlobGCManager:markSweep() Got 4 extents.
-2023-09-23T20:00:49.474Z 	 info: BlobGCManager:markSweep() Get referred extents.
-2023-09-23T20:00:49.474Z 	 info: BlobGCManager:markSweep() Got referred extents, unreferenced extents count is 0.
-2023-09-23T20:00:49.474Z 	 info: BlobGCManager:markSweepLoop() Mark and sweep finished, taken 2ms.
-2023-09-23T20:00:49.474Z 	 info: BlobGCManager:markSweepLoop() Sleep for 600000ms.
-2023-09-23T20:00:49.475Z 	 info: Azurite Blob service successfully listens on http://127.0.0.1:10000
-2023-09-23T20:00:49.475Z 	 info: Azurite Queue service is starting on 127.0.0.1:10001
-2023-09-23T20:00:49.475Z 	 info: AccountDataStore:init() Refresh accounts from environment variable AZURITE_ACCOUNTS with value undefined
-2023-09-23T20:00:49.475Z 	 info: AccountDataStore:init() Fallback to default emulator account devstoreaccount1.
-2023-09-23T20:00:49.479Z 	 info: QueueGCManager:start() Starting QueueGCManager, set status to Initializing
-2023-09-23T20:00:49.479Z 	 info: QueueGCManager:start() Trigger mark and sweep loop, set status to Running.
-2023-09-23T20:00:49.479Z 	 info: QueueGCManager:markSweepLoop() Start new mark and sweep.
-2023-09-23T20:00:49.479Z 	 info: QueueGCManger:markSweep() Get all extents.
-2023-09-23T20:00:49.479Z 	 info: QueueGCManager:start() QueueGCManager successfully started.
-2023-09-23T20:00:49.479Z 	 info: QueueGCManager:marksweep() Get 0 extents.
-2023-09-23T20:00:49.479Z 	 info: QueueGCManager:markSweep() Get referred extents, then remove from allExtents.
-2023-09-23T20:00:49.479Z 	 info: QueueGCManager:markSweep() Got referred extents, unreferenced extents count is 0.
-2023-09-23T20:00:49.480Z 	 info: QueueGCManager:markSweepLoop() Mark and sweep finished, take 1ms.
-2023-09-23T20:00:49.480Z 	 info: QueueGCManager:markSweepLoop() Sleep for 60000
-2023-09-23T20:00:49.480Z 	 info: Azurite Queue service successfully listens on http://127.0.0.1:10001
-2023-09-23T20:00:49.480Z 	 info: Azurite Table service is starting on 127.0.0.1:10002
-2023-09-23T20:00:49.480Z 	 info: AccountDataStore:init() Refresh accounts from environment variable AZURITE_ACCOUNTS with value undefined
-2023-09-23T20:00:49.480Z 	 info: AccountDataStore:init() Fallback to default emulator account devstoreaccount1.
-2023-09-23T20:00:49.482Z 	 info: Azurite Table service successfully listens on http://127.0.0.1:10002
-2023-09-23T20:00:53.054Z 76b4dd3d-14a2-4093-b5b2-a0b389551970 info: BlobStorageContextMiddleware: RequestMethod=HEAD RequestURL=http://127.0.0.1/devstoreaccount1/attachments?restype=container RequestHeaders:{"host":"127.0.0.1:10000","x-ms-client-request-id":"f079181b-b363-4a72-9405-6f8ff17fb1ae","user-agent":"Azure-Storage/11.1.0 (.NET Core; Unix 22.6.0.0)","x-ms-version":"2019-02-02","x-ms-date":"Sat, 23 Sep 2023 20:00:52 GMT","authorization":"SharedKey devstoreaccount1:qkbuxDQaBIcl1gCnMrH8t983TpQxPXAAE+0sRrer2yc="} ClientIP=127.0.0.1 Protocol=http HTTPVersion=1.1
-2023-09-23T20:00:53.054Z 76b4dd3d-14a2-4093-b5b2-a0b389551970 info: BlobStorageContextMiddleware: Account=devstoreaccount1 Container=attachments Blob=
-2023-09-23T20:00:53.054Z 76b4dd3d-14a2-4093-b5b2-a0b389551970 verbose: DispatchMiddleware: Dispatching request...
-2023-09-23T20:00:53.055Z 76b4dd3d-14a2-4093-b5b2-a0b389551970 info: DispatchMiddleware: Operation=Container_GetPropertiesWithHead
-2023-09-23T20:00:53.056Z 76b4dd3d-14a2-4093-b5b2-a0b389551970 verbose: AuthenticationMiddlewareFactory:createAuthenticationMiddleware() Validating authentications.
-2023-09-23T20:00:53.056Z 76b4dd3d-14a2-4093-b5b2-a0b389551970 info: PublicAccessAuthenticator:validate() Start validation against public access.
-2023-09-23T20:00:53.056Z 76b4dd3d-14a2-4093-b5b2-a0b389551970 debug: PublicAccessAuthenticator:validate() Getting account properties...
-2023-09-23T20:00:53.056Z 76b4dd3d-14a2-4093-b5b2-a0b389551970 debug: PublicAccessAuthenticator:validate() Retrieved account name from context: devstoreaccount1, container: attachments, blob: 
-2023-09-23T20:00:53.056Z 76b4dd3d-14a2-4093-b5b2-a0b389551970 debug: PublicAccessAuthenticator:validate() Skip public access authentication. Cannot get public access type for container attachments
-2023-09-23T20:00:53.057Z 76b4dd3d-14a2-4093-b5b2-a0b389551970 info: BlobSharedKeyAuthenticator:validate() Start validation against account shared key authentication.
-2023-09-23T20:00:53.065Z 76b4dd3d-14a2-4093-b5b2-a0b389551970 info: BlobSharedKeyAuthenticator:validate() [STRING TO SIGN]:"HEAD\n\n\n\n\n\n\n\n\n\n\n\nx-ms-client-request-id:f079181b-b363-4a72-9405-6f8ff17fb1ae\nx-ms-date:Sat, 23 Sep 2023 20:00:52 GMT\nx-ms-version:2019-02-02\n/devstoreaccount1/devstoreaccount1/attachments\nrestype:container"
-2023-09-23T20:00:53.065Z 76b4dd3d-14a2-4093-b5b2-a0b389551970 info: BlobSharedKeyAuthenticator:validate() Calculated authentication header based on key1: SharedKey devstoreaccount1:qkbuxDQaBIcl1gCnMrH8t983TpQxPXAAE+0sRrer2yc=
-2023-09-23T20:00:53.065Z 76b4dd3d-14a2-4093-b5b2-a0b389551970 info: BlobSharedKeyAuthenticator:validate() Signature 1 matched.
-2023-09-23T20:00:53.065Z 76b4dd3d-14a2-4093-b5b2-a0b389551970 verbose: DeserializerMiddleware: Start deserializing...
-2023-09-23T20:00:53.066Z 76b4dd3d-14a2-4093-b5b2-a0b389551970 info: HandlerMiddleware: DeserializedParameters={"options":{"requestId":"f079181b-b363-4a72-9405-6f8ff17fb1ae","leaseAccessConditions":{}},"restype":"container","version":"2019-02-02"}
-2023-09-23T20:00:53.066Z 76b4dd3d-14a2-4093-b5b2-a0b389551970 verbose: SerializerMiddleware: Start serializing...
-2023-09-23T20:00:53.067Z 76b4dd3d-14a2-4093-b5b2-a0b389551970 info: EndMiddleware: End response. TotalTimeInMS=13 StatusCode=200 StatusMessage=undefined Headers={"server":"Azurite-Blob/3.23.0","etag":"\"0x1B0ABBB897139D0\"","last-modified":"Sat, 23 Sep 2023 19:59:57 GMT","x-ms-lease-state":"available","x-ms-lease-status":"unlocked","x-ms-client-request-id":"f079181b-b363-4a72-9405-6f8ff17fb1ae","x-ms-request-id":"76b4dd3d-14a2-4093-b5b2-a0b389551970","x-ms-version":"2022-11-02","x-ms-has-immutability-policy":"false","x-ms-has-legal-hold":"false"}
-2023-09-23T20:00:53.159Z 9418cd04-325b-4447-8b2c-3f1f84ecd08a info: BlobStorageContextMiddleware: RequestMethod=PUT RequestURL=http://127.0.0.1/devstoreaccount1/attachments/b8c38737-6441-4dea-bd3e-a6af24baca01 RequestHeaders:{"host":"127.0.0.1:10000","x-ms-blob-content-md5":"Mhw89IbtUJFk7eweGYH+yA==","x-ms-blob-type":"BlockBlob","x-ms-client-request-id":"6d41312d-24fa-436a-b10d-9f5ce41ece52","user-agent":"Azure-Storage/11.1.0 (.NET Core; Unix 22.6.0.0)","x-ms-version":"2019-02-02","x-ms-date":"Sat, 23 Sep 2023 20:00:53 GMT","authorization":"SharedKey devstoreaccount1:6UkeFXZzUNcIsNim+zn0IPP9ssaXKcaUmzH6QKf2gSE=","content-length":"7"} ClientIP=127.0.0.1 Protocol=http HTTPVersion=1.1
-2023-09-23T20:00:53.159Z 9418cd04-325b-4447-8b2c-3f1f84ecd08a info: BlobStorageContextMiddleware: Account=devstoreaccount1 Container=attachments Blob=b8c38737-6441-4dea-bd3e-a6af24baca01
-2023-09-23T20:00:53.159Z 9418cd04-325b-4447-8b2c-3f1f84ecd08a verbose: DispatchMiddleware: Dispatching request...
-2023-09-23T20:00:53.160Z 9418cd04-325b-4447-8b2c-3f1f84ecd08a info: DispatchMiddleware: Operation=BlockBlob_Upload
-2023-09-23T20:00:53.161Z 9418cd04-325b-4447-8b2c-3f1f84ecd08a verbose: AuthenticationMiddlewareFactory:createAuthenticationMiddleware() Validating authentications.
-2023-09-23T20:00:53.161Z 9418cd04-325b-4447-8b2c-3f1f84ecd08a info: PublicAccessAuthenticator:validate() Start validation against public access.
-2023-09-23T20:00:53.161Z 9418cd04-325b-4447-8b2c-3f1f84ecd08a debug: PublicAccessAuthenticator:validate() Getting account properties...
-2023-09-23T20:00:53.161Z 9418cd04-325b-4447-8b2c-3f1f84ecd08a debug: PublicAccessAuthenticator:validate() Retrieved account name from context: devstoreaccount1, container: attachments, blob: b8c38737-6441-4dea-bd3e-a6af24baca01
-2023-09-23T20:00:53.161Z 9418cd04-325b-4447-8b2c-3f1f84ecd08a debug: PublicAccessAuthenticator:validate() Skip public access authentication. Cannot get public access type for container attachments
-2023-09-23T20:00:53.161Z 9418cd04-325b-4447-8b2c-3f1f84ecd08a info: BlobSharedKeyAuthenticator:validate() Start validation against account shared key authentication.
-2023-09-23T20:00:53.161Z 9418cd04-325b-4447-8b2c-3f1f84ecd08a info: BlobSharedKeyAuthenticator:validate() [STRING TO SIGN]:"PUT\n\n\n7\n\n\n\n\n\n\n\n\nx-ms-blob-content-md5:Mhw89IbtUJFk7eweGYH+yA==\nx-ms-blob-type:BlockBlob\nx-ms-client-request-id:6d41312d-24fa-436a-b10d-9f5ce41ece52\nx-ms-date:Sat, 23 Sep 2023 20:00:53 GMT\nx-ms-version:2019-02-02\n/devstoreaccount1/devstoreaccount1/attachments/b8c38737-6441-4dea-bd3e-a6af24baca01"
-2023-09-23T20:00:53.161Z 9418cd04-325b-4447-8b2c-3f1f84ecd08a info: BlobSharedKeyAuthenticator:validate() Calculated authentication header based on key1: SharedKey devstoreaccount1:6UkeFXZzUNcIsNim+zn0IPP9ssaXKcaUmzH6QKf2gSE=
-2023-09-23T20:00:53.161Z 9418cd04-325b-4447-8b2c-3f1f84ecd08a info: BlobSharedKeyAuthenticator:validate() Signature 1 matched.
-2023-09-23T20:00:53.161Z 9418cd04-325b-4447-8b2c-3f1f84ecd08a verbose: DeserializerMiddleware: Start deserializing...
-2023-09-23T20:00:53.161Z 9418cd04-325b-4447-8b2c-3f1f84ecd08a info: HandlerMiddleware: DeserializedParameters={"options":{"metadata":{},"requestId":"6d41312d-24fa-436a-b10d-9f5ce41ece52","blobHTTPHeaders":{"blobContentMD5":{"type":"Buffer","data":[50,28,60,244,134,237,80,145,100,237,236,30,25,129,254,200]}},"leaseAccessConditions":{},"cpkInfo":{},"cpkScopeInfo":{},"modifiedAccessConditions":{}},"contentLength":7,"version":"2019-02-02","blobType":"BlockBlob","body":"ReadableStream"}
-2023-09-23T20:00:53.162Z 9418cd04-325b-4447-8b2c-3f1f84ecd08a debug: OperationQueue.operate() Schedule incoming job 8129da3d-a400-4e72-889b-036c11345381
-2023-09-23T20:00:53.162Z 9418cd04-325b-4447-8b2c-3f1f84ecd08a debug: OperationQueue:execute() Current runningConcurrency:0 maxConcurrency:50 operations.length:1
-2023-09-23T20:00:53.162Z 9418cd04-325b-4447-8b2c-3f1f84ecd08a info: FSExtentStore:appendExtent() Select extent from idle location for extent append operation. LocationId:1 extentId:32dd7f3b-9654-414f-8d81-5db2b73352b3 offset:0 MAX_EXTENT_SIZE:67108864 
-2023-09-23T20:00:53.162Z 9418cd04-325b-4447-8b2c-3f1f84ecd08a debug: FSExtentStore:appendExtent() Get fd:undefined for extent:32dd7f3b-9654-414f-8d81-5db2b73352b3 from cache.
-2023-09-23T20:00:53.162Z 9418cd04-325b-4447-8b2c-3f1f84ecd08a debug: FSExtentStore:appendExtent() Open file:/Users/saadsheralam/Desktop/UIUCProject/ServiceBus.AttachmentPlugin/src/ServiceBus.AttachmentPlugin.Tests/__blobstorage__/32dd7f3b-9654-414f-8d81-5db2b73352b3 for extent:32dd7f3b-9654-414f-8d81-5db2b73352b3, get new fd:22
-2023-09-23T20:00:53.162Z 9418cd04-325b-4447-8b2c-3f1f84ecd08a debug: FSExtentStore:appendExtent() Created write stream for fd:22
-2023-09-23T20:00:53.162Z 9418cd04-325b-4447-8b2c-3f1f84ecd08a debug: FSExtentStore:appendExtent() Start writing to extent 32dd7f3b-9654-414f-8d81-5db2b73352b3
-2023-09-23T20:00:53.162Z 9418cd04-325b-4447-8b2c-3f1f84ecd08a debug: FSExtentStore:streamPipe() Start piping data to write stream
-2023-09-23T20:00:53.163Z 9418cd04-325b-4447-8b2c-3f1f84ecd08a debug: FSExtentStore:streamPipe() Readable stream triggers close event, 7 bytes piped
-2023-09-23T20:00:53.163Z 9418cd04-325b-4447-8b2c-3f1f84ecd08a debug: FSExtentStore:streamPipe() Invoke write stream end()
-2023-09-23T20:00:53.163Z 9418cd04-325b-4447-8b2c-3f1f84ecd08a debug: FSExtentStore:streamPipe() Readable stream triggers close event, 7 bytes piped
-2023-09-23T20:00:53.163Z 9418cd04-325b-4447-8b2c-3f1f84ecd08a debug: FSExtentStore:streamPipe() Writable stream triggers finish event, after 7 bytes piped. Flush data to fd:22.
-2023-09-23T20:00:53.167Z 9418cd04-325b-4447-8b2c-3f1f84ecd08a debug: FSExtentStore:streamPipe() Flush data to fd:22 successfully. Resolve streamPipe().
-2023-09-23T20:00:53.167Z 9418cd04-325b-4447-8b2c-3f1f84ecd08a debug: FSExtentStore:appendExtent() Write finish, start updating extent metadata. extent:{"id":"32dd7f3b-9654-414f-8d81-5db2b73352b3","locationId":"Default","path":"32dd7f3b-9654-414f-8d81-5db2b73352b3","size":7,"lastModifiedInMS":1695499253167}
-2023-09-23T20:00:53.168Z 9418cd04-325b-4447-8b2c-3f1f84ecd08a debug: FSExtentStore:appendExtent() Update extent metadata done. Resolve()
-2023-09-23T20:00:53.168Z 9418cd04-325b-4447-8b2c-3f1f84ecd08a debug: OperationQueue.operate() Job 8129da3d-a400-4e72-889b-036c11345381 completes callback, resolve.
-2023-09-23T20:00:53.168Z 9418cd04-325b-4447-8b2c-3f1f84ecd08a debug: OperationQueue.operate() Schedule incoming job 80861683-43a4-4af4-9e6d-70098fb765a1
-2023-09-23T20:00:53.168Z 9418cd04-325b-4447-8b2c-3f1f84ecd08a debug: OperationQueue:execute() Current runningConcurrency:0 maxConcurrency:100 operations.length:1
-2023-09-23T20:00:53.168Z 9418cd04-325b-4447-8b2c-3f1f84ecd08a verbose: FSExtentStore:readExtent() Creating read stream. LocationId:Default extentId:32dd7f3b-9654-414f-8d81-5db2b73352b3 path:/Users/saadsheralam/Desktop/UIUCProject/ServiceBus.AttachmentPlugin/src/ServiceBus.AttachmentPlugin.Tests/__blobstorage__/32dd7f3b-9654-414f-8d81-5db2b73352b3 offset:0 count:7 end:6
-2023-09-23T20:00:53.168Z 9418cd04-325b-4447-8b2c-3f1f84ecd08a debug: OperationQueue.operate() Job 80861683-43a4-4af4-9e6d-70098fb765a1 completes callback, resolve.
-2023-09-23T20:00:53.168Z 9418cd04-325b-4447-8b2c-3f1f84ecd08a debug: OperationQueue:execute() Current runningConcurrency:0 maxConcurrency:50 operations.length:0
-2023-09-23T20:00:53.168Z 9418cd04-325b-4447-8b2c-3f1f84ecd08a debug: OperationQueue:execute() return. Operation.length === 0
-2023-09-23T20:00:53.168Z 9418cd04-325b-4447-8b2c-3f1f84ecd08a debug: OperationQueue:execute() Current runningConcurrency:0 maxConcurrency:100 operations.length:0
-2023-09-23T20:00:53.168Z 9418cd04-325b-4447-8b2c-3f1f84ecd08a debug: OperationQueue:execute() return. Operation.length === 0
-2023-09-23T20:00:53.169Z 9418cd04-325b-4447-8b2c-3f1f84ecd08a verbose: SerializerMiddleware: Start serializing...
-2023-09-23T20:00:53.169Z 9418cd04-325b-4447-8b2c-3f1f84ecd08a info: EndMiddleware: End response. TotalTimeInMS=10 StatusCode=201 StatusMessage=undefined Headers={"server":"Azurite-Blob/3.23.0","etag":"\"0x1E56231D1EF5F60\"","last-modified":"Sat, 23 Sep 2023 20:00:53 GMT","content-md5":"Mhw89IbtUJFk7eweGYH+yA==","x-ms-client-request-id":"6d41312d-24fa-436a-b10d-9f5ce41ece52","x-ms-request-id":"9418cd04-325b-4447-8b2c-3f1f84ecd08a","x-ms-version":"2022-11-02","date":"Sat, 23 Sep 2023 20:00:53 GMT","x-ms-request-server-encrypted":"true"}
-2023-09-23T20:00:53.169Z 9418cd04-325b-4447-8b2c-3f1f84ecd08a verbose: FSExtentStore:readExtent() Read stream closed. LocationId:Default extentId:32dd7f3b-9654-414f-8d81-5db2b73352b3 path:/Users/saadsheralam/Desktop/UIUCProject/ServiceBus.AttachmentPlugin/src/ServiceBus.AttachmentPlugin.Tests/__blobstorage__/32dd7f3b-9654-414f-8d81-5db2b73352b3 offset:0 count:7 end:6
-2023-09-23T20:00:56.458Z 	 info: Azurite Blob service is closing...
-2023-09-23T20:00:56.458Z 	 info: Azurite Queue service is closing...
-2023-09-23T20:00:56.458Z 	 info: Azurite Table service is closing...
-2023-09-23T20:00:56.459Z 	 info: BlobGCManager:close() Start closing BlobGCManager. Set status to Closing.
-2023-09-23T20:00:56.460Z 	 info: QueueGCManager:close() Start closing QueueGCManager, set status to Closing.
-2023-09-23T20:00:56.460Z 	 info: BlobGCManager:start() Mark and sweep loop is closed.
-2023-09-23T20:00:56.460Z 	 info: BlobGCManager:close() BlobGCManager successfully closed. Set status to Closed.
-2023-09-23T20:00:56.460Z 	 info: QueueGCManager:start() Mark and sweep loop is closed.
-2023-09-23T20:00:56.460Z 	 info: QueueGCManager:close() QueueGCManager successfully closed, set status to Closed.
-2023-09-23T20:00:56.460Z 	 info: Azurite Table service successfully closed
-2023-09-23T20:00:56.461Z 	 info: Azurite Blob service successfully closed
-2023-09-23T20:00:56.461Z 	 info: Azurite Queue service successfully closed
+2023-09-24T07:24:40.385Z 	 info: Azurite Blob service is starting on 127.0.0.1:10000
+2023-09-24T07:24:40.387Z 	 info: AccountDataStore:init() Refresh accounts from environment variable AZURITE_ACCOUNTS with value undefined
+2023-09-24T07:24:40.387Z 	 info: AccountDataStore:init() Fallback to default emulator account devstoreaccount1.
+2023-09-24T07:24:40.394Z 	 info: BlobGCManager:start() Starting BlobGCManager. Set status to Initializing.
+2023-09-24T07:24:40.394Z 	 info: BlobGCManager:start() Trigger mark and sweep loop. Set status to Running.
+2023-09-24T07:24:40.394Z 	 info: BlobGCManager:markSweepLoop() Start next mark and sweep.
+2023-09-24T07:24:40.394Z 	 info: BlobGCManager:markSweep() Get all extents.
+2023-09-24T07:24:40.394Z 	 info: BlobGCManager:start() BlobGCManager successfully started.
+2023-09-24T07:24:40.396Z 	 info: BlobGCManager:markSweep() Got 4 extents.
+2023-09-24T07:24:40.396Z 	 info: BlobGCManager:markSweep() Get referred extents.
+2023-09-24T07:24:40.396Z 	 info: BlobGCManager:markSweep() Got referred extents, unreferenced extents count is 0.
+2023-09-24T07:24:40.396Z 	 info: BlobGCManager:markSweepLoop() Mark and sweep finished, taken 2ms.
+2023-09-24T07:24:40.396Z 	 info: BlobGCManager:markSweepLoop() Sleep for 600000ms.
+2023-09-24T07:24:40.397Z 	 info: Azurite Blob service successfully listens on http://127.0.0.1:10000
+2023-09-24T07:24:40.398Z 	 info: Azurite Queue service is starting on 127.0.0.1:10001
+2023-09-24T07:24:40.398Z 	 info: AccountDataStore:init() Refresh accounts from environment variable AZURITE_ACCOUNTS with value undefined
+2023-09-24T07:24:40.398Z 	 info: AccountDataStore:init() Fallback to default emulator account devstoreaccount1.
+2023-09-24T07:24:40.401Z 	 info: QueueGCManager:start() Starting QueueGCManager, set status to Initializing
+2023-09-24T07:24:40.401Z 	 info: QueueGCManager:start() Trigger mark and sweep loop, set status to Running.
+2023-09-24T07:24:40.401Z 	 info: QueueGCManager:markSweepLoop() Start new mark and sweep.
+2023-09-24T07:24:40.401Z 	 info: QueueGCManger:markSweep() Get all extents.
+2023-09-24T07:24:40.401Z 	 info: QueueGCManager:start() QueueGCManager successfully started.
+2023-09-24T07:24:40.401Z 	 info: QueueGCManager:marksweep() Get 0 extents.
+2023-09-24T07:24:40.401Z 	 info: QueueGCManager:markSweep() Get referred extents, then remove from allExtents.
+2023-09-24T07:24:40.401Z 	 info: QueueGCManager:markSweep() Got referred extents, unreferenced extents count is 0.
+2023-09-24T07:24:40.401Z 	 info: QueueGCManager:markSweepLoop() Mark and sweep finished, take 0ms.
+2023-09-24T07:24:40.401Z 	 info: QueueGCManager:markSweepLoop() Sleep for 60000
+2023-09-24T07:24:40.401Z 	 info: Azurite Queue service successfully listens on http://127.0.0.1:10001
+2023-09-24T07:24:40.401Z 	 info: Azurite Table service is starting on 127.0.0.1:10002
+2023-09-24T07:24:40.401Z 	 info: AccountDataStore:init() Refresh accounts from environment variable AZURITE_ACCOUNTS with value undefined
+2023-09-24T07:24:40.401Z 	 info: AccountDataStore:init() Fallback to default emulator account devstoreaccount1.
+2023-09-24T07:24:40.403Z 	 info: Azurite Table service successfully listens on http://127.0.0.1:10002
+2023-09-24T07:24:48.982Z f7ad9ef3-eaf3-44b0-9700-fbbb82450a15 info: BlobStorageContextMiddleware: RequestMethod=HEAD RequestURL=http://127.0.0.1/devstoreaccount1/attachments?restype=container RequestHeaders:{"host":"127.0.0.1:10000","x-ms-client-request-id":"8a6685df-8b29-47d8-b588-ae5e97de9152","user-agent":"Azure-Storage/11.1.0 (.NET Core; Unix 22.6.0.0)","x-ms-version":"2019-02-02","x-ms-date":"Sun, 24 Sep 2023 07:24:48 GMT","authorization":"SharedKey devstoreaccount1:AvRnxcUZcfg1Mj9/iGwipKLguwRBWXEUiNOF9pIM/Rk="} ClientIP=127.0.0.1 Protocol=http HTTPVersion=1.1
+2023-09-24T07:24:48.982Z f7ad9ef3-eaf3-44b0-9700-fbbb82450a15 info: BlobStorageContextMiddleware: Account=devstoreaccount1 Container=attachments Blob=
+2023-09-24T07:24:48.982Z f7ad9ef3-eaf3-44b0-9700-fbbb82450a15 verbose: DispatchMiddleware: Dispatching request...
+2023-09-24T07:24:48.983Z f7ad9ef3-eaf3-44b0-9700-fbbb82450a15 info: DispatchMiddleware: Operation=Container_GetPropertiesWithHead
+2023-09-24T07:24:48.983Z f7ad9ef3-eaf3-44b0-9700-fbbb82450a15 verbose: AuthenticationMiddlewareFactory:createAuthenticationMiddleware() Validating authentications.
+2023-09-24T07:24:48.984Z f7ad9ef3-eaf3-44b0-9700-fbbb82450a15 info: PublicAccessAuthenticator:validate() Start validation against public access.
+2023-09-24T07:24:48.984Z f7ad9ef3-eaf3-44b0-9700-fbbb82450a15 debug: PublicAccessAuthenticator:validate() Getting account properties...
+2023-09-24T07:24:48.984Z f7ad9ef3-eaf3-44b0-9700-fbbb82450a15 debug: PublicAccessAuthenticator:validate() Retrieved account name from context: devstoreaccount1, container: attachments, blob: 
+2023-09-24T07:24:48.984Z f7ad9ef3-eaf3-44b0-9700-fbbb82450a15 debug: PublicAccessAuthenticator:validate() Skip public access authentication. Cannot get public access type for container attachments
+2023-09-24T07:24:48.984Z f7ad9ef3-eaf3-44b0-9700-fbbb82450a15 info: BlobSharedKeyAuthenticator:validate() Start validation against account shared key authentication.
+2023-09-24T07:24:48.992Z f7ad9ef3-eaf3-44b0-9700-fbbb82450a15 info: BlobSharedKeyAuthenticator:validate() [STRING TO SIGN]:"HEAD\n\n\n\n\n\n\n\n\n\n\n\nx-ms-client-request-id:8a6685df-8b29-47d8-b588-ae5e97de9152\nx-ms-date:Sun, 24 Sep 2023 07:24:48 GMT\nx-ms-version:2019-02-02\n/devstoreaccount1/devstoreaccount1/attachments\nrestype:container"
+2023-09-24T07:24:48.993Z f7ad9ef3-eaf3-44b0-9700-fbbb82450a15 info: BlobSharedKeyAuthenticator:validate() Calculated authentication header based on key1: SharedKey devstoreaccount1:AvRnxcUZcfg1Mj9/iGwipKLguwRBWXEUiNOF9pIM/Rk=
+2023-09-24T07:24:48.993Z f7ad9ef3-eaf3-44b0-9700-fbbb82450a15 info: BlobSharedKeyAuthenticator:validate() Signature 1 matched.
+2023-09-24T07:24:48.993Z f7ad9ef3-eaf3-44b0-9700-fbbb82450a15 verbose: DeserializerMiddleware: Start deserializing...
+2023-09-24T07:24:48.994Z f7ad9ef3-eaf3-44b0-9700-fbbb82450a15 info: HandlerMiddleware: DeserializedParameters={"options":{"requestId":"8a6685df-8b29-47d8-b588-ae5e97de9152","leaseAccessConditions":{}},"restype":"container","version":"2019-02-02"}
+2023-09-24T07:24:48.994Z f7ad9ef3-eaf3-44b0-9700-fbbb82450a15 verbose: SerializerMiddleware: Start serializing...
+2023-09-24T07:24:48.994Z f7ad9ef3-eaf3-44b0-9700-fbbb82450a15 info: EndMiddleware: End response. TotalTimeInMS=12 StatusCode=200 StatusMessage=undefined Headers={"server":"Azurite-Blob/3.23.0","etag":"\"0x1F8F2CDC57D6BE0\"","last-modified":"Sun, 24 Sep 2023 07:23:32 GMT","x-ms-lease-state":"available","x-ms-lease-status":"unlocked","x-ms-client-request-id":"8a6685df-8b29-47d8-b588-ae5e97de9152","x-ms-request-id":"f7ad9ef3-eaf3-44b0-9700-fbbb82450a15","x-ms-version":"2022-11-02","x-ms-has-immutability-policy":"false","x-ms-has-legal-hold":"false"}
+2023-09-24T07:24:49.093Z 0f88e8d9-941a-4d2d-8b51-bd3eb043520b info: BlobStorageContextMiddleware: RequestMethod=PUT RequestURL=http://127.0.0.1/devstoreaccount1/attachments/35717a83-bf23-4dcd-bbcc-434c6c79aa0b RequestHeaders:{"host":"127.0.0.1:10000","x-ms-blob-content-md5":"Mhw89IbtUJFk7eweGYH+yA==","x-ms-blob-type":"BlockBlob","x-ms-client-request-id":"5618dc00-1c0e-4c27-8d01-88353e4a72a7","user-agent":"Azure-Storage/11.1.0 (.NET Core; Unix 22.6.0.0)","x-ms-version":"2019-02-02","x-ms-date":"Sun, 24 Sep 2023 07:24:49 GMT","authorization":"SharedKey devstoreaccount1:w3iLc/zJESYh07mpqFY8SSTFWFGuf0EI/FpDW0VVFoI=","content-length":"7"} ClientIP=127.0.0.1 Protocol=http HTTPVersion=1.1
+2023-09-24T07:24:49.093Z 0f88e8d9-941a-4d2d-8b51-bd3eb043520b info: BlobStorageContextMiddleware: Account=devstoreaccount1 Container=attachments Blob=35717a83-bf23-4dcd-bbcc-434c6c79aa0b
+2023-09-24T07:24:49.093Z 0f88e8d9-941a-4d2d-8b51-bd3eb043520b verbose: DispatchMiddleware: Dispatching request...
+2023-09-24T07:24:49.094Z 0f88e8d9-941a-4d2d-8b51-bd3eb043520b info: DispatchMiddleware: Operation=BlockBlob_Upload
+2023-09-24T07:24:49.094Z 0f88e8d9-941a-4d2d-8b51-bd3eb043520b verbose: AuthenticationMiddlewareFactory:createAuthenticationMiddleware() Validating authentications.
+2023-09-24T07:24:49.094Z 0f88e8d9-941a-4d2d-8b51-bd3eb043520b info: PublicAccessAuthenticator:validate() Start validation against public access.
+2023-09-24T07:24:49.094Z 0f88e8d9-941a-4d2d-8b51-bd3eb043520b debug: PublicAccessAuthenticator:validate() Getting account properties...
+2023-09-24T07:24:49.094Z 0f88e8d9-941a-4d2d-8b51-bd3eb043520b debug: PublicAccessAuthenticator:validate() Retrieved account name from context: devstoreaccount1, container: attachments, blob: 35717a83-bf23-4dcd-bbcc-434c6c79aa0b
+2023-09-24T07:24:49.094Z 0f88e8d9-941a-4d2d-8b51-bd3eb043520b debug: PublicAccessAuthenticator:validate() Skip public access authentication. Cannot get public access type for container attachments
+2023-09-24T07:24:49.094Z 0f88e8d9-941a-4d2d-8b51-bd3eb043520b info: BlobSharedKeyAuthenticator:validate() Start validation against account shared key authentication.
+2023-09-24T07:24:49.095Z 0f88e8d9-941a-4d2d-8b51-bd3eb043520b info: BlobSharedKeyAuthenticator:validate() [STRING TO SIGN]:"PUT\n\n\n7\n\n\n\n\n\n\n\n\nx-ms-blob-content-md5:Mhw89IbtUJFk7eweGYH+yA==\nx-ms-blob-type:BlockBlob\nx-ms-client-request-id:5618dc00-1c0e-4c27-8d01-88353e4a72a7\nx-ms-date:Sun, 24 Sep 2023 07:24:49 GMT\nx-ms-version:2019-02-02\n/devstoreaccount1/devstoreaccount1/attachments/35717a83-bf23-4dcd-bbcc-434c6c79aa0b"
+2023-09-24T07:24:49.095Z 0f88e8d9-941a-4d2d-8b51-bd3eb043520b info: BlobSharedKeyAuthenticator:validate() Calculated authentication header based on key1: SharedKey devstoreaccount1:w3iLc/zJESYh07mpqFY8SSTFWFGuf0EI/FpDW0VVFoI=
+2023-09-24T07:24:49.095Z 0f88e8d9-941a-4d2d-8b51-bd3eb043520b info: BlobSharedKeyAuthenticator:validate() Signature 1 matched.
+2023-09-24T07:24:49.095Z 0f88e8d9-941a-4d2d-8b51-bd3eb043520b verbose: DeserializerMiddleware: Start deserializing...
+2023-09-24T07:24:49.095Z 0f88e8d9-941a-4d2d-8b51-bd3eb043520b info: HandlerMiddleware: DeserializedParameters={"options":{"metadata":{},"requestId":"5618dc00-1c0e-4c27-8d01-88353e4a72a7","blobHTTPHeaders":{"blobContentMD5":{"type":"Buffer","data":[50,28,60,244,134,237,80,145,100,237,236,30,25,129,254,200]}},"leaseAccessConditions":{},"cpkInfo":{},"cpkScopeInfo":{},"modifiedAccessConditions":{}},"contentLength":7,"version":"2019-02-02","blobType":"BlockBlob","body":"ReadableStream"}
+2023-09-24T07:24:49.095Z 0f88e8d9-941a-4d2d-8b51-bd3eb043520b debug: OperationQueue.operate() Schedule incoming job fcffa856-1c9b-4a26-98db-ca6f81b54c1a
+2023-09-24T07:24:49.095Z 0f88e8d9-941a-4d2d-8b51-bd3eb043520b debug: OperationQueue:execute() Current runningConcurrency:0 maxConcurrency:50 operations.length:1
+2023-09-24T07:24:49.096Z 0f88e8d9-941a-4d2d-8b51-bd3eb043520b info: FSExtentStore:appendExtent() Select extent from idle location for extent append operation. LocationId:1 extentId:75b77980-d62f-448f-aec7-18e1118edabe offset:0 MAX_EXTENT_SIZE:67108864 
+2023-09-24T07:24:49.096Z 0f88e8d9-941a-4d2d-8b51-bd3eb043520b debug: FSExtentStore:appendExtent() Get fd:undefined for extent:75b77980-d62f-448f-aec7-18e1118edabe from cache.
+2023-09-24T07:24:49.096Z 0f88e8d9-941a-4d2d-8b51-bd3eb043520b debug: FSExtentStore:appendExtent() Open file:/Users/saadsheralam/Desktop/UIUCProject/ServiceBus.AttachmentPlugin/src/ServiceBus.AttachmentPlugin.Tests/__blobstorage__/75b77980-d62f-448f-aec7-18e1118edabe for extent:75b77980-d62f-448f-aec7-18e1118edabe, get new fd:24
+2023-09-24T07:24:49.096Z 0f88e8d9-941a-4d2d-8b51-bd3eb043520b debug: FSExtentStore:appendExtent() Created write stream for fd:24
+2023-09-24T07:24:49.096Z 0f88e8d9-941a-4d2d-8b51-bd3eb043520b debug: FSExtentStore:appendExtent() Start writing to extent 75b77980-d62f-448f-aec7-18e1118edabe
+2023-09-24T07:24:49.096Z 0f88e8d9-941a-4d2d-8b51-bd3eb043520b debug: FSExtentStore:streamPipe() Start piping data to write stream
+2023-09-24T07:24:49.096Z 0f88e8d9-941a-4d2d-8b51-bd3eb043520b debug: FSExtentStore:streamPipe() Readable stream triggers close event, 7 bytes piped
+2023-09-24T07:24:49.096Z 0f88e8d9-941a-4d2d-8b51-bd3eb043520b debug: FSExtentStore:streamPipe() Invoke write stream end()
+2023-09-24T07:24:49.096Z 0f88e8d9-941a-4d2d-8b51-bd3eb043520b debug: FSExtentStore:streamPipe() Readable stream triggers close event, 7 bytes piped
+2023-09-24T07:24:49.097Z 0f88e8d9-941a-4d2d-8b51-bd3eb043520b debug: FSExtentStore:streamPipe() Writable stream triggers finish event, after 7 bytes piped. Flush data to fd:24.
+2023-09-24T07:24:49.101Z 0f88e8d9-941a-4d2d-8b51-bd3eb043520b debug: FSExtentStore:streamPipe() Flush data to fd:24 successfully. Resolve streamPipe().
+2023-09-24T07:24:49.102Z 0f88e8d9-941a-4d2d-8b51-bd3eb043520b debug: FSExtentStore:appendExtent() Write finish, start updating extent metadata. extent:{"id":"75b77980-d62f-448f-aec7-18e1118edabe","locationId":"Default","path":"75b77980-d62f-448f-aec7-18e1118edabe","size":7,"lastModifiedInMS":1695540289102}
+2023-09-24T07:24:49.102Z 0f88e8d9-941a-4d2d-8b51-bd3eb043520b debug: FSExtentStore:appendExtent() Update extent metadata done. Resolve()
+2023-09-24T07:24:49.102Z 0f88e8d9-941a-4d2d-8b51-bd3eb043520b debug: OperationQueue.operate() Job fcffa856-1c9b-4a26-98db-ca6f81b54c1a completes callback, resolve.
+2023-09-24T07:24:49.102Z 0f88e8d9-941a-4d2d-8b51-bd3eb043520b debug: OperationQueue.operate() Schedule incoming job 2ea8eec8-c400-4ddf-bc26-ef48caabb6d2
+2023-09-24T07:24:49.102Z 0f88e8d9-941a-4d2d-8b51-bd3eb043520b debug: OperationQueue:execute() Current runningConcurrency:0 maxConcurrency:100 operations.length:1
+2023-09-24T07:24:49.102Z 0f88e8d9-941a-4d2d-8b51-bd3eb043520b verbose: FSExtentStore:readExtent() Creating read stream. LocationId:Default extentId:75b77980-d62f-448f-aec7-18e1118edabe path:/Users/saadsheralam/Desktop/UIUCProject/ServiceBus.AttachmentPlugin/src/ServiceBus.AttachmentPlugin.Tests/__blobstorage__/75b77980-d62f-448f-aec7-18e1118edabe offset:0 count:7 end:6
+2023-09-24T07:24:49.102Z 0f88e8d9-941a-4d2d-8b51-bd3eb043520b debug: OperationQueue.operate() Job 2ea8eec8-c400-4ddf-bc26-ef48caabb6d2 completes callback, resolve.
+2023-09-24T07:24:49.102Z 0f88e8d9-941a-4d2d-8b51-bd3eb043520b debug: OperationQueue:execute() Current runningConcurrency:0 maxConcurrency:50 operations.length:0
+2023-09-24T07:24:49.102Z 0f88e8d9-941a-4d2d-8b51-bd3eb043520b debug: OperationQueue:execute() return. Operation.length === 0
+2023-09-24T07:24:49.102Z 0f88e8d9-941a-4d2d-8b51-bd3eb043520b debug: OperationQueue:execute() Current runningConcurrency:0 maxConcurrency:100 operations.length:0
+2023-09-24T07:24:49.102Z 0f88e8d9-941a-4d2d-8b51-bd3eb043520b debug: OperationQueue:execute() return. Operation.length === 0
+2023-09-24T07:24:49.103Z 0f88e8d9-941a-4d2d-8b51-bd3eb043520b verbose: SerializerMiddleware: Start serializing...
+2023-09-24T07:24:49.103Z 0f88e8d9-941a-4d2d-8b51-bd3eb043520b info: EndMiddleware: End response. TotalTimeInMS=10 StatusCode=201 StatusMessage=undefined Headers={"server":"Azurite-Blob/3.23.0","etag":"\"0x250073067BAE5E0\"","last-modified":"Sun, 24 Sep 2023 07:24:49 GMT","content-md5":"Mhw89IbtUJFk7eweGYH+yA==","x-ms-client-request-id":"5618dc00-1c0e-4c27-8d01-88353e4a72a7","x-ms-request-id":"0f88e8d9-941a-4d2d-8b51-bd3eb043520b","x-ms-version":"2022-11-02","date":"Sun, 24 Sep 2023 07:24:49 GMT","x-ms-request-server-encrypted":"true"}
+2023-09-24T07:24:49.104Z 0f88e8d9-941a-4d2d-8b51-bd3eb043520b verbose: FSExtentStore:readExtent() Read stream closed. LocationId:Default extentId:75b77980-d62f-448f-aec7-18e1118edabe path:/Users/saadsheralam/Desktop/UIUCProject/ServiceBus.AttachmentPlugin/src/ServiceBus.AttachmentPlugin.Tests/__blobstorage__/75b77980-d62f-448f-aec7-18e1118edabe offset:0 count:7 end:6
+2023-09-24T07:24:49.341Z 	 info: Azurite Blob service is closing...
+2023-09-24T07:24:49.342Z 	 info: Azurite Queue service is closing...
+2023-09-24T07:24:49.342Z 	 info: Azurite Table service is closing...
+2023-09-24T07:24:49.342Z 	 info: BlobGCManager:close() Start closing BlobGCManager. Set status to Closing.
+2023-09-24T07:24:49.342Z 	 info: QueueGCManager:close() Start closing QueueGCManager, set status to Closing.
+2023-09-24T07:24:49.343Z 	 info: BlobGCManager:start() Mark and sweep loop is closed.
+2023-09-24T07:24:49.343Z 	 info: BlobGCManager:close() BlobGCManager successfully closed. Set status to Closed.
+2023-09-24T07:24:49.343Z 	 info: QueueGCManager:start() Mark and sweep loop is closed.
+2023-09-24T07:24:49.343Z 	 info: QueueGCManager:close() QueueGCManager successfully closed, set status to Closed.
+2023-09-24T07:24:49.343Z 	 info: Azurite Table service successfully closed
+2023-09-24T07:24:49.343Z 	 info: Azurite Queue service successfully closed
+2023-09-24T07:24:49.352Z 	 info: Azurite Blob service successfully closed
