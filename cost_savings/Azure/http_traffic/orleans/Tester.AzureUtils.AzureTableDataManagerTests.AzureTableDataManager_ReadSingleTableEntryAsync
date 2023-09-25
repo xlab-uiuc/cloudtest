@@ -1,174 +1,87 @@
-2023-08-26T01:15:16.210Z 	 info: Azurite Blob service is starting on 127.0.0.1:10000
-2023-08-26T01:15:16.212Z 	 info: AccountDataStore:init() Refresh accounts from environment variable AZURITE_ACCOUNTS with value undefined
-2023-08-26T01:15:16.212Z 	 info: AccountDataStore:init() Fallback to default emulator account devstoreaccount1.
-2023-08-26T01:15:16.229Z 	 info: BlobGCManager:start() Starting BlobGCManager. Set status to Initializing.
-2023-08-26T01:15:16.230Z 	 info: BlobGCManager:start() Trigger mark and sweep loop. Set status to Running.
-2023-08-26T01:15:16.230Z 	 info: BlobGCManager:markSweepLoop() Start next mark and sweep.
-2023-08-26T01:15:16.230Z 	 info: BlobGCManager:markSweep() Get all extents.
-2023-08-26T01:15:16.231Z 	 info: BlobGCManager:start() BlobGCManager successfully started.
-2023-08-26T01:15:16.234Z 	 info: BlobGCManager:markSweep() Got 0 extents.
-2023-08-26T01:15:16.234Z 	 info: BlobGCManager:markSweep() Get referred extents.
-2023-08-26T01:15:16.234Z 	 info: BlobGCManager:markSweep() Got referred extents, unreferenced extents count is 0.
-2023-08-26T01:15:16.234Z 	 info: BlobGCManager:markSweepLoop() Mark and sweep finished, taken 4ms.
-2023-08-26T01:15:16.235Z 	 info: BlobGCManager:markSweepLoop() Sleep for 600000ms.
-2023-08-26T01:15:16.236Z 	 info: Azurite Blob service successfully listens on http://127.0.0.1:10000
-2023-08-26T01:15:16.237Z 	 info: Azurite Queue service is starting on 127.0.0.1:10001
-2023-08-26T01:15:16.237Z 	 info: AccountDataStore:init() Refresh accounts from environment variable AZURITE_ACCOUNTS with value undefined
-2023-08-26T01:15:16.237Z 	 info: AccountDataStore:init() Fallback to default emulator account devstoreaccount1.
-2023-08-26T01:15:16.245Z 	 info: QueueGCManager:start() Starting QueueGCManager, set status to Initializing
-2023-08-26T01:15:16.245Z 	 info: QueueGCManager:start() Trigger mark and sweep loop, set status to Running.
-2023-08-26T01:15:16.246Z 	 info: QueueGCManager:markSweepLoop() Start new mark and sweep.
-2023-08-26T01:15:16.246Z 	 info: QueueGCManger:markSweep() Get all extents.
-2023-08-26T01:15:16.246Z 	 info: QueueGCManager:start() QueueGCManager successfully started.
-2023-08-26T01:15:16.247Z 	 info: QueueGCManager:marksweep() Get 0 extents.
-2023-08-26T01:15:16.247Z 	 info: QueueGCManager:markSweep() Get referred extents, then remove from allExtents.
-2023-08-26T01:15:16.247Z 	 info: QueueGCManager:markSweep() Got referred extents, unreferenced extents count is 0.
-2023-08-26T01:15:16.247Z 	 info: QueueGCManager:markSweepLoop() Mark and sweep finished, take 1ms.
-2023-08-26T01:15:16.247Z 	 info: QueueGCManager:markSweepLoop() Sleep for 60000
-2023-08-26T01:15:16.248Z 	 info: Azurite Queue service successfully listens on http://127.0.0.1:10001
-2023-08-26T01:15:16.248Z 	 info: Azurite Table service is starting on 127.0.0.1:10002
-2023-08-26T01:15:16.248Z 	 info: AccountDataStore:init() Refresh accounts from environment variable AZURITE_ACCOUNTS with value undefined
-2023-08-26T01:15:16.248Z 	 info: AccountDataStore:init() Fallback to default emulator account devstoreaccount1.
-2023-08-26T01:15:16.258Z 	 info: Azurite Table service successfully listens on http://127.0.0.1:10002
-2023-08-26T01:15:49.459Z 0a0a1511-f372-437e-b458-667137eadfb8 info: TableStorageContextMiddleware: RequestMethod=POST RequestURL=http://127.0.0.1/devstoreaccount1/Tables?$format=application%2Fjson%3Bodata%3Dminimalmetadata RequestHeaders:{"host":"127.0.0.1:10002","x-ms-version":"2020-12-06","dataserviceversion":"3.0","prefer":"return-no-content","accept":"application/json;odata=minimalmetadata","x-ms-client-request-id":"96cb8ddf-2f8d-4982-9b55-d1796cde2661","x-ms-return-client-request-id":"true","user-agent":"azsdk-net-Data.Tables/12.8.0 (.NET 7.0.5; Darwin 22.5.0 Darwin Kernel Version 22.5.0: Mon Apr 24 20:53:44 PDT 2023; root:xnu-8796.121.2~5/RELEASE_ARM64_T8103)","x-ms-date":"Sat, 26 Aug 2023 01:15:49 GMT","authorization":"SharedKeyLite devstoreaccount1:YWWHe/+DCyf8T1TzaAG06XuTjUlQ7uq3BclDTf2rFwc=","content-type":"application/json;odata=nometadata","content-length":"33"} ClientIP=127.0.0.1 Protocol=http HTTPVersion=1.1
-2023-08-26T01:15:49.459Z 0a0a1511-f372-437e-b458-667137eadfb8 debug: tableStorageContextMiddleware: Dispatch pattern string: /Tables
-2023-08-26T01:15:49.459Z 0a0a1511-f372-437e-b458-667137eadfb8 info: tableStorageContextMiddleware: Account=devstoreaccount1 tableName=undefined
-2023-08-26T01:15:49.459Z 0a0a1511-f372-437e-b458-667137eadfb8 verbose: DispatchMiddleware: Dispatching request...
-2023-08-26T01:15:49.461Z 0a0a1511-f372-437e-b458-667137eadfb8 info: DispatchMiddleware: Operation=Table_Create
-2023-08-26T01:15:49.461Z 0a0a1511-f372-437e-b458-667137eadfb8 verbose: AuthenticationMiddlewareFactory:createAuthenticationMiddleware() Validating authentications.
-2023-08-26T01:15:49.461Z 0a0a1511-f372-437e-b458-667137eadfb8 info: TableSharedKeyLiteAuthenticator:validate() Start validation against account shared key authentication.
-2023-08-26T01:15:49.461Z 0a0a1511-f372-437e-b458-667137eadfb8 info: TableSharedKeyLiteAuthenticator:validate() [STRING TO SIGN]:"Sat, 26 Aug 2023 01:15:49 GMT\n/devstoreaccount1/devstoreaccount1/Tables"
-2023-08-26T01:15:49.462Z 0a0a1511-f372-437e-b458-667137eadfb8 info: TableSharedKeyLiteAuthenticator:validate() Calculated authentication header based on key1: SharedKeyLite devstoreaccount1:YWWHe/+DCyf8T1TzaAG06XuTjUlQ7uq3BclDTf2rFwc=
-2023-08-26T01:15:49.462Z 0a0a1511-f372-437e-b458-667137eadfb8 info: TableSharedKeyLiteAuthenticator:validate() Signature 1 matched.
-2023-08-26T01:15:49.462Z 0a0a1511-f372-437e-b458-667137eadfb8 verbose: DeserializerMiddleware: Start deserializing...
-2023-08-26T01:15:49.464Z 0a0a1511-f372-437e-b458-667137eadfb8 debug: deserialize(): Raw request body string is (removed all empty characters) {"TableName":"UnitTestAzureData"}
-2023-08-26T01:15:49.464Z 0a0a1511-f372-437e-b458-667137eadfb8 info: HandlerMiddleware: DeserializedParameters={"options":{"queryOptions":{"format":"application/json;odata=minimalmetadata"},"requestId":"96cb8ddf-2f8d-4982-9b55-d1796cde2661","dataServiceVersion":"3.0","responsePreference":"return-no-content"},"version":"2020-12-06","tableProperties":{"tableName":"UnitTestAzureData"},"body":"ReadableStream"}
-2023-08-26T01:15:49.466Z 0a0a1511-f372-437e-b458-667137eadfb8 error: ErrorMiddleware: Received a MiddlewareError, fill error information to HTTP response
-2023-08-26T01:15:49.467Z 0a0a1511-f372-437e-b458-667137eadfb8 error: ErrorMiddleware: ErrorName=StorageError ErrorMessage="The table specified already exists."  ErrorHTTPStatusCode=409 ErrorHTTPStatusMessage=undefined ErrorHTTPHeaders={"x-ms-error-code":"TableAlreadyExists","x-ms-request-id":"0a0a1511-f372-437e-b458-667137eadfb8","x-ms-version":"2022-11-02"} ErrorHTTPBody="{\"odata.error\":{\"code\":\"TableAlreadyExists\",\"message\":{\"lang\":\"en-US\",\"value\":\"The table specified already exists.\\nRequestId:0a0a1511-f372-437e-b458-667137eadfb8\\nTime:2023-08-26T01:15:49.466Z\"}}}" ErrorStack="\"StorageError: The table specified already exists.\\n    at StorageErrorFactory.getTableAlreadyExists (/Users/saadsheralam/Desktop/UIUCProject/Azurite/dist/src/table/errors/StorageErrorFactory.js:23:16)\\n    at LokiTableMetadataStore.checkIfTableExists (/Users/saadsheralam/Desktop/UIUCProject/Azurite/dist/src/table/persistence/LokiTableMetadataStore.js:537:49)\\n    at LokiTableMetadataStore.createTable (/Users/saadsheralam/Desktop/UIUCProject/Azurite/dist/src/table/persistence/LokiTableMetadataStore.js:80:14)\\n    at TableHandler.create (/Users/saadsheralam/Desktop/UIUCProject/Azurite/dist/src/table/handlers/TableHandler.js:40:34)\\n    at /Users/saadsheralam/Desktop/UIUCProject/Azurite/dist/src/table/generated/middleware/HandlerMiddlewareFactory.js:58:18\\n    at /Users/saadsheralam/Desktop/UIUCProject/Azurite/dist/src/table/generated/ExpressMiddlewareFactory.js:77:63\\n    at Layer.handle [as handle_request] (/Users/saadsheralam/Desktop/UIUCProject/Azurite/node_modules/express/lib/router/layer.js:95:5)\\n    at trim_prefix (/Users/saadsheralam/Desktop/UIUCProject/Azurite/node_modules/express/lib/router/index.js:328:13)\\n    at /Users/saadsheralam/Desktop/UIUCProject/Azurite/node_modules/express/lib/router/index.js:286:9\\n    at Function.process_params (/Users/saadsheralam/Desktop/UIUCProject/Azurite/node_modules/express/lib/router/index.js:346:12)\""
-2023-08-26T01:15:49.467Z 0a0a1511-f372-437e-b458-667137eadfb8 error: ErrorMiddleware: Set HTTP code: 409
-2023-08-26T01:15:49.467Z 0a0a1511-f372-437e-b458-667137eadfb8 error: ErrorMiddleware: Set HTTP Header: x-ms-error-code=TableAlreadyExists
-2023-08-26T01:15:49.467Z 0a0a1511-f372-437e-b458-667137eadfb8 error: ErrorMiddleware: Set HTTP Header: x-ms-request-id=0a0a1511-f372-437e-b458-667137eadfb8
-2023-08-26T01:15:49.467Z 0a0a1511-f372-437e-b458-667137eadfb8 error: ErrorMiddleware: Set HTTP Header: x-ms-version=2022-11-02
-2023-08-26T01:15:49.467Z 0a0a1511-f372-437e-b458-667137eadfb8 error: ErrorMiddleware: Set content type: application/json;odata=minimalmetadata;streaming=true;charset=utf-8
-2023-08-26T01:15:49.467Z 0a0a1511-f372-437e-b458-667137eadfb8 error: ErrorMiddleware: Set HTTP body: "{\"odata.error\":{\"code\":\"TableAlreadyExists\",\"message\":{\"lang\":\"en-US\",\"value\":\"The table specified already exists.\\nRequestId:0a0a1511-f372-437e-b458-667137eadfb8\\nTime:2023-08-26T01:15:49.466Z\"}}}"
-2023-08-26T01:15:49.467Z 0a0a1511-f372-437e-b458-667137eadfb8 info: EndMiddleware: End response. TotalTimeInMS=9 StatusCode=409 StatusMessage=Conflict Headers={"server":"Azurite-Table/3.23.0","x-ms-error-code":"TableAlreadyExists","x-ms-request-id":"0a0a1511-f372-437e-b458-667137eadfb8","x-ms-version":"2022-11-02","content-type":"application/json;odata=minimalmetadata;streaming=true;charset=utf-8"}
-2023-08-26T01:15:49.485Z 981caa8f-540a-43f6-b640-efabb4f59f24 info: TableStorageContextMiddleware: RequestMethod=GET RequestURL=http://127.0.0.1/devstoreaccount1/UnitTestAzureData(PartitionKey='PK-AzureTableDataManagerTests-4dd6644b-9ead-42d1-98fa-d9da29c3b804',RowKey='RK-cf914ab3-98a9-410c-b8aa-d3748cc17777')?$format=application%2Fjson%3Bodata%3Dminimalmetadata RequestHeaders:{"host":"127.0.0.1:10002","x-ms-version":"2020-12-06","dataserviceversion":"3.0","accept":"application/json;odata=minimalmetadata","x-ms-client-request-id":"3b3186d8-f64c-4d49-925d-14e976cc8ecd","x-ms-return-client-request-id":"true","user-agent":"azsdk-net-Data.Tables/12.8.0 (.NET 7.0.5; Darwin 22.5.0 Darwin Kernel Version 22.5.0: Mon Apr 24 20:53:44 PDT 2023; root:xnu-8796.121.2~5/RELEASE_ARM64_T8103)","x-ms-date":"Sat, 26 Aug 2023 01:15:49 GMT","authorization":"SharedKeyLite devstoreaccount1:obZUZDTLJBmjlS3+Py0hEgpwxIu7KPoBiqk7V0JFpxk="} ClientIP=127.0.0.1 Protocol=http HTTPVersion=1.1
-2023-08-26T01:15:49.485Z 981caa8f-540a-43f6-b640-efabb4f59f24 debug: tableStorageContextMiddleware: Dispatch pattern string: /UnitTestAzureData(PartitionKey='PLACEHOLDER',RowKey='PLACEHOLDER')
-2023-08-26T01:15:49.485Z 981caa8f-540a-43f6-b640-efabb4f59f24 info: tableStorageContextMiddleware: Account=devstoreaccount1 tableName=UnitTestAzureData
-2023-08-26T01:15:49.485Z 981caa8f-540a-43f6-b640-efabb4f59f24 verbose: DispatchMiddleware: Dispatching request...
-2023-08-26T01:15:49.486Z 981caa8f-540a-43f6-b640-efabb4f59f24 info: DispatchMiddleware: Operation=Table_QueryEntitiesWithPartitionAndRowKey
-2023-08-26T01:15:49.486Z 981caa8f-540a-43f6-b640-efabb4f59f24 verbose: AuthenticationMiddlewareFactory:createAuthenticationMiddleware() Validating authentications.
-2023-08-26T01:15:49.486Z 981caa8f-540a-43f6-b640-efabb4f59f24 info: TableSharedKeyLiteAuthenticator:validate() Start validation against account shared key authentication.
-2023-08-26T01:15:49.486Z 981caa8f-540a-43f6-b640-efabb4f59f24 info: TableSharedKeyLiteAuthenticator:validate() [STRING TO SIGN]:"Sat, 26 Aug 2023 01:15:49 GMT\n/devstoreaccount1/devstoreaccount1/UnitTestAzureData(PartitionKey='PK-AzureTableDataManagerTests-4dd6644b-9ead-42d1-98fa-d9da29c3b804',RowKey='RK-cf914ab3-98a9-410c-b8aa-d3748cc17777')"
-2023-08-26T01:15:49.486Z 981caa8f-540a-43f6-b640-efabb4f59f24 info: TableSharedKeyLiteAuthenticator:validate() Calculated authentication header based on key1: SharedKeyLite devstoreaccount1:obZUZDTLJBmjlS3+Py0hEgpwxIu7KPoBiqk7V0JFpxk=
-2023-08-26T01:15:49.486Z 981caa8f-540a-43f6-b640-efabb4f59f24 info: TableSharedKeyLiteAuthenticator:validate() Signature 1 matched.
-2023-08-26T01:15:49.486Z 981caa8f-540a-43f6-b640-efabb4f59f24 verbose: DeserializerMiddleware: Start deserializing...
-2023-08-26T01:15:49.487Z 981caa8f-540a-43f6-b640-efabb4f59f24 info: HandlerMiddleware: DeserializedParameters={"options":{"queryOptions":{"format":"application/json;odata=minimalmetadata"},"requestId":"3b3186d8-f64c-4d49-925d-14e976cc8ecd","dataServiceVersion":"3.0"},"version":"2020-12-06"}
-2023-08-26T01:15:49.487Z 981caa8f-540a-43f6-b640-efabb4f59f24 error: ErrorMiddleware: Received a MiddlewareError, fill error information to HTTP response
-2023-08-26T01:15:49.487Z 981caa8f-540a-43f6-b640-efabb4f59f24 error: ErrorMiddleware: ErrorName=StorageError ErrorMessage="The specified resource does not exist."  ErrorHTTPStatusCode=404 ErrorHTTPStatusMessage=undefined ErrorHTTPHeaders={"x-ms-error-code":"ResourceNotFound","x-ms-request-id":"981caa8f-540a-43f6-b640-efabb4f59f24","x-ms-version":"2022-11-02"} ErrorHTTPBody="{\"odata.error\":{\"code\":\"ResourceNotFound\",\"message\":{\"lang\":\"en-US\",\"value\":\"The specified resource does not exist.\\nRequestId:981caa8f-540a-43f6-b640-efabb4f59f24\\nTime:2023-08-26T01:15:49.487Z\"}}}" ErrorStack="\"StorageError: The specified resource does not exist.\\n    at StorageErrorFactory.getEntityNotFound (/Users/saadsheralam/Desktop/UIUCProject/Azurite/dist/src/table/errors/StorageErrorFactory.js:76:16)\\n    at TableHandler.queryEntitiesWithPartitionAndRowKey (/Users/saadsheralam/Desktop/UIUCProject/Azurite/dist/src/table/handlers/TableHandler.js:369:49)\\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\""
-2023-08-26T01:15:49.487Z 981caa8f-540a-43f6-b640-efabb4f59f24 error: ErrorMiddleware: Set HTTP code: 404
-2023-08-26T01:15:49.487Z 981caa8f-540a-43f6-b640-efabb4f59f24 error: ErrorMiddleware: Set HTTP Header: x-ms-error-code=ResourceNotFound
-2023-08-26T01:15:49.487Z 981caa8f-540a-43f6-b640-efabb4f59f24 error: ErrorMiddleware: Set HTTP Header: x-ms-request-id=981caa8f-540a-43f6-b640-efabb4f59f24
-2023-08-26T01:15:49.487Z 981caa8f-540a-43f6-b640-efabb4f59f24 error: ErrorMiddleware: Set HTTP Header: x-ms-version=2022-11-02
-2023-08-26T01:15:49.487Z 981caa8f-540a-43f6-b640-efabb4f59f24 error: ErrorMiddleware: Set content type: application/json;odata=minimalmetadata;streaming=true;charset=utf-8
-2023-08-26T01:15:49.487Z 981caa8f-540a-43f6-b640-efabb4f59f24 error: ErrorMiddleware: Set HTTP body: "{\"odata.error\":{\"code\":\"ResourceNotFound\",\"message\":{\"lang\":\"en-US\",\"value\":\"The specified resource does not exist.\\nRequestId:981caa8f-540a-43f6-b640-efabb4f59f24\\nTime:2023-08-26T01:15:49.487Z\"}}}"
-2023-08-26T01:15:49.487Z 981caa8f-540a-43f6-b640-efabb4f59f24 info: EndMiddleware: End response. TotalTimeInMS=2 StatusCode=404 StatusMessage=Not Found Headers={"server":"Azurite-Table/3.23.0","x-ms-error-code":"ResourceNotFound","x-ms-request-id":"981caa8f-540a-43f6-b640-efabb4f59f24","x-ms-version":"2022-11-02","content-type":"application/json;odata=minimalmetadata;streaming=true;charset=utf-8"}
-2023-08-26T01:15:52.701Z 	 info: Azurite Blob service is closing...
-2023-08-26T01:15:52.702Z 	 info: Azurite Queue service is closing...
-2023-08-26T01:15:52.702Z 	 info: Azurite Table service is closing...
-2023-08-26T01:15:52.703Z 	 info: BlobGCManager:close() Start closing BlobGCManager. Set status to Closing.
-2023-08-26T01:15:52.703Z 	 info: QueueGCManager:close() Start closing QueueGCManager, set status to Closing.
-2023-08-26T01:15:52.704Z 	 info: BlobGCManager:start() Mark and sweep loop is closed.
-2023-08-26T01:15:52.704Z 	 info: BlobGCManager:close() BlobGCManager successfully closed. Set status to Closed.
-2023-08-26T01:15:52.704Z 	 info: QueueGCManager:start() Mark and sweep loop is closed.
-2023-08-26T01:15:52.704Z 	 info: QueueGCManager:close() QueueGCManager successfully closed, set status to Closed.
-2023-08-26T01:15:52.704Z 	 info: Azurite Table service successfully closed
-2023-08-26T01:15:52.705Z 	 info: Azurite Blob service successfully closed
-2023-08-26T01:15:52.705Z 	 info: Azurite Queue service successfully closed
-2023-08-29T15:24:51.323Z 	 info: Azurite Blob service is starting on 127.0.0.1:10000
-2023-08-29T15:24:51.326Z 	 info: AccountDataStore:init() Refresh accounts from environment variable AZURITE_ACCOUNTS with value undefined
-2023-08-29T15:24:51.326Z 	 info: AccountDataStore:init() Fallback to default emulator account devstoreaccount1.
-2023-08-29T15:24:51.367Z 	 info: BlobGCManager:start() Starting BlobGCManager. Set status to Initializing.
-2023-08-29T15:24:51.367Z 	 info: BlobGCManager:start() Trigger mark and sweep loop. Set status to Running.
-2023-08-29T15:24:51.367Z 	 info: BlobGCManager:markSweepLoop() Start next mark and sweep.
-2023-08-29T15:24:51.368Z 	 info: BlobGCManager:markSweep() Get all extents.
-2023-08-29T15:24:51.369Z 	 info: BlobGCManager:start() BlobGCManager successfully started.
-2023-08-29T15:24:51.371Z 	 info: BlobGCManager:markSweep() Got 129 extents.
-2023-08-29T15:24:51.371Z 	 info: BlobGCManager:markSweep() Get referred extents.
-2023-08-29T15:24:51.378Z 	 info: BlobGCManager:markSweep() Got referred extents, unreferenced extents count is 0.
-2023-08-29T15:24:51.378Z 	 info: BlobGCManager:markSweepLoop() Mark and sweep finished, taken 10ms.
-2023-08-29T15:24:51.378Z 	 info: BlobGCManager:markSweepLoop() Sleep for 600000ms.
-2023-08-29T15:24:51.378Z 	 info: Azurite Blob service successfully listens on http://127.0.0.1:10000
-2023-08-29T15:24:51.379Z 	 info: Azurite Queue service is starting on 127.0.0.1:10001
-2023-08-29T15:24:51.379Z 	 info: AccountDataStore:init() Refresh accounts from environment variable AZURITE_ACCOUNTS with value undefined
-2023-08-29T15:24:51.379Z 	 info: AccountDataStore:init() Fallback to default emulator account devstoreaccount1.
-2023-08-29T15:24:51.387Z 	 info: QueueGCManager:start() Starting QueueGCManager, set status to Initializing
-2023-08-29T15:24:51.387Z 	 info: QueueGCManager:start() Trigger mark and sweep loop, set status to Running.
-2023-08-29T15:24:51.388Z 	 info: QueueGCManager:markSweepLoop() Start new mark and sweep.
-2023-08-29T15:24:51.388Z 	 info: QueueGCManger:markSweep() Get all extents.
-2023-08-29T15:24:51.388Z 	 info: QueueGCManager:start() QueueGCManager successfully started.
-2023-08-29T15:24:51.388Z 	 info: QueueGCManager:marksweep() Get 0 extents.
-2023-08-29T15:24:51.388Z 	 info: QueueGCManager:markSweep() Get referred extents, then remove from allExtents.
-2023-08-29T15:24:51.389Z 	 info: QueueGCManager:markSweep() Got referred extents, unreferenced extents count is 0.
-2023-08-29T15:24:51.389Z 	 info: QueueGCManager:markSweepLoop() Mark and sweep finished, take 1ms.
-2023-08-29T15:24:51.389Z 	 info: QueueGCManager:markSweepLoop() Sleep for 60000
-2023-08-29T15:24:51.389Z 	 info: Azurite Queue service successfully listens on http://127.0.0.1:10001
-2023-08-29T15:24:51.390Z 	 info: Azurite Table service is starting on 127.0.0.1:10002
-2023-08-29T15:24:51.390Z 	 info: AccountDataStore:init() Refresh accounts from environment variable AZURITE_ACCOUNTS with value undefined
-2023-08-29T15:24:51.390Z 	 info: AccountDataStore:init() Fallback to default emulator account devstoreaccount1.
-2023-08-29T15:24:51.405Z 	 info: Azurite Table service successfully listens on http://127.0.0.1:10002
-2023-08-29T15:25:21.955Z e6896b58-3080-41b0-a060-35a10489f79e info: TableStorageContextMiddleware: RequestMethod=POST RequestURL=http://127.0.0.1/devstoreaccount1/Tables?$format=application%2Fjson%3Bodata%3Dminimalmetadata RequestHeaders:{"host":"127.0.0.1:10002","x-ms-version":"2020-12-06","dataserviceversion":"3.0","prefer":"return-no-content","accept":"application/json;odata=minimalmetadata","x-ms-client-request-id":"88711830-2a1f-450e-a343-cb63c4867cf0","x-ms-return-client-request-id":"true","user-agent":"azsdk-net-Data.Tables/12.8.0 (.NET 7.0.5; Darwin 22.5.0 Darwin Kernel Version 22.5.0: Mon Apr 24 20:53:44 PDT 2023; root:xnu-8796.121.2~5/RELEASE_ARM64_T8103)","x-ms-date":"Tue, 29 Aug 2023 15:25:21 GMT","authorization":"SharedKeyLite devstoreaccount1:nmG9RDKRSLv3ZqnsE8Qg8leZyxKgPqqOG9h/yJlgxQs=","content-type":"application/json;odata=nometadata","content-length":"33"} ClientIP=127.0.0.1 Protocol=http HTTPVersion=1.1
-2023-08-29T15:25:21.955Z e6896b58-3080-41b0-a060-35a10489f79e debug: tableStorageContextMiddleware: Dispatch pattern string: /Tables
-2023-08-29T15:25:21.955Z e6896b58-3080-41b0-a060-35a10489f79e info: tableStorageContextMiddleware: Account=devstoreaccount1 tableName=undefined
-2023-08-29T15:25:21.955Z e6896b58-3080-41b0-a060-35a10489f79e verbose: DispatchMiddleware: Dispatching request...
-2023-08-29T15:25:21.956Z e6896b58-3080-41b0-a060-35a10489f79e info: DispatchMiddleware: Operation=Table_Create
-2023-08-29T15:25:21.956Z e6896b58-3080-41b0-a060-35a10489f79e verbose: AuthenticationMiddlewareFactory:createAuthenticationMiddleware() Validating authentications.
-2023-08-29T15:25:21.956Z e6896b58-3080-41b0-a060-35a10489f79e info: TableSharedKeyLiteAuthenticator:validate() Start validation against account shared key authentication.
-2023-08-29T15:25:21.957Z e6896b58-3080-41b0-a060-35a10489f79e info: TableSharedKeyLiteAuthenticator:validate() [STRING TO SIGN]:"Tue, 29 Aug 2023 15:25:21 GMT\n/devstoreaccount1/devstoreaccount1/Tables"
-2023-08-29T15:25:21.957Z e6896b58-3080-41b0-a060-35a10489f79e info: TableSharedKeyLiteAuthenticator:validate() Calculated authentication header based on key1: SharedKeyLite devstoreaccount1:nmG9RDKRSLv3ZqnsE8Qg8leZyxKgPqqOG9h/yJlgxQs=
-2023-08-29T15:25:21.957Z e6896b58-3080-41b0-a060-35a10489f79e info: TableSharedKeyLiteAuthenticator:validate() Signature 1 matched.
-2023-08-29T15:25:21.958Z e6896b58-3080-41b0-a060-35a10489f79e verbose: DeserializerMiddleware: Start deserializing...
-2023-08-29T15:25:21.959Z e6896b58-3080-41b0-a060-35a10489f79e debug: deserialize(): Raw request body string is (removed all empty characters) {"TableName":"UnitTestAzureData"}
-2023-08-29T15:25:21.959Z e6896b58-3080-41b0-a060-35a10489f79e info: HandlerMiddleware: DeserializedParameters={"options":{"queryOptions":{"format":"application/json;odata=minimalmetadata"},"requestId":"88711830-2a1f-450e-a343-cb63c4867cf0","dataServiceVersion":"3.0","responsePreference":"return-no-content"},"version":"2020-12-06","tableProperties":{"tableName":"UnitTestAzureData"},"body":"ReadableStream"}
-2023-08-29T15:25:21.961Z e6896b58-3080-41b0-a060-35a10489f79e error: ErrorMiddleware: Received a MiddlewareError, fill error information to HTTP response
-2023-08-29T15:25:21.961Z e6896b58-3080-41b0-a060-35a10489f79e error: ErrorMiddleware: ErrorName=StorageError ErrorMessage="The table specified already exists."  ErrorHTTPStatusCode=409 ErrorHTTPStatusMessage=undefined ErrorHTTPHeaders={"x-ms-error-code":"TableAlreadyExists","x-ms-request-id":"e6896b58-3080-41b0-a060-35a10489f79e","x-ms-version":"2022-11-02"} ErrorHTTPBody="{\"odata.error\":{\"code\":\"TableAlreadyExists\",\"message\":{\"lang\":\"en-US\",\"value\":\"The table specified already exists.\\nRequestId:e6896b58-3080-41b0-a060-35a10489f79e\\nTime:2023-08-29T15:25:21.960Z\"}}}" ErrorStack="\"StorageError: The table specified already exists.\\n    at StorageErrorFactory.getTableAlreadyExists (/Users/saadsheralam/Desktop/UIUCProject/Azurite/dist/src/table/errors/StorageErrorFactory.js:23:16)\\n    at LokiTableMetadataStore.checkIfTableExists (/Users/saadsheralam/Desktop/UIUCProject/Azurite/dist/src/table/persistence/LokiTableMetadataStore.js:537:49)\\n    at LokiTableMetadataStore.createTable (/Users/saadsheralam/Desktop/UIUCProject/Azurite/dist/src/table/persistence/LokiTableMetadataStore.js:80:14)\\n    at TableHandler.create (/Users/saadsheralam/Desktop/UIUCProject/Azurite/dist/src/table/handlers/TableHandler.js:40:34)\\n    at /Users/saadsheralam/Desktop/UIUCProject/Azurite/dist/src/table/generated/middleware/HandlerMiddlewareFactory.js:58:18\\n    at /Users/saadsheralam/Desktop/UIUCProject/Azurite/dist/src/table/generated/ExpressMiddlewareFactory.js:77:63\\n    at Layer.handle [as handle_request] (/Users/saadsheralam/Desktop/UIUCProject/Azurite/node_modules/express/lib/router/layer.js:95:5)\\n    at trim_prefix (/Users/saadsheralam/Desktop/UIUCProject/Azurite/node_modules/express/lib/router/index.js:328:13)\\n    at /Users/saadsheralam/Desktop/UIUCProject/Azurite/node_modules/express/lib/router/index.js:286:9\\n    at Function.process_params (/Users/saadsheralam/Desktop/UIUCProject/Azurite/node_modules/express/lib/router/index.js:346:12)\""
-2023-08-29T15:25:21.961Z e6896b58-3080-41b0-a060-35a10489f79e error: ErrorMiddleware: Set HTTP code: 409
-2023-08-29T15:25:21.961Z e6896b58-3080-41b0-a060-35a10489f79e error: ErrorMiddleware: Set HTTP Header: x-ms-error-code=TableAlreadyExists
-2023-08-29T15:25:21.961Z e6896b58-3080-41b0-a060-35a10489f79e error: ErrorMiddleware: Set HTTP Header: x-ms-request-id=e6896b58-3080-41b0-a060-35a10489f79e
-2023-08-29T15:25:21.961Z e6896b58-3080-41b0-a060-35a10489f79e error: ErrorMiddleware: Set HTTP Header: x-ms-version=2022-11-02
-2023-08-29T15:25:21.961Z e6896b58-3080-41b0-a060-35a10489f79e error: ErrorMiddleware: Set content type: application/json;odata=minimalmetadata;streaming=true;charset=utf-8
-2023-08-29T15:25:21.961Z e6896b58-3080-41b0-a060-35a10489f79e error: ErrorMiddleware: Set HTTP body: "{\"odata.error\":{\"code\":\"TableAlreadyExists\",\"message\":{\"lang\":\"en-US\",\"value\":\"The table specified already exists.\\nRequestId:e6896b58-3080-41b0-a060-35a10489f79e\\nTime:2023-08-29T15:25:21.960Z\"}}}"
-2023-08-29T15:25:21.962Z e6896b58-3080-41b0-a060-35a10489f79e info: EndMiddleware: End response. TotalTimeInMS=8 StatusCode=409 StatusMessage=Conflict Headers={"server":"Azurite-Table/3.23.0","x-ms-error-code":"TableAlreadyExists","x-ms-request-id":"e6896b58-3080-41b0-a060-35a10489f79e","x-ms-version":"2022-11-02","content-type":"application/json;odata=minimalmetadata;streaming=true;charset=utf-8"}
-2023-08-29T15:25:21.980Z 799234d7-aa53-4c4c-8d03-837311d20da3 info: TableStorageContextMiddleware: RequestMethod=GET RequestURL=http://127.0.0.1/devstoreaccount1/UnitTestAzureData(PartitionKey='PK-AzureTableDataManagerTests-6b2b1fcd-a039-495d-8f32-5eadbc6131af',RowKey='RK-28e866ec-7bc1-421d-b362-a289604dd545')?$format=application%2Fjson%3Bodata%3Dminimalmetadata RequestHeaders:{"host":"127.0.0.1:10002","x-ms-version":"2020-12-06","dataserviceversion":"3.0","accept":"application/json;odata=minimalmetadata","x-ms-client-request-id":"7beebc16-fbcf-4a98-8947-de8c7bf44328","x-ms-return-client-request-id":"true","user-agent":"azsdk-net-Data.Tables/12.8.0 (.NET 7.0.5; Darwin 22.5.0 Darwin Kernel Version 22.5.0: Mon Apr 24 20:53:44 PDT 2023; root:xnu-8796.121.2~5/RELEASE_ARM64_T8103)","x-ms-date":"Tue, 29 Aug 2023 15:25:21 GMT","authorization":"SharedKeyLite devstoreaccount1:Wg+671cgjE8oAdNbXjNaToGg5TkIwLYnnryO2z15ThI="} ClientIP=127.0.0.1 Protocol=http HTTPVersion=1.1
-2023-08-29T15:25:21.980Z 799234d7-aa53-4c4c-8d03-837311d20da3 debug: tableStorageContextMiddleware: Dispatch pattern string: /UnitTestAzureData(PartitionKey='PLACEHOLDER',RowKey='PLACEHOLDER')
-2023-08-29T15:25:21.980Z 799234d7-aa53-4c4c-8d03-837311d20da3 info: tableStorageContextMiddleware: Account=devstoreaccount1 tableName=UnitTestAzureData
-2023-08-29T15:25:21.980Z 799234d7-aa53-4c4c-8d03-837311d20da3 verbose: DispatchMiddleware: Dispatching request...
-2023-08-29T15:25:21.980Z 799234d7-aa53-4c4c-8d03-837311d20da3 info: DispatchMiddleware: Operation=Table_QueryEntitiesWithPartitionAndRowKey
-2023-08-29T15:25:21.980Z 799234d7-aa53-4c4c-8d03-837311d20da3 verbose: AuthenticationMiddlewareFactory:createAuthenticationMiddleware() Validating authentications.
-2023-08-29T15:25:21.980Z 799234d7-aa53-4c4c-8d03-837311d20da3 info: TableSharedKeyLiteAuthenticator:validate() Start validation against account shared key authentication.
-2023-08-29T15:25:21.981Z 799234d7-aa53-4c4c-8d03-837311d20da3 info: TableSharedKeyLiteAuthenticator:validate() [STRING TO SIGN]:"Tue, 29 Aug 2023 15:25:21 GMT\n/devstoreaccount1/devstoreaccount1/UnitTestAzureData(PartitionKey='PK-AzureTableDataManagerTests-6b2b1fcd-a039-495d-8f32-5eadbc6131af',RowKey='RK-28e866ec-7bc1-421d-b362-a289604dd545')"
-2023-08-29T15:25:21.981Z 799234d7-aa53-4c4c-8d03-837311d20da3 info: TableSharedKeyLiteAuthenticator:validate() Calculated authentication header based on key1: SharedKeyLite devstoreaccount1:Wg+671cgjE8oAdNbXjNaToGg5TkIwLYnnryO2z15ThI=
-2023-08-29T15:25:21.981Z 799234d7-aa53-4c4c-8d03-837311d20da3 info: TableSharedKeyLiteAuthenticator:validate() Signature 1 matched.
-2023-08-29T15:25:21.981Z 799234d7-aa53-4c4c-8d03-837311d20da3 verbose: DeserializerMiddleware: Start deserializing...
-2023-08-29T15:25:21.981Z 799234d7-aa53-4c4c-8d03-837311d20da3 info: HandlerMiddleware: DeserializedParameters={"options":{"queryOptions":{"format":"application/json;odata=minimalmetadata"},"requestId":"7beebc16-fbcf-4a98-8947-de8c7bf44328","dataServiceVersion":"3.0"},"version":"2020-12-06"}
-2023-08-29T15:25:21.981Z 799234d7-aa53-4c4c-8d03-837311d20da3 error: ErrorMiddleware: Received a MiddlewareError, fill error information to HTTP response
-2023-08-29T15:25:21.981Z 799234d7-aa53-4c4c-8d03-837311d20da3 error: ErrorMiddleware: ErrorName=StorageError ErrorMessage="The specified resource does not exist."  ErrorHTTPStatusCode=404 ErrorHTTPStatusMessage=undefined ErrorHTTPHeaders={"x-ms-error-code":"ResourceNotFound","x-ms-request-id":"799234d7-aa53-4c4c-8d03-837311d20da3","x-ms-version":"2022-11-02"} ErrorHTTPBody="{\"odata.error\":{\"code\":\"ResourceNotFound\",\"message\":{\"lang\":\"en-US\",\"value\":\"The specified resource does not exist.\\nRequestId:799234d7-aa53-4c4c-8d03-837311d20da3\\nTime:2023-08-29T15:25:21.981Z\"}}}" ErrorStack="\"StorageError: The specified resource does not exist.\\n    at StorageErrorFactory.getEntityNotFound (/Users/saadsheralam/Desktop/UIUCProject/Azurite/dist/src/table/errors/StorageErrorFactory.js:76:16)\\n    at TableHandler.queryEntitiesWithPartitionAndRowKey (/Users/saadsheralam/Desktop/UIUCProject/Azurite/dist/src/table/handlers/TableHandler.js:369:49)\\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\""
-2023-08-29T15:25:21.981Z 799234d7-aa53-4c4c-8d03-837311d20da3 error: ErrorMiddleware: Set HTTP code: 404
-2023-08-29T15:25:21.981Z 799234d7-aa53-4c4c-8d03-837311d20da3 error: ErrorMiddleware: Set HTTP Header: x-ms-error-code=ResourceNotFound
-2023-08-29T15:25:21.981Z 799234d7-aa53-4c4c-8d03-837311d20da3 error: ErrorMiddleware: Set HTTP Header: x-ms-request-id=799234d7-aa53-4c4c-8d03-837311d20da3
-2023-08-29T15:25:21.981Z 799234d7-aa53-4c4c-8d03-837311d20da3 error: ErrorMiddleware: Set HTTP Header: x-ms-version=2022-11-02
-2023-08-29T15:25:21.981Z 799234d7-aa53-4c4c-8d03-837311d20da3 error: ErrorMiddleware: Set content type: application/json;odata=minimalmetadata;streaming=true;charset=utf-8
-2023-08-29T15:25:21.981Z 799234d7-aa53-4c4c-8d03-837311d20da3 error: ErrorMiddleware: Set HTTP body: "{\"odata.error\":{\"code\":\"ResourceNotFound\",\"message\":{\"lang\":\"en-US\",\"value\":\"The specified resource does not exist.\\nRequestId:799234d7-aa53-4c4c-8d03-837311d20da3\\nTime:2023-08-29T15:25:21.981Z\"}}}"
-2023-08-29T15:25:21.982Z 799234d7-aa53-4c4c-8d03-837311d20da3 info: EndMiddleware: End response. TotalTimeInMS=2 StatusCode=404 StatusMessage=Not Found Headers={"server":"Azurite-Table/3.23.0","x-ms-error-code":"ResourceNotFound","x-ms-request-id":"799234d7-aa53-4c4c-8d03-837311d20da3","x-ms-version":"2022-11-02","content-type":"application/json;odata=minimalmetadata;streaming=true;charset=utf-8"}
-2023-08-29T15:25:25.198Z 	 info: Azurite Blob service is closing...
-2023-08-29T15:25:25.198Z 	 info: Azurite Queue service is closing...
-2023-08-29T15:25:25.199Z 	 info: Azurite Table service is closing...
-2023-08-29T15:25:25.199Z 	 info: BlobGCManager:close() Start closing BlobGCManager. Set status to Closing.
-2023-08-29T15:25:25.199Z 	 info: QueueGCManager:close() Start closing QueueGCManager, set status to Closing.
-2023-08-29T15:25:25.200Z 	 info: BlobGCManager:start() Mark and sweep loop is closed.
-2023-08-29T15:25:25.200Z 	 info: BlobGCManager:close() BlobGCManager successfully closed. Set status to Closed.
-2023-08-29T15:25:25.200Z 	 info: QueueGCManager:start() Mark and sweep loop is closed.
-2023-08-29T15:25:25.200Z 	 info: QueueGCManager:close() QueueGCManager successfully closed, set status to Closed.
-2023-08-29T15:25:25.200Z 	 info: Azurite Table service successfully closed
-2023-08-29T15:25:25.201Z 	 info: Azurite Blob service successfully closed
-2023-08-29T15:25:25.201Z 	 info: Azurite Queue service successfully closed
+2023-09-24T10:31:27.695Z 	 info: Azurite Blob service is starting on 127.0.0.1:10000
+2023-09-24T10:31:27.697Z 	 info: AccountDataStore:init() Refresh accounts from environment variable AZURITE_ACCOUNTS with value undefined
+2023-09-24T10:31:27.697Z 	 info: AccountDataStore:init() Fallback to default emulator account devstoreaccount1.
+2023-09-24T10:31:27.706Z 	 info: BlobGCManager:start() Starting BlobGCManager. Set status to Initializing.
+2023-09-24T10:31:27.706Z 	 info: BlobGCManager:start() Trigger mark and sweep loop. Set status to Running.
+2023-09-24T10:31:27.707Z 	 info: BlobGCManager:markSweepLoop() Start next mark and sweep.
+2023-09-24T10:31:27.707Z 	 info: BlobGCManager:markSweep() Get all extents.
+2023-09-24T10:31:27.707Z 	 info: BlobGCManager:start() BlobGCManager successfully started.
+2023-09-24T10:31:27.710Z 	 info: BlobGCManager:markSweep() Got 0 extents.
+2023-09-24T10:31:27.710Z 	 info: BlobGCManager:markSweep() Get referred extents.
+2023-09-24T10:31:27.710Z 	 info: BlobGCManager:markSweep() Got referred extents, unreferenced extents count is 0.
+2023-09-24T10:31:27.711Z 	 info: BlobGCManager:markSweepLoop() Mark and sweep finished, taken 4ms.
+2023-09-24T10:31:27.711Z 	 info: BlobGCManager:markSweepLoop() Sleep for 600000ms.
+2023-09-24T10:31:27.712Z 	 info: Azurite Blob service successfully listens on http://127.0.0.1:10000
+2023-09-24T10:31:27.712Z 	 info: Azurite Queue service is starting on 127.0.0.1:10001
+2023-09-24T10:31:27.712Z 	 info: AccountDataStore:init() Refresh accounts from environment variable AZURITE_ACCOUNTS with value undefined
+2023-09-24T10:31:27.712Z 	 info: AccountDataStore:init() Fallback to default emulator account devstoreaccount1.
+2023-09-24T10:31:27.717Z 	 info: QueueGCManager:start() Starting QueueGCManager, set status to Initializing
+2023-09-24T10:31:27.717Z 	 info: QueueGCManager:start() Trigger mark and sweep loop, set status to Running.
+2023-09-24T10:31:27.717Z 	 info: QueueGCManager:markSweepLoop() Start new mark and sweep.
+2023-09-24T10:31:27.717Z 	 info: QueueGCManger:markSweep() Get all extents.
+2023-09-24T10:31:27.717Z 	 info: QueueGCManager:start() QueueGCManager successfully started.
+2023-09-24T10:31:27.717Z 	 info: QueueGCManager:marksweep() Get 0 extents.
+2023-09-24T10:31:27.717Z 	 info: QueueGCManager:markSweep() Get referred extents, then remove from allExtents.
+2023-09-24T10:31:27.717Z 	 info: QueueGCManager:markSweep() Got referred extents, unreferenced extents count is 0.
+2023-09-24T10:31:27.717Z 	 info: QueueGCManager:markSweepLoop() Mark and sweep finished, take 0ms.
+2023-09-24T10:31:27.717Z 	 info: QueueGCManager:markSweepLoop() Sleep for 60000
+2023-09-24T10:31:27.718Z 	 info: Azurite Queue service successfully listens on http://127.0.0.1:10001
+2023-09-24T10:31:27.718Z 	 info: Azurite Table service is starting on 127.0.0.1:10002
+2023-09-24T10:31:27.718Z 	 info: AccountDataStore:init() Refresh accounts from environment variable AZURITE_ACCOUNTS with value undefined
+2023-09-24T10:31:27.718Z 	 info: AccountDataStore:init() Fallback to default emulator account devstoreaccount1.
+2023-09-24T10:31:27.721Z 	 info: Azurite Table service successfully listens on http://127.0.0.1:10002
+2023-09-24T10:32:13.543Z 71c58054-165a-4e1d-a445-8c62aa648d97 info: TableStorageContextMiddleware: RequestMethod=POST RequestURL=http://127.0.0.1/devstoreaccount1/Tables?$format=application%2Fjson%3Bodata%3Dminimalmetadata RequestHeaders:{"host":"127.0.0.1:10002","x-ms-version":"2020-12-06","dataserviceversion":"3.0","prefer":"return-no-content","accept":"application/json;odata=minimalmetadata","x-ms-client-request-id":"7af977d1-8fdc-486d-a493-813736891ca9","x-ms-return-client-request-id":"true","user-agent":"azsdk-net-Data.Tables/12.8.0 (.NET 7.0.5; Darwin 22.6.0 Darwin Kernel Version 22.6.0: Wed Jul  5 22:22:52 PDT 2023; root:xnu-8796.141.3~6/RELEASE_ARM64_T8103)","x-ms-date":"Sun, 24 Sep 2023 10:32:13 GMT","authorization":"SharedKeyLite devstoreaccount1:g0ch6ClvYlPbeZIEB9AcU7okzPIkjZ0WPy6DVugIc/o=","content-type":"application/json;odata=nometadata","content-length":"33"} ClientIP=127.0.0.1 Protocol=http HTTPVersion=1.1
+2023-09-24T10:32:13.546Z 71c58054-165a-4e1d-a445-8c62aa648d97 debug: tableStorageContextMiddleware: Dispatch pattern string: /Tables
+2023-09-24T10:32:13.546Z 71c58054-165a-4e1d-a445-8c62aa648d97 info: tableStorageContextMiddleware: Account=devstoreaccount1 tableName=undefined
+2023-09-24T10:32:13.547Z 71c58054-165a-4e1d-a445-8c62aa648d97 verbose: DispatchMiddleware: Dispatching request...
+2023-09-24T10:32:13.549Z 71c58054-165a-4e1d-a445-8c62aa648d97 info: DispatchMiddleware: Operation=Table_Create
+2023-09-24T10:32:13.549Z 71c58054-165a-4e1d-a445-8c62aa648d97 verbose: AuthenticationMiddlewareFactory:createAuthenticationMiddleware() Validating authentications.
+2023-09-24T10:32:13.550Z 71c58054-165a-4e1d-a445-8c62aa648d97 info: TableSharedKeyLiteAuthenticator:validate() Start validation against account shared key authentication.
+2023-09-24T10:32:13.551Z 71c58054-165a-4e1d-a445-8c62aa648d97 info: TableSharedKeyLiteAuthenticator:validate() [STRING TO SIGN]:"Sun, 24 Sep 2023 10:32:13 GMT\n/devstoreaccount1/devstoreaccount1/Tables"
+2023-09-24T10:32:13.556Z 71c58054-165a-4e1d-a445-8c62aa648d97 info: TableSharedKeyLiteAuthenticator:validate() Calculated authentication header based on key1: SharedKeyLite devstoreaccount1:g0ch6ClvYlPbeZIEB9AcU7okzPIkjZ0WPy6DVugIc/o=
+2023-09-24T10:32:13.556Z 71c58054-165a-4e1d-a445-8c62aa648d97 info: TableSharedKeyLiteAuthenticator:validate() Signature 1 matched.
+2023-09-24T10:32:13.557Z 71c58054-165a-4e1d-a445-8c62aa648d97 verbose: DeserializerMiddleware: Start deserializing...
+2023-09-24T10:32:13.561Z 71c58054-165a-4e1d-a445-8c62aa648d97 debug: deserialize(): Raw request body string is (removed all empty characters) {"TableName":"UnitTestAzureData"}
+2023-09-24T10:32:13.562Z 71c58054-165a-4e1d-a445-8c62aa648d97 info: HandlerMiddleware: DeserializedParameters={"options":{"queryOptions":{"format":"application/json;odata=minimalmetadata"},"requestId":"7af977d1-8fdc-486d-a493-813736891ca9","dataServiceVersion":"3.0","responsePreference":"return-no-content"},"version":"2020-12-06","tableProperties":{"tableName":"UnitTestAzureData"},"body":"ReadableStream"}
+2023-09-24T10:32:13.567Z 71c58054-165a-4e1d-a445-8c62aa648d97 error: ErrorMiddleware: Received a MiddlewareError, fill error information to HTTP response
+2023-09-24T10:32:13.568Z 71c58054-165a-4e1d-a445-8c62aa648d97 error: ErrorMiddleware: ErrorName=StorageError ErrorMessage="The table specified already exists."  ErrorHTTPStatusCode=409 ErrorHTTPStatusMessage=undefined ErrorHTTPHeaders={"x-ms-error-code":"TableAlreadyExists","x-ms-request-id":"71c58054-165a-4e1d-a445-8c62aa648d97","x-ms-version":"2022-11-02"} ErrorHTTPBody="{\"odata.error\":{\"code\":\"TableAlreadyExists\",\"message\":{\"lang\":\"en-US\",\"value\":\"The table specified already exists.\\nRequestId:71c58054-165a-4e1d-a445-8c62aa648d97\\nTime:2023-09-24T10:32:13.565Z\"}}}" ErrorStack="\"StorageError: The table specified already exists.\\n    at StorageErrorFactory.getTableAlreadyExists (/Users/saadsheralam/Desktop/UIUCProject/Azurite/dist/src/table/errors/StorageErrorFactory.js:23:16)\\n    at LokiTableMetadataStore.checkIfTableExists (/Users/saadsheralam/Desktop/UIUCProject/Azurite/dist/src/table/persistence/LokiTableMetadataStore.js:537:49)\\n    at LokiTableMetadataStore.createTable (/Users/saadsheralam/Desktop/UIUCProject/Azurite/dist/src/table/persistence/LokiTableMetadataStore.js:80:14)\\n    at TableHandler.create (/Users/saadsheralam/Desktop/UIUCProject/Azurite/dist/src/table/handlers/TableHandler.js:40:34)\\n    at /Users/saadsheralam/Desktop/UIUCProject/Azurite/dist/src/table/generated/middleware/HandlerMiddlewareFactory.js:58:18\\n    at /Users/saadsheralam/Desktop/UIUCProject/Azurite/dist/src/table/generated/ExpressMiddlewareFactory.js:77:63\\n    at Layer.handle [as handle_request] (/Users/saadsheralam/Desktop/UIUCProject/Azurite/node_modules/express/lib/router/layer.js:95:5)\\n    at trim_prefix (/Users/saadsheralam/Desktop/UIUCProject/Azurite/node_modules/express/lib/router/index.js:328:13)\\n    at /Users/saadsheralam/Desktop/UIUCProject/Azurite/node_modules/express/lib/router/index.js:286:9\\n    at Function.process_params (/Users/saadsheralam/Desktop/UIUCProject/Azurite/node_modules/express/lib/router/index.js:346:12)\""
+2023-09-24T10:32:13.568Z 71c58054-165a-4e1d-a445-8c62aa648d97 error: ErrorMiddleware: Set HTTP code: 409
+2023-09-24T10:32:13.568Z 71c58054-165a-4e1d-a445-8c62aa648d97 error: ErrorMiddleware: Set HTTP Header: x-ms-error-code=TableAlreadyExists
+2023-09-24T10:32:13.569Z 71c58054-165a-4e1d-a445-8c62aa648d97 error: ErrorMiddleware: Set HTTP Header: x-ms-request-id=71c58054-165a-4e1d-a445-8c62aa648d97
+2023-09-24T10:32:13.569Z 71c58054-165a-4e1d-a445-8c62aa648d97 error: ErrorMiddleware: Set HTTP Header: x-ms-version=2022-11-02
+2023-09-24T10:32:13.569Z 71c58054-165a-4e1d-a445-8c62aa648d97 error: ErrorMiddleware: Set content type: application/json;odata=minimalmetadata;streaming=true;charset=utf-8
+2023-09-24T10:32:13.569Z 71c58054-165a-4e1d-a445-8c62aa648d97 error: ErrorMiddleware: Set HTTP body: "{\"odata.error\":{\"code\":\"TableAlreadyExists\",\"message\":{\"lang\":\"en-US\",\"value\":\"The table specified already exists.\\nRequestId:71c58054-165a-4e1d-a445-8c62aa648d97\\nTime:2023-09-24T10:32:13.565Z\"}}}"
+2023-09-24T10:32:13.570Z 71c58054-165a-4e1d-a445-8c62aa648d97 info: EndMiddleware: End response. TotalTimeInMS=29 StatusCode=409 StatusMessage=Conflict Headers={"server":"Azurite-Table/3.23.0","x-ms-error-code":"TableAlreadyExists","x-ms-request-id":"71c58054-165a-4e1d-a445-8c62aa648d97","x-ms-version":"2022-11-02","content-type":"application/json;odata=minimalmetadata;streaming=true;charset=utf-8"}
+2023-09-24T10:32:13.589Z d6fb98a3-caf4-4378-b919-f80988191fe1 info: TableStorageContextMiddleware: RequestMethod=GET RequestURL=http://127.0.0.1/devstoreaccount1/UnitTestAzureData(PartitionKey='PK-AzureTableDataManagerTests-09493db1-9fb0-48ef-a56b-bd0348f5c628',RowKey='RK-58a8dfb0-ab1a-4734-9dbd-966ae0ad57a7')?$format=application%2Fjson%3Bodata%3Dminimalmetadata RequestHeaders:{"host":"127.0.0.1:10002","x-ms-version":"2020-12-06","dataserviceversion":"3.0","accept":"application/json;odata=minimalmetadata","x-ms-client-request-id":"891ace74-dbf4-47d9-9850-bff6b60b4607","x-ms-return-client-request-id":"true","user-agent":"azsdk-net-Data.Tables/12.8.0 (.NET 7.0.5; Darwin 22.6.0 Darwin Kernel Version 22.6.0: Wed Jul  5 22:22:52 PDT 2023; root:xnu-8796.141.3~6/RELEASE_ARM64_T8103)","x-ms-date":"Sun, 24 Sep 2023 10:32:13 GMT","authorization":"SharedKeyLite devstoreaccount1:d0v/9icUJCvrhRAqoQj+BRmd8qNXsAk916jid+LGpS8="} ClientIP=127.0.0.1 Protocol=http HTTPVersion=1.1
+2023-09-24T10:32:13.589Z d6fb98a3-caf4-4378-b919-f80988191fe1 debug: tableStorageContextMiddleware: Dispatch pattern string: /UnitTestAzureData(PartitionKey='PLACEHOLDER',RowKey='PLACEHOLDER')
+2023-09-24T10:32:13.589Z d6fb98a3-caf4-4378-b919-f80988191fe1 info: tableStorageContextMiddleware: Account=devstoreaccount1 tableName=UnitTestAzureData
+2023-09-24T10:32:13.589Z d6fb98a3-caf4-4378-b919-f80988191fe1 verbose: DispatchMiddleware: Dispatching request...
+2023-09-24T10:32:13.589Z d6fb98a3-caf4-4378-b919-f80988191fe1 info: DispatchMiddleware: Operation=Table_QueryEntitiesWithPartitionAndRowKey
+2023-09-24T10:32:13.589Z d6fb98a3-caf4-4378-b919-f80988191fe1 verbose: AuthenticationMiddlewareFactory:createAuthenticationMiddleware() Validating authentications.
+2023-09-24T10:32:13.590Z d6fb98a3-caf4-4378-b919-f80988191fe1 info: TableSharedKeyLiteAuthenticator:validate() Start validation against account shared key authentication.
+2023-09-24T10:32:13.590Z d6fb98a3-caf4-4378-b919-f80988191fe1 info: TableSharedKeyLiteAuthenticator:validate() [STRING TO SIGN]:"Sun, 24 Sep 2023 10:32:13 GMT\n/devstoreaccount1/devstoreaccount1/UnitTestAzureData(PartitionKey='PK-AzureTableDataManagerTests-09493db1-9fb0-48ef-a56b-bd0348f5c628',RowKey='RK-58a8dfb0-ab1a-4734-9dbd-966ae0ad57a7')"
+2023-09-24T10:32:13.590Z d6fb98a3-caf4-4378-b919-f80988191fe1 info: TableSharedKeyLiteAuthenticator:validate() Calculated authentication header based on key1: SharedKeyLite devstoreaccount1:d0v/9icUJCvrhRAqoQj+BRmd8qNXsAk916jid+LGpS8=
+2023-09-24T10:32:13.590Z d6fb98a3-caf4-4378-b919-f80988191fe1 info: TableSharedKeyLiteAuthenticator:validate() Signature 1 matched.
+2023-09-24T10:32:13.591Z d6fb98a3-caf4-4378-b919-f80988191fe1 verbose: DeserializerMiddleware: Start deserializing...
+2023-09-24T10:32:13.591Z d6fb98a3-caf4-4378-b919-f80988191fe1 info: HandlerMiddleware: DeserializedParameters={"options":{"queryOptions":{"format":"application/json;odata=minimalmetadata"},"requestId":"891ace74-dbf4-47d9-9850-bff6b60b4607","dataServiceVersion":"3.0"},"version":"2020-12-06"}
+2023-09-24T10:32:13.592Z d6fb98a3-caf4-4378-b919-f80988191fe1 error: ErrorMiddleware: Received a MiddlewareError, fill error information to HTTP response
+2023-09-24T10:32:13.592Z d6fb98a3-caf4-4378-b919-f80988191fe1 error: ErrorMiddleware: ErrorName=StorageError ErrorMessage="The specified resource does not exist."  ErrorHTTPStatusCode=404 ErrorHTTPStatusMessage=undefined ErrorHTTPHeaders={"x-ms-error-code":"ResourceNotFound","x-ms-request-id":"d6fb98a3-caf4-4378-b919-f80988191fe1","x-ms-version":"2022-11-02"} ErrorHTTPBody="{\"odata.error\":{\"code\":\"ResourceNotFound\",\"message\":{\"lang\":\"en-US\",\"value\":\"The specified resource does not exist.\\nRequestId:d6fb98a3-caf4-4378-b919-f80988191fe1\\nTime:2023-09-24T10:32:13.592Z\"}}}" ErrorStack="\"StorageError: The specified resource does not exist.\\n    at StorageErrorFactory.getEntityNotFound (/Users/saadsheralam/Desktop/UIUCProject/Azurite/dist/src/table/errors/StorageErrorFactory.js:76:16)\\n    at TableHandler.queryEntitiesWithPartitionAndRowKey (/Users/saadsheralam/Desktop/UIUCProject/Azurite/dist/src/table/handlers/TableHandler.js:369:49)\\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\""
+2023-09-24T10:32:13.592Z d6fb98a3-caf4-4378-b919-f80988191fe1 error: ErrorMiddleware: Set HTTP code: 404
+2023-09-24T10:32:13.592Z d6fb98a3-caf4-4378-b919-f80988191fe1 error: ErrorMiddleware: Set HTTP Header: x-ms-error-code=ResourceNotFound
+2023-09-24T10:32:13.593Z d6fb98a3-caf4-4378-b919-f80988191fe1 error: ErrorMiddleware: Set HTTP Header: x-ms-request-id=d6fb98a3-caf4-4378-b919-f80988191fe1
+2023-09-24T10:32:13.593Z d6fb98a3-caf4-4378-b919-f80988191fe1 error: ErrorMiddleware: Set HTTP Header: x-ms-version=2022-11-02
+2023-09-24T10:32:13.593Z d6fb98a3-caf4-4378-b919-f80988191fe1 error: ErrorMiddleware: Set content type: application/json;odata=minimalmetadata;streaming=true;charset=utf-8
+2023-09-24T10:32:13.593Z d6fb98a3-caf4-4378-b919-f80988191fe1 error: ErrorMiddleware: Set HTTP body: "{\"odata.error\":{\"code\":\"ResourceNotFound\",\"message\":{\"lang\":\"en-US\",\"value\":\"The specified resource does not exist.\\nRequestId:d6fb98a3-caf4-4378-b919-f80988191fe1\\nTime:2023-09-24T10:32:13.592Z\"}}}"
+2023-09-24T10:32:13.593Z d6fb98a3-caf4-4378-b919-f80988191fe1 info: EndMiddleware: End response. TotalTimeInMS=4 StatusCode=404 StatusMessage=Not Found Headers={"server":"Azurite-Table/3.23.0","x-ms-error-code":"ResourceNotFound","x-ms-request-id":"d6fb98a3-caf4-4378-b919-f80988191fe1","x-ms-version":"2022-11-02","content-type":"application/json;odata=minimalmetadata;streaming=true;charset=utf-8"}
+2023-09-24T10:32:13.904Z 	 info: Azurite Blob service is closing...
+2023-09-24T10:32:13.904Z 	 info: Azurite Queue service is closing...
+2023-09-24T10:32:13.905Z 	 info: Azurite Table service is closing...
+2023-09-24T10:32:13.906Z 	 info: BlobGCManager:close() Start closing BlobGCManager. Set status to Closing.
+2023-09-24T10:32:13.906Z 	 info: QueueGCManager:close() Start closing QueueGCManager, set status to Closing.
+2023-09-24T10:32:13.906Z 	 info: BlobGCManager:start() Mark and sweep loop is closed.
+2023-09-24T10:32:13.906Z 	 info: BlobGCManager:close() BlobGCManager successfully closed. Set status to Closed.
+2023-09-24T10:32:13.906Z 	 info: QueueGCManager:start() Mark and sweep loop is closed.
+2023-09-24T10:32:13.906Z 	 info: QueueGCManager:close() QueueGCManager successfully closed, set status to Closed.
+2023-09-24T10:32:13.906Z 	 info: Azurite Table service successfully closed
+2023-09-24T10:32:13.907Z 	 info: Azurite Blob service successfully closed
+2023-09-24T10:32:13.907Z 	 info: Azurite Queue service successfully closed
