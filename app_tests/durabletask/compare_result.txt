@@ -1,19 +1,86 @@
-discrepant found: 13 out of 184 cloud tests and 193 emulator test
+discrepant found: 80 out of 184 cloud tests and 193 emulator test
 
 ---discrepant tests---
-PartitionLost_AbandonPrefetchedSession Passed on cloud but Failed on emulator
-TestOneWorkerWithFourPartition Passed on cloud but Failed on emulator
-TestTwoWorkerWithFourPartitions Passed on cloud but Failed on emulator
-TestFourWorkerWithFourPartitions Passed on cloud but Failed on emulator
-TestAddThreeWorkersWithOneWorkerAndFourPartitions Passed on cloud but Failed on emulator
-TestAddFourWorkersWithFourWorkersAndFourPartitions Passed on cloud but Failed on emulator
-TestScalingDownToThreeWorkers Passed on cloud but Failed on emulator
-TestScalingDownToOneWorkers Passed on cloud but Failed on emulator
-TestKillOneWorker Passed on cloud but Failed on emulator
-TestKillThreeWorker Passed on cloud but Failed on emulator
-TestUnhealthyWorker Passed on cloud but Failed on emulator
+CreateTaskHub Failed on cloud but Passed on emulator
+DeleteTaskHub Failed on cloud but Passed on emulator
+MultiWorkerLeaseMovement Failed on cloud but Passed on emulator
+TestInstanceAndMessageDistribution Failed on cloud but Passed on emulator
+MonitorIdleTaskHubDisconnected Failed on cloud but Passed on emulator
+UpdateTaskHubJsonWithNewPartitionCount Failed on cloud but Passed on emulator
+MonitorIncreasingControlQueueLoadDisconnected Failed on cloud but Passed on emulator
+HelloWorldOrchestration_Inline Failed on cloud but Passed on emulator
+HelloWorldOrchestration_Activity Failed on cloud but Passed on emulator
+SequentialOrchestration Failed on cloud but Passed on emulator
+SequentialOrchestrationNoReplay Failed on cloud but Passed on emulator
+ParentOfSequentialOrchestration Failed on cloud but Passed on emulator
+LongRunningOrchestrator Failed on cloud but Passed on emulator
+GetAllOrchestrationStatuses Failed on cloud but Passed on emulator
+GetPaginatedStatuses Failed on cloud but Passed on emulator
+GetInstanceIdsByPrefix Failed on cloud but Passed on emulator
+NoInstancesGetAllOrchestrationStatusesNullContinuationToken Failed on cloud but Passed on emulator
+EventConversation Failed on cloud but Passed on emulator
+AutoStart Failed on cloud but Passed on emulator
+ContinueAsNewThenTimer Failed on cloud but Passed on emulator
+PurgeInstanceHistoryForSingleInstanceWithoutLargeMessageBlobs Failed on cloud but Passed on emulator
+ValidateCustomStatusPersists Failed on cloud but Passed on emulator
+ValidateNullCustomStatusPersists Failed on cloud but Passed on emulator
+PurgeInstanceHistoryForSingleInstanceWithLargeMessageBlobs Failed on cloud but Passed on emulator
+ParallelOrchestration Failed on cloud but Passed on emulator
+LargeFanOutOrchestration Failed on cloud but Passed on emulator
+FanOutOrchestration_LargeHistoryBatches Failed on cloud but Passed on emulator
+ActorOrchestration Failed on cloud but Passed on emulator
+ActorOrchestrationForLargeInput Failed on cloud but Passed on emulator
+ActorOrchestrationDeleteAllLargeMessageBlobs Failed on cloud but Passed on emulator
+TerminateOrchestration Failed on cloud but Passed on emulator
+SuspendResumeOrchestration Failed on cloud but Passed on emulator
+TerminateSuspendedOrchestration Failed on cloud but Passed on emulator
+RewindOrchestrationsFail Failed on cloud but Passed on emulator
+RewindActivityFailFanOut Failed on cloud but Passed on emulator
+RewindActivityFail Failed on cloud but Passed on emulator
+RewindMultipleActivityFail Failed on cloud but Passed on emulator
+RewindSubOrchestrationsTest Failed on cloud but Passed on emulator
+RewindSubOrchestrationActivityTest Failed on cloud but Passed on emulator
+RewindNestedSubOrchestrationTest Failed on cloud but Passed on emulator
+TimerCancellation Failed on cloud but Passed on emulator
+TimerExpiration Failed on cloud but Passed on emulator
+OrchestrationConcurrency Failed on cloud but Passed on emulator
+HandledActivityException Failed on cloud but Passed on emulator
+UnhandledOrchestrationException Failed on cloud but Passed on emulator
+UnhandledActivityException Failed on cloud but Passed on emulator
+FanOutToTableStorage Failed on cloud but Passed on emulator
+SmallTextMessagePayloads Failed on cloud but Passed on emulator
+LargeTableTextMessagePayloads_SizeViolation_BlobUrl Failed on cloud but Passed on emulator
+LargeOverallTextMessagePayloads_BlobUrl Failed on cloud but Passed on emulator
+LargeTextMessagePayloads_FetchLargeMessages Failed on cloud but Passed on emulator
+LargeTableTextMessagePayloads_FetchLargeMessages Failed on cloud but Passed on emulator
+TagsAreAvailableInOrchestrationState Failed on cloud but Passed on emulator
+LargeOrchestrationTags Failed on cloud but Passed on emulator
+NonBlobUriPayload_FetchLargeMessages_RetainsOriginalPayload Failed on cloud but Passed on emulator
+LargeTextMessagePayloads_FetchLargeMessages_QueryState Failed on cloud but Passed on emulator
+LargeTextMessagePayloads_URIFormatCheck Failed on cloud but Passed on emulator
+LargeBinaryByteMessagePayloads Failed on cloud but Passed on emulator
+LargeBinaryStringMessagePayloads Failed on cloud but Passed on emulator
+RecreateCompletedInstance Failed on cloud but Passed on emulator
+RecreateFailedInstance Failed on cloud but Passed on emulator
+RecreateTerminatedInstance Failed on cloud but Passed on emulator
+RecreateRunningInstance Failed on cloud but Passed on emulator
+ExtendedSessions_SessionTimeout Failed on cloud but Passed on emulator
+DoubleFanOut Failed on cloud but Passed on emulator
+AbortOrchestrationAndActivity Failed on cloud but Passed on emulator
+ScheduledStart_Inline Failed on cloud but Passed on emulator
+ScheduledStart_Activity_GetStatus_Returns_ScheduledStart Failed on cloud but Passed on emulator
+TaskReturnsVoid_OrchestratorFails Failed on cloud but Passed on emulator
+ConcurrentOrchestrationStarts Failed on cloud but Passed on emulator
+RestartOrchestrationWithExternalEvents Failed on cloud but Passed on emulator
 EnsureOwnedQueueExclusive Passed on cloud but Failed on emulator
-EnsureTimeoutHandlerRunsProcessShutdownEventsBeforeProcessKill Passed on cloud but Failed on emulator
+SingleOrchestratorWithSingleActivityAsync Failed on cloud but Passed on emulator
+SingleOrchestrationWithThrowingExceptionAsync Failed on cloud but Passed on emulator
+SingleOrchestratorWithMultipleActivitiesAsync Failed on cloud but Passed on emulator
+SubOrchestratorAsync Failed on cloud but Passed on emulator
+MultipleSubOrchestratorAsync Failed on cloud but Passed on emulator
+SingleOrchestratorWithRetryAsync Failed on cloud but Passed on emulator
+MultiLayeredOrchestrationWithRetryAsync Failed on cloud but Passed on emulator
+ContinueAsNewAsync Failed on cloud but Passed on emulator
 
 ---Not found tests---
 MultipleParentScenarioAsync not found in cloud test
@@ -32,14 +99,14 @@ SignalSingleWaiter Passed on both emulator and cloud
 SignalMultipleWaiters Passed on both emulator and cloud
 TrackingStoreStorageAccountDetailsNotSet Passed on both emulator and cloud
 TrackingStoreStorageAccountDetailsHasSet Passed on both emulator and cloud
-CreateTaskHub Failed on both emulator and cloud
-DeleteTaskHub Failed on both emulator and cloud
-MultiWorkerLeaseMovement Failed on both emulator and cloud
-TestInstanceAndMessageDistribution Failed on both emulator and cloud
-PartitionLost_AbandonPrefetchedSession Passed on cloud but Failed on emulator
-MonitorIdleTaskHubDisconnected Failed on both emulator and cloud
-UpdateTaskHubJsonWithNewPartitionCount Failed on both emulator and cloud
-MonitorIncreasingControlQueueLoadDisconnected Failed on both emulator and cloud
+CreateTaskHub Failed on cloud but Passed on emulator
+DeleteTaskHub Failed on cloud but Passed on emulator
+MultiWorkerLeaseMovement Failed on cloud but Passed on emulator
+TestInstanceAndMessageDistribution Failed on cloud but Passed on emulator
+PartitionLost_AbandonPrefetchedSession Passed on both emulator and cloud
+MonitorIdleTaskHubDisconnected Failed on cloud but Passed on emulator
+UpdateTaskHubJsonWithNewPartitionCount Failed on cloud but Passed on emulator
+MonitorIncreasingControlQueueLoadDisconnected Failed on cloud but Passed on emulator
 ScaleDecision_WorkItemLatency_High Passed on both emulator and cloud
 ScaleDecision_WorkItemLatency_Moderate Passed on both emulator and cloud
 ScaleDecision_WorkItemLatency_Low Passed on both emulator and cloud
@@ -82,72 +149,72 @@ ScaleDecision_AdHoc_ControlQueueLatency_MaxPollingDelay1 Passed on both emulator
 ScaleDecision_AdHoc_ControlQueueLatency_MaxPollingDelay2 Passed on both emulator and cloud
 ScaleDecision_AdHoc_ControlQueueLatency_QuickDrain Passed on both emulator and cloud
 ScaleDecision_AdHoc_ControlQueueLatency_NotMaxPollingDelay Passed on both emulator and cloud
-HelloWorldOrchestration_Inline Failed on both emulator and cloud
-HelloWorldOrchestration_Activity Failed on both emulator and cloud
-SequentialOrchestration Failed on both emulator and cloud
-SequentialOrchestrationNoReplay Failed on both emulator and cloud
-ParentOfSequentialOrchestration Failed on both emulator and cloud
-LongRunningOrchestrator Failed on both emulator and cloud
-GetAllOrchestrationStatuses Failed on both emulator and cloud
-GetPaginatedStatuses Failed on both emulator and cloud
-GetInstanceIdsByPrefix Failed on both emulator and cloud
-NoInstancesGetAllOrchestrationStatusesNullContinuationToken Failed on both emulator and cloud
-EventConversation Failed on both emulator and cloud
-AutoStart Failed on both emulator and cloud
-ContinueAsNewThenTimer Failed on both emulator and cloud
-PurgeInstanceHistoryForSingleInstanceWithoutLargeMessageBlobs Failed on both emulator and cloud
-ValidateCustomStatusPersists Failed on both emulator and cloud
-ValidateNullCustomStatusPersists Failed on both emulator and cloud
-PurgeInstanceHistoryForSingleInstanceWithLargeMessageBlobs Failed on both emulator and cloud
+HelloWorldOrchestration_Inline Failed on cloud but Passed on emulator
+HelloWorldOrchestration_Activity Failed on cloud but Passed on emulator
+SequentialOrchestration Failed on cloud but Passed on emulator
+SequentialOrchestrationNoReplay Failed on cloud but Passed on emulator
+ParentOfSequentialOrchestration Failed on cloud but Passed on emulator
+LongRunningOrchestrator Failed on cloud but Passed on emulator
+GetAllOrchestrationStatuses Failed on cloud but Passed on emulator
+GetPaginatedStatuses Failed on cloud but Passed on emulator
+GetInstanceIdsByPrefix Failed on cloud but Passed on emulator
+NoInstancesGetAllOrchestrationStatusesNullContinuationToken Failed on cloud but Passed on emulator
+EventConversation Failed on cloud but Passed on emulator
+AutoStart Failed on cloud but Passed on emulator
+ContinueAsNewThenTimer Failed on cloud but Passed on emulator
+PurgeInstanceHistoryForSingleInstanceWithoutLargeMessageBlobs Failed on cloud but Passed on emulator
+ValidateCustomStatusPersists Failed on cloud but Passed on emulator
+ValidateNullCustomStatusPersists Failed on cloud but Passed on emulator
+PurgeInstanceHistoryForSingleInstanceWithLargeMessageBlobs Failed on cloud but Passed on emulator
 PurgeInstanceHistoryForTimePeriodDeleteAll Failed on both emulator and cloud
 PurgeInstanceHistoryForTimePeriodDeletePartially Failed on both emulator and cloud
-ParallelOrchestration Failed on both emulator and cloud
-LargeFanOutOrchestration Failed on both emulator and cloud
-FanOutOrchestration_LargeHistoryBatches Failed on both emulator and cloud
-ActorOrchestration Failed on both emulator and cloud
-ActorOrchestrationForLargeInput Failed on both emulator and cloud
-ActorOrchestrationDeleteAllLargeMessageBlobs Failed on both emulator and cloud
-TerminateOrchestration Failed on both emulator and cloud
-SuspendResumeOrchestration Failed on both emulator and cloud
-TerminateSuspendedOrchestration Failed on both emulator and cloud
-RewindOrchestrationsFail Failed on both emulator and cloud
-RewindActivityFailFanOut Failed on both emulator and cloud
-RewindActivityFail Failed on both emulator and cloud
-RewindMultipleActivityFail Failed on both emulator and cloud
-RewindSubOrchestrationsTest Failed on both emulator and cloud
-RewindSubOrchestrationActivityTest Failed on both emulator and cloud
-RewindNestedSubOrchestrationTest Failed on both emulator and cloud
-TimerCancellation Failed on both emulator and cloud
-TimerExpiration Failed on both emulator and cloud
-OrchestrationConcurrency Failed on both emulator and cloud
-HandledActivityException Failed on both emulator and cloud
-UnhandledOrchestrationException Failed on both emulator and cloud
-UnhandledActivityException Failed on both emulator and cloud
-FanOutToTableStorage Failed on both emulator and cloud
+ParallelOrchestration Failed on cloud but Passed on emulator
+LargeFanOutOrchestration Failed on cloud but Passed on emulator
+FanOutOrchestration_LargeHistoryBatches Failed on cloud but Passed on emulator
+ActorOrchestration Failed on cloud but Passed on emulator
+ActorOrchestrationForLargeInput Failed on cloud but Passed on emulator
+ActorOrchestrationDeleteAllLargeMessageBlobs Failed on cloud but Passed on emulator
+TerminateOrchestration Failed on cloud but Passed on emulator
+SuspendResumeOrchestration Failed on cloud but Passed on emulator
+TerminateSuspendedOrchestration Failed on cloud but Passed on emulator
+RewindOrchestrationsFail Failed on cloud but Passed on emulator
+RewindActivityFailFanOut Failed on cloud but Passed on emulator
+RewindActivityFail Failed on cloud but Passed on emulator
+RewindMultipleActivityFail Failed on cloud but Passed on emulator
+RewindSubOrchestrationsTest Failed on cloud but Passed on emulator
+RewindSubOrchestrationActivityTest Failed on cloud but Passed on emulator
+RewindNestedSubOrchestrationTest Failed on cloud but Passed on emulator
+TimerCancellation Failed on cloud but Passed on emulator
+TimerExpiration Failed on cloud but Passed on emulator
+OrchestrationConcurrency Failed on cloud but Passed on emulator
+HandledActivityException Failed on cloud but Passed on emulator
+UnhandledOrchestrationException Failed on cloud but Passed on emulator
+UnhandledActivityException Failed on cloud but Passed on emulator
+FanOutToTableStorage Failed on cloud but Passed on emulator
 ValidateEventSource Passed on both emulator and cloud
-SmallTextMessagePayloads Failed on both emulator and cloud
+SmallTextMessagePayloads Failed on cloud but Passed on emulator
 LargeQueueTextMessagePayloads_BlobUrl Failed on both emulator and cloud
-LargeTableTextMessagePayloads_SizeViolation_BlobUrl Failed on both emulator and cloud
-LargeOverallTextMessagePayloads_BlobUrl Failed on both emulator and cloud
-LargeTextMessagePayloads_FetchLargeMessages Failed on both emulator and cloud
-LargeTableTextMessagePayloads_FetchLargeMessages Failed on both emulator and cloud
-TagsAreAvailableInOrchestrationState Failed on both emulator and cloud
-LargeOrchestrationTags Failed on both emulator and cloud
-NonBlobUriPayload_FetchLargeMessages_RetainsOriginalPayload Failed on both emulator and cloud
-LargeTextMessagePayloads_FetchLargeMessages_QueryState Failed on both emulator and cloud
-LargeTextMessagePayloads_URIFormatCheck Failed on both emulator and cloud
-LargeBinaryByteMessagePayloads Failed on both emulator and cloud
-LargeBinaryStringMessagePayloads Failed on both emulator and cloud
-RecreateCompletedInstance Failed on both emulator and cloud
-RecreateFailedInstance Failed on both emulator and cloud
-RecreateTerminatedInstance Failed on both emulator and cloud
-RecreateRunningInstance Failed on both emulator and cloud
-ExtendedSessions_SessionTimeout Failed on both emulator and cloud
-DoubleFanOut Failed on both emulator and cloud
-AbortOrchestrationAndActivity Failed on both emulator and cloud
-ScheduledStart_Inline Failed on both emulator and cloud
+LargeTableTextMessagePayloads_SizeViolation_BlobUrl Failed on cloud but Passed on emulator
+LargeOverallTextMessagePayloads_BlobUrl Failed on cloud but Passed on emulator
+LargeTextMessagePayloads_FetchLargeMessages Failed on cloud but Passed on emulator
+LargeTableTextMessagePayloads_FetchLargeMessages Failed on cloud but Passed on emulator
+TagsAreAvailableInOrchestrationState Failed on cloud but Passed on emulator
+LargeOrchestrationTags Failed on cloud but Passed on emulator
+NonBlobUriPayload_FetchLargeMessages_RetainsOriginalPayload Failed on cloud but Passed on emulator
+LargeTextMessagePayloads_FetchLargeMessages_QueryState Failed on cloud but Passed on emulator
+LargeTextMessagePayloads_URIFormatCheck Failed on cloud but Passed on emulator
+LargeBinaryByteMessagePayloads Failed on cloud but Passed on emulator
+LargeBinaryStringMessagePayloads Failed on cloud but Passed on emulator
+RecreateCompletedInstance Failed on cloud but Passed on emulator
+RecreateFailedInstance Failed on cloud but Passed on emulator
+RecreateTerminatedInstance Failed on cloud but Passed on emulator
+RecreateRunningInstance Failed on cloud but Passed on emulator
+ExtendedSessions_SessionTimeout Failed on cloud but Passed on emulator
+DoubleFanOut Failed on cloud but Passed on emulator
+AbortOrchestrationAndActivity Failed on cloud but Passed on emulator
+ScheduledStart_Inline Failed on cloud but Passed on emulator
 ScheduledStart_Activity Failed on both emulator and cloud
-ScheduledStart_Activity_GetStatus_Returns_ScheduledStart Failed on both emulator and cloud
+ScheduledStart_Activity_GetStatus_Returns_ScheduledStart Failed on cloud but Passed on emulator
 OpenTelemetry_SayHelloWithActivity Failed on both emulator and cloud
 OpenTelemetry_ExternalEvent_RaiseEvent Failed on both emulator and cloud
 OpenTelemetry_ExternalEvent_SendEvent Failed on both emulator and cloud
@@ -178,36 +245,36 @@ OrchestrationInstanceQuery_ParseOptional Passed on both emulator and cloud
 OrchestrationInstanceQuery_InstanceIdPrefix Passed on both emulator and cloud
 OrchestrationInstanceQuery_InstanceId Passed on both emulator and cloud
 OrchestrationInstanceQuery_EmptyInstanceId Passed on both emulator and cloud
-TaskReturnsVoid_OrchestratorFails Failed on both emulator and cloud
+TaskReturnsVoid_OrchestratorFails Failed on cloud but Passed on emulator
 ToCloudStorageAccount_ConnectionString Passed on both emulator and cloud
 ToCloudStorageAccount_Endpoints Passed on both emulator and cloud
 ToCloudStorageAccount_EndpointSubset Passed on both emulator and cloud
 ToCloudStorageAccount_AccountName Passed on both emulator and cloud
-ConcurrentOrchestrationStarts Failed on both emulator and cloud
-RestartOrchestrationWithExternalEvents Failed on both emulator and cloud
+ConcurrentOrchestrationStarts Failed on cloud but Passed on emulator
+RestartOrchestrationWithExternalEvents Failed on cloud but Passed on emulator
 GetTargetClassName Passed on both emulator and cloud
 GetTargetClassNamePlusNotIncluded Passed on both emulator and cloud
 GetTargetClassNameEmptyString Passed on both emulator and cloud
-TestOneWorkerWithFourPartition Passed on cloud but Failed on emulator
-TestTwoWorkerWithFourPartitions Passed on cloud but Failed on emulator
-TestFourWorkerWithFourPartitions Passed on cloud but Failed on emulator
-TestAddThreeWorkersWithOneWorkerAndFourPartitions Passed on cloud but Failed on emulator
-TestAddFourWorkersWithFourWorkersAndFourPartitions Passed on cloud but Failed on emulator
-TestScalingDownToThreeWorkers Passed on cloud but Failed on emulator
-TestScalingDownToOneWorkers Passed on cloud but Failed on emulator
-TestKillOneWorker Passed on cloud but Failed on emulator
-TestKillThreeWorker Passed on cloud but Failed on emulator
-TestUnhealthyWorker Passed on cloud but Failed on emulator
+TestOneWorkerWithFourPartition Passed on both emulator and cloud
+TestTwoWorkerWithFourPartitions Passed on both emulator and cloud
+TestFourWorkerWithFourPartitions Passed on both emulator and cloud
+TestAddThreeWorkersWithOneWorkerAndFourPartitions Passed on both emulator and cloud
+TestAddFourWorkersWithFourWorkersAndFourPartitions Passed on both emulator and cloud
+TestScalingDownToThreeWorkers Passed on both emulator and cloud
+TestScalingDownToOneWorkers Passed on both emulator and cloud
+TestKillOneWorker Passed on both emulator and cloud
+TestKillThreeWorker Passed on both emulator and cloud
+TestUnhealthyWorker Passed on both emulator and cloud
 EnsureOwnedQueueExclusive Passed on cloud but Failed on emulator
-EnsureTimeoutHandlerRunsProcessShutdownEventsBeforeProcessKill Passed on cloud but Failed on emulator
+EnsureTimeoutHandlerRunsProcessShutdownEventsBeforeProcessKill Passed on both emulator and cloud
 EnsureTimeoutHandlerRunsProcessShutdownEventsAndSkipsProcessKill Passed on both emulator and cloud
 EnsureTimeoutHandlerExecutesProcessKillIfGracefulShutdownFails Failed on both emulator and cloud
 GetAccountName Passed on both emulator and cloud
-SingleOrchestratorWithSingleActivityAsync Failed on both emulator and cloud
-SingleOrchestrationWithThrowingExceptionAsync Failed on both emulator and cloud
-SingleOrchestratorWithMultipleActivitiesAsync Failed on both emulator and cloud
-SubOrchestratorAsync Failed on both emulator and cloud
-MultipleSubOrchestratorAsync Failed on both emulator and cloud
-SingleOrchestratorWithRetryAsync Failed on both emulator and cloud
-MultiLayeredOrchestrationWithRetryAsync Failed on both emulator and cloud
-ContinueAsNewAsync Failed on both emulator and cloud
+SingleOrchestratorWithSingleActivityAsync Failed on cloud but Passed on emulator
+SingleOrchestrationWithThrowingExceptionAsync Failed on cloud but Passed on emulator
+SingleOrchestratorWithMultipleActivitiesAsync Failed on cloud but Passed on emulator
+SubOrchestratorAsync Failed on cloud but Passed on emulator
+MultipleSubOrchestratorAsync Failed on cloud but Passed on emulator
+SingleOrchestratorWithRetryAsync Failed on cloud but Passed on emulator
+MultiLayeredOrchestrationWithRetryAsync Failed on cloud but Passed on emulator
+ContinueAsNewAsync Failed on cloud but Passed on emulator
