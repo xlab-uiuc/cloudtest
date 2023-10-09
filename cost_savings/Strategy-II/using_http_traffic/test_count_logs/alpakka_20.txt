@@ -1,0 +1,36 @@
+21: Tests run on cloud: 9 & Total tests count: 9
+20: Tests run on cloud: 2 & Total tests count: 9
+19: Tests run on cloud: 2 & Total tests count: 9
+18: Tests run on cloud: 2 & Total tests count: 9
+17: Tests run on cloud: 2 & Total tests count: 9
+16: Tests run on cloud: 2 & Total tests count: 9
+15: Tests run on cloud: 2 & Total tests count: 9
+14: Tests run on cloud: 2 & Total tests count: 9
+13: Tests run on cloud: 2 & Total tests count: 9
+12: Tests run on cloud: 2 & Total tests count: 9
+11: Tests run on cloud: 2 & Total tests count: 9
+10: Tests run on cloud: 2 & Total tests count: 9
+9: Tests run on cloud: 2 & Total tests count: 9
+8: Tests run on cloud: 2 & Total tests count: 9
+7: Tests run on cloud: 2 & Total tests count: 9
+6: Tests run on cloud: 1 & Total tests count: 9
+5: Tests run on cloud: 3 & Total tests count: 9
+4: Tests run on cloud: 3 & Total tests count: 9
+3: Tests run on cloud: 3 & Total tests count: 9
+2: Tests run on cloud: 2 & Total tests count: 9
+1: Tests run on cloud: 2 & Total tests count: 9
+
+
+TOTAL_UNIT_TESTS = 189
+UNIT_TESTS_ON_CLOUD = 51
+CUMULATIVE_COST:  2991
+ACTUAL_COST:  3853
+
+
+Notes: The cost saving isnt huge in alpakka even
+tho less number of tests run on the cloud. Surprisingly,
+only one test has the biggest chunk of requests
+and that is always run on the cloud. Test name:
+(A_QueueSink_should_retry_failing_messages_if_supervision_strategy_is_resume)
+Also the number of POST requests usually vary here causing
+it to run on the cloud.
