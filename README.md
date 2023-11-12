@@ -15,3 +15,5 @@ Azure Storage discrepancies: https://docs.google.com/document/d/1fD_UqEUrwEhOCsC
 S3 discrepancies: https://docs.google.com/document/d/13ey5x3MjERzZ_6q_HoPwSgeLwClctjpV_xlWSwI1TDs/edit
 
 DynamoDB discrepancies: https://docs.google.com/document/d/1-_YeRWH5hWmCvyxt_YKEv4ASqzOcClgcF9FwmaQkG78/edit
+
+Application discrepancies RCA: https://docs.google.com/document/d/1OIFc5jGdbZp6-gEaD0sb-fWSC1EzsbaHK1XNi5RYdA0/edit?usp=sharing
