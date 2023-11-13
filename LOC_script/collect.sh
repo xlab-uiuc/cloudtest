@@ -8,7 +8,7 @@ do
   echo "cloning repo"
   git clone $url temp
   cd temp
-  cloc $commit timeout 0 --json | jq .SUM.code | tee -a ../result
+  cloc $commit --timeout 0 --json | jq .SUM.code | tee -a ../result
   cd ..
   rm -r temp
   echo "remove repo"
