@@ -1,0 +1,227 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  SleetLib -> /Users/zhengxinze/Desktop/System/Sleet/artifacts/proj/SleetLib/bin/Debug/netstandard2.0/SleetLib.dll
+  Sleet.Test.Common -> /Users/zhengxinze/Desktop/System/Sleet/artifacts/proj/Sleet.Test.Common/bin/Debug/netstandard2.0/Sleet.Test.Common.dll
+  Sleet.AmazonS3.Tests -> /Users/zhengxinze/Desktop/System/Sleet/artifacts/proj/Sleet.AmazonS3.Tests/bin/Debug/net6.0/Sleet.AmazonS3.Tests.dll
+Test run for /Users/zhengxinze/Desktop/System/Sleet/artifacts/proj/Sleet.AmazonS3.Tests/bin/Debug/net6.0/Sleet.AmazonS3.Tests.dll (.NETCoreApp,Version=v6.0)
+Microsoft (R) Test Execution Command Line Tool Version 17.5.0 (arm64)
+Copyright (c) Microsoft Corporation.  All rights reserved.
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.4.3+1b45f5407b (64-bit .NET 6.0.15)
+[xUnit.net 00:00:00.37]   Discovering: Sleet.AmazonS3.Tests
+[xUnit.net 00:00:00.38]   Discovered:  Sleet.AmazonS3.Tests
+[xUnit.net 00:00:00.39]   Starting:    Sleet.AmazonS3.Tests
+  Passed Sleet.AmazonS3.Tests.BasicTests.GivenAStorageAccountVerifyInitSucceeds [3 s]
+  Passed Sleet.AmazonS3.Tests.SubFeedTests.SubFeed_PushAndVerifyNoFilesInRoot [5 s]
+  Passed Sleet.AmazonS3.Tests.BasicTests.GivenAStorageAccountVerifyPushAndSucceedWithBaseURI [4 s]
+  Passed Sleet.AmazonS3.Tests.BasicTests.GivenAStorageAccountVerifyPushSucceeds [5 s]
+  Passed Sleet.AmazonS3.Tests.SubFeedTests.SubFeed_PushAndVerifyWithNestedFeedsVerifySuccess [10 s]
+  Passed Sleet.AmazonS3.Tests.BasicTests.GivenAStorageAccountVerifyPushAndRemoveSucceed [5 s]
+  Passed Sleet.AmazonS3.Tests.SubFeedTests.SubFeed_InitMultipleFeedsVerifyDestroyDoesNotModifyOthers [5 s]
+  Passed Sleet.AmazonS3.Tests.BasicTests.GivenAStorageAccountWithNoInitVerifyPushSucceeds [3 s]
+[xUnit.net 00:06:54.87]       Amazon.S3.AmazonS3Exception : Access Denied
+[xUnit.net 00:06:54.87]       ---- Amazon.Runtime.Internal.HttpErrorResponseException : Exception of type 'Amazon.Runtime.Internal.HttpErrorResponseException' was thrown.
+[xUnit.net 00:06:54.87]       Stack Trace:
+[xUnit.net 00:06:54.87]            at Amazon.Runtime.Internal.HttpErrorResponseExceptionHandler.HandleExceptionStream(IRequestContext requestContext, IWebResponseData httpErrorResponse, HttpErrorResponseException exception, Stream responseStream)
+[xUnit.net 00:06:54.87]            at Amazon.Runtime.Internal.HttpErrorResponseExceptionHandler.HandleExceptionAsync(IExecutionContext executionContext, HttpErrorResponseException exception)
+[xUnit.net 00:06:54.87]            at Amazon.Runtime.Internal.ExceptionHandler`1.HandleAsync(IExecutionContext executionContext, Exception exception)
+[xUnit.net 00:06:54.87]            at Amazon.Runtime.Internal.ErrorHandler.ProcessExceptionAsync(IExecutionContext executionContext, Exception exception)
+[xUnit.net 00:06:54.87]            at Amazon.Runtime.Internal.ErrorHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:06:54.87]            at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:06:54.87]            at Amazon.Runtime.Internal.Signer.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:06:54.87]            at Amazon.Runtime.Internal.EndpointDiscoveryHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:06:54.87]            at Amazon.Runtime.Internal.EndpointDiscoveryHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:06:54.87]            at Amazon.Runtime.Internal.CredentialsRetriever.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:06:54.87]            at Amazon.Runtime.Internal.RetryHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:06:54.87]            at Amazon.Runtime.Internal.RetryHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:06:54.87]            at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:06:54.87]            at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:06:54.87]            at Amazon.S3.Internal.AmazonS3ExceptionHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:06:54.87]            at Amazon.Runtime.Internal.ErrorCallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:06:54.87]            at Amazon.Runtime.Internal.MetricsHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:06:54.87]         /Users/zhengxinze/Desktop/System/Sleet/src/SleetLib/FileSystem/AmazonS3FileSystem.cs(149,0): at Sleet.AmazonS3FileSystem.CreateBucket(ILogger log, CancellationToken token)
+[xUnit.net 00:06:54.87]         /Users/zhengxinze/Desktop/System/Sleet/src/SleetLib/Utility/SourceUtility.cs(111,0): at Sleet.SourceUtility.EnsureBucketOrThrow(ISleetFileSystem fileSystem, Boolean autoCreateBucket, ILogger log, CancellationToken token)
+[xUnit.net 00:06:54.87]         /Users/zhengxinze/Desktop/System/Sleet/src/SleetLib/Utility/SourceUtility.cs(41,0): at Sleet.SourceUtility.InitAndLock(LocalSettings settings, ISleetFileSystem fileSystem, String lockMessage, Boolean autoCreateBucket, Boolean autoInit, ILogger log, CancellationToken token)
+[xUnit.net 00:06:54.87]         /Users/zhengxinze/Desktop/System/Sleet/src/SleetLib/Commands/PushCommand.cs(54,0): at Sleet.PushCommand.RunAsync(LocalSettings settings, ISleetFileSystem source, List`1 inputs, Boolean force, Boolean skipExisting, ILogger log)
+[xUnit.net 00:06:54.87]         /Users/zhengxinze/Desktop/System/Sleet/test/Sleet.AmazonS3.Tests/AmazonS3NuGetIntegrationTests.cs(31,0): at Sleet.AmazonS3.Tests.AmazonS3NuGetIntegrationTests.GivenPushCreatesAnS3BucketVerifyNuGetCanRead()
+[xUnit.net 00:06:54.87]         --- End of stack trace from previous location ---
+[xUnit.net 00:06:54.87]         ----- Inner Stack Trace -----
+[xUnit.net 00:06:54.87]            at Amazon.Runtime.HttpWebRequestMessage.GetResponseAsync(CancellationToken cancellationToken)
+[xUnit.net 00:06:54.87]            at Amazon.Runtime.Internal.HttpHandler`1.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:06:54.87]            at Amazon.Runtime.Internal.RedirectHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:06:54.87]            at Amazon.Runtime.Internal.Unmarshaller.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:06:54.87]            at Amazon.S3.Internal.AmazonS3ResponseHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:06:54.87]            at Amazon.Runtime.Internal.ErrorHandler.InvokeAsync[T](IExecutionContext executionContext)
+  Failed Sleet.AmazonS3.Tests.AmazonS3NuGetIntegrationTests.GivenPushCreatesAnS3BucketVerifyNuGetCanRead [6 m 54 s]
+  Error Message:
+   Amazon.S3.AmazonS3Exception : Access Denied
+---- Amazon.Runtime.Internal.HttpErrorResponseException : Exception of type 'Amazon.Runtime.Internal.HttpErrorResponseException' was thrown.
+  Stack Trace:
+     at Amazon.Runtime.Internal.HttpErrorResponseExceptionHandler.HandleExceptionStream(IRequestContext requestContext, IWebResponseData httpErrorResponse, HttpErrorResponseException exception, Stream responseStream)
+   at Amazon.Runtime.Internal.HttpErrorResponseExceptionHandler.HandleExceptionAsync(IExecutionContext executionContext, HttpErrorResponseException exception)
+   at Amazon.Runtime.Internal.ExceptionHandler`1.HandleAsync(IExecutionContext executionContext, Exception exception)
+   at Amazon.Runtime.Internal.ErrorHandler.ProcessExceptionAsync(IExecutionContext executionContext, Exception exception)
+   at Amazon.Runtime.Internal.ErrorHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.Signer.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.EndpointDiscoveryHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.EndpointDiscoveryHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.CredentialsRetriever.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.RetryHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.RetryHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.S3.Internal.AmazonS3ExceptionHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.ErrorCallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.MetricsHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Sleet.AmazonS3FileSystem.CreateBucket(ILogger log, CancellationToken token) in /Users/zhengxinze/Desktop/System/Sleet/src/SleetLib/FileSystem/AmazonS3FileSystem.cs:line 149
+   at Sleet.SourceUtility.EnsureBucketOrThrow(ISleetFileSystem fileSystem, Boolean autoCreateBucket, ILogger log, CancellationToken token) in /Users/zhengxinze/Desktop/System/Sleet/src/SleetLib/Utility/SourceUtility.cs:line 111
+   at Sleet.SourceUtility.InitAndLock(LocalSettings settings, ISleetFileSystem fileSystem, String lockMessage, Boolean autoCreateBucket, Boolean autoInit, ILogger log, CancellationToken token) in /Users/zhengxinze/Desktop/System/Sleet/src/SleetLib/Utility/SourceUtility.cs:line 41
+   at Sleet.PushCommand.RunAsync(LocalSettings settings, ISleetFileSystem source, List`1 inputs, Boolean force, Boolean skipExisting, ILogger log) in /Users/zhengxinze/Desktop/System/Sleet/src/SleetLib/Commands/PushCommand.cs:line 54
+   at Sleet.AmazonS3.Tests.AmazonS3NuGetIntegrationTests.GivenPushCreatesAnS3BucketVerifyNuGetCanRead() in /Users/zhengxinze/Desktop/System/Sleet/test/Sleet.AmazonS3.Tests/AmazonS3NuGetIntegrationTests.cs:line 31
+--- End of stack trace from previous location ---
+----- Inner Stack Trace -----
+   at Amazon.Runtime.HttpWebRequestMessage.GetResponseAsync(CancellationToken cancellationToken)
+   at Amazon.Runtime.Internal.HttpHandler`1.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.RedirectHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.Unmarshaller.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.S3.Internal.AmazonS3ResponseHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.ErrorHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:06:57.54]       Amazon.S3.AmazonS3Exception : Access Denied
+[xUnit.net 00:06:57.54]       ---- Amazon.Runtime.Internal.HttpErrorResponseException : Exception of type 'Amazon.Runtime.Internal.HttpErrorResponseException' was thrown.
+[xUnit.net 00:06:57.54]       Stack Trace:
+[xUnit.net 00:06:57.54]            at Amazon.Runtime.Internal.HttpErrorResponseExceptionHandler.HandleExceptionStream(IRequestContext requestContext, IWebResponseData httpErrorResponse, HttpErrorResponseException exception, Stream responseStream)
+[xUnit.net 00:06:57.54]            at Amazon.Runtime.Internal.HttpErrorResponseExceptionHandler.HandleExceptionAsync(IExecutionContext executionContext, HttpErrorResponseException exception)
+[xUnit.net 00:06:57.54]            at Amazon.Runtime.Internal.ExceptionHandler`1.HandleAsync(IExecutionContext executionContext, Exception exception)
+[xUnit.net 00:06:57.54]            at Amazon.Runtime.Internal.ErrorHandler.ProcessExceptionAsync(IExecutionContext executionContext, Exception exception)
+[xUnit.net 00:06:57.54]            at Amazon.Runtime.Internal.ErrorHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:06:57.54]            at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:06:57.54]            at Amazon.Runtime.Internal.Signer.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:06:57.54]            at Amazon.Runtime.Internal.EndpointDiscoveryHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:06:57.54]            at Amazon.Runtime.Internal.EndpointDiscoveryHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:06:57.54]            at Amazon.Runtime.Internal.CredentialsRetriever.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:06:57.54]            at Amazon.Runtime.Internal.RetryHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:06:57.54]            at Amazon.Runtime.Internal.RetryHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:06:57.54]            at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:06:57.54]            at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:06:57.54]            at Amazon.S3.Internal.AmazonS3ExceptionHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:06:57.55]            at Amazon.Runtime.Internal.ErrorCallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:06:57.55]            at Amazon.Runtime.Internal.MetricsHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:06:57.55]         /Users/zhengxinze/Desktop/System/Sleet/src/SleetLib/FileSystem/AmazonS3FileSystem.cs(149,0): at Sleet.AmazonS3FileSystem.CreateBucket(ILogger log, CancellationToken token)
+[xUnit.net 00:06:57.55]         /Users/zhengxinze/Desktop/System/Sleet/test/Sleet.AmazonS3.Tests/AmazonS3FileSystemTests.cs(27,0): at Sleet.AmazonS3.Tests.AmazonS3FileSystemTests.GivenAS3AccountVerifyBucketOperations()
+[xUnit.net 00:06:57.55]         --- End of stack trace from previous location ---
+[xUnit.net 00:06:57.55]         ----- Inner Stack Trace -----
+[xUnit.net 00:06:57.55]            at Amazon.Runtime.HttpWebRequestMessage.GetResponseAsync(CancellationToken cancellationToken)
+[xUnit.net 00:06:57.55]            at Amazon.Runtime.Internal.HttpHandler`1.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:06:57.55]            at Amazon.Runtime.Internal.RedirectHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:06:57.55]            at Amazon.Runtime.Internal.Unmarshaller.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:06:57.55]            at Amazon.S3.Internal.AmazonS3ResponseHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:06:57.55]            at Amazon.Runtime.Internal.ErrorHandler.InvokeAsync[T](IExecutionContext executionContext)
+  Failed Sleet.AmazonS3.Tests.AmazonS3FileSystemTests.GivenAS3AccountVerifyBucketOperations [6 m 57 s]
+  Error Message:
+   Amazon.S3.AmazonS3Exception : Access Denied
+---- Amazon.Runtime.Internal.HttpErrorResponseException : Exception of type 'Amazon.Runtime.Internal.HttpErrorResponseException' was thrown.
+  Stack Trace:
+     at Amazon.Runtime.Internal.HttpErrorResponseExceptionHandler.HandleExceptionStream(IRequestContext requestContext, IWebResponseData httpErrorResponse, HttpErrorResponseException exception, Stream responseStream)
+   at Amazon.Runtime.Internal.HttpErrorResponseExceptionHandler.HandleExceptionAsync(IExecutionContext executionContext, HttpErrorResponseException exception)
+   at Amazon.Runtime.Internal.ExceptionHandler`1.HandleAsync(IExecutionContext executionContext, Exception exception)
+   at Amazon.Runtime.Internal.ErrorHandler.ProcessExceptionAsync(IExecutionContext executionContext, Exception exception)
+   at Amazon.Runtime.Internal.ErrorHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.Signer.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.EndpointDiscoveryHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.EndpointDiscoveryHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.CredentialsRetriever.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.RetryHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.RetryHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.S3.Internal.AmazonS3ExceptionHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.ErrorCallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.MetricsHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Sleet.AmazonS3FileSystem.CreateBucket(ILogger log, CancellationToken token) in /Users/zhengxinze/Desktop/System/Sleet/src/SleetLib/FileSystem/AmazonS3FileSystem.cs:line 149
+   at Sleet.AmazonS3.Tests.AmazonS3FileSystemTests.GivenAS3AccountVerifyBucketOperations() in /Users/zhengxinze/Desktop/System/Sleet/test/Sleet.AmazonS3.Tests/AmazonS3FileSystemTests.cs:line 27
+--- End of stack trace from previous location ---
+----- Inner Stack Trace -----
+   at Amazon.Runtime.HttpWebRequestMessage.GetResponseAsync(CancellationToken cancellationToken)
+   at Amazon.Runtime.Internal.HttpHandler`1.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.RedirectHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.Unmarshaller.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.S3.Internal.AmazonS3ResponseHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.ErrorHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:07:18.10]       Amazon.S3.AmazonS3Exception : Access Denied
+[xUnit.net 00:07:18.10]       ---- Amazon.Runtime.Internal.HttpErrorResponseException : Exception of type 'Amazon.Runtime.Internal.HttpErrorResponseException' was thrown.
+[xUnit.net 00:07:18.10]       Stack Trace:
+[xUnit.net 00:07:18.10]            at Amazon.Runtime.Internal.HttpErrorResponseExceptionHandler.HandleExceptionStream(IRequestContext requestContext, IWebResponseData httpErrorResponse, HttpErrorResponseException exception, Stream responseStream)
+[xUnit.net 00:07:18.10]            at Amazon.Runtime.Internal.HttpErrorResponseExceptionHandler.HandleExceptionAsync(IExecutionContext executionContext, HttpErrorResponseException exception)
+[xUnit.net 00:07:18.10]            at Amazon.Runtime.Internal.ExceptionHandler`1.HandleAsync(IExecutionContext executionContext, Exception exception)
+[xUnit.net 00:07:18.10]            at Amazon.Runtime.Internal.ErrorHandler.ProcessExceptionAsync(IExecutionContext executionContext, Exception exception)
+[xUnit.net 00:07:18.10]            at Amazon.Runtime.Internal.ErrorHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:07:18.10]            at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:07:18.10]            at Amazon.Runtime.Internal.Signer.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:07:18.10]            at Amazon.Runtime.Internal.EndpointDiscoveryHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:07:18.10]            at Amazon.Runtime.Internal.EndpointDiscoveryHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:07:18.10]            at Amazon.Runtime.Internal.CredentialsRetriever.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:07:18.10]            at Amazon.Runtime.Internal.RetryHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:07:18.10]            at Amazon.Runtime.Internal.RetryHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:07:18.10]            at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:07:18.10]            at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:07:18.10]            at Amazon.S3.Internal.AmazonS3ExceptionHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:07:18.10]            at Amazon.Runtime.Internal.ErrorCallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:07:18.10]            at Amazon.Runtime.Internal.MetricsHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:07:18.10]         /Users/zhengxinze/Desktop/System/Sleet/src/SleetLib/FileSystem/AmazonS3FileSystem.cs(149,0): at Sleet.AmazonS3FileSystem.CreateBucket(ILogger log, CancellationToken token)
+[xUnit.net 00:07:18.10]         /Users/zhengxinze/Desktop/System/Sleet/src/SleetLib/Utility/SourceUtility.cs(111,0): at Sleet.SourceUtility.EnsureBucketOrThrow(ISleetFileSystem fileSystem, Boolean autoCreateBucket, ILogger log, CancellationToken token)
+[xUnit.net 00:07:18.10]         /Users/zhengxinze/Desktop/System/Sleet/src/SleetLib/Utility/SourceUtility.cs(41,0): at Sleet.SourceUtility.InitAndLock(LocalSettings settings, ISleetFileSystem fileSystem, String lockMessage, Boolean autoCreateBucket, Boolean autoInit, ILogger log, CancellationToken token)
+[xUnit.net 00:07:18.10]         /Users/zhengxinze/Desktop/System/Sleet/src/SleetLib/Commands/PushCommand.cs(54,0): at Sleet.PushCommand.RunAsync(LocalSettings settings, ISleetFileSystem source, List`1 inputs, Boolean force, Boolean skipExisting, ILogger log)
+[xUnit.net 00:07:18.10]         /Users/zhengxinze/Desktop/System/Sleet/test/Sleet.AmazonS3.Tests/BasicTests.cs(88,0): at Sleet.AmazonS3.Tests.BasicTests.GivenAStorageAccountWithNoContainerVerifyPushSucceeds()
+[xUnit.net 00:07:18.10]         --- End of stack trace from previous location ---
+[xUnit.net 00:07:18.10]         ----- Inner Stack Trace -----
+[xUnit.net 00:07:18.10]            at Amazon.Runtime.HttpWebRequestMessage.GetResponseAsync(CancellationToken cancellationToken)
+[xUnit.net 00:07:18.10]            at Amazon.Runtime.Internal.HttpHandler`1.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:07:18.10]            at Amazon.Runtime.Internal.RedirectHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:07:18.10]            at Amazon.Runtime.Internal.Unmarshaller.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:07:18.10]            at Amazon.S3.Internal.AmazonS3ResponseHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:07:18.10]            at Amazon.Runtime.Internal.ErrorHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:07:18.11]   Finished:    Sleet.AmazonS3.Tests
+  Failed Sleet.AmazonS3.Tests.BasicTests.GivenAStorageAccountWithNoContainerVerifyPushSucceeds [6 m 54 s]
+  Error Message:
+   Amazon.S3.AmazonS3Exception : Access Denied
+---- Amazon.Runtime.Internal.HttpErrorResponseException : Exception of type 'Amazon.Runtime.Internal.HttpErrorResponseException' was thrown.
+  Stack Trace:
+     at Amazon.Runtime.Internal.HttpErrorResponseExceptionHandler.HandleExceptionStream(IRequestContext requestContext, IWebResponseData httpErrorResponse, HttpErrorResponseException exception, Stream responseStream)
+   at Amazon.Runtime.Internal.HttpErrorResponseExceptionHandler.HandleExceptionAsync(IExecutionContext executionContext, HttpErrorResponseException exception)
+   at Amazon.Runtime.Internal.ExceptionHandler`1.HandleAsync(IExecutionContext executionContext, Exception exception)
+   at Amazon.Runtime.Internal.ErrorHandler.ProcessExceptionAsync(IExecutionContext executionContext, Exception exception)
+   at Amazon.Runtime.Internal.ErrorHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.Signer.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.EndpointDiscoveryHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.EndpointDiscoveryHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.CredentialsRetriever.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.RetryHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.RetryHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.S3.Internal.AmazonS3ExceptionHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.ErrorCallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.MetricsHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Sleet.AmazonS3FileSystem.CreateBucket(ILogger log, CancellationToken token) in /Users/zhengxinze/Desktop/System/Sleet/src/SleetLib/FileSystem/AmazonS3FileSystem.cs:line 149
+   at Sleet.SourceUtility.EnsureBucketOrThrow(ISleetFileSystem fileSystem, Boolean autoCreateBucket, ILogger log, CancellationToken token) in /Users/zhengxinze/Desktop/System/Sleet/src/SleetLib/Utility/SourceUtility.cs:line 111
+   at Sleet.SourceUtility.InitAndLock(LocalSettings settings, ISleetFileSystem fileSystem, String lockMessage, Boolean autoCreateBucket, Boolean autoInit, ILogger log, CancellationToken token) in /Users/zhengxinze/Desktop/System/Sleet/src/SleetLib/Utility/SourceUtility.cs:line 41
+   at Sleet.PushCommand.RunAsync(LocalSettings settings, ISleetFileSystem source, List`1 inputs, Boolean force, Boolean skipExisting, ILogger log) in /Users/zhengxinze/Desktop/System/Sleet/src/SleetLib/Commands/PushCommand.cs:line 54
+   at Sleet.AmazonS3.Tests.BasicTests.GivenAStorageAccountWithNoContainerVerifyPushSucceeds() in /Users/zhengxinze/Desktop/System/Sleet/test/Sleet.AmazonS3.Tests/BasicTests.cs:line 88
+--- End of stack trace from previous location ---
+----- Inner Stack Trace -----
+   at Amazon.Runtime.HttpWebRequestMessage.GetResponseAsync(CancellationToken cancellationToken)
+   at Amazon.Runtime.Internal.HttpHandler`1.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.RedirectHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.Unmarshaller.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.S3.Internal.AmazonS3ResponseHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.ErrorHandler.InvokeAsync[T](IExecutionContext executionContext)
+
+Total tests: 11
+     Passed: 8
+     Failed: 3
+ Total time: 7.3091 Minutes
