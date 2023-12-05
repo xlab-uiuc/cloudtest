@@ -122,7 +122,8 @@ def run_all_apps():
     global DISCREPANT_TESTS
     global TOTAL_TESTS
 
-    apps = ['alpakka','orleans','identityazuretable','ironpigeon','sleet','attachmentplugin','snowmaker']
+    apps = ['alpakka','orleans','identityazuretable','ironpigeon','sleet','attachmentplugin','snowmaker', 'insights', 'streamstone']
+    # apps = ['streamstone']
     methods_file_path = "discrepantApisEmulator.txt"
     methods = get_methods_from_file(methods_file_path)
     

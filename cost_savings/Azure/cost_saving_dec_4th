@@ -1,0 +1,510 @@
+
+App: alpakka ----- Started
+
+
+Method counts: {
+  "Queue_Create": 9,
+  "Messages_Enqueue": 7,
+  "Messages_Dequeue": 8,
+  "Queue_Delete": 9,
+  "MessageId_Delete": 1,
+  "Messages_Peek": 1
+}
+Unique API methods: 6
+Discrepant Unique APIs: 2
+Discrepant APIs: 
+[('Queue_Delete', 9), ('Messages_Peek', 1)]
+Potential discrepant tests: 9
+Total tests: 9
+
+
+*CLOUD COST*
+PUT 12
+GET 17
+POST 129
+DELETE 15
+PATCH 0
+HEAD 0
+OTHER 0
+Total:  173
+
+*CLOUD & EMULATOR COST*
+PUT 12
+GET 17
+POST 129
+DELETE 15
+PATCH 0
+HEAD 0
+OTHER 0
+Total:  173
+
+*SAVINGS*
+PUT 0
+GET 0
+POST 0
+DELETE 0
+PATCH 0
+HEAD 0
+OTHER 0
+Total:  0
+
+----------------------------------------------
+
+
+App: orleans ----- Started
+
+
+Method counts: {
+  "Table_Create": 151,
+  "Table_QueryEntities": 117,
+  "Table_MergeEntity": 33,
+  "Table_DeleteEntity": 19,
+  "Table_QueryEntitiesWithPartitionAndRowKey": 118,
+  "Table_Batch": 98,
+  "Table_InsertEntity": 107,
+  "Queue_Create": 73,
+  "Messages_Dequeue": 72,
+  "Table_UpdateEntity": 46,
+  "Messages_Enqueue": 47,
+  "MessageId_Delete": 46,
+  "Messages_Clear": 18,
+  "Container_Create": 38,
+  "Blob_Download": 26,
+  "BlockBlob_Upload": 28,
+  "Queue_Delete": 54,
+  "Blob_AcquireLease": 7,
+  "Blob_RenewLease": 5,
+  "Blob_ReleaseLease": 4,
+  "Queue_GetProperties": 3,
+  "Messages_Peek": 1,
+  "Blob_Delete": 3
+}
+Unique API methods: 23
+Discrepant Unique APIs: 3
+Discrepant APIs: 
+[('BlockBlob_Upload', 28), ('Queue_Delete', 54), ('Messages_Peek', 1)]
+Potential discrepant tests: 82
+Total tests: 189
+
+
+*CLOUD COST*
+PUT 7047
+GET 125250
+POST 6353
+DELETE 4092
+PATCH 7704
+HEAD 0
+OTHER 0
+Total:  150446
+
+*CLOUD & EMULATOR COST*
+PUT 6451
+GET 101620
+POST 3217
+DELETE 2649
+PATCH 0
+HEAD 0
+OTHER 0
+Total:  113937
+
+*SAVINGS*
+PUT 596
+GET 23630
+POST 3136
+DELETE 1443
+PATCH 7704
+HEAD 0
+OTHER 0
+Total:  36509
+
+----------------------------------------------
+
+
+App: identityazuretable ----- Started
+
+
+Method counts: {
+  "Table_Create": 51,
+  "Table_QueryEntities": 45,
+  "Table_InsertEntity": 44,
+  "Table_UpdateEntity": 37,
+  "Table_DeleteEntity": 14,
+  "Table_Batch": 13
+}
+Unique API methods: 6
+Discrepant Unique APIs: 0
+Discrepant APIs: 
+[]
+Potential discrepant tests: 0
+Total tests: 51
+
+
+*CLOUD COST*
+PUT 3115
+GET 3055
+POST 3392
+DELETE 278
+PATCH 0
+HEAD 0
+OTHER 0
+Total:  9840
+
+*CLOUD & EMULATOR COST*
+PUT 0
+GET 0
+POST 0
+DELETE 0
+PATCH 0
+HEAD 0
+OTHER 0
+Total:  0
+
+*SAVINGS*
+PUT 3115
+GET 3055
+POST 3392
+DELETE 278
+PATCH 0
+HEAD 0
+OTHER 0
+Total:  9840
+
+----------------------------------------------
+
+
+App: ironpigeon ----- Started
+
+
+Method counts: {
+  "Container_Create": 7,
+  "BlockBlob_Upload": 4,
+  "Container_ListBlobHierarchySegment": 2,
+  "Container_ListBlobFlatSegment": 2,
+  "Blob_Delete": 2,
+  "Container_Delete": 7,
+  "Blob_Download": 2,
+  "Container_GetAccessPolicy": 2
+}
+Unique API methods: 8
+Discrepant Unique APIs: 2
+Discrepant APIs: 
+[('BlockBlob_Upload', 4), ('Container_Delete', 7)]
+Potential discrepant tests: 7
+Total tests: 7
+
+
+*CLOUD COST*
+PUT 7
+GET 8
+POST 0
+DELETE 9
+PATCH 0
+HEAD 0
+OTHER 0
+Total:  24
+
+*CLOUD & EMULATOR COST*
+PUT 7
+GET 8
+POST 0
+DELETE 9
+PATCH 0
+HEAD 0
+OTHER 0
+Total:  24
+
+*SAVINGS*
+PUT 0
+GET 0
+POST 0
+DELETE 0
+PATCH 0
+HEAD 0
+OTHER 0
+Total:  0
+
+----------------------------------------------
+
+
+App: sleet ----- Started
+
+
+Method counts: {
+  "Container_Create": 11,
+  "Blob_GetProperties": 10,
+  "Container_GetPropertiesWithHead": 11,
+  "BlockBlob_Upload": 10,
+  "Blob_SetHTTPHeaders": 10,
+  "Blob_AcquireLease": 10,
+  "Blob_RenewLease": 10,
+  "Blob_Download": 10,
+  "Blob_Delete": 10,
+  "Blob_ReleaseLease": 10,
+  "Container_Delete": 11,
+  "Container_ListBlobFlatSegment": 2
+}
+Unique API methods: 12
+Discrepant Unique APIs: 2
+Discrepant APIs: 
+[('BlockBlob_Upload', 10), ('Container_Delete', 11)]
+Potential discrepant tests: 11
+Total tests: 11
+
+
+*CLOUD COST*
+PUT 459
+GET 135
+POST 0
+DELETE 46
+PATCH 0
+HEAD 323
+OTHER 0
+Total:  963
+
+*CLOUD & EMULATOR COST*
+PUT 459
+GET 135
+POST 0
+DELETE 46
+PATCH 0
+HEAD 323
+OTHER 0
+Total:  963
+
+*SAVINGS*
+PUT 0
+GET 0
+POST 0
+DELETE 0
+PATCH 0
+HEAD 0
+OTHER 0
+Total:  0
+
+----------------------------------------------
+
+
+App: attachmentplugin ----- Started
+
+
+Method counts: {
+  "Container_GetPropertiesWithHead": 23,
+  "BlockBlob_Upload": 22,
+  "Blob_GetProperties": 13,
+  "Blob_Download": 10,
+  "Container_Create": 3,
+  "Container_GetAccessPolicy": 8,
+  "Container_SetAccessPolicy": 8
+}
+Unique API methods: 7
+Discrepant Unique APIs: 2
+Discrepant APIs: 
+[('BlockBlob_Upload', 22), ('Container_SetAccessPolicy', 8)]
+Potential discrepant tests: 23
+Total tests: 23
+
+
+*CLOUD COST*
+PUT 31
+GET 18
+POST 0
+DELETE 0
+PATCH 0
+HEAD 53
+OTHER 0
+Total:  102
+
+*CLOUD & EMULATOR COST*
+PUT 31
+GET 18
+POST 0
+DELETE 0
+PATCH 0
+HEAD 53
+OTHER 0
+Total:  102
+
+*SAVINGS*
+PUT 0
+GET 0
+POST 0
+DELETE 0
+PATCH 0
+HEAD 0
+OTHER 0
+Total:  0
+
+----------------------------------------------
+
+
+App: snowmaker ----- Started
+
+
+Method counts: {
+  "Container_Create": 7,
+  "Blob_GetProperties": 7,
+  "BlockBlob_Upload": 7,
+  "Blob_Download": 7,
+  "Container_Delete": 7
+}
+Unique API methods: 5
+Discrepant Unique APIs: 2
+Discrepant APIs: 
+[('BlockBlob_Upload', 7), ('Container_Delete', 7)]
+Potential discrepant tests: 7
+Total tests: 7
+
+
+*CLOUD COST*
+PUT 38
+GET 25
+POST 0
+DELETE 7
+PATCH 0
+HEAD 31
+OTHER 0
+Total:  101
+
+*CLOUD & EMULATOR COST*
+PUT 38
+GET 25
+POST 0
+DELETE 7
+PATCH 0
+HEAD 31
+OTHER 0
+Total:  101
+
+*SAVINGS*
+PUT 0
+GET 0
+POST 0
+DELETE 0
+PATCH 0
+HEAD 0
+OTHER 0
+Total:  0
+
+----------------------------------------------
+
+
+App: insights ----- Started
+
+
+Method counts: {
+  "Table_Create": 133,
+  "Table_Delete": 117,
+  "Table_QueryEntities": 116,
+  "Table_InsertEntity": 80,
+  "Table_UpdateEntity": 33,
+  "Service_ListContainersSegment": 52,
+  "Service_ListQueuesSegment": 52,
+  "Table_Query": 52,
+  "Table_Batch": 44,
+  "Table_DeleteEntity": 14,
+  "Container_GetProperties": 30,
+  "Container_Create": 30,
+  "Blob_GetProperties": 25,
+  "BlockBlob_Upload": 25,
+  "Blob_AcquireLease": 25,
+  "Blob_ReleaseLease": 18,
+  "Container_Delete": 30,
+  "Table_MergeEntity": 7,
+  "Blob_BreakLease": 3,
+  "Blob_RenewLease": 3
+}
+Unique API methods: 20
+Discrepant Unique APIs: 3
+Discrepant APIs: 
+[('Table_Delete', 117), ('BlockBlob_Upload', 25), ('Container_Delete', 30)]
+Potential discrepant tests: 129
+Total tests: 171
+
+
+*CLOUD COST*
+PUT 1870
+GET 2115
+POST 581
+DELETE 239
+PATCH 9
+HEAD 837
+OTHER 0
+Total:  5651
+
+*CLOUD & EMULATOR COST*
+PUT 1861
+GET 1931
+POST 549
+DELETE 239
+PATCH 9
+HEAD 837
+OTHER 0
+Total:  5426
+
+*SAVINGS*
+PUT 9
+GET 184
+POST 32
+DELETE 0
+PATCH 0
+HEAD 0
+OTHER 0
+Total:  225
+
+----------------------------------------------
+
+
+App: streamstone ----- Started
+
+
+Method counts: {
+  "Table_QueryEntities": 75,
+  "Table_Delete": 75,
+  "Table_Create": 75,
+  "Table_InsertEntity": 48,
+  "Table_UpdateEntity": 6,
+  "Table_Batch": 44,
+  "Table_QueryEntitiesWithPartitionAndRowKey": 6
+}
+Unique API methods: 7
+Discrepant Unique APIs: 1
+Discrepant APIs: 
+[('Table_Delete', 75)]
+Potential discrepant tests: 75
+Total tests: 75
+
+
+*CLOUD COST*
+PUT 10
+GET 223
+POST 258
+DELETE 99
+PATCH 0
+HEAD 0
+OTHER 0
+Total:  590
+
+*CLOUD & EMULATOR COST*
+PUT 10
+GET 223
+POST 258
+DELETE 99
+PATCH 0
+HEAD 0
+OTHER 0
+Total:  590
+
+*SAVINGS*
+PUT 0
+GET 0
+POST 0
+DELETE 0
+PATCH 0
+HEAD 0
+OTHER 0
+Total:  0
+
+----------------------------------------------
+
+Total tests:  543
+Potential discrepant tests:  343
