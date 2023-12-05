@@ -454,6 +454,82 @@ Total:  225
 ----------------------------------------------
 
 
+App: durabletask ----- Started
+
+
+Method counts: {
+  "Queue_GetPropertiesWithHead": 99,
+  "Queue_Delete": 94,
+  "Table_QueryEntities": 101,
+  "Container_GetPropertiesWithHead": 99,
+  "Container_Delete": 94,
+  "Table_Delete": 94,
+  "Container_Create": 101,
+  "BlockBlob_Upload": 101,
+  "Blob_GetProperties": 101,
+  "Table_Create": 101,
+  "Queue_Create": 101,
+  "Blob_Download": 99,
+  "Messages_Dequeue": 96,
+  "Container_AcquireLease": 96,
+  "Container_ListBlobFlatSegment": 88,
+  "Messages_Enqueue": 86,
+  "Table_InsertEntity": 94,
+  "Blob_AcquireLease": 86,
+  "Container_RenewLease": 96,
+  "Table_Batch": 83,
+  "Table_MergeEntityWithMerge": 83,
+  "MessageId_Delete": 83,
+  "Blob_RenewLease": 31,
+  "Blob_ReleaseLease": 79,
+  "MessageId_Update": 6,
+  "Blob_ChangeLease": 2,
+  "Table_DeleteEntity": 6,
+  "Blob_Delete": 5,
+  "Table_UpdateEntity": 23,
+  "Messages_Peek": 4
+}
+Unique API methods: 30
+Discrepant Unique APIs: 5
+Discrepant APIs: 
+[('BlockBlob_Upload', 101), ('Container_Delete', 94), ('Table_Delete', 94), ('Queue_Delete', 94), ('Messages_Peek', 4)]
+Potential discrepant tests: 101
+Total tests: 101
+
+
+*CLOUD COST*
+PUT 13653
+GET 27518
+POST 9440
+DELETE 9087
+PATCH 0
+HEAD 9094
+OTHER 0
+Total:  68792
+
+*CLOUD & EMULATOR COST*
+PUT 13653
+GET 27518
+POST 9440
+DELETE 9087
+PATCH 0
+HEAD 9094
+OTHER 0
+Total:  68792
+
+*SAVINGS*
+PUT 0
+GET 0
+POST 0
+DELETE 0
+PATCH 0
+HEAD 0
+OTHER 0
+Total:  0
+
+----------------------------------------------
+
+
 App: streamstone ----- Started
 
 
@@ -506,5 +582,5 @@ Total:  0
 
 ----------------------------------------------
 
-Total tests:  543
-Potential discrepant tests:  343
+Total tests:  644
+Potential discrepant tests:  444
