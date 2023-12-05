@@ -108,12 +108,19 @@ def sum_methods_if_test_exists(traffic_json_path, discrepant_test_names):
 
 
 # create an api popularity graph against discrepancies
-def create_graph(x, y, x_label, y_label, title):
-    plt.plot(x, y)
+def create_graph(x, y_line, y_bar, x_label, y_label, title):
+    fig, ax_line = plt.subplots(1, 1)
+    ax_line.plot(x, y_line, 'r')
     plt.xlabel(x_label)
     plt.ylabel(y_label)
+    ax_line.set_zorder(1)
+    ax_line.patch.set_visible(False)
+    ax_bar = plt.twinx()
+    ax_bar.bar(x, y_bar)
+    fig.set_zorder(ax_bar.get_zorder() + 1)
+    plt.ylabel("Discrepant APIs Popularity")
     plt.title(title)
-    # plt.savefig(file_name)
+    plt.savefig("cost_saving.png")
     plt.show()
 
     
@@ -122,7 +129,7 @@ def run_all_apps():
     global DISCREPANT_TESTS
     global TOTAL_TESTS
 
-    apps = ['alpakka','orleans','identityazuretable','ironpigeon','sleet','attachmentplugin','snowmaker', 'insights', 'streamstone']
+    apps = ['alpakka','orleans','identityazuretable','ironpigeon','sleet','attachmentplugin','snowmaker', 'insights', 'durabletask', 'streamstone']
     # apps = ['streamstone']
     methods_file_path = "discrepantApisEmulator.txt"
     methods = get_methods_from_file(methods_file_path)
@@ -181,36 +188,38 @@ if __name__ == "__main__":
 
 # paste it in main to get the graph
 
-# # sort methods by count
-# METHODS_COUNT = {k: v for k, v in sorted(METHODS_COUNT.items(), key=lambda item: item[1], reverse=True)}
+# sort methods by count
+METHODS_COUNT = {k: v for k, v in sorted(METHODS_COUNT.items(), key=lambda item: item[1], reverse=True)}
 
-# # print(json.dumps(METHODS_COUNT, indent=2))
-# arr = np.array(list(METHODS_COUNT.values()))
+# print(json.dumps(METHODS_COUNT, indent=2))
+arr = np.array(list(METHODS_COUNT.values()))
 
-# # x-axis: weighted popularity of methods
-# # ratio = arr/arr.sum() * 100
-# # cumulative_x = np.cumsum(ratio)
-# # x_axis = cumulative_x
-
-
-# # x-axis: all methods used in the tests
-# x_axis = np.arange(1, len(METHODS_COUNT)+1)
+# x-axis: weighted popularity of methods
+# ratio = arr/arr.sum() * 100
+# cumulative_x = np.cumsum(ratio)
+# x_axis = cumulative_x
 
 
-# # x-axis: only discrepant methods
-# # x_axis = np.arange(0, len(DISCREPANT_METHODS)+1)
+# x-axis: all methods used in the tests
+x_axis = np.arange(1, len(METHODS_COUNT)+1)
 
-# y_axis = []
-# # y_axis.append(len([j for j in TEST_METHOD_MAP.keys() if not TEST_METHOD_MAP[j] == []]))
-# for i in METHODS_COUNT.keys():
-#     if i in DISCREPANT_METHODS:
-#         for j in TEST_METHOD_MAP.keys():
-#             if i in TEST_METHOD_MAP[j]:
-#                 TEST_METHOD_MAP[j].pop(TEST_METHOD_MAP[j].index(i))
 
-#     y_axis.append(len([j for j in TEST_METHOD_MAP.keys() if not TEST_METHOD_MAP[j] == []]))
+# x-axis: only discrepant methods
+# x_axis = np.arange(0, len(DISCREPANT_METHODS)+1)
 
-# y_axis = np.array(y_axis)
-# # scale between 0 and 100
-# y_axis = ((y_axis - y_axis.min())/(y_axis.max() - y_axis.min())) * 100
-# create_graph(x_axis, y_axis, "Fixed Discrepant APIs (Descending Order of Popularity)", "Test Discrepancies", "")
+y_axis = []
+# y_axis.append(len([j for j in TEST_METHOD_MAP.keys() if not TEST_METHOD_MAP[j] == []]))
+for i in METHODS_COUNT.keys():
+    if i in DISCREPANT_METHODS:
+        for j in TEST_METHOD_MAP.keys():
+            if i in TEST_METHOD_MAP[j]:
+                TEST_METHOD_MAP[j].pop(TEST_METHOD_MAP[j].index(i))
+
+    y_axis.append(len([j for j in TEST_METHOD_MAP.keys() if not TEST_METHOD_MAP[j] == []]))
+
+y_axis = np.array(y_axis)
+# scale between 0 and 100
+y_axis = ((y_axis - y_axis.min())/(y_axis.max() - y_axis.min())) * 1.0
+create_graph(x_axis, y_axis, arr, "Fixed Discrepant APIs (Descending Order of Popularity)", "Test Discrepancies", "")
+
+
