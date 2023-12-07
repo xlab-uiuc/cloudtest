@@ -1,0 +1,481 @@
+Test run for /Users/zhengxinze/Desktop/System/orleans/test/Extensions/AWSUtils.Tests/bin/Debug/net7.0/AWSUtils.Tests.dll (.NETCoreApp,Version=v7.0)
+Microsoft (R) Test Execution Command Line Tool Version 17.5.0 (arm64)
+Copyright (c) Microsoft Corporation.  All rights reserved.
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+/Users/zhengxinze/Desktop/System/orleans/test/Extensions/AWSUtils.Tests/bin/Debug/net7.0/AWSUtils.Tests.dll
+[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.4.5+1caef2f33e (64-bit .NET 7.0.4)
+[xUnit.net 00:00:00.51]   Discovering: AWSUtils.Tests (method display = ClassAndMethod, method display options = None)
+[xUnit.net 00:00:00.54]   Discovered:  AWSUtils.Tests (found 89 test cases)
+[xUnit.net 00:00:00.54]   Starting:    AWSUtils.Tests (parallel test collections = on, max threads = 8)
+[xUnit.net 00:00:03.09]       System.NullReferenceException : Object reference not set to an instance of an object.
+[xUnit.net 00:00:03.09]       Stack Trace:
+[xUnit.net 00:00:03.09]         /Users/zhengxinze/Desktop/System/orleans/src/AWS/Orleans.Streaming.SQS/Streams/SQSAdapterFactory.cs(43,0): at OrleansAWSUtils.Streams.SQSAdapterFactory..ctor(String name, SqsOptions sqsOptions, HashRingStreamQueueMapperOptions queueMapperOptions, SimpleQueueCacheOptions cacheOptions, IOptions`1 clusterOptions, Serializer serializer, ILoggerFactory loggerFactory)
+[xUnit.net 00:00:03.09]         /Users/zhengxinze/Desktop/System/orleans/test/Extensions/AWSUtils.Tests/Streaming/SQSAdapterTests.cs(68,0): at AWSUtils.Tests.Streaming.SQSAdapterTests.SendAndReceiveFromSQS()
+[xUnit.net 00:00:03.09]         --- End of stack trace from previous location ---
+  Failed AWSUtils.Tests.Streaming.SQSAdapterTests.SendAndReceiveFromSQS [1 ms]
+  Error Message:
+   System.NullReferenceException : Object reference not set to an instance of an object.
+  Stack Trace:
+     at OrleansAWSUtils.Streams.SQSAdapterFactory..ctor(String name, SqsOptions sqsOptions, HashRingStreamQueueMapperOptions queueMapperOptions, SimpleQueueCacheOptions cacheOptions, IOptions`1 clusterOptions, Serializer serializer, ILoggerFactory loggerFactory) in /Users/zhengxinze/Desktop/System/orleans/src/AWS/Orleans.Streaming.SQS/Streams/SQSAdapterFactory.cs:line 43
+   at AWSUtils.Tests.Streaming.SQSAdapterTests.SendAndReceiveFromSQS() in /Users/zhengxinze/Desktop/System/orleans/test/Extensions/AWSUtils.Tests/Streaming/SQSAdapterTests.cs:line 68
+--- End of stack trace from previous location ---
+[xUnit.net 00:00:17.68]       System.AggregateException : Error doing AddMessage for SQS queue e45da6c73ef5490988b356a6b509c855-sqsprovider-5 (The specified queue does not exist for this wsdl version.)
+[xUnit.net 00:00:17.68]       ---- Amazon.SQS.AmazonSQSException : The specified queue does not exist for this wsdl version.
+[xUnit.net 00:00:17.68]       -------- Amazon.Runtime.Internal.HttpErrorResponseException : Exception of type 'Amazon.Runtime.Internal.HttpErrorResponseException' was thrown.
+[xUnit.net 00:00:17.68]       Stack Trace:
+[xUnit.net 00:00:17.68]         /Users/zhengxinze/Desktop/System/orleans/src/AWS/Orleans.Streaming.SQS/Storage/SQSStorage.cs(247,0): at OrleansAWSUtils.Storage.SQSStorage.ReportErrorAndRethrow(Exception exc, String operation, ErrorCode errorCode)
+[xUnit.net 00:00:17.68]         /Users/zhengxinze/Desktop/System/orleans/src/AWS/Orleans.Streaming.SQS/Storage/SQSStorage.cs(187,0): at OrleansAWSUtils.Storage.SQSStorage.AddMessage(SendMessageRequest message)
+[xUnit.net 00:00:17.68]         /Users/zhengxinze/Desktop/System/orleans/src/AWS/Orleans.Streaming.SQS/Streams/SQSAdapter.cs(58,0): at OrleansAWSUtils.Streams.SQSAdapter.QueueMessageBatchAsync[T](StreamId streamId, IEnumerable`1 events, StreamSequenceToken token, Dictionary`2 requestContext)
+[xUnit.net 00:00:17.68]         /Users/zhengxinze/Desktop/System/orleans/test/Tester/StreamingTests/ClientStreamTestRunner.cs(134,0): at Tester.StreamingTests.ClientStreamTestRunner.GenerateEvents(String streamProviderName, Guid streamGuid, String streamNamespace, Int32 produceCount)
+[xUnit.net 00:00:17.68]         /Users/zhengxinze/Desktop/System/orleans/test/Tester/StreamingTests/ClientStreamTestRunner.cs(122,0): at Tester.StreamingTests.ClientStreamTestRunner.ProduceEventsFromClient(String streamProviderName, Guid streamGuid, String streamNamespace, Int32 eventsProduced)
+[xUnit.net 00:00:17.68]         /Users/zhengxinze/Desktop/System/orleans/test/Tester/StreamingTests/ClientStreamTestRunner.cs(31,0): at Tester.StreamingTests.ClientStreamTestRunner.StreamProducerOnDroppedClientTest(String streamProviderName, String streamNamespace)
+[xUnit.net 00:00:17.68]         /Users/zhengxinze/Desktop/System/orleans/test/Extensions/AWSUtils.Tests/Streaming/SQSClientStreamTests.cs(91,0): at AWSUtils.Tests.Streaming.SQSClientStreamTests.SQSStreamProducerOnDroppedClientTest()
+[xUnit.net 00:00:17.68]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:17.68]         ----- Inner Stack Trace -----
+[xUnit.net 00:00:17.68]            at Amazon.Runtime.Internal.HttpErrorResponseExceptionHandler.HandleExceptionStream(IRequestContext requestContext, IWebResponseData httpErrorResponse, HttpErrorResponseException exception, Stream responseStream)
+[xUnit.net 00:00:17.68]            at Amazon.Runtime.Internal.HttpErrorResponseExceptionHandler.HandleExceptionAsync(IExecutionContext executionContext, HttpErrorResponseException exception)
+[xUnit.net 00:00:17.68]            at Amazon.Runtime.Internal.ExceptionHandler`1.HandleAsync(IExecutionContext executionContext, Exception exception)
+[xUnit.net 00:00:17.68]            at Amazon.Runtime.Internal.ErrorHandler.ProcessExceptionAsync(IExecutionContext executionContext, Exception exception)
+[xUnit.net 00:00:17.68]            at Amazon.Runtime.Internal.ErrorHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:00:17.68]            at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:00:17.68]            at Amazon.Runtime.Internal.Signer.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:00:17.68]            at Amazon.Runtime.Internal.EndpointDiscoveryHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:00:17.68]            at Amazon.Runtime.Internal.EndpointDiscoveryHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:00:17.68]            at Amazon.Runtime.Internal.CredentialsRetriever.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:00:17.68]            at Amazon.Runtime.Internal.RetryHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:00:17.68]            at Amazon.Runtime.Internal.RetryHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:00:17.68]            at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:00:17.68]            at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:00:17.68]            at Amazon.Runtime.Internal.ErrorCallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:00:17.68]            at Amazon.Runtime.Internal.MetricsHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:00:17.68]         /Users/zhengxinze/Desktop/System/orleans/src/AWS/Orleans.Streaming.SQS/Storage/SQSStorage.cs(183,0): at OrleansAWSUtils.Storage.SQSStorage.AddMessage(SendMessageRequest message)
+[xUnit.net 00:00:17.68]         ----- Inner Stack Trace -----
+[xUnit.net 00:00:17.68]            at Amazon.Runtime.HttpWebRequestMessage.GetResponseAsync(CancellationToken cancellationToken)
+[xUnit.net 00:00:17.68]            at Amazon.Runtime.Internal.HttpHandler`1.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:00:17.68]            at Amazon.Runtime.Internal.Unmarshaller.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:00:17.68]            at Amazon.SQS.Internal.ValidationResponseHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:00:17.68]            at Amazon.Runtime.Internal.ErrorHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:00:17.69]       System.AggregateException : Error doing AddMessage for SQS queue 93bbc5bc0ad34170901cb0b079ae6791-sqsprovider-0 (The specified queue does not exist for this wsdl version.)
+[xUnit.net 00:00:17.69]       ---- Amazon.SQS.AmazonSQSException : The specified queue does not exist for this wsdl version.
+[xUnit.net 00:00:17.69]       -------- Amazon.Runtime.Internal.HttpErrorResponseException : Exception of type 'Amazon.Runtime.Internal.HttpErrorResponseException' was thrown.
+[xUnit.net 00:00:17.69]       Stack Trace:
+[xUnit.net 00:00:17.69]         /Users/zhengxinze/Desktop/System/orleans/src/AWS/Orleans.Streaming.SQS/Storage/SQSStorage.cs(247,0): at OrleansAWSUtils.Storage.SQSStorage.ReportErrorAndRethrow(Exception exc, String operation, ErrorCode errorCode)
+[xUnit.net 00:00:17.69]         /Users/zhengxinze/Desktop/System/orleans/src/AWS/Orleans.Streaming.SQS/Storage/SQSStorage.cs(187,0): at OrleansAWSUtils.Storage.SQSStorage.AddMessage(SendMessageRequest message)
+[xUnit.net 00:00:17.69]         /Users/zhengxinze/Desktop/System/orleans/src/AWS/Orleans.Streaming.SQS/Streams/SQSAdapter.cs(58,0): at OrleansAWSUtils.Streams.SQSAdapter.QueueMessageBatchAsync[T](StreamId streamId, IEnumerable`1 events, StreamSequenceToken token, Dictionary`2 requestContext)
+[xUnit.net 00:00:17.69]         /Users/zhengxinze/Desktop/System/orleans/test/Grains/TestInternalGrains/StreamingGrain.cs(237,0): at UnitTests.Grains.ProducerObserver.ProduceItem(String data)
+[xUnit.net 00:00:17.69]         /Users/zhengxinze/Desktop/System/orleans/test/Grains/TestInternalGrains/StreamingGrain.cs(253,0): at UnitTests.Grains.ProducerObserver.ProduceSequentialSeries(Int32 count)
+[xUnit.net 00:00:17.69]         /Users/zhengxinze/Desktop/System/orleans/test/TesterInternal/StreamingTests/StreamTestHelperClasses.cs(479,0): at UnitTests.StreamingTests.ProducerProxy.ProduceSequentialSeries(Int32 count)
+[xUnit.net 00:00:17.69]         /Users/zhengxinze/Desktop/System/orleans/test/TesterInternal/StreamingTests/SingleStreamTestRunner.cs(440,0): at UnitTests.StreamingTests.SingleStreamTestRunner.BasicTestAsync(Boolean fullTest)
+[xUnit.net 00:00:17.69]         /Users/zhengxinze/Desktop/System/orleans/test/TesterInternal/StreamingTests/SingleStreamTestRunner.cs(104,0): at UnitTests.StreamingTests.SingleStreamTestRunner.StreamTest_04_OneProducerClientOneConsumerClient()
+[xUnit.net 00:00:17.69]         /Users/zhengxinze/Desktop/System/orleans/test/Extensions/AWSUtils.Tests/Streaming/SQSStreamTests.cs(114,0): at AWSUtils.Tests.Streaming.SQSStreamTests.SQS_04_OneProducerClientOneConsumerClient()
+[xUnit.net 00:00:17.69]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:17.69]         ----- Inner Stack Trace -----
+[xUnit.net 00:00:17.69]            at Amazon.Runtime.Internal.HttpErrorResponseExceptionHandler.HandleExceptionStream(IRequestContext requestContext, IWebResponseData httpErrorResponse, HttpErrorResponseException exception, Stream responseStream)
+[xUnit.net 00:00:17.69]            at Amazon.Runtime.Internal.HttpErrorResponseExceptionHandler.HandleExceptionAsync(IExecutionContext executionContext, HttpErrorResponseException exception)
+[xUnit.net 00:00:17.69]            at Amazon.Runtime.Internal.ExceptionHandler`1.HandleAsync(IExecutionContext executionContext, Exception exception)
+[xUnit.net 00:00:17.69]            at Amazon.Runtime.Internal.ErrorHandler.ProcessExceptionAsync(IExecutionContext executionContext, Exception exception)
+[xUnit.net 00:00:17.69]            at Amazon.Runtime.Internal.ErrorHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:00:17.69]            at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:00:17.69]            at Amazon.Runtime.Internal.Signer.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:00:17.69]            at Amazon.Runtime.Internal.EndpointDiscoveryHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:00:17.69]            at Amazon.Runtime.Internal.EndpointDiscoveryHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:00:17.69]            at Amazon.Runtime.Internal.CredentialsRetriever.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:00:17.69]            at Amazon.Runtime.Internal.RetryHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:00:17.69]            at Amazon.Runtime.Internal.RetryHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:00:17.69]            at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:00:17.69]            at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:00:17.69]            at Amazon.Runtime.Internal.ErrorCallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:00:17.69]            at Amazon.Runtime.Internal.MetricsHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:00:17.69]         /Users/zhengxinze/Desktop/System/orleans/src/AWS/Orleans.Streaming.SQS/Storage/SQSStorage.cs(183,0): at OrleansAWSUtils.Storage.SQSStorage.AddMessage(SendMessageRequest message)
+[xUnit.net 00:00:17.69]         ----- Inner Stack Trace -----
+[xUnit.net 00:00:17.69]            at Amazon.Runtime.HttpWebRequestMessage.GetResponseAsync(CancellationToken cancellationToken)
+[xUnit.net 00:00:17.69]            at Amazon.Runtime.Internal.HttpHandler`1.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:00:17.69]            at Amazon.Runtime.Internal.Unmarshaller.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:00:17.69]            at Amazon.SQS.Internal.ValidationResponseHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:00:17.69]            at Amazon.Runtime.Internal.ErrorHandler.InvokeAsync[T](IExecutionContext executionContext)
+  Failed AWSUtils.Tests.Streaming.SQSClientStreamTests.SQSStreamProducerOnDroppedClientTest [582 ms]
+  Error Message:
+   System.AggregateException : Error doing AddMessage for SQS queue e45da6c73ef5490988b356a6b509c855-sqsprovider-5 (The specified queue does not exist for this wsdl version.)
+---- Amazon.SQS.AmazonSQSException : The specified queue does not exist for this wsdl version.
+-------- Amazon.Runtime.Internal.HttpErrorResponseException : Exception of type 'Amazon.Runtime.Internal.HttpErrorResponseException' was thrown.
+  Stack Trace:
+     at OrleansAWSUtils.Storage.SQSStorage.ReportErrorAndRethrow(Exception exc, String operation, ErrorCode errorCode) in /Users/zhengxinze/Desktop/System/orleans/src/AWS/Orleans.Streaming.SQS/Storage/SQSStorage.cs:line 247
+   at OrleansAWSUtils.Storage.SQSStorage.AddMessage(SendMessageRequest message) in /Users/zhengxinze/Desktop/System/orleans/src/AWS/Orleans.Streaming.SQS/Storage/SQSStorage.cs:line 187
+   at OrleansAWSUtils.Streams.SQSAdapter.QueueMessageBatchAsync[T](StreamId streamId, IEnumerable`1 events, StreamSequenceToken token, Dictionary`2 requestContext) in /Users/zhengxinze/Desktop/System/orleans/src/AWS/Orleans.Streaming.SQS/Streams/SQSAdapter.cs:line 58
+   at Tester.StreamingTests.ClientStreamTestRunner.GenerateEvents(String streamProviderName, Guid streamGuid, String streamNamespace, Int32 produceCount) in /Users/zhengxinze/Desktop/System/orleans/test/Tester/StreamingTests/ClientStreamTestRunner.cs:line 134
+   at Tester.StreamingTests.ClientStreamTestRunner.ProduceEventsFromClient(String streamProviderName, Guid streamGuid, String streamNamespace, Int32 eventsProduced) in /Users/zhengxinze/Desktop/System/orleans/test/Tester/StreamingTests/ClientStreamTestRunner.cs:line 122
+   at Tester.StreamingTests.ClientStreamTestRunner.StreamProducerOnDroppedClientTest(String streamProviderName, String streamNamespace) in /Users/zhengxinze/Desktop/System/orleans/test/Tester/StreamingTests/ClientStreamTestRunner.cs:line 31
+   at AWSUtils.Tests.Streaming.SQSClientStreamTests.SQSStreamProducerOnDroppedClientTest() in /Users/zhengxinze/Desktop/System/orleans/test/Extensions/AWSUtils.Tests/Streaming/SQSClientStreamTests.cs:line 91
+--- End of stack trace from previous location ---
+----- Inner Stack Trace -----
+   at Amazon.Runtime.Internal.HttpErrorResponseExceptionHandler.HandleExceptionStream(IRequestContext requestContext, IWebResponseData httpErrorResponse, HttpErrorResponseException exception, Stream responseStream)
+   at Amazon.Runtime.Internal.HttpErrorResponseExceptionHandler.HandleExceptionAsync(IExecutionContext executionContext, HttpErrorResponseException exception)
+   at Amazon.Runtime.Internal.ExceptionHandler`1.HandleAsync(IExecutionContext executionContext, Exception exception)
+   at Amazon.Runtime.Internal.ErrorHandler.ProcessExceptionAsync(IExecutionContext executionContext, Exception exception)
+   at Amazon.Runtime.Internal.ErrorHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.Signer.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.EndpointDiscoveryHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.EndpointDiscoveryHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.CredentialsRetriever.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.RetryHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.RetryHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.ErrorCallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.MetricsHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at OrleansAWSUtils.Storage.SQSStorage.AddMessage(SendMessageRequest message) in /Users/zhengxinze/Desktop/System/orleans/src/AWS/Orleans.Streaming.SQS/Storage/SQSStorage.cs:line 183
+----- Inner Stack Trace -----
+   at Amazon.Runtime.HttpWebRequestMessage.GetResponseAsync(CancellationToken cancellationToken)
+   at Amazon.Runtime.Internal.HttpHandler`1.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.Unmarshaller.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.SQS.Internal.ValidationResponseHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.ErrorHandler.InvokeAsync[T](IExecutionContext executionContext)
+  Failed AWSUtils.Tests.Streaming.SQSStreamTests.SQS_04_OneProducerClientOneConsumerClient [492 ms]
+  Error Message:
+   System.AggregateException : Error doing AddMessage for SQS queue 93bbc5bc0ad34170901cb0b079ae6791-sqsprovider-0 (The specified queue does not exist for this wsdl version.)
+---- Amazon.SQS.AmazonSQSException : The specified queue does not exist for this wsdl version.
+-------- Amazon.Runtime.Internal.HttpErrorResponseException : Exception of type 'Amazon.Runtime.Internal.HttpErrorResponseException' was thrown.
+  Stack Trace:
+     at OrleansAWSUtils.Storage.SQSStorage.ReportErrorAndRethrow(Exception exc, String operation, ErrorCode errorCode) in /Users/zhengxinze/Desktop/System/orleans/src/AWS/Orleans.Streaming.SQS/Storage/SQSStorage.cs:line 247
+   at OrleansAWSUtils.Storage.SQSStorage.AddMessage(SendMessageRequest message) in /Users/zhengxinze/Desktop/System/orleans/src/AWS/Orleans.Streaming.SQS/Storage/SQSStorage.cs:line 187
+   at OrleansAWSUtils.Streams.SQSAdapter.QueueMessageBatchAsync[T](StreamId streamId, IEnumerable`1 events, StreamSequenceToken token, Dictionary`2 requestContext) in /Users/zhengxinze/Desktop/System/orleans/src/AWS/Orleans.Streaming.SQS/Streams/SQSAdapter.cs:line 58
+   at UnitTests.Grains.ProducerObserver.ProduceItem(String data) in /Users/zhengxinze/Desktop/System/orleans/test/Grains/TestInternalGrains/StreamingGrain.cs:line 237
+   at UnitTests.Grains.ProducerObserver.ProduceSequentialSeries(Int32 count) in /Users/zhengxinze/Desktop/System/orleans/test/Grains/TestInternalGrains/StreamingGrain.cs:line 253
+   at UnitTests.StreamingTests.ProducerProxy.ProduceSequentialSeries(Int32 count) in /Users/zhengxinze/Desktop/System/orleans/test/TesterInternal/StreamingTests/StreamTestHelperClasses.cs:line 479
+   at UnitTests.StreamingTests.SingleStreamTestRunner.BasicTestAsync(Boolean fullTest) in /Users/zhengxinze/Desktop/System/orleans/test/TesterInternal/StreamingTests/SingleStreamTestRunner.cs:line 440
+   at UnitTests.StreamingTests.SingleStreamTestRunner.StreamTest_04_OneProducerClientOneConsumerClient() in /Users/zhengxinze/Desktop/System/orleans/test/TesterInternal/StreamingTests/SingleStreamTestRunner.cs:line 104
+   at AWSUtils.Tests.Streaming.SQSStreamTests.SQS_04_OneProducerClientOneConsumerClient() in /Users/zhengxinze/Desktop/System/orleans/test/Extensions/AWSUtils.Tests/Streaming/SQSStreamTests.cs:line 114
+--- End of stack trace from previous location ---
+----- Inner Stack Trace -----
+   at Amazon.Runtime.Internal.HttpErrorResponseExceptionHandler.HandleExceptionStream(IRequestContext requestContext, IWebResponseData httpErrorResponse, HttpErrorResponseException exception, Stream responseStream)
+   at Amazon.Runtime.Internal.HttpErrorResponseExceptionHandler.HandleExceptionAsync(IExecutionContext executionContext, HttpErrorResponseException exception)
+   at Amazon.Runtime.Internal.ExceptionHandler`1.HandleAsync(IExecutionContext executionContext, Exception exception)
+   at Amazon.Runtime.Internal.ErrorHandler.ProcessExceptionAsync(IExecutionContext executionContext, Exception exception)
+   at Amazon.Runtime.Internal.ErrorHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.Signer.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.EndpointDiscoveryHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.EndpointDiscoveryHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.CredentialsRetriever.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.RetryHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.RetryHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.ErrorCallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.MetricsHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at OrleansAWSUtils.Storage.SQSStorage.AddMessage(SendMessageRequest message) in /Users/zhengxinze/Desktop/System/orleans/src/AWS/Orleans.Streaming.SQS/Storage/SQSStorage.cs:line 183
+----- Inner Stack Trace -----
+   at Amazon.Runtime.HttpWebRequestMessage.GetResponseAsync(CancellationToken cancellationToken)
+   at Amazon.Runtime.Internal.HttpHandler`1.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.Unmarshaller.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.SQS.Internal.ValidationResponseHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.ErrorHandler.InvokeAsync[T](IExecutionContext executionContext)
+  Passed AWSUtils.Tests.Streaming.SQSSubscriptionMultiplicityTests.SQSResubscriptionTest [4 s]
+  Passed AWSUtils.Tests.Streaming.SQSSubscriptionMultiplicityTests.SQSMultipleParallelSubscriptionTest [2 s]
+[xUnit.net 00:00:40.51]       System.AggregateException : One or more errors occurred. (Error doing DeleteQueue for SQS queue testcluster-2023-12-07t06-03-02-256-sqsprovider-2 (The specified queue does not exist for this wsdl version.))
+[xUnit.net 00:00:40.51]       ---- System.AggregateException : Error doing DeleteQueue for SQS queue testcluster-2023-12-07t06-03-02-256-sqsprovider-2 (The specified queue does not exist for this wsdl version.)
+[xUnit.net 00:00:40.51]       -------- Amazon.SQS.AmazonSQSException : The specified queue does not exist for this wsdl version.
+[xUnit.net 00:00:40.51]       ------------ Amazon.Runtime.Internal.HttpErrorResponseException : Exception of type 'Amazon.Runtime.Internal.HttpErrorResponseException' was thrown.
+[xUnit.net 00:00:40.51]       Stack Trace:
+[xUnit.net 00:00:40.51]            at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)
+[xUnit.net 00:00:40.51]            at System.Threading.Tasks.Task.Wait(Int32 millisecondsTimeout, CancellationToken cancellationToken)
+[xUnit.net 00:00:40.51]            at System.Threading.Tasks.Task.Wait()
+[xUnit.net 00:00:40.51]         /Users/zhengxinze/Desktop/System/orleans/test/Extensions/AWSUtils.Tests/Streaming/SQSStreamTests.cs(87,0): at AWSUtils.Tests.Streaming.SQSStreamTests.DisposeAsync()
+[xUnit.net 00:00:40.51]         ----- Inner Stack Trace -----
+[xUnit.net 00:00:40.51]         /Users/zhengxinze/Desktop/System/orleans/src/AWS/Orleans.Streaming.SQS/Storage/SQSStorage.cs(247,0): at OrleansAWSUtils.Storage.SQSStorage.ReportErrorAndRethrow(Exception exc, String operation, ErrorCode errorCode)
+[xUnit.net 00:00:40.51]         /Users/zhengxinze/Desktop/System/orleans/src/AWS/Orleans.Streaming.SQS/Storage/SQSStorage.cs(166,0): at OrleansAWSUtils.Storage.SQSStorage.DeleteQueue()
+[xUnit.net 00:00:40.51]         /Users/zhengxinze/Desktop/System/orleans/src/AWS/Orleans.Streaming.SQS/Streams/SQSStreamProviderUtils.cs(35,0): at OrleansAWSUtils.Streams.SQSStreamProviderUtils.DeleteAllUsedQueues(String providerName, String clusterId, String storageConnectionString, ILoggerFactory loggerFactory)
+[xUnit.net 00:00:40.51]         ----- Inner Stack Trace -----
+[xUnit.net 00:00:40.51]            at Amazon.Runtime.Internal.HttpErrorResponseExceptionHandler.HandleExceptionStream(IRequestContext requestContext, IWebResponseData httpErrorResponse, HttpErrorResponseException exception, Stream responseStream)
+[xUnit.net 00:00:40.51]            at Amazon.Runtime.Internal.HttpErrorResponseExceptionHandler.HandleExceptionAsync(IExecutionContext executionContext, HttpErrorResponseException exception)
+[xUnit.net 00:00:40.51]            at Amazon.Runtime.Internal.ExceptionHandler`1.HandleAsync(IExecutionContext executionContext, Exception exception)
+[xUnit.net 00:00:40.51]            at Amazon.Runtime.Internal.ErrorHandler.ProcessExceptionAsync(IExecutionContext executionContext, Exception exception)
+[xUnit.net 00:00:40.51]            at Amazon.Runtime.Internal.ErrorHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:00:40.51]            at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:00:40.51]            at Amazon.Runtime.Internal.Signer.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:00:40.51]            at Amazon.Runtime.Internal.EndpointDiscoveryHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:00:40.51]            at Amazon.Runtime.Internal.EndpointDiscoveryHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:00:40.51]            at Amazon.Runtime.Internal.CredentialsRetriever.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:00:40.51]            at Amazon.Runtime.Internal.RetryHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:00:40.51]            at Amazon.Runtime.Internal.RetryHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:00:40.51]            at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:00:40.51]            at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:00:40.51]            at Amazon.Runtime.Internal.ErrorCallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:00:40.51]            at Amazon.Runtime.Internal.MetricsHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:00:40.51]         /Users/zhengxinze/Desktop/System/orleans/src/AWS/Orleans.Streaming.SQS/Storage/SQSStorage.cs(162,0): at OrleansAWSUtils.Storage.SQSStorage.DeleteQueue()
+[xUnit.net 00:00:40.51]         ----- Inner Stack Trace -----
+[xUnit.net 00:00:40.51]            at Amazon.Runtime.HttpWebRequestMessage.GetResponseAsync(CancellationToken cancellationToken)
+[xUnit.net 00:00:40.51]            at Amazon.Runtime.Internal.HttpHandler`1.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:00:40.51]            at Amazon.Runtime.Internal.Unmarshaller.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:00:40.51]            at Amazon.SQS.Internal.ValidationResponseHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:00:40.51]            at Amazon.Runtime.Internal.ErrorHandler.InvokeAsync[T](IExecutionContext executionContext)
+  Failed AWSUtils.Tests.Streaming.SQSStreamTests.SQS_07_ManyDifferent_ManyProducerClientsManyConsumerGrains [6 s]
+  Error Message:
+   System.AggregateException : One or more errors occurred. (Error doing DeleteQueue for SQS queue testcluster-2023-12-07t06-03-02-256-sqsprovider-2 (The specified queue does not exist for this wsdl version.))
+---- System.AggregateException : Error doing DeleteQueue for SQS queue testcluster-2023-12-07t06-03-02-256-sqsprovider-2 (The specified queue does not exist for this wsdl version.)
+-------- Amazon.SQS.AmazonSQSException : The specified queue does not exist for this wsdl version.
+------------ Amazon.Runtime.Internal.HttpErrorResponseException : Exception of type 'Amazon.Runtime.Internal.HttpErrorResponseException' was thrown.
+  Stack Trace:
+     at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)
+   at System.Threading.Tasks.Task.Wait(Int32 millisecondsTimeout, CancellationToken cancellationToken)
+   at System.Threading.Tasks.Task.Wait()
+   at AWSUtils.Tests.Streaming.SQSStreamTests.DisposeAsync() in /Users/zhengxinze/Desktop/System/orleans/test/Extensions/AWSUtils.Tests/Streaming/SQSStreamTests.cs:line 87
+----- Inner Stack Trace -----
+   at OrleansAWSUtils.Storage.SQSStorage.ReportErrorAndRethrow(Exception exc, String operation, ErrorCode errorCode) in /Users/zhengxinze/Desktop/System/orleans/src/AWS/Orleans.Streaming.SQS/Storage/SQSStorage.cs:line 247
+   at OrleansAWSUtils.Storage.SQSStorage.DeleteQueue() in /Users/zhengxinze/Desktop/System/orleans/src/AWS/Orleans.Streaming.SQS/Storage/SQSStorage.cs:line 166
+   at OrleansAWSUtils.Streams.SQSStreamProviderUtils.DeleteAllUsedQueues(String providerName, String clusterId, String storageConnectionString, ILoggerFactory loggerFactory) in /Users/zhengxinze/Desktop/System/orleans/src/AWS/Orleans.Streaming.SQS/Streams/SQSStreamProviderUtils.cs:line 35
+----- Inner Stack Trace -----
+   at Amazon.Runtime.Internal.HttpErrorResponseExceptionHandler.HandleExceptionStream(IRequestContext requestContext, IWebResponseData httpErrorResponse, HttpErrorResponseException exception, Stream responseStream)
+   at Amazon.Runtime.Internal.HttpErrorResponseExceptionHandler.HandleExceptionAsync(IExecutionContext executionContext, HttpErrorResponseException exception)
+   at Amazon.Runtime.Internal.ExceptionHandler`1.HandleAsync(IExecutionContext executionContext, Exception exception)
+   at Amazon.Runtime.Internal.ErrorHandler.ProcessExceptionAsync(IExecutionContext executionContext, Exception exception)
+   at Amazon.Runtime.Internal.ErrorHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.Signer.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.EndpointDiscoveryHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.EndpointDiscoveryHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.CredentialsRetriever.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.RetryHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.RetryHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.ErrorCallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.MetricsHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at OrleansAWSUtils.Storage.SQSStorage.DeleteQueue() in /Users/zhengxinze/Desktop/System/orleans/src/AWS/Orleans.Streaming.SQS/Storage/SQSStorage.cs:line 162
+----- Inner Stack Trace -----
+   at Amazon.Runtime.HttpWebRequestMessage.GetResponseAsync(CancellationToken cancellationToken)
+   at Amazon.Runtime.Internal.HttpHandler`1.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.Unmarshaller.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.SQS.Internal.ValidationResponseHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.ErrorHandler.InvokeAsync[T](IExecutionContext executionContext)
+  Passed AWSUtils.Tests.Streaming.SQSSubscriptionMultiplicityTests.SQSActiveSubscriptionTest [18 ms]
+  Passed AWSUtils.Tests.Streaming.SQSStreamTests.SQS_05_ManyDifferent_ManyProducerGrainsManyConsumerGrains [6 s]
+  Passed AWSUtils.Tests.Streaming.SQSSubscriptionMultiplicityTests.SQSTwoIntermitentStreamTest [6 s]
+[xUnit.net 00:01:25.65]       System.AggregateException : One or more errors occurred. (Error doing DeleteQueue for SQS queue testcluster-2023-12-07t06-03-47-88-sqsprovider-0 (The specified queue does not exist for this wsdl version.))
+[xUnit.net 00:01:25.65]       ---- System.AggregateException : Error doing DeleteQueue for SQS queue testcluster-2023-12-07t06-03-47-88-sqsprovider-0 (The specified queue does not exist for this wsdl version.)
+[xUnit.net 00:01:25.65]       -------- Amazon.SQS.AmazonSQSException : The specified queue does not exist for this wsdl version.
+[xUnit.net 00:01:25.65]       ------------ Amazon.Runtime.Internal.HttpErrorResponseException : Exception of type 'Amazon.Runtime.Internal.HttpErrorResponseException' was thrown.
+[xUnit.net 00:01:25.65]       Stack Trace:
+[xUnit.net 00:01:25.65]            at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)
+[xUnit.net 00:01:25.65]            at System.Threading.Tasks.Task.Wait(Int32 millisecondsTimeout, CancellationToken cancellationToken)
+[xUnit.net 00:01:25.65]            at System.Threading.Tasks.Task.Wait()
+[xUnit.net 00:01:25.65]         /Users/zhengxinze/Desktop/System/orleans/test/Extensions/AWSUtils.Tests/Streaming/SQSStreamTests.cs(87,0): at AWSUtils.Tests.Streaming.SQSStreamTests.DisposeAsync()
+[xUnit.net 00:01:25.65]         ----- Inner Stack Trace -----
+[xUnit.net 00:01:25.65]         /Users/zhengxinze/Desktop/System/orleans/src/AWS/Orleans.Streaming.SQS/Storage/SQSStorage.cs(247,0): at OrleansAWSUtils.Storage.SQSStorage.ReportErrorAndRethrow(Exception exc, String operation, ErrorCode errorCode)
+[xUnit.net 00:01:25.65]         /Users/zhengxinze/Desktop/System/orleans/src/AWS/Orleans.Streaming.SQS/Storage/SQSStorage.cs(166,0): at OrleansAWSUtils.Storage.SQSStorage.DeleteQueue()
+[xUnit.net 00:01:25.65]         /Users/zhengxinze/Desktop/System/orleans/src/AWS/Orleans.Streaming.SQS/Streams/SQSStreamProviderUtils.cs(35,0): at OrleansAWSUtils.Streams.SQSStreamProviderUtils.DeleteAllUsedQueues(String providerName, String clusterId, String storageConnectionString, ILoggerFactory loggerFactory)
+[xUnit.net 00:01:25.65]         ----- Inner Stack Trace -----
+[xUnit.net 00:01:25.65]            at Amazon.Runtime.Internal.HttpErrorResponseExceptionHandler.HandleExceptionStream(IRequestContext requestContext, IWebResponseData httpErrorResponse, HttpErrorResponseException exception, Stream responseStream)
+[xUnit.net 00:01:25.65]            at Amazon.Runtime.Internal.HttpErrorResponseExceptionHandler.HandleExceptionAsync(IExecutionContext executionContext, HttpErrorResponseException exception)
+[xUnit.net 00:01:25.65]            at Amazon.Runtime.Internal.ExceptionHandler`1.HandleAsync(IExecutionContext executionContext, Exception exception)
+[xUnit.net 00:01:25.65]            at Amazon.Runtime.Internal.ErrorHandler.ProcessExceptionAsync(IExecutionContext executionContext, Exception exception)
+[xUnit.net 00:01:25.65]            at Amazon.Runtime.Internal.ErrorHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:01:25.65]            at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:01:25.65]            at Amazon.Runtime.Internal.Signer.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:01:25.65]            at Amazon.Runtime.Internal.EndpointDiscoveryHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:01:25.65]            at Amazon.Runtime.Internal.EndpointDiscoveryHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:01:25.65]            at Amazon.Runtime.Internal.CredentialsRetriever.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:01:25.65]            at Amazon.Runtime.Internal.RetryHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:01:25.65]            at Amazon.Runtime.Internal.RetryHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:01:25.65]            at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:01:25.65]            at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:01:25.65]            at Amazon.Runtime.Internal.ErrorCallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:01:25.65]            at Amazon.Runtime.Internal.MetricsHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:01:25.65]         /Users/zhengxinze/Desktop/System/orleans/src/AWS/Orleans.Streaming.SQS/Storage/SQSStorage.cs(162,0): at OrleansAWSUtils.Storage.SQSStorage.DeleteQueue()
+[xUnit.net 00:01:25.65]         ----- Inner Stack Trace -----
+[xUnit.net 00:01:25.65]            at Amazon.Runtime.HttpWebRequestMessage.GetResponseAsync(CancellationToken cancellationToken)
+[xUnit.net 00:01:25.65]            at Amazon.Runtime.Internal.HttpHandler`1.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:01:25.65]            at Amazon.Runtime.Internal.Unmarshaller.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:01:25.65]            at Amazon.SQS.Internal.ValidationResponseHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:01:25.65]            at Amazon.Runtime.Internal.ErrorHandler.InvokeAsync[T](IExecutionContext executionContext)
+  Failed AWSUtils.Tests.Streaming.SQSStreamTests.SQS_06_ManyDifferent_ManyProducerGrainManyConsumerClients [6 s]
+  Error Message:
+   System.AggregateException : One or more errors occurred. (Error doing DeleteQueue for SQS queue testcluster-2023-12-07t06-03-47-88-sqsprovider-0 (The specified queue does not exist for this wsdl version.))
+---- System.AggregateException : Error doing DeleteQueue for SQS queue testcluster-2023-12-07t06-03-47-88-sqsprovider-0 (The specified queue does not exist for this wsdl version.)
+-------- Amazon.SQS.AmazonSQSException : The specified queue does not exist for this wsdl version.
+------------ Amazon.Runtime.Internal.HttpErrorResponseException : Exception of type 'Amazon.Runtime.Internal.HttpErrorResponseException' was thrown.
+  Stack Trace:
+     at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)
+   at System.Threading.Tasks.Task.Wait(Int32 millisecondsTimeout, CancellationToken cancellationToken)
+   at System.Threading.Tasks.Task.Wait()
+   at AWSUtils.Tests.Streaming.SQSStreamTests.DisposeAsync() in /Users/zhengxinze/Desktop/System/orleans/test/Extensions/AWSUtils.Tests/Streaming/SQSStreamTests.cs:line 87
+----- Inner Stack Trace -----
+   at OrleansAWSUtils.Storage.SQSStorage.ReportErrorAndRethrow(Exception exc, String operation, ErrorCode errorCode) in /Users/zhengxinze/Desktop/System/orleans/src/AWS/Orleans.Streaming.SQS/Storage/SQSStorage.cs:line 247
+   at OrleansAWSUtils.Storage.SQSStorage.DeleteQueue() in /Users/zhengxinze/Desktop/System/orleans/src/AWS/Orleans.Streaming.SQS/Storage/SQSStorage.cs:line 166
+   at OrleansAWSUtils.Streams.SQSStreamProviderUtils.DeleteAllUsedQueues(String providerName, String clusterId, String storageConnectionString, ILoggerFactory loggerFactory) in /Users/zhengxinze/Desktop/System/orleans/src/AWS/Orleans.Streaming.SQS/Streams/SQSStreamProviderUtils.cs:line 35
+----- Inner Stack Trace -----
+   at Amazon.Runtime.Internal.HttpErrorResponseExceptionHandler.HandleExceptionStream(IRequestContext requestContext, IWebResponseData httpErrorResponse, HttpErrorResponseException exception, Stream responseStream)
+   at Amazon.Runtime.Internal.HttpErrorResponseExceptionHandler.HandleExceptionAsync(IExecutionContext executionContext, HttpErrorResponseException exception)
+   at Amazon.Runtime.Internal.ExceptionHandler`1.HandleAsync(IExecutionContext executionContext, Exception exception)
+   at Amazon.Runtime.Internal.ErrorHandler.ProcessExceptionAsync(IExecutionContext executionContext, Exception exception)
+   at Amazon.Runtime.Internal.ErrorHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.Signer.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.EndpointDiscoveryHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.EndpointDiscoveryHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.CredentialsRetriever.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.RetryHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.RetryHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.ErrorCallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.MetricsHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at OrleansAWSUtils.Storage.SQSStorage.DeleteQueue() in /Users/zhengxinze/Desktop/System/orleans/src/AWS/Orleans.Streaming.SQS/Storage/SQSStorage.cs:line 162
+----- Inner Stack Trace -----
+   at Amazon.Runtime.HttpWebRequestMessage.GetResponseAsync(CancellationToken cancellationToken)
+   at Amazon.Runtime.Internal.HttpHandler`1.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.Unmarshaller.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.SQS.Internal.ValidationResponseHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.ErrorHandler.InvokeAsync[T](IExecutionContext executionContext)
+  Passed AWSUtils.Tests.Streaming.SQSSubscriptionMultiplicityTests.SQSSubscribeFromClientTest [11 s]
+[xUnit.net 00:01:50.54]       System.AggregateException : One or more errors occurred. (Error doing DeleteQueue for SQS queue testcluster-2023-12-07t06-04-10-278-sqsprovider-3 (The specified queue does not exist for this wsdl version.))
+[xUnit.net 00:01:50.54]       ---- System.AggregateException : Error doing DeleteQueue for SQS queue testcluster-2023-12-07t06-04-10-278-sqsprovider-3 (The specified queue does not exist for this wsdl version.)
+[xUnit.net 00:01:50.54]       -------- Amazon.SQS.AmazonSQSException : The specified queue does not exist for this wsdl version.
+[xUnit.net 00:01:50.54]       ------------ Amazon.Runtime.Internal.HttpErrorResponseException : Exception of type 'Amazon.Runtime.Internal.HttpErrorResponseException' was thrown.
+[xUnit.net 00:01:50.54]       Stack Trace:
+[xUnit.net 00:01:50.54]            at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)
+[xUnit.net 00:01:50.54]            at System.Threading.Tasks.Task.Wait(Int32 millisecondsTimeout, CancellationToken cancellationToken)
+[xUnit.net 00:01:50.54]            at System.Threading.Tasks.Task.Wait()
+[xUnit.net 00:01:50.54]         /Users/zhengxinze/Desktop/System/orleans/test/Extensions/AWSUtils.Tests/Streaming/SQSStreamTests.cs(87,0): at AWSUtils.Tests.Streaming.SQSStreamTests.DisposeAsync()
+[xUnit.net 00:01:50.54]         ----- Inner Stack Trace -----
+[xUnit.net 00:01:50.54]         /Users/zhengxinze/Desktop/System/orleans/src/AWS/Orleans.Streaming.SQS/Storage/SQSStorage.cs(247,0): at OrleansAWSUtils.Storage.SQSStorage.ReportErrorAndRethrow(Exception exc, String operation, ErrorCode errorCode)
+[xUnit.net 00:01:50.54]         /Users/zhengxinze/Desktop/System/orleans/src/AWS/Orleans.Streaming.SQS/Storage/SQSStorage.cs(166,0): at OrleansAWSUtils.Storage.SQSStorage.DeleteQueue()
+[xUnit.net 00:01:50.54]         /Users/zhengxinze/Desktop/System/orleans/src/AWS/Orleans.Streaming.SQS/Streams/SQSStreamProviderUtils.cs(35,0): at OrleansAWSUtils.Streams.SQSStreamProviderUtils.DeleteAllUsedQueues(String providerName, String clusterId, String storageConnectionString, ILoggerFactory loggerFactory)
+[xUnit.net 00:01:50.54]         ----- Inner Stack Trace -----
+[xUnit.net 00:01:50.54]            at Amazon.Runtime.Internal.HttpErrorResponseExceptionHandler.HandleExceptionStream(IRequestContext requestContext, IWebResponseData httpErrorResponse, HttpErrorResponseException exception, Stream responseStream)
+[xUnit.net 00:01:50.54]            at Amazon.Runtime.Internal.HttpErrorResponseExceptionHandler.HandleExceptionAsync(IExecutionContext executionContext, HttpErrorResponseException exception)
+[xUnit.net 00:01:50.54]            at Amazon.Runtime.Internal.ExceptionHandler`1.HandleAsync(IExecutionContext executionContext, Exception exception)
+[xUnit.net 00:01:50.54]            at Amazon.Runtime.Internal.ErrorHandler.ProcessExceptionAsync(IExecutionContext executionContext, Exception exception)
+[xUnit.net 00:01:50.54]            at Amazon.Runtime.Internal.ErrorHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:01:50.54]            at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:01:50.54]            at Amazon.Runtime.Internal.Signer.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:01:50.54]            at Amazon.Runtime.Internal.EndpointDiscoveryHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:01:50.54]            at Amazon.Runtime.Internal.EndpointDiscoveryHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:01:50.54]            at Amazon.Runtime.Internal.CredentialsRetriever.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:01:50.54]            at Amazon.Runtime.Internal.RetryHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:01:50.54]            at Amazon.Runtime.Internal.RetryHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:01:50.54]            at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:01:50.54]            at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:01:50.54]            at Amazon.Runtime.Internal.ErrorCallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:01:50.54]            at Amazon.Runtime.Internal.MetricsHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:01:50.54]         /Users/zhengxinze/Desktop/System/orleans/src/AWS/Orleans.Streaming.SQS/Storage/SQSStorage.cs(162,0): at OrleansAWSUtils.Storage.SQSStorage.DeleteQueue()
+[xUnit.net 00:01:50.54]         ----- Inner Stack Trace -----
+[xUnit.net 00:01:50.54]            at Amazon.Runtime.HttpWebRequestMessage.GetResponseAsync(CancellationToken cancellationToken)
+[xUnit.net 00:01:50.54]            at Amazon.Runtime.Internal.HttpHandler`1.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:01:50.54]            at Amazon.Runtime.Internal.Unmarshaller.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:01:50.54]            at Amazon.SQS.Internal.ValidationResponseHandler.InvokeAsync[T](IExecutionContext executionContext)
+[xUnit.net 00:01:50.54]            at Amazon.Runtime.Internal.ErrorHandler.InvokeAsync[T](IExecutionContext executionContext)
+  Failed AWSUtils.Tests.Streaming.SQSStreamTests.SQS_03_OneProducerClientOneConsumerGrain [9 s]
+  Error Message:
+   System.AggregateException : One or more errors occurred. (Error doing DeleteQueue for SQS queue testcluster-2023-12-07t06-04-10-278-sqsprovider-3 (The specified queue does not exist for this wsdl version.))
+---- System.AggregateException : Error doing DeleteQueue for SQS queue testcluster-2023-12-07t06-04-10-278-sqsprovider-3 (The specified queue does not exist for this wsdl version.)
+-------- Amazon.SQS.AmazonSQSException : The specified queue does not exist for this wsdl version.
+------------ Amazon.Runtime.Internal.HttpErrorResponseException : Exception of type 'Amazon.Runtime.Internal.HttpErrorResponseException' was thrown.
+  Stack Trace:
+     at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)
+   at System.Threading.Tasks.Task.Wait(Int32 millisecondsTimeout, CancellationToken cancellationToken)
+   at System.Threading.Tasks.Task.Wait()
+   at AWSUtils.Tests.Streaming.SQSStreamTests.DisposeAsync() in /Users/zhengxinze/Desktop/System/orleans/test/Extensions/AWSUtils.Tests/Streaming/SQSStreamTests.cs:line 87
+----- Inner Stack Trace -----
+   at OrleansAWSUtils.Storage.SQSStorage.ReportErrorAndRethrow(Exception exc, String operation, ErrorCode errorCode) in /Users/zhengxinze/Desktop/System/orleans/src/AWS/Orleans.Streaming.SQS/Storage/SQSStorage.cs:line 247
+   at OrleansAWSUtils.Storage.SQSStorage.DeleteQueue() in /Users/zhengxinze/Desktop/System/orleans/src/AWS/Orleans.Streaming.SQS/Storage/SQSStorage.cs:line 166
+   at OrleansAWSUtils.Streams.SQSStreamProviderUtils.DeleteAllUsedQueues(String providerName, String clusterId, String storageConnectionString, ILoggerFactory loggerFactory) in /Users/zhengxinze/Desktop/System/orleans/src/AWS/Orleans.Streaming.SQS/Streams/SQSStreamProviderUtils.cs:line 35
+----- Inner Stack Trace -----
+   at Amazon.Runtime.Internal.HttpErrorResponseExceptionHandler.HandleExceptionStream(IRequestContext requestContext, IWebResponseData httpErrorResponse, HttpErrorResponseException exception, Stream responseStream)
+   at Amazon.Runtime.Internal.HttpErrorResponseExceptionHandler.HandleExceptionAsync(IExecutionContext executionContext, HttpErrorResponseException exception)
+   at Amazon.Runtime.Internal.ExceptionHandler`1.HandleAsync(IExecutionContext executionContext, Exception exception)
+   at Amazon.Runtime.Internal.ErrorHandler.ProcessExceptionAsync(IExecutionContext executionContext, Exception exception)
+   at Amazon.Runtime.Internal.ErrorHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.Signer.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.EndpointDiscoveryHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.EndpointDiscoveryHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.CredentialsRetriever.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.RetryHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.RetryHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.CallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.ErrorCallbackHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.MetricsHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at OrleansAWSUtils.Storage.SQSStorage.DeleteQueue() in /Users/zhengxinze/Desktop/System/orleans/src/AWS/Orleans.Streaming.SQS/Storage/SQSStorage.cs:line 162
+----- Inner Stack Trace -----
+   at Amazon.Runtime.HttpWebRequestMessage.GetResponseAsync(CancellationToken cancellationToken)
+   at Amazon.Runtime.Internal.HttpHandler`1.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.Unmarshaller.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.SQS.Internal.ValidationResponseHandler.InvokeAsync[T](IExecutionContext executionContext)
+   at Amazon.Runtime.Internal.ErrorHandler.InvokeAsync[T](IExecutionContext executionContext)
+  Passed AWSUtils.Tests.Streaming.SQSSubscriptionMultiplicityTests.SQSMultipleSubscriptionTest_AddRemove [6 s]
+  Passed AWSUtils.Tests.Streaming.SQSStreamTests.SQS_16_MultipleStreams_ManyDifferent_ManyProducerGrainsManyConsumerGrains [3 s]
+  Passed AWSUtils.Tests.Streaming.SQSStreamTests.SQS_02_OneProducerGrainOneConsumerClient [8 s]
+  Passed AWSUtils.Tests.Streaming.SQSSubscriptionMultiplicityTests.SQSResubscriptionAfterDeactivationTest [13 s]
+  Passed AWSUtils.Tests.Streaming.SQSSubscriptionMultiplicityTests.SQSMultipleLinearSubscriptionTest [4 s]
+  Passed AWSUtils.Tests.Streaming.SQSStreamTests.SQS_11_ManySame_ManyProducerGrainsManyConsumerClients [7 s]
+  Passed AWSUtils.Tests.Streaming.SQSStreamTests.SQS_12_ManySame_ManyProducerClientsManyConsumerGrains [6 s]
+  Passed AWSUtils.Tests.Streaming.SQSStreamTests.SQS_10_ManySame_ManyConsumerGrainsManyProducerGrains [5 s]
+  Passed AWSUtils.Tests.Streaming.SQSStreamTests.SQS_17_MultipleStreams_1J_ManyProducerGrainsManyConsumerGrains [3 s]
+  Passed AWSUtils.Tests.Streaming.SQSStreamTests.SQS_15_ConsumeAtProducersRequest [4 s]
+[xUnit.net 00:04:45.84]       Orleans.Serialization.CodecNotFoundException : Could not find a codec for type Amazon.SQS.AmazonSQSException.
+[xUnit.net 00:04:45.84]       Stack Trace:
+[xUnit.net 00:04:45.84]         /Users/zhengxinze/Desktop/System/orleans/src/Orleans.Serialization/Serializers/CodecProvider.cs(665,0): at Orleans.Serialization.Serializers.CodecProvider.ThrowCodecNotFound(Type fieldType)
+[xUnit.net 00:04:45.84]         /Users/zhengxinze/Desktop/System/orleans/src/Orleans.Serialization/Serializers/CodecProvider.cs(162,0): at Orleans.Serialization.Serializers.CodecProvider.GetCodec(Type fieldType)
+[xUnit.net 00:04:45.84]         /Users/zhengxinze/Desktop/System/orleans/src/Orleans.Serialization/GeneratedCodeHelpers/OrleansGeneratedCodeHelper.cs(197,0): at Orleans.Serialization.GeneratedCodeHelpers.OrleansGeneratedCodeHelper.SerializeUnexpectedType[TBufferWriter](Writer`1& writer, UInt32 fieldIdDelta, Type expectedType, Object value)
+[xUnit.net 00:04:45.84]         /Users/zhengxinze/Desktop/System/orleans/src/Orleans.Serialization/ISerializableSerializer/ExceptionCodec.cs(233,0): at Orleans.Serialization.ExceptionCodec.WriteField[TBufferWriter](Writer`1& writer, UInt32 fieldIdDelta, Type expectedType, Exception value)
+[xUnit.net 00:04:45.84]         /Users/zhengxinze/Desktop/System/orleans/src/Orleans.Serialization/Hosting/ServiceCollectionExtensions.cs(181,0): at Orleans.Serialization.ServiceCollectionExtensions.ValueSerializerHolder`1.Serialize[TBufferWriter](Writer`1& writer, TField& value)
+[xUnit.net 00:04:45.84]         /Users/zhengxinze/Desktop/System/orleans/src/Orleans.Serialization/Codecs/GeneralizedReferenceTypeSurrogateCodec.cs(57,0): at Orleans.Serialization.Codecs.GeneralizedReferenceTypeSurrogateCodec`2.WriteField[TBufferWriter](Writer`1& writer, UInt32 fieldIdDelta, Type expectedType, TField value)
+[xUnit.net 00:04:45.84]         /Users/zhengxinze/Desktop/System/orleans/src/Orleans.Serialization/Hosting/ServiceCollectionExtensions.cs(181,0): at Orleans.Serialization.ServiceCollectionExtensions.ValueSerializerHolder`1.Serialize[TBufferWriter](Writer`1& writer, TField& value)
+[xUnit.net 00:04:45.84]         /Users/zhengxinze/Desktop/System/orleans/src/Orleans.Serialization/Codecs/GeneralizedReferenceTypeSurrogateCodec.cs(57,0): at Orleans.Serialization.Codecs.GeneralizedReferenceTypeSurrogateCodec`2.WriteField[TBufferWriter](Writer`1& writer, UInt32 fieldIdDelta, Type expectedType, TField value)
+[xUnit.net 00:04:45.84]         /Users/zhengxinze/Desktop/System/orleans/src/Orleans.Serialization/Codecs/IFieldCodec.cs(53,0): at Orleans.Serialization.Codecs.IFieldCodec`1.Orleans.Serialization.Codecs.IFieldCodec.WriteField[TBufferWriter](Writer`1& writer, UInt32 fieldIdDelta, Type expectedType, Object value)
+[xUnit.net 00:04:45.84]         /Users/zhengxinze/Desktop/System/orleans/src/Orleans.Serialization/GeneratedCodeHelpers/OrleansGeneratedCodeHelper.cs(198,0): at Orleans.Serialization.GeneratedCodeHelpers.OrleansGeneratedCodeHelper.SerializeUnexpectedType[TBufferWriter](Writer`1& writer, UInt32 fieldIdDelta, Type expectedType, Object value)
+[xUnit.net 00:04:45.84]         /Users/zhengxinze/Desktop/System/orleans/src/Orleans.Serialization/ISerializableSerializer/ExceptionCodec.cs(233,0): at Orleans.Serialization.ExceptionCodec.WriteField[TBufferWriter](Writer`1& writer, UInt32 fieldIdDelta, Type expectedType, Exception value)
+[xUnit.net 00:04:45.84]         /Users/zhengxinze/Desktop/System/orleans/src/Orleans.Serialization/Codecs/IFieldCodec.cs(53,0): at Orleans.Serialization.Codecs.IFieldCodec`1.Orleans.Serialization.Codecs.IFieldCodec.WriteField[TBufferWriter](Writer`1& writer, UInt32 fieldIdDelta, Type expectedType, Object value)
+[xUnit.net 00:04:45.84]         /Users/zhengxinze/Desktop/System/orleans/src/Orleans.Core/Messaging/MessageSerializer.cs(187,0): at Orleans.Runtime.Messaging.MessageSerializer.Write(PipeWriter writer, Message message)
+[xUnit.net 00:04:45.84]         /Users/zhengxinze/Desktop/System/orleans/src/Orleans.Core/Networking/Connection.cs(373,0): at Orleans.Runtime.Messaging.Connection.ProcessOutgoing()
+[xUnit.net 00:04:45.84]         --- End of stack trace from previous location ---
+[xUnit.net 00:04:45.84]         /Users/zhengxinze/Desktop/System/orleans/src/Orleans.Serialization/Invocation/ResponseCompletionSource.cs(98,0): at Orleans.Serialization.Invocation.ResponseCompletionSource.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+[xUnit.net 00:04:45.84]            at System.Threading.Tasks.ValueTask.ValueTaskSourceAsTask.<>c.<.cctor>b__4_0(Object state)
+[xUnit.net 00:04:45.84]         --- End of stack trace from previous location ---
+[xUnit.net 00:04:45.84]         /Users/zhengxinze/Desktop/System/orleans/test/TesterInternal/StreamingTests/StreamTestHelperClasses.cs(479,0): at UnitTests.StreamingTests.ProducerProxy.ProduceSequentialSeries(Int32 count)
+[xUnit.net 00:04:45.84]         /Users/zhengxinze/Desktop/System/orleans/test/TesterInternal/StreamingTests/SingleStreamTestRunner.cs(440,0): at UnitTests.StreamingTests.SingleStreamTestRunner.BasicTestAsync(Boolean fullTest)
+[xUnit.net 00:04:45.84]         /Users/zhengxinze/Desktop/System/orleans/test/TesterInternal/StreamingTests/SingleStreamTestRunner.cs(223,0): at UnitTests.StreamingTests.SingleStreamTestRunner.StreamTest_13_SameGrain_ConsumerFirstProducerLater(Boolean useReentrantGrain)
+[xUnit.net 00:04:45.84]         /Users/zhengxinze/Desktop/System/orleans/test/Extensions/AWSUtils.Tests/Streaming/SQSStreamTests.cs(173,0): at AWSUtils.Tests.Streaming.SQSStreamTests.SQS_13_SameGrain_ConsumerFirstProducerLater()
+[xUnit.net 00:04:45.84]         --- End of stack trace from previous location ---
+  Failed AWSUtils.Tests.Streaming.SQSStreamTests.SQS_13_SameGrain_ConsumerFirstProducerLater [221 ms]
+  Error Message:
+   Orleans.Serialization.CodecNotFoundException : Could not find a codec for type Amazon.SQS.AmazonSQSException.
+  Stack Trace:
+     at Orleans.Serialization.Serializers.CodecProvider.ThrowCodecNotFound(Type fieldType) in /Users/zhengxinze/Desktop/System/orleans/src/Orleans.Serialization/Serializers/CodecProvider.cs:line 665
+   at Orleans.Serialization.Serializers.CodecProvider.GetCodec(Type fieldType) in /Users/zhengxinze/Desktop/System/orleans/src/Orleans.Serialization/Serializers/CodecProvider.cs:line 162
+   at Orleans.Serialization.GeneratedCodeHelpers.OrleansGeneratedCodeHelper.SerializeUnexpectedType[TBufferWriter](Writer`1& writer, UInt32 fieldIdDelta, Type expectedType, Object value) in /Users/zhengxinze/Desktop/System/orleans/src/Orleans.Serialization/GeneratedCodeHelpers/OrleansGeneratedCodeHelper.cs:line 197
+   at Orleans.Serialization.ExceptionCodec.WriteField[TBufferWriter](Writer`1& writer, UInt32 fieldIdDelta, Type expectedType, Exception value) in /Users/zhengxinze/Desktop/System/orleans/src/Orleans.Serialization/ISerializableSerializer/ExceptionCodec.cs:line 233
+   at Orleans.Serialization.ServiceCollectionExtensions.ValueSerializerHolder`1.Serialize[TBufferWriter](Writer`1& writer, TField& value) in /Users/zhengxinze/Desktop/System/orleans/src/Orleans.Serialization/Hosting/ServiceCollectionExtensions.cs:line 181
+   at Orleans.Serialization.Codecs.GeneralizedReferenceTypeSurrogateCodec`2.WriteField[TBufferWriter](Writer`1& writer, UInt32 fieldIdDelta, Type expectedType, TField value) in /Users/zhengxinze/Desktop/System/orleans/src/Orleans.Serialization/Codecs/GeneralizedReferenceTypeSurrogateCodec.cs:line 57
+   at Orleans.Serialization.ServiceCollectionExtensions.ValueSerializerHolder`1.Serialize[TBufferWriter](Writer`1& writer, TField& value) in /Users/zhengxinze/Desktop/System/orleans/src/Orleans.Serialization/Hosting/ServiceCollectionExtensions.cs:line 181
+   at Orleans.Serialization.Codecs.GeneralizedReferenceTypeSurrogateCodec`2.WriteField[TBufferWriter](Writer`1& writer, UInt32 fieldIdDelta, Type expectedType, TField value) in /Users/zhengxinze/Desktop/System/orleans/src/Orleans.Serialization/Codecs/GeneralizedReferenceTypeSurrogateCodec.cs:line 57
+   at Orleans.Serialization.Codecs.IFieldCodec`1.Orleans.Serialization.Codecs.IFieldCodec.WriteField[TBufferWriter](Writer`1& writer, UInt32 fieldIdDelta, Type expectedType, Object value) in /Users/zhengxinze/Desktop/System/orleans/src/Orleans.Serialization/Codecs/IFieldCodec.cs:line 53
+   at Orleans.Serialization.GeneratedCodeHelpers.OrleansGeneratedCodeHelper.SerializeUnexpectedType[TBufferWriter](Writer`1& writer, UInt32 fieldIdDelta, Type expectedType, Object value) in /Users/zhengxinze/Desktop/System/orleans/src/Orleans.Serialization/GeneratedCodeHelpers/OrleansGeneratedCodeHelper.cs:line 198
+   at Orleans.Serialization.ExceptionCodec.WriteField[TBufferWriter](Writer`1& writer, UInt32 fieldIdDelta, Type expectedType, Exception value) in /Users/zhengxinze/Desktop/System/orleans/src/Orleans.Serialization/ISerializableSerializer/ExceptionCodec.cs:line 233
+   at Orleans.Serialization.Codecs.IFieldCodec`1.Orleans.Serialization.Codecs.IFieldCodec.WriteField[TBufferWriter](Writer`1& writer, UInt32 fieldIdDelta, Type expectedType, Object value) in /Users/zhengxinze/Desktop/System/orleans/src/Orleans.Serialization/Codecs/IFieldCodec.cs:line 53
+   at Orleans.Runtime.Messaging.MessageSerializer.Write(PipeWriter writer, Message message) in /Users/zhengxinze/Desktop/System/orleans/src/Orleans.Core/Messaging/MessageSerializer.cs:line 187
+   at Orleans.Runtime.Messaging.Connection.ProcessOutgoing() in /Users/zhengxinze/Desktop/System/orleans/src/Orleans.Core/Networking/Connection.cs:line 373
+--- End of stack trace from previous location ---
+   at Orleans.Serialization.Invocation.ResponseCompletionSource.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token) in /Users/zhengxinze/Desktop/System/orleans/src/Orleans.Serialization/Invocation/ResponseCompletionSource.cs:line 98
+   at System.Threading.Tasks.ValueTask.ValueTaskSourceAsTask.<>c.<.cctor>b__4_0(Object state)
+--- End of stack trace from previous location ---
+   at UnitTests.StreamingTests.ProducerProxy.ProduceSequentialSeries(Int32 count) in /Users/zhengxinze/Desktop/System/orleans/test/TesterInternal/StreamingTests/StreamTestHelperClasses.cs:line 479
+   at UnitTests.StreamingTests.SingleStreamTestRunner.BasicTestAsync(Boolean fullTest) in /Users/zhengxinze/Desktop/System/orleans/test/TesterInternal/StreamingTests/SingleStreamTestRunner.cs:line 440
+   at UnitTests.StreamingTests.SingleStreamTestRunner.StreamTest_13_SameGrain_ConsumerFirstProducerLater(Boolean useReentrantGrain) in /Users/zhengxinze/Desktop/System/orleans/test/TesterInternal/StreamingTests/SingleStreamTestRunner.cs:line 223
+   at AWSUtils.Tests.Streaming.SQSStreamTests.SQS_13_SameGrain_ConsumerFirstProducerLater() in /Users/zhengxinze/Desktop/System/orleans/test/Extensions/AWSUtils.Tests/Streaming/SQSStreamTests.cs:line 173
+--- End of stack trace from previous location ---
+  Passed AWSUtils.Tests.Streaming.SQSStreamTests.SQS_01_OneProducerGrainOneConsumerGrain [10 s]
+  Passed AWSUtils.Tests.Streaming.SQSStreamTests.SQS_14_SameGrain_ProducerFirstConsumerLater [4 s]
+  Passed AWSUtils.Tests.Streaming.SQSStreamTests.SQS_09_ManySame_ManyProducerGrainsManyConsumerGrains [14 s]
+[xUnit.net 00:06:24.98]   Finished:    AWSUtils.Tests
+  Passed AWSUtils.Tests.Streaming.SQSStreamTests.SQS_08_ManyDifferent_ManyProducerClientsManyConsumerClients [5 s]
+
+Total tests: 27
+     Passed: 20
+     Failed: 7
+ Total time: 6.4223 Minutes
