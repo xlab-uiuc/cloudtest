@@ -1,0 +1,34 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  SleetLib -> /Users/zhengxinze/Desktop/System/Sleet/artifacts/proj/SleetLib/bin/Debug/netstandard2.0/SleetLib.dll
+  Sleet.Test.Common -> /Users/zhengxinze/Desktop/System/Sleet/artifacts/proj/Sleet.Test.Common/bin/Debug/netstandard2.0/Sleet.Test.Common.dll
+  Sleet.AmazonS3.Tests -> /Users/zhengxinze/Desktop/System/Sleet/artifacts/proj/Sleet.AmazonS3.Tests/bin/Debug/net6.0/Sleet.AmazonS3.Tests.dll
+Test run for /Users/zhengxinze/Desktop/System/Sleet/artifacts/proj/Sleet.AmazonS3.Tests/bin/Debug/net6.0/Sleet.AmazonS3.Tests.dll (.NETCoreApp,Version=v6.0)
+Microsoft (R) Test Execution Command Line Tool Version 17.5.0 (arm64)
+Copyright (c) Microsoft Corporation.  All rights reserved.
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+  Failed Sleet.AmazonS3.Tests.AmazonS3NuGetIntegrationTests.GivenPushCreatesAnS3BucketVerifyNuGetCanRead [7 s]
+  Error Message:
+   NuGet.Protocol.Core.Types.FatalProtocolException : Unable to load the service index for source https://s3.amazonaws.com/sleet-test-90b9cfc4-a3bd-4e93-9640-1f5a62d9c474/index.json.
+---- System.Net.Http.HttpRequestException : Response status code does not indicate success: 404 (Not Found).
+  Stack Trace:
+     at NuGet.Protocol.ServiceIndexResourceV3Provider.GetServiceIndexResourceV3(SourceRepository source, DateTime utcNow, ILogger log, CancellationToken token)
+   at NuGet.Protocol.ServiceIndexResourceV3Provider.TryCreate(SourceRepository source, CancellationToken token)
+   at NuGet.Protocol.Core.Types.SourceRepository.GetResourceAsync[T](CancellationToken token)
+   at NuGet.Protocol.Core.Types.SourceRepository.GetResourceAsync[T]()
+   at NuGet.Protocol.HttpFileSystemBasedFindPackageByIdResourceProvider.TryCreate(SourceRepository sourceRepository, CancellationToken token)
+   at NuGet.Protocol.Core.Types.SourceRepository.GetResourceAsync[T](CancellationToken token)
+   at Sleet.AmazonS3.Tests.AmazonS3NuGetIntegrationTests.GivenPushCreatesAnS3BucketVerifyNuGetCanRead() in /Users/zhengxinze/Desktop/System/Sleet/test/Sleet.AmazonS3.Tests/AmazonS3NuGetIntegrationTests.cs:line 41
+--- End of stack trace from previous location ---
+----- Inner Stack Trace -----
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at NuGet.Protocol.HttpSource.<>c__DisplayClass15_0`1.<<GetAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at NuGet.Common.ConcurrencyUtilities.ExecuteWithFileLockedAsync[T](String filePath, Func`2 action, CancellationToken token)
+   at NuGet.Common.ConcurrencyUtilities.ExecuteWithFileLockedAsync[T](String filePath, Func`2 action, CancellationToken token)
+   at NuGet.Protocol.HttpSource.GetAsync[T](HttpSourceCachedRequest request, Func`2 processAsync, ILogger log, CancellationToken token)
+   at NuGet.Protocol.ServiceIndexResourceV3Provider.GetServiceIndexResourceV3(SourceRepository source, DateTime utcNow, ILogger log, CancellationToken token)
+
+Failed!  - Failed:     1, Passed:    10, Skipped:     0, Total:    11, Duration: 6 s - Sleet.AmazonS3.Tests.dll (net6.0)
