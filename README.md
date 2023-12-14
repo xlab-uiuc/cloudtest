@@ -40,4 +40,4 @@ Azure Storage:
 
 [Gdoc for cost savings breakdown](https://docs.google.com/document/d/1In_lYeZbLrcmigNxgcLyRRFfGRnTUyxRg99xhfKNYcY/edit)
 
-[Notebook for cost savings calculations](https://colab.research.google.com/drive/1md3ra322ytDH_MxMOcGXMixhpqcjl3TH?usp=sharing)
+[Notebook for cost savings calculations](https://colab.research.google.com/drive/1BA74fysMFuVv7RdsS7tbfHENHhcsJObM?authuser=2#scrollTo=439Ph08U3qcm)
