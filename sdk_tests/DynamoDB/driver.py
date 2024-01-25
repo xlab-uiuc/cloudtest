@@ -281,5 +281,6 @@ def main(arg):
 
 '''Get fuzz data'''
 if __name__ == '__main__':
-    arg = ()
-    main(arg)
+    # arg = ()
+    # main(arg)
+    simple_test_run(True) 
