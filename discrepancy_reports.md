@@ -12,7 +12,7 @@
 
 | REST API | Link | Status |
 | -------- | -------- | -------- |
-| copy_blob | [https://github.com/Azure/Azurite/issues/1954](https://github.com/Azure/Azurite/issues/1954#issue-1697046568) | Fixed |
+| copy_blob | [https://github.com/Azure/Azurite/issues/1954](Azurite/issues/1954#issue-1697046568) | Fixed |
 | put_block_list | [Azurite/issues/1955](https://github.com/Azure/Azurite/issues/1955#issue-1697049378) | Fixed |
 | undelete_container | [Azurite/issues/2318](https://github.com/Azure/Azurite/issues/2318) | Confirmed |
 | upload_blob_from_url | [Azurite/issues/2319](https://github.com/Azure/Azurite/issues/2319)| Confirmed | 
