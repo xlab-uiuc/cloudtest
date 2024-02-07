@@ -144,8 +144,8 @@ def simple_test_run(flag):
     flag = False
 
     # get methods
-    # methods_bc = [getattr(MyBlobClient, attr) for attr in dir(MyBlobClient) if callable(getattr(MyBlobClient, attr)) and not attr.startswith("__")]
-    methods_cc = [getattr(ContainerClient, attr) for attr in dir(ContainerClient) if callable(getattr(ContainerClient, attr)) and not attr.startswith("__")]
+    methods_bc = [getattr(MyBlobClient, attr) for attr in dir(MyBlobClient) if callable(getattr(MyBlobClient, attr)) and not attr.startswith("__")]
+    # methods_cc = [getattr(ContainerClient, attr) for attr in dir(ContainerClient) if callable(getattr(ContainerClient, attr)) and not attr.startswith("__")]
     # methods_bsc = [getattr(MyBlobServiceClient, attr) for attr in dir(MyBlobServiceClient) if callable(getattr(MyBlobServiceClient, attr)) and not attr.startswith("__")]
     # methods_blc = [getattr(MyBlobLeaseClient, attr) for attr in dir(MyBlobLeaseClient) if callable(getattr(MyBlobLeaseClient, attr)) and not attr.startswith("__")]
     # methods_tc = [getattr(MyTableClient, attr) for attr in dir(MyTableClient) if callable(getattr(MyTableClient, attr)) and not attr.startswith("__")]
@@ -154,22 +154,21 @@ def simple_test_run(flag):
     # methods_qsc = [getattr(MyQueueServiceClient, attr) for attr in dir(MyQueueServiceClient) if callable(getattr(MyQueueServiceClient, attr)) and not attr.startswith("__")]
     
     # run methods
-    # for i in methods_bc:
-        
-    #     # if 'upload_page' in i.__name__:
-    #     test_bc = MyBlobClient(flag)
-    #     try:
-    #         r = i(test_bc, [])
-    #     finally:
-    #         test_bc.__cleanup__()
-            
-    for i in methods_cc:
-        if 'list_blobs' in i.__name__:
-            test_cc = ContainerClient(flag)
+    for i in methods_bc:
+        if 'get_blob_tags' in i.__name__:
+            test_bc = MyBlobClient(flag)
             try:
-                res = i(test_cc, [])
+                r = i(test_bc, [])
             finally:
-                test_cc.__cleanup__()
+                test_bc.__cleanup__()
+            
+    # for i in methods_cc:
+    #     if 'list_blobs' in i.__name__:
+    #         test_cc = ContainerClient(flag)
+    #         try:
+    #             res = i(test_cc, [])
+    #         finally:
+    #             test_cc.__cleanup__()
 
     # for i in methods_bsc:
     #     # if 'undelete_container' in i.__name__:
@@ -585,8 +584,10 @@ def main(arg):
 
 '''Get fuzz data'''
 if __name__ == '__main__':
-    arg = ()
-    main(arg)
+    # arg = ()
+    # main(arg)
+
+    simple_test_run(True)
     
     
 
