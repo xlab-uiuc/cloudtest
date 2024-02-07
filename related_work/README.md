@@ -7,7 +7,7 @@
         - StubCoder leverages the CUT execution code and test oracles as specifications to guide the synthesis of stub code.
     - Mock object creation for test factoring [[paper]](https://homes.cs.washington.edu/~mernst/pubs/mock-factoring-paste2004.pdf) [[notes]](./notes/Mock%20object%20creation%20for%20test%20factoring.md) 
         - Automatically generate mock objects and introduce Mock test factoring.
-    - An Automatic Refactoring Framework for Replacing Test-Production Inheritance by Mocking Mechanism [[paper]](https://dl.acm.org/doi/abs/10.1145/3468264.3468590)
+    - An Automatic Refactoring Framework for Replacing Test-Production Inheritance by Mocking Mechanism [[paper]](https://dl.acm.org/doi/abs/10.1145/3468264.3468590) [[notes]](./notes/An%20Automatic%20Refactoring%20Framework%20for%20Replacing%20Test-Production%20Inheritance%20by%20Mocking%20Mechanism.md)
         - An fully automated refactoring framework to identify and replace the usage of inheritance by using Mockito for mocking in unit testing.
 
 - API fuzzing
