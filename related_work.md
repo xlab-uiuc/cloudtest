@@ -3,15 +3,14 @@
 ## List of Content
 
 - Mock Testing
-    - [StubCoder: Automated Generation and Repair of Stub Code for Mock Objects](#StubCoder: Automated Generation and Repair of Stub Code for Mock Objects)
-    - [Mock object creation for test factoring](#Mock object creation for test factoring)
-    - [An Automatic Refactoring Framework for Replacing
-Test-Production Inheritance by Mocking Mechanism](#An Automatic Refactoring Framework for Replacing
-Test-Production Inheritance by Mocking Mechanism)
+    - [StubCoder: Automated Generation and Repair of Stub Code for Mock Objects](#stubcoder-automated-generation-and-repair-of-stub-code-for-mock-objects)
+    - [Mock object creation for test factoring](#mock-object-creation-for-test-factoring)
+    - [An Automatic Refactoring Framework for Replacing Test-Production Inheritance by Mocking Mechanism](#an-automatic-refactoring-framework-for-replacing-test-production-inheritance-by-mocking-mechanism)
+
 - API fuzzing
-    - [Deriving semantics-aware fuzzers from web API schemas](#Deriving semantics-aware fuzzers from web API schemas)
-    - [Differential regression testing for REST APIs](#Differential regression testing for REST APIs)
-    
+    - [Deriving semantics-aware fuzzers from web API schemas](#deriving-semantics-aware-fuzzers-from-web-api-schemas)
+    - [Differential regression testing for REST APIs](#differential-regression-testing-for-rest-apis)
+    - []()
 
 
 ### StubCoder: Automated Generation and Repair of Stub Code for Mock Objects
