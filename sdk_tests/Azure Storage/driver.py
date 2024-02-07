@@ -141,17 +141,17 @@ def oracles(res_cloud, res_em):
         
 # for testing purposes (Remove later)
 def simple_test_run(flag):
-    flag = True
+    flag = False
 
     # get methods
-    methods_bc = [getattr(MyBlobClient, attr) for attr in dir(MyBlobClient) if callable(getattr(MyBlobClient, attr)) and not attr.startswith("__")]
+    # methods_bc = [getattr(MyBlobClient, attr) for attr in dir(MyBlobClient) if callable(getattr(MyBlobClient, attr)) and not attr.startswith("__")]
     methods_cc = [getattr(ContainerClient, attr) for attr in dir(ContainerClient) if callable(getattr(ContainerClient, attr)) and not attr.startswith("__")]
-    methods_bsc = [getattr(MyBlobServiceClient, attr) for attr in dir(MyBlobServiceClient) if callable(getattr(MyBlobServiceClient, attr)) and not attr.startswith("__")]
-    methods_blc = [getattr(MyBlobLeaseClient, attr) for attr in dir(MyBlobLeaseClient) if callable(getattr(MyBlobLeaseClient, attr)) and not attr.startswith("__")]
-    methods_tc = [getattr(MyTableClient, attr) for attr in dir(MyTableClient) if callable(getattr(MyTableClient, attr)) and not attr.startswith("__")]
-    methods_tsc = [getattr(MyTableServiceClient, attr) for attr in dir(MyTableServiceClient) if callable(getattr(MyTableServiceClient, attr)) and not attr.startswith("__")]
-    methods_qc = [getattr(MyQueueClient, attr) for attr in dir(MyQueueClient) if callable(getattr(MyQueueClient, attr)) and not attr.startswith("__")]
-    methods_qsc = [getattr(MyQueueServiceClient, attr) for attr in dir(MyQueueServiceClient) if callable(getattr(MyQueueServiceClient, attr)) and not attr.startswith("__")]
+    # methods_bsc = [getattr(MyBlobServiceClient, attr) for attr in dir(MyBlobServiceClient) if callable(getattr(MyBlobServiceClient, attr)) and not attr.startswith("__")]
+    # methods_blc = [getattr(MyBlobLeaseClient, attr) for attr in dir(MyBlobLeaseClient) if callable(getattr(MyBlobLeaseClient, attr)) and not attr.startswith("__")]
+    # methods_tc = [getattr(MyTableClient, attr) for attr in dir(MyTableClient) if callable(getattr(MyTableClient, attr)) and not attr.startswith("__")]
+    # methods_tsc = [getattr(MyTableServiceClient, attr) for attr in dir(MyTableServiceClient) if callable(getattr(MyTableServiceClient, attr)) and not attr.startswith("__")]
+    # methods_qc = [getattr(MyQueueClient, attr) for attr in dir(MyQueueClient) if callable(getattr(MyQueueClient, attr)) and not attr.startswith("__")]
+    # methods_qsc = [getattr(MyQueueServiceClient, attr) for attr in dir(MyQueueServiceClient) if callable(getattr(MyQueueServiceClient, attr)) and not attr.startswith("__")]
     
     # run methods
     # for i in methods_bc:
@@ -163,13 +163,13 @@ def simple_test_run(flag):
     #     finally:
     #         test_bc.__cleanup__()
             
-    # for i in methods_cc:
-    #     if 'list_blobs' in i.__name__:
-    #         test_cc = ContainerClient(flag)
-    #         try:
-    #             res = i(test_cc, [])
-    #         finally:
-    #             test_cc.__cleanup__()
+    for i in methods_cc:
+        if 'list_blobs' in i.__name__:
+            test_cc = ContainerClient(flag)
+            try:
+                res = i(test_cc, [])
+            finally:
+                test_cc.__cleanup__()
 
     # for i in methods_bsc:
     #     # if 'undelete_container' in i.__name__:
@@ -536,47 +536,47 @@ def run1v1(arg, methods, t_count):
 '''test suites'''
 def main(arg):
 
-    methods = {}
-    # get all methods of all the clients
-    methods['bc'] = [getattr(MyBlobClient, attr) for attr in dir(MyBlobClient) if callable(getattr(MyBlobClient, attr)) and not attr.startswith("__")]
-    methods['cc'] = [getattr(ContainerClient, attr) for attr in dir(ContainerClient) if callable(getattr(ContainerClient, attr)) and not attr.startswith("__")]
-    methods['bsc'] = [getattr(MyBlobServiceClient, attr) for attr in dir(MyBlobServiceClient) if callable(getattr(MyBlobServiceClient, attr))
-     and not attr.startswith("__")]
-    methods['blc'] = [getattr(MyBlobLeaseClient, attr) for attr in dir(MyBlobLeaseClient) if callable(getattr(MyBlobLeaseClient, attr)) and not attr.startswith("__")]
-    methods['tc'] = [getattr(MyTableClient, attr) for attr in dir(MyTableClient) if callable(getattr(MyTableClient, attr)) and not attr.startswith("__")]
-    methods['tsc'] = [getattr(MyTableServiceClient, attr) for attr in dir(MyTableServiceClient) if callable(getattr(MyTableServiceClient, attr)) and not attr.startswith("__")]
-    methods['qc'] = [getattr(MyQueueClient, attr) for attr in dir(MyQueueClient) if callable(getattr(MyQueueClient, attr)) and not attr.startswith("__")]
-    methods['qsc'] = [getattr(MyQueueServiceClient, attr) for attr in dir(MyQueueServiceClient) if callable(getattr(MyQueueServiceClient, attr)) and not attr.startswith("__")]
-    total_methods = methods['bc'] + methods['cc'] + methods['bsc'] + methods['blc'] + methods['tc'] + methods['tsc'] + methods['qc'] + methods['qsc']
-    t_count = len(total_methods)
-    # logging.basicConfig(level=logging.DEBUG)
+    # methods = {}
+    # # get all methods of all the clients
+    # methods['bc'] = [getattr(MyBlobClient, attr) for attr in dir(MyBlobClient) if callable(getattr(MyBlobClient, attr)) and not attr.startswith("__")]
+    # methods['cc'] = [getattr(ContainerClient, attr) for attr in dir(ContainerClient) if callable(getattr(ContainerClient, attr)) and not attr.startswith("__")]
+    # methods['bsc'] = [getattr(MyBlobServiceClient, attr) for attr in dir(MyBlobServiceClient) if callable(getattr(MyBlobServiceClient, attr))
+    #  and not attr.startswith("__")]
+    # methods['blc'] = [getattr(MyBlobLeaseClient, attr) for attr in dir(MyBlobLeaseClient) if callable(getattr(MyBlobLeaseClient, attr)) and not attr.startswith("__")]
+    # methods['tc'] = [getattr(MyTableClient, attr) for attr in dir(MyTableClient) if callable(getattr(MyTableClient, attr)) and not attr.startswith("__")]
+    # methods['tsc'] = [getattr(MyTableServiceClient, attr) for attr in dir(MyTableServiceClient) if callable(getattr(MyTableServiceClient, attr)) and not attr.startswith("__")]
+    # methods['qc'] = [getattr(MyQueueClient, attr) for attr in dir(MyQueueClient) if callable(getattr(MyQueueClient, attr)) and not attr.startswith("__")]
+    # methods['qsc'] = [getattr(MyQueueServiceClient, attr) for attr in dir(MyQueueServiceClient) if callable(getattr(MyQueueServiceClient, attr)) and not attr.startswith("__")]
+    # total_methods = methods['bc'] + methods['cc'] + methods['bsc'] + methods['blc'] + methods['tc'] + methods['tsc'] + methods['qc'] + methods['qsc']
+    # t_count = len(total_methods)
+    # # logging.basicConfig(level=logging.DEBUG)
 
 
-    # empty args for default run of ops
-    if arg == ():
-        arg = {}
-        arg['1'] = [[]] * len(methods['bc'])
-        arg['2'] = [[]] * len(methods['cc'])
-        arg['3'] = [[]] * len(methods['bsc'])
-        arg['4'] = [[]] * len(methods['blc'])
-        arg['5'] = [[]] * len(methods['tc'])
-        arg['6'] = [[]] * len(methods['tsc'])
-        arg['7'] = [[]] * len(methods['qc'])
-        arg['8'] = [[]] * len(methods['qsc'])
-    else:
-        assert len(arg) == 8, "Invalid number of clients"
-        assert len(arg['1']) == len(methods['bc']), "Invalid number of methods for BlobClient"
-        assert len(arg['2']) == len(methods['cc']), "Invalid number of methods for ContainerClient"
-        assert len(arg['3']) == len(methods['bsc']), "Invalid number of methods for BlobServiceClient"
-        assert len(arg['4']) == len(methods['blc']), "Invalid number of methods for BlobLeaseClient"
-        assert len(arg['5']) == len(methods['tc']), "Invalid number of methods for TableClient"
-        assert len(arg['6']) == len(methods['tsc']), "Invalid number of methods for TableServiceClient"
-        assert len(arg['7']) == len(methods['qc']), "Invalid number of methods for QueueClient"
-        assert len(arg['8']) == len(methods['qsc']), "Invalid number of methods for QueueServiceClient"
+    # # empty args for default run of ops
+    # if arg == ():
+    #     arg = {}
+    #     arg['1'] = [[]] * len(methods['bc'])
+    #     arg['2'] = [[]] * len(methods['cc'])
+    #     arg['3'] = [[]] * len(methods['bsc'])
+    #     arg['4'] = [[]] * len(methods['blc'])
+    #     arg['5'] = [[]] * len(methods['tc'])
+    #     arg['6'] = [[]] * len(methods['tsc'])
+    #     arg['7'] = [[]] * len(methods['qc'])
+    #     arg['8'] = [[]] * len(methods['qsc'])
+    # else:
+    #     assert len(arg) == 8, "Invalid number of clients"
+    #     assert len(arg['1']) == len(methods['bc']), "Invalid number of methods for BlobClient"
+    #     assert len(arg['2']) == len(methods['cc']), "Invalid number of methods for ContainerClient"
+    #     assert len(arg['3']) == len(methods['bsc']), "Invalid number of methods for BlobServiceClient"
+    #     assert len(arg['4']) == len(methods['blc']), "Invalid number of methods for BlobLeaseClient"
+    #     assert len(arg['5']) == len(methods['tc']), "Invalid number of methods for TableClient"
+    #     assert len(arg['6']) == len(methods['tsc']), "Invalid number of methods for TableServiceClient"
+    #     assert len(arg['7']) == len(methods['qc']), "Invalid number of methods for QueueClient"
+    #     assert len(arg['8']) == len(methods['qsc']), "Invalid number of methods for QueueServiceClient"
 
 
 
-    # simple_test_run(True)
+    simple_test_run(True)
     # run1v1(arg, methods, t_count)
     # done --> to-do: run_sequences() taking `permutation` and `shuffle` as type
     # run_sequences(methods, 'shuffle', 150)

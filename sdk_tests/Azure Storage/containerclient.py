@@ -1,6 +1,6 @@
 from azure.storage.blob import BlobServiceClient, PublicAccess, AccessPolicy, PremiumPageBlobTier, StandardBlobTier, BlobLeaseClient
 from azure.identity import DefaultAzureCredential
-import random, os, datetime
+import random, os, datetime, time
 
 # Point to certificates
 os.environ["REQUESTS_CA_BUNDLE"] = "/etc/ssl/certs/ca-certificates.crt"
@@ -52,8 +52,16 @@ class ContainerClient:
         # upload blob
         try:
             self.container_client.upload_blob(data=b'First one', name=self.blob_name, blob_type='BlockBlob', length=len('First one'), metadata={'hello': 'world', 'number': '42'})
+            print(f"Blob is created {self.blob_name}")
         except Exception as e:
             print(self.service + ": Fail -- Blob is not created. Error: ", e)
+
+        
+        # get blob client
+        try:
+            self.blob_client = self.container_client.get_blob_client(self.blob_name)
+        except Exception as e:
+            print(self.service + ": Fail -- Blob client is not created. Error: ", e)
 
     # acquire lease with try except block
     def acquire_lease(self, args):
@@ -107,7 +115,7 @@ class ContainerClient:
 
             return True, res
         except Exception as e:
-            print(self.service + ": Fail -- Blob is not deleted. Error: ", e)
+            print(self.service + f": Fail -- Blob {args[0]} is not deleted. Error: ", e)
             return False, e
 
 
@@ -269,10 +277,13 @@ class ContainerClient:
             args.append('blob')
 
         if not len(args) > 1:
-            args.append(['snapshots', 'metadata', 'uncommittedblobs', 'copy', 'deleted', 'deletedwithversions', 'tags', 'versions', 'immutabilitypolicy', 'legalhold'])
+            args.append([ 'deleted', 'deletedwithversions'])
         try:
+            self.delete_blob([])
             print(self.service + ": Success -- Listing blobs...")
             res = self.container_client.list_blobs(name_starts_with=args[0], include=args[1])
+            for i in res: 
+                print(i)
             print(self.service + ": Success -- Blob listed successfully")
             return True, res
         except Exception as e:

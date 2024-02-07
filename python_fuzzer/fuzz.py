@@ -87,36 +87,36 @@ if __name__ == '__main__':
     
     input_data = json.loads(input_data)
 
-    driver.main(input_data)
+    # driver.main(input_data)
 
-    # to-do: do random input fuzzing instead of property based fuzzing 
+    # # to-do: do random input fuzzing instead of property based fuzzing 
 
-    # iterate through json object and mutate
-    for i in range(1):
-        for key, _ in input_data.items():
-            list_fuzzer = random.choice([list_fuzzer_int, list_fuzzer_float, list_fuzzer_string])
+    # # iterate through json object and mutate
+    # for i in range(1):
+    #     for key, _ in input_data.items():
+    #         list_fuzzer = random.choice([list_fuzzer_int, list_fuzzer_float, list_fuzzer_string])
 
-            for i in range(len(input_data[key])):
-                # done -> to-do: skip on []
-                if input_data[key][i] == []:
-                    input_data[key][i] = None
-                    continue
+    #         for i in range(len(input_data[key])):
+    #             # done -> to-do: skip on []
+    #             if input_data[key][i] == []:
+    #                 input_data[key][i] = None
+    #                 continue
 
-                for j in range(len(input_data[key][i])):
+    #             for j in range(len(input_data[key][i])):
                     
-                    if type(input_data[key][i][j]).__name__ == 'int':
-                        input_data[key][i][j] = int_fuzzer.fuzz()
-                    elif type(input_data[key][i][j]).__name__ == 'float':
-                        input_data[key][i][j] = float_fuzzer.fuzz()
-                    elif type(input_data[key][i][j]).__name__ == 'list':
-                        input_data[key][i][j] = list_fuzzer.fuzz()
-                    elif type(input_data[key][i][j]).__name__ == 'dict':
-                        json_fuzz = random.choice(JSON_GRAMMAR)
-                        input_data[key][i][j] = json_fuzz
-                    else:
-                        mutation_fuzzer = MutationFuzzer.MutationFuzzer(seed=[j])
-                        input_data[key][i][j] = mutation_fuzzer.fuzz()
+    #                 if type(input_data[key][i][j]).__name__ == 'int':
+    #                     input_data[key][i][j] = int_fuzzer.fuzz()
+    #                 elif type(input_data[key][i][j]).__name__ == 'float':
+    #                     input_data[key][i][j] = float_fuzzer.fuzz()
+    #                 elif type(input_data[key][i][j]).__name__ == 'list':
+    #                     input_data[key][i][j] = list_fuzzer.fuzz()
+    #                 elif type(input_data[key][i][j]).__name__ == 'dict':
+    #                     json_fuzz = random.choice(JSON_GRAMMAR)
+    #                     input_data[key][i][j] = json_fuzz
+    #                 else:
+    #                     mutation_fuzzer = MutationFuzzer.MutationFuzzer(seed=[j])
+    #                     input_data[key][i][j] = mutation_fuzzer.fuzz()
 
 
-        # print(input_data)
-        driver.main(input_data)
+    #     # print(input_data)
+    #     driver.main(input_data)
