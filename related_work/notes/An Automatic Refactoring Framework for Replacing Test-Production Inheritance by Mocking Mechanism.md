@@ -12,12 +12,17 @@
 
 **Challenges:**
 - The key challenge is to preserve the test behaviors before and after the refactoring.
-- Gain empirical experience of whether it is feasible and how
-to perform refactoring following an automated procedure.
+- Gain empirical experience of whether it is feasible and how to perform refactoring following an automated procedure.
 
 **Solution:**
 - Automatically search for the usage of inheritance and replace it by Mockito for mocking.
-- Built upon the empirical experience from five open source projects that use inheritance for
+- FYI, Mockito three main features:
+    - Can create "Mock" or "Spy"
+        - Mock: Completely faked object and is entirely instrumented to track the interactions with it.
+        - Spy: Wraps a real instance of the mocked object.
+    -  Offers light-weighted method stubbing for controlling the behaviors of the mock object for testing purposes.
+    -  Provides explicit mechanism for verifying the behaviors/status of the mock objects
+- Built upon the empirical experience from five open-source projects that use inheritance for
 mocking.
 - Decouples test code from production code.
 
