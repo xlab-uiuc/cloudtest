@@ -19,7 +19,7 @@
 **Application tests:**
 
 [Application discrepancies RCA](https://docs.google.com/document/d/1OIFc5jGdbZp6-gEaD0sb-fWSC1EzsbaHK1XNi5RYdA0/edit?usp=sharing)
-
+[Application test stat]([https://docs.google.com/document/d/1OIFc5jGdbZp6-gEaD0sb-fWSC1EzsbaHK1XNi5RYdA0/edit?usp=sharing](https://docs.google.com/spreadsheets/d/1M4DSubV8ViGnfyhUZ_LKg4Z5Q29hd_cLeOdQe8AjwWs/edit?usp=sharing))
 **Bugs reported:**
 
 Azurite:
