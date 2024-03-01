@@ -9,5 +9,20 @@ Logs for test: Can_store_Customer_and_related_orders
 
  💻 LocalStack CLI 2.2.0
 
-[20:34:06] starting LocalStack in Docker mode 🐳                                                                                                        localstack.py:409
-───────────────────────────────────────────────────────────── LocalStack Runtime Log (press CTRL-C to quit) ─────────────────────────────────────────────────────────────
+[01:54:47] starting LocalStack in Docker mode 🐳                                                                                                           localstack.py:409
+────────────────────────────────────────────────────────────── LocalStack Runtime Log (press CTRL-C to quit) ───────────────────────────────────────────────────────────────
+
+LocalStack version: 2.2.1.dev
+LocalStack Docker container id: 987c853de965
+LocalStack build date: 2023-09-07
+LocalStack build git hash: 5473e686
+
+2024-03-01T20:54:49.183  INFO --- [-functhread3] hypercorn.error            : Running on https://0.0.0.0:4566 (CTRL + C to quit)
+2024-03-01T20:54:49.183  INFO --- [-functhread3] hypercorn.error            : Running on https://0.0.0.0:4566 (CTRL + C to quit)
+Ready.
+2024-03-01T20:54:52.193  INFO --- [   asgi_gw_0] localstack.utils.bootstrap : Execution of "require" took 1403.22ms
+2024-03-01T20:54:52.352  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.DeleteTable => 400 (ResourceNotFoundException)
+2024-03-01T20:54:52.389  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.ListTables => 200
+2024-03-01T20:54:52.399  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.DeleteTable => 400 (ResourceNotFoundException)
+2024-03-01T20:54:52.405  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.ListTables => 200
+2024-03-01T20:54:52.657  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.PutItem => 400 (ResourceNotFoundException)

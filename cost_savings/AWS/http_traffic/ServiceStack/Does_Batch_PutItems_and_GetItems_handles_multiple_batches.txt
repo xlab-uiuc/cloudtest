@@ -9,5 +9,28 @@ Logs for test: Does_Batch_PutItems_and_GetItems_handles_multiple_batches
 
  💻 LocalStack CLI 2.2.0
 
-[20:09:32] starting LocalStack in Docker mode 🐳                                                                                                        localstack.py:409
-───────────────────────────────────────────────────────────── LocalStack Runtime Log (press CTRL-C to quit) ─────────────────────────────────────────────────────────────
+[01:35:49] starting LocalStack in Docker mode 🐳                                                                                                           localstack.py:409
+────────────────────────────────────────────────────────────── LocalStack Runtime Log (press CTRL-C to quit) ───────────────────────────────────────────────────────────────
+
+LocalStack version: 2.2.1.dev
+LocalStack Docker container id: bcf2b60dcdd8
+LocalStack build date: 2023-09-07
+LocalStack build git hash: 5473e686
+
+2024-03-01T20:35:51.221  INFO --- [-functhread3] hypercorn.error            : Running on https://0.0.0.0:4566 (CTRL + C to quit)
+2024-03-01T20:35:51.221  INFO --- [-functhread3] hypercorn.error            : Running on https://0.0.0.0:4566 (CTRL + C to quit)
+Ready.
+2024-03-01T20:35:54.109  INFO --- [   asgi_gw_0] localstack.utils.bootstrap : Execution of "require" took 1401.83ms
+2024-03-01T20:35:54.240  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.ListTables => 200
+2024-03-01T20:35:54.293  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.ListTables => 200
+2024-03-01T20:35:54.379  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.CreateTable => 200
+2024-03-01T20:35:54.401  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.CreateTable => 200
+2024-03-01T20:35:54.411  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.DescribeTable => 200
+2024-03-01T20:35:54.418  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.DescribeTable => 200
+2024-03-01T20:35:54.896  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.BatchWriteItem => 200
+2024-03-01T20:35:55.147  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.BatchWriteItem => 200
+2024-03-01T20:35:55.382  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.BatchWriteItem => 200
+2024-03-01T20:35:55.611  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.BatchWriteItem => 200
+2024-03-01T20:35:55.714  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.BatchWriteItem => 200
+2024-03-01T20:35:55.766  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.BatchGetItem => 200
+2024-03-01T20:35:55.792  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.BatchGetItem => 200
