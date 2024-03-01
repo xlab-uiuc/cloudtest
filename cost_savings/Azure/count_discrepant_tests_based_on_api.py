@@ -1,0 +1,34 @@
+import json 
+
+def getAPIList(file_name):
+    api_names = [] 
+    with open(file_name, 'r') as file: 
+        for line in file: 
+            api_name = line.strip()
+            if api_name not in api_names: # It won't be, sanity check
+                api_names.append(api_name)
+    
+    return api_names
+
+def getdiscrepantTests(file_path, discrepant_APIs):
+    with open(file_path, 'r') as file: 
+        data = json.load(file) 
+
+    discrepant_tests = [] 
+    for test, apis in data.items(): 
+        for api in apis: 
+            if api in discrepant_APIs: 
+                discrepant_tests.append(test)
+                break 
+        
+    return discrepant_tests
+
+def main(): 
+    discrepant_emulator_APIs = getAPIList('./discrepantApisEmulator.txt')
+    alpakka_discrepant_tests = getdiscrepantTests('./application_sdk_methods/streamstone.json', discrepant_emulator_APIs)
+
+    # print(alpakka_discrepant_tests)
+    print(f"Number of tests: {len(alpakka_discrepant_tests)}")
+
+if __name__ == "__main__": 
+    main()  

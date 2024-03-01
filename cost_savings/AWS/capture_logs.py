@@ -1,5 +1,8 @@
 import subprocess, os, time
 
+def test(): 
+
+    pass 
 
 def run_emulator(log_folder):
 
@@ -8,10 +11,10 @@ def run_emulator(log_folder):
     start_index = commands.find("The following Tests are available:") 
     commands = commands[start_index+len("The following Tests are available:"):len(commands)-1]
     commands = [command.strip() for command in commands.split("\n") if command.strip()]
+    print(commands)
 
     # Create the log folder if it doesn't exist
     os.makedirs(log_folder, exist_ok=True)
-    # os.makedirs(os.path.join(os.getcwd(), 'debug_logs'), exist_ok=True)
 
     for i in commands:
 
@@ -29,20 +32,21 @@ def run_emulator(log_folder):
 
             # ***run dotnet test command with os.system in app path
             os.system(f'dotnet test --filter {i}') 
-            
+                
         except Exception as e:
             print(f"Error running test on the emulator: {e}")
         
         finally:
             try:
-                # Kill the emulator process
-                time.sleep(3)
+                # time.sleep(5)
                 os.system('docker stop localstack_main') 
-                emulator_process.terminate()
-                print(f"Emulator process terminated for test: {i}")
-         
+                # emulator_process.terminate()
+                # print(f"Emulator process terminated for test: {i}")
+            
             except Exception as e:
                 print(f"Error terminating emulator process: {e}")
+        
+            
 
 
 
