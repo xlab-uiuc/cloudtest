@@ -26,6 +26,13 @@
 | DeleteObjectTagging |  [LocalStack/issues/10330](https://github.com/localstack/localstack/issues/10330)  | Fixed* |
 | RestoreObject |  [LocalStack/issues/10332](https://github.com/localstack/localstack/issues/10332)  | Fixed* |
 | CopyObject |  [LocalStack/issues/10328](https://github.com/localstack/localstack/issues/10328)  | Fixed |
-| SelectObjectContent |  [LocalStack/issues/10329](https://github.com/localstack/localstack/issues/10329)  | Confirmed |
+| SelectObjectContent |  [LocalStack/issues/10329](https://github.com/localstack/localstack/issues/10329)  | Fixed |
+
+## DynamoDB Discrepancy (BUGS) Report:
+
+| REST API | Link | Status |
+| -------- | -------- | -------- |
+| DeleteTable |  [LocalStack/issues/10376](https://github.com/localstack/localstack/issues/10376)  | Reported |
+| ListGlobalTables |  [LocalStack/issues/10376](https://github.com/localstack/localstack/issues/10376)  | Reported |
 
 *Already fixed in the latest version of LocalStack. We don't claim the fix.
