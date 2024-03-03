@@ -1,0 +1,575 @@
+Logs for test: AWSUtils.Tests.StorageTests.DynamoDBStorageStressTests.DynamoDBDataManagerStressTests_WriteAlot_MultiPartition
+
+
+     __                     _______ __             __
+    / /   ____  _________ _/ / ___// /_____ ______/ /__
+   / /   / __ \/ ___/ __ `/ /\__ \/ __/ __ `/ ___/ //_/
+  / /___/ /_/ / /__/ /_/ / /___/ / /_/ /_/ / /__/ ,<
+ /_____/\____/\___/\__,_/_//____/\__/\__,_/\___/_/|_|
+
+ 💻 LocalStack CLI 3.1.0
+ 👤 Profile: default
+
+[17:20:56] starting LocalStack in Docker mode 🐳                                                                                                                                                                                                                                   localstack.py:494
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── LocalStack Runtime Log (press CTRL-C to quit) ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+LocalStack version: 3.1.1.dev
+LocalStack Docker container id: ba5833cdcae4
+LocalStack build date: 2024-02-24
+LocalStack build git hash: ee58b82ce
+
+2024-03-02T23:21:00.382  INFO --- [-functhread4] hypercorn.error            : Running on https://0.0.0.0:4566 (CTRL + C to quit)
+2024-03-02T23:21:00.382  INFO --- [-functhread4] hypercorn.error            : Running on https://0.0.0.0:4566 (CTRL + C to quit)
+Ready.
+2024-03-02T23:21:07.793  INFO --- [   asgi_gw_0] localstack.utils.bootstrap : Execution of "require" took 1300.92ms
+2024-03-02T23:21:07.936  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.DescribeTable => 400 (ResourceNotFoundException)
+2024-03-02T23:21:08.053  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.CreateTable => 200
+2024-03-02T23:21:08.078  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.DescribeTable => 200
+2024-03-02T23:21:08.094  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.DescribeTimeToLive => 200
+2024-03-02T23:21:09.029  INFO --- [  asgi_gw_10] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.033  INFO --- [  asgi_gw_12] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.043  INFO --- [   asgi_gw_3] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.054  INFO --- [  asgi_gw_19] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.067  INFO --- [   asgi_gw_4] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.071  INFO --- [   asgi_gw_5] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.077  INFO --- [  asgi_gw_17] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.082  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.086  INFO --- [   asgi_gw_8] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.092  INFO --- [  asgi_gw_32] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.097  INFO --- [  asgi_gw_26] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.106  INFO --- [  asgi_gw_33] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.114  INFO --- [  asgi_gw_24] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.119  INFO --- [  asgi_gw_27] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.127  INFO --- [   asgi_gw_9] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.131  INFO --- [  asgi_gw_29] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.165  INFO --- [  asgi_gw_16] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.166  INFO --- [  asgi_gw_20] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.179  INFO --- [   asgi_gw_2] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.185  INFO --- [ asgi_gw_105] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.198  INFO --- [  asgi_gw_28] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.232  INFO --- [  asgi_gw_18] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.236  INFO --- [   asgi_gw_6] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.358  INFO --- [   asgi_gw_7] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.362  INFO --- [  asgi_gw_35] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.364  INFO --- [  asgi_gw_14] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.367  INFO --- [  asgi_gw_40] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.371  INFO --- [  asgi_gw_30] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.375  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.377  INFO --- [  asgi_gw_25] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.378  INFO --- [ asgi_gw_174] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.379  INFO --- [  asgi_gw_39] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.382  INFO --- [  asgi_gw_79] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.385  INFO --- [  asgi_gw_37] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.386  INFO --- [  asgi_gw_21] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.396  INFO --- [  asgi_gw_31] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.397  INFO --- [  asgi_gw_11] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.398  INFO --- [  asgi_gw_22] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.403  INFO --- [ asgi_gw_204] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.404  INFO --- [ asgi_gw_209] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.407  INFO --- [ asgi_gw_236] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.412  INFO --- [ asgi_gw_211] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.413  INFO --- [  asgi_gw_36] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.413  INFO --- [  asgi_gw_38] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.417  INFO --- [  asgi_gw_34] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.425  INFO --- [ asgi_gw_173] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.429  INFO --- [ asgi_gw_227] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.433  INFO --- [  asgi_gw_44] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.433  INFO --- [ asgi_gw_229] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.442  INFO --- [  asgi_gw_15] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.444  INFO --- [  asgi_gw_13] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.449  INFO --- [ asgi_gw_143] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.453  INFO --- [ asgi_gw_220] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.459  INFO --- [  asgi_gw_73] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.463  INFO --- [ asgi_gw_148] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.464  INFO --- [  asgi_gw_23] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.465  INFO --- [ asgi_gw_239] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.467  INFO --- [  asgi_gw_53] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.472  INFO --- [ asgi_gw_112] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.476  INFO --- [ asgi_gw_158] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.493  INFO --- [  asgi_gw_72] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.501  INFO --- [ asgi_gw_181] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.506  INFO --- [ asgi_gw_193] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.520  INFO --- [ asgi_gw_113] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.528  INFO --- [  MainThread] l.runtime.shutdown         : [shutdown] Stopping all services
+2024-03-02T23:21:09.535  INFO --- [ asgi_gw_162] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.541  INFO --- [ asgi_gw_195] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.552  INFO --- [ asgi_gw_199] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.555  INFO --- [ asgi_gw_186] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.561  INFO --- [ asgi_gw_118] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.571  INFO --- [ asgi_gw_166] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.584  INFO --- [ asgi_gw_145] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.595  INFO --- [ asgi_gw_241] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.613  INFO --- [ asgi_gw_109] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.614  INFO --- [ asgi_gw_200] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.618  INFO --- [  asgi_gw_50] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.625  INFO --- [  asgi_gw_63] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.631  INFO --- [ asgi_gw_138] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.638  INFO --- [ asgi_gw_203] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.646  INFO --- [ asgi_gw_176] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.652  INFO --- [ asgi_gw_114] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.658  INFO --- [ asgi_gw_102] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.664  INFO --- [  asgi_gw_97] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.670  INFO --- [  asgi_gw_69] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.677  INFO --- [ asgi_gw_100] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.684  INFO --- [ asgi_gw_167] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.691  INFO --- [ asgi_gw_136] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.697  INFO --- [  asgi_gw_80] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.701  INFO --- [ asgi_gw_111] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.708  INFO --- [ asgi_gw_159] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.715  INFO --- [ asgi_gw_137] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.720  INFO --- [  asgi_gw_48] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.727  INFO --- [ asgi_gw_206] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.731  INFO --- [  asgi_gw_78] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.739  INFO --- [ asgi_gw_215] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.742  INFO --- [  asgi_gw_61] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.748  INFO --- [ asgi_gw_140] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.753  INFO --- [ asgi_gw_225] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.760  INFO --- [ asgi_gw_237] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.765  INFO --- [ asgi_gw_119] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.771  INFO --- [  asgi_gw_56] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.778  INFO --- [  asgi_gw_42] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.781  INFO --- [ asgi_gw_160] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.785  INFO --- [  asgi_gw_19] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.792  INFO --- [ asgi_gw_178] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.797  INFO --- [ asgi_gw_189] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.801  INFO --- [ asgi_gw_231] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.809  INFO --- [ asgi_gw_153] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.814  INFO --- [  asgi_gw_76] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.819  INFO --- [ asgi_gw_226] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.823  INFO --- [  asgi_gw_98] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.827  INFO --- [ asgi_gw_120] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.831  INFO --- [ asgi_gw_128] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.838  INFO --- [ asgi_gw_213] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.849  INFO --- [  asgi_gw_81] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.850  INFO --- [ asgi_gw_116] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.852  INFO --- [  asgi_gw_52] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.859  INFO --- [ asgi_gw_170] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.867  INFO --- [ asgi_gw_212] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.868  INFO --- [  asgi_gw_59] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.869  INFO --- [  asgi_gw_67] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.877  INFO --- [  asgi_gw_64] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.879  INFO --- [ asgi_gw_240] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.884  INFO --- [ asgi_gw_123] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.893  INFO --- [  asgi_gw_77] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.902  INFO --- [  asgi_gw_68] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.912  INFO --- [  asgi_gw_75] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.913  INFO --- [  asgi_gw_94] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.924  INFO --- [ asgi_gw_180] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.925  INFO --- [ asgi_gw_134] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.926  INFO --- [ asgi_gw_156] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.946  INFO --- [  asgi_gw_96] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.953  INFO --- [ asgi_gw_164] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.960  INFO --- [ asgi_gw_196] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.966  INFO --- [ asgi_gw_234] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.975  INFO --- [ asgi_gw_219] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.979  INFO --- [ asgi_gw_187] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.982  INFO --- [  asgi_gw_90] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.992  INFO --- [  asgi_gw_99] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:09.996  INFO --- [  asgi_gw_55] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.001  INFO --- [ asgi_gw_208] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.003  INFO --- [ asgi_gw_121] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.008  INFO --- [  asgi_gw_66] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.013  INFO --- [  asgi_gw_51] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.017  INFO --- [  asgi_gw_83] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.022  INFO --- [ asgi_gw_157] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.028  INFO --- [ asgi_gw_183] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.033  INFO --- [  asgi_gw_88] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.037  INFO --- [ asgi_gw_150] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.043  INFO --- [ asgi_gw_210] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.049  INFO --- [ asgi_gw_155] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.058  INFO --- [ asgi_gw_171] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.059  INFO --- [ asgi_gw_221] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.064  INFO --- [  asgi_gw_62] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.069  INFO --- [ asgi_gw_124] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.074  INFO --- [ asgi_gw_191] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.078  INFO --- [ asgi_gw_182] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.082  INFO --- [ asgi_gw_152] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.092  INFO --- [ asgi_gw_127] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.099  INFO --- [ asgi_gw_135] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.102  INFO --- [ asgi_gw_216] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.104  INFO --- [  asgi_gw_70] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.111  INFO --- [  asgi_gw_84] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.115  INFO --- [ asgi_gw_205] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.119  INFO --- [  asgi_gw_85] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.121  INFO --- [ asgi_gw_242] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.122  INFO --- [   asgi_gw_4] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.125  INFO --- [ asgi_gw_202] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.128  INFO --- [ asgi_gw_105] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.128  INFO --- [   asgi_gw_1] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.128  INFO --- [   asgi_gw_0] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.128  INFO --- [   asgi_gw_9] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.128  INFO --- [  asgi_gw_10] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.128  INFO --- [  asgi_gw_33] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.128  INFO --- [  asgi_gw_25] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.128  INFO --- [  asgi_gw_30] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.129  INFO --- [  asgi_gw_37] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.129  INFO --- [  asgi_gw_40] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.129  INFO --- [  asgi_gw_20] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.129  INFO --- [  asgi_gw_34] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.129  INFO --- [  asgi_gw_23] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.129  INFO --- [ asgi_gw_227] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.129  INFO --- [  asgi_gw_22] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.129  INFO --- [  asgi_gw_44] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.130  INFO --- [  asgi_gw_38] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.130  INFO --- [  asgi_gw_13] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.130  INFO --- [  asgi_gw_35] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.130  INFO --- [ asgi_gw_209] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.130  INFO --- [  asgi_gw_72] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.130  INFO --- [  asgi_gw_73] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.130  INFO --- [ asgi_gw_220] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.130  INFO --- [ asgi_gw_239] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.130  INFO --- [ asgi_gw_158] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.130  INFO --- [ asgi_gw_193] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.130  INFO --- [ asgi_gw_181] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.130  INFO --- [ asgi_gw_241] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.130  INFO --- [ asgi_gw_195] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.130  INFO --- [ asgi_gw_145] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.130  INFO --- [ asgi_gw_112] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.131  INFO --- [ asgi_gw_176] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.131  INFO --- [ asgi_gw_114] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.131  INFO --- [  asgi_gw_63] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.131  INFO --- [ asgi_gw_136] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.131  INFO --- [ asgi_gw_100] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.131  INFO --- [ asgi_gw_109] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.131  INFO --- [  asgi_gw_69] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.131  INFO --- [ asgi_gw_167] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.131  INFO --- [ asgi_gw_206] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.131  INFO --- [  asgi_gw_48] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.131  INFO --- [ asgi_gw_225] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.131  INFO --- [ asgi_gw_215] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.131  INFO --- [  asgi_gw_12] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.132  INFO --- [  asgi_gw_24] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.132  INFO --- [  asgi_gw_18] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.132  INFO --- [   asgi_gw_2] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.132  INFO --- [  asgi_gw_27] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.132  INFO --- [  asgi_gw_14] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.132  INFO --- [  asgi_gw_28] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.132  INFO --- [  asgi_gw_21] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.132  INFO --- [ asgi_gw_137] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.132  INFO --- [  asgi_gw_36] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.132  INFO --- [ asgi_gw_211] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.132  INFO --- [  asgi_gw_11] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.132  INFO --- [ asgi_gw_200] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.132  INFO --- [ asgi_gw_119] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.133  INFO --- [  asgi_gw_78] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.133  INFO --- [  asgi_gw_97] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.133  INFO --- [ asgi_gw_186] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.133  INFO --- [  asgi_gw_29] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.133  INFO --- [ asgi_gw_148] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.133  INFO --- [ asgi_gw_102] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.133  INFO --- [  asgi_gw_39] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.133  INFO --- [ asgi_gw_140] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.133  INFO --- [ asgi_gw_229] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.134  INFO --- [ asgi_gw_142] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.134  INFO --- [  asgi_gw_16] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.134  INFO --- [  asgi_gw_79] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.134  INFO --- [  asgi_gw_15] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.134  INFO --- [ asgi_gw_113] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.134  INFO --- [ asgi_gw_166] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.134  INFO --- [ asgi_gw_237] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.134  INFO --- [ asgi_gw_199] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.134  INFO --- [  asgi_gw_50] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.135  INFO --- [ asgi_gw_143] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.135  INFO --- [  asgi_gw_17] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.135  INFO --- [ asgi_gw_162] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.135  INFO --- [ asgi_gw_138] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.135  INFO --- [  asgi_gw_31] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.135  INFO --- [   asgi_gw_6] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.135  INFO --- [  asgi_gw_61] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.135  INFO --- [ asgi_gw_173] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.135  INFO --- [  asgi_gw_80] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.135  INFO --- [  asgi_gw_53] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.135  INFO --- [ asgi_gw_159] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.135  INFO --- [ asgi_gw_118] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.136  INFO --- [   asgi_gw_7] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.136  INFO --- [ asgi_gw_203] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.136  INFO --- [ asgi_gw_204] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.136  INFO --- [ asgi_gw_111] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.136  INFO --- [  asgi_gw_26] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.138  INFO --- [  asgi_gw_19] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.138  INFO --- [ asgi_gw_174] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.139  INFO --- [  asgi_gw_42] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.139  INFO --- [ asgi_gw_231] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.139  INFO --- [ asgi_gw_189] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.139  INFO --- [ asgi_gw_244] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.139  INFO --- [ asgi_gw_243] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.139  INFO --- [ asgi_gw_170] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.140  INFO --- [ asgi_gw_116] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.140  INFO --- [ asgi_gw_160] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.140  INFO --- [ asgi_gw_178] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.140  INFO --- [ asgi_gw_226] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.140  INFO --- [  asgi_gw_56] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.140  INFO --- [  asgi_gw_67] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.140  INFO --- [ asgi_gw_128] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.140  INFO --- [ asgi_gw_245] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.140  INFO --- [ asgi_gw_247] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.140  INFO --- [ asgi_gw_251] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.140  INFO --- [ asgi_gw_255] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.140  INFO --- [ asgi_gw_246] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.140  INFO --- [ asgi_gw_256] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.140  INFO --- [ asgi_gw_259] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.141  INFO --- [ asgi_gw_265] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.141  INFO --- [ asgi_gw_240] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.141  INFO --- [ asgi_gw_253] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.141  INFO --- [ asgi_gw_262] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.141  INFO --- [ asgi_gw_264] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.141  INFO --- [ asgi_gw_271] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.141  INFO --- [ asgi_gw_269] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.141  INFO --- [ asgi_gw_275] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.142  INFO --- [ asgi_gw_270] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.142  INFO --- [ asgi_gw_267] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.142  INFO --- [ asgi_gw_273] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.142  INFO --- [ asgi_gw_281] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.142  INFO --- [ asgi_gw_284] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.142  INFO --- [ asgi_gw_287] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.142  INFO --- [ asgi_gw_283] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.142  INFO --- [ asgi_gw_277] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.142  INFO --- [ asgi_gw_298] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.143  INFO --- [ asgi_gw_301] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.143  INFO --- [ asgi_gw_300] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.143  INFO --- [ asgi_gw_305] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.143  INFO --- [ asgi_gw_308] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.143  INFO --- [ asgi_gw_311] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.143  INFO --- [ asgi_gw_312] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.143  INFO --- [ asgi_gw_120] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.143  INFO --- [ asgi_gw_252] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.143  INFO --- [ asgi_gw_272] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.143  INFO --- [ asgi_gw_282] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.143  INFO --- [ asgi_gw_280] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.143  INFO --- [ asgi_gw_288] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.144  INFO --- [  asgi_gw_58] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.144  INFO --- [  asgi_gw_76] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.144  INFO --- [ asgi_gw_153] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.145  INFO --- [ asgi_gw_168] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.145  INFO --- [ asgi_gw_286] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.145  INFO --- [ asgi_gw_266] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.145  INFO --- [ asgi_gw_290] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.145  INFO --- [ asgi_gw_291] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.145  INFO --- [ asgi_gw_304] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.145  INFO --- [ asgi_gw_309] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.146  INFO --- [ asgi_gw_310] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.146  INFO --- [ asgi_gw_292] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.146  INFO --- [  asgi_gw_81] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.146  INFO --- [ asgi_gw_248] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.146  INFO --- [ asgi_gw_313] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.146  INFO --- [  asgi_gw_52] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.146  INFO --- [  asgi_gw_59] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.146  INFO --- [ asgi_gw_212] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.146  INFO --- [ asgi_gw_257] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.146  INFO --- [ asgi_gw_261] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.146  INFO --- [ asgi_gw_289] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.147  INFO --- [ asgi_gw_213] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.147  INFO --- [ asgi_gw_254] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.147  INFO --- [ asgi_gw_274] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.147  INFO --- [ asgi_gw_268] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.147  INFO --- [ asgi_gw_276] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.147  INFO --- [  asgi_gw_98] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.147  INFO --- [ asgi_gw_302] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.147  INFO --- [ asgi_gw_278] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.147  INFO --- [ asgi_gw_258] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.147  INFO --- [ asgi_gw_250] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.147  INFO --- [ asgi_gw_295] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.148  INFO --- [ asgi_gw_293] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.148  INFO --- [ asgi_gw_294] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.148  INFO --- [ asgi_gw_299] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.148  INFO --- [ asgi_gw_296] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.148  INFO --- [ asgi_gw_130] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.148  INFO --- [ asgi_gw_285] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.149  INFO --- [ asgi_gw_303] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.149  INFO --- [ asgi_gw_307] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.149  INFO --- [ asgi_gw_263] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.149  INFO --- [ asgi_gw_297] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.152  INFO --- [ asgi_gw_147] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.152  INFO --- [ asgi_gw_316] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.152  INFO --- [ asgi_gw_306] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.152  INFO --- [ asgi_gw_236] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.152  INFO --- [ asgi_gw_318] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.153  INFO --- [ asgi_gw_320] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.153  INFO --- [ asgi_gw_321] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.153  INFO --- [ asgi_gw_323] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.153  INFO --- [ asgi_gw_322] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.153  INFO --- [ asgi_gw_314] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.153  INFO --- [  asgi_gw_64] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.153  INFO --- [ asgi_gw_260] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.154  INFO --- [ asgi_gw_279] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.155  INFO --- [ asgi_gw_337] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.156  INFO --- [ asgi_gw_315] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.157  INFO --- [ asgi_gw_326] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.157  INFO --- [ asgi_gw_336] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.157  INFO --- [ asgi_gw_331] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.158  INFO --- [  asgi_gw_77] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.158  INFO --- [ asgi_gw_333] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.158  INFO --- [ asgi_gw_334] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.158  INFO --- [ asgi_gw_343] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.158  INFO --- [ asgi_gw_363] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.159  INFO --- [ asgi_gw_332] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.159  INFO --- [ asgi_gw_350] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.159  INFO --- [ asgi_gw_351] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.159  INFO --- [ asgi_gw_349] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.159  INFO --- [ asgi_gw_356] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.159  INFO --- [ asgi_gw_360] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.159  INFO --- [ asgi_gw_362] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.159  INFO --- [ asgi_gw_324] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.160  INFO --- [ asgi_gw_345] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.160  INFO --- [ asgi_gw_325] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.160  INFO --- [ asgi_gw_327] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.160  INFO --- [ asgi_gw_354] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.160  INFO --- [ asgi_gw_339] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.160  INFO --- [ asgi_gw_364] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.160  INFO --- [ asgi_gw_348] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.160  INFO --- [  asgi_gw_65] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.348  WARN --- [  asgi_gw_86] urllib3.connectionpool     : Connection pool is full, discarding connection: localhost. Connection pool size: 128
+2024-03-02T23:21:10.349  INFO --- [  asgi_gw_86] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.161  INFO --- [ asgi_gw_341] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.161  INFO --- [ asgi_gw_346] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.161  INFO --- [ asgi_gw_342] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.161  INFO --- [ asgi_gw_353] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.161  INFO --- [ asgi_gw_330] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.161  INFO --- [ asgi_gw_335] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.161  INFO --- [ asgi_gw_357] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.161  INFO --- [ asgi_gw_319] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.161  INFO --- [ asgi_gw_340] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.161  INFO --- [ asgi_gw_355] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.162  INFO --- [ asgi_gw_123] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.162  INFO --- [ asgi_gw_361] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.165  INFO --- [ asgi_gw_358] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.166  INFO --- [ asgi_gw_359] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.166  INFO --- [ asgi_gw_328] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.167  INFO --- [  asgi_gw_45] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.167  INFO --- [ asgi_gw_317] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.167  INFO --- [ asgi_gw_347] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.167  INFO --- [ asgi_gw_249] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.167  INFO --- [ asgi_gw_365] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.168  INFO --- [ asgi_gw_338] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.168  INFO --- [ asgi_gw_329] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.169  INFO --- [ asgi_gw_230] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.169  INFO --- [  asgi_gw_68] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.173  INFO --- [  asgi_gw_95] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.178  INFO --- [ asgi_gw_115] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.375  WARN --- [ asgi_gw_106] urllib3.connectionpool     : Connection pool is full, discarding connection: localhost. Connection pool size: 128
+2024-03-02T23:21:10.193  INFO --- [  asgi_gw_93] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.199  INFO --- [ asgi_gw_146] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.207  INFO --- [  asgi_gw_92] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.216  INFO --- [ asgi_gw_108] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.228  INFO --- [ asgi_gw_235] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.229  INFO --- [ asgi_gw_224] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.233  INFO --- [  asgi_gw_74] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.239  INFO --- [ asgi_gw_207] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.247  INFO --- [  asgi_gw_47] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.258  INFO --- [ asgi_gw_179] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.265  INFO --- [ asgi_gw_103] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.275  INFO --- [ asgi_gw_184] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.285  INFO --- [ asgi_gw_238] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.294  INFO --- [ asgi_gw_223] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.301  INFO --- [ asgi_gw_151] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.319  INFO --- [  asgi_gw_89] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.328  WARN --- [ asgi_gw_139] urllib3.connectionpool     : Connection pool is full, discarding connection: localhost. Connection pool size: 128
+2024-03-02T23:21:10.398  INFO --- [ asgi_gw_139] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.336  WARN --- [ asgi_gw_192] urllib3.connectionpool     : Connection pool is full, discarding connection: localhost. Connection pool size: 128
+2024-03-02T23:21:10.398  INFO --- [ asgi_gw_192] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.160  INFO --- [ asgi_gw_352] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.160  INFO --- [ asgi_gw_344] localstack.request.http    : POST / => 503
+2024-03-02T23:21:10.352  WARN --- [ asgi_gw_217] urllib3.connectionpool     : Connection pool is full, discarding connection: localhost. Connection pool size: 128
+2024-03-02T23:21:10.360  WARN --- [  asgi_gw_91] urllib3.connectionpool     : Connection pool is full, discarding connection: localhost. Connection pool size: 128
+2024-03-02T23:21:10.405  INFO --- [  asgi_gw_91] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.376  INFO --- [ asgi_gw_106] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.192  INFO --- [  asgi_gw_49] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.380  WARN --- [ asgi_gw_185] urllib3.connectionpool     : Connection pool is full, discarding connection: localhost. Connection pool size: 128
+2024-03-02T23:21:10.386  WARN --- [ asgi_gw_117] urllib3.connectionpool     : Connection pool is full, discarding connection: localhost. Connection pool size: 128
+2024-03-02T23:21:10.407  INFO --- [ asgi_gw_117] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.330  WARN --- [ asgi_gw_125] urllib3.connectionpool     : Connection pool is full, discarding connection: localhost. Connection pool size: 128
+2024-03-02T23:21:10.341  WARN --- [ asgi_gw_165] urllib3.connectionpool     : Connection pool is full, discarding connection: localhost. Connection pool size: 128
+2024-03-02T23:21:10.409  INFO --- [ asgi_gw_165] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.404  WARN --- [  asgi_gw_71] urllib3.connectionpool     : Connection pool is full, discarding connection: localhost. Connection pool size: 128
+2024-03-02T23:21:10.409  INFO --- [  asgi_gw_71] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.363  WARN --- [ asgi_gw_107] urllib3.connectionpool     : Connection pool is full, discarding connection: localhost. Connection pool size: 128
+2024-03-02T23:21:10.407  INFO --- [ asgi_gw_185] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.393  WARN --- [ asgi_gw_129] urllib3.connectionpool     : Connection pool is full, discarding connection: localhost. Connection pool size: 128
+2024-03-02T23:21:10.415  INFO --- [ asgi_gw_129] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.398  WARN --- [  asgi_gw_57] urllib3.connectionpool     : Connection pool is full, discarding connection: localhost. Connection pool size: 128
+2024-03-02T23:21:10.415  INFO --- [  asgi_gw_57] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.411  WARN --- [ asgi_gw_190] urllib3.connectionpool     : Connection pool is full, discarding connection: localhost. Connection pool size: 128
+2024-03-02T23:21:10.415  INFO --- [ asgi_gw_190] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.407  INFO --- [ asgi_gw_125] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.414  INFO --- [ asgi_gw_107] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.404  INFO --- [ asgi_gw_217] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.417  WARN --- [ asgi_gw_175] urllib3.connectionpool     : Connection pool is full, discarding connection: localhost. Connection pool size: 128
+2024-03-02T23:21:10.419  INFO --- [ asgi_gw_175] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.423  WARN --- [ asgi_gw_214] urllib3.connectionpool     : Connection pool is full, discarding connection: localhost. Connection pool size: 128
+2024-03-02T23:21:10.423  INFO --- [ asgi_gw_214] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.427  WARN --- [ asgi_gw_228] urllib3.connectionpool     : Connection pool is full, discarding connection: localhost. Connection pool size: 128
+2024-03-02T23:21:10.427  INFO --- [ asgi_gw_228] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.434  WARN --- [  asgi_gw_41] urllib3.connectionpool     : Connection pool is full, discarding connection: localhost. Connection pool size: 128
+2024-03-02T23:21:10.435  INFO --- [  asgi_gw_41] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.447  WARN --- [  asgi_gw_82] urllib3.connectionpool     : Connection pool is full, discarding connection: localhost. Connection pool size: 128
+2024-03-02T23:21:10.448  INFO --- [  asgi_gw_82] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.459  WARN --- [ asgi_gw_222] urllib3.connectionpool     : Connection pool is full, discarding connection: localhost. Connection pool size: 128
+2024-03-02T23:21:10.459  INFO --- [ asgi_gw_222] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.468  WARN --- [ asgi_gw_197] urllib3.connectionpool     : Connection pool is full, discarding connection: localhost. Connection pool size: 128
+2024-03-02T23:21:10.468  INFO --- [ asgi_gw_197] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.483  WARN --- [ asgi_gw_131] urllib3.connectionpool     : Connection pool is full, discarding connection: localhost. Connection pool size: 128
+2024-03-02T23:21:10.484  INFO --- [ asgi_gw_131] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.489  WARN --- [ asgi_gw_154] urllib3.connectionpool     : Connection pool is full, discarding connection: localhost. Connection pool size: 128
+2024-03-02T23:21:10.490  INFO --- [ asgi_gw_154] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.494  WARN --- [ asgi_gw_177] urllib3.connectionpool     : Connection pool is full, discarding connection: localhost. Connection pool size: 128
+2024-03-02T23:21:10.494  INFO --- [ asgi_gw_177] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.499  WARN --- [  asgi_gw_46] urllib3.connectionpool     : Connection pool is full, discarding connection: localhost. Connection pool size: 128
+2024-03-02T23:21:10.499  INFO --- [  asgi_gw_46] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.504  WARN --- [ asgi_gw_126] urllib3.connectionpool     : Connection pool is full, discarding connection: localhost. Connection pool size: 128
+2024-03-02T23:21:10.504  INFO --- [ asgi_gw_126] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.509  WARN --- [ asgi_gw_233] urllib3.connectionpool     : Connection pool is full, discarding connection: localhost. Connection pool size: 128
+2024-03-02T23:21:10.509  INFO --- [ asgi_gw_233] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.514  WARN --- [ asgi_gw_232] urllib3.connectionpool     : Connection pool is full, discarding connection: localhost. Connection pool size: 128
+2024-03-02T23:21:10.514  INFO --- [ asgi_gw_232] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.518  WARN --- [ asgi_gw_104] urllib3.connectionpool     : Connection pool is full, discarding connection: localhost. Connection pool size: 128
+2024-03-02T23:21:10.519  INFO --- [ asgi_gw_104] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.524  WARN --- [ asgi_gw_201] urllib3.connectionpool     : Connection pool is full, discarding connection: localhost. Connection pool size: 128
+2024-03-02T23:21:10.524  INFO --- [ asgi_gw_201] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.528  WARN --- [ asgi_gw_101] urllib3.connectionpool     : Connection pool is full, discarding connection: localhost. Connection pool size: 128
+2024-03-02T23:21:10.529  INFO --- [ asgi_gw_101] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.532  WARN --- [ asgi_gw_169] urllib3.connectionpool     : Connection pool is full, discarding connection: localhost. Connection pool size: 128
+2024-03-02T23:21:10.533  INFO --- [ asgi_gw_169] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.538  WARN --- [ asgi_gw_141] urllib3.connectionpool     : Connection pool is full, discarding connection: localhost. Connection pool size: 128
+2024-03-02T23:21:10.539  INFO --- [ asgi_gw_141] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.544  WARN --- [  asgi_gw_87] urllib3.connectionpool     : Connection pool is full, discarding connection: localhost. Connection pool size: 128
+2024-03-02T23:21:10.544  INFO --- [  asgi_gw_87] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.548  WARN --- [ asgi_gw_144] urllib3.connectionpool     : Connection pool is full, discarding connection: localhost. Connection pool size: 128
+2024-03-02T23:21:10.549  INFO --- [ asgi_gw_144] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.553  WARN --- [  asgi_gw_60] urllib3.connectionpool     : Connection pool is full, discarding connection: localhost. Connection pool size: 128
+2024-03-02T23:21:10.553  INFO --- [  asgi_gw_60] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.564  WARN --- [ asgi_gw_133] urllib3.connectionpool     : Connection pool is full, discarding connection: localhost. Connection pool size: 128
+2024-03-02T23:21:10.565  INFO --- [ asgi_gw_133] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.570  WARN --- [ asgi_gw_122] urllib3.connectionpool     : Connection pool is full, discarding connection: localhost. Connection pool size: 128
+2024-03-02T23:21:10.570  INFO --- [ asgi_gw_122] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.575  WARN --- [  asgi_gw_43] urllib3.connectionpool     : Connection pool is full, discarding connection: localhost. Connection pool size: 128
+2024-03-02T23:21:10.576  INFO --- [  asgi_gw_43] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.580  WARN --- [  asgi_gw_54] urllib3.connectionpool     : Connection pool is full, discarding connection: localhost. Connection pool size: 128
+2024-03-02T23:21:10.581  INFO --- [  asgi_gw_54] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.585  WARN --- [ asgi_gw_149] urllib3.connectionpool     : Connection pool is full, discarding connection: localhost. Connection pool size: 128
+2024-03-02T23:21:10.586  INFO --- [ asgi_gw_149] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.590  WARN --- [ asgi_gw_194] urllib3.connectionpool     : Connection pool is full, discarding connection: localhost. Connection pool size: 128
+2024-03-02T23:21:10.591  INFO --- [ asgi_gw_194] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.594  WARN --- [ asgi_gw_132] urllib3.connectionpool     : Connection pool is full, discarding connection: localhost. Connection pool size: 128
+2024-03-02T23:21:10.595  INFO --- [ asgi_gw_132] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.598  WARN --- [ asgi_gw_163] urllib3.connectionpool     : Connection pool is full, discarding connection: localhost. Connection pool size: 128
+2024-03-02T23:21:10.599  INFO --- [ asgi_gw_163] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.602  WARN --- [ asgi_gw_110] urllib3.connectionpool     : Connection pool is full, discarding connection: localhost. Connection pool size: 128
+2024-03-02T23:21:10.603  INFO --- [ asgi_gw_110] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.608  WARN --- [ asgi_gw_172] urllib3.connectionpool     : Connection pool is full, discarding connection: localhost. Connection pool size: 128
+2024-03-02T23:21:10.609  INFO --- [ asgi_gw_172] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.613  WARN --- [ asgi_gw_198] urllib3.connectionpool     : Connection pool is full, discarding connection: localhost. Connection pool size: 128
+2024-03-02T23:21:10.613  INFO --- [ asgi_gw_198] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.618  WARN --- [ asgi_gw_188] urllib3.connectionpool     : Connection pool is full, discarding connection: localhost. Connection pool size: 128
+2024-03-02T23:21:10.618  INFO --- [ asgi_gw_188] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.623  WARN --- [ asgi_gw_218] urllib3.connectionpool     : Connection pool is full, discarding connection: localhost. Connection pool size: 128
+2024-03-02T23:21:10.623  INFO --- [ asgi_gw_218] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.628  WARN --- [ asgi_gw_161] urllib3.connectionpool     : Connection pool is full, discarding connection: localhost. Connection pool size: 128
+2024-03-02T23:21:10.629  INFO --- [ asgi_gw_161] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.633  WARN --- [  asgi_gw_32] urllib3.connectionpool     : Connection pool is full, discarding connection: localhost. Connection pool size: 128
+2024-03-02T23:21:10.633  INFO --- [  asgi_gw_32] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.637  WARN --- [   asgi_gw_5] urllib3.connectionpool     : Connection pool is full, discarding connection: localhost. Connection pool size: 128
+2024-03-02T23:21:10.637  INFO --- [   asgi_gw_5] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.643  WARN --- [   asgi_gw_3] urllib3.connectionpool     : Connection pool is full, discarding connection: localhost. Connection pool size: 128
+2024-03-02T23:21:10.644  INFO --- [   asgi_gw_3] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:21:10.648  WARN --- [   asgi_gw_8] urllib3.connectionpool     : Connection pool is full, discarding connection: localhost. Connection pool size: 128
+2024-03-02T23:21:10.648  INFO --- [   asgi_gw_8] localstack.request.aws     : AWS dynamodb.UpdateItem => 200

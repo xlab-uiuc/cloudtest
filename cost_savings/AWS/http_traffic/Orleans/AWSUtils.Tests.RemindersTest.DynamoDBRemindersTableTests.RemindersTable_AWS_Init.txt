@@ -1,0 +1,34 @@
+Logs for test: AWSUtils.Tests.RemindersTest.DynamoDBRemindersTableTests.RemindersTable_AWS_Init
+
+
+     __                     _______ __             __
+    / /   ____  _________ _/ / ___// /_____ ______/ /__
+   / /   / __ \/ ___/ __ `/ /\__ \/ __/ __ `/ ___/ //_/
+  / /___/ /_/ / /__/ /_/ / /___/ / /_/ /_/ / /__/ ,<
+ /_____/\____/\___/\__,_/_//____/\__/\__,_/\___/_/|_|
+
+ 💻 LocalStack CLI 3.1.0
+ 👤 Profile: default
+
+[17:33:01] starting LocalStack in Docker mode 🐳                                                                                                                                                                                                                                   localstack.py:494
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── LocalStack Runtime Log (press CTRL-C to quit) ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+LocalStack version: 3.1.1.dev
+LocalStack Docker container id: ac724d122c62
+LocalStack build date: 2024-02-24
+LocalStack build git hash: ee58b82ce
+
+2024-03-02T23:33:04.450  INFO --- [-functhread4] hypercorn.error            : Running on https://0.0.0.0:4566 (CTRL + C to quit)
+2024-03-02T23:33:04.450  INFO --- [-functhread4] hypercorn.error            : Running on https://0.0.0.0:4566 (CTRL + C to quit)
+Ready.
+2024-03-02T23:33:07.057  INFO --- [   asgi_gw_0] localstack.utils.bootstrap : Execution of "require" took 1515.09ms
+2024-03-02T23:33:07.258  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.DescribeTable => 400 (ResourceNotFoundException)
+2024-03-02T23:33:07.495  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.CreateTable => 200
+2024-03-02T23:33:07.518  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.DescribeTable => 200
+2024-03-02T23:33:07.535  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.DescribeTimeToLive => 200
+2024-03-02T23:33:07.565  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.DescribeTable => 400 (ResourceNotFoundException)
+2024-03-02T23:33:07.599  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.CreateTable => 200
+2024-03-02T23:33:07.622  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.DescribeTable => 200
+2024-03-02T23:33:07.635  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.DescribeTimeToLive => 200
+2024-03-02T23:33:07.705  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.Scan => 200
+2024-03-02T23:33:08.356  INFO --- [  MainThread] l.runtime.shutdown         : [shutdown] Stopping all services

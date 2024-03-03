@@ -1,0 +1,294 @@
+Logs for test: AWSUtils.Tests.Streaming.SQSSubscriptionMultiplicityTests.SQSActiveSubscriptionTest
+
+
+     __                     _______ __             __
+    / /   ____  _________ _/ / ___// /_____ ______/ /__
+   / /   / __ \/ ___/ __ `/ /\__ \/ __/ __ `/ ___/ //_/
+  / /___/ /_/ / /__/ /_/ / /___/ / /_/ /_/ / /__/ ,<
+ /_____/\____/\___/\__,_/_//____/\__/\__,_/\___/_/|_|
+
+ 💻 LocalStack CLI 3.1.0
+ 👤 Profile: default
+
+[17:19:15] starting LocalStack in Docker mode 🐳                                                                                                                                                                                                                                   localstack.py:494
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── LocalStack Runtime Log (press CTRL-C to quit) ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+LocalStack version: 3.1.1.dev
+LocalStack Docker container id: 640644225c36
+LocalStack build date: 2024-02-24
+LocalStack build git hash: ee58b82ce
+
+2024-03-02T23:19:17.989  INFO --- [-functhread4] hypercorn.error            : Running on https://0.0.0.0:4566 (CTRL + C to quit)
+2024-03-02T23:19:17.989  INFO --- [-functhread4] hypercorn.error            : Running on https://0.0.0.0:4566 (CTRL + C to quit)
+Ready.
+2024-03-02T23:19:20.145  INFO --- [   asgi_gw_6] localstack.request.aws     : AWS sqs.GetQueueUrl => 400 (AWS.SimpleQueueService.NonExistentQueue)
+2024-03-02T23:19:20.146  INFO --- [  asgi_gw_11] localstack.request.aws     : AWS sqs.GetQueueUrl => 400 (AWS.SimpleQueueService.NonExistentQueue)
+2024-03-02T23:19:20.147  INFO --- [   asgi_gw_8] localstack.request.aws     : AWS sqs.GetQueueUrl => 400 (AWS.SimpleQueueService.NonExistentQueue)
+2024-03-02T23:19:20.148  INFO --- [  asgi_gw_10] localstack.request.aws     : AWS sqs.GetQueueUrl => 400 (AWS.SimpleQueueService.NonExistentQueue)
+2024-03-02T23:19:20.148  INFO --- [   asgi_gw_9] localstack.request.aws     : AWS sqs.GetQueueUrl => 400 (AWS.SimpleQueueService.NonExistentQueue)
+2024-03-02T23:19:20.188  INFO --- [   asgi_gw_8] localstack.request.aws     : AWS sqs.CreateQueue => 200
+2024-03-02T23:19:20.188  INFO --- [  asgi_gw_11] localstack.request.aws     : AWS sqs.CreateQueue => 200
+2024-03-02T23:19:20.189  INFO --- [   asgi_gw_6] localstack.request.aws     : AWS sqs.CreateQueue => 200
+2024-03-02T23:19:20.193  INFO --- [  asgi_gw_10] localstack.request.aws     : AWS sqs.CreateQueue => 200
+2024-03-02T23:19:20.194  INFO --- [   asgi_gw_9] localstack.request.aws     : AWS sqs.CreateQueue => 200
+2024-03-02T23:19:20.257  INFO --- [   asgi_gw_8] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-1 => 200
+2024-03-02T23:19:20.378  INFO --- [  asgi_gw_10] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-1 => 200
+2024-03-02T23:19:20.461  INFO --- [   asgi_gw_5] localstack.utils.bootstrap : Execution of "require" took 528.78ms
+2024-03-02T23:19:20.461  INFO --- [   asgi_gw_5] localstack.request.aws     : AWS sqs.GetQueueUrl => 200
+2024-03-02T23:19:20.462  INFO --- [   asgi_gw_2] localstack.utils.bootstrap : Execution of "require" took 535.16ms
+2024-03-02T23:19:20.462  INFO --- [   asgi_gw_2] localstack.request.aws     : AWS sqs.GetQueueUrl => 400 (AWS.SimpleQueueService.NonExistentQueue)
+2024-03-02T23:19:20.463  INFO --- [   asgi_gw_3] localstack.utils.bootstrap : Execution of "require" took 534.42ms
+2024-03-02T23:19:20.464  INFO --- [   asgi_gw_3] localstack.request.aws     : AWS sqs.GetQueueUrl => 200
+2024-03-02T23:19:20.464  INFO --- [   asgi_gw_4] localstack.utils.bootstrap : Execution of "require" took 530.76ms
+2024-03-02T23:19:20.465  INFO --- [   asgi_gw_4] localstack.request.aws     : AWS sqs.GetQueueUrl => 200
+2024-03-02T23:19:20.466  INFO --- [   asgi_gw_1] localstack.utils.bootstrap : Execution of "require" took 533.30ms
+2024-03-02T23:19:20.466  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS sqs.GetQueueUrl => 400 (AWS.SimpleQueueService.NonExistentQueue)
+2024-03-02T23:19:20.466  INFO --- [   asgi_gw_7] localstack.utils.bootstrap : Execution of "require" took 529.21ms
+2024-03-02T23:19:20.467  INFO --- [   asgi_gw_7] localstack.request.aws     : AWS sqs.GetQueueUrl => 400 (AWS.SimpleQueueService.NonExistentQueue)
+2024-03-02T23:19:20.467  INFO --- [   asgi_gw_0] localstack.utils.bootstrap : Execution of "require" took 516.88ms
+2024-03-02T23:19:20.468  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS sqs.GetQueueUrl => 200
+2024-03-02T23:19:20.483  INFO --- [  asgi_gw_11] localstack.request.aws     : AWS sqs.CreateQueue => 200
+2024-03-02T23:19:20.484  INFO --- [   asgi_gw_8] localstack.request.aws     : AWS sqs.CreateQueue => 200
+2024-03-02T23:19:20.485  INFO --- [   asgi_gw_6] localstack.request.aws     : AWS sqs.CreateQueue => 200
+2024-03-02T23:19:20.511  INFO --- [  asgi_gw_10] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-1 => 200
+2024-03-02T23:19:20.526  INFO --- [   asgi_gw_4] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-4 => 200
+2024-03-02T23:19:20.527  INFO --- [   asgi_gw_3] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-0 => 200
+2024-03-02T23:19:20.528  INFO --- [   asgi_gw_2] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-6 => 200
+2024-03-02T23:19:20.635  INFO --- [   asgi_gw_8] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-1 => 200
+2024-03-02T23:19:20.658  INFO --- [  asgi_gw_10] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-0 => 200
+2024-03-02T23:19:20.660  INFO --- [   asgi_gw_3] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-6 => 200
+2024-03-02T23:19:20.665  INFO --- [   asgi_gw_1] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-4 => 200
+2024-03-02T23:19:20.758  INFO --- [   asgi_gw_5] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-1 => 200
+2024-03-02T23:19:20.797  INFO --- [  asgi_gw_10] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-6 => 200
+2024-03-02T23:19:20.797  INFO --- [   asgi_gw_0] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-4 => 200
+2024-03-02T23:19:20.803  INFO --- [   asgi_gw_1] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-0 => 200
+2024-03-02T23:19:20.880  INFO --- [   asgi_gw_4] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-1 => 200
+2024-03-02T23:19:20.932  INFO --- [   asgi_gw_0] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-6 => 200
+2024-03-02T23:19:20.942  INFO --- [  asgi_gw_10] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-4 => 200
+2024-03-02T23:19:20.952  INFO --- [   asgi_gw_8] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-0 => 200
+2024-03-02T23:19:21.016  INFO --- [  asgi_gw_11] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-1 => 200
+2024-03-02T23:19:21.102  INFO --- [  asgi_gw_10] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-6 => 200
+2024-03-02T23:19:21.103  INFO --- [   asgi_gw_6] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-4 => 200
+2024-03-02T23:19:21.121  INFO --- [   asgi_gw_7] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-0 => 200
+2024-03-02T23:19:21.144  INFO --- [   asgi_gw_0] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-1 => 200
+2024-03-02T23:19:21.249  INFO --- [  asgi_gw_10] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-6 => 200
+2024-03-02T23:19:21.282  INFO --- [   asgi_gw_1] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-4 => 200
+2024-03-02T23:19:21.307  INFO --- [   asgi_gw_5] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-0 => 200
+2024-03-02T23:19:21.319  INFO --- [  asgi_gw_10] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-1 => 200
+2024-03-02T23:19:21.383  INFO --- [   asgi_gw_7] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-6 => 200
+2024-03-02T23:19:21.411  INFO --- [   asgi_gw_8] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-4 => 200
+2024-03-02T23:19:21.436  INFO --- [   asgi_gw_0] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-0 => 200
+2024-03-02T23:19:21.451  INFO --- [   asgi_gw_6] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-1 => 200
+2024-03-02T23:19:21.499  INFO --- [   asgi_gw_8] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-6 => 200
+2024-03-02T23:19:21.527  INFO --- [   asgi_gw_7] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-4 => 200
+2024-03-02T23:19:21.556  INFO --- [   asgi_gw_4] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-0 => 200
+2024-03-02T23:19:21.568  INFO --- [   asgi_gw_0] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-1 => 200
+2024-03-02T23:19:21.610  INFO --- [   asgi_gw_3] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-6 => 200
+2024-03-02T23:19:21.641  INFO --- [   asgi_gw_8] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-4 => 200
+2024-03-02T23:19:21.668  INFO --- [  asgi_gw_11] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-0 => 200
+2024-03-02T23:19:21.682  INFO --- [   asgi_gw_6] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-1 => 200
+2024-03-02T23:19:21.724  INFO --- [   asgi_gw_0] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-6 => 200
+2024-03-02T23:19:21.754  INFO --- [   asgi_gw_4] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-4 => 200
+2024-03-02T23:19:21.782  INFO --- [   asgi_gw_6] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-0 => 200
+2024-03-02T23:19:21.795  INFO --- [   asgi_gw_2] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-1 => 200
+2024-03-02T23:19:21.838  INFO --- [   asgi_gw_5] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-6 => 200
+2024-03-02T23:19:21.872  INFO --- [   asgi_gw_6] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-4 => 200
+2024-03-02T23:19:21.896  INFO --- [   asgi_gw_1] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-0 => 200
+2024-03-02T23:19:21.912  INFO --- [   asgi_gw_5] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-1 => 200
+2024-03-02T23:19:21.954  INFO --- [   asgi_gw_4] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-6 => 200
+2024-03-02T23:19:22.052  INFO --- [   asgi_gw_7] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-4 => 200
+2024-03-02T23:19:22.071  INFO --- [   asgi_gw_6] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-1 => 200
+2024-03-02T23:19:22.074  INFO --- [   asgi_gw_2] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-0 => 200
+2024-03-02T23:19:22.087  INFO --- [   asgi_gw_3] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-6 => 200
+2024-03-02T23:19:22.171  INFO --- [   asgi_gw_0] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-4 => 200
+2024-03-02T23:19:22.195  INFO --- [   asgi_gw_5] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-1 => 200
+2024-03-02T23:19:22.195  INFO --- [   asgi_gw_7] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-0 => 200
+2024-03-02T23:19:22.208  INFO --- [   asgi_gw_2] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-6 => 200
+2024-03-02T23:19:22.293  INFO --- [   asgi_gw_9] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-4 => 200
+2024-03-02T23:19:22.325  INFO --- [  asgi_gw_10] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-0 => 200
+2024-03-02T23:19:22.334  INFO --- [  asgi_gw_11] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-1 => 200
+2024-03-02T23:19:22.343  INFO --- [   asgi_gw_7] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-6 => 200
+2024-03-02T23:19:22.412  INFO --- [   asgi_gw_2] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-4 => 200
+2024-03-02T23:19:22.451  INFO --- [  asgi_gw_11] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-0 => 200
+2024-03-02T23:19:22.465  INFO --- [   asgi_gw_3] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-1 => 200
+2024-03-02T23:19:22.481  INFO --- [   asgi_gw_4] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-6 => 200
+2024-03-02T23:19:22.529  INFO --- [  asgi_gw_11] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-4 => 200
+2024-03-02T23:19:22.572  INFO --- [   asgi_gw_5] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-0 => 200
+2024-03-02T23:19:22.585  INFO --- [   asgi_gw_6] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-1 => 200
+2024-03-02T23:19:22.600  INFO --- [   asgi_gw_7] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-6 => 200
+2024-03-02T23:19:22.644  INFO --- [  asgi_gw_10] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-4 => 200
+2024-03-02T23:19:22.686  INFO --- [   asgi_gw_3] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-0 => 200
+2024-03-02T23:19:22.703  INFO --- [   asgi_gw_8] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-1 => 200
+2024-03-02T23:19:22.721  INFO --- [  asgi_gw_10] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-6 => 200
+2024-03-02T23:19:22.760  INFO --- [   asgi_gw_3] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-4 => 200
+2024-03-02T23:19:22.800  INFO --- [   asgi_gw_8] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-0 => 200
+2024-03-02T23:19:22.817  INFO --- [  asgi_gw_10] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-1 => 200
+2024-03-02T23:19:22.836  INFO --- [   asgi_gw_1] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-6 => 200
+2024-03-02T23:19:22.877  INFO --- [   asgi_gw_5] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-4 => 200
+2024-03-02T23:19:22.914  INFO --- [   asgi_gw_4] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-0 => 200
+2024-03-02T23:19:22.928  INFO --- [  asgi_gw_11] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-1 => 200
+2024-03-02T23:19:22.960  INFO --- [   asgi_gw_5] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-6 => 200
+2024-03-02T23:19:22.965  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS sqs.GetQueueUrl => 200
+2024-03-02T23:19:22.967  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS sqs.GetQueueUrl => 200
+2024-03-02T23:19:22.968  INFO --- [   asgi_gw_6] localstack.request.aws     : AWS sqs.GetQueueUrl => 200
+2024-03-02T23:19:22.969  INFO --- [  asgi_gw_10] localstack.request.aws     : AWS sqs.GetQueueUrl => 200
+2024-03-02T23:19:22.983  INFO --- [   asgi_gw_3] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-5 => 200
+2024-03-02T23:19:23.002  INFO --- [   asgi_gw_9] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-4 => 200
+2024-03-02T23:19:23.005  INFO --- [   asgi_gw_5] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-2 => 200
+2024-03-02T23:19:23.024  INFO --- [   asgi_gw_2] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-7 => 200
+2024-03-02T23:19:23.039  INFO --- [   asgi_gw_6] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-0 => 200
+2024-03-02T23:19:23.049  INFO --- [   asgi_gw_7] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-3 => 200
+2024-03-02T23:19:23.059  INFO --- [  asgi_gw_11] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-1 => 200
+2024-03-02T23:19:23.078  INFO --- [   asgi_gw_8] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-6 => 200
+2024-03-02T23:19:23.098  INFO --- [   asgi_gw_0] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-5 => 200
+2024-03-02T23:19:23.127  INFO --- [   asgi_gw_6] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-4 => 200
+2024-03-02T23:19:23.137  INFO --- [   asgi_gw_1] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-2 => 200
+2024-03-02T23:19:23.159  INFO --- [   asgi_gw_2] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-7 => 200
+2024-03-02T23:19:23.183  INFO --- [  asgi_gw_11] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-0 => 200
+2024-03-02T23:19:23.203  INFO --- [   asgi_gw_7] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-3 => 200
+2024-03-02T23:19:23.217  INFO --- [   asgi_gw_9] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-1 => 200
+2024-03-02T23:19:23.222  INFO --- [   asgi_gw_4] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-6 => 200
+2024-03-02T23:19:23.240  INFO --- [   asgi_gw_5] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-5 => 200
+2024-03-02T23:19:23.296  INFO --- [  asgi_gw_11] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-4 => 200
+2024-03-02T23:19:23.297  INFO --- [   asgi_gw_8] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-2 => 200
+2024-03-02T23:19:23.319  INFO --- [   asgi_gw_4] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-7 => 200
+2024-03-02T23:19:23.338  INFO --- [   asgi_gw_1] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-3 => 200
+2024-03-02T23:19:23.342  INFO --- [   asgi_gw_5] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-0 => 200
+2024-03-02T23:19:23.358  INFO --- [   asgi_gw_6] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-6 => 200
+2024-03-02T23:19:23.358  INFO --- [   asgi_gw_9] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-1 => 200
+2024-03-02T23:19:23.376  INFO --- [   asgi_gw_6] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-5 => 200
+2024-03-02T23:19:23.419  INFO --- [   asgi_gw_3] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-4 => 200
+2024-03-02T23:19:23.427  INFO --- [   asgi_gw_7] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-2 => 200
+2024-03-02T23:19:23.435  INFO --- [   asgi_gw_1] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-7 => 200
+2024-03-02T23:19:23.454  INFO --- [   asgi_gw_2] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-3 => 200
+2024-03-02T23:19:23.466  INFO --- [   asgi_gw_2] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-0 => 200
+2024-03-02T23:19:23.484  INFO --- [   asgi_gw_1] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-1 => 200
+2024-03-02T23:19:23.486  INFO --- [   asgi_gw_5] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-6 => 200
+2024-03-02T23:19:23.498  INFO --- [   asgi_gw_5] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-5 => 200
+2024-03-02T23:19:23.534  INFO --- [   asgi_gw_6] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-4 => 200
+2024-03-02T23:19:23.549  INFO --- [   asgi_gw_8] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-2 => 200
+2024-03-02T23:19:23.556  INFO --- [   asgi_gw_1] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-7 => 200
+2024-03-02T23:19:23.569  INFO --- [   asgi_gw_3] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-3 => 200
+2024-03-02T23:19:23.579  INFO --- [  asgi_gw_10] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-0 => 200
+2024-03-02T23:19:23.608  INFO --- [  asgi_gw_11] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-6 => 200
+2024-03-02T23:19:23.609  INFO --- [   asgi_gw_0] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-1 => 200
+2024-03-02T23:19:23.621  INFO --- [   asgi_gw_7] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-5 => 200
+2024-03-02T23:19:23.651  INFO --- [   asgi_gw_3] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-4 => 200
+2024-03-02T23:19:23.663  INFO --- [   asgi_gw_5] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-2 => 200
+2024-03-02T23:19:23.673  INFO --- [   asgi_gw_6] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-7 => 200
+2024-03-02T23:19:23.684  INFO --- [  asgi_gw_11] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-3 => 200
+2024-03-02T23:19:23.693  INFO --- [   asgi_gw_5] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-0 => 200
+2024-03-02T23:19:23.727  INFO --- [  asgi_gw_10] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-1 => 200
+2024-03-02T23:19:23.738  INFO --- [   asgi_gw_4] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-6 => 200
+2024-03-02T23:19:23.745  INFO --- [  asgi_gw_10] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-5 => 200
+2024-03-02T23:19:23.763  INFO --- [   asgi_gw_9] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-4 => 200
+2024-03-02T23:19:23.776  INFO --- [   asgi_gw_4] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-2 => 200
+2024-03-02T23:19:23.785  INFO --- [   asgi_gw_3] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-7 => 200
+2024-03-02T23:19:23.797  INFO --- [   asgi_gw_6] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-3 => 200
+2024-03-02T23:19:23.807  INFO --- [   asgi_gw_7] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-0 => 200
+2024-03-02T23:19:23.843  INFO --- [  asgi_gw_10] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-1 => 200
+2024-03-02T23:19:23.857  INFO --- [   asgi_gw_6] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-6 => 200
+2024-03-02T23:19:23.866  INFO --- [   asgi_gw_7] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-5 => 200
+2024-03-02T23:19:23.876  INFO --- [   asgi_gw_4] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-4 => 200
+2024-03-02T23:19:23.888  INFO --- [   asgi_gw_9] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-2 => 200
+2024-03-02T23:19:23.899  INFO --- [   asgi_gw_8] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-7 => 200
+2024-03-02T23:19:23.909  INFO --- [   asgi_gw_2] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-3 => 200
+2024-03-02T23:19:23.921  INFO --- [   asgi_gw_5] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-0 => 200
+2024-03-02T23:19:23.958  INFO --- [   asgi_gw_4] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-1 => 200
+2024-03-02T23:19:23.973  INFO --- [  asgi_gw_11] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-6 => 200
+2024-03-02T23:19:23.982  INFO --- [  asgi_gw_10] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-5 => 200
+2024-03-02T23:19:23.994  INFO --- [   asgi_gw_0] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-4 => 200
+2024-03-02T23:19:24.004  INFO --- [   asgi_gw_5] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-2 => 200
+2024-03-02T23:19:24.016  INFO --- [   asgi_gw_7] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-7 => 200
+2024-03-02T23:19:24.025  INFO --- [   asgi_gw_1] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-3 => 200
+2024-03-02T23:19:24.037  INFO --- [   asgi_gw_4] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-0 => 200
+2024-03-02T23:19:24.072  INFO --- [   asgi_gw_2] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-1 => 200
+2024-03-02T23:19:24.087  INFO --- [   asgi_gw_8] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-6 => 200
+2024-03-02T23:19:24.096  INFO --- [   asgi_gw_9] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-5 => 200
+2024-03-02T23:19:24.108  INFO --- [   asgi_gw_0] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-4 => 200
+2024-03-02T23:19:24.119  INFO --- [   asgi_gw_4] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-2 => 200
+2024-03-02T23:19:24.131  INFO --- [  asgi_gw_11] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-7 => 200
+2024-03-02T23:19:24.141  INFO --- [   asgi_gw_5] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-3 => 200
+2024-03-02T23:19:24.151  INFO --- [   asgi_gw_5] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-0 => 200
+2024-03-02T23:19:24.187  INFO --- [   asgi_gw_8] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-1 => 200
+2024-03-02T23:19:24.199  INFO --- [   asgi_gw_4] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-6 => 200
+2024-03-02T23:19:24.211  INFO --- [   asgi_gw_7] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-5 => 200
+2024-03-02T23:19:24.223  INFO --- [   asgi_gw_6] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-4 => 200
+2024-03-02T23:19:24.235  INFO --- [  asgi_gw_10] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-2 => 200
+2024-03-02T23:19:24.248  INFO --- [   asgi_gw_3] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-7 => 200
+2024-03-02T23:19:24.264  INFO --- [   asgi_gw_0] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-3 => 200
+2024-03-02T23:19:24.275  INFO --- [  asgi_gw_10] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-0 => 200
+2024-03-02T23:19:24.302  INFO --- [   asgi_gw_4] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-1 => 200
+2024-03-02T23:19:24.312  INFO --- [   asgi_gw_5] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-6 => 200
+2024-03-02T23:19:24.326  INFO --- [   asgi_gw_8] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-5 => 200
+2024-03-02T23:19:24.338  INFO --- [   asgi_gw_6] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-4 => 200
+2024-03-02T23:19:24.350  INFO --- [   asgi_gw_7] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-2 => 200
+2024-03-02T23:19:24.366  INFO --- [   asgi_gw_1] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-7 => 200
+2024-03-02T23:19:24.383  INFO --- [  asgi_gw_10] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-3 => 200
+2024-03-02T23:19:24.397  INFO --- [   asgi_gw_8] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-0 => 200
+2024-03-02T23:19:24.421  INFO --- [   asgi_gw_0] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-1 => 200
+2024-03-02T23:19:24.434  INFO --- [   asgi_gw_5] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-6 => 200
+2024-03-02T23:19:24.446  INFO --- [   asgi_gw_8] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-5 => 200
+2024-03-02T23:19:24.463  INFO --- [   asgi_gw_4] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-4 => 200
+2024-03-02T23:19:24.478  INFO --- [   asgi_gw_1] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-2 => 200
+2024-03-02T23:19:24.487  INFO --- [   asgi_gw_2] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-7 => 200
+2024-03-02T23:19:24.498  INFO --- [  asgi_gw_11] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-3 => 200
+2024-03-02T23:19:24.510  INFO --- [   asgi_gw_3] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-0 => 200
+2024-03-02T23:19:24.533  INFO --- [   asgi_gw_4] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-1 => 200
+2024-03-02T23:19:24.549  INFO --- [   asgi_gw_1] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-6 => 200
+2024-03-02T23:19:24.566  INFO --- [   asgi_gw_9] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-5 => 200
+2024-03-02T23:19:24.581  INFO --- [  asgi_gw_11] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-4 => 200
+2024-03-02T23:19:24.593  INFO --- [   asgi_gw_3] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-2 => 200
+2024-03-02T23:19:24.607  INFO --- [   asgi_gw_3] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-7 => 200
+2024-03-02T23:19:24.617  INFO --- [  asgi_gw_11] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-3 => 200
+2024-03-02T23:19:24.631  INFO --- [   asgi_gw_9] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-0 => 200
+2024-03-02T23:19:24.644  INFO --- [   asgi_gw_3] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-1 => 200
+2024-03-02T23:19:24.662  INFO --- [  asgi_gw_11] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-6 => 200
+2024-03-02T23:19:24.678  INFO --- [   asgi_gw_2] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-5 => 200
+2024-03-02T23:19:24.693  INFO --- [   asgi_gw_6] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-4 => 200
+2024-03-02T23:19:24.708  INFO --- [   asgi_gw_7] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-2 => 200
+2024-03-02T23:19:24.721  INFO --- [   asgi_gw_9] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-7 => 200
+2024-03-02T23:19:24.732  INFO --- [   asgi_gw_8] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-3 => 200
+2024-03-02T23:19:24.745  INFO --- [  asgi_gw_11] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-0 => 200
+2024-03-02T23:19:24.759  INFO --- [   asgi_gw_4] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-1 => 200
+2024-03-02T23:19:24.773  INFO --- [  asgi_gw_10] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-6 => 200
+2024-03-02T23:19:24.788  INFO --- [   asgi_gw_9] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-5 => 200
+2024-03-02T23:19:24.805  INFO --- [   asgi_gw_4] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-4 => 200
+2024-03-02T23:19:24.822  INFO --- [  asgi_gw_10] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-2 => 200
+2024-03-02T23:19:24.834  INFO --- [   asgi_gw_8] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-7 => 200
+2024-03-02T23:19:24.844  INFO --- [   asgi_gw_3] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-3 => 200
+2024-03-02T23:19:24.857  INFO --- [   asgi_gw_6] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-0 => 200
+2024-03-02T23:19:24.874  INFO --- [   asgi_gw_2] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-1 => 200
+2024-03-02T23:19:24.885  INFO --- [  asgi_gw_11] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-6 => 200
+2024-03-02T23:19:24.900  INFO --- [   asgi_gw_9] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-5 => 200
+2024-03-02T23:19:24.917  INFO --- [   asgi_gw_4] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-4 => 200
+2024-03-02T23:19:24.936  INFO --- [   asgi_gw_7] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-2 => 200
+2024-03-02T23:19:24.946  INFO --- [   asgi_gw_0] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-7 => 200
+2024-03-02T23:19:24.960  INFO --- [  asgi_gw_10] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-3 => 200
+2024-03-02T23:19:24.971  INFO --- [   asgi_gw_8] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-0 => 200
+2024-03-02T23:19:24.987  INFO --- [   asgi_gw_9] localstack.request.http    : POST /000000000000/bab40f41da474067ba34af66de645c5b-sqsprovider-1 => 200
+2024-03-02T23:19:32.017  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS sqs.GetQueueUrl => 400 (AWS.SimpleQueueService.NonExistentQueue)
+2024-03-02T23:19:32.025  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS sqs.CreateQueue => 200
+2024-03-02T23:19:32.037  INFO --- [   asgi_gw_5] localstack.request.aws     : AWS sqs.GetQueueUrl => 400 (AWS.SimpleQueueService.NonExistentQueue)
+2024-03-02T23:19:32.042  INFO --- [   asgi_gw_8] localstack.request.http    : POST /000000000000/testcluster-2024-03-02t23-19-16-729-sqsprovider-0 => 200
+2024-03-02T23:19:32.046  INFO --- [   asgi_gw_6] localstack.request.aws     : AWS sqs.CreateQueue => 200
+2024-03-02T23:19:32.055  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS sqs.GetQueueUrl => 400 (AWS.SimpleQueueService.NonExistentQueue)
+2024-03-02T23:19:32.059  INFO --- [   asgi_gw_4] localstack.request.http    : POST /000000000000/testcluster-2024-03-02t23-19-16-729-sqsprovider-1 => 200
+2024-03-02T23:19:32.064  INFO --- [   asgi_gw_2] localstack.request.aws     : AWS sqs.CreateQueue => 200
+2024-03-02T23:19:32.070  INFO --- [   asgi_gw_7] localstack.request.aws     : AWS sqs.GetQueueUrl => 400 (AWS.SimpleQueueService.NonExistentQueue)
+2024-03-02T23:19:32.077  INFO --- [   asgi_gw_9] localstack.request.http    : POST /000000000000/testcluster-2024-03-02t23-19-16-729-sqsprovider-2 => 200
+2024-03-02T23:19:32.079  INFO --- [  asgi_gw_11] localstack.request.aws     : AWS sqs.CreateQueue => 200
+2024-03-02T23:19:32.090  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS sqs.GetQueueUrl => 400 (AWS.SimpleQueueService.NonExistentQueue)
+2024-03-02T23:19:32.095  INFO --- [   asgi_gw_3] localstack.request.http    : POST /000000000000/testcluster-2024-03-02t23-19-16-729-sqsprovider-3 => 200
+2024-03-02T23:19:32.099  INFO --- [   asgi_gw_8] localstack.request.aws     : AWS sqs.CreateQueue => 200
+2024-03-02T23:19:32.107  INFO --- [   asgi_gw_6] localstack.request.aws     : AWS sqs.GetQueueUrl => 400 (AWS.SimpleQueueService.NonExistentQueue)
+2024-03-02T23:19:32.112  INFO --- [  asgi_gw_10] localstack.request.http    : POST /000000000000/testcluster-2024-03-02t23-19-16-729-sqsprovider-4 => 200
+2024-03-02T23:19:32.116  INFO --- [  asgi_gw_10] localstack.request.aws     : AWS sqs.CreateQueue => 200
+2024-03-02T23:19:32.122  INFO --- [   asgi_gw_2] localstack.request.aws     : AWS sqs.GetQueueUrl => 400 (AWS.SimpleQueueService.NonExistentQueue)
+2024-03-02T23:19:32.127  INFO --- [   asgi_gw_1] localstack.request.http    : POST /000000000000/testcluster-2024-03-02t23-19-16-729-sqsprovider-5 => 200
+2024-03-02T23:19:32.130  INFO --- [   asgi_gw_7] localstack.request.aws     : AWS sqs.CreateQueue => 200
+2024-03-02T23:19:32.137  INFO --- [   asgi_gw_6] localstack.request.aws     : AWS sqs.GetQueueUrl => 400 (AWS.SimpleQueueService.NonExistentQueue)
+2024-03-02T23:19:32.142  INFO --- [   asgi_gw_9] localstack.request.http    : POST /000000000000/testcluster-2024-03-02t23-19-16-729-sqsprovider-6 => 200
+2024-03-02T23:19:32.145  INFO --- [   asgi_gw_4] localstack.request.aws     : AWS sqs.CreateQueue => 200
+2024-03-02T23:19:32.153  INFO --- [   asgi_gw_5] localstack.request.http    : POST /000000000000/testcluster-2024-03-02t23-19-16-729-sqsprovider-7 => 200
+2024-03-02T23:19:32.774  INFO --- [  MainThread] l.runtime.shutdown         : [shutdown] Stopping all services
