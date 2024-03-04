@@ -25,7 +25,7 @@ def getdiscrepantTests(file_path, discrepant_APIs):
 
 def main(): 
     discrepant_emulator_APIs = getAPIList('./discrepantApisEmulator.txt')
-    alpakka_discrepant_tests = getdiscrepantTests('./application_sdk_methods/streamstone.json', discrepant_emulator_APIs)
+    alpakka_discrepant_tests = getdiscrepantTests('./application_sdk_methods/servicestack.json', discrepant_emulator_APIs)
 
     # print(alpakka_discrepant_tests)
     print(f"Number of tests: {len(alpakka_discrepant_tests)}")

@@ -29,13 +29,13 @@ def saveJSONObject(applicationName, applicationData):
         json.dump(applicationData, json_file, indent=4) 
 
 def main(): 
-    applicationName = 'logs'
+    applicationName = './Orleans'
     current_dir = os.getcwd() 
     traffic_path = os.path.join(current_dir, applicationName) 
     file_names = os.listdir(traffic_path)
 
     api_calls = getAPICalls(traffic_path, file_names)
-    saveJSONObject('./ServiceStack', api_calls)
+    saveJSONObject('./Orleans', api_calls)
 
 if __name__ == "__main__": 
     main() 
