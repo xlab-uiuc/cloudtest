@@ -9,5 +9,22 @@ Logs for test: Get_all_items_with_AWSSDK
 
  💻 LocalStack CLI 2.2.0
 
-[20:35:39] starting LocalStack in Docker mode 🐳                                                                                                        localstack.py:409
-───────────────────────────────────────────────────────────── LocalStack Runtime Log (press CTRL-C to quit) ─────────────────────────────────────────────────────────────
+[01:55:53] starting LocalStack in Docker mode 🐳                                                                                                           localstack.py:409
+────────────────────────────────────────────────────────────── LocalStack Runtime Log (press CTRL-C to quit) ───────────────────────────────────────────────────────────────
+
+LocalStack version: 2.2.1.dev
+LocalStack Docker container id: 7a5f91b31526
+LocalStack build date: 2023-09-07
+LocalStack build git hash: 5473e686
+
+2024-03-01T20:55:55.401  INFO --- [-functhread3] hypercorn.error            : Running on https://0.0.0.0:4566 (CTRL + C to quit)
+2024-03-01T20:55:55.401  INFO --- [-functhread3] hypercorn.error            : Running on https://0.0.0.0:4566 (CTRL + C to quit)
+Ready.
+2024-03-01T20:55:58.252  INFO --- [   asgi_gw_0] localstack.utils.bootstrap : Execution of "require" took 1430.56ms
+2024-03-01T20:55:58.381  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.ListTables => 200
+2024-03-01T20:55:58.515  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.CreateTable => 200
+2024-03-01T20:55:58.544  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.CreateTable => 200
+2024-03-01T20:55:58.557  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.DescribeTable => 200
+2024-03-01T20:55:58.572  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.DescribeTable => 200
+2024-03-01T20:55:58.801  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.PutItem => 200
+2024-03-01T20:55:58.822  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.Scan => 200

@@ -7,7 +7,56 @@ Logs for test: AWSUtils.Tests.MembershipTests.DynamoDBMembershipTableTest.Member
   / /___/ /_/ / /__/ /_/ / /___/ / /_/ /_/ / /__/ ,<
  /_____/\____/\___/\__,_/_//____/\__/\__,_/\___/_/|_|
 
- 💻 LocalStack CLI 2.2.0
+ 💻 LocalStack CLI 3.1.0
+ 👤 Profile: default
 
-[19:28:20] starting LocalStack in Docker mode 🐳                                                                                                        localstack.py:409
-───────────────────────────────────────────────────────────── LocalStack Runtime Log (press CTRL-C to quit) ─────────────────────────────────────────────────────────────
+[17:33:48] starting LocalStack in Docker mode 🐳                                                                                                                                                                                                                                   localstack.py:494
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── LocalStack Runtime Log (press CTRL-C to quit) ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+LocalStack version: 3.1.1.dev
+LocalStack Docker container id: b9c724e067cf
+LocalStack build date: 2024-02-24
+LocalStack build git hash: ee58b82ce
+
+2024-03-02T23:33:50.976  INFO --- [-functhread4] hypercorn.error            : Running on https://0.0.0.0:4566 (CTRL + C to quit)
+2024-03-02T23:33:50.976  INFO --- [-functhread4] hypercorn.error            : Running on https://0.0.0.0:4566 (CTRL + C to quit)
+Ready.
+2024-03-02T23:33:53.593  INFO --- [   asgi_gw_0] localstack.utils.bootstrap : Execution of "require" took 1379.65ms
+2024-03-02T23:33:53.747  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.DescribeTable => 400 (ResourceNotFoundException)
+2024-03-02T23:33:53.874  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.CreateTable => 200
+2024-03-02T23:33:53.897  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.DescribeTable => 200
+2024-03-02T23:33:53.918  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.DescribeTimeToLive => 200
+2024-03-02T23:33:53.948  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.DescribeTable => 400 (ResourceNotFoundException)
+2024-03-02T23:33:53.974  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.CreateTable => 200
+2024-03-02T23:33:53.984  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.DescribeTable => 200
+2024-03-02T23:33:54.001  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.DescribeTimeToLive => 200
+2024-03-02T23:33:54.030  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.GetItem => 200
+2024-03-02T23:33:54.246  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.PutItem => 200
+2024-03-02T23:33:54.259  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.DescribeTable => 200
+2024-03-02T23:33:54.275  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.DescribeTimeToLive => 200
+2024-03-02T23:33:54.300  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.GetItem => 200
+2024-03-02T23:33:54.334  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.Query => 200
+2024-03-02T23:33:54.424  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.TransactWriteItems => 200
+2024-03-02T23:33:54.445  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.TransactGetItems => 200
+2024-03-02T23:33:54.486  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.TransactWriteItems => 200
+2024-03-02T23:33:54.499  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.TransactGetItems => 200
+2024-03-02T23:33:54.539  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.TransactWriteItems => 200
+2024-03-02T23:33:54.550  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.TransactGetItems => 200
+2024-03-02T23:33:54.601  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.TransactWriteItems => 200
+2024-03-02T23:33:54.629  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.TransactGetItems => 200
+2024-03-02T23:33:54.688  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.TransactWriteItems => 200
+2024-03-02T23:33:54.704  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.TransactGetItems => 200
+2024-03-02T23:33:54.752  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.TransactWriteItems => 200
+2024-03-02T23:33:54.762  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.TransactGetItems => 200
+2024-03-02T23:33:54.794  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.TransactWriteItems => 200
+2024-03-02T23:33:54.804  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.TransactGetItems => 200
+2024-03-02T23:33:54.833  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.TransactWriteItems => 200
+2024-03-02T23:33:54.844  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.TransactGetItems => 200
+2024-03-02T23:33:54.875  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.TransactWriteItems => 200
+2024-03-02T23:33:54.884  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.TransactGetItems => 200
+2024-03-02T23:33:54.915  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.TransactWriteItems => 200
+2024-03-02T23:33:54.927  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.TransactGetItems => 200
+2024-03-02T23:33:54.948  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.Scan => 200
+2024-03-02T23:33:54.964  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.Query => 200
+2024-03-02T23:33:55.019  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.BatchWriteItem => 200
+2024-03-02T23:33:55.657  INFO --- [  MainThread] l.runtime.shutdown         : [shutdown] Stopping all services

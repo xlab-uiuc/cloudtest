@@ -9,5 +9,40 @@ Logs for test: TypedApi_does_populate_DynamoUpdateItem
 
  💻 LocalStack CLI 2.2.0
 
-[20:29:32] starting LocalStack in Docker mode 🐳                                                                                                        localstack.py:409
-───────────────────────────────────────────────────────────── LocalStack Runtime Log (press CTRL-C to quit) ─────────────────────────────────────────────────────────────
+[01:51:28] starting LocalStack in Docker mode 🐳                                                                                                           localstack.py:409
+────────────────────────────────────────────────────────────── LocalStack Runtime Log (press CTRL-C to quit) ───────────────────────────────────────────────────────────────
+
+LocalStack version: 2.2.1.dev
+LocalStack Docker container id: c91a2789d214
+LocalStack build date: 2023-09-07
+LocalStack build git hash: 5473e686
+
+2024-03-01T20:51:30.144  INFO --- [-functhread3] hypercorn.error            : Running on https://0.0.0.0:4566 (CTRL + C to quit)
+2024-03-01T20:51:30.144  INFO --- [-functhread3] hypercorn.error            : Running on https://0.0.0.0:4566 (CTRL + C to quit)
+Ready.
+2024-03-01T20:51:32.950  INFO --- [   asgi_gw_0] localstack.utils.bootstrap : Execution of "require" took 1392.38ms
+2024-03-01T20:51:33.086  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.DeleteTable => 400 (ResourceNotFoundException)
+2024-03-01T20:51:33.139  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.ListTables => 200
+2024-03-01T20:51:33.150  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.ListTables => 200
+2024-03-01T20:51:33.229  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.CreateTable => 200
+2024-03-01T20:51:33.258  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.CreateTable => 200
+2024-03-01T20:51:33.271  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.DescribeTable => 200
+2024-03-01T20:51:33.279  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.DescribeTable => 200
+2024-03-01T20:51:33.511  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-01T20:51:33.554  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-01T20:51:33.571  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-01T20:51:33.598  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.PutItem => 200
+2024-03-01T20:51:33.651  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-01T20:51:33.663  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.GetItem => 200
+2024-03-01T20:51:33.708  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.DeleteTable => 200
+2024-03-01T20:51:33.717  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.ListTables => 200
+2024-03-01T20:51:33.724  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.ListTables => 200
+2024-03-01T20:51:33.743  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.CreateTable => 200
+2024-03-01T20:51:33.755  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.DescribeTable => 200
+2024-03-01T20:51:33.756  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.DescribeTable => 200
+2024-03-01T20:51:33.774  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-01T20:51:33.789  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-01T20:51:33.802  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-01T20:51:33.819  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.PutItem => 200
+2024-03-01T20:51:33.836  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-01T20:51:33.845  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.GetItem => 200

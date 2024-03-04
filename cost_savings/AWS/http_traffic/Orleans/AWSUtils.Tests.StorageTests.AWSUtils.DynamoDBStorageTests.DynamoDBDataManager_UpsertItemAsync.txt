@@ -7,7 +7,29 @@ Logs for test: AWSUtils.Tests.StorageTests.AWSUtils.DynamoDBStorageTests.DynamoD
   / /___/ /_/ / /__/ /_/ / /___/ / /_/ /_/ / /__/ ,<
  /_____/\____/\___/\__,_/_//____/\__/\__,_/\___/_/|_|
 
- 💻 LocalStack CLI 2.2.0
+ 💻 LocalStack CLI 3.1.0
+ 👤 Profile: default
 
-[19:18:17] starting LocalStack in Docker mode 🐳                                                                                                        localstack.py:409
-───────────────────────────────────────────────────────────── LocalStack Runtime Log (press CTRL-C to quit) ─────────────────────────────────────────────────────────────
+[17:32:07] starting LocalStack in Docker mode 🐳                                                                                                                                                                                                                                   localstack.py:494
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── LocalStack Runtime Log (press CTRL-C to quit) ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+LocalStack version: 3.1.1.dev
+LocalStack Docker container id: 58581b94ea81
+LocalStack build date: 2024-02-24
+LocalStack build git hash: ee58b82ce
+
+2024-03-02T23:32:10.623  INFO --- [-functhread4] hypercorn.error            : Running on https://0.0.0.0:4566 (CTRL + C to quit)
+2024-03-02T23:32:10.623  INFO --- [-functhread4] hypercorn.error            : Running on https://0.0.0.0:4566 (CTRL + C to quit)
+Ready.
+2024-03-02T23:32:12.890  INFO --- [   asgi_gw_0] localstack.utils.bootstrap : Execution of "require" took 1410.78ms
+2024-03-02T23:32:13.050  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.DescribeTable => 400 (ResourceNotFoundException)
+2024-03-02T23:32:13.166  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.CreateTable => 200
+2024-03-02T23:32:13.198  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.DescribeTable => 200
+2024-03-02T23:32:13.219  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.DescribeTimeToLive => 200
+2024-03-02T23:32:13.475  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.PutItem => 200
+2024-03-02T23:32:13.519  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:32:13.539  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.GetItem => 200
+2024-03-02T23:32:13.561  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.UpdateItem => 200
+2024-03-02T23:32:13.571  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.GetItem => 200
+2024-03-02T23:32:13.585  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.UpdateItem => 400 (ConditionalCheckFailedException)
+2024-03-02T23:32:14.211  INFO --- [  MainThread] l.runtime.shutdown         : [shutdown] Stopping all services

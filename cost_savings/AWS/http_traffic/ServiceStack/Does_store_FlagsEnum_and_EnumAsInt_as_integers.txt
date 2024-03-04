@@ -9,5 +9,22 @@ Logs for test: Does_store_FlagsEnum_and_EnumAsInt_as_integers
 
  💻 LocalStack CLI 2.2.0
 
-[20:34:18] starting LocalStack in Docker mode 🐳                                                                                                        localstack.py:409
-───────────────────────────────────────────────────────────── LocalStack Runtime Log (press CTRL-C to quit) ─────────────────────────────────────────────────────────────
+[01:54:55] starting LocalStack in Docker mode 🐳                                                                                                           localstack.py:409
+────────────────────────────────────────────────────────────── LocalStack Runtime Log (press CTRL-C to quit) ───────────────────────────────────────────────────────────────
+
+LocalStack version: 2.2.1.dev
+LocalStack Docker container id: 7e2606f9c947
+LocalStack build date: 2023-09-07
+LocalStack build git hash: 5473e686
+
+2024-03-01T20:54:56.865  INFO --- [-functhread3] hypercorn.error            : Running on https://0.0.0.0:4566 (CTRL + C to quit)
+2024-03-01T20:54:56.865  INFO --- [-functhread3] hypercorn.error            : Running on https://0.0.0.0:4566 (CTRL + C to quit)
+Ready.
+2024-03-01T20:54:59.642  INFO --- [   asgi_gw_0] localstack.utils.bootstrap : Execution of "require" took 1405.66ms
+2024-03-01T20:54:59.783  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.ListTables => 200
+2024-03-01T20:54:59.911  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.CreateTable => 200
+2024-03-01T20:54:59.946  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.CreateTable => 200
+2024-03-01T20:54:59.959  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.DescribeTable => 200
+2024-03-01T20:54:59.969  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.DescribeTable => 200
+2024-03-01T20:55:00.233  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.PutItem => 200
+2024-03-01T20:55:00.251  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.GetItem => 200

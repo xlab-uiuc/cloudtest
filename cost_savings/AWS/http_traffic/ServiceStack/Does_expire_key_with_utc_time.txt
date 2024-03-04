@@ -9,5 +9,30 @@ Logs for test: Does_expire_key_with_utc_time
 
  💻 LocalStack CLI 2.2.0
 
-[20:05:25] starting LocalStack in Docker mode 🐳                                                                                                        localstack.py:409
-───────────────────────────────────────────────────────────── LocalStack Runtime Log (press CTRL-C to quit) ─────────────────────────────────────────────────────────────
+[01:32:47] starting LocalStack in Docker mode 🐳                                                                                                           localstack.py:409
+────────────────────────────────────────────────────────────── LocalStack Runtime Log (press CTRL-C to quit) ───────────────────────────────────────────────────────────────
+
+LocalStack version: 2.2.1.dev
+LocalStack Docker container id: 61e7c1fc128e
+LocalStack build date: 2023-09-07
+LocalStack build git hash: 5473e686
+
+2024-03-01T20:32:49.015  INFO --- [-functhread3] hypercorn.error            : Running on https://0.0.0.0:4566 (CTRL + C to quit)
+2024-03-01T20:32:49.015  INFO --- [-functhread3] hypercorn.error            : Running on https://0.0.0.0:4566 (CTRL + C to quit)
+Ready.
+2024-03-01T20:32:51.920  INFO --- [   asgi_gw_0] localstack.utils.bootstrap : Execution of "require" took 1397.95ms
+2024-03-01T20:32:52.061  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.DescribeTable => 400 (ResourceNotFoundException)
+2024-03-01T20:32:52.117  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.ListTables => 200
+2024-03-01T20:32:52.221  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.CreateTable => 200
+2024-03-01T20:32:52.242  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.DescribeTable => 200
+2024-03-01T20:32:52.251  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.DescribeTable => 200
+2024-03-01T20:32:52.498  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.PutItem => 200
+2024-03-01T20:32:52.515  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.GetItem => 200
+2024-03-01T20:32:52.544  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.PutItem => 200
+2024-03-01T20:32:52.553  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.GetItem => 200
+2024-03-01T20:32:52.573  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.DeleteItem => 200
+2024-03-01T20:32:52.609  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.PutItem => 200
+2024-03-01T20:32:52.621  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.GetItem => 200
+2024-03-01T20:32:52.636  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.PutItem => 200
+2024-03-01T20:32:52.643  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.GetItem => 200
+2024-03-01T20:32:52.661  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.DeleteItem => 200

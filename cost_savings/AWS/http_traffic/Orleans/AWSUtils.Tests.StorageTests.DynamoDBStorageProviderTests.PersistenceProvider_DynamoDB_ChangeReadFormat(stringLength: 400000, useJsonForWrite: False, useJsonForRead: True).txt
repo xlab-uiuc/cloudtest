@@ -7,7 +7,11 @@ Logs for test: AWSUtils.Tests.StorageTests.DynamoDBStorageProviderTests.Persiste
   / /___/ /_/ / /__/ /_/ / /___/ / /_/ /_/ / /__/ ,<
  /_____/\____/\___/\__,_/_//____/\__/\__,_/\___/_/|_|
 
- 💻 LocalStack CLI 2.2.0
+ 💻 LocalStack CLI 3.1.0
+ 👤 Profile: default
 
-[18:52:00] starting LocalStack in Docker mode 🐳                                                                                                        localstack.py:409
-───────────────────────────────────────────────────────────── LocalStack Runtime Log (press CTRL-C to quit) ─────────────────────────────────────────────────────────────
+[17:20:33] starting LocalStack in Docker mode 🐳                                                                                                                                                                                                                                   localstack.py:494
+ERROR: '['docker', 'create', '--rm', '--name', 'localstack-main', '-v', '/Users/zhengxinze/Library/Caches/localstack-cli/machine.json:/var/lib/localstack/cache/machine.json:ro', '-v', '/Users/zhengxinze/Library/Caches/localstack/volume:/var/lib/localstack', '-v', '/var/run/docker.sock:/var/run/docker.sock', '-p', '127.0.0.1:4510-4560:4510-4560', '-p', '127.0.0.1:4566:4566', '-e', 'EXTERNAL_SERVICE_PORTS_START=4510', '-e', 'EXTERNAL_SERVICE_PORTS_END=4560', '-e', 'DOCKER_HOST=unix:///var/run/docker.sock', '-e', 'ACTIVATE_PRO=0', '-e', 'GATEWAY_LISTEN=:4566', '-p', '0.0.0.0:53:53/udp', '-p', '0.0.0.0:53:53/tcp', 'localstack/localstack']': exit code 1; output: b'Error response from daemon: Conflict. The container name "/localstack-main" is already in use by container "572fdf4b743d9f1ca51b67dd17cc8a1733ba30e437b4737e6703b4210ab3d0dc". You have to remove (or rename) that container to be able to reuse that name.\n'
+2024-03-02T17:20:39.500 ERROR --- [-functhread1] localstack.utils.bootstrap : Error while creating container: Docker process returned with errorcode 1
+?
+❌ Error: Docker process returned with errorcode 1

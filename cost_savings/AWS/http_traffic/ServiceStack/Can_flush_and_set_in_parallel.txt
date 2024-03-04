@@ -9,5 +9,110 @@ Logs for test: Can_flush_and_set_in_parallel
 
  💻 LocalStack CLI 2.2.0
 
-[20:04:16] starting LocalStack in Docker mode 🐳                                                                                                        localstack.py:409
-───────────────────────────────────────────────────────────── LocalStack Runtime Log (press CTRL-C to quit) ─────────────────────────────────────────────────────────────
+[01:32:01] starting LocalStack in Docker mode 🐳                                                                                                           localstack.py:409
+────────────────────────────────────────────────────────────── LocalStack Runtime Log (press CTRL-C to quit) ───────────────────────────────────────────────────────────────
+
+LocalStack version: 2.2.1.dev
+LocalStack Docker container id: ae81d7a5ac5e
+LocalStack build date: 2023-09-07
+LocalStack build git hash: 5473e686
+
+2024-03-01T20:32:02.928  INFO --- [-functhread3] hypercorn.error            : Running on https://0.0.0.0:4566 (CTRL + C to quit)
+2024-03-01T20:32:02.928  INFO --- [-functhread3] hypercorn.error            : Running on https://0.0.0.0:4566 (CTRL + C to quit)
+Ready.
+2024-03-01T20:32:05.856  INFO --- [   asgi_gw_0] localstack.utils.bootstrap : Execution of "require" took 1401.31ms
+2024-03-01T20:32:06.000  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.DescribeTable => 400 (ResourceNotFoundException)
+2024-03-01T20:32:06.054  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.ListTables => 200
+2024-03-01T20:32:06.136  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.CreateTable => 200
+2024-03-01T20:32:06.148  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.DescribeTable => 200
+2024-03-01T20:32:06.157  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.DescribeTable => 200
+2024-03-01T20:32:06.400  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.DeleteTable => 200
+2024-03-01T20:32:06.413  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.ListTables => 200
+2024-03-01T20:32:06.418  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.PutItem => 400 (ResourceNotFoundException)
+2024-03-01T20:32:06.422  INFO --- [   asgi_gw_3] localstack.request.aws     : AWS dynamodb.ListTables => 200
+2024-03-01T20:32:06.440  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.CreateTable => 200
+2024-03-01T20:32:06.449  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.DescribeTable => 200
+2024-03-01T20:32:06.496  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.PutItem => 200
+2024-03-01T20:32:06.565  INFO --- [   asgi_gw_3] localstack.request.aws     : AWS dynamodb.PutItem => 200
+2024-03-01T20:32:06.634  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.PutItem => 200
+2024-03-01T20:32:06.702  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.PutItem => 200
+2024-03-01T20:32:06.760  INFO --- [   asgi_gw_4] localstack.utils.bootstrap : Execution of "require" took 519.99ms
+2024-03-01T20:32:06.771  INFO --- [   asgi_gw_2] localstack.request.aws     : AWS dynamodb.PutItem => 200
+2024-03-01T20:32:06.776  INFO --- [   asgi_gw_3] localstack.request.aws     : AWS dynamodb.PutItem => 200
+2024-03-01T20:32:06.866  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.PutItem => 200
+2024-03-01T20:32:06.964  INFO --- [   asgi_gw_3] localstack.request.aws     : AWS dynamodb.PutItem => 200
+2024-03-01T20:32:07.063  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.PutItem => 200
+2024-03-01T20:32:07.165  INFO --- [   asgi_gw_3] localstack.request.aws     : AWS dynamodb.PutItem => 200
+2024-03-01T20:32:07.284  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.DeleteItem => 200
+2024-03-01T20:32:07.313  INFO --- [   asgi_gw_3] localstack.request.aws     : AWS dynamodb.DeleteItem => 200
+2024-03-01T20:32:07.328  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.DeleteItem => 200
+2024-03-01T20:32:07.389  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.DeleteTable => 200
+2024-03-01T20:32:07.390  INFO --- [   asgi_gw_3] localstack.request.aws     : AWS dynamodb.PutItem => 400 (ResourceNotFoundException)
+2024-03-01T20:32:07.392  INFO --- [   asgi_gw_2] localstack.request.aws     : AWS dynamodb.PutItem => 400 (ResourceNotFoundException)
+2024-03-01T20:32:07.402  INFO --- [   asgi_gw_4] localstack.request.aws     : AWS dynamodb.ListTables => 200
+2024-03-01T20:32:07.410  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.ListTables => 200
+2024-03-01T20:32:07.428  INFO --- [   asgi_gw_2] localstack.request.aws     : AWS dynamodb.CreateTable => 200
+2024-03-01T20:32:07.437  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.DescribeTable => 200
+2024-03-01T20:32:07.494  INFO --- [   asgi_gw_3] localstack.request.aws     : AWS dynamodb.DeleteItem => 200
+2024-03-01T20:32:07.507  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.DeleteItem => 200
+2024-03-01T20:32:07.519  INFO --- [   asgi_gw_3] localstack.request.aws     : AWS dynamodb.DeleteItem => 200
+2024-03-01T20:32:07.528  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.PutItem => 200
+2024-03-01T20:32:07.539  INFO --- [   asgi_gw_2] localstack.request.aws     : AWS dynamodb.PutItem => 200
+2024-03-01T20:32:07.540 ERROR --- [-functhread3] hypercorn.error            : Error in ASGI Framework
+Traceback (most recent call last):
+File "/opt/code/localstack/.venv/lib/python3.10/site-packages/hypercorn/asyncio/task_group.py", line 23, in _handle
+await app(scope, receive, send, sync_spawn, call_soon)
+File "/opt/code/localstack/.venv/lib/python3.10/site-packages/hypercorn/app_wrappers.py", line 33, in __call__
+await self.app(scope, receive, send)
+File "/opt/code/localstack/localstack/aws/serving/asgi.py", line 70, in __call__
+return await self.adapter(scope, receive, send)
+File "/opt/code/localstack/localstack/http/asgi.py", line 488, in __call__
+return await self.handle_http(scope, receive, send)
+File "/opt/code/localstack/localstack/http/asgi.py", line 559, in handle_http
+await response.close()
+File "/opt/code/localstack/localstack/http/asgi.py", line 311, in close
+await self.send({"type": "http.response.body", "body": b"", "more_body": False})
+File "/opt/code/localstack/.venv/lib/python3.10/site-packages/hypercorn/protocol/http_stream.py", line 188, in app_send
+await self.send(EndBody(stream_id=self.stream_id))
+File "/opt/code/localstack/.venv/lib/python3.10/site-packages/hypercorn/protocol/h11.py", line 138, in stream_send
+await self._send_h11_event(h11.EndOfMessage())
+File "/opt/code/localstack/.venv/lib/python3.10/site-packages/hypercorn/protocol/h11.py", line 240, in _send_h11_event
+data = self.connection.send(event)
+File "/opt/code/localstack/.venv/lib/python3.10/site-packages/h11/_connection.py", line 512, in send
+data_list = self.send_with_data_passthrough(event)
+File "/opt/code/localstack/.venv/lib/python3.10/site-packages/h11/_connection.py", line 545, in send_with_data_passthrough
+writer(event, data_list.append)
+File "/opt/code/localstack/.venv/lib/python3.10/site-packages/h11/_writers.py", line 67, in __call__
+self.send_eom(event.headers, write)
+File "/opt/code/localstack/.venv/lib/python3.10/site-packages/h11/_writers.py", line 96, in send_eom
+raise LocalProtocolError("Too little data for declared Content-Length")
+h11._util.LocalProtocolError: Too little data for declared Content-Length
+2024-03-01T20:32:07.540 ERROR --- [-functhread3] hypercorn.error            : Error in ASGI Framework
+Traceback (most recent call last):
+File "/opt/code/localstack/.venv/lib/python3.10/site-packages/hypercorn/asyncio/task_group.py", line 23, in _handle
+await app(scope, receive, send, sync_spawn, call_soon)
+File "/opt/code/localstack/.venv/lib/python3.10/site-packages/hypercorn/app_wrappers.py", line 33, in __call__
+await self.app(scope, receive, send)
+File "/opt/code/localstack/localstack/aws/serving/asgi.py", line 70, in __call__
+return await self.adapter(scope, receive, send)
+File "/opt/code/localstack/localstack/http/asgi.py", line 488, in __call__
+return await self.handle_http(scope, receive, send)
+File "/opt/code/localstack/localstack/http/asgi.py", line 559, in handle_http
+await response.close()
+File "/opt/code/localstack/localstack/http/asgi.py", line 311, in close
+await self.send({"type": "http.response.body", "body": b"", "more_body": False})
+File "/opt/code/localstack/.venv/lib/python3.10/site-packages/hypercorn/protocol/http_stream.py", line 188, in app_send
+await self.send(EndBody(stream_id=self.stream_id))
+File "/opt/code/localstack/.venv/lib/python3.10/site-packages/hypercorn/protocol/h11.py", line 138, in stream_send
+await self._send_h11_event(h11.EndOfMessage())
+File "/opt/code/localstack/.venv/lib/python3.10/site-packages/hypercorn/protocol/h11.py", line 240, in _send_h11_event
+data = self.connection.send(event)
+File "/opt/code/localstack/.venv/lib/python3.10/site-packages/h11/_connection.py", line 512, in send
+data_list = self.send_with_data_passthrough(event)
+File "/opt/code/localstack/.venv/lib/python3.10/site-packages/h11/_connection.py", line 545, in send_with_data_passthrough
+writer(event, data_list.append)
+File "/opt/code/localstack/.venv/lib/python3.10/site-packages/h11/_writers.py", line 67, in __call__
+self.send_eom(event.headers, write)
+File "/opt/code/localstack/.venv/lib/python3.10/site-packages/h11/_writers.py", line 96, in send_eom
+raise LocalProtocolError("Too little data for declared Content-Length")
+h11._util.LocalProtocolError: Too little data for declared Content-Length

@@ -7,7 +7,101 @@ Logs for test: AWSUtils.Tests.Liveness.LivenessTests_DynamoDB.Liveness_AWS_Dynam
   / /___/ /_/ / /__/ /_/ / /___/ / /_/ /_/ / /__/ ,<
  /_____/\____/\___/\__,_/_//____/\__/\__,_/\___/_/|_|
 
- 💻 LocalStack CLI 2.2.0
+ 💻 LocalStack CLI 3.1.0
+ 👤 Profile: default
 
-[19:44:03] starting LocalStack in Docker mode 🐳                                                                                                        localstack.py:409
-───────────────────────────────────────────────────────────── LocalStack Runtime Log (press CTRL-C to quit) ─────────────────────────────────────────────────────────────
+[17:36:38] starting LocalStack in Docker mode 🐳                                                                                                                                                                                                                                   localstack.py:494
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── LocalStack Runtime Log (press CTRL-C to quit) ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+LocalStack version: 3.1.1.dev
+LocalStack Docker container id: 2f413e13f12b
+LocalStack build date: 2024-02-24
+LocalStack build git hash: ee58b82ce
+
+2024-03-02T23:36:41.205  INFO --- [-functhread4] hypercorn.error            : Running on https://0.0.0.0:4566 (CTRL + C to quit)
+2024-03-02T23:36:41.205  INFO --- [-functhread4] hypercorn.error            : Running on https://0.0.0.0:4566 (CTRL + C to quit)
+Ready.
+2024-03-02T23:36:44.284  INFO --- [   asgi_gw_0] localstack.utils.bootstrap : Execution of "require" took 1977.88ms
+2024-03-02T23:36:44.551  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.DescribeTable => 400 (ResourceNotFoundException)
+2024-03-02T23:36:44.750  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.CreateTable => 200
+2024-03-02T23:36:44.777  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.DescribeTable => 200
+2024-03-02T23:36:44.800  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.DescribeTimeToLive => 200
+2024-03-02T23:36:44.840  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.GetItem => 200
+2024-03-02T23:36:45.200  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.PutItem => 200
+2024-03-02T23:36:45.218  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.GetItem => 200
+2024-03-02T23:36:45.248  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.Query => 200
+2024-03-02T23:36:45.267  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.GetItem => 200
+2024-03-02T23:36:45.279  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.Query => 200
+2024-03-02T23:36:45.383  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.TransactWriteItems => 200
+2024-03-02T23:36:45.404  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.GetItem => 200
+2024-03-02T23:36:45.416  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.Query => 200
+2024-03-02T23:36:45.471  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.TransactWriteItems => 200
+2024-03-02T23:36:45.642  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.DescribeTable => 200
+2024-03-02T23:36:45.658  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.DescribeTimeToLive => 200
+2024-03-02T23:36:45.670  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.GetItem => 200
+2024-03-02T23:36:45.680  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.GetItem => 200
+2024-03-02T23:36:45.691  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.Query => 200
+2024-03-02T23:36:45.703  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.GetItem => 200
+2024-03-02T23:36:45.716  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.Query => 200
+2024-03-02T23:36:45.764  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.TransactWriteItems => 200
+2024-03-02T23:36:45.831  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.GetItem => 200
+2024-03-02T23:36:45.842  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.Query => 200
+2024-03-02T23:36:45.886  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.TransactWriteItems => 200
+2024-03-02T23:36:46.027  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.DescribeTable => 200
+2024-03-02T23:36:46.039  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.DescribeTimeToLive => 200
+2024-03-02T23:36:46.059  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.Scan => 200
+2024-03-02T23:36:46.234  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.DescribeTable => 200
+2024-03-02T23:36:46.247  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.DescribeTimeToLive => 200
+2024-03-02T23:36:46.257  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.GetItem => 200
+2024-03-02T23:36:46.267  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.GetItem => 200
+2024-03-02T23:36:46.281  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.Query => 200
+2024-03-02T23:36:46.295  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.GetItem => 200
+2024-03-02T23:36:46.305  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.Query => 200
+2024-03-02T23:36:46.339  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.TransactWriteItems => 200
+2024-03-02T23:36:46.350  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.GetItem => 200
+2024-03-02T23:36:46.360  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.Query => 200
+2024-03-02T23:36:46.401  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.TransactWriteItems => 200
+2024-03-02T23:36:49.790  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.GetItem => 200
+2024-03-02T23:36:49.803  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.Query => 200
+2024-03-02T23:36:56.121  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.GetItem => 200
+2024-03-02T23:36:56.133  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.Query => 200
+2024-03-02T23:36:56.513  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.GetItem => 200
+2024-03-02T23:36:56.525  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.Query => 200
+2024-03-02T23:36:56.569  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.TransactWriteItems => 200
+2024-03-02T23:36:56.636  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.GetItem => 200
+2024-03-02T23:36:56.645  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.Query => 200
+2024-03-02T23:36:58.755  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.GetItem => 200
+2024-03-02T23:36:58.764  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.Query => 200
+2024-03-02T23:36:58.800  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.TransactWriteItems => 200
+2024-03-02T23:36:58.957  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.DescribeTable => 200
+2024-03-02T23:36:58.974  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.DescribeTimeToLive => 200
+2024-03-02T23:36:58.985  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.GetItem => 200
+2024-03-02T23:36:58.994  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.GetItem => 200
+2024-03-02T23:36:59.002  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.Query => 200
+2024-03-02T23:36:59.013  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.GetItem => 200
+2024-03-02T23:36:59.024  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.Query => 200
+2024-03-02T23:36:59.055  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.TransactWriteItems => 200
+2024-03-02T23:36:59.065  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.GetItem => 200
+2024-03-02T23:36:59.073  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.Query => 200
+2024-03-02T23:36:59.110  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.TransactWriteItems => 200
+2024-03-02T23:37:09.192  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.GetItem => 200
+2024-03-02T23:37:09.204  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.Query => 200
+2024-03-02T23:37:09.253  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.TransactWriteItems => 200
+2024-03-02T23:37:11.380  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.GetItem => 200
+2024-03-02T23:37:11.389  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.Query => 200
+2024-03-02T23:37:11.424  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.TransactWriteItems => 200
+2024-03-02T23:37:16.451  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.GetItem => 200
+2024-03-02T23:37:16.462  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.Query => 200
+2024-03-02T23:37:16.510  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.TransactWriteItems => 200
+2024-03-02T23:37:18.654  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.GetItem => 200
+2024-03-02T23:37:18.664  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.Query => 200
+2024-03-02T23:37:18.701  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.TransactWriteItems => 200
+2024-03-02T23:37:20.758  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.GetItem => 200
+2024-03-02T23:37:20.770  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.Query => 200
+2024-03-02T23:37:23.732  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.GetItem => 200
+2024-03-02T23:37:23.745  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.Query => 200
+2024-03-02T23:37:23.796  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.TransactWriteItems => 200
+2024-03-02T23:37:25.733  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.GetItem => 200
+2024-03-02T23:37:25.743  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS dynamodb.Query => 200
+2024-03-02T23:37:25.786  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS dynamodb.TransactWriteItems => 200
+2024-03-02T23:37:26.511  INFO --- [  MainThread] l.runtime.shutdown         : [shutdown] Stopping all services

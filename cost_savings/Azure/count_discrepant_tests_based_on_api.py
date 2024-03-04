@@ -15,20 +15,23 @@ def getdiscrepantTests(file_path, discrepant_APIs):
         data = json.load(file) 
 
     discrepant_tests = [] 
+    disc_apis = [] 
     for test, apis in data.items(): 
         for api in apis: 
             if api in discrepant_APIs: 
+                disc_apis.append(api)
                 discrepant_tests.append(test)
                 break 
         
-    return discrepant_tests
+    return discrepant_tests, discrepant_APIs
 
 def main(): 
     discrepant_emulator_APIs = getAPIList('./discrepantApisEmulator.txt')
-    alpakka_discrepant_tests = getdiscrepantTests('./application_sdk_methods/streamstone.json', discrepant_emulator_APIs)
+    discrepant_tests, discrepant_apis = getdiscrepantTests('./application_sdk_methods/orleans.json', discrepant_emulator_APIs)
 
     # print(alpakka_discrepant_tests)
-    print(f"Number of tests: {len(alpakka_discrepant_tests)}")
+    print(f"Number of tests: {len(discrepant_tests)}")
+    print(f"Discrepant APIs: {discrepant_apis}")
 
 if __name__ == "__main__": 
     main()  
