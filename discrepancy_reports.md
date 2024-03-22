@@ -40,7 +40,7 @@
 
 | REST API | Link | Status |
 | -------- | -------- | -------- |
-| DeleteTable & ListGlobalTables |  [Azurite/issues/10376](https://github.com/Azure/Azurite/issues/2378)  | Confirmed |
+| set_container_access_policy |  [Azurite/issues/10376](https://github.com/Azure/Azurite/issues/2378)  | Confirmed |
 
 <br>
 *Already fixed in the latest version of the Emulator. We don't claim the fix.
