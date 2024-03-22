@@ -3,10 +3,12 @@
 ### Azurite: 
 
 **Total Discrepancies**: 34, **Reported**: 5, **Confirmed**: 5, **Fixed**: 2 
+**Total Bugs**: 3, **Reported**: 1, **Confirmed**: 1, **Fixed**: 0
 
 ### Localstack: 
 
 **Total Discrepancies**: 64, **Reported**: 5, **Confirmed**: 1, **Fixed**: 1 (+3*)  
+**Total Bugs**: 7, **Reported**: 6, **Confirmed**: 6, **Fixed**: 5
 
 ## Azurite Discrepancy Report:
 
@@ -32,7 +34,13 @@
 
 | REST API | Link | Status |
 | -------- | -------- | -------- |
-| DeleteTable |  [LocalStack/issues/10376](https://github.com/localstack/localstack/issues/10376)  | Reported |
-| ListGlobalTables |  [LocalStack/issues/10376](https://github.com/localstack/localstack/issues/10376)  | Reported |
+| DeleteTable & ListGlobalTables |  [LocalStack/issues/10376](https://github.com/localstack/localstack/issues/10376)  | Confirmed |
 
-*Already fixed in the latest version of LocalStack. We don't claim the fix.
+## Azurite (BUGS) Report:
+
+| REST API | Link | Status |
+| -------- | -------- | -------- |
+| DeleteTable & ListGlobalTables |  [Azurite/issues/10376](https://github.com/Azure/Azurite/issues/2378)  | Confirmed |
+
+<br>
+*Already fixed in the latest version of the Emulator. We don't claim the fix.
