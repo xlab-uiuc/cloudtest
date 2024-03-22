@@ -17,7 +17,7 @@
 | copy_blob | [Azurite/issues/1954](https://github.com/Azure/Azurite/issues/1954) | Fixed |
 | put_block_list | [Azurite/issues/1955](https://github.com/Azure/Azurite/issues/1955#issue-1697049378) | Fixed |
 | undelete_container | [Azurite/issues/2318](https://github.com/Azure/Azurite/issues/2318) | Fixed* |
-| upload_blob_from_url | [Azurite/issues/2319](https://github.com/Azure/Azurite/issues/2319)| Confirmed | 
+| upload_blob_from_url | [Azurite/issues/2319](https://github.com/Azure/Azurite/issues/2319)| Fixed | 
 | list_container_api | [Azurite/issues/2320](https://github.com/Azure/Azurite/issues/2320) | Confirmed | 
 
 ## LocalStack Discrepancy (BUGS) Report:
