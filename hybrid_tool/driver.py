@@ -1,4 +1,4 @@
-import os, subprocess
+import os, subprocess, json
 import reference_run
 import utils, re
 
@@ -8,32 +8,27 @@ def run_tests(config, tags, rel_path):
     tests = load_test_names(config)   
     results = {}
     env = {"env": "", "test": ""}
-   
+
     os.system('dotnet build')
 
     for test in tests:
-        # test = 'NuGet.Insights.WideEntities.WideEntityServiceTest+RetrieveAsync_AsyncEnumerable.AllowsPageSizeOf1'
+
         print(f'Running test: {test}')
         env["test"] = f'{test}'
-        utils.write_env(env, rel_path)
-
         
         if test in tags:
-            # directory change to-do
             print(f'Previous run: {tags[test]}')
             env["env"] = tags[test]
-            utils.write_env(env, rel_path)
+
             try:
+                utils.ping(json.dumps(env), 'empty')
+                # run the test
                 if 'framework' in config:
-               
                     out = subprocess.check_output(f'dotnet test --no-build --framework {config["framework"]} --filter {test}', shell=True, text=True)
                 else:
                     out = subprocess.check_output(f'dotnet test --no-build --filter {test}', shell=True, text=True)
                 
-                # Save out to dotnet logs
-                with open(f'{os.path.join(rel_path,"dotnet_logs.txt")}', 'a') as f:
-                    f.write(out)
-
+                # confirm the test run completion
                 try:
                     res = utils.ping("complete_run")
                 except:
@@ -41,6 +36,8 @@ def run_tests(config, tags, rel_path):
                     results[test] = "PingFailed"
                     continue
                 print(f'Ping result: {res}')
+
+                # run reference run if the hashes don't match
                 if res == "True":
                     print(f'REFERENCE RUN')
                     results[test], tags[test] = reference_run.run(test, config, rel_path) # ref run if the hashes don't match
@@ -51,26 +48,28 @@ def run_tests(config, tags, rel_path):
                         results[test] = match.group(1)
                     else:
                         results[test] = "Undefined"
-            
+               
             except Exception as e:
                 print(f'Error: {e}')
                 results[test] = "Failed"
-            utils.write_env(env, rel_path)
+
+                # doing reference run if the test fails
+                print(f'Reference run')
+                results[test], tags[test] = reference_run.run(test, config, rel_path)
+ 
         else:
             print(f'Reference run')
             results[test], tags[test] = reference_run.run(test, config, rel_path)
             
+        # save results in detailed logs (need these logs for cost calculation)
+        # with open(f'{os.path.join(rel_path,"proxy_logs.txt")}', 'a') as f:
+        #     f.write(f'Test Result: {results[test]}\n\n')
 
-        # save results in detailed logs
-        with open(f'{os.path.join(rel_path,"proxy_logs.txt")}', 'a') as f:
-            f.write(f'Test Result: {results[test]}\n\n')
+    utils.ping("tests_complete", 'empty')
 
-        # break
-
-    with open(f'{os.path.join(rel_path,"proxy_logs.txt")}', 'a') as f:
-        f.write(f'Entire run results: {results}\n\n')
-    
-
+    # need these logs for cost calculation
+    # with open(f'{os.path.join(rel_path,"proxy_logs.txt")}', 'a') as f:
+    #     f.write(f'Entire run results: {results}\n\n')
         
     return results, tags
     
@@ -78,7 +77,6 @@ def run_tests(config, tags, rel_path):
 
 def load_test_names(config):
 
-    # using `dotnet test --list-tests`
     # TO-DO: extend for other test frameworks
 
     if 'framework' in config:
@@ -107,21 +105,13 @@ def start():
     # TO-DO: Customize test command based on the test framework
 
     # TO-DO: In Github Actions
-    # Start the proxy server
-    # start_command = ['mitmdump', '-s', 'proxy.py', '-p', '10000']
-    # start_process = subprocess.Popen(start_command)   
     
     # TO-DO: Capture the test names from an external script (should be provided by the developer)
-
-    # run the servers and pass a lock to all
-    
-    
 
     print("Starting script execution...")
 
     config = utils.load_config()
     tags = utils.load_tags() 
-
 
     # change directory to the test folder and run the tests
     main_path = os.getcwd()
@@ -137,8 +127,7 @@ def start():
 
     print("Script execution completed.")
 
-    # Kill the emulator process gracefully
-    # start_process.terminate()
+
 
 
 

@@ -1,5 +1,6 @@
 import subprocess
-import os, json
+import os, json, time, argparse
+
 
 def get_latest_commit_hash(commits_count: int) -> str or None:
     try:
@@ -12,7 +13,13 @@ def get_latest_commit_hash(commits_count: int) -> str or None:
 
 if __name__ == "__main__":
 
-    commits_count = 1
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--commits_count", type=int, default=5)
+    parser.add_argument("--branch_name", type=str, default="main")
+    args = parser.parse_args()
+
+    commits_count = args.commits_count
+    branch_name = args.branch_name
 
     # create proxy_logs.txt
     with open("proxy_logs.txt", 'w') as f:
@@ -26,14 +33,6 @@ if __name__ == "__main__":
     with open("tags.json", 'w') as f:
         f.write('{}')
 
-    # create cur_hashes.json
-    with open("cur_hashes.json", 'w') as f:
-        f.write('{}')
-
-    # create .test_env
-    with open(".test_env", 'w') as f:
-        f.write('{"env": "", "test": ""}')
-
     # create dotnet_logs.txt
     with open("dotnet_logs.txt", 'w') as f:
         f.write('')
@@ -45,17 +44,24 @@ if __name__ == "__main__":
 
     for i in range(commits_count, 0, -1):
 
-        with open("proxy_logs.txt", 'a') as f:
-            f.write(f'Commit number: {i}\n')
+        # with open("proxy_logs.txt", 'a') as f:
+        #     f.write(f'Commit number: {i}\n')
 
         hash = get_latest_commit_hash(i)
-        out = subprocess.check_output(["git", "checkout", "-b", hash])
+        out = subprocess.check_output(["git", "checkout", "-b", f"newbranch_{hash}", hash])
         print(out)
+        # start timer
+        start = time.time()
+
         os.system('python3 driver.py')
 
-        out = subprocess.check_output(["git", "checkout", "mymain"])
+        # end timer
+        end = time.time()
+        print(f"Time taken: {end - start}")
+
+        out = subprocess.check_output(["git", "checkout", f'{branch_name}'])
         print(out)
-        subprocess.check_output(["git", "branch", "-d", hash])
+        subprocess.check_output(["git", "branch", "-d", f"newbranch_{hash}"])
 
         commits_count = commits_count - 1
 
@@ -64,5 +70,3 @@ if __name__ == "__main__":
             hashes = json.load(f)
             with open(f"hashes_{commits_count}.json", 'w') as f:
                 f.write(json.dumps(hashes, indent=4))
-
-        # break
