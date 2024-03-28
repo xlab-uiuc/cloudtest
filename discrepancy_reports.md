@@ -3,10 +3,12 @@
 ### Azurite: 
 
 **Total Discrepancies**: 34, **Reported**: 5, **Confirmed**: 5, **Fixed**: 2 
+**Total Bugs**: 3, **Reported**: 1, **Confirmed**: 1, **Fixed**: 0
 
 ### Localstack: 
 
 **Total Discrepancies**: 64, **Reported**: 5, **Confirmed**: 1, **Fixed**: 1 (+3*)  
+**Total Bugs**: 7, **Reported**: 6, **Confirmed**: 6, **Fixed**: 5
 
 ## Azurite Discrepancy Report:
 
@@ -14,8 +16,8 @@
 | -------- | -------- | -------- |
 | copy_blob | [Azurite/issues/1954](https://github.com/Azure/Azurite/issues/1954) | Fixed |
 | put_block_list | [Azurite/issues/1955](https://github.com/Azure/Azurite/issues/1955#issue-1697049378) | Fixed |
-| undelete_container | [Azurite/issues/2318](https://github.com/Azure/Azurite/issues/2318) | Confirmed |
-| upload_blob_from_url | [Azurite/issues/2319](https://github.com/Azure/Azurite/issues/2319)| Confirmed | 
+| undelete_container | [Azurite/issues/2318](https://github.com/Azure/Azurite/issues/2318) | Fixed* |
+| upload_blob_from_url | [Azurite/issues/2319](https://github.com/Azure/Azurite/issues/2319)| Fixed | 
 | list_container_api | [Azurite/issues/2320](https://github.com/Azure/Azurite/issues/2320) | Confirmed | 
 
 ## LocalStack Discrepancy (BUGS) Report:
@@ -32,7 +34,13 @@
 
 | REST API | Link | Status |
 | -------- | -------- | -------- |
-| DeleteTable |  [LocalStack/issues/10376](https://github.com/localstack/localstack/issues/10376)  | Reported |
-| ListGlobalTables |  [LocalStack/issues/10376](https://github.com/localstack/localstack/issues/10376)  | Reported |
+| DeleteTable & ListGlobalTables |  [LocalStack/issues/10376](https://github.com/localstack/localstack/issues/10376)  | Confirmed |
 
-*Already fixed in the latest version of LocalStack. We don't claim the fix.
+## Azurite (BUGS) Report:
+
+| REST API | Link | Status |
+| -------- | -------- | -------- |
+| set_container_access_policy |  [Azurite/issues/10376](https://github.com/Azure/Azurite/issues/2378)  | Confirmed |
+
+<br>
+*Already fixed in the latest version of the Emulator. We don't claim the fix.
