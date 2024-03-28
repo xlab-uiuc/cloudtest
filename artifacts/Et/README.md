@@ -33,6 +33,8 @@ socat TCP-LISTEN:10002,fork TCP:localhost:8080
 
 We have pre-defined the configurations in `config.json` specific to each project.
 
+// TODO: Need to add a link to the artifacts that show how to configure projects to point to the emulator.
+
 
 ## Starting mitmproxy
 
