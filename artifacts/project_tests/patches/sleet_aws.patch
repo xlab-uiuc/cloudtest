@@ -1,0 +1,17 @@
+diff --git a/test/Sleet.AmazonS3.Tests/AmazonS3TestContext.cs b/test/Sleet.AmazonS3.Tests/AmazonS3TestContext.cs
+index 8ce4f68..98e8afe 100644
+--- a/test/Sleet.AmazonS3.Tests/AmazonS3TestContext.cs
++++ b/test/Sleet.AmazonS3.Tests/AmazonS3TestContext.cs
+@@ -30,7 +30,11 @@ public AmazonS3TestContext()
+             var config = new AmazonS3Config()
+             {
+                 Timeout = TimeSpan.FromSeconds(100),
+-                RegionEndpoint = RegionEndpoint.GetBySystemName(region)
++                ServiceURL = "http://localhost:4566",
++                UseHttp = true,
++                ForcePathStyle = true,
++                ProxyHost = "localhost",
++                ProxyPort = 4566
+             };
+             Client = new AmazonS3Client(accessKeyId, secretAccessKey, config);
+             Uri = AmazonS3Utility.GetBucketPath(BucketName, region);
