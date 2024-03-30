@@ -1,5 +1,15 @@
 # Projects under evaluation
 
+## [Alpakka](https://github.com/akkadotnet/Alpakka)
+Version: 869c6e28c85353577be74aec59801bbe9d498f0e
+
+#### Azure
+Emulator:
+- No extra configuration needed
+
+Cloud:
+- Set connection string in this [file](https://github.com/akkadotnet/Alpakka/blob/869c6e28c85353577be74aec59801bbe9d498f0e/src/Azure/Akka.Streams.Azure.StorageQueue.Tests/QueueSpecBase.cs#L17)
+
 ## [Durabletask](https://github.com/Azure/durabletask)
 Version: d7c3eb46570cd350094132da03c01a8f20ecfb0b
 
