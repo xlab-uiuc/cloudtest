@@ -1,4 +1,4 @@
-# Eᴛ 
+# Eᴛ
 
 The following is the guideline on how to run Eᴛ. The logs and the subsequent calculations of the savings can be found in [cost_savings](../cost_savings/).
 
@@ -26,8 +26,6 @@ Install azure-cli which is used tp integrate authentication of azure APIs with E
 sudo apt-get install -y azure-cli   # For Ubuntu
 brew install azure-cli              # For macOS
 ```
-
-
 
 ## Directing Traffic to proxy
 
