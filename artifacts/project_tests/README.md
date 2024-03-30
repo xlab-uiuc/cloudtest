@@ -38,3 +38,12 @@ Emulator:
 Cloud:
 - Set environment vairbale via `export AWS_ACCESS_KEY_ID=YOUR_ACCESS_ID` and `export AWS_SECRET_ACCESS_KEY=YOUR_ACCESS_KEY` 
 
+## [Streamtone](https://github.com/yevhen/Streamstone)
+Version: 71b34da9a76772234406618a95b6d00889dcf376
+
+#### Azure
+Emulator:
+- No extra configuration needed
+
+Cloud:
+- Set connection string in this [file](https://github.com/yevhen/Streamstone/blob/71b34da9a76772234406618a95b6d00889dcf376/Source/Streamstone.Tests/Storage.cs#L66) 
