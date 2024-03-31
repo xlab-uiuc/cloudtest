@@ -1,0 +1,13 @@
+diff --git a/ServiceStack.Aws/tests/ServiceStack.Aws.DynamoDbTests/DynamoTestBase.cs b/ServiceStack.Aws/tests/ServiceStack.Aws.DynamoDbTests/DynamoTestBase.cs
+index 547f30c5b..06f2a03c7 100644
+--- a/ServiceStack.Aws/tests/ServiceStack.Aws.DynamoDbTests/DynamoTestBase.cs
++++ b/ServiceStack.Aws/tests/ServiceStack.Aws.DynamoDbTests/DynamoTestBase.cs
+@@ -13,7 +13,7 @@ namespace ServiceStack.Aws.DynamoDbTests
+     public abstract class DynamoTestBase
+     {
+         //Run ./build/start-local-dynamodb.bat to start local DynamoDB instance on 8000
+-        public static bool UseLocalDb = true;
++        public static bool UseLocalDb = false;
+ 
+         public static IPocoDynamo CreatePocoDynamo()
+         {

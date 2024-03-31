@@ -79,6 +79,17 @@ Cloud:
 - Apply patch `patches/orleans_azure_emulator.patch`
 - Modify the value of `DynamoDbService` `DynamoDbAccessKey` `DynamoDbAccessKey`in this [file](https://github.com/dotnet/orleans/blob/6a4cc9099ac151c36e6ecded78d7991a3ed459d7/test/TestInfrastructure/TestExtensions/TestDefaultConfiguration.cs#L77) to the cloud configurations. 
 
+## [ServiceStack](https://github.com/ServiceStack/ServiceStack)
+Version: eaaa85f553642e5f721466fafb247132cca00006
+
+#### AWS 
+Emulator:
+- Apply patch `patches/servicestack_aws_emulator.patch`
+
+Cloud:
+- Apply patch `patches/servicestack_aws_cloud.patch`
+- Set environment variable via `export AWS_ACCESS_KEY=YOUR_ACCESS_KEY` and `export AWS_SECRET_KEY=YOUR_SECRET_KEY` 
+
 ## [Sleet](https://github.com/emgarten/Sleet)
 Version: 7fb3c59b57e6454fba5a91b871f2b78b4c303bde
 
