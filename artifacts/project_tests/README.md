@@ -20,6 +20,16 @@ Emulator:
 Cloud:
 - Set environment variable via `export DurableTaskTestStorageConnectionString=YOUR_CONNECTION_STRING`
 
+## [identityazuretable](https://github.com/dlmelendez/identityazuretable)
+Version: bc4ba07d6289addd275c425d20db3ee19167805f
+
+#### Azure
+Emulator:
+- No extra configuration needed
+
+Cloud:
+- Set connection string in this [file](https://github.com/dlmelendez/identityazuretable/blob/bc4ba07d6289addd275c425d20db3ee19167805f/tests/ElCamino.AspNetCore.Identity.AzureTable.Tests/config.json#L16)
+
 ## [IronPigeon](https://github.com/AArnott/IronPigeon)
 Version: e4d125f9f9cba04c7eb219cac1f309ead487fa9d
 
