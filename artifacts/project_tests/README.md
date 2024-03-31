@@ -10,6 +10,16 @@ Emulator:
 Cloud:
 - Set connection string in this [file](https://github.com/akkadotnet/Alpakka/blob/869c6e28c85353577be74aec59801bbe9d498f0e/src/Azure/Akka.Streams.Azure.StorageQueue.Tests/QueueSpecBase.cs#L17)
 
+## [ServiceBus.AttachmentPlugin](https://github.com/SeanFeldman/ServiceBus.AttachmentPlugin)
+Version: a074f8f804cb5a15d13f823ba6efd63c3da1a7b4
+
+#### Azure
+Emulator:
+- No extra configuration needed
+
+Cloud:
+- Set connection string in this [file](https://github.com/SeanFeldman/ServiceBus.AttachmentPlugin/blob/a074f8f804cb5a15d13f823ba6efd63c3da1a7b4/src/ServiceBus.AttachmentPlugin.Tests/AzureStorageEmulatorFixture.cs#L11)
+
 ## [Durabletask](https://github.com/Azure/durabletask)
 Version: d7c3eb46570cd350094132da03c01a8f20ecfb0b
 
@@ -49,6 +59,25 @@ Emulator:
 
 Cloud:
 - Set connection string in this [file](https://github.com/AArnott/IronPigeon/blob/e4d125f9f9cba04c7eb219cac1f309ead487fa9d/test/IronPigeon.Tests/Providers/AzureBlobStorageTests.cs#L28C55-L28C76) 
+
+## [Orleans](https://github.com/dotnet/orleans)
+Version: 6a4cc9099ac151c36e6ecded78d7991a3ed459d7
+
+#### Azure
+Emulator:
+- Apply patch `patches/orleans_azure_emulator.patch`
+
+Cloud:
+- Apply patch `patches/orleans_azure_emulator.patch`
+- Modify the value of `DataConnectionString` in this [file](https://github.com/dotnet/orleans/blob/6a4cc9099ac151c36e6ecded78d7991a3ed459d7/test/TestInfrastructure/TestExtensions/TestDefaultConfiguration.cs#L77) to the cloud connection string. 
+
+#### AWS
+Emulator:
+- Apply patch `patches/orleans_aws_emulator.patch`
+
+Cloud:
+- Apply patch `patches/orleans_azure_emulator.patch`
+- Modify the value of `DynamoDbService` `DynamoDbAccessKey` `DynamoDbAccessKey`in this [file](https://github.com/dotnet/orleans/blob/6a4cc9099ac151c36e6ecded78d7991a3ed459d7/test/TestInfrastructure/TestExtensions/TestDefaultConfiguration.cs#L77) to the cloud configurations. 
 
 ## [Sleet](https://github.com/emgarten/Sleet)
 Version: 7fb3c59b57e6454fba5a91b871f2b78b4c303bde
