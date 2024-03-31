@@ -30,6 +30,16 @@ Emulator:
 Cloud:
 - Set connection string in this [file](https://github.com/dlmelendez/identityazuretable/blob/bc4ba07d6289addd275c425d20db3ee19167805f/tests/ElCamino.AspNetCore.Identity.AzureTable.Tests/config.json#L16)
 
+## [Insights](https://github.com/NuGet/Insights)
+Version: 21e3ae357d63125721246cf2291db09bd52bc02e
+
+#### Azure
+Emulator:
+- No extra configuration needed
+
+Cloud:
+- Set connection string in this [file](https://github.com/NuGet/Insights/blob/21e3ae357d63125721246cf2291db09bd52bc02e/test/Logic.Test/TestSupport/TestSettings.cs#L77-L82)
+
 ## [IronPigeon](https://github.com/AArnott/IronPigeon)
 Version: e4d125f9f9cba04c7eb219cac1f309ead487fa9d
 
