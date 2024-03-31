@@ -1,0 +1,94 @@
+diff --git a/test/Extensions/AWSUtils.Tests/StorageTests/AWSTestConstants.cs b/test/Extensions/AWSUtils.Tests/StorageTests/AWSTestConstants.cs
+index 8fbae4b1c..d992a8a58 100644
+--- a/test/Extensions/AWSUtils.Tests/StorageTests/AWSTestConstants.cs
++++ b/test/Extensions/AWSUtils.Tests/StorageTests/AWSTestConstants.cs
+@@ -14,40 +14,41 @@ public class AWSTestConstants
+     {
+         private static readonly Lazy<bool> _isDynamoDbAvailable = new Lazy<bool>(() =>
+         {
+-            if (string.IsNullOrEmpty(DynamoDbService))
+-            {
+-                return false;
+-            }
++            return true;
++            // if (string.IsNullOrEmpty(DynamoDbService))
++            // {
++            //     return false;
++            // }
+ 
+-            try
+-            {
+-                DynamoDBStorage storage;
+-                try
+-                {
+-                    storage = new DynamoDBStorage(NullLoggerFactory.Instance.CreateLogger("DynamoDBStorage"), DynamoDbService);
+-                }
+-                catch (AmazonServiceException)
+-                {
+-                    return false;
+-                }
+-                storage.InitializeTable(
+-                    "TestTable",
+-                    new List<KeySchemaElement> {
+-                        new KeySchemaElement { AttributeName = "PartitionKey", KeyType = KeyType.HASH }
+-                    },
+-                    new List<AttributeDefinition> {
+-                        new AttributeDefinition { AttributeName = "PartitionKey", AttributeType = ScalarAttributeType.S }
+-                    })
+-                .WithTimeout(TimeSpan.FromSeconds(2)).Wait();
+-                return true;
+-            }
+-            catch (Exception exc)
+-            {
+-                if (exc.InnerException is TimeoutException)
+-                    return false;
++            // try
++            // {
++            //     DynamoDBStorage storage;
++            //     try
++            //     {
++            //         storage = new DynamoDBStorage(NullLoggerFactory.Instance.CreateLogger("DynamoDBStorage"), DynamoDbService);
++            //     }
++            //     catch (AmazonServiceException)
++            //     {
++            //         return false;
++            //     }
++            //     storage.InitializeTable(
++            //         "TestTable",
++            //         new List<KeySchemaElement> {
++            //             new KeySchemaElement { AttributeName = "PartitionKey", KeyType = KeyType.HASH }
++            //         },
++            //         new List<AttributeDefinition> {
++            //             new AttributeDefinition { AttributeName = "PartitionKey", AttributeType = ScalarAttributeType.S }
++            //         })
++            //     .WithTimeout(TimeSpan.FromSeconds(2)).Wait();
++            //     return true;
++            // }
++            // catch (Exception exc)
++            // {
++            //     if (exc.InnerException is TimeoutException)
++            //         return false;
+ 
+-                throw;
+-            }
++            //     throw;
++            // }
+         });
+ 
+         public static string DynamoDbAccessKey { get; set; } = TestDefaultConfiguration.DynamoDbAccessKey;
+diff --git a/test/TestInfrastructure/TestExtensions/TestDefaultConfiguration.cs b/test/TestInfrastructure/TestExtensions/TestDefaultConfiguration.cs
+index e72ecf533..341bb2e5d 100644
+--- a/test/TestInfrastructure/TestExtensions/TestDefaultConfiguration.cs
++++ b/test/TestInfrastructure/TestExtensions/TestDefaultConfiguration.cs
+@@ -74,7 +74,10 @@ public static void ConfigureHostConfiguration(IConfigurationBuilder builder)
+         {
+             builder.AddInMemoryCollection(new Dictionary<string, string>
+             {
+-                { nameof(ZooKeeperConnectionString), "127.0.0.1:2181" }
++                { nameof(ZooKeeperConnectionString), "127.0.0.1:2181" },
++                { nameof(DynamoDbService), "http://localhost:4566"},
++                { nameof(DynamoDbAccessKey), "dummy"},
++                { nameof(DynamoDbSecretKey), "dummy"}
+             });
+             if (!TryAddJsonFileFromEnvironmentVariable(builder, "ORLEANS_SECRETFILE"))
+             {

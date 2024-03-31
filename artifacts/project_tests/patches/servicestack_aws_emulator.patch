@@ -1,0 +1,56 @@
+diff --git a/ServiceStack.Aws/tests/ServiceStack.Aws.DynamoDbTests/DynamoTestBase.cs b/ServiceStack.Aws/tests/ServiceStack.Aws.DynamoDbTests/DynamoTestBase.cs
+index 547f30c5b..1361e72af 100644
+--- a/ServiceStack.Aws/tests/ServiceStack.Aws.DynamoDbTests/DynamoTestBase.cs
++++ b/ServiceStack.Aws/tests/ServiceStack.Aws.DynamoDbTests/DynamoTestBase.cs
+@@ -24,7 +24,7 @@ public static IPocoDynamo CreatePocoDynamo()
+         }
+ 
+         public static string DynamoDbUrl = Environment.GetEnvironmentVariable("CI_DYNAMODB") 
+-            ?? ConfigUtils.GetAppSetting("DynamoDbUrl", "http://localhost:8000");
++            ?? ConfigUtils.GetAppSetting("DynamoDbUrl", "http://localhost:4566");
+ 
+         public static ICacheClient CreateCacheClient()
+         {
+@@ -38,9 +38,10 @@ public static AmazonDynamoDBClient CreateDynamoDbClient()
+             var accessKey = Environment.GetEnvironmentVariable("AWS_ACCESS_KEY");
+             var secretKey = Environment.GetEnvironmentVariable("AWS_SECRET_KEY");
+ 
+-            var useLocalDb = UseLocalDb || 
+-                string.IsNullOrEmpty(accessKey) || string.IsNullOrEmpty(secretKey);
++            // var useLocalDb = UseLocalDb || 
++            //     string.IsNullOrEmpty(accessKey) || string.IsNullOrEmpty(secretKey);
+ 
++            var useLocalDb = true;
+             var dynamoClient = useLocalDb
+                 ? new AmazonDynamoDBClient("keyId", "key", new AmazonDynamoDBConfig {
+                     ServiceURL = DynamoDbUrl,
+diff --git a/ServiceStack.Aws/tests/ServiceStack.Aws.Tests/AwsConfig.cs b/ServiceStack.Aws/tests/ServiceStack.Aws.Tests/AwsConfig.cs
+index eac880f79..64d3dae46 100644
+--- a/ServiceStack.Aws/tests/ServiceStack.Aws.Tests/AwsConfig.cs
++++ b/ServiceStack.Aws/tests/ServiceStack.Aws.Tests/AwsConfig.cs
+@@ -37,10 +37,20 @@ public static string AwsSecretKey
+ 
+         public static AmazonS3Client CreateAmazonS3Client()
+         {
+-            return new AmazonS3Client(
+-                Environment.GetEnvironmentVariable("AWS_S3_ACCESS_KEY") ?? AwsAccessKey, 
+-                Environment.GetEnvironmentVariable("AWS_S3_SECRET_KEY") ?? AwsSecretKey, 
+-                RegionEndpoint.USEast1);
++            var config = new AmazonS3Config()
++            {
++                Timeout = TimeSpan.FromSeconds(100),
++                ServiceURL = "http://localhost:4566",
++                UseHttp = true,
++                ForcePathStyle = true,
++                ProxyHost = "localhost",
++                ProxyPort = 4566
++            };
++            return new AmazonS3Client("dummy", "dummy", config);
++            // return new AmazonS3Client(
++            //     Environment.GetEnvironmentVariable("AWS_S3_ACCESS_KEY") ?? AwsAccessKey, 
++            //     Environment.GetEnvironmentVariable("AWS_S3_SECRET_KEY") ?? AwsSecretKey, 
++            //     RegionEndpoint.USEast1);
+         }
+     }
+ }
+\ No newline at end of file
