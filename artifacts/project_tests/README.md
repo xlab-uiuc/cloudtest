@@ -10,6 +10,8 @@ Emulator:
 Cloud:
 - Set connection string in this [file](https://github.com/akkadotnet/Alpakka/blob/869c6e28c85353577be74aec59801bbe9d498f0e/src/Azure/Akka.Streams.Azure.StorageQueue.Tests/QueueSpecBase.cs#L17)
 
+After configuration, run `dotnet test src/Azure/Akka.Streams.Azure.StorageQueue.Tests`.
+
 ## [ServiceBus.AttachmentPlugin](https://github.com/SeanFeldman/ServiceBus.AttachmentPlugin)
 Version: a074f8f804cb5a15d13f823ba6efd63c3da1a7b4
 
@@ -19,6 +21,8 @@ Emulator:
 
 Cloud:
 - Set connection string in this [file](https://github.com/SeanFeldman/ServiceBus.AttachmentPlugin/blob/a074f8f804cb5a15d13f823ba6efd63c3da1a7b4/src/ServiceBus.AttachmentPlugin.Tests/AzureStorageEmulatorFixture.cs#L11)
+
+After configuration, run `dotnet test src/ServiceBus.AttachmentPlugin.Tests`.
 
 ## [Durabletask](https://github.com/Azure/durabletask)
 Version: d7c3eb46570cd350094132da03c01a8f20ecfb0b
@@ -60,6 +64,8 @@ Emulator:
 Cloud:
 - Set connection string in this [file](https://github.com/AArnott/IronPigeon/blob/e4d125f9f9cba04c7eb219cac1f309ead487fa9d/test/IronPigeon.Tests/Providers/AzureBlobStorageTests.cs#L28C55-L28C76) 
 
+After configuration, run `dotnet test test/IronPigeon.Tests`.
+
 ## [Orleans](https://github.com/dotnet/orleans)
 Version: 6a4cc9099ac151c36e6ecded78d7991a3ed459d7
 
@@ -90,6 +96,8 @@ Cloud:
 - Apply patch `patches/servicestack_aws_cloud.patch`
 - Set environment variable via `export AWS_ACCESS_KEY=YOUR_ACCESS_KEY` and `export AWS_SECRET_KEY=YOUR_SECRET_KEY` 
 
+After configuration, run `dotnet test ServiceStack.Aws/tests/ServiceStack.Aws.Tests` and `dotnet test ServiceStack.Aws/tests/ServiceStack.Aws.DynamoDbTests`.
+
 ## [Sleet](https://github.com/emgarten/Sleet)
 Version: 7fb3c59b57e6454fba5a91b871f2b78b4c303bde
 
@@ -100,6 +108,8 @@ Emulator:
 Cloud:
 - Set environment variable via `export SLEET_TEST_ACCOUNT=YOUR_CONNECTION_STRING`
 
+After configuration, run `dotnet test test/Sleet.Azure.Tests`.
+
 #### AWS
 Emulator:
 - Apply patch `patches/sleet_aws.patch`
@@ -107,6 +117,8 @@ Emulator:
 
 Cloud:
 - Set environment vairbale via `export AWS_ACCESS_KEY_ID=YOUR_ACCESS_ID` and `export AWS_SECRET_ACCESS_KEY=YOUR_ACCESS_KEY` 
+
+After configuration, run `dotnet test test/Sleet.AmazonS3.Tests`.
 
 ## [Streamtone](https://github.com/yevhen/Streamstone)
 Version: 71b34da9a76772234406618a95b6d00889dcf376
